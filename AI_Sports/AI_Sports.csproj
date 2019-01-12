@@ -73,7 +73,6 @@
     <Compile Include="AISports.Dao\ActivityDAO.cs" />
     <Compile Include="AISports.Dao\AuthDAO.cs" />
     <Compile Include="AISports.Dao\Base\BaseDAO.cs" />
-    <Compile Include="AISports.Dao\TestDAO.cs" />
     <Compile Include="AISports.Entity\ActivityEntity.cs" />
     <Compile Include="AISports.Entity\DatacodeEntity.cs" />
     <Compile Include="AISports.Entity\MemberEntity.cs" />
