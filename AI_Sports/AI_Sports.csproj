@@ -70,6 +70,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AISports.Dao\ActivityDAO.cs" />
+    <Compile Include="AISports.Dao\AuthDAO.cs" />
+    <Compile Include="AISports.Dao\Base\BaseDAO.cs" />
+    <Compile Include="AISports.Dao\TestDAO.cs" />
+    <Compile Include="AISports.Entity\ActivityEntity.cs" />
+    <Compile Include="AISports.Entity\DatacodeEntity.cs" />
+    <Compile Include="AISports.Entity\MemberEntity.cs" />
+    <Compile Include="AISports.Entity\PersonalSettingEntity.cs" />
+    <Compile Include="AISports.Entity\SystemSettingEntity.cs" />
+    <Compile Include="AISports.Entity\TrainingActivityRecordEntity.cs" />
+    <Compile Include="AISports.Entity\TrainingCourseEntity.cs" />
+    <Compile Include="AISports.Entity\TrainingCourseRecordEntity.cs" />
+    <Compile Include="AISports.Entity\TrainingDeviceRecordEntity.cs" />
+    <Compile Include="AISports.Entity\TrainingPlanEntity.cs" />
+    <Compile Include="AISports.Entity\AuthEntity.cs" />
+    <Compile Include="AISports.Util\DbUtil.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -100,6 +116,13 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="AISports.Constant\.gitkeep" />
+    <None Include="AISports.Lib\.gitkeep" />
+    <None Include="AISports.Service\.gitkeep" />
+    <None Include="AISports.View\Converter\.gitkeep" />
+    <None Include="AISports.View\Fonts\.gitkeep" />
+    <None Include="AISports.View\Images\.gitkeep" />
+    <None Include="AISports.View\Pages\.gitkeep" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

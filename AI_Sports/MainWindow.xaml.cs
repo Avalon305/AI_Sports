@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AI_Sports.Dao;
+using AI_Sports.Entity;
+using AI_Sports.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,13 @@ namespace AI_Sports
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var a = DbUtil.getConn();
+            var c = new ActivityDAO().Load(1);
+            MessageBox.Show(c.Is_complete.ToString());
         }
     }
 }
