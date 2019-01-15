@@ -5,6 +5,7 @@
 
 spms/zeroTest.xaml
 spms/zeroTest.xaml.cs
+DbUtil.cs
 
 # User-specific files
 *.suo
