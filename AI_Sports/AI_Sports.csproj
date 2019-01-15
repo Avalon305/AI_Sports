@@ -46,6 +46,7 @@
       <HintPath>..\packages\NLog.4.4.13\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml" />
@@ -70,9 +71,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AISports.Constant\CodeConstant.cs" />
     <Compile Include="AISports.Dao\ActivityDAO.cs" />
     <Compile Include="AISports.Dao\AuthDAO.cs" />
     <Compile Include="AISports.Dao\Base\BaseDAO.cs" />
+    <Compile Include="AISports.Dao\DatacodeDAO.cs" />
     <Compile Include="AISports.Entity\ActivityEntity.cs" />
     <Compile Include="AISports.Entity\DatacodeEntity.cs" />
     <Compile Include="AISports.Entity\MemberEntity.cs" />
@@ -84,6 +87,8 @@
     <Compile Include="AISports.Entity\TrainingDeviceRecordEntity.cs" />
     <Compile Include="AISports.Entity\TrainingPlanEntity.cs" />
     <Compile Include="AISports.Entity\AuthEntity.cs" />
+    <Compile Include="AISports.Util\ConfigUtil.cs" />
+    <Compile Include="AISports.Util\DataCodeCache.cs" />
     <Compile Include="AISports.Util\DbUtil.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -115,7 +120,6 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="AISports.Constant\.gitkeep" />
     <None Include="AISports.Lib\.gitkeep" />
     <None Include="AISports.Service\.gitkeep" />
     <None Include="AISports.View\Converter\.gitkeep" />

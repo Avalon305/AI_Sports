@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using AISports.Util;
+
 namespace AI_Sports.Util
 {
 
@@ -30,10 +32,10 @@ namespace AI_Sports.Util
         static DbUtil()
         {
             
-            DbName = "ai_sports";
-            DbUserName = "root";  
-            DbPassword = "hengxingqingdao";
-            DbUrl = "127.0.0.1";
+            DbName = ConfigUtil.Get("DbName");
+            DbUserName = ConfigUtil.Get("DbUserName");  
+            DbPassword = ConfigUtil.Get("DbPassword");
+            DbUrl = ConfigUtil.Get("DbUrl");
 
             connstr = string.Format("server={0};user id={1}; password={2}; database={3}; pooling=true;Charset=utf8", DbUrl, DbUserName, DbPassword, DbName);
         }
