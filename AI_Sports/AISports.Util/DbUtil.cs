@@ -32,7 +32,7 @@ namespace AI_Sports.Util
             
             DbName = "ai_sports";
             DbUserName = "root";  
-            DbPassword = "hengxingqingdao";
+            DbPassword = "root";
             DbUrl = "127.0.0.1";
 
             connstr = string.Format("server={0};user id={1}; password={2}; database={3}; pooling=true;Charset=utf8", DbUrl, DbUserName, DbPassword, DbName);

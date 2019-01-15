@@ -46,8 +46,10 @@
       <HintPath>..\packages\NLog.4.4.13\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,6 +68,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AISports.View\Pages\CQZTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +79,8 @@
     <Compile Include="AISports.Dao\ActivityDAO.cs" />
     <Compile Include="AISports.Dao\AuthDAO.cs" />
     <Compile Include="AISports.Dao\Base\BaseDAO.cs" />
+    <Compile Include="AISports.Dao\MemberDAO.cs" />
+    <Compile Include="AISports.Dao\TrainingPlanDAO.cs" />
     <Compile Include="AISports.Entity\ActivityEntity.cs" />
     <Compile Include="AISports.Entity\DatacodeEntity.cs" />
     <Compile Include="AISports.Entity\MemberEntity.cs" />
@@ -84,7 +92,15 @@
     <Compile Include="AISports.Entity\TrainingDeviceRecordEntity.cs" />
     <Compile Include="AISports.Entity\TrainingPlanEntity.cs" />
     <Compile Include="AISports.Entity\AuthEntity.cs" />
+    <Compile Include="AISports.Service\MemberService.cs" />
+    <Compile Include="AISports.Service\NFCManagementService.cs" />
+    <Compile Include="AISports.Service\TrainingPlanService.cs" />
+    <Compile Include="AISports.Util\CommUtil.cs" />
+    <Compile Include="AISports.Util\ParseIntegerUtil.cs" />
     <Compile Include="AISports.Util\DbUtil.cs" />
+    <Compile Include="AISports.View\Pages\CQZTest.xaml.cs">
+      <DependentUpon>CQZTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -133,6 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\bootstrap-wpf-style-master\BootstrapWpfStyle\BootstrapWpfStyle.csproj">
+      <Project>{1c0f2e8b-e47b-4581-9d0a-a90bd88d204e}</Project>
+      <Name>BootstrapWpfStyle</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
