@@ -5,7 +5,6 @@
 
 spms/zeroTest.xaml
 spms/zeroTest.xaml.cs
-AI_Sports/AISports.Util/DbUtil.cs
 
 # User-specific files
 *.suo
@@ -290,3 +289,4 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/AI_Sports/AISports.Util/DbUtil.cs
