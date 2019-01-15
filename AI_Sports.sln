@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.1
+VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_Sports", "AI_Sports\AI_Sports.csproj", "{68B3868B-F45E-419C-BDA1-C42D9FD4376C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapWpfStyle", "bootstrap-wpf-style-master\BootstrapWpfStyle\BootstrapWpfStyle.csproj", "{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{68B3868B-F45E-419C-BDA1-C42D9FD4376C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68B3868B-F45E-419C-BDA1-C42D9FD4376C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68B3868B-F45E-419C-BDA1-C42D9FD4376C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -151,7 +151,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\bootstrap-wpf-style-master\BootstrapWpfStyle\BootstrapWpfStyle.csproj">
+    <ProjectReference Include="..\bootstrap-wpf-style-master\BootstrapWpfStyle\BootstrapWpfStyle.csproj">
       <Project>{1c0f2e8b-e47b-4581-9d0a-a90bd88d204e}</Project>
       <Name>BootstrapWpfStyle</Name>
     </ProjectReference>
