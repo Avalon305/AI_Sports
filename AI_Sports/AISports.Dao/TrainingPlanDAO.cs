@@ -19,14 +19,41 @@ namespace AI_Sports.Dao
         /// </summary>
         /// <param name="memberEntity"></param>
         /// <returns></returns>
-        public int DeletePlanByMemberId(MemberEntity memberEntity)
+        public int DeletePlanByMemberId(string memberId)
         {
             using (var conn = DbUtil.getConn())
             {
                 const string query = "UPDATE bdl_training_plan SET is_deleted = 1 WHERE fk_member_id = @Fk_member_id";
 
-                return conn.Execute(query, new { Fk_member_id = memberEntity.Member_id });
-                
+                return conn.Execute(query, new { Fk_member_id = memberId });
+
+            }
+        }
+        /// <summary>
+        /// 插入训练计划
+        /// </summary>
+        /// <param name="trainingPlanEntity"></param>
+        /// <returns></returns>
+        public int SaveTrainingPlan(TrainingPlanEntity trainingPlanEntity)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string insert = "INSERT INTO `ai_sports`.`bdl_training_plan` (`fk_member_id`, `title`, `start_date`, `training_target`) VALUES (@Fk_member_id ,@Title , @Start_date , @Training_target)";
+                return conn.Execute(insert, trainingPlanEntity);
+
+            }
+        }
+        /// <summary>
+        /// 根据会员ID查询其正在进行的训练计划
+        /// </summary>
+        /// <param name="member_Id"></param>
+        /// <returns></returns>
+        public TrainingPlanEntity GetTrainingPlanByMumberId(string member_Id)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT bdl_training_plan.id,bdl_training_plan.fk_member_id,bdl_training_plan.title,bdl_training_plan.start_date,bdl_training_plan.training_target,bdl_training_plan.is_deleted,bdl_training_plan.gmt_create,bdl_training_plan.gmt_modified FROM bdl_training_plan WHERE is_deleted = 0 AND fk_member_id = @Fk_member_id";
+                return conn.QueryFirstOrDefault(query, new { @Fk_member_id = member_Id });
             }
         }
     }

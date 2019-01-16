@@ -37,7 +37,7 @@ namespace AI_Sports.AISports.View.Pages
         {
             MemberEntity member = new MemberEntity();
             member.Address = "山东青岛";
-            DateTime date = new DateTime(1998,4,5);
+            DateTime date = new DateTime(1998, 4, 5);
             member.Birth_date = date;
             member.Member_id = "20190114";
             member.Role_id = 1;
@@ -46,7 +46,7 @@ namespace AI_Sports.AISports.View.Pages
             member.Sex = 1;
 
             int count = memberService.InsertMember(member);
-            if(count > 0)
+            if (count > 0)
             {
                 Console.WriteLine("增加会员成功");
             }
@@ -58,13 +58,13 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void deleteTrainPlan(object sender, RoutedEventArgs e)
         {
-            MemberEntity member = new MemberEntity();
-            member.Member_id = "123";
-            int? count = trainingPlanService.DeletePlanByMemberId(member);
-            if (count > 0)
-            {
-                Console.WriteLine("删除原训练计划成功");
-            }
+            //MemberEntity member = new MemberEntity();
+            //member.Member_id = "123";
+            //int? count = trainingPlanService.DeletePlanByMemberId(member);
+            //if (count > 0)
+            //{
+            //    Console.WriteLine("删除原训练计划成功");
+            //}
 
         }
         /// <summary>
@@ -73,7 +73,7 @@ namespace AI_Sports.AISports.View.Pages
         /// </summary>
         /// <param name="memberId"></param>
         /// <param name="roleId"></param>
-        private void updateSetting(string memberId,string roleId)
+        private void updateSetting(string memberId, string roleId)
         {
             //1.更新会员卡ID
             CommUtil.UpdateSettingString("memberId", memberId);
@@ -113,10 +113,11 @@ namespace AI_Sports.AISports.View.Pages
                     //this.Content = mainpage;
                 }
             }
-            else{
+            else
+            {
                 Console.WriteLine("无效卡！");
             }
-            
+
         }
         /// <summary>
         /// 设置会员id和角色id测试
