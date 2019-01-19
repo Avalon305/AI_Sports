@@ -31,7 +31,7 @@ namespace AI_Sports.Entity
         /// <summary>
         /// Id
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// 排序号，下拉列表按这个排序
@@ -52,6 +52,11 @@ namespace AI_Sports.Entity
         /// 展示值
         /// </summary>
         public String Code_d_value { get; set; }
+
+        /// <summary>
+        /// 扩展值
+        /// </summary>
+        public String Code_ext_value { get; set; }
 
         /// <summary>
         /// 是否启用 0 不启用 1启用

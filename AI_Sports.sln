@@ -7,12 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_Sports", "AI_Sports\AI_S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapWpfStyle", "bootstrap-wpf-style-master\BootstrapWpfStyle\BootstrapWpfStyle.csproj", "{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spms", "..\..\bdl_old\spms_desktop\spms\spms.csproj", "{DD5EACE7-134A-4473-9680-0B37FD7CB5FE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoUpdater", "..\..\bdl_old\spms_desktop\AutoUpdater\AutoUpdater\AutoUpdater.csproj", "{83A300EA-9B99-4B4C-8511-1DC2FD893D3B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdaterEx", "..\..\bdl_old\spms_desktop\AutoUpdater\UpdaterEx\UpdaterEx.csproj", "{B9506A51-E976-4BB0-B511-A1D56FE82ECE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,18 +21,6 @@ Global
 		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C0F2E8B-E47B-4581-9D0A-A90BD88D204E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD5EACE7-134A-4473-9680-0B37FD7CB5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD5EACE7-134A-4473-9680-0B37FD7CB5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD5EACE7-134A-4473-9680-0B37FD7CB5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD5EACE7-134A-4473-9680-0B37FD7CB5FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83A300EA-9B99-4B4C-8511-1DC2FD893D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83A300EA-9B99-4B4C-8511-1DC2FD893D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83A300EA-9B99-4B4C-8511-1DC2FD893D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83A300EA-9B99-4B4C-8511-1DC2FD893D3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9506A51-E976-4BB0-B511-A1D56FE82ECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9506A51-E976-4BB0-B511-A1D56FE82ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9506A51-E976-4BB0-B511-A1D56FE82ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9506A51-E976-4BB0-B511-A1D56FE82ECE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

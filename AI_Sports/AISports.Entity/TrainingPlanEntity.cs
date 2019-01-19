@@ -31,13 +31,16 @@ namespace AI_Sports.Entity
         /// <summary>
         /// 主键
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// 外键会员id
         /// </summary>
         public int? Fk_member_id { get; set; }
-
+        /// <summary>
+        /// 会员ID非主键
+        /// </summary>
+        public string Member_id { get; set; }
         /// <summary>
         /// 训练标题
         /// </summary>

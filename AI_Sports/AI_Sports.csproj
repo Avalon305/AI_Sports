@@ -91,7 +91,6 @@
     <Compile Include="AISports.Entity\SystemSettingEntity.cs" />
     <Compile Include="AISports.Entity\TrainingActivityRecordEntity.cs" />
     <Compile Include="AISports.Entity\TrainingCourseEntity.cs" />
-    <Compile Include="AISports.Entity\TrainingCourseRecordEntity.cs" />
     <Compile Include="AISports.Entity\TrainingDeviceRecordEntity.cs" />
     <Compile Include="AISports.Entity\TrainingPlanEntity.cs" />
     <Compile Include="AISports.Entity\AuthEntity.cs" />

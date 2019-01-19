@@ -27,50 +27,26 @@ namespace AI_Sports.Entity
     /// </summary>
     [Serializable]
     [Table("bdl_activity")]
-    public  class ActivityEntity 
+    public class ActivityEntity
     {
-        /// <summary>
-        /// 主键
-        /// </summary>
-        public int Id { get; set; }
-        /// <summary>
+        /// 主键自增id
+        public long Id { get; set; }
         /// 外键训练课程id
-        /// </summary>
-        public int? Fk_training_course_id{ get; set; }
-
-        /// <summary>
-        /// 训练活动名：力量循环或者力量耐力循环
-        /// </summary>
-        public String Activity_name{ get; set; }
-
-        /// <summary>
+        public int Fk_training_course_id { get; set; }
+        public string Fk_member_id { get; set; }
+        public string Member_id { get; set; }
+        /// 训练活动编码：力量循环或者力量耐力循环
+        public string Activity_type { get; set; }
         /// 目标轮次数量，目标在这一圈训练几轮
-        /// </summary>
-        public int? Target_turn_number{ get; set; }
-
-        /// <summary>
+        public int? Target_turn_number { get; set; }
         /// 当前轮次计数
-        /// </summary>
-        public int? Current_turn_number{ get; set; }
-
-        /// <summary>
+        public int? current_turn_number { get; set; }
         /// 是否完成 默认0:未完成。1:完成)
-        /// </summary>
-        public Boolean? Is_complete{ get; set; }
-
-        /// <summary>
+        public Boolean? Is_complete { get; set; }
         /// 创建时间
-        /// </summary>
-        public DateTime? Gmt_create{ get; set; }
-
-        /// <summary>
-        /// gmt_modified
-        /// </summary>
-        public DateTime? Gmt_modified{ get; set; }
+        public DateTime? Gmt_create { get; set; }
+        public DateTime? Gmt_modified { get; set; }
 
 
-
-
-        
     }
 }

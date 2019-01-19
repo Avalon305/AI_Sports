@@ -28,104 +28,42 @@ namespace AI_Sports.Entity
     [Serializable]
     public class TrainingDeviceRecordEntity
     {
-        /// <summary>
-        /// 主键
-        /// </summary>
-        public int Id { get; set; }
-
-        /// <summary>
+        /// 主键自增id
+        public long Id { get; set; }
+        /// 会员id
+        public string Member_id { get; set; }
         /// 外键训练活动记录id
-        /// </summary>
-        public int? Fk_training_activity_record_id { get; set; }
-
-        /// <summary>
+        public int Fk_training_activity_record_id { get; set; }
+        /// 训练活动类型编码
+        public string Activity_type { get; set; }
         /// 设备在循环中的序号
-        /// </summary>
         public int? Device_order_number { get; set; }
-
-        /// <summary>
-        /// 设备编码
-        /// </summary>
-        public String Device_code { get; set; }
-
-        /// <summary>
-        /// 训练活动名
-        /// </summary>
-        public String Activity_name { get; set; }
-
-        /// <summary>
-        /// 外键会员id
-        /// </summary>
-        public String Fk_member_id { get; set; }
-
-        /// <summary>
+        /// 设备名
+        public string Device_code { get; set; }
         /// 训练模式
-        /// </summary>
-        public String Training_mode { get; set; }
-
-        /// <summary>
-        /// 最终顺向力
-        /// </summary>
-        public int? Consequent_force { get; set; }
-
-        /// <summary>
-        /// 最终反向力
-        /// </summary>
-        public int? Reverse_force { get; set; }
-
-        /// <summary>
+        public string Training_mode { get; set; }
+        public double? Consequent_force { get; set; }
+        public double? Reverse_force { get; set; }
         /// 功率
-        /// </summary>
-        public int? Power { get; set; }
-
-        /// <summary>
+        public double? Power { get; set; }
         /// 训练个数
-        /// </summary>
-        public int? Count { get; set; }
-
-        /// <summary>
+        public int? count { get; set; }
         /// 速度 1位小数 千米每时
-        /// </summary>
-        public Decimal? Speed { get; set; }
-
-        /// <summary>
+        public double? Speed { get; set; }
         /// 距离 千米，两位小数
-        /// </summary>
-        public Decimal? Distance { get; set; }
-
-        /// <summary>
+        public double? Distance { get; set; }
         /// 训练总耗能 单位卡路里
-        /// </summary>
-        public Decimal? Energy { get; set; }
-
-        /// <summary>
+        public double? Energy { get; set; }
         /// 训练时间 单位秒
-        /// </summary>
-        public int? Training_time { get; set; }
-
-        /// <summary>
+        public int? training_time { get; set; }
         /// 平均心率
-        /// </summary>
-        public int? Avg_heart_rate { get; set; }
-
-        /// <summary>
+        public int? avg_heart_rate { get; set; }
         /// 最大心率
-        /// </summary>
-        public int? Max_heart_rate { get; set; }
-
-        /// <summary>
+        public int? max_heart_rate { get; set; }
         /// 最小心率
-        /// </summary>
-        public int? Min_heart_rate { get; set; }
-
-        /// <summary>
+        public int? min_heart_rate { get; set; }
         /// 创建时间
-        /// </summary>
-        public DateTime? Gmt_create { get; set; }
-
-        /// <summary>
-        /// gmt_modified
-        /// </summary>
-        public DateTime? Gmt_modified { get; set; }
+        public DateTime? gmt_create { get; set; }
+        public DateTime? gmt_modified { get; set; }
     }
 }
