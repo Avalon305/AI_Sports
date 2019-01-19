@@ -29,10 +29,10 @@ namespace AI_Sports.Entity
     {
         /// 主键自增id
         public long Id { get; set; }
-        public int Fk_member_id { get; set; }
+        public long Fk_member_id { get; set; }
         public string Memeber_id { get; set; }
         /// 训练活动id
-        public int Fk_training_activity_id { get; set; }
+        public long Fk_training_activity_id { get; set; }
         /// 训练活动类型编码
         public string Activity_type { get; set; }
         /// 设备名

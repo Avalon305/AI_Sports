@@ -36,7 +36,7 @@ namespace AI_Sports.Entity
         /// <summary>
         /// 外键会员id
         /// </summary>
-        public int? Fk_member_id { get; set; }
+        public long? Fk_member_id { get; set; }
         /// <summary>
         /// 会员ID非主键
         /// </summary>

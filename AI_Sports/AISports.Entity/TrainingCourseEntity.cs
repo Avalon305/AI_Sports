@@ -32,7 +32,7 @@ namespace AI_Sports.Entity
         public long Id { get; set; }
         public string Member_id { get; set; }
         /// 外键训练计划id
-        public int Fk_training_plan_id { get; set; }
+        public long Fk_training_plan_id { get; set; }
         /// 休息天数（间隔）
         public int? Rest_days { get; set; }
         /// 目标课程轮次计数=前端课程天

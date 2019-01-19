@@ -32,8 +32,8 @@ namespace AI_Sports.Entity
         /// 主键自增id
         public long Id { get; set; }
         /// 外键训练课程id
-        public int Fk_training_course_id { get; set; }
-        public string Fk_member_id { get; set; }
+        public long Fk_training_course_id { get; set; }
+        public long Fk_member_id { get; set; }
         public string Member_id { get; set; }
         /// 训练活动编码：力量循环或者力量耐力循环
         public string Activity_type { get; set; }

@@ -33,7 +33,7 @@ namespace AI_Sports.Entity
         /// 会员id
         public string Member_id { get; set; }
         /// 外键训练活动记录id
-        public int Fk_training_activity_record_id { get; set; }
+        public long Fk_training_activity_record_id { get; set; }
         /// 训练活动类型编码
         public string Activity_type { get; set; }
         /// 设备在循环中的序号
