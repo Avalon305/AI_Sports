@@ -30,6 +30,7 @@ namespace AI_Sports.Entity
     public class PersonalSettingEntity
     {
         /// 主键自增id
+        [ExplicitKey]
         public long Id { get; set; }
         public long Fk_member_id { get; set; }
         public string Memeber_id { get; set; }

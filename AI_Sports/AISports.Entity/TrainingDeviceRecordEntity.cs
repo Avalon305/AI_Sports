@@ -31,6 +31,7 @@ namespace AI_Sports.Entity
     public class TrainingDeviceRecordEntity
     {
         /// 主键自增id
+        [ExplicitKey]
         public long Id { get; set; }
         /// 会员id
         public string Member_id { get; set; }

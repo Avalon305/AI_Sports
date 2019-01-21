@@ -26,5 +26,7 @@ namespace AI_Sports.Dao
                 return conn.QueryFirstOrDefault<PersonalSettingEntity>(query, new { Member_id = member_id, DeviceCode=deviceType });
             }
         }
+
+     
     }
 }

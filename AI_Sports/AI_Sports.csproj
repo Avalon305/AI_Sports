@@ -85,11 +85,13 @@
     <Compile Include="AISports.Dao\AuthDAO.cs" />
     <Compile Include="AISports.Dao\Base\BaseDAO.cs" />
     <Compile Include="AISports.Dao\DatacodeDAO.cs" />
+    <Compile Include="AISports.Dao\KeyDAO.cs" />
     <Compile Include="AISports.Dao\MemberDAO.cs" />
     <Compile Include="AISports.Dao\PersonalSettingDAO.cs" />
     <Compile Include="AISports.Dao\TrainingPlanDAO.cs" />
     <Compile Include="AISports.Entity\ActivityEntity.cs" />
     <Compile Include="AISports.Entity\DatacodeEntity.cs" />
+    <Compile Include="AISports.Entity\KeyEntity.cs" />
     <Compile Include="AISports.Entity\MemberEntity.cs" />
     <Compile Include="AISports.Entity\PersonalSettingEntity.cs" />
     <Compile Include="AISports.Entity\SystemSettingEntity.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="AISports.Util\CommUtil.cs" />
     <Compile Include="AISports.Util\ConfigUtil.cs" />
     <Compile Include="AISports.Util\DataCodeCache.cs" />
+    <Compile Include="AISports.Util\KeyGenerator.cs" />
     <Compile Include="AISports.Util\ParseIntegerUtil.cs" />
     <Compile Include="AISports.Util\DbUtil.cs" />
     <Compile Include="AISports.View\Pages\CQZTest.xaml.cs">

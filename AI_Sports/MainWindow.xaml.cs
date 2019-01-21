@@ -32,26 +32,32 @@ namespace AI_Sports
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            MemberEntity m = new MemberEntity();
+            m.Id = KeyGenerator.GetNextKeyValueLong("bdl_member");
+            m.Member_familyName = "123";
+            new MemberDAO().Insert(m);
+            //MessageBox.Show(resp.TrainMode.ToString());
+        }
+        private void test()
+        {
             var service = new DeviceCommService();
             var requset = new LoginRequest();
             requset.Uid = "123456";
             requset.DeviceType = DeviceType.P01;
-           var resp =  service.LoginRequest(requset);
-            MessageBox.Show(resp.TrainMode.ToString());
+            var resp = service.LoginRequest(requset);
         }
-
         //载入数据时加载数据源
         private void TestCombox_Loaded(object sender, RoutedEventArgs e)
         {
             List<DatacodeEntity> list = DataCodeCache.GetInstance().GetDateCodeList(DatacodeTypeEnum.Sex);
 
-           // TestCombox.SelectedIndex = 0;
+            // TestCombox.SelectedIndex = 0;
             TestCombox.ItemsSource = list;
         }
         //获取下拉框的编码值
         private void TestCombox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MessageBox.Show("当前选中的是编码值是："+TestCombox.SelectedValue.ToString());
+            MessageBox.Show("当前选中的是编码值是：" + TestCombox.SelectedValue.ToString());
         }
     }
 }

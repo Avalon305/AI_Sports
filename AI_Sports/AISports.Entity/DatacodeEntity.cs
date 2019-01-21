@@ -33,6 +33,7 @@ namespace AI_Sports.Entity
         /// <summary>
         /// Id
         /// </summary>
+        [ExplicitKey]
         public long Id { get; set; }
 
         /// <summary>

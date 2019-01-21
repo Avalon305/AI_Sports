@@ -29,7 +29,8 @@ namespace AI_Sports.Entity
     [Table("bdl_member")]
     public class MemberEntity
     {   /// 主键自增id
-        public long Id { get; set; }
+        [ExplicitKey]
+        public long Id { get; set; } = 0;
         /// 会员id
         public string Member_id { get; set; }
         /// 会员名

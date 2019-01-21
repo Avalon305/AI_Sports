@@ -30,6 +30,7 @@ namespace AI_Sports.Entity
     public class ActivityEntity
     {
         /// 主键自增id
+        [ExplicitKey]
         public long Id { get; set; }
         /// 外键训练课程id
         public long Fk_training_course_id { get; set; }
