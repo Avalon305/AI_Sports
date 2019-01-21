@@ -2,6 +2,7 @@
 // All Rights Reserved , Copyright (C) 2019 , Qust
 //--------------------------------------------------------------------
 
+using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +26,7 @@ namespace AI_Sports.Entity
     /// </author>
     /// </summary>
     [Serializable]
+    [Table("bdl_member")]
     public class MemberEntity
     {   /// 主键自增id
         public long Id { get; set; }
@@ -65,7 +67,7 @@ namespace AI_Sports.Entity
         /// 标签名数组：标签名：增肌、减脂、塑形、康复，用符号分隔
         public string Label_name { get; set; }
         /// 是否开启减脂模式 默认0，0:未开启，1:开启
-        public Boolean? Is_open_fat_reduction { get; set; }
+        public Boolean Is_open_fat_reduction { get; set; }
         /// 前端备注
         public string Remark { get; set; }
         /// 创建时间

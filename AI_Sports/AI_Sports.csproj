@@ -39,6 +39,9 @@
     <Reference Include="Dapper.Contrib, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.Contrib.1.50.0\lib\net45\Dapper.Contrib.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
@@ -83,6 +86,7 @@
     <Compile Include="AISports.Dao\Base\BaseDAO.cs" />
     <Compile Include="AISports.Dao\DatacodeDAO.cs" />
     <Compile Include="AISports.Dao\MemberDAO.cs" />
+    <Compile Include="AISports.Dao\PersonalSettingDAO.cs" />
     <Compile Include="AISports.Dao\TrainingPlanDAO.cs" />
     <Compile Include="AISports.Entity\ActivityEntity.cs" />
     <Compile Include="AISports.Entity\DatacodeEntity.cs" />
@@ -94,6 +98,8 @@
     <Compile Include="AISports.Entity\TrainingDeviceRecordEntity.cs" />
     <Compile Include="AISports.Entity\TrainingPlanEntity.cs" />
     <Compile Include="AISports.Entity\AuthEntity.cs" />
+    <Compile Include="AISports.Proto\BdlProto.cs" />
+    <Compile Include="AISports.Service\DeviceCommService.cs" />
     <Compile Include="AISports.Service\MemberService.cs" />
     <Compile Include="AISports.Service\NFCManagementService.cs" />
     <Compile Include="AISports.Service\TrainingPlanService.cs" />
@@ -151,7 +157,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bootstrap-wpf-style-master\BootstrapWpfStyle\BootstrapWpfStyle.csproj">

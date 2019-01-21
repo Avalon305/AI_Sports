@@ -1,6 +1,7 @@
 ﻿using AI_Sports.Constant;
 using AI_Sports.Dao;
 using AI_Sports.Entity;
+using AI_Sports.Service;
 using AI_Sports.Util;
 using System;
 using System.Collections.Generic;
@@ -31,9 +32,12 @@ namespace AI_Sports
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var a = DbUtil.getConn();
-            var c = new ActivityDAO().Load(1);
-            MessageBox.Show(c.Is_complete.ToString());
+            var service = new DeviceCommService();
+            var requset = new LoginRequest();
+            requset.Uid = "123456";
+            requset.DeviceType = DeviceType.P01;
+           var resp =  service.LoginRequest(requset);
+            MessageBox.Show(resp.TrainMode.ToString());
         }
 
         //载入数据时加载数据源

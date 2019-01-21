@@ -2,6 +2,7 @@
 // All Rights Reserved , Copyright (C) 2019 , Qust
 //--------------------------------------------------------------------
 
+using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +26,7 @@ namespace AI_Sports.Entity
     /// </author>
     /// </summary>
     [Serializable]
+    [Table("bdl_personal_setting")]
     public class PersonalSettingEntity
     {
         /// 主键自增id
@@ -41,14 +43,14 @@ namespace AI_Sports.Entity
         public int? Device_order_number { get; set; }
         /// 训练模式
         public string Training_mode { get; set; }
-        /// 座位高度
-        public double? Seat_height { get; set; }
-        /// 靠背距离
-        public double? Backrest_distance { get; set; }
-        /// 前方限制
-        public double? Front_limit { get; set; }
-        /// 后方限制
-        public double? Back_limit { get; set; }
+        /// 座位高度cm
+        public int? Seat_height { get; set; }
+        /// 靠背距离cm
+        public int? Backrest_distance { get; set; }
+        /// 前方限制cm
+        public int? Front_limit { get; set; }
+        /// 后方限制cm
+        public int? Back_limit { get; set; }
         /// 顺向力
         public double? Consequent_force { get; set; }
         /// 反向力

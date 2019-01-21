@@ -2,6 +2,7 @@
 // All Rights Reserved , Copyright (C) 2019 , Qust
 //--------------------------------------------------------------------
 
+using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +26,7 @@ namespace AI_Sports.Entity
     /// </author>
     /// </summary>
     [Serializable]
+    [Table("bdl_system_setting")]
     public class SystemSettingEntity
     {
         /// <summary>
