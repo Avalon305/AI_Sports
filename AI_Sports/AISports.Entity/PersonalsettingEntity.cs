@@ -58,6 +58,18 @@ namespace AI_Sports.Entity
         public double? Reverse_force { get; set; }
         /// 功率
         public double? Power { get; set; }
+        /// <summary>
+        /// 杠杆长度 cm
+        /// </summary>
+        public int? Lever_length { get; set; }
+        /// <summary>
+        /// 杠杆角度
+        /// </summary>
+        public double? Lever_angle { get; set; }
+        /// <summary>
+        /// 扩展字段
+        /// </summary>
+        public string Extra_setting { get; set; }
         /// 创建时间
         public DateTime? Gmt_create { get; set; }
         public DateTime? Gmt_modified { get; set; }

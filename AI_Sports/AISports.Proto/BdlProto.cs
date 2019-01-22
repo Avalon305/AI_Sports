@@ -26,72 +26,72 @@ public static partial class BdlProtoReflection {
           "ZUlkGAEgASgJEh8KCmRldmljZVR5cGUYAiABKA4yCy5EZXZpY2VUeXBlEhIK",
           "CmNsaWVudFRpbWUYAyABKAkibgoRS2VlcGFsaXZlUmVzcG9uc2USEAoIZGV2",
           "aWNlSWQYASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5cGUS",
-          "EgoKY2xpZW50VGltZRgDIAEoCRISCgpzZXJ2ZXJUaW1lGAQgASgJIlsKDExv",
+          "EgoKY2xpZW50VGltZRgDIAEoCRISCgpzZXJ2ZXJUaW1lGAQgASgJImEKDExv",
           "Z2luUmVxdWVzdBILCgN1aWQYASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjIL",
-          "LkRldmljZVR5cGUSHQoJY3ljbGVUeXBlGAMgASgOMgouQ3ljbGVUeXBlIsoD",
-          "Cg1Mb2dpblJlc3BvbnNlEgsKA3VpZBgBIAEoCRIiCg1kZXZpY2VUeXBlQXJy",
-          "GAIgAygOMgsuRGV2aWNlVHlwZRIdCgljeWNsZVR5cGUYAyABKA4yCi5DeWNs",
-          "ZVR5cGUSFQoNZXhpc2l0U2V0dGluZxgEIAEoCBIdCgl0cmFpbk1vZGUYBSAB",
-          "KA4yCi5UcmFpbk1vZGUSFwoPZGVmYXRNb2RlRW5hYmxlGAYgASgIEhIKCnNl",
-          "YXRIZWlnaHQYByABKAUSFAoMYmFja0Rpc3RhbmNlGAggASgFEhMKC2xldmVy",
-          "TGVuZ3RoGAkgASgFEhQKDGZvcndhcmRMaW1pdBgKIAEoBRIRCgliYWNrTGlt",
-          "aXQYCyABKAUSEgoKbGV2ZXJBbmdsZRgMIAEoARIUCgxmb3J3YXJkRm9yY2UY",
-          "DSABKAESFAoMcmV2ZXJzZUZvcmNlGA4gASgBEhAKCHJ1blBvd2VyGA8gASgB",
-          "EhAKCHJ1blNwZWVkGBAgASgBEhAKCGRpc3RhbmNlGBEgASgBEhAKCGNvdXJz",
-          "ZUlkGBIgASgFEhIKCmFjdGl2aXR5SWQYEyABKAUSFgoOYWN0aXZpdHlSZWNv",
-          "cmQYFCABKAUimAMKDVVwbG9hZFJlcXVlc3QSCwoDdWlkGAEgASgJEh0KCWN5",
-          "Y2xlVHlwZRgCIAEoDjIKLkN5Y2xlVHlwZRIdCgl0cmFpbk1vZGUYAyABKA4y",
-          "Ci5UcmFpbk1vZGUSFwoPZGVmYXRNb2RlRW5hYmxlGAQgASgIEhQKDHJldmVy",
-          "c2VGb3JjZRgFIAEoARIUCgxmb3J3YXJkRm9yY2UYBiABKAESDQoFcG93ZXIY",
-          "ByABKAESEwoLZmluaXNoQ291bnQYCCABKAUSEgoKZmluYWxTcGVlZBgJIAEo",
-          "ARIVCg1maW5hbERpc3RhbmNlGAogASgBEg8KB2NhbG9yaWUYCyABKAESEQoJ",
-          "dHJhaW5UaW1lGAwgASgFEhYKDmhlYXJ0X3JhdGVfYXZnGA0gASgFEhYKDmhl",
-          "YXJ0X3JhdGVfbWF4GA4gASgFEhYKDmhlYXJ0X3JhdGVfbWluGA8gASgFEhAK",
-          "CGNvdXJzZUlkGBAgASgFEhIKCmFjdGl2aXR5SWQYESABKAUSFgoOYWN0aXZp",
-          "dHlSZWNvcmQYEiABKAUigAEKDlVwbG9hZFJlc3BvbnNlEgsKA3VpZBgBIAEo",
-          "CRIfCgpkZXZpY2VUeXBlGAIgASgOMgsuRGV2aWNlVHlwZRIdCgljeWNsZVR5",
-          "cGUYBCABKA4yCi5DeWNsZVR5cGUSEAoIZmluaXNoZWQYBSABKAgSDwoHc3Vj",
+          "LkRldmljZVR5cGUSIwoMYWN0aXZpdHlUeXBlGAMgASgOMg0uQWN0aXZpdHlU",
+          "eXBlIqsDCg1Mb2dpblJlc3BvbnNlEgsKA3VpZBgBIAEoCRIiCg1kZXZpY2VU",
+          "eXBlQXJyGAIgAygOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0eVR5cGUYAyAB",
+          "KA4yDS5BY3Rpdml0eVR5cGUSFQoNZXhpc2l0U2V0dGluZxgEIAEoCBIdCgl0",
+          "cmFpbk1vZGUYBSABKA4yCi5UcmFpbk1vZGUSFwoPZGVmYXRNb2RlRW5hYmxl",
+          "GAYgASgIEhIKCnNlYXRIZWlnaHQYByABKAUSFAoMYmFja0Rpc3RhbmNlGAgg",
+          "ASgFEhMKC2xldmVyTGVuZ3RoGAkgASgFEhQKDGZvcndhcmRMaW1pdBgKIAEo",
+          "BRIRCgliYWNrTGltaXQYCyABKAUSEgoKbGV2ZXJBbmdsZRgMIAEoARIUCgxm",
+          "b3J3YXJkRm9yY2UYDSABKAESFAoMcmV2ZXJzZUZvcmNlGA4gASgBEg0KBXBv",
+          "d2VyGA8gASgBEhAKCGNvdXJzZUlkGBIgASgDEhIKCmFjdGl2aXR5SWQYEyAB",
+          "KAMSGAoQYWN0aXZpdHlSZWNvcmRJZBgUIAEoAyKrAwoNVXBsb2FkUmVxdWVz",
+          "dBILCgN1aWQYASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5",
+          "cGUSIwoMYWN0aXZpdHlUeXBlGAMgASgOMg0uQWN0aXZpdHlUeXBlEh0KCXRy",
+          "YWluTW9kZRgEIAEoDjIKLlRyYWluTW9kZRIXCg9kZWZhdE1vZGVFbmFibGUY",
+          "BSABKAgSFAoMcmV2ZXJzZUZvcmNlGAYgASgBEhQKDGZvcndhcmRGb3JjZRgH",
+          "IAEoARINCgVwb3dlchgIIAEoARITCgtmaW5pc2hDb3VudBgJIAEoBRIVCg1m",
+          "aW5hbERpc3RhbmNlGAsgASgBEg8KB2NhbG9yaWUYDCABKAESEQoJdHJhaW5U",
+          "aW1lGA0gASgFEhYKDmhlYXJ0X3JhdGVfYXZnGA4gASgFEhYKDmhlYXJ0X3Jh",
+          "dGVfbWF4GA8gASgFEhYKDmhlYXJ0X3JhdGVfbWluGBAgASgFEhAKCGNvdXJz",
+          "ZUlkGBEgASgDEhIKCmFjdGl2aXR5SWQYEiABKAMSFgoOYWN0aXZpdHlSZWNv",
+          "cmQYEyABKAMihgEKDlVwbG9hZFJlc3BvbnNlEgsKA3VpZBgBIAEoCRIfCgpk",
+          "ZXZpY2VUeXBlGAIgASgOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0eVR5cGUY",
+          "BCABKA4yDS5BY3Rpdml0eVR5cGUSEAoIZmluaXNoZWQYBSABKAgSDwoHc3Vj",
           "Y2VzcxgGIAEoCCKsAgoHTWVzc2FnZRIXCgR0eXBlGAEgASgOMgkuSGVhZFR5",
           "cGUSEAoIc2VxdWVuY2UYAiABKAUSKwoQa2VlcGFsaXZlUmVxdWVzdBgDIAEo",
           "CzIRLktlZXBhbGl2ZVJlcXVlc3QSLQoRa2VlcGFsaXZlUmVzcG9uc2UYBCAB",
           "KAsyEi5LZWVwYWxpdmVSZXNwb25zZRIjCgxsb2dpblJlcXVlc3QYBSABKAsy",
           "DS5Mb2dpblJlcXVlc3QSJQoNbG9naW5SZXNwb25zZRgGIAEoCzIOLkxvZ2lu",
           "UmVzcG9uc2USJQoNdXBsb2FkUmVxdWVzdBgHIAEoCzIOLlVwbG9hZFJlcXVl",
-          "c3QSJwoOdXBsb2FkUmVzcG9uc2UYCCABKAsyDy5VcGxvYWRSZXNwb25zZSLW",
-          "AgoSUGVyc29uYWxTZXRSZXF1ZXN0EgsKA3VpZBgBIAEoCRIdCgljeWNsZVR5",
-          "cGUYAiABKA4yCi5DeWNsZVR5cGUSHQoJdHJhaW5Nb2RlGAMgASgOMgouVHJh",
-          "aW5Nb2RlEhcKD2RlZmF0TW9kZUVuYWJsZRgEIAEoCBISCgpzZWF0SGVpZ2h0",
-          "GAUgASgFEhQKDGJhY2tEaXN0YW5jZRgGIAEoBRITCgtsZXZlckxlbmd0aBgH",
-          "IAEoBRIUCgxmb3J3YXJkTGltaXQYCCABKAUSEQoJYmFja0xpbWl0GAkgASgF",
-          "EhIKCmxldmVyQW5nbGUYCiABKAESFAoMZm9yd2FyZEZvcmNlGAsgASgBEhQK",
-          "DHJldmVyc2VGb3JjZRgMIAEoARIQCghydW5Qb3dlchgNIAEoARIQCghydW5T",
-          "cGVlZBgOIAEoARIQCghkaXN0YW5jZRgPIAEoASJzChNQZXJzb25hbFNldFJl",
-          "c3BvbnNlEh8KCmRldmljZVR5cGUYASABKA4yCy5EZXZpY2VUeXBlEh0KCWN5",
-          "Y2xlVHlwZRgCIAEoDjIKLkN5Y2xlVHlwZRILCgN1aWQYAyABKAkSDwoHc3Vj",
-          "Y2VzcxgEIAEoCCrVAQoISGVhZFR5cGUSFQoRS2VlcGFsaXZlX1JlcXVlc3QQ",
-          "ABIWChJLZWVwYWxpdmVfUmVzcG9uc2UQARIRCg1Mb2dpbl9SZXF1ZXN0EAIS",
-          "EgoOTG9naW5fUmVzcG9uc2UQAxISCg5VcGxvYWRfUmVxdWVzdBAEEhMKD1Vw",
-          "bG9hZF9SZXNwb25zZRAFEhcKE0NvdW50RG93bl9Ccm9hZENhc3QQBhIXChNQ",
-          "ZXJzb25hbFNldF9SZXF1ZXN0EAcSGAoUUGVyc29uYWxTZXRfUmVzcG9uc2UQ",
-          "CCpGCglUcmFpbk1vZGUSEQoNU1RBTkRBUkRfTU9ERRAAEhAKDEFEQVBURVJf",
-          "TU9ERRABEhQKEENPTlNUX1NQRUVEX01PREUQAiqlAQoKRGV2aWNlVHlwZRIH",
-          "CgNQMDAQABIHCgNQMDEQARIHCgNQMDIQAhIHCgNQMDMQAxIHCgNQMDQQBBIH",
-          "CgNQMDUQBRIHCgNQMDYQBhIHCgNQMDcQBxIHCgNQMDgQCBIHCgNQMDkQCRIH",
-          "CgNFMTAQChIHCgNFMTEQCxIHCgNFMTIQDBIHCgNFMTMQDRIHCgNFMTQQDhIH",
-          "CgNFMTUQDxIHCgNFMTYQECovCglDeWNsZVR5cGUSDgoKUG93ZXJDeWNsZRAA",
-          "EhIKDkVuZHVyYW5jZUN5Y2xlEAFiBnByb3RvMw=="));
+          "c3QSJwoOdXBsb2FkUmVzcG9uc2UYCCABKAsyDy5VcGxvYWRSZXNwb25zZSLc",
+          "AgoSUGVyc29uYWxTZXRSZXF1ZXN0EgsKA3VpZBgBIAEoCRIjCgxhY3Rpdml0",
+          "eVR5cGUYAiABKA4yDS5BY3Rpdml0eVR5cGUSHQoJdHJhaW5Nb2RlGAMgASgO",
+          "MgouVHJhaW5Nb2RlEhcKD2RlZmF0TW9kZUVuYWJsZRgEIAEoCBISCgpzZWF0",
+          "SGVpZ2h0GAUgASgFEhQKDGJhY2tEaXN0YW5jZRgGIAEoBRITCgtsZXZlckxl",
+          "bmd0aBgHIAEoBRIUCgxmb3J3YXJkTGltaXQYCCABKAUSEQoJYmFja0xpbWl0",
+          "GAkgASgFEhIKCmxldmVyQW5nbGUYCiABKAESFAoMZm9yd2FyZEZvcmNlGAsg",
+          "ASgBEhQKDHJldmVyc2VGb3JjZRgMIAEoARIQCghydW5Qb3dlchgNIAEoARIQ",
+          "CghydW5TcGVlZBgOIAEoARIQCghkaXN0YW5jZRgPIAEoASJ5ChNQZXJzb25h",
+          "bFNldFJlc3BvbnNlEh8KCmRldmljZVR5cGUYASABKA4yCy5EZXZpY2VUeXBl",
+          "EiMKDGFjdGl2aXR5VHlwZRgCIAEoDjINLkFjdGl2aXR5VHlwZRILCgN1aWQY",
+          "AyABKAkSDwoHc3VjY2VzcxgEIAEoCCrVAQoISGVhZFR5cGUSFQoRS2VlcGFs",
+          "aXZlX1JlcXVlc3QQABIWChJLZWVwYWxpdmVfUmVzcG9uc2UQARIRCg1Mb2dp",
+          "bl9SZXF1ZXN0EAISEgoOTG9naW5fUmVzcG9uc2UQAxISCg5VcGxvYWRfUmVx",
+          "dWVzdBAEEhMKD1VwbG9hZF9SZXNwb25zZRAFEhcKE0NvdW50RG93bl9Ccm9h",
+          "ZENhc3QQBhIXChNQZXJzb25hbFNldF9SZXF1ZXN0EAcSGAoUUGVyc29uYWxT",
+          "ZXRfUmVzcG9uc2UQCCpGCglUcmFpbk1vZGUSEQoNU1RBTkRBUkRfTU9ERRAA",
+          "EhAKDEFEQVBURVJfTU9ERRABEhQKEENPTlNUX1NQRUVEX01PREUQAiqlAQoK",
+          "RGV2aWNlVHlwZRIHCgNQMDAQABIHCgNQMDEQARIHCgNQMDIQAhIHCgNQMDMQ",
+          "AxIHCgNQMDQQBBIHCgNQMDUQBRIHCgNQMDYQBhIHCgNQMDcQBxIHCgNQMDgQ",
+          "CBIHCgNQMDkQCRIHCgNFMTAQChIHCgNFMTEQCxIHCgNFMTIQDBIHCgNFMTMQ",
+          "DRIHCgNFMTQQDhIHCgNFMTUQDxIHCgNFMTYQECoyCgxBY3Rpdml0eVR5cGUS",
+          "DgoKUG93ZXJDeWNsZRAAEhIKDkVuZHVyYW5jZUN5Y2xlEAFiBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
-        new pbr::GeneratedClrTypeInfo(new[] {typeof(global::HeadType), typeof(global::TrainMode), typeof(global::DeviceType), typeof(global::CycleType), }, new pbr::GeneratedClrTypeInfo[] {
+        new pbr::GeneratedClrTypeInfo(new[] {typeof(global::HeadType), typeof(global::TrainMode), typeof(global::DeviceType), typeof(global::ActivityType), }, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::KeepaliveRequest), global::KeepaliveRequest.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::KeepaliveResponse), global::KeepaliveResponse.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime", "ServerTime" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::LoginRequest), global::LoginRequest.Parser, new[]{ "Uid", "DeviceType", "CycleType" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::LoginResponse), global::LoginResponse.Parser, new[]{ "Uid", "DeviceTypeArr", "CycleType", "ExisitSetting", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "RunPower", "RunSpeed", "Distance", "CourseId", "ActivityId", "ActivityRecord" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "CycleType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalSpeed", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecord" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::UploadResponse), global::UploadResponse.Parser, new[]{ "Uid", "DeviceType", "CycleType", "Finished", "Success" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::LoginRequest), global::LoginRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::LoginResponse), global::LoginResponse.Parser, new[]{ "Uid", "DeviceTypeArr", "ActivityType", "ExisitSetting", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "Power", "CourseId", "ActivityId", "ActivityRecordId" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecord" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::UploadResponse), global::UploadResponse.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "Finished", "Success" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Message), global::Message.Parser, new[]{ "Type", "Sequence", "KeepaliveRequest", "KeepaliveResponse", "LoginRequest", "LoginResponse", "UploadRequest", "UploadResponse" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "CycleType", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "RunPower", "RunSpeed", "Distance" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetResponse), global::PersonalSetResponse.Parser, new[]{ "DeviceType", "CycleType", "Uid", "Success" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "ActivityType", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "RunPower", "RunSpeed", "Distance" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetResponse), global::PersonalSetResponse.Parser, new[]{ "DeviceType", "ActivityType", "Uid", "Success" }, null, null, null)
         }));
   }
   #endregion
@@ -235,7 +235,7 @@ public enum DeviceType {
 /// <summary>
 /// 循环类型-训练活动名称
 /// </summary>
-public enum CycleType {
+public enum ActivityType {
   /// <summary>
   ///力量循环
   /// </summary>
@@ -704,7 +704,7 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
   public LoginRequest(LoginRequest other) : this() {
     uid_ = other.uid_;
     deviceType_ = other.deviceType_;
-    cycleType_ = other.cycleType_;
+    activityType_ = other.activityType_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -741,17 +741,17 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
     }
   }
 
-  /// <summary>Field number for the "cycleType" field.</summary>
-  public const int CycleTypeFieldNumber = 3;
-  private global::CycleType cycleType_ = 0;
+  /// <summary>Field number for the "activityType" field.</summary>
+  public const int ActivityTypeFieldNumber = 3;
+  private global::ActivityType activityType_ = 0;
   /// <summary>
   ///循环类型，耐力循环还是力量循环 
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public global::CycleType CycleType {
-    get { return cycleType_; }
+  public global::ActivityType ActivityType {
+    get { return activityType_; }
     set {
-      cycleType_ = value;
+      activityType_ = value;
     }
   }
 
@@ -770,7 +770,7 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
     }
     if (Uid != other.Uid) return false;
     if (DeviceType != other.DeviceType) return false;
-    if (CycleType != other.CycleType) return false;
+    if (ActivityType != other.ActivityType) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -779,7 +779,7 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
     int hash = 1;
     if (Uid.Length != 0) hash ^= Uid.GetHashCode();
     if (DeviceType != 0) hash ^= DeviceType.GetHashCode();
-    if (CycleType != 0) hash ^= CycleType.GetHashCode();
+    if (ActivityType != 0) hash ^= ActivityType.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -801,9 +801,9 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
       output.WriteRawTag(16);
       output.WriteEnum((int) DeviceType);
     }
-    if (CycleType != 0) {
+    if (ActivityType != 0) {
       output.WriteRawTag(24);
-      output.WriteEnum((int) CycleType);
+      output.WriteEnum((int) ActivityType);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -819,8 +819,8 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
     if (DeviceType != 0) {
       size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DeviceType);
     }
-    if (CycleType != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CycleType);
+    if (ActivityType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ActivityType);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -839,8 +839,8 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
     if (other.DeviceType != 0) {
       DeviceType = other.DeviceType;
     }
-    if (other.CycleType != 0) {
-      CycleType = other.CycleType;
+    if (other.ActivityType != 0) {
+      ActivityType = other.ActivityType;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -862,7 +862,7 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
           break;
         }
         case 24: {
-          cycleType_ = (global::CycleType) input.ReadEnum();
+          activityType_ = (global::ActivityType) input.ReadEnum();
           break;
         }
       }
@@ -901,7 +901,7 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
   public LoginResponse(LoginResponse other) : this() {
     uid_ = other.uid_;
     deviceTypeArr_ = other.deviceTypeArr_.Clone();
-    cycleType_ = other.cycleType_;
+    activityType_ = other.activityType_;
     exisitSetting_ = other.exisitSetting_;
     trainMode_ = other.trainMode_;
     defatModeEnable_ = other.defatModeEnable_;
@@ -913,12 +913,10 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     leverAngle_ = other.leverAngle_;
     forwardForce_ = other.forwardForce_;
     reverseForce_ = other.reverseForce_;
-    runPower_ = other.runPower_;
-    runSpeed_ = other.runSpeed_;
-    distance_ = other.distance_;
+    power_ = other.power_;
     courseId_ = other.courseId_;
     activityId_ = other.activityId_;
-    activityRecord_ = other.activityRecord_;
+    activityRecordId_ = other.activityRecordId_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -954,17 +952,17 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     get { return deviceTypeArr_; }
   }
 
-  /// <summary>Field number for the "cycleType" field.</summary>
-  public const int CycleTypeFieldNumber = 3;
-  private global::CycleType cycleType_ = 0;
+  /// <summary>Field number for the "activityType" field.</summary>
+  public const int ActivityTypeFieldNumber = 3;
+  private global::ActivityType activityType_ = 0;
   /// <summary>
   ///循环类型
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public global::CycleType CycleType {
-    get { return cycleType_; }
+  public global::ActivityType ActivityType {
+    get { return activityType_; }
     set {
-      cycleType_ = value;
+      activityType_ = value;
     }
   }
 
@@ -1056,7 +1054,7 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
   public const int ForwardLimitFieldNumber = 10;
   private int forwardLimit_;
   /// <summary>
-  ///杠杆前方距离限制
+  ///前方距离限制
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int ForwardLimit {
@@ -1070,7 +1068,7 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
   public const int BackLimitFieldNumber = 11;
   private int backLimit_;
   /// <summary>
-  ///杠杆后方距离限制
+  ///后方距离限制
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int BackLimit {
@@ -1122,56 +1120,28 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     }
   }
 
-  /// <summary>Field number for the "runPower" field.</summary>
-  public const int RunPowerFieldNumber = 15;
-  private double runPower_;
+  /// <summary>Field number for the "power" field.</summary>
+  public const int PowerFieldNumber = 15;
+  private double power_;
   /// <summary>
-  ///电机实时功率(W)
+  ///跑步机和单车最终功率(W)0-400W
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double RunPower {
-    get { return runPower_; }
+  public double Power {
+    get { return power_; }
     set {
-      runPower_ = value;
-    }
-  }
-
-  /// <summary>Field number for the "runSpeed" field.</summary>
-  public const int RunSpeedFieldNumber = 16;
-  private double runSpeed_;
-  /// <summary>
-  ///电机实时速度
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double RunSpeed {
-    get { return runSpeed_; }
-    set {
-      runSpeed_ = value;
-    }
-  }
-
-  /// <summary>Field number for the "distance" field.</summary>
-  public const int DistanceFieldNumber = 17;
-  private double distance_;
-  /// <summary>
-  ///跑步机和单车的运动距离（km）
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double Distance {
-    get { return distance_; }
-    set {
-      distance_ = value;
+      power_ = value;
     }
   }
 
   /// <summary>Field number for the "courseId" field.</summary>
   public const int CourseIdFieldNumber = 18;
-  private int courseId_;
+  private long courseId_;
   /// <summary>
   ///课程ID
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int CourseId {
+  public long CourseId {
     get { return courseId_; }
     set {
       courseId_ = value;
@@ -1180,29 +1150,29 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
 
   /// <summary>Field number for the "activityId" field.</summary>
   public const int ActivityIdFieldNumber = 19;
-  private int activityId_;
+  private long activityId_;
   /// <summary>
   ///训练活动ID
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int ActivityId {
+  public long ActivityId {
     get { return activityId_; }
     set {
       activityId_ = value;
     }
   }
 
-  /// <summary>Field number for the "activityRecord" field.</summary>
-  public const int ActivityRecordFieldNumber = 20;
-  private int activityRecord_;
+  /// <summary>Field number for the "activityRecordId" field.</summary>
+  public const int ActivityRecordIdFieldNumber = 20;
+  private long activityRecordId_;
   /// <summary>
   ///训练活动记录ID
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int ActivityRecord {
-    get { return activityRecord_; }
+  public long ActivityRecordId {
+    get { return activityRecordId_; }
     set {
-      activityRecord_ = value;
+      activityRecordId_ = value;
     }
   }
 
@@ -1221,7 +1191,7 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     }
     if (Uid != other.Uid) return false;
     if(!deviceTypeArr_.Equals(other.deviceTypeArr_)) return false;
-    if (CycleType != other.CycleType) return false;
+    if (ActivityType != other.ActivityType) return false;
     if (ExisitSetting != other.ExisitSetting) return false;
     if (TrainMode != other.TrainMode) return false;
     if (DefatModeEnable != other.DefatModeEnable) return false;
@@ -1233,12 +1203,10 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LeverAngle, other.LeverAngle)) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(ForwardForce, other.ForwardForce)) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(ReverseForce, other.ReverseForce)) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(RunPower, other.RunPower)) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(RunSpeed, other.RunSpeed)) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Distance, other.Distance)) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Power, other.Power)) return false;
     if (CourseId != other.CourseId) return false;
     if (ActivityId != other.ActivityId) return false;
-    if (ActivityRecord != other.ActivityRecord) return false;
+    if (ActivityRecordId != other.ActivityRecordId) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1247,7 +1215,7 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     int hash = 1;
     if (Uid.Length != 0) hash ^= Uid.GetHashCode();
     hash ^= deviceTypeArr_.GetHashCode();
-    if (CycleType != 0) hash ^= CycleType.GetHashCode();
+    if (ActivityType != 0) hash ^= ActivityType.GetHashCode();
     if (ExisitSetting != false) hash ^= ExisitSetting.GetHashCode();
     if (TrainMode != 0) hash ^= TrainMode.GetHashCode();
     if (DefatModeEnable != false) hash ^= DefatModeEnable.GetHashCode();
@@ -1259,12 +1227,10 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     if (LeverAngle != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LeverAngle);
     if (ForwardForce != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(ForwardForce);
     if (ReverseForce != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(ReverseForce);
-    if (RunPower != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(RunPower);
-    if (RunSpeed != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(RunSpeed);
-    if (Distance != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Distance);
-    if (CourseId != 0) hash ^= CourseId.GetHashCode();
-    if (ActivityId != 0) hash ^= ActivityId.GetHashCode();
-    if (ActivityRecord != 0) hash ^= ActivityRecord.GetHashCode();
+    if (Power != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Power);
+    if (CourseId != 0L) hash ^= CourseId.GetHashCode();
+    if (ActivityId != 0L) hash ^= ActivityId.GetHashCode();
+    if (ActivityRecordId != 0L) hash ^= ActivityRecordId.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1283,9 +1249,9 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
       output.WriteString(Uid);
     }
     deviceTypeArr_.WriteTo(output, _repeated_deviceTypeArr_codec);
-    if (CycleType != 0) {
+    if (ActivityType != 0) {
       output.WriteRawTag(24);
-      output.WriteEnum((int) CycleType);
+      output.WriteEnum((int) ActivityType);
     }
     if (ExisitSetting != false) {
       output.WriteRawTag(32);
@@ -1331,29 +1297,21 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
       output.WriteRawTag(113);
       output.WriteDouble(ReverseForce);
     }
-    if (RunPower != 0D) {
+    if (Power != 0D) {
       output.WriteRawTag(121);
-      output.WriteDouble(RunPower);
+      output.WriteDouble(Power);
     }
-    if (RunSpeed != 0D) {
-      output.WriteRawTag(129, 1);
-      output.WriteDouble(RunSpeed);
-    }
-    if (Distance != 0D) {
-      output.WriteRawTag(137, 1);
-      output.WriteDouble(Distance);
-    }
-    if (CourseId != 0) {
+    if (CourseId != 0L) {
       output.WriteRawTag(144, 1);
-      output.WriteInt32(CourseId);
+      output.WriteInt64(CourseId);
     }
-    if (ActivityId != 0) {
+    if (ActivityId != 0L) {
       output.WriteRawTag(152, 1);
-      output.WriteInt32(ActivityId);
+      output.WriteInt64(ActivityId);
     }
-    if (ActivityRecord != 0) {
+    if (ActivityRecordId != 0L) {
       output.WriteRawTag(160, 1);
-      output.WriteInt32(ActivityRecord);
+      output.WriteInt64(ActivityRecordId);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -1367,8 +1325,8 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Uid);
     }
     size += deviceTypeArr_.CalculateSize(_repeated_deviceTypeArr_codec);
-    if (CycleType != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CycleType);
+    if (ActivityType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ActivityType);
     }
     if (ExisitSetting != false) {
       size += 1 + 1;
@@ -1403,23 +1361,17 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     if (ReverseForce != 0D) {
       size += 1 + 8;
     }
-    if (RunPower != 0D) {
+    if (Power != 0D) {
       size += 1 + 8;
     }
-    if (RunSpeed != 0D) {
-      size += 2 + 8;
+    if (CourseId != 0L) {
+      size += 2 + pb::CodedOutputStream.ComputeInt64Size(CourseId);
     }
-    if (Distance != 0D) {
-      size += 2 + 8;
+    if (ActivityId != 0L) {
+      size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActivityId);
     }
-    if (CourseId != 0) {
-      size += 2 + pb::CodedOutputStream.ComputeInt32Size(CourseId);
-    }
-    if (ActivityId != 0) {
-      size += 2 + pb::CodedOutputStream.ComputeInt32Size(ActivityId);
-    }
-    if (ActivityRecord != 0) {
-      size += 2 + pb::CodedOutputStream.ComputeInt32Size(ActivityRecord);
+    if (ActivityRecordId != 0L) {
+      size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActivityRecordId);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1436,8 +1388,8 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
       Uid = other.Uid;
     }
     deviceTypeArr_.Add(other.deviceTypeArr_);
-    if (other.CycleType != 0) {
-      CycleType = other.CycleType;
+    if (other.ActivityType != 0) {
+      ActivityType = other.ActivityType;
     }
     if (other.ExisitSetting != false) {
       ExisitSetting = other.ExisitSetting;
@@ -1472,23 +1424,17 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     if (other.ReverseForce != 0D) {
       ReverseForce = other.ReverseForce;
     }
-    if (other.RunPower != 0D) {
-      RunPower = other.RunPower;
+    if (other.Power != 0D) {
+      Power = other.Power;
     }
-    if (other.RunSpeed != 0D) {
-      RunSpeed = other.RunSpeed;
-    }
-    if (other.Distance != 0D) {
-      Distance = other.Distance;
-    }
-    if (other.CourseId != 0) {
+    if (other.CourseId != 0L) {
       CourseId = other.CourseId;
     }
-    if (other.ActivityId != 0) {
+    if (other.ActivityId != 0L) {
       ActivityId = other.ActivityId;
     }
-    if (other.ActivityRecord != 0) {
-      ActivityRecord = other.ActivityRecord;
+    if (other.ActivityRecordId != 0L) {
+      ActivityRecordId = other.ActivityRecordId;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -1511,7 +1457,7 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
           break;
         }
         case 24: {
-          cycleType_ = (global::CycleType) input.ReadEnum();
+          activityType_ = (global::ActivityType) input.ReadEnum();
           break;
         }
         case 32: {
@@ -1559,27 +1505,19 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
           break;
         }
         case 121: {
-          RunPower = input.ReadDouble();
-          break;
-        }
-        case 129: {
-          RunSpeed = input.ReadDouble();
-          break;
-        }
-        case 137: {
-          Distance = input.ReadDouble();
+          Power = input.ReadDouble();
           break;
         }
         case 144: {
-          CourseId = input.ReadInt32();
+          CourseId = input.ReadInt64();
           break;
         }
         case 152: {
-          ActivityId = input.ReadInt32();
+          ActivityId = input.ReadInt64();
           break;
         }
         case 160: {
-          ActivityRecord = input.ReadInt32();
+          ActivityRecordId = input.ReadInt64();
           break;
         }
       }
@@ -1617,14 +1555,14 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public UploadRequest(UploadRequest other) : this() {
     uid_ = other.uid_;
-    cycleType_ = other.cycleType_;
+    deviceType_ = other.deviceType_;
+    activityType_ = other.activityType_;
     trainMode_ = other.trainMode_;
     defatModeEnable_ = other.defatModeEnable_;
     reverseForce_ = other.reverseForce_;
     forwardForce_ = other.forwardForce_;
     power_ = other.power_;
     finishCount_ = other.finishCount_;
-    finalSpeed_ = other.finalSpeed_;
     finalDistance_ = other.finalDistance_;
     calorie_ = other.calorie_;
     trainTime_ = other.trainTime_;
@@ -1656,22 +1594,36 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     }
   }
 
-  /// <summary>Field number for the "cycleType" field.</summary>
-  public const int CycleTypeFieldNumber = 2;
-  private global::CycleType cycleType_ = 0;
+  /// <summary>Field number for the "deviceType" field.</summary>
+  public const int DeviceTypeFieldNumber = 2;
+  private global::DeviceType deviceType_ = 0;
+  /// <summary>
+  ///设备类型
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::DeviceType DeviceType {
+    get { return deviceType_; }
+    set {
+      deviceType_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "activityType" field.</summary>
+  public const int ActivityTypeFieldNumber = 3;
+  private global::ActivityType activityType_ = 0;
   /// <summary>
   ///循环类型
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public global::CycleType CycleType {
-    get { return cycleType_; }
+  public global::ActivityType ActivityType {
+    get { return activityType_; }
     set {
-      cycleType_ = value;
+      activityType_ = value;
     }
   }
 
   /// <summary>Field number for the "trainMode" field.</summary>
-  public const int TrainModeFieldNumber = 3;
+  public const int TrainModeFieldNumber = 4;
   private global::TrainMode trainMode_ = 0;
   /// <summary>
   ///训练模式
@@ -1685,7 +1637,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "defatModeEnable" field.</summary>
-  public const int DefatModeEnableFieldNumber = 4;
+  public const int DefatModeEnableFieldNumber = 5;
   private bool defatModeEnable_;
   /// <summary>
   ///减脂模式
@@ -1699,7 +1651,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "reverseForce" field.</summary>
-  public const int ReverseForceFieldNumber = 5;
+  public const int ReverseForceFieldNumber = 6;
   private double reverseForce_;
   /// <summary>
   ///力量训练设备的最终反向力(N)
@@ -1713,7 +1665,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "forwardForce" field.</summary>
-  public const int ForwardForceFieldNumber = 6;
+  public const int ForwardForceFieldNumber = 7;
   private double forwardForce_;
   /// <summary>
   ///力量训练设备的最终顺向力(N)
@@ -1727,7 +1679,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "power" field.</summary>
-  public const int PowerFieldNumber = 7;
+  public const int PowerFieldNumber = 8;
   private double power_;
   /// <summary>
   ///跑步机和单车的最终功率
@@ -1741,7 +1693,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "finishCount" field.</summary>
-  public const int FinishCountFieldNumber = 8;
+  public const int FinishCountFieldNumber = 9;
   private int finishCount_;
   /// <summary>
   ///力量训练设备训练结束后完成的个数
@@ -1754,25 +1706,11 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     }
   }
 
-  /// <summary>Field number for the "finalSpeed" field.</summary>
-  public const int FinalSpeedFieldNumber = 9;
-  private double finalSpeed_;
-  /// <summary>
-  ///跑步机和单车运动结束时的最终速度
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double FinalSpeed {
-    get { return finalSpeed_; }
-    set {
-      finalSpeed_ = value;
-    }
-  }
-
   /// <summary>Field number for the "finalDistance" field.</summary>
-  public const int FinalDistanceFieldNumber = 10;
+  public const int FinalDistanceFieldNumber = 11;
   private double finalDistance_;
   /// <summary>
-  ///跑步机和单车的运动距离(km)
+  ///double finalSpeed = 10; //跑步机和单车运动结束时的最终速度,暂时不上报了
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public double FinalDistance {
@@ -1783,7 +1721,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "calorie" field.</summary>
-  public const int CalorieFieldNumber = 11;
+  public const int CalorieFieldNumber = 12;
   private double calorie_;
   /// <summary>
   ///卡路里
@@ -1797,7 +1735,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "trainTime" field.</summary>
-  public const int TrainTimeFieldNumber = 12;
+  public const int TrainTimeFieldNumber = 13;
   private int trainTime_;
   /// <summary>
   ///训练时间秒
@@ -1811,7 +1749,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "heart_rate_avg" field.</summary>
-  public const int HeartRateAvgFieldNumber = 13;
+  public const int HeartRateAvgFieldNumber = 14;
   private int heartRateAvg_;
   /// <summary>
   ///平均心率
@@ -1825,7 +1763,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "heart_rate_max" field.</summary>
-  public const int HeartRateMaxFieldNumber = 14;
+  public const int HeartRateMaxFieldNumber = 15;
   private int heartRateMax_;
   /// <summary>
   ///最大心率
@@ -1839,7 +1777,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "heart_rate_min" field.</summary>
-  public const int HeartRateMinFieldNumber = 15;
+  public const int HeartRateMinFieldNumber = 16;
   private int heartRateMin_;
   /// <summary>
   ///最小心率
@@ -1853,13 +1791,13 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "courseId" field.</summary>
-  public const int CourseIdFieldNumber = 16;
-  private int courseId_;
+  public const int CourseIdFieldNumber = 17;
+  private long courseId_;
   /// <summary>
   ///课程ID
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int CourseId {
+  public long CourseId {
     get { return courseId_; }
     set {
       courseId_ = value;
@@ -1867,13 +1805,13 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "activityId" field.</summary>
-  public const int ActivityIdFieldNumber = 17;
-  private int activityId_;
+  public const int ActivityIdFieldNumber = 18;
+  private long activityId_;
   /// <summary>
   ///训练活动ID
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int ActivityId {
+  public long ActivityId {
     get { return activityId_; }
     set {
       activityId_ = value;
@@ -1881,13 +1819,13 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   }
 
   /// <summary>Field number for the "activityRecord" field.</summary>
-  public const int ActivityRecordFieldNumber = 18;
-  private int activityRecord_;
+  public const int ActivityRecordFieldNumber = 19;
+  private long activityRecord_;
   /// <summary>
   ///训练活动记录ID
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int ActivityRecord {
+  public long ActivityRecord {
     get { return activityRecord_; }
     set {
       activityRecord_ = value;
@@ -1908,14 +1846,14 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
       return true;
     }
     if (Uid != other.Uid) return false;
-    if (CycleType != other.CycleType) return false;
+    if (DeviceType != other.DeviceType) return false;
+    if (ActivityType != other.ActivityType) return false;
     if (TrainMode != other.TrainMode) return false;
     if (DefatModeEnable != other.DefatModeEnable) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(ReverseForce, other.ReverseForce)) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(ForwardForce, other.ForwardForce)) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Power, other.Power)) return false;
     if (FinishCount != other.FinishCount) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(FinalSpeed, other.FinalSpeed)) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(FinalDistance, other.FinalDistance)) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Calorie, other.Calorie)) return false;
     if (TrainTime != other.TrainTime) return false;
@@ -1932,23 +1870,23 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
   public override int GetHashCode() {
     int hash = 1;
     if (Uid.Length != 0) hash ^= Uid.GetHashCode();
-    if (CycleType != 0) hash ^= CycleType.GetHashCode();
+    if (DeviceType != 0) hash ^= DeviceType.GetHashCode();
+    if (ActivityType != 0) hash ^= ActivityType.GetHashCode();
     if (TrainMode != 0) hash ^= TrainMode.GetHashCode();
     if (DefatModeEnable != false) hash ^= DefatModeEnable.GetHashCode();
     if (ReverseForce != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(ReverseForce);
     if (ForwardForce != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(ForwardForce);
     if (Power != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Power);
     if (FinishCount != 0) hash ^= FinishCount.GetHashCode();
-    if (FinalSpeed != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(FinalSpeed);
     if (FinalDistance != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(FinalDistance);
     if (Calorie != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Calorie);
     if (TrainTime != 0) hash ^= TrainTime.GetHashCode();
     if (HeartRateAvg != 0) hash ^= HeartRateAvg.GetHashCode();
     if (HeartRateMax != 0) hash ^= HeartRateMax.GetHashCode();
     if (HeartRateMin != 0) hash ^= HeartRateMin.GetHashCode();
-    if (CourseId != 0) hash ^= CourseId.GetHashCode();
-    if (ActivityId != 0) hash ^= ActivityId.GetHashCode();
-    if (ActivityRecord != 0) hash ^= ActivityRecord.GetHashCode();
+    if (CourseId != 0L) hash ^= CourseId.GetHashCode();
+    if (ActivityId != 0L) hash ^= ActivityId.GetHashCode();
+    if (ActivityRecord != 0L) hash ^= ActivityRecord.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1966,73 +1904,73 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
       output.WriteRawTag(10);
       output.WriteString(Uid);
     }
-    if (CycleType != 0) {
+    if (DeviceType != 0) {
       output.WriteRawTag(16);
-      output.WriteEnum((int) CycleType);
+      output.WriteEnum((int) DeviceType);
+    }
+    if (ActivityType != 0) {
+      output.WriteRawTag(24);
+      output.WriteEnum((int) ActivityType);
     }
     if (TrainMode != 0) {
-      output.WriteRawTag(24);
+      output.WriteRawTag(32);
       output.WriteEnum((int) TrainMode);
     }
     if (DefatModeEnable != false) {
-      output.WriteRawTag(32);
+      output.WriteRawTag(40);
       output.WriteBool(DefatModeEnable);
     }
     if (ReverseForce != 0D) {
-      output.WriteRawTag(41);
+      output.WriteRawTag(49);
       output.WriteDouble(ReverseForce);
     }
     if (ForwardForce != 0D) {
-      output.WriteRawTag(49);
+      output.WriteRawTag(57);
       output.WriteDouble(ForwardForce);
     }
     if (Power != 0D) {
-      output.WriteRawTag(57);
+      output.WriteRawTag(65);
       output.WriteDouble(Power);
     }
     if (FinishCount != 0) {
-      output.WriteRawTag(64);
+      output.WriteRawTag(72);
       output.WriteInt32(FinishCount);
     }
-    if (FinalSpeed != 0D) {
-      output.WriteRawTag(73);
-      output.WriteDouble(FinalSpeed);
-    }
     if (FinalDistance != 0D) {
-      output.WriteRawTag(81);
+      output.WriteRawTag(89);
       output.WriteDouble(FinalDistance);
     }
     if (Calorie != 0D) {
-      output.WriteRawTag(89);
+      output.WriteRawTag(97);
       output.WriteDouble(Calorie);
     }
     if (TrainTime != 0) {
-      output.WriteRawTag(96);
+      output.WriteRawTag(104);
       output.WriteInt32(TrainTime);
     }
     if (HeartRateAvg != 0) {
-      output.WriteRawTag(104);
+      output.WriteRawTag(112);
       output.WriteInt32(HeartRateAvg);
     }
     if (HeartRateMax != 0) {
-      output.WriteRawTag(112);
+      output.WriteRawTag(120);
       output.WriteInt32(HeartRateMax);
     }
     if (HeartRateMin != 0) {
-      output.WriteRawTag(120);
+      output.WriteRawTag(128, 1);
       output.WriteInt32(HeartRateMin);
     }
-    if (CourseId != 0) {
-      output.WriteRawTag(128, 1);
-      output.WriteInt32(CourseId);
-    }
-    if (ActivityId != 0) {
+    if (CourseId != 0L) {
       output.WriteRawTag(136, 1);
-      output.WriteInt32(ActivityId);
+      output.WriteInt64(CourseId);
     }
-    if (ActivityRecord != 0) {
+    if (ActivityId != 0L) {
       output.WriteRawTag(144, 1);
-      output.WriteInt32(ActivityRecord);
+      output.WriteInt64(ActivityId);
+    }
+    if (ActivityRecord != 0L) {
+      output.WriteRawTag(152, 1);
+      output.WriteInt64(ActivityRecord);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -2045,8 +1983,11 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (Uid.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Uid);
     }
-    if (CycleType != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CycleType);
+    if (DeviceType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DeviceType);
+    }
+    if (ActivityType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ActivityType);
     }
     if (TrainMode != 0) {
       size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TrainMode);
@@ -2066,9 +2007,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (FinishCount != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(FinishCount);
     }
-    if (FinalSpeed != 0D) {
-      size += 1 + 8;
-    }
     if (FinalDistance != 0D) {
       size += 1 + 8;
     }
@@ -2085,16 +2023,16 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(HeartRateMax);
     }
     if (HeartRateMin != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeInt32Size(HeartRateMin);
+      size += 2 + pb::CodedOutputStream.ComputeInt32Size(HeartRateMin);
     }
-    if (CourseId != 0) {
-      size += 2 + pb::CodedOutputStream.ComputeInt32Size(CourseId);
+    if (CourseId != 0L) {
+      size += 2 + pb::CodedOutputStream.ComputeInt64Size(CourseId);
     }
-    if (ActivityId != 0) {
-      size += 2 + pb::CodedOutputStream.ComputeInt32Size(ActivityId);
+    if (ActivityId != 0L) {
+      size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActivityId);
     }
-    if (ActivityRecord != 0) {
-      size += 2 + pb::CodedOutputStream.ComputeInt32Size(ActivityRecord);
+    if (ActivityRecord != 0L) {
+      size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActivityRecord);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -2110,8 +2048,11 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (other.Uid.Length != 0) {
       Uid = other.Uid;
     }
-    if (other.CycleType != 0) {
-      CycleType = other.CycleType;
+    if (other.DeviceType != 0) {
+      DeviceType = other.DeviceType;
+    }
+    if (other.ActivityType != 0) {
+      ActivityType = other.ActivityType;
     }
     if (other.TrainMode != 0) {
       TrainMode = other.TrainMode;
@@ -2131,9 +2072,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (other.FinishCount != 0) {
       FinishCount = other.FinishCount;
     }
-    if (other.FinalSpeed != 0D) {
-      FinalSpeed = other.FinalSpeed;
-    }
     if (other.FinalDistance != 0D) {
       FinalDistance = other.FinalDistance;
     }
@@ -2152,13 +2090,13 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (other.HeartRateMin != 0) {
       HeartRateMin = other.HeartRateMin;
     }
-    if (other.CourseId != 0) {
+    if (other.CourseId != 0L) {
       CourseId = other.CourseId;
     }
-    if (other.ActivityId != 0) {
+    if (other.ActivityId != 0L) {
       ActivityId = other.ActivityId;
     }
-    if (other.ActivityRecord != 0) {
+    if (other.ActivityRecord != 0L) {
       ActivityRecord = other.ActivityRecord;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -2177,71 +2115,71 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
           break;
         }
         case 16: {
-          cycleType_ = (global::CycleType) input.ReadEnum();
+          deviceType_ = (global::DeviceType) input.ReadEnum();
           break;
         }
         case 24: {
-          trainMode_ = (global::TrainMode) input.ReadEnum();
+          activityType_ = (global::ActivityType) input.ReadEnum();
           break;
         }
         case 32: {
+          trainMode_ = (global::TrainMode) input.ReadEnum();
+          break;
+        }
+        case 40: {
           DefatModeEnable = input.ReadBool();
           break;
         }
-        case 41: {
+        case 49: {
           ReverseForce = input.ReadDouble();
           break;
         }
-        case 49: {
+        case 57: {
           ForwardForce = input.ReadDouble();
           break;
         }
-        case 57: {
+        case 65: {
           Power = input.ReadDouble();
           break;
         }
-        case 64: {
+        case 72: {
           FinishCount = input.ReadInt32();
           break;
         }
-        case 73: {
-          FinalSpeed = input.ReadDouble();
-          break;
-        }
-        case 81: {
+        case 89: {
           FinalDistance = input.ReadDouble();
           break;
         }
-        case 89: {
+        case 97: {
           Calorie = input.ReadDouble();
           break;
         }
-        case 96: {
+        case 104: {
           TrainTime = input.ReadInt32();
           break;
         }
-        case 104: {
+        case 112: {
           HeartRateAvg = input.ReadInt32();
           break;
         }
-        case 112: {
+        case 120: {
           HeartRateMax = input.ReadInt32();
           break;
         }
-        case 120: {
+        case 128: {
           HeartRateMin = input.ReadInt32();
           break;
         }
-        case 128: {
-          CourseId = input.ReadInt32();
-          break;
-        }
         case 136: {
-          ActivityId = input.ReadInt32();
+          CourseId = input.ReadInt64();
           break;
         }
         case 144: {
-          ActivityRecord = input.ReadInt32();
+          ActivityId = input.ReadInt64();
+          break;
+        }
+        case 152: {
+          ActivityRecord = input.ReadInt64();
           break;
         }
       }
@@ -2280,7 +2218,7 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
   public UploadResponse(UploadResponse other) : this() {
     uid_ = other.uid_;
     deviceType_ = other.deviceType_;
-    cycleType_ = other.cycleType_;
+    activityType_ = other.activityType_;
     finished_ = other.finished_;
     success_ = other.success_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2319,17 +2257,17 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     }
   }
 
-  /// <summary>Field number for the "cycleType" field.</summary>
-  public const int CycleTypeFieldNumber = 4;
-  private global::CycleType cycleType_ = 0;
+  /// <summary>Field number for the "activityType" field.</summary>
+  public const int ActivityTypeFieldNumber = 4;
+  private global::ActivityType activityType_ = 0;
   /// <summary>
   ///循环类型
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public global::CycleType CycleType {
-    get { return cycleType_; }
+  public global::ActivityType ActivityType {
+    get { return activityType_; }
     set {
-      cycleType_ = value;
+      activityType_ = value;
     }
   }
 
@@ -2376,7 +2314,7 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     }
     if (Uid != other.Uid) return false;
     if (DeviceType != other.DeviceType) return false;
-    if (CycleType != other.CycleType) return false;
+    if (ActivityType != other.ActivityType) return false;
     if (Finished != other.Finished) return false;
     if (Success != other.Success) return false;
     return Equals(_unknownFields, other._unknownFields);
@@ -2387,7 +2325,7 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     int hash = 1;
     if (Uid.Length != 0) hash ^= Uid.GetHashCode();
     if (DeviceType != 0) hash ^= DeviceType.GetHashCode();
-    if (CycleType != 0) hash ^= CycleType.GetHashCode();
+    if (ActivityType != 0) hash ^= ActivityType.GetHashCode();
     if (Finished != false) hash ^= Finished.GetHashCode();
     if (Success != false) hash ^= Success.GetHashCode();
     if (_unknownFields != null) {
@@ -2411,9 +2349,9 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
       output.WriteRawTag(16);
       output.WriteEnum((int) DeviceType);
     }
-    if (CycleType != 0) {
+    if (ActivityType != 0) {
       output.WriteRawTag(32);
-      output.WriteEnum((int) CycleType);
+      output.WriteEnum((int) ActivityType);
     }
     if (Finished != false) {
       output.WriteRawTag(40);
@@ -2437,8 +2375,8 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     if (DeviceType != 0) {
       size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DeviceType);
     }
-    if (CycleType != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CycleType);
+    if (ActivityType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ActivityType);
     }
     if (Finished != false) {
       size += 1 + 1;
@@ -2463,8 +2401,8 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     if (other.DeviceType != 0) {
       DeviceType = other.DeviceType;
     }
-    if (other.CycleType != 0) {
-      CycleType = other.CycleType;
+    if (other.ActivityType != 0) {
+      ActivityType = other.ActivityType;
     }
     if (other.Finished != false) {
       Finished = other.Finished;
@@ -2492,7 +2430,7 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
           break;
         }
         case 32: {
-          cycleType_ = (global::CycleType) input.ReadEnum();
+          activityType_ = (global::ActivityType) input.ReadEnum();
           break;
         }
         case 40: {
@@ -2905,7 +2843,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public PersonalSetRequest(PersonalSetRequest other) : this() {
     uid_ = other.uid_;
-    cycleType_ = other.cycleType_;
+    activityType_ = other.activityType_;
     trainMode_ = other.trainMode_;
     defatModeEnable_ = other.defatModeEnable_;
     seatHeight_ = other.seatHeight_;
@@ -2941,17 +2879,17 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
   }
 
-  /// <summary>Field number for the "cycleType" field.</summary>
-  public const int CycleTypeFieldNumber = 2;
-  private global::CycleType cycleType_ = 0;
+  /// <summary>Field number for the "activityType" field.</summary>
+  public const int ActivityTypeFieldNumber = 2;
+  private global::ActivityType activityType_ = 0;
   /// <summary>
   ///循环类型
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public global::CycleType CycleType {
-    get { return cycleType_; }
+  public global::ActivityType ActivityType {
+    get { return activityType_; }
     set {
-      cycleType_ = value;
+      activityType_ = value;
     }
   }
 
@@ -3151,7 +3089,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
       return true;
     }
     if (Uid != other.Uid) return false;
-    if (CycleType != other.CycleType) return false;
+    if (ActivityType != other.ActivityType) return false;
     if (TrainMode != other.TrainMode) return false;
     if (DefatModeEnable != other.DefatModeEnable) return false;
     if (SeatHeight != other.SeatHeight) return false;
@@ -3172,7 +3110,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
   public override int GetHashCode() {
     int hash = 1;
     if (Uid.Length != 0) hash ^= Uid.GetHashCode();
-    if (CycleType != 0) hash ^= CycleType.GetHashCode();
+    if (ActivityType != 0) hash ^= ActivityType.GetHashCode();
     if (TrainMode != 0) hash ^= TrainMode.GetHashCode();
     if (DefatModeEnable != false) hash ^= DefatModeEnable.GetHashCode();
     if (SeatHeight != 0) hash ^= SeatHeight.GetHashCode();
@@ -3203,9 +3141,9 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
       output.WriteRawTag(10);
       output.WriteString(Uid);
     }
-    if (CycleType != 0) {
+    if (ActivityType != 0) {
       output.WriteRawTag(16);
-      output.WriteEnum((int) CycleType);
+      output.WriteEnum((int) ActivityType);
     }
     if (TrainMode != 0) {
       output.WriteRawTag(24);
@@ -3270,8 +3208,8 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (Uid.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Uid);
     }
-    if (CycleType != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CycleType);
+    if (ActivityType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ActivityType);
     }
     if (TrainMode != 0) {
       size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TrainMode);
@@ -3326,8 +3264,8 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (other.Uid.Length != 0) {
       Uid = other.Uid;
     }
-    if (other.CycleType != 0) {
-      CycleType = other.CycleType;
+    if (other.ActivityType != 0) {
+      ActivityType = other.ActivityType;
     }
     if (other.TrainMode != 0) {
       TrainMode = other.TrainMode;
@@ -3384,7 +3322,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
           break;
         }
         case 16: {
-          cycleType_ = (global::CycleType) input.ReadEnum();
+          activityType_ = (global::ActivityType) input.ReadEnum();
           break;
         }
         case 24: {
@@ -3474,7 +3412,7 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public PersonalSetResponse(PersonalSetResponse other) : this() {
     deviceType_ = other.deviceType_;
-    cycleType_ = other.cycleType_;
+    activityType_ = other.activityType_;
     uid_ = other.uid_;
     success_ = other.success_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -3499,17 +3437,17 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
     }
   }
 
-  /// <summary>Field number for the "cycleType" field.</summary>
-  public const int CycleTypeFieldNumber = 2;
-  private global::CycleType cycleType_ = 0;
+  /// <summary>Field number for the "activityType" field.</summary>
+  public const int ActivityTypeFieldNumber = 2;
+  private global::ActivityType activityType_ = 0;
   /// <summary>
   ///循环类型
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public global::CycleType CycleType {
-    get { return cycleType_; }
+  public global::ActivityType ActivityType {
+    get { return activityType_; }
     set {
-      cycleType_ = value;
+      activityType_ = value;
     }
   }
 
@@ -3555,7 +3493,7 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
       return true;
     }
     if (DeviceType != other.DeviceType) return false;
-    if (CycleType != other.CycleType) return false;
+    if (ActivityType != other.ActivityType) return false;
     if (Uid != other.Uid) return false;
     if (Success != other.Success) return false;
     return Equals(_unknownFields, other._unknownFields);
@@ -3565,7 +3503,7 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
   public override int GetHashCode() {
     int hash = 1;
     if (DeviceType != 0) hash ^= DeviceType.GetHashCode();
-    if (CycleType != 0) hash ^= CycleType.GetHashCode();
+    if (ActivityType != 0) hash ^= ActivityType.GetHashCode();
     if (Uid.Length != 0) hash ^= Uid.GetHashCode();
     if (Success != false) hash ^= Success.GetHashCode();
     if (_unknownFields != null) {
@@ -3585,9 +3523,9 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
       output.WriteRawTag(8);
       output.WriteEnum((int) DeviceType);
     }
-    if (CycleType != 0) {
+    if (ActivityType != 0) {
       output.WriteRawTag(16);
-      output.WriteEnum((int) CycleType);
+      output.WriteEnum((int) ActivityType);
     }
     if (Uid.Length != 0) {
       output.WriteRawTag(26);
@@ -3608,8 +3546,8 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
     if (DeviceType != 0) {
       size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DeviceType);
     }
-    if (CycleType != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CycleType);
+    if (ActivityType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ActivityType);
     }
     if (Uid.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Uid);
@@ -3631,8 +3569,8 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
     if (other.DeviceType != 0) {
       DeviceType = other.DeviceType;
     }
-    if (other.CycleType != 0) {
-      CycleType = other.CycleType;
+    if (other.ActivityType != 0) {
+      ActivityType = other.ActivityType;
     }
     if (other.Uid.Length != 0) {
       Uid = other.Uid;
@@ -3656,7 +3594,7 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
           break;
         }
         case 16: {
-          cycleType_ = (global::CycleType) input.ReadEnum();
+          activityType_ = (global::ActivityType) input.ReadEnum();
           break;
         }
         case 26: {

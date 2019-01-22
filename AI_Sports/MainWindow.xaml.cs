@@ -32,11 +32,8 @@ namespace AI_Sports
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MemberEntity m = new MemberEntity();
-            m.Id = KeyGenerator.GetNextKeyValueLong("bdl_member");
-            m.Member_familyName = "123";
-            new MemberDAO().Insert(m);
-            //MessageBox.Show(resp.TrainMode.ToString());
+            test();
+           
         }
         private void test()
         {
@@ -44,7 +41,9 @@ namespace AI_Sports
             var requset = new LoginRequest();
             requset.Uid = "123456";
             requset.DeviceType = DeviceType.P01;
+            requset.ActivityType = ActivityType.PowerCycle;
             var resp = service.LoginRequest(requset);
+            MessageBox.Show(resp.CourseId.ToString());
         }
         //载入数据时加载数据源
         private void TestCombox_Loaded(object sender, RoutedEventArgs e)
