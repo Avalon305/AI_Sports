@@ -38,7 +38,7 @@ public static partial class BdlProtoReflection {
           "BRIRCgliYWNrTGltaXQYCyABKAUSEgoKbGV2ZXJBbmdsZRgMIAEoARIUCgxm",
           "b3J3YXJkRm9yY2UYDSABKAESFAoMcmV2ZXJzZUZvcmNlGA4gASgBEg0KBXBv",
           "d2VyGA8gASgBEhAKCGNvdXJzZUlkGBIgASgDEhIKCmFjdGl2aXR5SWQYEyAB",
-          "KAMSGAoQYWN0aXZpdHlSZWNvcmRJZBgUIAEoAyKrAwoNVXBsb2FkUmVxdWVz",
+          "KAMSGAoQYWN0aXZpdHlSZWNvcmRJZBgUIAEoAyKtAwoNVXBsb2FkUmVxdWVz",
           "dBILCgN1aWQYASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5",
           "cGUSIwoMYWN0aXZpdHlUeXBlGAMgASgOMg0uQWN0aXZpdHlUeXBlEh0KCXRy",
           "YWluTW9kZRgEIAEoDjIKLlRyYWluTW9kZRIXCg9kZWZhdE1vZGVFbmFibGUY",
@@ -47,39 +47,39 @@ public static partial class BdlProtoReflection {
           "aW5hbERpc3RhbmNlGAsgASgBEg8KB2NhbG9yaWUYDCABKAESEQoJdHJhaW5U",
           "aW1lGA0gASgFEhYKDmhlYXJ0X3JhdGVfYXZnGA4gASgFEhYKDmhlYXJ0X3Jh",
           "dGVfbWF4GA8gASgFEhYKDmhlYXJ0X3JhdGVfbWluGBAgASgFEhAKCGNvdXJz",
-          "ZUlkGBEgASgDEhIKCmFjdGl2aXR5SWQYEiABKAMSFgoOYWN0aXZpdHlSZWNv",
-          "cmQYEyABKAMihgEKDlVwbG9hZFJlc3BvbnNlEgsKA3VpZBgBIAEoCRIfCgpk",
-          "ZXZpY2VUeXBlGAIgASgOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0eVR5cGUY",
-          "BCABKA4yDS5BY3Rpdml0eVR5cGUSEAoIZmluaXNoZWQYBSABKAgSDwoHc3Vj",
-          "Y2VzcxgGIAEoCCKsAgoHTWVzc2FnZRIXCgR0eXBlGAEgASgOMgkuSGVhZFR5",
-          "cGUSEAoIc2VxdWVuY2UYAiABKAUSKwoQa2VlcGFsaXZlUmVxdWVzdBgDIAEo",
-          "CzIRLktlZXBhbGl2ZVJlcXVlc3QSLQoRa2VlcGFsaXZlUmVzcG9uc2UYBCAB",
-          "KAsyEi5LZWVwYWxpdmVSZXNwb25zZRIjCgxsb2dpblJlcXVlc3QYBSABKAsy",
-          "DS5Mb2dpblJlcXVlc3QSJQoNbG9naW5SZXNwb25zZRgGIAEoCzIOLkxvZ2lu",
-          "UmVzcG9uc2USJQoNdXBsb2FkUmVxdWVzdBgHIAEoCzIOLlVwbG9hZFJlcXVl",
-          "c3QSJwoOdXBsb2FkUmVzcG9uc2UYCCABKAsyDy5VcGxvYWRSZXNwb25zZSLc",
-          "AgoSUGVyc29uYWxTZXRSZXF1ZXN0EgsKA3VpZBgBIAEoCRIjCgxhY3Rpdml0",
-          "eVR5cGUYAiABKA4yDS5BY3Rpdml0eVR5cGUSHQoJdHJhaW5Nb2RlGAMgASgO",
-          "MgouVHJhaW5Nb2RlEhcKD2RlZmF0TW9kZUVuYWJsZRgEIAEoCBISCgpzZWF0",
-          "SGVpZ2h0GAUgASgFEhQKDGJhY2tEaXN0YW5jZRgGIAEoBRITCgtsZXZlckxl",
-          "bmd0aBgHIAEoBRIUCgxmb3J3YXJkTGltaXQYCCABKAUSEQoJYmFja0xpbWl0",
-          "GAkgASgFEhIKCmxldmVyQW5nbGUYCiABKAESFAoMZm9yd2FyZEZvcmNlGAsg",
-          "ASgBEhQKDHJldmVyc2VGb3JjZRgMIAEoARIQCghydW5Qb3dlchgNIAEoARIQ",
-          "CghydW5TcGVlZBgOIAEoARIQCghkaXN0YW5jZRgPIAEoASJ5ChNQZXJzb25h",
-          "bFNldFJlc3BvbnNlEh8KCmRldmljZVR5cGUYASABKA4yCy5EZXZpY2VUeXBl",
-          "EiMKDGFjdGl2aXR5VHlwZRgCIAEoDjINLkFjdGl2aXR5VHlwZRILCgN1aWQY",
-          "AyABKAkSDwoHc3VjY2VzcxgEIAEoCCrVAQoISGVhZFR5cGUSFQoRS2VlcGFs",
-          "aXZlX1JlcXVlc3QQABIWChJLZWVwYWxpdmVfUmVzcG9uc2UQARIRCg1Mb2dp",
-          "bl9SZXF1ZXN0EAISEgoOTG9naW5fUmVzcG9uc2UQAxISCg5VcGxvYWRfUmVx",
-          "dWVzdBAEEhMKD1VwbG9hZF9SZXNwb25zZRAFEhcKE0NvdW50RG93bl9Ccm9h",
-          "ZENhc3QQBhIXChNQZXJzb25hbFNldF9SZXF1ZXN0EAcSGAoUUGVyc29uYWxT",
-          "ZXRfUmVzcG9uc2UQCCpGCglUcmFpbk1vZGUSEQoNU1RBTkRBUkRfTU9ERRAA",
-          "EhAKDEFEQVBURVJfTU9ERRABEhQKEENPTlNUX1NQRUVEX01PREUQAiqlAQoK",
-          "RGV2aWNlVHlwZRIHCgNQMDAQABIHCgNQMDEQARIHCgNQMDIQAhIHCgNQMDMQ",
-          "AxIHCgNQMDQQBBIHCgNQMDUQBRIHCgNQMDYQBhIHCgNQMDcQBxIHCgNQMDgQ",
-          "CBIHCgNQMDkQCRIHCgNFMTAQChIHCgNFMTEQCxIHCgNFMTIQDBIHCgNFMTMQ",
-          "DRIHCgNFMTQQDhIHCgNFMTUQDxIHCgNFMTYQECoyCgxBY3Rpdml0eVR5cGUS",
-          "DgoKUG93ZXJDeWNsZRAAEhIKDkVuZHVyYW5jZUN5Y2xlEAFiBnByb3RvMw=="));
+          "ZUlkGBEgASgDEhIKCmFjdGl2aXR5SWQYEiABKAMSGAoQYWN0aXZpdHlSZWNv",
+          "cmRJZBgTIAEoAyKGAQoOVXBsb2FkUmVzcG9uc2USCwoDdWlkGAEgASgJEh8K",
+          "CmRldmljZVR5cGUYAiABKA4yCy5EZXZpY2VUeXBlEiMKDGFjdGl2aXR5VHlw",
+          "ZRgEIAEoDjINLkFjdGl2aXR5VHlwZRIQCghmaW5pc2hlZBgFIAEoCBIPCgdz",
+          "dWNjZXNzGAYgASgIIqwCCgdNZXNzYWdlEhcKBHR5cGUYASABKA4yCS5IZWFk",
+          "VHlwZRIQCghzZXF1ZW5jZRgCIAEoBRIrChBrZWVwYWxpdmVSZXF1ZXN0GAMg",
+          "ASgLMhEuS2VlcGFsaXZlUmVxdWVzdBItChFrZWVwYWxpdmVSZXNwb25zZRgE",
+          "IAEoCzISLktlZXBhbGl2ZVJlc3BvbnNlEiMKDGxvZ2luUmVxdWVzdBgFIAEo",
+          "CzINLkxvZ2luUmVxdWVzdBIlCg1sb2dpblJlc3BvbnNlGAYgASgLMg4uTG9n",
+          "aW5SZXNwb25zZRIlCg11cGxvYWRSZXF1ZXN0GAcgASgLMg4uVXBsb2FkUmVx",
+          "dWVzdBInCg51cGxvYWRSZXNwb25zZRgIIAEoCzIPLlVwbG9hZFJlc3BvbnNl",
+          "ItwCChJQZXJzb25hbFNldFJlcXVlc3QSCwoDdWlkGAEgASgJEiMKDGFjdGl2",
+          "aXR5VHlwZRgCIAEoDjINLkFjdGl2aXR5VHlwZRIdCgl0cmFpbk1vZGUYAyAB",
+          "KA4yCi5UcmFpbk1vZGUSFwoPZGVmYXRNb2RlRW5hYmxlGAQgASgIEhIKCnNl",
+          "YXRIZWlnaHQYBSABKAUSFAoMYmFja0Rpc3RhbmNlGAYgASgFEhMKC2xldmVy",
+          "TGVuZ3RoGAcgASgFEhQKDGZvcndhcmRMaW1pdBgIIAEoBRIRCgliYWNrTGlt",
+          "aXQYCSABKAUSEgoKbGV2ZXJBbmdsZRgKIAEoARIUCgxmb3J3YXJkRm9yY2UY",
+          "CyABKAESFAoMcmV2ZXJzZUZvcmNlGAwgASgBEhAKCHJ1blBvd2VyGA0gASgB",
+          "EhAKCHJ1blNwZWVkGA4gASgBEhAKCGRpc3RhbmNlGA8gASgBInkKE1BlcnNv",
+          "bmFsU2V0UmVzcG9uc2USHwoKZGV2aWNlVHlwZRgBIAEoDjILLkRldmljZVR5",
+          "cGUSIwoMYWN0aXZpdHlUeXBlGAIgASgOMg0uQWN0aXZpdHlUeXBlEgsKA3Vp",
+          "ZBgDIAEoCRIPCgdzdWNjZXNzGAQgASgIKtUBCghIZWFkVHlwZRIVChFLZWVw",
+          "YWxpdmVfUmVxdWVzdBAAEhYKEktlZXBhbGl2ZV9SZXNwb25zZRABEhEKDUxv",
+          "Z2luX1JlcXVlc3QQAhISCg5Mb2dpbl9SZXNwb25zZRADEhIKDlVwbG9hZF9S",
+          "ZXF1ZXN0EAQSEwoPVXBsb2FkX1Jlc3BvbnNlEAUSFwoTQ291bnREb3duX0Jy",
+          "b2FkQ2FzdBAGEhcKE1BlcnNvbmFsU2V0X1JlcXVlc3QQBxIYChRQZXJzb25h",
+          "bFNldF9SZXNwb25zZRAIKkYKCVRyYWluTW9kZRIRCg1TVEFOREFSRF9NT0RF",
+          "EAASEAoMQURBUFRFUl9NT0RFEAESFAoQQ09OU1RfU1BFRURfTU9ERRACKqUB",
+          "CgpEZXZpY2VUeXBlEgcKA1AwMBAAEgcKA1AwMRABEgcKA1AwMhACEgcKA1Aw",
+          "MxADEgcKA1AwNBAEEgcKA1AwNRAFEgcKA1AwNhAGEgcKA1AwNxAHEgcKA1Aw",
+          "OBAIEgcKA1AwORAJEgcKA0UxMBAKEgcKA0UxMRALEgcKA0UxMhAMEgcKA0Ux",
+          "MxANEgcKA0UxNBAOEgcKA0UxNRAPEgcKA0UxNhAQKjIKDEFjdGl2aXR5VHlw",
+          "ZRIOCgpQb3dlckN5Y2xlEAASEgoORW5kdXJhbmNlQ3ljbGUQAWIGcHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::HeadType), typeof(global::TrainMode), typeof(global::DeviceType), typeof(global::ActivityType), }, new pbr::GeneratedClrTypeInfo[] {
@@ -87,7 +87,7 @@ public static partial class BdlProtoReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::KeepaliveResponse), global::KeepaliveResponse.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime", "ServerTime" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginRequest), global::LoginRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginResponse), global::LoginResponse.Parser, new[]{ "Uid", "DeviceTypeArr", "ActivityType", "ExisitSetting", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "Power", "CourseId", "ActivityId", "ActivityRecordId" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecord" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecordId" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::UploadResponse), global::UploadResponse.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "Finished", "Success" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Message), global::Message.Parser, new[]{ "Type", "Sequence", "KeepaliveRequest", "KeepaliveResponse", "LoginRequest", "LoginResponse", "UploadRequest", "UploadResponse" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "ActivityType", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "RunPower", "RunSpeed", "Distance" }, null, null, null),
@@ -1571,7 +1571,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     heartRateMin_ = other.heartRateMin_;
     courseId_ = other.courseId_;
     activityId_ = other.activityId_;
-    activityRecord_ = other.activityRecord_;
+    activityRecordId_ = other.activityRecordId_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1818,17 +1818,17 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     }
   }
 
-  /// <summary>Field number for the "activityRecord" field.</summary>
-  public const int ActivityRecordFieldNumber = 19;
-  private long activityRecord_;
+  /// <summary>Field number for the "activityRecordId" field.</summary>
+  public const int ActivityRecordIdFieldNumber = 19;
+  private long activityRecordId_;
   /// <summary>
   ///训练活动记录ID
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public long ActivityRecord {
-    get { return activityRecord_; }
+  public long ActivityRecordId {
+    get { return activityRecordId_; }
     set {
-      activityRecord_ = value;
+      activityRecordId_ = value;
     }
   }
 
@@ -1862,7 +1862,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (HeartRateMin != other.HeartRateMin) return false;
     if (CourseId != other.CourseId) return false;
     if (ActivityId != other.ActivityId) return false;
-    if (ActivityRecord != other.ActivityRecord) return false;
+    if (ActivityRecordId != other.ActivityRecordId) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1886,7 +1886,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (HeartRateMin != 0) hash ^= HeartRateMin.GetHashCode();
     if (CourseId != 0L) hash ^= CourseId.GetHashCode();
     if (ActivityId != 0L) hash ^= ActivityId.GetHashCode();
-    if (ActivityRecord != 0L) hash ^= ActivityRecord.GetHashCode();
+    if (ActivityRecordId != 0L) hash ^= ActivityRecordId.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1968,9 +1968,9 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
       output.WriteRawTag(144, 1);
       output.WriteInt64(ActivityId);
     }
-    if (ActivityRecord != 0L) {
+    if (ActivityRecordId != 0L) {
       output.WriteRawTag(152, 1);
-      output.WriteInt64(ActivityRecord);
+      output.WriteInt64(ActivityRecordId);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -2031,8 +2031,8 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (ActivityId != 0L) {
       size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActivityId);
     }
-    if (ActivityRecord != 0L) {
-      size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActivityRecord);
+    if (ActivityRecordId != 0L) {
+      size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActivityRecordId);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -2096,8 +2096,8 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (other.ActivityId != 0L) {
       ActivityId = other.ActivityId;
     }
-    if (other.ActivityRecord != 0L) {
-      ActivityRecord = other.ActivityRecord;
+    if (other.ActivityRecordId != 0L) {
+      ActivityRecordId = other.ActivityRecordId;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -2179,7 +2179,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
           break;
         }
         case 152: {
-          ActivityRecord = input.ReadInt64();
+          ActivityRecordId = input.ReadInt64();
           break;
         }
       }

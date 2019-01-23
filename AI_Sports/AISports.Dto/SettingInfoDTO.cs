@@ -9,8 +9,9 @@ namespace AI_Sports.Dto
 {
     public class SettingInfoDTO
     {
+        public int Current_course_count { get; set; }
         public long Fk_training_course_id { get; set; }
-        public long Is_open_fat_reduction { get; set; }
+        public bool Is_open_fat_reduction { get; set; }
         public PersonalSettingEntity PersonalSettingEntity { get; set; }
 
     }

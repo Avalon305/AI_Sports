@@ -90,7 +90,9 @@
     <Compile Include="AISports.Dao\MemberDAO.cs" />
     <Compile Include="AISports.Dao\PersonalSettingDAO.cs" />
     <Compile Include="AISports.Dao\TrainingActivityRecordDAO.cs" />
+    <Compile Include="AISports.Dao\TrainingDeviceRecordDAO.cs" />
     <Compile Include="AISports.Dao\TrainingPlanDAO.cs" />
+    <Compile Include="AISports.Dto\DeviceDoneDTO.cs" />
     <Compile Include="AISports.Dto\SettingInfoDTO.cs" />
     <Compile Include="AISports.Entity\ActivityEntity.cs" />
     <Compile Include="AISports.Entity\DatacodeEntity.cs" />

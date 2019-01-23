@@ -50,23 +50,23 @@ namespace AI_Sports.Entity
         /// 功率
         public double? Power { get; set; }
         /// 训练个数
-        public int? count { get; set; }
-        /// 速度 1位小数 千米每时
+        public int? Count { get; set; }
+        /// 速度 1位小数 千米每时,暂不上报
         public double? Speed { get; set; }
         /// 距离 千米，两位小数
         public double? Distance { get; set; }
         /// 训练总耗能 单位卡路里
         public double? Energy { get; set; }
         /// 训练时间 单位秒
-        public int? training_time { get; set; }
+        public int? Training_time { get; set; }
         /// 平均心率
-        public int? avg_heart_rate { get; set; }
+        public int? Avg_heart_rate { get; set; }
         /// 最大心率
-        public int? max_heart_rate { get; set; }
+        public int? Max_heart_rate { get; set; }
         /// 最小心率
-        public int? min_heart_rate { get; set; }
+        public int? Min_heart_rate { get; set; }
         /// 创建时间
-        public DateTime? gmt_create { get; set; }
-        public DateTime? gmt_modified { get; set; }
+        public DateTime? Gmt_create { get; set; }
+        public DateTime? Gmt_modified { get; set; }
     }
 }
