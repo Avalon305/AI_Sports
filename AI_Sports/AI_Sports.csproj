@@ -90,6 +90,7 @@
     <Compile Include="AISports.Dao\MemberDAO.cs" />
     <Compile Include="AISports.Dao\PersonalSettingDAO.cs" />
     <Compile Include="AISports.Dao\TrainingActivityRecordDAO.cs" />
+    <Compile Include="AISports.Dao\TrainingCourseDAO.cs" />
     <Compile Include="AISports.Dao\TrainingDeviceRecordDAO.cs" />
     <Compile Include="AISports.Dao\TrainingPlanDAO.cs" />
     <Compile Include="AISports.Dto\DeviceDoneDTO.cs" />
