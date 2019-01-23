@@ -17,6 +17,7 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
+                
                 const string sql = "update s_key set max_value = max_value + @Steps where key_id = @KeyId";
                 conn.Execute(sql, new { Steps=steps,KeyId = keyId });
 

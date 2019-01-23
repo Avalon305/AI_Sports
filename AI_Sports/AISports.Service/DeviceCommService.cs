@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace AI_Sports.Service
 {
@@ -20,6 +21,7 @@ namespace AI_Sports.Service
         private MemberDAO memberDAO = new MemberDAO();
         private TrainingActivityRecordDAO trainingActivityRecordDAO = new TrainingActivityRecordDAO();
         private TrainingDeviceRecordDAO trainingDeviceRecordDAO = new TrainingDeviceRecordDAO();
+        private TrainingCourseDAO trainingCourseDAO = new TrainingCourseDAO();
         /// <summary>
         /// 处理登录请求
         /// </summary>
@@ -54,7 +56,6 @@ namespace AI_Sports.Service
             response.ForwardForce = pSetting.Consequent_force == null ? 0 : (double)pSetting.Consequent_force;
             response.ReverseForce = pSetting.Reverse_force == null ? 0 : (double)pSetting.Reverse_force;
             response.Power = pSetting.Power == null ? 0 : (double)pSetting.Power;
-
             //课程ID、训练活动ID、训练活动记录ID
             response.CourseId = setDto.Fk_training_course_id;
             response.ActivityId = pSetting.Fk_training_activity_id;
@@ -146,7 +147,7 @@ namespace AI_Sports.Service
             {
                 Id = KeyGenerator.GetNextKeyValueLong("bdl_training_device_record"),
                 Member_id = request.Uid,
-                Fk_training_activity_record_id = request.ActivityRecord,
+                Fk_training_activity_record_id = request.ActivityRecordId,
                 Activity_type = ((int)request.ActivityType).ToString(),
                 Device_code = ((int)request.DeviceType).ToString(),
                 Training_mode = ((int)request.TrainMode).ToString(),
@@ -163,15 +164,25 @@ namespace AI_Sports.Service
                 Gmt_create = DateTime.Now
 
             };
-            trainingDeviceRecordDAO.Insert(deviceRecord);
-            //查一下是否是该循环最后一个设备，是的话更新训练活动表课程数量加一并看一下是否已完成,训练活动记录表标志位已完成，
-            List<DeviceType> todoList =  this.GenToDoDevices(request.Uid, request.ActivityType, request.DefatModeEnable);
-            if (todoList.Count == 0)//训练完毕一个循环
+            using (TransactionScope ts = new TransactionScope()) //使整个代码块成为事务性代码
             {
-                var activityRecord = trainingActivityRecordDAO.Load(request.ActivityRecordId);
-                if (activityRecord != null)
+                trainingDeviceRecordDAO.Insert(deviceRecord);
+                //查一下是否是该循环最后一个设备，是的话更新课程表数量加一并看一下是否已完成,训练活动记录表标志位已完成，
+                List<DeviceType> todoList = this.GenToDoDevices(request.Uid, request.ActivityType, request.DefatModeEnable);
+                if (todoList.Count == 0)//训练完毕一个循环,
                 {
-                  
+                    //更新记录完成状态
+                    trainingActivityRecordDAO.UpdateCompleteState(request.ActivityRecordId, true);
+                    //课程次数加一
+                    TrainingCourseEntity courseEntity = trainingCourseDAO.Load(request.CourseId);
+                    courseEntity.Current_course_count += 1;
+                    if (courseEntity.Current_course_count >= courseEntity.Target_course_count)//课程完成的话，这里用>=防止并发被击穿目标次数
+                    {
+                        courseEntity.Current_end_date = DateTime.Now;
+                        courseEntity.Is_complete = true;
+                    }
+
+                    trainingCourseDAO.UpdateByPrimaryKey(courseEntity);
                 }
             }
             return response;
