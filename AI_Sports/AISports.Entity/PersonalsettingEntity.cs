@@ -33,7 +33,7 @@ namespace AI_Sports.Entity
         [ExplicitKey]
         public long Id { get; set; }
         public long Fk_member_id { get; set; }
-        public string Memeber_id { get; set; }
+        public string Member_id { get; set; }
         /// 训练活动id
         public long Fk_training_activity_id { get; set; }
         /// 训练活动类型编码

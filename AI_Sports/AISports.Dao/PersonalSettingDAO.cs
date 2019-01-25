@@ -32,7 +32,7 @@ namespace AI_Sports.Dao
                   {
                       dto.PersonalSettingEntity = set;
                       return dto;
-                  }, para, splitOn: "Id").FirstOrDefault<SettingInfoDTO>();
+                  }, para, splitOn: "Id").FirstOrDefault();
             }
         }
 
@@ -46,14 +46,32 @@ namespace AI_Sports.Dao
         {
             List<DeviceDoneDTO> result = new List<DeviceDoneDTO>();
             const string query = @"select c.is_open_fat_reduction,b.device_code from    bdl_training_activity_record a join bdl_training_device_record b
-                on a.id = b.fk_training_activity_record_id  join bdl_member c on c.member_id = b.member_id where b.member_id=@Member_id and a.activity_type = @MyActivityType 
+                on a.id = b.fk_training_activity_record_id  join bdl_member c on c.member_id = b.member_id 
+                where b.member_id=@Member_id and a.activity_type = @MyActivityType 
                 ";
-            var para = new { Member_id = member_id,  MyActivityType = activityType };
+            var para = new { Member_id = member_id, MyActivityType = activityType };
             using (var conn = DbUtil.getConn())
             {
                 result = conn.Query<DeviceDoneDTO>(query, para).ToList();
             }
-                return result;
+            return result;
+        }
+
+        /// <summary>
+        /// 更新
+        /// </summary>
+        /// <param name="entity"></param>
+        public void UpdateSetting(PersonalSettingEntity entity)
+        {
+            string sql = @"update bdl_personal_setting set Seat_height=@Seat_height,Backrest_distance=@Backrest_distance
+               ,Lever_length=@Lever_length,Lever_angle=@Lever_angle,Front_limit=@Front_limit,Back_limit=@Back_limit,Training_mode=@Training_mode 
+                where member_id = @Member_id and Device_code=@Device_code 
+            ";
+            using (var conn = DbUtil.getConn())
+            {
+                conn.Execute(sql, entity);
+            }
+
         }
 
 

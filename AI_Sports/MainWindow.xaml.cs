@@ -32,9 +32,21 @@ namespace AI_Sports
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            test();
+            test2();
            
         }
+        private void test2()
+        {
+            var service = new DeviceCommService();
+            var requset = new PersonalSetRequest();
+            requset.Uid = "1234567";
+            requset.DeviceType = DeviceType.P01;
+            requset.SeatHeight = 100;
+            requset.ActivityType = ActivityType.PowerCycle;
+            var resp = service.PersonalSetRequest(requset);
+            MessageBox.Show(resp.Success.ToString());
+        }
+
         private void test()
         {
             var service = new DeviceCommService();

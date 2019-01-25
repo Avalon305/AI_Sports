@@ -184,6 +184,45 @@ namespace AI_Sports.Service
 
                     trainingCourseDAO.UpdateByPrimaryKey(courseEntity);
                 }
+                ts.Complete();
+            }
+            return response;
+        }
+
+        /// <summary>
+        /// 处理更新个人设置请求
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public PersonalSetResponse PersonalSetRequest(PersonalSetRequest request)
+        {
+            PersonalSetResponse response = new PersonalSetResponse
+            {
+                Uid = request.Uid,
+                DeviceType = request.DeviceType,
+                ActivityType = request.ActivityType,
+                Success = false
+            };
+            var setEntity = new PersonalSettingEntity
+            {
+                Member_id=request.Uid,
+                Device_code = ((int)request.DeviceType).ToString(),
+                Activity_type = ((int)request.ActivityType).ToString(),
+                Seat_height = request.SeatHeight,
+                Backrest_distance = request.BackDistance,
+                Lever_length = request.LeverLength,
+                Lever_angle = request.LeverAngle,
+                Front_limit = request.ForwardLimit,
+                Back_limit = request.BackLimit,
+                Training_mode= ((int)request.TrainMode).ToString(),
+            };
+            using (TransactionScope ts = new TransactionScope()) //使整个代码块成为事务性代码
+            {
+                //更新个人设置，更新是否减脂模式
+                memberDAO.UpdateDeFatState(request.Uid, request.DefatModeEnable);
+                personalSettingDAO.UpdateSetting(setEntity);
+                response.Success = true;
+                ts.Complete();
             }
             return response;
         }

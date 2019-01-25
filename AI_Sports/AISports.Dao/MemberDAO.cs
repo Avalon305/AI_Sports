@@ -30,6 +30,23 @@ namespace AI_Sports.Dao
 
             }
         }
+
+        /// <summary>
+        /// 根据会员ID更新减脂模式是否开启
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <param name="enable"></param>
+        public void UpdateDeFatState(string memberId,bool enable)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string sql = "update bdl_member set is_open_fat_reduction = @DefatEnable where member_id = @MemberId";
+
+                  conn.Execute(sql, new { DefatEnable=enable, MemberId=memberId });
+
+            }
+        }
+
         /// <summary>
         /// 根据会员卡号查询会员基本信息
         /// </summary>
@@ -39,7 +56,7 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT bdl_member.id,bdl_member.member_id,bdl_member.member_firstName,bdl_member.member_familyName,bdl_member.birth_date,bdl_member.sex,bdl_member.address,bdl_member.email_address,bdl_member.work_phone,bdl_member.personal_phone,bdl_member.mobile_phone,bdl_member.weight,bdl_member.height,bdl_member.age,bdl_member.max_heart_rate,bdl_member.suitable_heart_rate,bdl_member.role_id,bdl_member.fk_coach_id,bdl_member.label_name,bdl_member.is_open_fat_reduction,bdl_member.remark,bdl_member.gmt_create,bdl_member.gmt_modified FROM bdl_member WHERE member_id = @Member_id";
+                const string query = "SELECT * FROM bdl_member WHERE member_id = @Member_id";
                 return conn.QueryFirstOrDefault<MemberEntity>(query, new { Member_id = Member_id });
             }
         }

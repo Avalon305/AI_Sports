@@ -58,28 +58,28 @@ public static partial class BdlProtoReflection {
           "CzINLkxvZ2luUmVxdWVzdBIlCg1sb2dpblJlc3BvbnNlGAYgASgLMg4uTG9n",
           "aW5SZXNwb25zZRIlCg11cGxvYWRSZXF1ZXN0GAcgASgLMg4uVXBsb2FkUmVx",
           "dWVzdBInCg51cGxvYWRSZXNwb25zZRgIIAEoCzIPLlVwbG9hZFJlc3BvbnNl",
-          "ItwCChJQZXJzb25hbFNldFJlcXVlc3QSCwoDdWlkGAEgASgJEiMKDGFjdGl2",
-          "aXR5VHlwZRgCIAEoDjINLkFjdGl2aXR5VHlwZRIdCgl0cmFpbk1vZGUYAyAB",
-          "KA4yCi5UcmFpbk1vZGUSFwoPZGVmYXRNb2RlRW5hYmxlGAQgASgIEhIKCnNl",
-          "YXRIZWlnaHQYBSABKAUSFAoMYmFja0Rpc3RhbmNlGAYgASgFEhMKC2xldmVy",
-          "TGVuZ3RoGAcgASgFEhQKDGZvcndhcmRMaW1pdBgIIAEoBRIRCgliYWNrTGlt",
-          "aXQYCSABKAUSEgoKbGV2ZXJBbmdsZRgKIAEoARIUCgxmb3J3YXJkRm9yY2UY",
-          "CyABKAESFAoMcmV2ZXJzZUZvcmNlGAwgASgBEhAKCHJ1blBvd2VyGA0gASgB",
-          "EhAKCHJ1blNwZWVkGA4gASgBEhAKCGRpc3RhbmNlGA8gASgBInkKE1BlcnNv",
-          "bmFsU2V0UmVzcG9uc2USHwoKZGV2aWNlVHlwZRgBIAEoDjILLkRldmljZVR5",
-          "cGUSIwoMYWN0aXZpdHlUeXBlGAIgASgOMg0uQWN0aXZpdHlUeXBlEgsKA3Vp",
-          "ZBgDIAEoCRIPCgdzdWNjZXNzGAQgASgIKtUBCghIZWFkVHlwZRIVChFLZWVw",
-          "YWxpdmVfUmVxdWVzdBAAEhYKEktlZXBhbGl2ZV9SZXNwb25zZRABEhEKDUxv",
-          "Z2luX1JlcXVlc3QQAhISCg5Mb2dpbl9SZXNwb25zZRADEhIKDlVwbG9hZF9S",
-          "ZXF1ZXN0EAQSEwoPVXBsb2FkX1Jlc3BvbnNlEAUSFwoTQ291bnREb3duX0Jy",
-          "b2FkQ2FzdBAGEhcKE1BlcnNvbmFsU2V0X1JlcXVlc3QQBxIYChRQZXJzb25h",
-          "bFNldF9SZXNwb25zZRAIKkYKCVRyYWluTW9kZRIRCg1TVEFOREFSRF9NT0RF",
-          "EAASEAoMQURBUFRFUl9NT0RFEAESFAoQQ09OU1RfU1BFRURfTU9ERRACKqUB",
-          "CgpEZXZpY2VUeXBlEgcKA1AwMBAAEgcKA1AwMRABEgcKA1AwMhACEgcKA1Aw",
-          "MxADEgcKA1AwNBAEEgcKA1AwNRAFEgcKA1AwNhAGEgcKA1AwNxAHEgcKA1Aw",
-          "OBAIEgcKA1AwORAJEgcKA0UxMBAKEgcKA0UxMRALEgcKA0UxMhAMEgcKA0Ux",
-          "MxANEgcKA0UxNBAOEgcKA0UxNRAPEgcKA0UxNhAQKjIKDEFjdGl2aXR5VHlw",
-          "ZRIOCgpQb3dlckN5Y2xlEAASEgoORW5kdXJhbmNlQ3ljbGUQAWIGcHJvdG8z"));
+          "IpsCChJQZXJzb25hbFNldFJlcXVlc3QSCwoDdWlkGAEgASgJEh8KCmRldmlj",
+          "ZVR5cGUYAiABKA4yCy5EZXZpY2VUeXBlEiMKDGFjdGl2aXR5VHlwZRgDIAEo",
+          "DjINLkFjdGl2aXR5VHlwZRISCgpzZWF0SGVpZ2h0GAQgASgFEhQKDGJhY2tE",
+          "aXN0YW5jZRgFIAEoBRITCgtsZXZlckxlbmd0aBgGIAEoBRISCgpsZXZlckFu",
+          "Z2xlGAcgASgBEhQKDGZvcndhcmRMaW1pdBgIIAEoBRIRCgliYWNrTGltaXQY",
+          "CSABKAUSHQoJdHJhaW5Nb2RlGAogASgOMgouVHJhaW5Nb2RlEhcKD2RlZmF0",
+          "TW9kZUVuYWJsZRgLIAEoCCJ5ChNQZXJzb25hbFNldFJlc3BvbnNlEh8KCmRl",
+          "dmljZVR5cGUYASABKA4yCy5EZXZpY2VUeXBlEiMKDGFjdGl2aXR5VHlwZRgC",
+          "IAEoDjINLkFjdGl2aXR5VHlwZRILCgN1aWQYAyABKAkSDwoHc3VjY2VzcxgE",
+          "IAEoCCrVAQoISGVhZFR5cGUSFQoRS2VlcGFsaXZlX1JlcXVlc3QQABIWChJL",
+          "ZWVwYWxpdmVfUmVzcG9uc2UQARIRCg1Mb2dpbl9SZXF1ZXN0EAISEgoOTG9n",
+          "aW5fUmVzcG9uc2UQAxISCg5VcGxvYWRfUmVxdWVzdBAEEhMKD1VwbG9hZF9S",
+          "ZXNwb25zZRAFEhcKE0NvdW50RG93bl9Ccm9hZENhc3QQBhIXChNQZXJzb25h",
+          "bFNldF9SZXF1ZXN0EAcSGAoUUGVyc29uYWxTZXRfUmVzcG9uc2UQCCpxCglU",
+          "cmFpbk1vZGUSEQoNU1RBTkRBUkRfTU9ERRAAEhAKDEFEQVBURVJfTU9ERRAB",
+          "EhQKEENPTlNUX1NQRUVEX01PREUQAhITCg9IRUFSVF9SQVRFX01PREUQAxIU",
+          "ChBBRERfTVVTQ0xFU19NT0RFEAQqpQEKCkRldmljZVR5cGUSBwoDUDAwEAAS",
+          "BwoDUDAxEAESBwoDUDAyEAISBwoDUDAzEAMSBwoDUDA0EAQSBwoDUDA1EAUS",
+          "BwoDUDA2EAYSBwoDUDA3EAcSBwoDUDA4EAgSBwoDUDA5EAkSBwoDRTEwEAoS",
+          "BwoDRTExEAsSBwoDRTEyEAwSBwoDRTEzEA0SBwoDRTE0EA4SBwoDRTE1EA8S",
+          "BwoDRTE2EBAqMgoMQWN0aXZpdHlUeXBlEg4KClBvd2VyQ3ljbGUQABISCg5F",
+          "bmR1cmFuY2VDeWNsZRABYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::HeadType), typeof(global::TrainMode), typeof(global::DeviceType), typeof(global::ActivityType), }, new pbr::GeneratedClrTypeInfo[] {
@@ -90,7 +90,7 @@ public static partial class BdlProtoReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecordId" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::UploadResponse), global::UploadResponse.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "Finished", "Success" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Message), global::Message.Parser, new[]{ "Type", "Sequence", "KeepaliveRequest", "KeepaliveResponse", "LoginRequest", "LoginResponse", "UploadRequest", "UploadResponse" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "ActivityType", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "RunPower", "RunSpeed", "Distance" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "SeatHeight", "BackDistance", "LeverLength", "LeverAngle", "ForwardLimit", "BackLimit", "TrainMode", "DefatModeEnable" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetResponse), global::PersonalSetResponse.Parser, new[]{ "DeviceType", "ActivityType", "Uid", "Success" }, null, null, null)
         }));
   }
@@ -156,6 +156,14 @@ public enum TrainMode {
   ///等速模式
   /// </summary>
   [pbr::OriginalName("CONST_SPEED_MODE")] ConstSpeedMode = 2,
+  /// <summary>
+  ///心率模式
+  /// </summary>
+  [pbr::OriginalName("HEART_RATE_MODE")] HeartRateMode = 3,
+  /// <summary>
+  ///增肌模式 
+  /// </summary>
+  [pbr::OriginalName("ADD_MUSCLES_MODE")] AddMusclesMode = 4,
 }
 
 /// <summary>
@@ -2843,20 +2851,16 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public PersonalSetRequest(PersonalSetRequest other) : this() {
     uid_ = other.uid_;
+    deviceType_ = other.deviceType_;
     activityType_ = other.activityType_;
-    trainMode_ = other.trainMode_;
-    defatModeEnable_ = other.defatModeEnable_;
     seatHeight_ = other.seatHeight_;
     backDistance_ = other.backDistance_;
     leverLength_ = other.leverLength_;
+    leverAngle_ = other.leverAngle_;
     forwardLimit_ = other.forwardLimit_;
     backLimit_ = other.backLimit_;
-    leverAngle_ = other.leverAngle_;
-    forwardForce_ = other.forwardForce_;
-    reverseForce_ = other.reverseForce_;
-    runPower_ = other.runPower_;
-    runSpeed_ = other.runSpeed_;
-    distance_ = other.distance_;
+    trainMode_ = other.trainMode_;
+    defatModeEnable_ = other.defatModeEnable_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -2879,8 +2883,22 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
   }
 
+  /// <summary>Field number for the "deviceType" field.</summary>
+  public const int DeviceTypeFieldNumber = 2;
+  private global::DeviceType deviceType_ = 0;
+  /// <summary>
+  ///设备类型
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::DeviceType DeviceType {
+    get { return deviceType_; }
+    set {
+      deviceType_ = value;
+    }
+  }
+
   /// <summary>Field number for the "activityType" field.</summary>
-  public const int ActivityTypeFieldNumber = 2;
+  public const int ActivityTypeFieldNumber = 3;
   private global::ActivityType activityType_ = 0;
   /// <summary>
   ///循环类型
@@ -2893,36 +2911,8 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
   }
 
-  /// <summary>Field number for the "trainMode" field.</summary>
-  public const int TrainModeFieldNumber = 3;
-  private global::TrainMode trainMode_ = 0;
-  /// <summary>
-  ///训练模式
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public global::TrainMode TrainMode {
-    get { return trainMode_; }
-    set {
-      trainMode_ = value;
-    }
-  }
-
-  /// <summary>Field number for the "defatModeEnable" field.</summary>
-  public const int DefatModeEnableFieldNumber = 4;
-  private bool defatModeEnable_;
-  /// <summary>
-  ///是否开启减脂模式
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool DefatModeEnable {
-    get { return defatModeEnable_; }
-    set {
-      defatModeEnable_ = value;
-    }
-  }
-
   /// <summary>Field number for the "seatHeight" field.</summary>
-  public const int SeatHeightFieldNumber = 5;
+  public const int SeatHeightFieldNumber = 4;
   private int seatHeight_;
   /// <summary>
   ///座椅高度
@@ -2936,7 +2926,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
   }
 
   /// <summary>Field number for the "backDistance" field.</summary>
-  public const int BackDistanceFieldNumber = 6;
+  public const int BackDistanceFieldNumber = 5;
   private int backDistance_;
   /// <summary>
   ///靠背距离
@@ -2950,10 +2940,10 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
   }
 
   /// <summary>Field number for the "leverLength" field.</summary>
-  public const int LeverLengthFieldNumber = 7;
+  public const int LeverLengthFieldNumber = 6;
   private int leverLength_;
   /// <summary>
-  ///可动杠杆的长度
+  ///杠杆长度cm
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int LeverLength {
@@ -2963,11 +2953,25 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
   }
 
+  /// <summary>Field number for the "leverAngle" field.</summary>
+  public const int LeverAngleFieldNumber = 7;
+  private double leverAngle_;
+  /// <summary>
+  ///杠杆角度
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public double LeverAngle {
+    get { return leverAngle_; }
+    set {
+      leverAngle_ = value;
+    }
+  }
+
   /// <summary>Field number for the "forwardLimit" field.</summary>
   public const int ForwardLimitFieldNumber = 8;
   private int forwardLimit_;
   /// <summary>
-  ///杠杆前方距离限制
+  ///前方距离限制cm
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int ForwardLimit {
@@ -2981,7 +2985,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
   public const int BackLimitFieldNumber = 9;
   private int backLimit_;
   /// <summary>
-  ///杠杆后方距离限制
+  ///后方距离限制cm
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int BackLimit {
@@ -2991,87 +2995,31 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
   }
 
-  /// <summary>Field number for the "leverAngle" field.</summary>
-  public const int LeverAngleFieldNumber = 10;
-  private double leverAngle_;
+  /// <summary>Field number for the "trainMode" field.</summary>
+  public const int TrainModeFieldNumber = 10;
+  private global::TrainMode trainMode_ = 0;
   /// <summary>
-  ///杠杆角度
+  ///训练模式
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double LeverAngle {
-    get { return leverAngle_; }
+  public global::TrainMode TrainMode {
+    get { return trainMode_; }
     set {
-      leverAngle_ = value;
+      trainMode_ = value;
     }
   }
 
-  /// <summary>Field number for the "forwardForce" field.</summary>
-  public const int ForwardForceFieldNumber = 11;
-  private double forwardForce_;
+  /// <summary>Field number for the "defatModeEnable" field.</summary>
+  public const int DefatModeEnableFieldNumber = 11;
+  private bool defatModeEnable_;
   /// <summary>
-  ///电机顺向阻力(N)
+  ///是否开启减脂模式
   /// </summary>
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double ForwardForce {
-    get { return forwardForce_; }
+  public bool DefatModeEnable {
+    get { return defatModeEnable_; }
     set {
-      forwardForce_ = value;
-    }
-  }
-
-  /// <summary>Field number for the "reverseForce" field.</summary>
-  public const int ReverseForceFieldNumber = 12;
-  private double reverseForce_;
-  /// <summary>
-  ///电机反向阻力(N)
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double ReverseForce {
-    get { return reverseForce_; }
-    set {
-      reverseForce_ = value;
-    }
-  }
-
-  /// <summary>Field number for the "runPower" field.</summary>
-  public const int RunPowerFieldNumber = 13;
-  private double runPower_;
-  /// <summary>
-  ///电机实时功率(W)
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double RunPower {
-    get { return runPower_; }
-    set {
-      runPower_ = value;
-    }
-  }
-
-  /// <summary>Field number for the "runSpeed" field.</summary>
-  public const int RunSpeedFieldNumber = 14;
-  private double runSpeed_;
-  /// <summary>
-  ///电机实时速度
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double RunSpeed {
-    get { return runSpeed_; }
-    set {
-      runSpeed_ = value;
-    }
-  }
-
-  /// <summary>Field number for the "distance" field.</summary>
-  public const int DistanceFieldNumber = 15;
-  private double distance_;
-  /// <summary>
-  ///跑步机和单车的运动距离（km）
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public double Distance {
-    get { return distance_; }
-    set {
-      distance_ = value;
+      defatModeEnable_ = value;
     }
   }
 
@@ -3089,20 +3037,16 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
       return true;
     }
     if (Uid != other.Uid) return false;
+    if (DeviceType != other.DeviceType) return false;
     if (ActivityType != other.ActivityType) return false;
-    if (TrainMode != other.TrainMode) return false;
-    if (DefatModeEnable != other.DefatModeEnable) return false;
     if (SeatHeight != other.SeatHeight) return false;
     if (BackDistance != other.BackDistance) return false;
     if (LeverLength != other.LeverLength) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LeverAngle, other.LeverAngle)) return false;
     if (ForwardLimit != other.ForwardLimit) return false;
     if (BackLimit != other.BackLimit) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LeverAngle, other.LeverAngle)) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(ForwardForce, other.ForwardForce)) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(ReverseForce, other.ReverseForce)) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(RunPower, other.RunPower)) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(RunSpeed, other.RunSpeed)) return false;
-    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Distance, other.Distance)) return false;
+    if (TrainMode != other.TrainMode) return false;
+    if (DefatModeEnable != other.DefatModeEnable) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -3110,20 +3054,16 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
   public override int GetHashCode() {
     int hash = 1;
     if (Uid.Length != 0) hash ^= Uid.GetHashCode();
+    if (DeviceType != 0) hash ^= DeviceType.GetHashCode();
     if (ActivityType != 0) hash ^= ActivityType.GetHashCode();
-    if (TrainMode != 0) hash ^= TrainMode.GetHashCode();
-    if (DefatModeEnable != false) hash ^= DefatModeEnable.GetHashCode();
     if (SeatHeight != 0) hash ^= SeatHeight.GetHashCode();
     if (BackDistance != 0) hash ^= BackDistance.GetHashCode();
     if (LeverLength != 0) hash ^= LeverLength.GetHashCode();
+    if (LeverAngle != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LeverAngle);
     if (ForwardLimit != 0) hash ^= ForwardLimit.GetHashCode();
     if (BackLimit != 0) hash ^= BackLimit.GetHashCode();
-    if (LeverAngle != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LeverAngle);
-    if (ForwardForce != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(ForwardForce);
-    if (ReverseForce != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(ReverseForce);
-    if (RunPower != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(RunPower);
-    if (RunSpeed != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(RunSpeed);
-    if (Distance != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Distance);
+    if (TrainMode != 0) hash ^= TrainMode.GetHashCode();
+    if (DefatModeEnable != false) hash ^= DefatModeEnable.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -3141,29 +3081,29 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
       output.WriteRawTag(10);
       output.WriteString(Uid);
     }
-    if (ActivityType != 0) {
+    if (DeviceType != 0) {
       output.WriteRawTag(16);
+      output.WriteEnum((int) DeviceType);
+    }
+    if (ActivityType != 0) {
+      output.WriteRawTag(24);
       output.WriteEnum((int) ActivityType);
     }
-    if (TrainMode != 0) {
-      output.WriteRawTag(24);
-      output.WriteEnum((int) TrainMode);
-    }
-    if (DefatModeEnable != false) {
-      output.WriteRawTag(32);
-      output.WriteBool(DefatModeEnable);
-    }
     if (SeatHeight != 0) {
-      output.WriteRawTag(40);
+      output.WriteRawTag(32);
       output.WriteInt32(SeatHeight);
     }
     if (BackDistance != 0) {
-      output.WriteRawTag(48);
+      output.WriteRawTag(40);
       output.WriteInt32(BackDistance);
     }
     if (LeverLength != 0) {
-      output.WriteRawTag(56);
+      output.WriteRawTag(48);
       output.WriteInt32(LeverLength);
+    }
+    if (LeverAngle != 0D) {
+      output.WriteRawTag(57);
+      output.WriteDouble(LeverAngle);
     }
     if (ForwardLimit != 0) {
       output.WriteRawTag(64);
@@ -3173,29 +3113,13 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
       output.WriteRawTag(72);
       output.WriteInt32(BackLimit);
     }
-    if (LeverAngle != 0D) {
-      output.WriteRawTag(81);
-      output.WriteDouble(LeverAngle);
+    if (TrainMode != 0) {
+      output.WriteRawTag(80);
+      output.WriteEnum((int) TrainMode);
     }
-    if (ForwardForce != 0D) {
-      output.WriteRawTag(89);
-      output.WriteDouble(ForwardForce);
-    }
-    if (ReverseForce != 0D) {
-      output.WriteRawTag(97);
-      output.WriteDouble(ReverseForce);
-    }
-    if (RunPower != 0D) {
-      output.WriteRawTag(105);
-      output.WriteDouble(RunPower);
-    }
-    if (RunSpeed != 0D) {
-      output.WriteRawTag(113);
-      output.WriteDouble(RunSpeed);
-    }
-    if (Distance != 0D) {
-      output.WriteRawTag(121);
-      output.WriteDouble(Distance);
+    if (DefatModeEnable != false) {
+      output.WriteRawTag(88);
+      output.WriteBool(DefatModeEnable);
     }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
@@ -3208,14 +3132,11 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (Uid.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Uid);
     }
+    if (DeviceType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DeviceType);
+    }
     if (ActivityType != 0) {
       size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ActivityType);
-    }
-    if (TrainMode != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TrainMode);
-    }
-    if (DefatModeEnable != false) {
-      size += 1 + 1;
     }
     if (SeatHeight != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(SeatHeight);
@@ -3226,29 +3147,20 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (LeverLength != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(LeverLength);
     }
+    if (LeverAngle != 0D) {
+      size += 1 + 8;
+    }
     if (ForwardLimit != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(ForwardLimit);
     }
     if (BackLimit != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(BackLimit);
     }
-    if (LeverAngle != 0D) {
-      size += 1 + 8;
+    if (TrainMode != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) TrainMode);
     }
-    if (ForwardForce != 0D) {
-      size += 1 + 8;
-    }
-    if (ReverseForce != 0D) {
-      size += 1 + 8;
-    }
-    if (RunPower != 0D) {
-      size += 1 + 8;
-    }
-    if (RunSpeed != 0D) {
-      size += 1 + 8;
-    }
-    if (Distance != 0D) {
-      size += 1 + 8;
+    if (DefatModeEnable != false) {
+      size += 1 + 1;
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -3264,14 +3176,11 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (other.Uid.Length != 0) {
       Uid = other.Uid;
     }
+    if (other.DeviceType != 0) {
+      DeviceType = other.DeviceType;
+    }
     if (other.ActivityType != 0) {
       ActivityType = other.ActivityType;
-    }
-    if (other.TrainMode != 0) {
-      TrainMode = other.TrainMode;
-    }
-    if (other.DefatModeEnable != false) {
-      DefatModeEnable = other.DefatModeEnable;
     }
     if (other.SeatHeight != 0) {
       SeatHeight = other.SeatHeight;
@@ -3282,29 +3191,20 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (other.LeverLength != 0) {
       LeverLength = other.LeverLength;
     }
+    if (other.LeverAngle != 0D) {
+      LeverAngle = other.LeverAngle;
+    }
     if (other.ForwardLimit != 0) {
       ForwardLimit = other.ForwardLimit;
     }
     if (other.BackLimit != 0) {
       BackLimit = other.BackLimit;
     }
-    if (other.LeverAngle != 0D) {
-      LeverAngle = other.LeverAngle;
+    if (other.TrainMode != 0) {
+      TrainMode = other.TrainMode;
     }
-    if (other.ForwardForce != 0D) {
-      ForwardForce = other.ForwardForce;
-    }
-    if (other.ReverseForce != 0D) {
-      ReverseForce = other.ReverseForce;
-    }
-    if (other.RunPower != 0D) {
-      RunPower = other.RunPower;
-    }
-    if (other.RunSpeed != 0D) {
-      RunSpeed = other.RunSpeed;
-    }
-    if (other.Distance != 0D) {
-      Distance = other.Distance;
+    if (other.DefatModeEnable != false) {
+      DefatModeEnable = other.DefatModeEnable;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -3322,27 +3222,27 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
           break;
         }
         case 16: {
-          activityType_ = (global::ActivityType) input.ReadEnum();
+          deviceType_ = (global::DeviceType) input.ReadEnum();
           break;
         }
         case 24: {
-          trainMode_ = (global::TrainMode) input.ReadEnum();
+          activityType_ = (global::ActivityType) input.ReadEnum();
           break;
         }
         case 32: {
-          DefatModeEnable = input.ReadBool();
-          break;
-        }
-        case 40: {
           SeatHeight = input.ReadInt32();
           break;
         }
-        case 48: {
+        case 40: {
           BackDistance = input.ReadInt32();
           break;
         }
-        case 56: {
+        case 48: {
           LeverLength = input.ReadInt32();
+          break;
+        }
+        case 57: {
+          LeverAngle = input.ReadDouble();
           break;
         }
         case 64: {
@@ -3353,28 +3253,12 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
           BackLimit = input.ReadInt32();
           break;
         }
-        case 81: {
-          LeverAngle = input.ReadDouble();
+        case 80: {
+          trainMode_ = (global::TrainMode) input.ReadEnum();
           break;
         }
-        case 89: {
-          ForwardForce = input.ReadDouble();
-          break;
-        }
-        case 97: {
-          ReverseForce = input.ReadDouble();
-          break;
-        }
-        case 105: {
-          RunPower = input.ReadDouble();
-          break;
-        }
-        case 113: {
-          RunSpeed = input.ReadDouble();
-          break;
-        }
-        case 121: {
-          Distance = input.ReadDouble();
+        case 88: {
+          DefatModeEnable = input.ReadBool();
           break;
         }
       }
