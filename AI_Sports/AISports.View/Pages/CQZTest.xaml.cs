@@ -43,7 +43,7 @@ namespace AI_Sports.AISports.View.Pages
             member.Role_id = 1;
             member.Member_firstName = "Avalon";
             member.Member_familyName = "Saber";
-            member.Sex = 1;
+            member.Sex = "1";
 
             int count = memberService.InsertMember(member);
             if (count > 0)

@@ -2,6 +2,7 @@
 // All Rights Reserved , Copyright (C) 2019 , Qust
 //--------------------------------------------------------------------
 
+using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,81 +26,52 @@ namespace AI_Sports.Entity
     /// </author>
     /// </summary>
     [Serializable]
+    [Table("bdl_personal_setting")]
     public class PersonalSettingEntity
     {
-        /// <summary>
-        /// 主键
-        /// </summary>
-        public int Id { get; set; }
-        /// <summary>
-        /// 外键会员id
-        /// </summary>
-        public int? Fk_member_id { get; set; }
-
-        /// <summary>
-        /// 座位高度
-        /// </summary>
-        public Decimal? Seat_height { get; set; }
-
-        /// <summary>
-        /// 靠背距离
-        /// </summary>
-        public Decimal? Backrest_distance { get; set; }
-
-        /// <summary>
-        /// 前方限制
-        /// </summary>
-        public Decimal? Front_limit { get; set; }
-
-        /// <summary>
-        /// 后方限制
-        /// </summary>
-        public Decimal? Back_limit { get; set; }
-
-        /// <summary>
-        /// 训练模式
-        /// </summary>
-        public String Training_mode { get; set; }
-
-        /// <summary>
-        /// 顺向力
-        /// </summary>
-        public int? Consequent_force { get; set; }
-
-        /// <summary>
-        /// 反向力
-        /// </summary>
-        public int? Reverse_force { get; set; }
-
-        /// <summary>
-        /// 功率
-        /// </summary>
-        public int? Power { get; set; }
-
-        /// <summary>
-        /// 训练活动名
-        /// </summary>
-        public String Fk_training_activity_name { get; set; }
-
-        /// <summary>
-        /// 设备编码
-        /// </summary>
-        public String Device_code { get; set; }
-
-        /// <summary>
+        /// 主键自增id
+        [ExplicitKey]
+        public long Id { get; set; }
+        public long Fk_member_id { get; set; }
+        public string Member_id { get; set; }
+        /// 训练活动id
+        public long Fk_training_activity_id { get; set; }
+        /// 训练活动类型编码
+        public string Activity_type { get; set; }
+        /// 设备名
+        public string Device_code { get; set; }
         /// 设备序号
-        /// </summary>
         public int? Device_order_number { get; set; }
-
+        /// 训练模式
+        public string Training_mode { get; set; }
+        /// 座位高度cm
+        public int? Seat_height { get; set; }
+        /// 靠背距离cm
+        public int? Backrest_distance { get; set; }
+        /// 前方限制cm
+        public int? Front_limit { get; set; }
+        /// 后方限制cm
+        public int? Back_limit { get; set; }
+        /// 顺向力
+        public double? Consequent_force { get; set; }
+        /// 反向力
+        public double? Reverse_force { get; set; }
+        /// 功率
+        public double? Power { get; set; }
         /// <summary>
+        /// 杠杆长度 cm
+        /// </summary>
+        public int? Lever_length { get; set; }
+        /// <summary>
+        /// 杠杆角度
+        /// </summary>
+        public double? Lever_angle { get; set; }
+        /// <summary>
+        /// 扩展字段
+        /// </summary>
+        public string Extra_setting { get; set; }
         /// 创建时间
-        /// </summary>
         public DateTime? Gmt_create { get; set; }
-
-        /// <summary>
-        /// gmt_modified
-        /// </summary>
         public DateTime? Gmt_modified { get; set; }
-
     }
 }

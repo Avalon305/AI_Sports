@@ -35,7 +35,8 @@ namespace AI_Sports.Entity
         /// <summary>
         /// 主键
         /// </summary>
-        public int Id { get; set; }
+        [ExplicitKey]
+        public long Id { get; set; }
 
         /// <summary>
         /// 用户名
