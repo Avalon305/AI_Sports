@@ -1,0 +1,127 @@
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.Admin" 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="admin">
+    <Page.Resources>
+        <!--按键内图标-->
+        <Style BasedOn="{StaticResource glyphicon}" TargetType="{x:Type Path}">
+            <Setter Property="Margin" Value="0,15"></Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--左侧导航栏-->
+        <Grid Grid.Column="0" HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="auto" Background="#FF04243D">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Logo部分-->
+            <Grid Height="auto">
+                <Image Source="/AI_Sports;component/AISports.View/Images/logodark.jpg" HorizontalAlignment="Center" Height="74" VerticalAlignment="Top" Width="213"/>
+            </Grid>
+            <!--按钮部分-->
+            <Grid Grid.Row="1">
+                <!--个人信息按钮-->
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,0,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="24" FontFamily="Microsoft YaHei Light" x:Name="btn1" Click="Btn1_Click" Panel.ZIndex="1">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock x:Name="familyName" Margin="37,34,0,34" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+                            <Image x:Name="headphoto" Source="/AI_Sports;component/AISports.View/Images/photo.png" Height="80" Width="80" Margin="0,10,12,10" HorizontalAlignment="Right" Stretch="UniformToFill" >
+                                <Image.OpacityMask>
+                                    <ImageBrush ImageSource="/AI_Sports;component/AISports.View/Images/photo.png" TileMode="Tile" Stretch="Uniform">
+                                        <ImageBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                                                <TranslateTransform X="10"/>
+                                            </TransformGroup>
+                                        </ImageBrush.RelativeTransform>
+                                    </ImageBrush>
+                                </Image.OpacityMask>
+                            </Image>
+                            <Ellipse HorizontalAlignment="Left" Height="80" Margin="133,10,0,0" VerticalAlignment="Top" Width="80" Stroke="#FF04243D"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <!--图表分析按钮-->
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,105,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn2" Click="Btn2_Click" BorderBrush="{x:Null}" Panel.ZIndex="5">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-stats}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="68,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="图表分析"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <!--会员管理按钮-->
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,210,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn3" Click="Btn3_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-user}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="67,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="会员管理"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <!--控制面板按钮-->
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,315,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn4" Click="Btn4_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-cog}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="67,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="控制面板"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <Rectangle Visibility="Visible" Fill="#FFF6D600" HorizontalAlignment="Left" Height="1080" Margin="0,0,0,0" VerticalAlignment="Top" Width="10" Grid.RowSpan="2"/>
+                <!--<Rectangle Visibility="Visible" Fill="#FFD1D1D1" HorizontalAlignment="Right" Height="1080" Margin="0,-24,0,0" VerticalAlignment="Top" Width="3"/>-->
+            </Grid>
+        </Grid>
+        <!--右侧导航栏-->
+        <Grid Grid.Column="2" HorizontalAlignment="Right" Height="auto" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Background="#FF04243D">
+            <!--退出登录按钮-->
+            <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="6,0,0,0" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" x:Name="logoutbtn" Click="Logout">
+                <Button.Content>
+                    <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-log-out}" Width="20" Height="20" Fill="White"></Path>
+                        <TextBlock Margin="60,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="退出登录"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <!--发卡按钮-->
+            <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="6,105,0,0" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}">
+                <Button.Content>
+                    <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-credit-card}" Width="20" Height="20" Fill="White"></Path>
+                        <TextBlock Margin="60,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="发卡按钮"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <!--3D扫描按钮-->
+            <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="6,210,0,0" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}">
+                <Button.Content>
+                    <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-camera}" Width="20" Height="20" Fill="White"></Path>
+                        <TextBlock Margin="60,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="3 D 扫描"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <!--<Rectangle Visibility="Visible" Fill="#FFD1D1D1" HorizontalAlignment="Left" Height="1080" Margin="0,0,0,0" VerticalAlignment="Top" Width="3"/>-->
+            <Rectangle Visibility="Visible" Fill="#FFF6D600" HorizontalAlignment="Right" Height="1080" Margin="0,0,0,0" VerticalAlignment="Top" Width="10"/>
+        </Grid>
+        <!--中间内容区-->
+        <Frame Grid.Column="1" x:Name="contentpage" Width="1493.3" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="True" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>
+<!-- Source="Welcome_first.xaml"-->

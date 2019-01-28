@@ -13,41 +13,50 @@ namespace AI_Sports.Service
     class TrainingPlanService
     {
         private TrainingPlanDAO trainingPlanDAO = new TrainingPlanDAO();
+        private TrainingCourseDAO trainingCourseDAO = new TrainingCourseDAO();
+        private ActivityDAO activityDAO = new ActivityDAO();
         /// <summary>
         /// 添加新的训练计划，需要先删除旧的训练计划
         /// </summary>
         /// <param name="trainingPlan"></param>
         /// <returns></returns>
-        public string SaveNewTrainingPlan(TrainingPlanEntity trainingPlan)
+        public long SaveNewTrainingPlan(TrainingPlanEntity trainingPlan)
         {
             //使整个代码块成为事务性代码
             using (TransactionScope ts = new TransactionScope())
             {
-                string result = null;
+                long result;
+                //会员卡号ID
                 string memberId = CommUtil.GetSettingString("memberId");
                 //1.删除旧的训练计划
-                if (trainingPlanDAO.DeletePlanByMemberId(memberId) == 1)
-                {
-                    //2.新增训练计划
-                    if (trainingPlanDAO.SaveTrainingPlan(trainingPlan) == 1)
-                    {
-                        result = "新增训练计划成功";
-                    }
-                    else
-                    {
-                        result = "新增训练计划失败";
-                    }
-
-
-                }
-                else
-                {
-                    result = "删除旧训练计划失败";
-                }
+                trainingPlanDAO.DeletePlanByMemberId(memberId);
+                //2.完成旧的训练课程
+                trainingCourseDAO.UpdateCompleteState(memberId, true);
+                //3.完成旧的训练活动
+                activityDAO.UpdateCompleteState(memberId, true);
+                //4.新增训练计划
+                trainingPlan.Id = KeyGenerator.GetNextKeyValueLong("bdl_training_plan");
+                //  从app.config中取id,转成int赋值
+                trainingPlan.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
+                //  设置会员卡号
+                trainingPlan.Member_id = CommUtil.GetSettingString("memberId");
+                //  插入
+                result = trainingPlanDAO.Insert(trainingPlan);
+                //5.更新App.config中训练计划id
+                CommUtil.UpdateSettingString("trainingPlanId", (trainingPlan.Id).ToString());
                 ts.Complete();
                 return result;
             }
 
+        }
+        /// <summary>
+        /// 根据当前登陆会员 获得其训练计划
+        /// </summary>
+        /// <returns></returns>
+        public TrainingPlanEntity GetPlanByMumberId()
+        {
+            string memberId = CommUtil.GetSettingString("memberId");
+            return trainingPlanDAO.GetTrainingPlanByMumberId(memberId);
         }
     }
 }

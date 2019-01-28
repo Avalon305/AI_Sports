@@ -20,29 +20,29 @@ namespace AI_Sports.Dao
         /// </summary>
         /// <param name="memberEntity"></param>
         /// <returns></returns>
-        public int InsertMember(MemberEntity memberEntity)
-        {
-            using (var conn = DbUtil.getConn())
-            {
-                const string insert = "INSERT INTO bdl_member (`member_firstName`, `member_familyName`, `birth_date`, `sex`, `address`, `email_address`, `work_phone`, `personal_phone`, `mobile_phone`, `weight`, `height`, `age`, `max_heart_rate`, `suitable_heart_rate`, `role_id`, `fk_coach_id`, `label_name`, `remark`) VALUES (@Member_firstName, @Member_familyName, @Birth_date, @Sex, @Address, @Email_address, @Work_phone, @Personal_phone, @Mobile_phone, @Weight, @Height, @Age, @Max_heart_rate, @Suitable_heart_rate, @Role_id, @Fk_coach_id, @Label_name, @Remark)";
+        //public int InsertMember(MemberEntity memberEntity)
+        //{
+        //    using (var conn = DbUtil.getConn())
+        //    {
+        //        const string insert = "INSERT INTO bdl_member (`member_firstName`, `member_familyName`, `birth_date`, `sex`, `address`, `email_address`, `work_phone`, `personal_phone`, `mobile_phone`, `weight`, `height`, `age`, `max_heart_rate`, `suitable_heart_rate`, `role_id`, `fk_coach_id`, `label_name`, `remark`) VALUES (@Member_firstName, @Member_familyName, @Birth_date, @Sex, @Address, @Email_address, @Work_phone, @Personal_phone, @Mobile_phone, @Weight, @Height, @Age, @Max_heart_rate, @Suitable_heart_rate, @Role_id, @Fk_coach_id, @Label_name, @Remark)";
 
-                return conn.Execute(insert, memberEntity);
+        //        return conn.Execute(insert, memberEntity);
 
-            }
-        }
+        //    }
+        //}
 
         /// <summary>
         /// 根据会员ID更新减脂模式是否开启
         /// </summary>
         /// <param name="memberId"></param>
         /// <param name="enable"></param>
-        public void UpdateDeFatState(string memberId,bool enable)
+        public void UpdateDeFatState(string memberId, bool enable)
         {
             using (var conn = DbUtil.getConn())
             {
                 const string sql = "update bdl_member set is_open_fat_reduction = @DefatEnable where member_id = @MemberId";
 
-                  conn.Execute(sql, new { DefatEnable=enable, MemberId=memberId });
+                conn.Execute(sql, new { DefatEnable = enable, MemberId = memberId });
 
             }
         }
@@ -87,7 +87,7 @@ namespace AI_Sports.Dao
             }
         }
 
-      
+
     }
 
 

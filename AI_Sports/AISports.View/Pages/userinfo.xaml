@@ -1,0 +1,99 @@
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.userinfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="userinfo"
+      Background="White">
+    <Page.Resources>
+        <Color x:Key="Color">#04243d</Color>
+    </Page.Resources>
+    <Grid Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="85*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Width="auto">
+                <Image x:Name="headphoto" Source="/AI_Sports;component/AISports.View/Images/defaultphoto.png" HorizontalAlignment="Left"  Margin="10,10,0,10">
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource= "/AI_Sports;component/AISports.View/Images/defaultphoto.png" TileMode="Tile" Stretch="Uniform">
+                        </ImageBrush>
+                    </Image.OpacityMask>
+                </Image>
+            </Grid>
+            <Grid Grid.Column="1" Width="auto">
+                <Label x:Name="familyName" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="10,20,0,0" Foreground="#04243D"  FontSize="36" FontFamily="Microsoft YaHei" ></Label>
+                <Label x:Name="lastTime" Content="上次登录时间：" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,10,0,0" Foreground="#04243D"  FontSize="22" FontFamily="Microsoft YaHei" ></Label>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <ContentControl Style="{StaticResource panel-default}" HorizontalAlignment="Left" Margin="0,0,0,0" Height="auto" Width="960">
+                    <StackPanel Width="1500">
+
+                        <ContentControl Style="{StaticResource panel-heading-primary}" Content="地址信息" FontFamily="Microsoft YaHei" Background="#FF04243D" Height="50" FontSize="22"/>
+                        <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
+                            <ContentControl x:Name="addressInfo" Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="尚未提供地址信息" Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
+                        </ContentControl>
+
+                        <ContentControl Style="{StaticResource panel-heading-primary}" Content="身体信息" FontFamily="Microsoft YaHei" Background="#04243D" Height="50" FontSize="22"/>
+                        <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
+                            <ContentControl x:Name="weightInfo" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Content="重量： " Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
+                        </ContentControl>
+
+                        <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
+                            <ContentControl x:Name="heightInfo" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Content="身高： " Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
+                        </ContentControl>
+
+                        <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
+                            <ContentControl x:Name="heartRate" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Content="最大心率： " Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
+                        </ContentControl>
+
+                    </StackPanel>
+                </ContentControl>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ContentControl Style="{StaticResource panel-default}" Margin="0" Height="auto" Width="960">
+                    <StackPanel>
+                        <StackPanel Width="1500">
+
+                            <ContentControl Style="{StaticResource panel-heading-primary}" Content="出生日期" FontFamily="Microsoft YaHei" Background="#FF04243D"  Height="50" FontSize="22"/>
+                            <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
+                                <ContentControl x:Name="birthInfo"  Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="尚未提供出生日期信息" Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
+                            </ContentControl>
+
+                            <ContentControl Style="{StaticResource panel-heading-primary}" Content="联系数据" FontFamily="Microsoft YaHei" Background="#FF04243D"  Height="50" FontSize="22"/>
+                            <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
+                                <ContentControl x:Name="mailBox" Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="邮箱： " Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
+                            </ContentControl>
+
+                            <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
+                                <ContentControl x:Name="workPhone" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Content="工作电话： " Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
+                            </ContentControl>
+
+                            <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
+                                <ContentControl x:Name="phoneNumber" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Content="手机号码： " Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
+                            </ContentControl>
+
+                        </StackPanel>
+
+                    </StackPanel>
+                </ContentControl>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>

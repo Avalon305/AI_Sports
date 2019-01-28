@@ -45,7 +45,7 @@ namespace AI_Sports.AISports.View.Pages
             member.Member_familyName = "Saber";
             member.Sex = "1";
 
-            int count = memberService.InsertMember(member);
+            long count = memberService.InsertMember(member);
             if (count > 0)
             {
                 Console.WriteLine("增加会员成功");

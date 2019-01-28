@@ -1,0 +1,60 @@
+﻿<Page x:Class="AI_Sports.Welcome_first"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="Welcome_first">
+    <Page.Resources>
+        <!--官网蓝-->
+        <Color x:Key="Color1">#FF04243D</Color>
+        <!--官网黄-->
+        <Color x:Key="Color2">#FFF6D600</Color>
+    </Page.Resources>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image Margin="0,0,0,0" Source="/AI_Sports;component/AISports.View/Images/background_Login.jpg" Stretch="Fill"/>
+        </Grid>
+        <Grid>
+            <Rectangle HorizontalAlignment="Left" Height="115" VerticalAlignment="Top" Width="1920">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="{DynamicResource Color1}"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Left" Height="115" VerticalAlignment="Bottom" Width="1920">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="{DynamicResource Color1}"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Left" Height="10" Margin="0,110,0,0" VerticalAlignment="Top" Width="1920">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="{DynamicResource Color2}"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle HorizontalAlignment="Left" Height="10" Margin="0,0,0,110" VerticalAlignment="Bottom" Width="1920">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="{DynamicResource Color2}"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Image Margin="0,140,1300,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="86" Width="232" Source="/AI_Sports;component/AISports.View/Images/logotrans.png" Stretch="Fill"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,0,100,0" TextWrapping="Wrap" Text="欢迎使用宝德龙智能健身系统" VerticalAlignment="Center" Width="940" Height="98" FontSize="72" TextDecorations="{x:Null}" RenderTransformOrigin="0.5,0.5" FontFamily="Microsoft YaHei Light">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="#FFFFF8F8" Opacity="0.45"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <ProgressBar Style="{DynamicResource progress-bar}" Value="100" HorizontalAlignment="Center" Height="55" Margin="0,0,0,130" VerticalAlignment="Bottom" Width="227" Background="#FF272727" Foreground="{x:Null}" FontSize="6">
+                <ProgressBar.OpacityMask>
+                    <ImageBrush ImageSource="/AI_Sports;component/AISports.View/Images/text3.png" Stretch="Uniform"/>
+                </ProgressBar.OpacityMask>
+            </ProgressBar>
+        </Grid>
+    </Grid>
+</Page>
