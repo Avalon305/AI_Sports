@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AI_Sports.Entity;
+using AI_Sports.Service;
+using AI_Sports.Util;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AI_Sports.Constant;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -30,15 +34,30 @@ namespace AI_Sports.AISports.View.Pages
 			completeFlag.flag = 1;
 			trainingPlanGroup = new ObservableCollection<TrainingPlan>();
 		}
-		public void AddThreePlans()
+		public void AddThreePlans(List<ActivityEntity> activityList)
 		{
-			trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = "TrainingA" });
-			trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = "TrainingB" });
-			trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = "TrainingC" });
-		}
-	}
+            foreach (var activity in activityList)
+            {
+                switch (activity.Activity_type)
+                {
+                    case "0":
+                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量循环.ToString() + "(" + activity.Target_turn_number +"轮次)"});
+                        break;
+                    case "1":
+                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量耐力循环.ToString() + "(" + activity.Target_turn_number + "轮次)" });
+                        break;
 
-	class CompleteFlag //训练完成标志
+                    default:
+                        break;
+
+                }
+                
+            }
+
+        }
+    }
+
+    class CompleteFlag //训练完成标志
 	{
 		public int flag { get; set; }
 	}
@@ -52,19 +71,31 @@ namespace AI_Sports.AISports.View.Pages
 		public TrainingProgram()
 		{
 			InitializeComponent();
-			String[] text = { "未完成", "持续进行" };
-			if (viewModel.completeFlag.flag == 0)
+
+           
+            TrainingPlanService trainingPlanService = new TrainingPlanService();
+            TrainingActivityService activityService = new TrainingActivityService();
+            //查询训练计划
+            TrainingPlanEntity trainingPlanEntity = trainingPlanService.GetPlanByMumberId();
+            //计划标题
+            this.lable_planName.Content += trainingPlanEntity.Title; 
+
+            String[] text = { "已完成", "持续进行" };
+			if (trainingPlanEntity.Is_deleted == true)
 			{
 				this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[0] });
 			}
-			else
+			else if(trainingPlanEntity.Is_deleted == false)
 			{
 				this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[1] });
 			}
-			//集合数据绑定
-			this.listBox.ItemsSource = viewModel.trainingPlanGroup;
-			//添加数据
-			viewModel.AddThreePlans();
-		}
+            //加载训练活动
+            List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
+            //添加数据
+            viewModel.AddThreePlans(activityList);
+            //集合数据绑定
+            this.listBox.ItemsSource = viewModel.trainingPlanGroup;
+            
+        }
 	}
 }

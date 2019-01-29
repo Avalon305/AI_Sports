@@ -23,5 +23,13 @@ namespace AI_Sports.Service
             }
             return activityDAO.BatchInsert(activities);
         }
+        /// <summary>
+        /// 根据训练课程ID查询出对应的训练活动
+        /// </summary>
+        /// <returns></returns>
+        public List<ActivityEntity> ListActivitysByCourseId()
+        {
+            return activityDAO.ListActivitysByCourseId(ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId")));
+        }
     }
 }

@@ -10,7 +10,7 @@
 
     <Grid>
         <StackPanel Margin="20">
-            <Label Content="训练计划：StrengthEnduranceAndStrength" Foreground="#04243D" Style="{DynamicResource h1}" FontSize="50"></Label>
+            <Label Content="训练计划：" Name="lable_planName" Foreground="#04243D" Style="{DynamicResource h1}" FontSize="50"></Label>
             <Label Content="在此可以详细了解您当前的训练" Style="{DynamicResource h1 small}"></Label>
             <WrapPanel Margin="0, 10,10,10">
                 <Label  Content="持续时间：" FontFamily="yahei" FontSize="25"></Label>

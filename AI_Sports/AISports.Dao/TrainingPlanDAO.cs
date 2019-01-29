@@ -53,7 +53,7 @@ namespace AI_Sports.Dao
             using (var conn = DbUtil.getConn())
             {
                 const string query = "SELECT bdl_training_plan.id,bdl_training_plan.fk_member_id,bdl_training_plan.member_id,bdl_training_plan.title,bdl_training_plan.start_date,bdl_training_plan.training_target,bdl_training_plan.is_deleted,bdl_training_plan.gmt_create,bdl_training_plan.gmt_modified FROM bdl_training_plan WHERE is_deleted = 0 AND member_id = @Member_id";
-                return conn.QueryFirstOrDefault(query, new { Member_id = memberId });
+                return conn.QueryFirstOrDefault<TrainingPlanEntity>(query, new { Member_id = memberId });
             }
         }
     }

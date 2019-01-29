@@ -41,9 +41,9 @@
                     <Button.Content>
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Margin="30,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="新用户"/>
-                            <Image  Source="/AI_Sports;component/AISports.View/Images/defaultphoto.png" Height="80" Width="80" Margin="0,10,13,10" HorizontalAlignment="Right" Stretch="UniformToFill" >
+                            <Image  Source="/AI_Sports;component/AISports.View/Images/photo.png" Height="80" Width="80" Margin="0,10,13,10" HorizontalAlignment="Right" Stretch="UniformToFill" >
                                 <Image.OpacityMask>
-                                    <ImageBrush ImageSource="/AI_Sports;component/AISports.View/Images/defaultphoto.png" TileMode="Tile" Stretch="Uniform">
+                                    <ImageBrush ImageSource="/AI_Sports;component/AISports.View/Images/photo.png" TileMode="Tile" Stretch="Uniform">
                                         <ImageBrush.RelativeTransform>
                                             <TransformGroup>
                                                 <ScaleTransform CenterY="0.5" CenterX="0.5"/>

@@ -122,6 +122,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AISports.View\Pages\MemberInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\MTK.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="input1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -167,10 +175,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AISports.View\Pages\userinfo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AISports.View\Pages\Welcome.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -226,6 +230,12 @@
     <Compile Include="AISports.Util\KeyGenerator.cs" />
     <Compile Include="AISports.Util\ParseIntegerUtil.cs" />
     <Compile Include="AISports.Util\DbUtil.cs" />
+    <Compile Include="AISports.View\Pages\MemberInfo.xaml.cs">
+      <DependentUpon>MemberInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\MTK.xaml.cs">
+      <DependentUpon>MTK.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AISports.View\Pages\UserManage.xaml.cs">
       <DependentUpon>UserManage.xaml</DependentUpon>
     </Compile>
@@ -258,9 +268,6 @@
     </Compile>
     <Compile Include="AISports.View\Pages\userinfo.xaml.cs">
       <DependentUpon>userinfo.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AISports.View\Pages\Welcome.xaml.cs">
-      <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\Welcome_first.xaml.cs">
       <DependentUpon>Welcome_first.xaml</DependentUpon>

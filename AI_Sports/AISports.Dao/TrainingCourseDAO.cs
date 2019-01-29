@@ -35,8 +35,8 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT * FROM bdl_training_course JOIN bdl_training_plan ON bdl_training_course.fk_training_plan_id = bdl_training_plan.id WHERE bdl_training_plan.is_deleted = 0 AND bdl_training_course.is_complete = 0 AND bdl_training_course.member_id = @Member_id";
-                return conn.QueryFirstOrDefault(query, new { Member_id = memberId });
+                const string query = "SELECT 	bdl_training_course.id,bdl_training_course.member_id,	bdl_training_course.fk_training_plan_id,	bdl_training_course.rest_days,	bdl_training_course.target_course_count,	bdl_training_course.current_course_count,	bdl_training_course.start_date,	bdl_training_course.end_date,	bdl_training_course.current_end_date,	bdl_training_course.is_complete,	bdl_training_course.gmt_create,	bdl_training_course.gmt_modified FROM bdl_training_course JOIN bdl_training_plan ON bdl_training_course.fk_training_plan_id = bdl_training_plan.id WHERE bdl_training_plan.is_deleted = 0 AND bdl_training_course.is_complete = 0 AND bdl_training_course.member_id = @Member_id";
+                return conn.QueryFirstOrDefault<TrainingCourseEntity>(query, new { Member_id = memberId });
             }
         }
     }

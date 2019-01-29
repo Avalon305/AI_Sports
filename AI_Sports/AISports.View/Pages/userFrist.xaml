@@ -8,24 +8,24 @@
 	Title="userFrist"
     Background="White"  >
     <Page.Resources>
-      
+
     </Page.Resources>
     <Grid>
         <StackPanel>
             <Label Content="当前状态" Margin="10 0 0 0" Style="{DynamicResource h1}"/>
-            <ProgressBar Value="{Binding ElementName=FINISH , Path=Content}" Style="{DynamicResource progress-bar-success}" Margin="0,0,185,0" ></ProgressBar>
-            <Button   Content="前往训练计划" Style="{DynamicResource btn-primary}"   HorizontalAlignment="Right" Margin="5"/>
+            <ProgressBar Value="{Binding Content, ElementName=progess}" Name="progressBar" Height="25px" Style="{DynamicResource progress-bar-success}" Margin="10,0,250,10" />
+            <Button   Content="前往训练计划" Style="{DynamicResource btn-primary}"   HorizontalAlignment="Left" Margin="10,5,5,5" RenderTransformOrigin="0.341,-0.515"/>
             <WrapPanel Margin="10 0 0 0">
-                <Button Style="{DynamicResource btn-success}" Height="14" Width="14"   />
-                <Label Content="进程" Style="{DynamicResource h5}" />
-                <Label Content=" 训练课程已经完成                                                                         "   Style="{DynamicResource h5}"  Margin="20"/>
-                <Label Name="FINISH"  Content="80" Style="{DynamicResource h5}"></Label>
-                <Label Content="%" Style="{DynamicResource h5}" />
+                <Button Style="{DynamicResource btn-success}" Height="20" Width="20" Click="Button_Click"/>
+                <Label Content="进程" Style="{DynamicResource h3}" />
+                <ContentControl x:Name="Jincheng" Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="训练课程已完成" Width="1000" FontFamily="Microsoft YaHei" FontSize="22"/>
+                <ContentControl x:Name="JinchengJindu" Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="" Width="100" FontFamily="Microsoft YaHei" FontSize="22"/>
             </WrapPanel>
             <WrapPanel Margin="10 0 0 0">
-                <Button Style="{DynamicResource btn-primary}" Height="14" Width="14"   />
-                <Label Content="目标" Style="{DynamicResource h5}" />
-                <Label Content="  训练课程已经完成                                                                         0%" Style="{DynamicResource h5}"  Margin="20"/>
+                <Button Style="{DynamicResource btn-primary}" Height="20" Width="20"   />
+                <Label Content="目标" Style="{DynamicResource h3}" />
+                <ContentControl x:Name="Mubiao" Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="训练计划已完成" Width="1000" FontFamily="Microsoft YaHei" FontSize="22"/>
+                <ContentControl x:Name="MubiaoJindu" Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="" Width="100" FontFamily="Microsoft YaHei" FontSize="22"/>
             </WrapPanel>
 
 
