@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using AI_Sports.Entity;
+using AI_Sports.Service;
+using AI_Sports.Util;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -27,18 +30,25 @@ namespace AI_Sports.AISports.View.Pages
             /**
              * 以下为变量赋值，如果数据库中某一内容为null，就请赋值给对应变量为null
              **/
-            string photopath = "/AI_Sports;component/AISports.View/Images/photo.jpg";  //头像路径(这里可能会有很多问题)
+            string photopath = "/AI_Sports;component/AISports.View/Images/photo.png";  //头像路径(这里可能会有很多问题)
             //string photopath = null;
-            int sex = 1;                             //性别
-            string member_familyName = "陈";         //member_familyName是数据库中姓氏的字段
-            string address = "青岛市崂山区朱家洼村"; //住址
-            string email_address = "10000000@qq.com";//邮箱地址
-            string work_phone = "1000000001";        //工作电话
-            string birth_date = "1995年12月6日";     //出生日期
-            string mobile_phone = "1000000003";      //手机号码
-            int weight = 80;                         //体重（kg）
-            int height = 180;                        //身高 (cm)
-            int max_heart_rate = 190;                //最大心率
+            //查询当前登陆会员
+            MemberService memberService = new MemberService();
+            //测试用户ID
+            //CommUtil.UpdateSettingString("memberId","305865088");
+            MemberEntity member = memberService.GetMember(CommUtil.GetSettingString("memberId"));
+
+            string sex = member.Sex;                             //性别
+            string member_familyName = member.Member_familyName;         //member_familyName是数据库中姓氏的字段
+            string member_firstName = member.Member_firstName;
+            string address = member.Address; //住址
+            string email_address = member.Email_address;//邮箱地址
+            string work_phone = member.Work_phone;        //工作电话
+            string birth_date = member.Birth_date.ToString();     //出生日期
+            string mobile_phone = member.Mobile_phone;      //手机号码
+            double? weight = member.Weight;                         //体重（kg）
+            double? height = member.Height;                        //身高 (cm)
+            int? max_heart_rate = member.Max_heart_rate;                //最大心率
             string lastlogin = "2018年1月23日";       //上次登录时间
 
             if (lastlogin != null)
@@ -57,14 +67,9 @@ namespace AI_Sports.AISports.View.Pages
             }
             //Style myStyle = (Style)this.FindResource("{DynamicResource h4}");//TabItemStyle 这个样式是引用的资源文件中的样式名称
             //this.familyName.Style = Style;
-            if (sex == 1)
+            if ((member_familyName != null || member_familyName !="")&(member_firstName != null || member_firstName != ""))
             {
-                this.familyName.Content = member_familyName + " 先生";
-            }
-            else
-                if (sex == 0)
-            {
-                this.familyName.Content = member_familyName + " 女士";
+                this.familyName.Content = member_familyName + member_firstName;
             }
             else
                 this.familyName.Content = "未登录";

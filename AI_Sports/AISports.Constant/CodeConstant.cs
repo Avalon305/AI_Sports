@@ -25,4 +25,19 @@ namespace AI_Sports.Constant
         DeviceType,
        
     }
+
+    public enum CycleTypeEnum 
+    {
+        力量循环 = 0,
+        力量耐力循环 = 1,
+    }
+
+    public enum TrainModeEnum : byte
+    {
+        标准模式 = 0,
+        适应性模式 = 1,
+        等速模式 = 2,
+        心率模式 = 3,
+        增肌模式 = 4
+    }
 }

@@ -1,0 +1,105 @@
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.MemberInfo"
+      
+
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080"
+      Title="MemberInfo" Width="1920">
+    <Grid Background="White">
+
+        <Grid Background="White" Height="170" VerticalAlignment="Top" Margin="0,20">
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="187*"></ColumnDefinition>
+                <ColumnDefinition Width="413*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Image  Source="/AI_Sports;component/AISports.View/Images/photo.png" Height="130" Width="130" HorizontalAlignment="Left" Stretch="UniformToFill" VerticalAlignment="Top" Grid.RowSpan="7" />
+            <Label  Margin="154,0,0,0" Content="{Binding Name}" Name="Name" Height="58" VerticalAlignment="Top" HorizontalAlignment="Left" Width="136" Grid.RowSpan="3" Style="{DynamicResource h1}"/>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,20.6,8.4,20.6" Grid.RowSpan="3" >
+                <!--<Border Background="LightYellow" CornerRadius="3" Width="10" Height="10" Margin="155,0,5,0"></Border>
+                <Border Background="LightGreen" CornerRadius="3" Width="10" Height="10" Margin="5,0"></Border>
+                <Border Background="DarkRed" CornerRadius="3" Width="10" Height="10" Margin="5,0" ></Border>-->
+                <!--名字下面的多颜色正方形-->
+
+            </StackPanel>
+
+            <Label Content="关联教练" Margin="154,50,0,0"   FontFamily="微软雅黑" FontSize="22px"  Grid.RowSpan="4"  />
+            <Label  Margin="0,50,0,0" Grid.Column="1"  Name="L1"  FontFamily="微软雅黑" FontSize="22px" Content="{Binding Path=Coach}" Grid.RowSpan="4" ></Label>
+            <Label Content="初次训练日期"  Margin="154,80,0,0"  FontFamily="微软雅黑" FontSize="22px"  Grid.RowSpan="5" />
+            <Label  Margin="0,80,0,0" Grid.Column="1"  Name="L2"  FontFamily="微软雅黑" FontSize="22px" Content="{Binding Path=FirstTime}" Grid.RowSpan="5"></Label>
+            <Label Content="上次训练日期" Margin="154,110,0,0"   FontFamily="微软雅黑" FontSize="22px" Grid.RowSpan="7"/>
+            <Label Margin="0,110,0,0" Grid.Column="1"   Name="L3"  FontFamily="微软雅黑" FontSize="22px"  Content="{Binding Path=LastTime}" Grid.RowSpan="7"></Label>
+
+        </Grid>
+        <!--个人信息-->
+        <Grid Background="White" Margin="0,189,0,460">
+            <StackPanel Orientation="Vertical" Height="Auto" Width="Auto">
+                <Label Content="用户群"  Margin="0" Style="{DynamicResource h3}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Border Background="Yellow" CornerRadius="3" Width="10" Height="10" Margin="10,0,5,0"></Border>
+                    <Label  Width="150" Height="50" Content="增肌" Name="runtimes1"  VerticalContentAlignment="Center" Margin="0,0" FontFamily="微软雅黑" FontSize="22px" ></Label>
+                    <Border Background="Red" CornerRadius="3" Width="10" Height="10" Margin="10,0,5,0"></Border>
+                    <Label  Width="150" Height="50" Content="减脂" Name="runtimes2"  VerticalContentAlignment="Center" Margin="0,0" FontFamily="微软雅黑" FontSize="22px" ></Label>
+                    <Border Background="Blue" CornerRadius="3" Width="10" Height="10" Margin="10,0,5,0"></Border>
+                    <Label  Width="150" Height="50" Content="塑形" Name="runtimes3"  VerticalContentAlignment="Center" Margin="0,0"  FontFamily="微软雅黑" FontSize="22px"></Label>
+                    <Border Background="Green" CornerRadius="3" Width="10" Height="10" Margin="10,0,5,0"></Border>
+                    <Label  Width="150" Height="50" Content="康复" Name="runtimes4" VerticalContentAlignment="Center" Margin="0,0"  FontFamily="微软雅黑" FontSize="22px" ></Label>
+                </StackPanel>
+            </StackPanel>
+
+
+        </Grid>
+        <!--用户群-->
+        <Grid Background="White" Margin="0,310,0,180">
+            <StackPanel>
+                <Label Content="当前状态" Margin="0 0 0 0" Style="{DynamicResource h3}"/>
+                <ProgressBar Value="{Binding Content, ElementName=FINISH}" Style="{DynamicResource progress-bar-success}" Margin="0,0,185,0" />
+                <WrapPanel Margin="10 0 0 0">
+                    <Button Style="{DynamicResource btn-success}" Height="14" Width="14"   />
+                    <Label Content="进程" FontFamily="微软雅黑" FontSize="22px" VerticalContentAlignment="Center" />
+                    <Label Content=" 训练课程已经完成                                                                         "   FontFamily="微软雅黑" FontSize="22px" Margin="20"/>
+                    <Label Name="FINISH"  Content="50" FontFamily="微软雅黑" FontSize="22px" VerticalContentAlignment="Center"></Label>
+                    <Label Content="%" FontFamily="微软雅黑" FontSize="22px" VerticalContentAlignment="Center" />
+                </WrapPanel>
+                <WrapPanel Margin="10 0 0 0">
+                    <Button Style="{DynamicResource btn-primary}" Height="14" Width="14"   />
+                    <Label Content="目标" FontFamily="微软雅黑" FontSize="22px" VerticalContentAlignment="Center" />
+                    <Label Content=" 训练课程已经完成                                                                         " FontFamily="微软雅黑" FontSize="22px" Margin="20"/>
+                    <Label Content="0" Name="GOLD" FontFamily="微软雅黑" FontSize="22px" VerticalContentAlignment="Center"></Label>
+                    <Label Content="%" FontFamily="微软雅黑" FontSize="22px" VerticalContentAlignment="Center"></Label>
+                </WrapPanel>
+                <Button   Content="前往训练计划" Style="{DynamicResource btn-primary}"   HorizontalAlignment="Left" Margin="10,25,5,5"/>
+            </StackPanel>
+        </Grid>
+        <!--当前状态-->
+        <Grid Margin="0,570,0,50" Background="White"  >
+            <Label Content="身份识别卡" Style="{DynamicResource h3}" Margin="0"/>
+            <Label Name="x1" Content="用户在此需要进行身份验证" FontSize="22px" FontFamily="微软雅黑" VerticalContentAlignment="Center" Height="30" Margin="0,5,0,10"  Background="WhiteSmoke"/>
+            <Border Name="x2" Background="WhiteSmoke" CornerRadius="3" Height="100" Margin="10,0,990,0">
+                <StackPanel Height="100">
+                    <Label Name="x3" Height="45" Margin="5" Content="{Binding Path=Score1}" VerticalContentAlignment="Center"  FontFamily="微软雅黑" FontSize="12px"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <!--身份识别卡-->
+        <Button Content="编辑"  Style="{DynamicResource btn-primary}" Margin="0,750,0,0"  Width="75"/>
+
+
+    </Grid>
+</Page>

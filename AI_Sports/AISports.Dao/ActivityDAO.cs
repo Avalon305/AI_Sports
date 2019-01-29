@@ -26,5 +26,18 @@ namespace AI_Sports.Dao
 
             }
         }
+        /// <summary>
+        /// 查询训练活动id
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
+        public List<ActivityEntity> ListActivitysByCourseId(long courseId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT * FROM bdl_activity  WHERE fk_training_course_id = @Fk_training_course_id AND is_complete = 0";
+                return conn.Query<ActivityEntity>(query, new { Fk_training_course_id = courseId }).ToList();
+            }
+        }
     }
 }

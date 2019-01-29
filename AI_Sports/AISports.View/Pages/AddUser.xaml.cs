@@ -25,7 +25,6 @@ namespace AI_Sports.AISports.View.Pages
     /// </summary>
     public partial class AddUser : Page
     {
-        private object getpersonfromdeatabase;
         private MemberService memberService = new MemberService();
 
         public AddUser()
@@ -120,6 +119,11 @@ namespace AI_Sports.AISports.View.Pages
             {
                 Console.WriteLine("增加会员成功");
             }
+
+            //跳转到查看会员信息页面
+            userinfo memberInfo = new userinfo();
+            this.Content = memberInfo;
+
 
         }
         public class Person1

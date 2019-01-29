@@ -22,9 +22,9 @@
                 <ColumnDefinition Width="85*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Width="auto">
-                <Image x:Name="headphoto" Source="/AI_Sports;component/AISports.View/Images/defaultphoto.png" HorizontalAlignment="Left"  Margin="10,10,0,10">
+                <Image x:Name="headphoto" Source="/AI_Sports;component/AISports.View/Images/photo.png" HorizontalAlignment="Left"  Margin="10,10,0,10">
                     <Image.OpacityMask>
-                        <ImageBrush ImageSource= "/AI_Sports;component/AISports.View/Images/defaultphoto.png" TileMode="Tile" Stretch="Uniform">
+                        <ImageBrush ImageSource= "/AI_Sports;component/AISports.View/Images/photo.png" TileMode="Tile" Stretch="Uniform">
                         </ImageBrush>
                     </Image.OpacityMask>
                 </Image>

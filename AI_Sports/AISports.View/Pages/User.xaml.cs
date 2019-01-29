@@ -38,7 +38,7 @@ namespace AI_Sports.AISports.View.Pages
             else
                 this.familyName.Text = "未登录";
 
-            string photopath = "/AI_Sports;component/AISports.View/Images/photo.jpg";   //头像路径
+            string photopath = "/AI_Sports;component/AISports.View/Images/photo.png";   //头像路径
             if (File.Exists(photopath) == false)
             {
                 this.headphoto.Source = new BitmapImage(new Uri(@photopath, UriKind.Relative));
