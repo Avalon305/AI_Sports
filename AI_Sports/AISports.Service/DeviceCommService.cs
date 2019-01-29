@@ -61,7 +61,7 @@ namespace AI_Sports.Service
             response.ActivityId = pSetting.Fk_training_activity_id;
 
             var recordEntity = trainingActivityRecordDAO.GetByActivityId(pSetting.Fk_training_activity_id);
-            if (recordEntity == null)
+            if ((recordEntity == null) || (recordEntity != null && recordEntity.Is_complete == true))
             {//没有训练课程记录就插入一条新的
                 recordEntity = new TrainingActivityRecordEntity
                 {
@@ -184,6 +184,10 @@ namespace AI_Sports.Service
 
                     trainingCourseDAO.UpdateByPrimaryKey(courseEntity);
                 }
+                else
+                {
+                    response.Finished = false;
+                }
                 ts.Complete();
             }
             return response;
@@ -205,7 +209,7 @@ namespace AI_Sports.Service
             };
             var setEntity = new PersonalSettingEntity
             {
-                Member_id=request.Uid,
+                Member_id = request.Uid,
                 Device_code = ((int)request.DeviceType).ToString(),
                 Activity_type = ((int)request.ActivityType).ToString(),
                 Seat_height = request.SeatHeight,
@@ -214,7 +218,7 @@ namespace AI_Sports.Service
                 Lever_angle = request.LeverAngle,
                 Front_limit = request.ForwardLimit,
                 Back_limit = request.BackLimit,
-                Training_mode= ((int)request.TrainMode).ToString(),
+                Training_mode = ((int)request.TrainMode).ToString(),
             };
             using (TransactionScope ts = new TransactionScope()) //使整个代码块成为事务性代码
             {

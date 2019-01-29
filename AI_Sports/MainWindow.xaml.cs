@@ -29,12 +29,12 @@ namespace AI_Sports
             //loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
             //                          //测试CQZ
             //loginWindow.Close();//关闭欢迎页
-            this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+           // this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
             //if (loginWindow.DialogResult == true)//返回dialogresult为教练
             //{
             //    loginWindow.Close();//关闭欢迎页
-            //    this.mainpage.Navigate(new Uri("AISports.View/Pages/Admin.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+                this.mainpage.Navigate(new Uri("AISports.View/Pages/Admin.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
             //}
             //else if (loginWindow.DialogResult == false)//返回dialogresult为用户
             //{
