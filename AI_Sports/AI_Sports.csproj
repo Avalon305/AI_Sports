@@ -130,6 +130,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AISports.View\Pages\UserList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\search.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\VitalSigns.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="input1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -236,6 +248,12 @@
     <Compile Include="AISports.View\Pages\MTK.xaml.cs">
       <DependentUpon>MTK.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AISports.View\Pages\UserList.xaml.cs">
+      <DependentUpon>UserList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\search.xaml.cs">
+      <DependentUpon>search.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AISports.View\Pages\UserManage.xaml.cs">
       <DependentUpon>UserManage.xaml</DependentUpon>
     </Compile>
@@ -268,6 +286,9 @@
     </Compile>
     <Compile Include="AISports.View\Pages\userinfo.xaml.cs">
       <DependentUpon>userinfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\VitalSigns.xaml.cs">
+      <DependentUpon>VitalSigns.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\Welcome_first.xaml.cs">
       <DependentUpon>Welcome_first.xaml</DependentUpon>
@@ -305,7 +326,7 @@
     <Resource Include="AISports.View\Images\background_Login.jpg" />
     <Resource Include="AISports.View\Images\background_Login2.png" />
     <Resource Include="AISports.View\Images\photo.png" />
-    <Resource Include="AISports.View\Images\defaultphoto2.jpg" />
+    <Content Include="AISports.View\Images\defaultphoto.png" />
     <Resource Include="AISports.View\Images\eef81f78c35e498da4d9263cb70cc329_th.jpeg" />
     <Resource Include="AISports.View\Images\logodark.jpg" />
     <Resource Include="AISports.View\Images\logolight.jpg" />
@@ -318,6 +339,7 @@
     <Resource Include="AISports.View\Images\round.png" />
     <Resource Include="AISports.View\Images\text.png" />
     <Resource Include="AISports.View\Images\text3.png" />
+    <Resource Include="AISports.View\Images\VitalSigns.jpg" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

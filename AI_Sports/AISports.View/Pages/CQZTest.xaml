@@ -13,6 +13,7 @@
         <Button x:Name="button1" Content="deletePlan" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Width="96" Click="deleteTrainPlan"/>
         <Button x:Name="button2" Content="memberLogin" HorizontalAlignment="Left" Margin="10,211,0,0" VerticalAlignment="Top" Width="96" Click="memberLogin"/>
         <Button x:Name="button3" Content="updateSetting" HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top" Width="96" Click="updateSetting"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="100" Margin="10,274,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="ListBox_SelectionChanged"/>
 
     </Grid>
 </Page>

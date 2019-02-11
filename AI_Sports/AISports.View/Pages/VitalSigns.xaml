@@ -1,0 +1,78 @@
+﻿<Page x:Class="AI_Sports.VitalSigns"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports"
+      mc:Ignorable="d" 
+      Title="VitalSigns" Height="1080" Width="1920">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1207*"/>
+            <ColumnDefinition Width="706*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="/AI_Sports;component/AISports.View\Images\VitalSigns.jpg" Grid.ColumnSpan="2" Margin="0,0,0.333,-0.333"/>
+
+        <Viewbox Grid.ColumnSpan="2">
+            <StackPanel 
+  xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' 
+  FlowDirection="RightToLeft" Height="235" Width="430">
+                <Path  Stroke="Chocolate" StrokeThickness="1" FlowDirection="LeftToRight">
+                    <Path.Data>
+                        <GeometryGroup >
+                            <LineGeometry StartPoint="220,52" EndPoint="225,54" />
+                            <LineGeometry StartPoint="175,54" EndPoint="225,54" />
+                            <LineGeometry StartPoint="220,56" EndPoint="225,54" />
+                        </GeometryGroup>
+                    </Path.Data>
+                </Path>
+                <Path  Stroke="Chocolate" StrokeThickness="1" FlowDirection="LeftToRight">
+                    <Path.Data>
+                        <GeometryGroup >
+                            <LineGeometry StartPoint="220,18" EndPoint="225,20" />
+                            <LineGeometry StartPoint="180,20" EndPoint="225,20" />
+                            <LineGeometry StartPoint="220,22" EndPoint="225,20" />
+                        </GeometryGroup>
+                    </Path.Data>
+                </Path>
+                <Path  Stroke="Chocolate" StrokeThickness="1" FlowDirection="LeftToRight">
+                    <Path.Data>
+                        <GeometryGroup >
+                            <LineGeometry StartPoint="220,23" EndPoint="225,25" />
+                            <LineGeometry StartPoint="185,25" EndPoint="225,25" />
+                            <LineGeometry StartPoint="220,27" EndPoint="225,25" />
+                        </GeometryGroup>
+                    </Path.Data>
+                </Path>
+                <Path  Stroke="Chocolate" StrokeThickness="1" FlowDirection="LeftToRight">
+                    <Path.Data>
+                        <GeometryGroup >
+                            <LineGeometry StartPoint="220,33" EndPoint="225,35" />
+                            <LineGeometry StartPoint="165,35" EndPoint="225,35" />
+                            <LineGeometry StartPoint="220,37" EndPoint="225,35" />
+                        </GeometryGroup>
+                    </Path.Data>
+                </Path>
+                <Path  Stroke="Chocolate" StrokeThickness="1" FlowDirection="LeftToRight">
+                    <Path.Data>
+                        <GeometryGroup >
+                            <LineGeometry StartPoint="220,48" EndPoint="225,50" />
+                            <LineGeometry StartPoint="163,50" EndPoint="225,50" />
+                            <LineGeometry StartPoint="220,52" EndPoint="225,50" />
+                        </GeometryGroup>
+                    </Path.Data>
+                </Path>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox Grid.ColumnSpan="2">
+            <StackPanel Width="683" x:Name="stackPanel">
+                <TextBlock Margin="370,87,0,13">单肩长度：<TextBlock Text="{Binding Path=Shoulder}"></TextBlock></TextBlock>
+                <TextBlock Margin="370,13,0,17">大臂长度：<TextBlock Text="{Binding Path=Arm}"></TextBlock></TextBlock>
+                <TextBlock Margin="370,17,0,26">小臂长度：<TextBlock Text="{Binding Path=Forearm}"></TextBlock></TextBlock>
+                <TextBlock Margin="370,26,0,39">大腿长度：<TextBlock Text="{Binding Path=Thign}"></TextBlock></TextBlock>
+                <TextBlock Margin="370,39,0,67">小腿长度：<TextBlock Text="{Binding Path=Shank}"></TextBlock></TextBlock>
+            </StackPanel>
+        </Viewbox>
+    </Grid>
+</Page>

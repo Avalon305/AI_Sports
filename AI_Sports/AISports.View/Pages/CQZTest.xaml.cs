@@ -128,5 +128,10 @@ namespace AI_Sports.AISports.View.Pages
         {
             updateSetting("123456789", "1");
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
