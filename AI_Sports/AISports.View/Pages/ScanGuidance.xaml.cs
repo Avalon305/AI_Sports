@@ -14,18 +14,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace AI_Sports
+namespace AI_Sports.AISports.View.Pages
 {
     /// <summary>
     /// ScanAndGuidance.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ScanGuidance : Page
     {
 
         private DispatcherTimer ShowTimer;
-        public MainWindow()
+        public ScanGuidance()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             //show timer by_songgp 
             ShowTimer = new System.Windows.Threading.DispatcherTimer();
@@ -52,8 +52,8 @@ namespace AI_Sports
         }
 
 
-    public String Member_id { get; set; }
+        public String Member_id { get; set; }
 
-}
+    }
 
 }

@@ -122,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AISports.View\Pages\ScanAndGuidance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FmyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -252,6 +256,7 @@
     <Compile Include="AISports.View\Pages\MTK.xaml.cs">
       <DependentUpon>MTK.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AISports.View\Pages\ScanAndGuidance.xaml.cs" />
     <Compile Include="AISports.View\Pages\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>
