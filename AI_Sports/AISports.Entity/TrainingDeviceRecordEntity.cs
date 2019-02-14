@@ -45,7 +45,9 @@ namespace AI_Sports.Entity
         public string Device_code { get; set; }
         /// 训练模式
         public string Training_mode { get; set; }
+        /// 向心力
         public double? Consequent_force { get; set; }
+        /// 离心力
         public double? Reverse_force { get; set; }
         /// 功率
         public double? Power { get; set; }

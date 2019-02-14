@@ -32,9 +32,19 @@ namespace AI_Sports.Dao
             
         }
 
-        
+        public string GetByTypeIdAndCodeS(string typeId,string codeS)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "select code_d_value from bdl_datacode where code_type_id = @Code_type_id and code_s_value = @codeS";
+                return conn.QueryFirst<string>(query, new { Code_type_id = typeId ,codeS });
+            }
 
-       
+        }
+
+
+
+
 
     }
 }
