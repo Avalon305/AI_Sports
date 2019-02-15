@@ -89,6 +89,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Management" />
     <Reference Include="System.Numerics" />
@@ -122,7 +123,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
     <Page Include="AISports.View\Pages\firstTest.xaml">
+=======
+    <Page Include="AISports.Assets\PlusMinusExpanderStyles.xaml">
+>>>>>>> cca2c990835c05501aa8fe41738e64b214fa11ac
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -238,6 +243,7 @@
     <Compile Include="AISports.Dto\DeviceDoneDTO.cs" />
     <Compile Include="AISports.Dto\SettingInfoDTO.cs" />
     <Compile Include="AISports.Entity\ActivityEntity.cs" />
+    <Compile Include="AISports.Entity\CustomExpander.cs" />
     <Compile Include="AISports.Entity\DatacodeEntity.cs" />
     <Compile Include="AISports.Entity\KeyEntity.cs" />
     <Compile Include="AISports.Entity\MemberEntity.cs" />
@@ -257,6 +263,7 @@
     <Compile Include="AISports.Service\MemberService.cs" />
     <Compile Include="AISports.Service\TrainingActivityService.cs" />
     <Compile Include="AISports.Service\TrainingCourseService.cs" />
+    <Compile Include="AISports.Service\TrainingDeviceRecordService.cs" />
     <Compile Include="AISports.Service\TrainingPlanService.cs" />
     <Compile Include="AISports.Util\CommUtil.cs" />
     <Compile Include="AISports.Util\ConfigUtil.cs" />
@@ -273,6 +280,7 @@
     <Compile Include="AISports.View\Pages\MTK.xaml.cs">
       <DependentUpon>MTK.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="AISports.View\Pages\ScanGuidance.xaml.cs">
       <DependentUpon>ScanGuidance.xaml</DependentUpon>
     </Compile>
@@ -282,6 +290,8 @@
     <Compile Include="AISports.View\Pages\TrainingPlanAnalysis.xaml.cs">
       <DependentUpon>TrainingPlanAnalysis.xaml</DependentUpon>
     </Compile>
+=======
+>>>>>>> cca2c990835c05501aa8fe41738e64b214fa11ac
     <Compile Include="AISports.View\Pages\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>
@@ -341,8 +351,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NolleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NolleWindow.xaml.cs">
+      <DependentUpon>NolleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -363,6 +380,23 @@
     <Resource Include="AISports.View\Images\background_Login.jpg" />
     <Resource Include="AISports.View\Images\background_Login2.png" />
     <Resource Include="AISports.View\Images\photo.png" />
+    <Resource Include="AISports.Assets\0.png" />
+    <Resource Include="AISports.Assets\1.png" />
+    <Resource Include="AISports.Assets\10.png" />
+    <Resource Include="AISports.Assets\11.png" />
+    <Resource Include="AISports.Assets\12.png" />
+    <Resource Include="AISports.Assets\13.png" />
+    <Resource Include="AISports.Assets\14.png" />
+    <Resource Include="AISports.Assets\15.png" />
+    <Resource Include="AISports.Assets\16.png" />
+    <Resource Include="AISports.Assets\2.png" />
+    <Resource Include="AISports.Assets\3.png" />
+    <Resource Include="AISports.Assets\4.png" />
+    <Resource Include="AISports.Assets\5.png" />
+    <Resource Include="AISports.Assets\6.png" />
+    <Resource Include="AISports.Assets\7.png" />
+    <Resource Include="AISports.Assets\8.png" />
+    <Resource Include="AISports.Assets\9.png" />
     <Content Include="AISports.View\Images\defaultphoto.png" />
     <Resource Include="AISports.View\Images\eef81f78c35e498da4d9263cb70cc329_th.jpeg" />
     <Resource Include="AISports.View\Images\logodark.jpg" />
