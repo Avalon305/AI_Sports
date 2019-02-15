@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<!-- saved from url=(0013)about:internet -->
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body scroll="no">
+    <div id="Op">
+        <button onclick="click1()" style="width:100px;height:20px">测试</button>
+        <script>
+        function click1()
+        {            
+            alert(window.external.abdomenTraining());
+			
+        }
+        </script>
+    </div>
+    <div id="main" style="width:1360px;height:500px" />
+    <script src="echarts.js"></script>
+    <script src="echarts-all.js"></script>
+    <script src="macarons.js"></script>
+    <script>
+        function click()
+        {
+            alert("dasda");
+            window.external.ShowMsg("这是一条信息");           
+        }       
+        function Type(info)
+        {
+            if (info == 0) {
+                myChart.clear();
+            }
+            else {
+                myChart.setOption(option);
+            }
+        }
+        myChart = echarts.init(document.getElementById('main'),'macarons');
+		ScrollBarsEnabled = false;
+option = {
+   
+            title : {
+                text: '力量耐力循环'
+            },//鼠标放上去，显示数据
+            tooltip : {
+                trigger: 'item',
+				// a（系列名称），b（数据项名称），c（数值）, d（饼图：百分比）
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            series : [
+                {
+                    name:'力量循环',
+                    type:'pie',
+                    center: ['60%', '40%'],
+                    radius: '50%',
+                    data:[
+                        {value:1,name:'胸部'},
+                        {value: window.external.legEnduranceTraining(),name:'腿部'},
+                        {value: window.external.armEnduranceTraining(),name:'躯干'},
+                        {value: window.external.armEnduranceTraining(),name:'手臂'}
+                    ]
+				}
+            ]
+   
+};                  
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
