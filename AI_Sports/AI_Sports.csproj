@@ -123,11 +123,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD
-    <Page Include="AISports.View\Pages\firstTest.xaml">
-=======
+
     <Page Include="AISports.Assets\PlusMinusExpanderStyles.xaml">
->>>>>>> cca2c990835c05501aa8fe41738e64b214fa11ac
+
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -280,7 +278,7 @@
     <Compile Include="AISports.View\Pages\MTK.xaml.cs">
       <DependentUpon>MTK.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+
     <Compile Include="AISports.View\Pages\ScanGuidance.xaml.cs">
       <DependentUpon>ScanGuidance.xaml</DependentUpon>
     </Compile>
@@ -290,8 +288,7 @@
     <Compile Include="AISports.View\Pages\TrainingPlanAnalysis.xaml.cs">
       <DependentUpon>TrainingPlanAnalysis.xaml</DependentUpon>
     </Compile>
-=======
->>>>>>> cca2c990835c05501aa8fe41738e64b214fa11ac
+
     <Compile Include="AISports.View\Pages\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>
