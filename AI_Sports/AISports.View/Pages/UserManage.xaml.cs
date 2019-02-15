@@ -72,7 +72,7 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn2.Background = null;
             this.btn4.Background = null;
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/search.xaml", UriKind.Relative);//跳转页面
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/TrainingPlanAnalysis.xaml", UriKind.Relative);//跳转页面
         }
         //生命体征页面
         private void Btn4_Click(object sender, RoutedEventArgs e)//
@@ -81,7 +81,9 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn2.Background = null;
             this.btn3.Background = null;
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面
+            //this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面TrainingCourseAnalysis
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/TrainingCourseAnalysis.xaml", UriKind.Relative);//跳转页面
+
         }
         //退出登录重新启动
         private void Logout(object sender, RoutedEventArgs e)

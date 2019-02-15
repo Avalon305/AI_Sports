@@ -122,9 +122,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AISports.View\Pages\ScanAndGuidance.xaml">
+    <Page Include="AISports.View\Pages\firstTest.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\ScanGuidance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AISports.View\Pages\TrainingCourseAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AISports.View\Pages\TrainingPlanAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FmyWindow.xaml">
       <SubType>Designer</SubType>
@@ -233,9 +245,11 @@
     <Compile Include="AISports.Entity\SystemSettingEntity.cs" />
     <Compile Include="AISports.Entity\TrainingActivityRecordEntity.cs" />
     <Compile Include="AISports.Entity\TrainingCourseEntity.cs" />
+    <Compile Include="AISports.Entity\TrainingCourseVO.cs" />
     <Compile Include="AISports.Entity\TrainingDeviceRecordEntity.cs" />
     <Compile Include="AISports.Entity\TrainingPlanEntity.cs" />
     <Compile Include="AISports.Entity\AuthEntity.cs" />
+    <Compile Include="AISports.Entity\TrainingPlanVO.cs" />
     <Compile Include="AISports.Proto\BdlProto.cs" />
     <Compile Include="AISports.Proto\NettyLuncher.cs" />
     <Compile Include="AISports.Proto\ProtocolHandler.cs" />
@@ -250,13 +264,24 @@
     <Compile Include="AISports.Util\KeyGenerator.cs" />
     <Compile Include="AISports.Util\ParseIntegerUtil.cs" />
     <Compile Include="AISports.Util\DbUtil.cs" />
+    <Compile Include="AISports.View\Pages\firstTest.xaml.cs">
+      <DependentUpon>firstTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AISports.View\Pages\MemberInfo.xaml.cs">
       <DependentUpon>MemberInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\MTK.xaml.cs">
       <DependentUpon>MTK.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AISports.View\Pages\ScanAndGuidance.xaml.cs" />
+    <Compile Include="AISports.View\Pages\ScanGuidance.xaml.cs">
+      <DependentUpon>ScanGuidance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\TrainingCourseAnalysis.xaml.cs">
+      <DependentUpon>TrainingCourseAnalysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\TrainingPlanAnalysis.xaml.cs">
+      <DependentUpon>TrainingPlanAnalysis.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AISports.View\Pages\UserList.xaml.cs">
       <DependentUpon>UserList.xaml</DependentUpon>
     </Compile>

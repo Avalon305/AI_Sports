@@ -1,0 +1,43 @@
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.TrainingCourseAnalysis"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1493.3"
+      Title="TrainingCourseAnalysis">
+
+    <Grid Background="White" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Content="分析"  Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,0,0,0"  FontSize="50" Grid.Row="0"></Label>
+        <StackPanel HorizontalAlignment="Left" Height="480" Margin="20,0" Grid.Row="1" VerticalAlignment="Top" Width="1453.3">
+            <Label Content="训练进展（单位：千卡）" Name="lable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="480" Margin="20,0" Grid.Row="2" VerticalAlignment="Top" Width="1453.3">
+            <Label Content="训练课程记录" Name="lable_planName" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
+            <DataGrid AutoGenerateColumns="False" x:Name="TrainingCourseRecords" DataContext="{Binding}" ItemsSource="{Binding Collection}" DataGridRow.MouseUp="TrainingCourseRecords_MouseUp">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Course_count}" Header="课程记录序号" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Sum_time}" Header="训练总时间/分钟" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Sum_energy}" Header="训练总耗能/千卡" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Sum_count}" Header="运动总个数" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Dev_count}" Header="训练总次数" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Avg_consequent_force}" Header="平均顺向力" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Avg_reverse_force}" Header="平均反向力" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Gmt_create, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}'}" Header="创建日期" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
+                
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}"/>
+
+
+    </Grid>
+</Page>

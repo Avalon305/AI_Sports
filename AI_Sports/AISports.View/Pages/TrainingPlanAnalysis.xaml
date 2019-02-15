@@ -1,0 +1,61 @@
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.TrainingPlanAnalysis"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1493.3"
+      Title="TrainingPlanAnalysis">
+
+    <Grid Background="White" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Content="分析"  Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,0,0,0"  FontSize="50" Grid.Row="0"></Label>
+        <StackPanel HorizontalAlignment="Left" Height="480" Margin="20,0" Grid.Row="1" VerticalAlignment="Top" Width="1453.3">
+            <Label Content="训练进展（单位：千卡）" Name="lable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="480" Margin="20,0" Grid.Row="2" VerticalAlignment="Top" Width="1453.3">
+            <Label Content="训练计划" Name="lable_planName" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
+            <Border BorderThickness="2" BorderBrush="#04243D" Background="#f1f1f1" Margin="20" CornerRadius="10" Height="200" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+                <WrapPanel>
+                    <StackPanel Height="200" Width="900" HorizontalAlignment="Left">
+                        <Label  Name="Lab_Title" Content="训练计划标题" Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,40"></Label>
+                        <WrapPanel Margin="20,10,0,0">
+                            <Label  Content="创建时间：" Name="Lab_Gmt_create" FontFamily="yahei" FontSize="22"></Label>
+                        </WrapPanel>
+                    </StackPanel>
+                    <Border BorderThickness="3,0,0,0" BorderBrush="#04243D" Height="180">
+                        <StackPanel Height="200" Width="160" HorizontalAlignment="Left">
+                            <Label  Content="课程记录" Foreground="#04243D" Style="{DynamicResource h2}" Margin="20,40"></Label>
+                            <Label  Name="Lab_Current_course_count" Content="次" Foreground="#04243D" FontSize="22" Style="{DynamicResource h2}" Margin="20,10,0,0"></Label>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderThickness="3,0,0,0" BorderBrush="#04243D" Height="180">
+                        <StackPanel Height="200" Width="160" HorizontalAlignment="Left">
+                            <Label  Content="消耗能量" Foreground="#04243D" Style="{DynamicResource h2}" Margin="20,40"></Label>
+                            <Label  Name="Lab_SumEnergy" Content="千卡" Foreground="#04243D" FontSize="22" Style="{DynamicResource h2}" Margin="20,10,0,0"></Label>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderThickness="3,0,0,0" BorderBrush="#04243D" Height="180">
+                        <StackPanel Height="200" Width="180" HorizontalAlignment="Left">
+                            <Label  Content="训练时间" Foreground="#04243D" Style="{DynamicResource h2}" Margin="20,40"></Label>
+                            <Label  Name="Lab_SumTime" Content="分钟" Foreground="#04243D" FontSize="22" Style="{DynamicResource h2}" Margin="20,10,0,0"></Label>
+                        </StackPanel>
+                    </Border>
+                </WrapPanel>
+
+
+            </Border>
+        </StackPanel>
+        <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,50" VerticalAlignment="Bottom" Grid.Row="2" Grid.RowSpan="2"/>
+        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}"/>
+
+
+    </Grid>
+</Page>

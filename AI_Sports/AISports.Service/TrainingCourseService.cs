@@ -34,5 +34,14 @@ namespace AI_Sports.Service
             string memberId = CommUtil.GetSettingString("memberId");
             return trainingCourseDAO.GetCourseByMemberId(memberId);
         }
+        /// <summary>
+        /// 课程分析页面，查询课程记录列表
+        /// </summary>
+        /// <returns></returns>
+        public List<TrainingCourseVO> listCourseRecord()
+        {
+            string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
+            return trainingCourseDAO.listCourseRecord(trainingCourseId);
+        }
     }
 }
