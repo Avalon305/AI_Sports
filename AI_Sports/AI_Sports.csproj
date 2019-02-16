@@ -394,6 +394,21 @@
     <Resource Include="AISports.Assets\7.png" />
     <Resource Include="AISports.Assets\8.png" />
     <Resource Include="AISports.Assets\9.png" />
+    <Content Include="AISports.Echarts\dist\AerobicStacked.html" />
+    <Content Include="AISports.Echarts\dist\CourseRecord.html" />
+    <Content Include="AISports.Echarts\dist\echarts-all.js" />
+    <Content Include="AISports.Echarts\dist\echarts.js" />
+    <Content Include="AISports.Echarts\dist\EndurancePie.html" />
+    <Content Include="AISports.Echarts\dist\Line.html" />
+    <Content Include="AISports.Echarts\dist\LineChart.html" />
+    <Content Include="AISports.Echarts\dist\macarons.js" />
+    <Content Include="AISports.Echarts\dist\Pie.html" />
+    <Content Include="AISports.Echarts\dist\shine.js" />
+    <Content Include="AISports.Echarts\dist\Stacked.html" />
+    <Content Include="AISports.Echarts\dist\StrengthEnduranceStacked.html" />
+    <Content Include="AISports.Echarts\dist\StrengthStacked.html" />
+    <Content Include="AISports.Echarts\dist\Test.html" />
+    <Content Include="AISports.Echarts\dist\TrainingUnit.html" />
     <Content Include="AISports.View\Images\defaultphoto.png" />
     <Resource Include="AISports.View\Images\eef81f78c35e498da4d9263cb70cc329_th.jpeg" />
     <Resource Include="AISports.View\Images\logodark.jpg" />
@@ -435,6 +450,9 @@
       <Project>{1c0f2e8b-e47b-4581-9d0a-a90bd88d204e}</Project>
       <Name>BootstrapWpfStyle</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AISports.Echarts\dist\chart\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

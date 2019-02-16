@@ -92,13 +92,19 @@
                     </Grid>
                 </Expander>
                 <Expander Name="S7" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
+                    <Grid Background="White">
+                        <StackPanel>
+                            <WebBrowser Height="500" Name="Aerobic15">
+                            </WebBrowser>
+                        </StackPanel>
                     </Grid>
                 </Expander>
                 <Expander Name="S8" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
+                    <Grid Background="White">
+                        <StackPanel>
+                            <WebBrowser Height="500" Name="Aerobic16">
+                            </WebBrowser>
+                        </StackPanel>
                     </Grid>
                 </Expander>
                 <Button HorizontalAlignment="Left" FontSize="15" Background="#FF628494" Foreground="#ffffff" Padding="10  5 10 5" Margin="0 5 0 0">后退</Button>
