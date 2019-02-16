@@ -127,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AISports.View\Pages\muscle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AISports.View\Pages\ScanGuidance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -272,6 +276,9 @@
     </Compile>
     <Compile Include="AISports.View\Pages\MTK.xaml.cs">
       <DependentUpon>MTK.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\muscle.xaml.cs">
+      <DependentUpon>muscle.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\ScanGuidance.xaml.cs">
       <DependentUpon>ScanGuidance.xaml</DependentUpon>

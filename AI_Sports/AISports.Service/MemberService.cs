@@ -95,7 +95,9 @@ namespace AI_Sports.Service
             //4.更新当前登陆用户的训练课程id
             TrainingCourseEntity trainingCourseEntity = trainingCourseDAO.GetCourseByMemberId(memberId);
             CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
-            //5.更新当前登陆会员的主键
+            //5.更新当前登陆用户的当前课程记录id current_course_count currentCourseCount
+            CommUtil.UpdateSettingString("currentCourseCount", (trainingCourseEntity.Current_course_count).ToString());
+            //6.更新当前登陆会员的主键
             //根据卡号查询会员
             MemberEntity member = memberDAO.GetMember(memberId);
             CommUtil.UpdateSettingString("memberPrimarykey", (member.Id).ToString());
