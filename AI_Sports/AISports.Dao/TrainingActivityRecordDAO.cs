@@ -39,5 +39,6 @@ namespace AI_Sports.Dao
                 conn.Execute(query, new { Id = id, Complete = complete });
             }
         }
+
     }
 }

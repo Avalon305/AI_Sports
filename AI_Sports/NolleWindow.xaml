@@ -5,110 +5,200 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AI_Sports"
         mc:Ignorable="d"
-        Title="NolleWindow" Height="450" Width="800">
+        Title="NolleWindow" Height="800" Width="1300">
     <Window.Resources>
         <ResourceDictionary Source="AISports.Assets/PlusMinusExpanderStyles.xaml" />
 
     </Window.Resources>
-    <Grid>
-        <ScrollViewer>
-            <StackPanel Margin="5">
-                <Label FontSize="30" Foreground="#FF506E7C" >练习</Label>
-                <Label FontSize="18" Foreground="#FF506E7C" >力量耐力循环</Label>
-                <Expander  Name="CHEST"  HeaderTemplate="{StaticResource titleText}"  Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,1,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="LEG"   HeaderTemplate="{StaticResource titleText}"  Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="LAT"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="SEATED"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="ADDUCTOR"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="BUTTERFLY"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="BR"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="BEB"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="RC1"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Label  FontSize="18" Foreground="#FF506E7C">力量循环</Label>
-                <Expander Name="S1" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="S2" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="S3" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="S4" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="S5" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="S6" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="Pink">
-                        <TextBlock>Content</TextBlock>
-                    </Grid>
-                </Expander>
-                <Expander Name="S7" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="White">
-                        <StackPanel>
-                            <WebBrowser Height="500" Name="Aerobic15">
-                            </WebBrowser>
-                        </StackPanel>
-                    </Grid>
-                </Expander>
-                <Expander Name="S8" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
-                    <Grid Background="White">
-                        <StackPanel>
-                            <WebBrowser Height="500" Name="Aerobic16">
-                            </WebBrowser>
-                        </StackPanel>
-                    </Grid>
-                </Expander>
-                <Button HorizontalAlignment="Left" FontSize="15" Background="#FF628494" Foreground="#ffffff" Padding="10  5 10 5" Margin="0 5 0 0">后退</Button>
-            </StackPanel>
-        </ScrollViewer>
-    </Grid>
+
+    <ScrollViewer>
+        <StackPanel Margin="5">
+            <Label FontSize="30" Foreground="#FF506E7C" >练习</Label>
+            <Label FontSize="18" Foreground="#FF506E7C">力量耐力循环</Label>
+            <Label BorderThickness="0,1,0,1" BorderBrush="#eaeaea">
+                <Grid Width="1300" Height="auto" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="16"  Text="设 备 名 称" Grid.ColumnSpan="3" Grid.Column="0" />
+                    <TextBlock FontSize="16" Text="图 像 地 址" Visibility="Hidden" />
+                    <TextBlock FontSize="16" Text="修 改 时 间" Margin="50 0 0 0" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <TextBlock FontSize="16" Text="训练次数/目标次数" Grid.Column="5" Grid.ColumnSpan="2" />
+                    <TextBlock FontSize="16" Text="当前设置" Grid.Column="7" />
+                </Grid>
+            </Label>
+            
+            <Expander  Name="CHEST"  HeaderTemplate="{StaticResource titleText}"  Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic0">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="LEG"   HeaderTemplate="{StaticResource titleText}"  Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic1">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="LAT"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic2">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="SEATED"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic3">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="ADDUCTOR"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic4">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="BUTTERFLY"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic5">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="BR"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic6">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="BEB"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic7">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="RC1"  HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic8">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Label  FontSize="18" Foreground="#FF506E7C">力量循环</Label>
+            <Label BorderThickness="0,1,0,1" BorderBrush="#eaeaea">
+                <Grid Width="1300" Height="auto" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="16"  Text="设 备 名 称" Grid.ColumnSpan="3" Grid.Column="0" />
+                    <TextBlock FontSize="16" Text="图 像 地 址" Visibility="Hidden" />
+                    <TextBlock FontSize="16" Text="修 改 时 间" Margin="50 0 0 0" Grid.Column="3" Grid.ColumnSpan="2"/>
+                    <TextBlock FontSize="16" Text="训练次数/目标次数" Grid.Column="5" Grid.ColumnSpan="2" />
+                    <TextBlock FontSize="16" Text="当前设置" Grid.Column="7" />
+                </Grid>
+            </Label>
+            <Expander Name="S1" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic9">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="S2" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic10">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="S3" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic11">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="S4" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic12">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="S5" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic13">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="S6" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic14">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="S7" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic15">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Expander Name="S8" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+                <Grid Background="White">
+                    <StackPanel>
+                        <WebBrowser Height="500" Name="Aerobic16">
+                        </WebBrowser>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+            <Button HorizontalAlignment="Left" FontSize="15" Background="#FF628494" Foreground="#ffffff" Padding="10  5 10 5" Margin="0 5 0 0">后退</Button>
+        </StackPanel>
+    </ScrollViewer>
+
 </Window>

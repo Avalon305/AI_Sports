@@ -61,7 +61,7 @@
 
 
     <DataTemplate x:Key="titleText">
-        <Grid Width="1200" Height="auto">
+        <Grid Width="1300" Height="auto">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
@@ -73,12 +73,13 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding Path=DataContext.Name, RelativeSource={RelativeSource AncestorType=Expander, Mode=FindAncestor}}" Grid.ColumnSpan="4" Grid.Column="0"/>
+            <TextBlock Text="{Binding Path=DataContext.Name, RelativeSource={RelativeSource AncestorType=Expander, Mode=FindAncestor}}" Grid.ColumnSpan="3" Grid.Column="0"/>
             <TextBlock Text="{Binding Path=DataContext.Image_address, RelativeSource={RelativeSource AncestorType=Expander, Mode=FindAncestor}}" Visibility="Hidden"/>
-            <TextBlock Text="{Binding Path=DataContext.Modified_time, RelativeSource={RelativeSource AncestorType=Expander, Mode=FindAncestor}}" Grid.Column="4"/>
-            <TextBlock Text="{Binding Path=DataContext.Rate, RelativeSource={RelativeSource AncestorType=Expander, Mode=FindAncestor}}" Grid.Column="5"/>
-            <TextBlock Text="{Binding Path=DataContext.Current_set, RelativeSource={RelativeSource AncestorType=Expander, Mode=FindAncestor}}" Grid.Column="6"/>
+            <TextBlock Text="{Binding Path=DataContext.Modified_time, RelativeSource={RelativeSource AncestorType=Expander, Mode=FindAncestor}}" Grid.Column="3" />
+            <TextBlock Text="{Binding Path=DataContext.Rate, RelativeSource={RelativeSource AncestorType=Expander, Mode=FindAncestor}}" Grid.Column="5"  Grid.ColumnSpan="2"  />
+            <TextBlock Text="{Binding Path=DataContext.Current_set, RelativeSource={RelativeSource AncestorType=Expander, Mode=FindAncestor}}" Grid.Column="7" />
         </Grid>
     </DataTemplate>
 

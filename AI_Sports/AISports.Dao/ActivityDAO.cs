@@ -39,5 +39,19 @@ namespace AI_Sports.Dao
                 return conn.Query<ActivityEntity>(query, new { Fk_training_course_id = courseId }).ToList();
             }
         }
+
+        /// <summary>
+        /// 根据id查出目标轮次数量
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public int GetTargetTurnNumById(long Id)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT target_turn_number FROM bdl_activity  WHERE id = @Id";
+                return conn.QueryFirstOrDefault<int>(query, new { Id });
+            }
+        }
     }
 }
