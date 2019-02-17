@@ -69,5 +69,20 @@ namespace AI_Sports.Service
             string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
             return trainingPlanDAO.GetTrainingPlanVO(trainingPlanId, trainingCourseId);
         }
+
+        public int selectRecordNumber()
+        {
+            return trainingPlanDAO.selectRecordNumber();
+        }
+
+        public List<double> selectAerobicEnergy()
+        {
+            return trainingPlanDAO.selectAerobicEnergy();
+        }
+
+        public List<double> selectForceEnergy()
+        {
+            return trainingPlanDAO.selectForceEnergy();
+        }
     }
 }

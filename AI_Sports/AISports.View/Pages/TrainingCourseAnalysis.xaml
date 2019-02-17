@@ -19,6 +19,10 @@
         <StackPanel HorizontalAlignment="Left" Height="480" Margin="20,0" Grid.Row="1" VerticalAlignment="Top" Width="1453.3">
             <Label Content="训练进展（单位：千卡）" Name="lable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
 
+            <!-- 图表 -->
+            <WebBrowser  Name="Web">
+            </WebBrowser>
+
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" Height="480" Margin="20,0" Grid.Row="2" VerticalAlignment="Top" Width="1453.3">
             <Label Content="训练课程记录" Name="lable_planName" Foreground="#04243D" Style="{DynamicResource h1}"></Label>

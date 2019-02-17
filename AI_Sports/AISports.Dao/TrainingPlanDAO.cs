@@ -70,5 +70,36 @@ namespace AI_Sports.Dao
                 return conn.QueryFirstOrDefault<TrainingPlanVO>(query, new { @TrainingPlanId = trainingPlanId , @TrainingCourseId = trainingCourseId });
             }
         }
+
+
+        public int selectRecordNumber()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT max(course_count) FROM bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE'";
+                return conn.QueryFirstOrDefault<int>(query);
+
+            }
+        }
+
+        public List<double> selectAerobicEnergy()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT sum(bdl_training_device_record.energy) as energ  FROM  bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE' WHERE code_ext_value3 = 0 OR code_ext_value3 = 1 GROUP BY course_count,code_ext_value3 ";
+                return (List<double>)conn.Query<double>(query);
+            }
+        }
+
+
+        public List<double> selectForceEnergy()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT sum(bdl_training_device_record.energy) as energ  FROM  bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE' WHERE code_ext_value3 = 0 OR code_ext_value3 = 1 GROUP BY course_count,code_ext_value3 ";
+                return (List<double>)conn.Query<double>(query);
+            }
+        }
+
     }
 }

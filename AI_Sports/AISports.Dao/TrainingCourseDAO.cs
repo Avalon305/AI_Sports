@@ -39,6 +39,8 @@ namespace AI_Sports.Dao
                 return conn.QueryFirstOrDefault<TrainingCourseEntity>(query, new { Member_id = memberId });
             }
         }
+
+
         /// <summary>
         /// 传入参数为app.config中当前进行的课程id，查询该课程记录list用于课程分析页面
         /// </summary>
@@ -50,6 +52,45 @@ namespace AI_Sports.Dao
             {
                 const string query = "SELECT act.course_count,act.gmt_create,SUM(dev.training_time)/60 AS Sum_time,SUM(dev.energy)/1000 AS Sum_energy,SUM(dev.count) AS Sum_count,ROUND(AVG(dev.consequent_force)) AS Avg_consequent_force,ROUND(AVG(dev.reverse_force)) AS Avg_reverse_force,count(*) AS Dev_count FROM bdl_training_activity_record AS act JOIN bdl_training_device_record AS dev ON act.id = dev.fk_training_activity_record_id WHERE act.fk_training_course_id = @TrainingCourseId GROUP BY act.course_count ORDER BY act.course_count";
                 return conn.Query<TrainingCourseVO>(query, new { @TrainingCourseId = trainingCourseId }).ToList();
+            }
+        }
+
+
+        public int selectMAxCourseRecord()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT max(course_count) FROM bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE'";
+                return conn.QueryFirstOrDefault<int>(query);
+
+            }
+        }
+
+
+        public double selectAerobicEnduranceEnergy()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT sum(bdl_training_device_record.energy) FROM bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE' WHERE code_ext_value3 = 1 AND code_ext_value2 = 1 GROUP BY course_count,code_ext_value3,code_ext_value2 ORDER BY course_count ASC";
+                return conn.QueryFirstOrDefault<double>(query);
+            }
+        }
+
+        public double selectForceEnduranceEnergy()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT sum(bdl_training_device_record.energy) FROM bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE' WHERE code_ext_value3 = 1 AND code_ext_value2 = 0 GROUP BY course_count,code_ext_value3,code_ext_value2 ORDER BY course_count ASC";
+                return conn.QueryFirstOrDefault<double>(query);
+            }
+        }
+
+        public double selectForceEnergy()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT sum(bdl_training_device_record.energy) FROM bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE' WHERE code_ext_value3 = 1 GROUP BY course_count,code_ext_value3,code_ext_value2 ORDER BY course_count ASC";
+                return conn.QueryFirstOrDefault<double>(query);
             }
         }
     }
