@@ -147,7 +147,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-<<<<<<< HEAD
+
     <Page Include="AISports.View\Pages\newPlan.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -164,8 +164,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-=======
->>>>>>> 51c2fcc5a3576792380f4ae3455c3ea78a2f4c75
+
     <Page Include="AISports.View\Pages\TrainingCourseAnalysis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -336,7 +335,7 @@
     <Compile Include="AISports.View\Pages\muscle.xaml.cs">
       <DependentUpon>muscle.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
+
     <Compile Include="AISports.View\Pages\newPlan.xaml.cs">
       <DependentUpon>newPlan.xaml</DependentUpon>
     </Compile>
@@ -349,8 +348,7 @@
     <Compile Include="AISports.View\Pages\trainingCourse.xaml.cs">
       <DependentUpon>trainingCourse.xaml</DependentUpon>
     </Compile>
-=======
->>>>>>> 51c2fcc5a3576792380f4ae3455c3ea78a2f4c75
+
     <Compile Include="AISports.View\Pages\TrainingCourseAnalysis.xaml.cs">
       <DependentUpon>TrainingCourseAnalysis.xaml</DependentUpon>
     </Compile>
