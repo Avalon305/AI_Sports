@@ -39,6 +39,8 @@
         // var max = window.external.ShowMsg();
         var arr1=window.external.drawCF().split(",");
         var arr2=window.external.drawRF().split(",");
+        var arr3=window.external.drawRate().split(",");
+
         max = 100;
         myChart = echarts.init(document.getElementById('main'), 'shine');
         option = {
@@ -128,13 +130,13 @@
                     name: '离心',
                     type: 'line',
                     stack: '离心',
-                    data: [220, 480, 191, 234, 290, 330, 310]
+                    data: arr2
                 },
                 {
                     name: '比率',
                     type: 'line',
                     stack: '比率',
-                    data: [150, 232, 300, 154, 190, 330, 410]
+                    data: arr3
                 }
             ]
         };
