@@ -1,0 +1,54 @@
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.firstTest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1493.3"
+      Title="firstTest">
+
+    <Grid Background="White" Margin="0,0,0,10">
+        
+        <StackPanel >
+            <StackPanel>
+
+                <Label Content="创建训练计划" Style="{DynamicResource h1}" Margin="20 20 0 0" FontFamily="Microsoft JhengHei UI"/>
+                <WrapPanel >
+                    <GridSplitter  Width="1080" Height="3" Margin="10,33,0,0" Background="Gray" />
+                </WrapPanel>
+
+
+            </StackPanel>
+
+            <WrapPanel>
+                <Button Margin="200 20 0 20"  Width="130" Height="130" FontSize="18"   Background="White" Click="Button_Click">
+                    <Button.Content>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="99*"/>
+                                <ColumnDefinition Width="26*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="新建"  Margin="25,55,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" Grid.ColumnSpan="2" FontWeight="Bold" />
+                            <Label Content="训练计划"  Margin="10,80,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" />
+                            <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-plus}" Margin="25,-5,0,43.4"  />
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <Button   Margin="50 20 0 20" Width="130" Height="130" Background="White" Click="Button_Click_1" >
+                    <Button.Content>
+                        <Grid >
+                            <Label Content="使用模板"  Margin="0 50 0 0" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold"></Label>
+                            <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-tasks}"  Margin="0 -50 0 0"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+
+
+            </WrapPanel>
+            
+
+        </StackPanel>
+
+    </Grid>
+</Page>
