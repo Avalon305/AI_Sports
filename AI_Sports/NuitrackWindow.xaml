@@ -5,15 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AI_Sports"
         mc:Ignorable="d"
-        Title="NuitrackWindow" Height="800" Width="800">
+        Title="NuitrackWindow" Height="800" Width="1106.1">
     <Grid>
-        <Label x:Name="lblHello">欢迎你光临WPF的世界!</Label>
-        <Button Content="测试" HorizontalAlignment="Left" Margin="231,124,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" />
-        <Image Grid.Row="0" Height="480" Width="640" x:Name="statusImage" >
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="5" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="4" Width="350">
+            <TextBox Text="左边带插件的输入组" Tag="肩宽" Margin="20 0 20 10" Style="{DynamicResource input-group-addon left}"></TextBox>
+            <TextBox Text="左边带插件的输入组" Tag="臂长(上)" Margin="20 0 20 10" Style="{DynamicResource input-group-addon left}"></TextBox>
+            <TextBox Text="左边带插件的输入组" Tag="臂长(下)" Margin="20 0 20 10" Style="{DynamicResource input-group-addon left}"></TextBox>
+            <TextBox Text="左边带插件的输入组" Tag="腿长(上)" Margin="20 0 20 10" Style="{DynamicResource input-group-addon left}"></TextBox>
+            <TextBox Text="左边带插件的输入组" Tag="腿长(上)" Margin="20 0 20 10" Style="{DynamicResource input-group-addon left}"></TextBox>
+            <TextBox Text="左边带插件的输入组" Tag="肢体长" Margin="20 0 20 20" Style="{DynamicResource input-group-addon left}"></TextBox>
+            <Button Margin="20 0 20 0" Content="开始测量" Height="30" Width="310" Style="{DynamicResource btn-primary}"/>
+            <Button Margin="20 20 20 20" Content="保存"/>
+            <Button Margin="20 0 20 0" Content="重置" Style="{DynamicResource btn-warning}" Width="310"  Click="Button_Click"/>
+        </StackPanel>
+        
+        <Image Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="5" Height="540" Width="720" x:Name="statusImage" >
         </Image>
-        <Image Grid.Row="0" Height="480" Width="640" x:Name="statusImage1" >
-
+        <Image Grid.Row="1" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="5" Height="540" Width="720" x:Name="statusImage1" >
         </Image>
     </Grid>
 </Window>

@@ -2,20 +2,12 @@
 using AI_Sports.AISports.Service;
 using AI_Sports.Dao;
 using AI_Sports.Entity;
+using mshtml;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Navigation;
 
 namespace AI_Sports
 {
@@ -99,6 +91,7 @@ namespace AI_Sports
         {
             InitializeComponent();
             List<TrainingDeviceRecordEntity> list = trainingDeviceRecordService.GetRecordByIdAndTime("123456");
+            Console.WriteLine(list.Capacity);
             List<CustomExpander> listCS = new List<CustomExpander>();
             string path = AppDomain.CurrentDomain.BaseDirectory;
             string rootpath = path.Substring(0, path.LastIndexOf("bin"));
@@ -351,6 +344,93 @@ namespace AI_Sports
                 }
             }
         }
+
+        void wb_LoadCompleted16(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText16 = (IHTMLDocument2)Aerobic16.Document;
+            documentText16.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted15(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText15 = (IHTMLDocument2)Aerobic15.Document;
+            documentText15.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted14(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText14 = (IHTMLDocument2)Aerobic14.Document;
+            documentText14.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted13(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText13 = (IHTMLDocument2)Aerobic13.Document;
+            documentText13.body.parentElement.style.overflow = "hidden";
+        }
+
+        void wb_LoadCompleted12(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText12 = (IHTMLDocument2)Aerobic12.Document;
+            documentText12.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted11(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText11 = (IHTMLDocument2)Aerobic11.Document;
+            documentText11.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted10(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText10 = (IHTMLDocument2)Aerobic10.Document;
+            documentText10.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted9(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText9 = (IHTMLDocument2)Aerobic9.Document;
+            documentText9.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted8(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText8 = (IHTMLDocument2)Aerobic8.Document;
+            documentText8.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted7(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText7 = (IHTMLDocument2)Aerobic7.Document;
+            documentText7.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted6(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText6 = (IHTMLDocument2)Aerobic6.Document;
+            documentText6.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted5(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText5 = (IHTMLDocument2)Aerobic5.Document;
+            documentText5.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted4(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText4 = (IHTMLDocument2)Aerobic4.Document;
+            documentText4.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted3(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText3 = (IHTMLDocument2)Aerobic3.Document;
+            documentText3.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted2(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText2 = (IHTMLDocument2)Aerobic2.Document;
+            documentText2.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted1(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText1 = (IHTMLDocument2)Aerobic1.Document;
+            documentText1.body.parentElement.style.overflow = "hidden";
+        }
+        void wb_LoadCompleted0(object sender, NavigationEventArgs e)
+        {
+            mshtml.IHTMLDocument2 documentText0= (IHTMLDocument2)Aerobic0.Document;
+            documentText0.body.parentElement.style.overflow = "hidden";
+        }
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         [System.Runtime.InteropServices.ComVisible(true)]
         public class WebAerobic0
@@ -364,6 +444,11 @@ namespace AI_Sports
             {
                 string str0RF = string.Join(",", new NolleWindow().list0RF);
                 return str0RF;
+            }
+            public string drawRate()
+            {
+                string str0Rate = string.Join(",", new NolleWindow().list0Rate);
+                return str0Rate;
             }
         }
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -380,6 +465,11 @@ namespace AI_Sports
                 string str1RF = string.Join(",", new NolleWindow().list1RF);
                 return str1RF;
             }
+            public string drawRate()
+            {
+                string str1Rate = string.Join(",", new NolleWindow().list1Rate);
+                return str1Rate;
+            }
         }
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         [System.Runtime.InteropServices.ComVisible(true)]
@@ -394,6 +484,11 @@ namespace AI_Sports
             {
                 string str2RF = string.Join(",", new NolleWindow().list2RF);
                 return str2RF;
+            }
+            public string drawRate()
+            {
+                string str2Rate = string.Join(",", new NolleWindow().list2Rate);
+                return str2Rate;
             }
         }
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -410,6 +505,11 @@ namespace AI_Sports
                 string str3RF = string.Join(",", new NolleWindow().list3RF);
                 return str3RF;
             }
+            public string drawRate()
+            {
+                string str3Rate = string.Join(",", new NolleWindow().list3Rate);
+                return str3Rate;
+            }
         }
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         [System.Runtime.InteropServices.ComVisible(true)]
@@ -425,6 +525,11 @@ namespace AI_Sports
                 string str4RF = string.Join(",", new NolleWindow().list4RF);
                 return str4RF;
             }
+            public string drawRate()
+            {
+                string str4Rate = string.Join(",", new NolleWindow().list4Rate);
+                return str4Rate;
+            }
         }
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         [System.Runtime.InteropServices.ComVisible(true)]
@@ -439,6 +544,11 @@ namespace AI_Sports
             {
                 string str5RF = string.Join(",", new NolleWindow().list5RF);
                 return str5RF;
+            }
+            public string drawRate()
+            {
+                string str5Rate = string.Join(",", new NolleWindow().list5Rate);
+                return str5Rate;
             }
         }
 
@@ -456,6 +566,11 @@ namespace AI_Sports
                 string str6RF = string.Join(",", new NolleWindow().list6RF);
                 return str6RF;
             }
+            public string drawRate()
+            {
+                string str6Rate = string.Join(",", new NolleWindow().list6Rate);
+                return str6Rate;
+            }
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -471,6 +586,11 @@ namespace AI_Sports
             {
                 string str7RF = string.Join(",", new NolleWindow().list7RF);
                 return str7RF;
+            }
+            public string drawRate()
+            {
+                string str7Rate = string.Join(",", new NolleWindow().list7Rate);
+                return str7Rate;
             }
         }
 
@@ -488,6 +608,11 @@ namespace AI_Sports
                 string str8RF = string.Join(",", new NolleWindow().list8RF);
                 return str8RF;
             }
+            public string drawRate()
+            {
+                string str8Rate = string.Join(",", new NolleWindow().list8Rate);
+                return str8Rate;
+            }
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -503,6 +628,11 @@ namespace AI_Sports
             {
                 string str9RF = string.Join(",", new NolleWindow().list9RF);
                 return str9RF;
+            }
+            public string drawRate()
+            {
+                string str9Rate = string.Join(",", new NolleWindow().list9Rate);
+                return str9Rate;
             }
         }
 
@@ -520,6 +650,11 @@ namespace AI_Sports
                 string str10RF = string.Join(",", new NolleWindow().list10RF);
                 return str10RF;
             }
+            public string drawRate()
+            {
+                string str10Rate = string.Join(",", new NolleWindow().list10Rate);
+                return str10Rate;
+            }
         }
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         [System.Runtime.InteropServices.ComVisible(true)]
@@ -534,6 +669,11 @@ namespace AI_Sports
             {
                 string str11RF = string.Join(",", new NolleWindow().list11RF);
                 return str11RF;
+            }
+            public string drawRate()
+            {
+                string str11Rate = string.Join(",", new NolleWindow().list11Rate);
+                return str11Rate;
             }
         }
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -550,6 +690,11 @@ namespace AI_Sports
                 string str12RF = string.Join(",", new NolleWindow().list12RF);
                 return str12RF;
             }
+            public string drawRate()
+            {
+                string str12Rate = string.Join(",", new NolleWindow().list12Rate);
+                return str12Rate;
+            }
         }
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         [System.Runtime.InteropServices.ComVisible(true)]
@@ -564,6 +709,11 @@ namespace AI_Sports
             {
                 string str13RF = string.Join(",", new NolleWindow().list13RF);
                 return str13RF;
+            }
+            public string drawRate()
+            {
+                string str13Rate = string.Join(",", new NolleWindow().list13Rate);
+                return str13Rate;
             }
         }
 
@@ -581,6 +731,11 @@ namespace AI_Sports
                 string str14RF = string.Join(",", new NolleWindow().list14RF);
                 return str14RF;
             }
+            public string drawRate()
+            {
+                string str14Rate = string.Join(",", new NolleWindow().list14Rate);
+                return str14Rate;
+            }
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -597,6 +752,11 @@ namespace AI_Sports
                 string str15RF = string.Join(",", new NolleWindow().list15RF);
                 return str15RF;
             }
+            public string drawRate()
+            {
+                string str15Rate = string.Join(",", new NolleWindow().list15Rate);
+                return str15Rate;
+            }
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -612,6 +772,11 @@ namespace AI_Sports
             {
                 string str16RF = string.Join(",", new NolleWindow().list16RF);
                 return str16RF;
+            }
+            public string drawRate()
+            {
+                string str16Rate = string.Join(",", new NolleWindow().list16Rate);
+                return str16Rate;
             }
         }
 
