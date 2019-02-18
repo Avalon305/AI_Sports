@@ -41,13 +41,13 @@ namespace AI_Sports.AISports.View.Pages
             //"星期"+DateTime.Now.DayOfWeek.ToString(("d")) 
 
             //获得星期几 
-            this.Time.Text = DateTime.Now.ToString("dddd", new System.Globalization.CultureInfo("zh-cn"));
-            this.Time.Text += " ";
-            //获得年月日 
-            this.Time.Text += DateTime.Now.ToString("yyyy年MM月dd日");   //yyyy年MM月dd日 
-            this.Time.Text += " ";
-            //获得时分 
-            this.Time.Text += DateTime.Now.ToString("HH:mm");
+            //this.Time.Text = DateTime.Now.ToString("dddd", new System.Globalization.CultureInfo("zh-cn"));
+            //this.Time.Text += " ";
+            ////获得年月日 
+            //this.Time.Text += DateTime.Now.ToString("yyyy年MM月dd日");   //yyyy年MM月dd日 
+            //this.Time.Text += " ";
+            ////获得时分 
+            //this.Time.Text += DateTime.Now.ToString("HH:mm");
             //System.Diagnostics.Debug.Print("this.ShowCurrentTime {0}", this.ShowCurrentTime); 
         }
 

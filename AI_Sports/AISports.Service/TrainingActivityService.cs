@@ -7,6 +7,7 @@ namespace AI_Sports.Service
     class TrainingActivityService
     {
         private ActivityDAO activityDAO = new ActivityDAO();
+        private TrainingActivityRecordDAO trainingActivityRecordDAO = new TrainingActivityRecordDAO();
         /// <summary>
         /// 批量插入训练活动
         /// </summary>
@@ -30,6 +31,15 @@ namespace AI_Sports.Service
         public List<ActivityEntity> ListActivitysByCourseId()
         {
             return activityDAO.ListActivitysByCourseId(ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId")));
+        }
+        /// <summary>
+        /// 训练活动分页页面的list查询
+        /// </summary>
+        /// <returns></returns>
+        public List<TrainingActivityVO> ListActivityRecords()
+        {
+            string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
+            return trainingActivityRecordDAO.ListActivityRecords(currentCourseCount);
         }
     }
 }
