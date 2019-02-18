@@ -6,19 +6,20 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-
-//去掉滚动条
-<body scroll="no">
+<body>
     <div id="Op">
-        <button onclick="click1()" style="width:100px;height:20px">测试</button>
+        <!--<button onclick="click1()" style="width:100px;height:20px">测试</button>
         <script>
         function click1()
         { 
-			alert(window.external.AerobicEnergy());
+			alert(window.external.aerobicEnergy());
+			//alert(eval('(' + window.external.aerobicEnergy() + ')'));
         }
-        </script>
+        </script>-->
     </div>
     <div id="main" style="width:1360px;height:500px" />
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+	</script>
     <script src="echarts.js"></script>
     <script src="echarts-all.js"></script>
     <script src="shine.js"></script>
@@ -38,7 +39,6 @@
             }
         }
         myChart = echarts.init(document.getElementById('main'),'shine');
-		
  option = {
   //去掉外部边框
   grid: {show:'true',borderWidth:'0'},
@@ -49,9 +49,9 @@
         }
     },
 	//自定义legend颜色
-	color:['#4472C5','#ED7C30','#ED1818'],
+	color:['#4472C5','#ED7C30'],
     legend: {
-        data:['力量耐力循环（有氧）','力量耐力循环（力量）','力量循环']
+        data:['有氧设备','力量训练设备']
     },
 	//辅助线等   设为false
     toolbox: {
@@ -107,7 +107,10 @@
 				width: 2,
 				type: 'solid'
 				}
-			}
+			},
+			axisLabel: {
+            formatter: '{value} 千卡'
+          }
 			//固定y轴,
 			//min:'0',
             //max:'100',
@@ -117,21 +120,14 @@
     ],
     series : [
         {
-            name:'力量耐力循环（有氧）',
+            name:'有氧设备',
             type:'bar',
 			stack: '广告',
 			barWidth : 120,//柱图宽度
             data : []
         },
         {
-            name:'力量耐力循环（力量）',
-            type:'bar',
-            stack: '广告',
-			barWidth : 120,//柱图宽度
-            data : []
-        },
-		{
-            name:'力量循环',
+            name:'力量训练设备',
             type:'bar',
             stack: '广告',
 			barWidth : 120,//柱图宽度
@@ -141,26 +137,24 @@
 };
         //动态向X轴赋值
 		var arr = new Array();
-		for(i=0;i<window.external.maxCourseRecord();i++){
+		for(i=0;i<window.external.recordNumber();i++){
 		arr.push("")
 		};
-		option.xAxis[0].data = arr;
+		option.xAxis[0].data = ['',''];
 
-		//动态向力量耐力循环（有氧）赋值  
-		var aerobicEnduranceEnergy = new Array();
-		aerobicEnduranceEnergy.push(window.external.aerobicEnduranceEnergy());
-		option.series[0].data = aerobicEnduranceEnergy;
-		//动态向力量耐力循环（力量）赋值
-		var forceEnduranceEnergy = new Array();
-		forceEnduranceEnergy.push(window.external.forceEnduranceEnergy());
-		option.series[1].data = forceEnduranceEnergy;
+		//动态向有氧训练设备赋值  
+		var aerobicArray = new Array();
+		//aerobicArray.push(window.external.aerobicEnergy());
+		aerobicArray = eval('(' + window.external.aerobicEnergy() + ')');
+		option.series[0].data = aerobicArray;
 		//动态向力量训练设备赋值
 		var forceArray = new Array();
-		forceArray.push(window.external.forceEnergy());
-		option.series[2].data = forceArray;
+		//forceArray.push(window.external.forceEnergy());
+		forceArray =  eval('(' +window.external.forceEnergy()+ ')');
+		option.series[1].data = forceArray;
 		
 		//加载图表
         myChart.setOption(option);
     </script>
 </body>
-</html>	
+</html>

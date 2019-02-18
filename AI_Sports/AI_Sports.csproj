@@ -81,6 +81,9 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.13\lib\net45\NLog.dll</HintPath>
     </Reference>
+    <Reference Include="nuitrack.net">
+      <HintPath>D:\NuitrackSDK\Examples\nuitrack_csharp_sample\nuitrack.net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
@@ -100,6 +103,7 @@
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.1\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -143,6 +147,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+<<<<<<< HEAD
     <Page Include="AISports.View\Pages\newPlan.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -159,6 +164,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+=======
+>>>>>>> 51c2fcc5a3576792380f4ae3455c3ea78a2f4c75
     <Page Include="AISports.View\Pages\TrainingCourseAnalysis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -271,6 +278,7 @@
     <Compile Include="AISports.Dao\DatacodeDAO.cs" />
     <Compile Include="AISports.Dao\KeyDAO.cs" />
     <Compile Include="AISports.Dao\MemberDAO.cs" />
+    <Compile Include="AISports.Dao\MusclePieChartDAO.cs" />
     <Compile Include="AISports.Dao\PersonalSettingDAO.cs" />
     <Compile Include="AISports.Dao\TrainingActivityRecordDAO.cs" />
     <Compile Include="AISports.Dao\TrainingCourseDAO.cs" />
@@ -284,6 +292,7 @@
     <Compile Include="AISports.Entity\KeyEntity.cs" />
     <Compile Include="AISports.Entity\MemberEntity.cs" />
     <Compile Include="AISports.Entity\PersonalSettingEntity.cs" />
+    <Compile Include="AISports.Entity\SkeletonLengthEntity.cs" />
     <Compile Include="AISports.Entity\SystemSettingEntity.cs" />
     <Compile Include="AISports.Entity\TrainingActivityRecordEntity.cs" />
     <Compile Include="AISports.Entity\TrainingActivityVO.cs" />
@@ -298,6 +307,7 @@
     <Compile Include="AISports.Proto\ProtocolHandler.cs" />
     <Compile Include="AISports.Service\DeviceCommService.cs" />
     <Compile Include="AISports.Service\MemberService.cs" />
+    <Compile Include="AISports.Service\MusclePieChartService.cs" />
     <Compile Include="AISports.Service\TrainingActivityService.cs" />
     <Compile Include="AISports.Service\TrainingCourseService.cs" />
     <Compile Include="AISports.Service\TrainingDeviceRecordService.cs" />
@@ -326,6 +336,7 @@
     <Compile Include="AISports.View\Pages\muscle.xaml.cs">
       <DependentUpon>muscle.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="AISports.View\Pages\newPlan.xaml.cs">
       <DependentUpon>newPlan.xaml</DependentUpon>
     </Compile>
@@ -338,6 +349,8 @@
     <Compile Include="AISports.View\Pages\trainingCourse.xaml.cs">
       <DependentUpon>trainingCourse.xaml</DependentUpon>
     </Compile>
+=======
+>>>>>>> 51c2fcc5a3576792380f4ae3455c3ea78a2f4c75
     <Compile Include="AISports.View\Pages\TrainingCourseAnalysis.xaml.cs">
       <DependentUpon>TrainingCourseAnalysis.xaml</DependentUpon>
     </Compile>

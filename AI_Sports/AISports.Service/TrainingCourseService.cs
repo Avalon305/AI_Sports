@@ -43,5 +43,25 @@ namespace AI_Sports.Service
             string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
             return trainingCourseDAO.listCourseRecord(trainingCourseId);
         }
+
+        public int selectMAxCourseRecord()
+        {
+            return trainingCourseDAO.selectMAxCourseRecord();
+        }
+
+        public double selectAerobicEnduranceEnergy()
+        {
+            return trainingCourseDAO.selectAerobicEnduranceEnergy();
+        }
+
+        public double selectForceEnduranceEnergy()
+        {
+            return trainingCourseDAO.selectForceEnduranceEnergy();
+        }
+
+        public double selectForceEnergy()
+        {
+            return trainingCourseDAO.selectForceEnergy();
+        }
     }
 }
