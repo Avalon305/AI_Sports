@@ -1,0 +1,211 @@
+﻿<Page x:Class="AI_Sports.AddCourse"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1493.3"
+      Title="AddCourse">
+    <Page.Resources>
+        <Style BasedOn="{StaticResource glyphicon}" TargetType="{x:Type Path}">
+            <Setter Property="Margin" Value="0,15"></Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Background="White">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0"></ColumnDefinition>
+            <ColumnDefinition Width="15*"></ColumnDefinition>
+            <ColumnDefinition Width="0*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Column="1">
+            <StackPanel Grid.Column="1">
+                <WrapPanel Margin="20,0,0,0">
+                    <Label Content="详情" Style="{DynamicResource h1}" Margin="20 20 0 0" FontFamily="Microsoft JhengHei UI"/>
+                </WrapPanel>
+                <WrapPanel >
+                    <GridSplitter  Width="1080" Height="3" Margin="10,33,0,0" Background="Gray" />
+                </WrapPanel>
+                <WrapPanel Margin="200,20,0,20">
+                    <StackPanel>
+                        <StackPanel>
+                            <WrapPanel>
+                                <WrapPanel Width="31" Name="time_mark"/>
+                                <WrapPanel Width="29" Name="tip1">
+                                    <Path Data="{DynamicResource glyphicon-play}" Margin="9,0,0,0" Fill="Black" Height="12" Width="10" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                                        <Path.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform Angle="90"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Path.RenderTransform>
+                                    </Path>
+                                </WrapPanel>
+                            </WrapPanel>
+                            <WrapPanel Margin="0,5,0,0">
+                                <WrapPanel Name="shijianzhou">
+                                    <WrapPanel Width="20"/>
+                                    <WrapPanel>
+                                        <Rectangle Fill="Black" Height="2" Width="10" Margin="0,3.5,0,0"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node1">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node2">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node3">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node4">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node5">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node6">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node7">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node8">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node9">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node10">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node11">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node12">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node13">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node14">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node15">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                    <WrapPanel Name="time_node16">
+                                        <Ellipse Fill="#FFF4F4F5" Height="10" Stroke="Black" Width="10"/>
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                </WrapPanel>
+                                <WrapPanel>
+                                    <WrapPanel Height="2" Margin="5,3.5,0,0">
+                                        <Rectangle Fill="Black" Height="2" Width="10.5"/>
+                                    </WrapPanel>
+                                </WrapPanel>
+                            </WrapPanel>
+                            <WrapPanel Margin="0,5,0,0">
+                                <WrapPanel>
+                                    <Label Content="2019-02-13" HorizontalContentAlignment="Center" FontSize="14" Name="time_size1"/>
+                                </WrapPanel>
+                                <WrapPanel Width="240" Name="time_position"/>
+                                <WrapPanel>
+                                    <Label Content="2019-02-28"  HorizontalContentAlignment="Center" FontSize="14" Name="time_size2"/>
+                                </WrapPanel>
+                            </WrapPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </WrapPanel>
+                <GridSplitter HorizontalAlignment="Stretch" Height="1"/>
+                <WrapPanel Margin="200,20,0,0">
+                    <Border BorderBrush="Black" BorderThickness="10" Height="99" Width="3" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
+                    <Border BorderBrush="Black" BorderThickness="10" Height="3" Width="15" Margin="0,0,0,40"/>
+                    <Path Data="{DynamicResource glyphicon-play}" Margin="0,0,0,40" Fill="Black" />
+
+                    <Border BorderBrush="LightGray" BorderThickness="1" Height="130" Width="100" Margin="5,5,10,20">
+                        <StackPanel>
+                            <WrapPanel Height="10"/>
+                            <WrapPanel HorizontalAlignment="Center">
+                                <Border BorderBrush="LightGray" BorderThickness="1" Height="80" Width="80">
+                                    <Image Margin="0.2,0.2,-0.8,-0.8" Source="../Images/timg.jpg" Stretch="Fill"/>
+                                </Border>
+
+                            </WrapPanel>
+                            <WrapPanel HorizontalAlignment="Center" Margin="0,10,0,0">
+                                <Label Content="训练活动" FontSize="18" FontWeight="Bold"/>
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+                    <Border BorderBrush="LightGray" BorderThickness="1" Height="130" Width="90" Margin="0,5,10,20">
+                        <StackPanel>
+                            <WrapPanel HorizontalAlignment="Center" Margin="10">
+                                <Label Name="pausetime_content" Content="1" FontSize="18"/>
+                                <Label Content="天" FontSize="18"/>
+                            </WrapPanel>
+                            <WrapPanel HorizontalAlignment="Center" Margin="10">
+                                <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="18" Background="{x:Null}" BorderBrush="{x:Null}" Height="18" Padding="0" Margin="0,0,5,0" Click="Pausetime_minus">
+                                    <Path Data="{DynamicResource glyphicon-minus}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="20" Width="20"/>
+                                </Button>
+                                <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Height="20" Padding="0"  x:Name="button">
+                                    <Path Data="{DynamicResource glyphicon-pause}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="20" Width="20"/>
+                                </Button>
+                                <Button HorizontalAlignment="Left"  VerticalAlignment="Top" Width="18" Background="{x:Null}" BorderBrush="{x:Null}" Height="18" Padding="0" Margin="5,0,0,0" Click="Pausetime_plus">
+                                    <Path Data="{DynamicResource glyphicon-plus}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="16" Width="16"/>
+                                </Button>
+                            </WrapPanel>
+                            <WrapPanel HorizontalAlignment="Center" Margin="10">
+                                <Label Content="暂停" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.478,1.404" Margin="0  10 0 0" />
+                            </WrapPanel>
+                        </StackPanel>
+                    </Border>
+                    <Path Data="{DynamicResource glyphicon-play}" Margin="25,0,10,40" Fill="#FFB6B2B2" Height="30" Stretch="Fill" Width="22"/>
+                    <Border BorderBrush="Black" BorderThickness="10" Height="3" Width="18" Margin="0,0,0,40"/>
+                    <Border BorderBrush="Black" BorderThickness="10" Height="99" Width="3" VerticalAlignment="Bottom"/>
+
+                </WrapPanel>
+                <WrapPanel Margin="210,0,0,0">
+                    <Border BorderBrush="Black" BorderThickness="10" Height="3" Width="350"/>
+                </WrapPanel>
+                <WrapPanel Margin="155,15,0,30">
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="23" Background="{x:Null}" BorderBrush="{x:Null}" Height="23" Padding="0" Margin="150,5,20,0" Click="Xunliantime_minus">
+                        <Path Data="{DynamicResource glyphicon-minus}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="20" Width="20"/>
+                    </Button>
+                    <TextBox Name="xunliantime_text" HorizontalAlignment="Left" Height="35"  TextWrapping="Wrap" Text="16" VerticalAlignment="Top" Width="46" Margin="5,0,5,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Button HorizontalAlignment="Left"  VerticalAlignment="Top" Width="23" Background="{x:Null}" BorderBrush="{x:Null}" Height="23" Padding="0" Margin="20,5,0,0" Click="Xunliantime_plus">
+                        <Path Data="{DynamicResource glyphicon-plus}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="20" Width="20"/>
+                    </Button>
+                </WrapPanel>
+
+                <WrapPanel Margin="350,0,0,0">
+                    <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Center" Height="50" Width="50" CornerRadius="25">
+                        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Padding="0" Height="25" Margin="9,10,10,10" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
+                            <Path Data="{DynamicResource glyphicon-plus}" Margin="0" Fill="Gray"  Height="25" Width="25" Stretch="Fill"/>
+                        </Button>
+                    </Border>
+
+                </WrapPanel>
+                <Frame x:Name="_number" Width="1493.3" Height="850"></Frame>
+            </StackPanel>
+
+        </ScrollViewer>
+
+    </Grid>
+</Page>

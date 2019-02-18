@@ -1,0 +1,35 @@
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.TrainingActivityAnalysis"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
+      mc:Ignorable="d" 
+      Background="White"
+      d:DesignHeight="1080" d:DesignWidth="1493.3"
+      Title="TrainingActivityAnalysis">
+
+    <Grid  >
+        <ScrollViewer Width="auto" VerticalAlignment="Bottom" Margin="0,0,0,50">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="18*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Content="分析"  Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,0,0,0"  FontSize="50" Grid.Row="0"></Label>
+                <StackPanel HorizontalAlignment="Left" Height="970" Margin="20,0" Grid.Row="1" VerticalAlignment="Top" Width="1453.3">
+                    <Label Content="周五 2018年12月7日 16:09" Name="lable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
+                    <Label  Content="训练课程：" Name="Lab_Training_course" FontFamily="yahei" Style="{DynamicResource h3}" Margin="0"></Label>
+
+
+                </StackPanel>
+                
+            </Grid>
+        </ScrollViewer>
+        <!--底部分隔条以及后退按钮-->
+        <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,50" VerticalAlignment="Bottom" Grid.Row="2" Grid.RowSpan="2"/>
+        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,0,0,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}"/>
+
+    </Grid>
+</Page>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AI_Sports.Entity
 {
+    [Serializable]
     class TrainingCourseVO
     {
         /// <summary>

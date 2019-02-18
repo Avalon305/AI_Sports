@@ -21,9 +21,9 @@ namespace AI_Sports.AISports.View.Pages
     /// <summary>
     /// userFrist.xaml 的交互逻辑
     /// </summary>
-    public partial class userFrist : Page
+    public partial class currentProgress : Page
     {
-        public userFrist()
+        public currentProgress()
         {
             InitializeComponent();
             TrainingCourseService trainingCourseService = new TrainingCourseService();

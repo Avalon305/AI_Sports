@@ -135,10 +135,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AISports.View\Pages\allSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\firstTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\last.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AISports.View\Pages\muscle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+
+    <Page Include="AISports.View\Pages\newPlan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\ScanGuidance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AISports.View\Pages\TrainingActivityAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AISports.View\Pages\trainingCourse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+
     <Page Include="AISports.View\Pages\TrainingCourseAnalysis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +176,18 @@
     <Page Include="AISports.View\Pages\TrainingPlanAnalysis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AISports.View\Pages\useTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\AddCourse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\Xw_2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="FmyWindow.xaml">
       <SubType>Designer</SubType>
@@ -211,7 +253,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AISports.View\Pages\userFrist.xaml">
+    <Page Include="AISports.View\Pages\currentProgress.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -256,6 +298,7 @@
     <Compile Include="AISports.Entity\SkeletonLengthEntity.cs" />
     <Compile Include="AISports.Entity\SystemSettingEntity.cs" />
     <Compile Include="AISports.Entity\TrainingActivityRecordEntity.cs" />
+    <Compile Include="AISports.Entity\TrainingActivityVO.cs" />
     <Compile Include="AISports.Entity\TrainingCourseEntity.cs" />
     <Compile Include="AISports.Entity\TrainingCourseVO.cs" />
     <Compile Include="AISports.Entity\TrainingDeviceRecordEntity.cs" />
@@ -278,6 +321,15 @@
     <Compile Include="AISports.Util\KeyGenerator.cs" />
     <Compile Include="AISports.Util\ParseIntegerUtil.cs" />
     <Compile Include="AISports.Util\DbUtil.cs" />
+    <Compile Include="AISports.View\Pages\allSettings.xaml.cs">
+      <DependentUpon>allSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\firstTest.xaml.cs">
+      <DependentUpon>firstTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\last.xaml.cs">
+      <DependentUpon>last.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AISports.View\Pages\MemberInfo.xaml.cs">
       <DependentUpon>MemberInfo.xaml</DependentUpon>
     </Compile>
@@ -287,6 +339,20 @@
     <Compile Include="AISports.View\Pages\muscle.xaml.cs">
       <DependentUpon>muscle.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="AISports.View\Pages\newPlan.xaml.cs">
+      <DependentUpon>newPlan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\ScanGuidance.xaml.cs">
+      <DependentUpon>ScanGuidance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\TrainingActivityAnalysis.xaml.cs">
+      <DependentUpon>TrainingActivityAnalysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\trainingCourse.xaml.cs">
+      <DependentUpon>trainingCourse.xaml</DependentUpon>
+    </Compile>
+
     <Compile Include="AISports.View\Pages\TrainingCourseAnalysis.xaml.cs">
       <DependentUpon>TrainingCourseAnalysis.xaml</DependentUpon>
     </Compile>
@@ -326,17 +392,26 @@
     <Compile Include="AISports.View\Pages\User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AISports.View\Pages\userFrist.xaml.cs">
-      <DependentUpon>userFrist.xaml</DependentUpon>
+    <Compile Include="AISports.View\Pages\currentProgress.xaml.cs">
+      <DependentUpon>currentProgress.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\userinfo.xaml.cs">
       <DependentUpon>userinfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\useTemplate.xaml.cs">
+      <DependentUpon>useTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\VitalSigns.xaml.cs">
       <DependentUpon>VitalSigns.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\Welcome_first.xaml.cs">
       <DependentUpon>Welcome_first.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\AddCourse.xaml.cs">
+      <DependentUpon>AddCourse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\Xw_2.xaml.cs">
+      <DependentUpon>Xw_2.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -434,6 +509,8 @@
     <Resource Include="AISports.View\Images\text.png" />
     <Resource Include="AISports.View\Images\text3.png" />
     <Resource Include="AISports.View\Images\VitalSigns.jpg" />
+    <Resource Include="AISports.View\Images\next.png" />
+    <Resource Include="AISports.View\Images\timg.jpg" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
