@@ -27,28 +27,13 @@ namespace AI_Sports.AISports.View.Pages
         {
             InitializeComponent();
 
-            //show timer by_songgp 
-            ShowTimer = new System.Windows.Threading.DispatcherTimer();
-            ShowTimer.Tick += new EventHandler(ShowCurTimer);//起个Timer一直获取当前时间 
-            ShowTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
-            ShowTimer.Start();
+           
 
         }
 
         //show timer by_songgp 
         public void ShowCurTimer(object sender, EventArgs e)
         {
-            //"星期"+DateTime.Now.DayOfWeek.ToString(("d")) 
-
-            //获得星期几 
-            this.Time.Text = DateTime.Now.ToString("dddd", new System.Globalization.CultureInfo("zh-cn"));
-            this.Time.Text += " ";
-            //获得年月日 
-            this.Time.Text += DateTime.Now.ToString("yyyy年MM月dd日");   //yyyy年MM月dd日 
-            this.Time.Text += " ";
-            //获得时分 
-            this.Time.Text += DateTime.Now.ToString("HH:mm");
-            //System.Diagnostics.Debug.Print("this.ShowCurrentTime {0}", this.ShowCurrentTime); 
         }
 
 

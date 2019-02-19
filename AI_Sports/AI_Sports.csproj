@@ -85,8 +85,9 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.13\lib\net45\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="nuitrack.net">
-      <HintPath>D:\NuitrackSDK\Examples\nuitrack_csharp_sample\nuitrack.net.dll</HintPath>
+    <Reference Include="nuitrack.net, Version=1.0.6848.20051, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>AISports.Lib\nuitrack.net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -151,7 +152,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-
     <Page Include="AISports.View\Pages\newPlan.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -168,7 +168,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-
     <Page Include="AISports.View\Pages\TrainingCourseAnalysis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -339,7 +338,6 @@
     <Compile Include="AISports.View\Pages\muscle.xaml.cs">
       <DependentUpon>muscle.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="AISports.View\Pages\newPlan.xaml.cs">
       <DependentUpon>newPlan.xaml</DependentUpon>
     </Compile>
@@ -352,7 +350,6 @@
     <Compile Include="AISports.View\Pages\trainingCourse.xaml.cs">
       <DependentUpon>trainingCourse.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="AISports.View\Pages\TrainingCourseAnalysis.xaml.cs">
       <DependentUpon>TrainingCourseAnalysis.xaml</DependentUpon>
     </Compile>
@@ -495,6 +492,7 @@
     <Content Include="AISports.Echarts\dist\StrengthStacked.html" />
     <Content Include="AISports.Echarts\dist\Test.html" />
     <Content Include="AISports.Echarts\dist\TrainingUnit.html" />
+    <Content Include="AISports.Lib\nuitrack.net.dll" />
     <Content Include="AISports.View\Images\defaultphoto.png" />
     <Resource Include="AISports.View\Images\eef81f78c35e498da4d9263cb70cc329_th.jpeg" />
     <Resource Include="AISports.View\Images\logodark.jpg" />
@@ -541,6 +539,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AISports.Echarts\dist\chart\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -475,11 +475,16 @@ namespace AI_Sports
                             skeletonLength.Arm_length_down = ArmLengthDown;
                             skeletonLength.Leg_length_up = LegLengthUp;
                             skeletonLength.Leg_length_down = LegLengthDown;
-                            Thread.Sleep(3000);
                             Nuitrack.Release();
-                            MessageBox.Show("计算完成");
+                            this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+                            {
+                                Shoulder_width.Text = ShoulderWidth.ToString();
+                                Arm_length_up.Text = ArmLengthUp.ToString();
+                                Arm_length_down.Text = ArmLengthDown.ToString();
+                                Leg_length_up.Text = LegLengthUp.ToString();
+                                Leg_length_down.Text = LegLengthDown.ToString();
+                            });
                             break;
-
                         }
                         else
                         {
