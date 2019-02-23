@@ -282,6 +282,7 @@
     <Compile Include="AISports.Dao\MemberDAO.cs" />
     <Compile Include="AISports.Dao\MusclePieChartDAO.cs" />
     <Compile Include="AISports.Dao\PersonalSettingDAO.cs" />
+    <Compile Include="AISports.Dao\SkeletonLengthDAO.cs" />
     <Compile Include="AISports.Dao\TrainingActivityRecordDAO.cs" />
     <Compile Include="AISports.Dao\TrainingCourseDAO.cs" />
     <Compile Include="AISports.Dao\TrainingDeviceRecordDAO.cs" />
@@ -509,6 +510,7 @@
     <Resource Include="AISports.View\Images\VitalSigns.jpg" />
     <Resource Include="AISports.View\Images\next.png" />
     <Resource Include="AISports.View\Images\timg.jpg" />
+    <Resource Include="AISports.View\Images\front.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

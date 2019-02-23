@@ -1,4 +1,5 @@
-﻿using AI_Sports.AISports.Entity;
+﻿using AI_Sports.AISports.Dao;
+using AI_Sports.AISports.Entity;
 using nuitrack;
 using nuitrack.issues;
 using System;
@@ -99,6 +100,7 @@ namespace AI_Sports
         SkeletonLengthEntity skeletonLength = new SkeletonLengthEntity();
         bool flag = false;
         int clicknum = 0;
+        SkeletonLengthDAO skeletonLengthDAO = new SkeletonLengthDAO();
 
         public NuitrackWindow()
         {
@@ -409,7 +411,7 @@ namespace AI_Sports
                         System.Windows.Media.Brush brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
                         foreach (var joint in skeleton.Joints)
                         {
-                            drawingContext.DrawEllipse(brush, new System.Windows.Media.Pen(), new System.Windows.Point((joint.Proj.X * _bitmap.Width - 10 / 2) - 50, (joint.Proj.Y * _bitmap.Height - 10 / 2) - 50), 5, 5);
+                            drawingContext.DrawEllipse(brush, new System.Windows.Media.Pen(), new System.Windows.Point((joint.Proj.X * _bitmap.Width - 10 / 2) - 53, (joint.Proj.Y * _bitmap.Height - 10 / 2) - 110), 5, 5);
                         }
                         drawingContext.Close();
                         RenderTargetBitmap bmp = new RenderTargetBitmap(640, 480, 120, 120, PixelFormats.Pbgra32);
@@ -476,6 +478,7 @@ namespace AI_Sports
                             skeletonLength.Leg_length_up = LegLengthUp;
                             skeletonLength.Leg_length_down = LegLengthDown;
                             Nuitrack.Release();
+                            //在输入框中渲染数据
                             this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                             {
                                 Shoulder_width.Text = ShoulderWidth.ToString();
@@ -536,6 +539,20 @@ namespace AI_Sports
 
             Console.WriteLine("按钮被点击了");
 
+        }
+
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
+        {
+            SkeletonLengthEntity skeletonLengthEntity = new SkeletonLengthEntity();
+            skeletonLengthEntity.Shoulder_width = System.Convert.ToDouble(Shoulder_width.Text);
+            skeletonLengthEntity.Arm_length_up = System.Convert.ToDouble(Arm_length_up.Text);
+            skeletonLengthEntity.Arm_length_down = System.Convert.ToDouble(Arm_length_down.Text);
+            skeletonLengthEntity.Leg_length_up = System.Convert.ToDouble(Leg_length_up.Text);
+            skeletonLengthEntity.Leg_length_down = System.Convert.ToDouble(Leg_length_down.Text);
+            skeletonLengthEntity.Body_length = System.Convert.ToDouble(Body_length.Text);
+
+            skeletonLengthDAO.insertSkeletonLengthRecord(skeletonLengthEntity);
+            MessageBox.Show("保存成功");
         }
 
         public static BitmapImage BitmapToBitmapImage(Bitmap bitmap)
