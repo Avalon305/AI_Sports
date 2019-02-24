@@ -156,6 +156,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AISports.View\Pages\NuitrackScan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\Practice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AISports.View\Pages\ScanGuidance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -342,6 +350,12 @@
     <Compile Include="AISports.View\Pages\newPlan.xaml.cs">
       <DependentUpon>newPlan.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AISports.View\Pages\NuitrackScan.xaml.cs">
+      <DependentUpon>NuitrackScan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\Practice.xaml.cs">
+      <DependentUpon>Practice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AISports.View\Pages\ScanGuidance.xaml.cs">
       <DependentUpon>ScanGuidance.xaml</DependentUpon>
     </Compile>
@@ -425,22 +439,8 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NolleWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="NuitrackWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NolleWindow.xaml.cs">
-      <DependentUpon>NolleWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="NuitrackWindow.xaml.cs">
-      <DependentUpon>NuitrackWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

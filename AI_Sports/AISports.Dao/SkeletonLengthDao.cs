@@ -21,5 +21,26 @@ namespace AI_Sports.AISports.Dao
 
             }
         }
+        public SkeletonLengthEntity getSkeletonLengthRecord(string memberId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "select * from bdl_skeleton_length where fk_member_id=@memberId";
+
+                return conn.QueryFirstOrDefault<SkeletonLengthEntity>(query, new {  memberId });
+
+            }
+        }
+
+        public void updateSkeletonLengthRecord(SkeletonLengthEntity skeletonLengthEntity)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string update = "update  bdl_skeleton_length set body_length=@Body_length,shoulder_width=@Shoulder_width,arm_length_up=@Arm_length_up,arm_length_down=@Arm_length_down, leg_length_up=@Leg_length_up, length_length_down=@Leg_length_down where fk_member_id=@Fk_member_id";
+
+                conn.Execute(update, skeletonLengthEntity);
+
+            }
+        }
     }
 }

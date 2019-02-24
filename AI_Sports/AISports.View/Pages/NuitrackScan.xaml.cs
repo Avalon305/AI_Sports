@@ -77,7 +77,7 @@ namespace AI_Sports
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class NuitrackWindow : Window
+    public partial class NuitrackScan : Page
     {
         /// <summary>
         /// Nuitrack变量定义
@@ -102,7 +102,7 @@ namespace AI_Sports
         int clicknum = 0;
         SkeletonLengthDAO skeletonLengthDAO = new SkeletonLengthDAO();
 
-        public NuitrackWindow()
+        public NuitrackScan()
         {
             InitializeComponent();
 
@@ -411,7 +411,7 @@ namespace AI_Sports
                         System.Windows.Media.Brush brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
                         foreach (var joint in skeleton.Joints)
                         {
-                            drawingContext.DrawEllipse(brush, new System.Windows.Media.Pen(), new System.Windows.Point((joint.Proj.X * _bitmap.Width - 10 / 2) - 53, (joint.Proj.Y * _bitmap.Height - 10 / 2) - 110), 5, 5);
+                            drawingContext.DrawEllipse(brush, new System.Windows.Media.Pen(), new System.Windows.Point((joint.Proj.X * _bitmap.Width - 10 / 2) - 53, (joint.Proj.Y * _bitmap.Height - 10 / 2) - 80), 5, 5);
                         }
                         drawingContext.Close();
                         RenderTargetBitmap bmp = new RenderTargetBitmap(640, 480, 120, 120, PixelFormats.Pbgra32);
@@ -543,6 +543,7 @@ namespace AI_Sports
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
+            string fk_member_id = "123456";
             SkeletonLengthEntity skeletonLengthEntity = new SkeletonLengthEntity();
             skeletonLengthEntity.Shoulder_width = System.Convert.ToDouble(Shoulder_width.Text);
             skeletonLengthEntity.Arm_length_up = System.Convert.ToDouble(Arm_length_up.Text);
@@ -550,8 +551,14 @@ namespace AI_Sports
             skeletonLengthEntity.Leg_length_up = System.Convert.ToDouble(Leg_length_up.Text);
             skeletonLengthEntity.Leg_length_down = System.Convert.ToDouble(Leg_length_down.Text);
             skeletonLengthEntity.Body_length = System.Convert.ToDouble(Body_length.Text);
-
-            skeletonLengthDAO.insertSkeletonLengthRecord(skeletonLengthEntity);
+            skeletonLengthEntity.Fk_member_id = fk_member_id;
+            if (skeletonLengthDAO.getSkeletonLengthRecord(fk_member_id) == null)
+            {
+                skeletonLengthDAO.insertSkeletonLengthRecord(skeletonLengthEntity);
+            }
+            else {
+                skeletonLengthDAO.updateSkeletonLengthRecord(skeletonLengthEntity);
+            }
             MessageBox.Show("保存成功");
         }
 
