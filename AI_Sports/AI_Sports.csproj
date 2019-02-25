@@ -120,10 +120,11 @@
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.13\lib\net45\NLog.dll</HintPath>
     </Reference>
-<Reference Include="nuitrack.net, Version=1.0.6848.20051, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="nuitrack.net, Version=1.0.6848.20051, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>AISports.Lib\nuitrack.net.dll</HintPath>
-    </Reference>    <Reference Include="System" />
+    </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
@@ -188,7 +189,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AISports.View\Pages\newPlan.xaml">      <Generator>MSBuild:Compile</Generator>
+    <Page Include="AISports.View\Pages\newPlan.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AISports.View\Pages\NuitrackScan.xaml">
@@ -227,7 +229,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-   
     <Page Include="AISports.View\Pages\AddActivitys.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -381,8 +382,8 @@
     <Compile Include="AISports.View\Pages\muscle.xaml.cs">
       <DependentUpon>muscle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AISports.View\Pages\NewPlan.xaml.cs">
-      <DependentUpon>NewPlan.xaml</DependentUpon>
+    <Compile Include="AISports.View\Pages\newPlan.xaml.cs">
+      <DependentUpon>newPlan.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\NuitrackScan.xaml.cs">
       <DependentUpon>NuitrackScan.xaml</DependentUpon>
@@ -548,7 +549,8 @@
     <Resource Include="AISports.View\Images\VitalSigns.jpg" />
     <Resource Include="AISports.View\Images\next.png" />
     <Resource Include="AISports.View\Images\timg.jpg" />
-    <Resource Include="AISports.View\Images\deviceImageTest.jpg" />    <Content Include="NLog.config">
+    <Resource Include="AISports.View\Images\deviceImageTest.jpg" />
+    <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="AISports.Lib\.gitkeep" />
@@ -579,18 +581,15 @@
   <ItemGroup>
     <Folder Include="AISports.Echarts\dist\chart\" />
   </ItemGroup>
-
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-
-
-
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
