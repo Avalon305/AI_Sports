@@ -1,0 +1,63 @@
+﻿<Page x:Class="AI_Sports.NuitrackScan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AI_Sports"
+        mc:Ignorable="d"
+        Title="NuitrackScan" Height="1080" Width="1493.3">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Margin="10,20" Background="#FF4679A6" Content="开始" Click="Button_Click" BorderBrush="#FF4679A6"/>
+        <Button Margin="37.2,42,97.6,42.8" Background="#FF4679A6" Content="保存" Click="Button_Click_Save" BorderBrush="#FF4679A6" Grid.ColumnSpan="2" Grid.Column="2"/>
+        <Button Margin="19.6,42,114.2,42.8"  Background="#FFF1CA10"  Content="重置" BorderBrush="#FFF1CA10" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <StackPanel Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="6" Width="350">
+            <Label Content="肩宽" FontSize="20"></Label>
+            <TextBox Margin="10,5"  Text="肩宽" Name="Shoulder_width" Style="{StaticResource input-lg}"/>
+            <Label Content="臂长(上)"  FontSize="20"></Label>
+            <TextBox Margin="10,5"  Text="臂长(上)" Name="Arm_length_up" Style="{StaticResource input-lg}"/>
+            <Label Content="臂长(下)"  FontSize="20"></Label>
+            <TextBox Margin="10,5"  Text="臂长(下)" Name="Arm_length_down" Style="{StaticResource input-lg}"/>
+            <Label Content="腿长(上)"  FontSize="20"></Label>
+            <TextBox Margin="10,5"  Text="腿长(上)" Name="Leg_length_up" Style="{StaticResource input-lg}"/>
+            <Label Content="腿长(下)"  FontSize="20"></Label>
+            <TextBox Margin="10,5"  Text="腿长(下)" Name="Leg_length_down" Style="{StaticResource input-lg}"/>
+            <Label Content="躯干长"  FontSize="20"></Label>
+            <TextBox Margin="10,5"  Text="" Name="Body_length" Style="{StaticResource input-lg}"/>
+            <Button Margin="10,20" Background="#FF4679A6" Content="保存" BorderBrush="#FF4679A6"/>
+            <Button Margin="10,0"  Background="#FFF1CA10"  Content="重置" BorderBrush="#FFF1CA10"/>
+        </StackPanel>
+
+        <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="3" Grid.ColumnSpan="7" Height="540" Width="720" x:Name="statusImage" >
+        </Image>
+        <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="3" Grid.ColumnSpan="7" Height="540" Width="720" x:Name="statusImage1" Margin="40.8,104.2,40,56.6" >
+        </Image>
+
+        <Image Grid.Row="2" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="4" Width="500" Source="AISports.View/Images/front.png" Margin="-52,0.4,9.6,56.6" />
+    </Grid>
+</Page>

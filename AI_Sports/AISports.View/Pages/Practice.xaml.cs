@@ -7,14 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Security.Permissions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace AI_Sports
 {
     /// <summary>
-    /// NolleWindow.xaml 的交互逻辑
+    /// Practice.xaml 的交互逻辑
     /// </summary>
-    public partial class NolleWindow : Window
+    public partial class Practice : Page
     {
         TrainingDeviceRecordService trainingDeviceRecordService = new TrainingDeviceRecordService();
         DatacodeDAO datacodeDAO = new DatacodeDAO();
@@ -87,7 +88,7 @@ namespace AI_Sports
         List<string> list16CF = new List<string>();
         List<string> list16RF = new List<string>();
         List<string> list16Rate = new List<string>();
-        public NolleWindow()
+        public Practice()
         {
             InitializeComponent();
             List<TrainingDeviceRecordEntity> list = trainingDeviceRecordService.GetRecordByIdAndTime("123456");
@@ -332,6 +333,7 @@ namespace AI_Sports
                         ce.Image_address = "16.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Power.ToString();
+                        //Rate是期望与实际之比
                         ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("123456", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
                         list16CF.Add(item.Consequent_force.ToString());
                         list16RF.Add(item.Reverse_force.ToString());
@@ -437,17 +439,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str0CF = string.Join(",", new NolleWindow().list0CF);
+                string str0CF = string.Join(",", new Practice().list0CF);
                 return str0CF;
             }
             public string drawRF()
             {
-                string str0RF = string.Join(",", new NolleWindow().list0RF);
+                string str0RF = string.Join(",", new Practice().list0RF);
                 return str0RF;
             }
             public string drawRate()
             {
-                string str0Rate = string.Join(",", new NolleWindow().list0Rate);
+                string str0Rate = string.Join(",", new Practice().list0Rate);
                 return str0Rate;
             }
         }
@@ -457,17 +459,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str1CF = string.Join(",", new NolleWindow().list1CF);
+                string str1CF = string.Join(",", new Practice().list1CF);
                 return str1CF;
             }
             public string drawRF()
             {
-                string str1RF = string.Join(",", new NolleWindow().list1RF);
+                string str1RF = string.Join(",", new Practice().list1RF);
                 return str1RF;
             }
             public string drawRate()
             {
-                string str1Rate = string.Join(",", new NolleWindow().list1Rate);
+                string str1Rate = string.Join(",", new Practice().list1Rate);
                 return str1Rate;
             }
         }
@@ -477,17 +479,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str2CF = string.Join(",", new NolleWindow().list2CF);
+                string str2CF = string.Join(",", new Practice().list2CF);
                 return str2CF;
             }
             public string drawRF()
             {
-                string str2RF = string.Join(",", new NolleWindow().list2RF);
+                string str2RF = string.Join(",", new Practice().list2RF);
                 return str2RF;
             }
             public string drawRate()
             {
-                string str2Rate = string.Join(",", new NolleWindow().list2Rate);
+                string str2Rate = string.Join(",", new Practice().list2Rate);
                 return str2Rate;
             }
         }
@@ -497,17 +499,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str3CF = string.Join(",", new NolleWindow().list3CF);
+                string str3CF = string.Join(",", new Practice().list3CF);
                 return str3CF;
             }
             public string drawRF()
             {
-                string str3RF = string.Join(",", new NolleWindow().list3RF);
+                string str3RF = string.Join(",", new Practice().list3RF);
                 return str3RF;
             }
             public string drawRate()
             {
-                string str3Rate = string.Join(",", new NolleWindow().list3Rate);
+                string str3Rate = string.Join(",", new Practice().list3Rate);
                 return str3Rate;
             }
         }
@@ -517,17 +519,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str4CF = string.Join(",", new NolleWindow().list4CF);
+                string str4CF = string.Join(",", new Practice().list4CF);
                 return str4CF;
             }
             public string drawRF()
             {
-                string str4RF = string.Join(",", new NolleWindow().list4RF);
+                string str4RF = string.Join(",", new Practice().list4RF);
                 return str4RF;
             }
             public string drawRate()
             {
-                string str4Rate = string.Join(",", new NolleWindow().list4Rate);
+                string str4Rate = string.Join(",", new Practice().list4Rate);
                 return str4Rate;
             }
         }
@@ -537,17 +539,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str5CF = string.Join(",", new NolleWindow().list5CF);
+                string str5CF = string.Join(",", new Practice().list5CF);
                 return str5CF;
             }
             public string drawRF()
             {
-                string str5RF = string.Join(",", new NolleWindow().list5RF);
+                string str5RF = string.Join(",", new Practice().list5RF);
                 return str5RF;
             }
             public string drawRate()
             {
-                string str5Rate = string.Join(",", new NolleWindow().list5Rate);
+                string str5Rate = string.Join(",", new Practice().list5Rate);
                 return str5Rate;
             }
         }
@@ -558,17 +560,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str6CF = string.Join(",", new NolleWindow().list6CF);
+                string str6CF = string.Join(",", new Practice().list6CF);
                 return str6CF;
             }
             public string drawRF()
             {
-                string str6RF = string.Join(",", new NolleWindow().list6RF);
+                string str6RF = string.Join(",", new Practice().list6RF);
                 return str6RF;
             }
             public string drawRate()
             {
-                string str6Rate = string.Join(",", new NolleWindow().list6Rate);
+                string str6Rate = string.Join(",", new Practice().list6Rate);
                 return str6Rate;
             }
         }
@@ -579,17 +581,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str7CF = string.Join(",", new NolleWindow().list7CF);
+                string str7CF = string.Join(",", new Practice().list7CF);
                 return str7CF;
             }
             public string drawRF()
             {
-                string str7RF = string.Join(",", new NolleWindow().list7RF);
+                string str7RF = string.Join(",", new Practice().list7RF);
                 return str7RF;
             }
             public string drawRate()
             {
-                string str7Rate = string.Join(",", new NolleWindow().list7Rate);
+                string str7Rate = string.Join(",", new Practice().list7Rate);
                 return str7Rate;
             }
         }
@@ -600,17 +602,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str8CF = string.Join(",", new NolleWindow().list8CF);
+                string str8CF = string.Join(",", new Practice().list8CF);
                 return str8CF;
             }
             public string drawRF()
             {
-                string str8RF = string.Join(",", new NolleWindow().list8RF);
+                string str8RF = string.Join(",", new Practice().list8RF);
                 return str8RF;
             }
             public string drawRate()
             {
-                string str8Rate = string.Join(",", new NolleWindow().list8Rate);
+                string str8Rate = string.Join(",", new Practice().list8Rate);
                 return str8Rate;
             }
         }
@@ -621,17 +623,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str9CF = string.Join(",", new NolleWindow().list9CF);
+                string str9CF = string.Join(",", new Practice().list9CF);
                 return str9CF;
             }
             public string drawRF()
             {
-                string str9RF = string.Join(",", new NolleWindow().list9RF);
+                string str9RF = string.Join(",", new Practice().list9RF);
                 return str9RF;
             }
             public string drawRate()
             {
-                string str9Rate = string.Join(",", new NolleWindow().list9Rate);
+                string str9Rate = string.Join(",", new Practice().list9Rate);
                 return str9Rate;
             }
         }
@@ -642,17 +644,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str10CF = string.Join(",", new NolleWindow().list10CF);
+                string str10CF = string.Join(",", new Practice().list10CF);
                 return str10CF;
             }
             public string drawRF()
             {
-                string str10RF = string.Join(",", new NolleWindow().list10RF);
+                string str10RF = string.Join(",", new Practice().list10RF);
                 return str10RF;
             }
             public string drawRate()
             {
-                string str10Rate = string.Join(",", new NolleWindow().list10Rate);
+                string str10Rate = string.Join(",", new Practice().list10Rate);
                 return str10Rate;
             }
         }
@@ -662,17 +664,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str11CF = string.Join(",", new NolleWindow().list11CF);
+                string str11CF = string.Join(",", new Practice().list11CF);
                 return str11CF;
             }
             public string drawRF()
             {
-                string str11RF = string.Join(",", new NolleWindow().list11RF);
+                string str11RF = string.Join(",", new Practice().list11RF);
                 return str11RF;
             }
             public string drawRate()
             {
-                string str11Rate = string.Join(",", new NolleWindow().list11Rate);
+                string str11Rate = string.Join(",", new Practice().list11Rate);
                 return str11Rate;
             }
         }
@@ -682,17 +684,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str12CF = string.Join(",", new NolleWindow().list12CF);
+                string str12CF = string.Join(",", new Practice().list12CF);
                 return str12CF;
             }
             public string drawRF()
             {
-                string str12RF = string.Join(",", new NolleWindow().list12RF);
+                string str12RF = string.Join(",", new Practice().list12RF);
                 return str12RF;
             }
             public string drawRate()
             {
-                string str12Rate = string.Join(",", new NolleWindow().list12Rate);
+                string str12Rate = string.Join(",", new Practice().list12Rate);
                 return str12Rate;
             }
         }
@@ -702,17 +704,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str13CF = string.Join(",", new NolleWindow().list13CF);
+                string str13CF = string.Join(",", new Practice().list13CF);
                 return str13CF;
             }
             public string drawRF()
             {
-                string str13RF = string.Join(",", new NolleWindow().list13RF);
+                string str13RF = string.Join(",", new Practice().list13RF);
                 return str13RF;
             }
             public string drawRate()
             {
-                string str13Rate = string.Join(",", new NolleWindow().list13Rate);
+                string str13Rate = string.Join(",", new Practice().list13Rate);
                 return str13Rate;
             }
         }
@@ -723,17 +725,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str14CF = string.Join(",", new NolleWindow().list14CF);
+                string str14CF = string.Join(",", new Practice().list14CF);
                 return str14CF;
             }
             public string drawRF()
             {
-                string str14RF = string.Join(",", new NolleWindow().list14RF);
+                string str14RF = string.Join(",", new Practice().list14RF);
                 return str14RF;
             }
             public string drawRate()
             {
-                string str14Rate = string.Join(",", new NolleWindow().list14Rate);
+                string str14Rate = string.Join(",", new Practice().list14Rate);
                 return str14Rate;
             }
         }
@@ -744,17 +746,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str15CF = string.Join(",", new NolleWindow().list15CF);
+                string str15CF = string.Join(",", new Practice().list15CF);
                 return str15CF;
             }
             public string drawRF()
             {
-                string str15RF = string.Join(",", new NolleWindow().list15RF);
+                string str15RF = string.Join(",", new Practice().list15RF);
                 return str15RF;
             }
             public string drawRate()
             {
-                string str15Rate = string.Join(",", new NolleWindow().list15Rate);
+                string str15Rate = string.Join(",", new Practice().list15Rate);
                 return str15Rate;
             }
         }
@@ -765,17 +767,17 @@ namespace AI_Sports
         {
             public string drawCF()
             {
-                string str16CF = string.Join(",", new NolleWindow().list16CF);
+                string str16CF = string.Join(",", new Practice().list16CF);
                 return str16CF;
             }
             public string drawRF()
             {
-                string str16RF = string.Join(",", new NolleWindow().list16RF);
+                string str16RF = string.Join(",", new Practice().list16RF);
                 return str16RF;
             }
             public string drawRate()
             {
-                string str16Rate = string.Join(",", new NolleWindow().list16Rate);
+                string str16Rate = string.Join(",", new Practice().list16Rate);
                 return str16Rate;
             }
         }

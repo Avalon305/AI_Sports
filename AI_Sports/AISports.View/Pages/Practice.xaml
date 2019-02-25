@@ -1,15 +1,15 @@
-﻿<Window x:Class="AI_Sports.NolleWindow"
+﻿<Page x:Class="AI_Sports.Practice"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AI_Sports"
         mc:Ignorable="d"
-        Title="NolleWindow" Height="800" Width="1300">
-    <Window.Resources>
-        <ResourceDictionary Source="AISports.Assets/PlusMinusExpanderStyles.xaml" />
+        Title="Practice" Height="1080" Width="1493.3">
+    <Page.Resources>
+        <ResourceDictionary Source="/AISports.Assets/PlusMinusExpanderStyles.xaml" />
 
-    </Window.Resources>
+    </Page.Resources>
 
     <ScrollViewer>
         <StackPanel Margin="5">
@@ -201,4 +201,4 @@
         </StackPanel>
     </ScrollViewer>
 
-</Window>
+</Page>

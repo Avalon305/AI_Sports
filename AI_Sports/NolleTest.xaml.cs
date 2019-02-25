@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AI_Sports.AISports.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,35 +11,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
-namespace AI_Sports.AISports.View.Pages
+namespace AI_Sports
 {
     /// <summary>
-    /// ScanAndGuidance.xaml 的交互逻辑
+    /// NolleTest.xaml 的交互逻辑
     /// </summary>
-    public partial class ScanGuidance : Page
+    public partial class NolleTest : Window
     {
-
-        private DispatcherTimer ShowTimer;
-        public ScanGuidance()
+        public NolleTest()
         {
             InitializeComponent();
-
-           
-
         }
 
-        //show timer by_songgp 
-        public void ShowCurTimer(object sender, EventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+            SpeechUtil.read("hello 徐靖皓");
+
         }
-
-
-        public String Member_id { get; set; }
-
     }
-
 }
