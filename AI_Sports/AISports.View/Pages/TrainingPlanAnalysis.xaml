@@ -11,8 +11,8 @@
     <Grid Background="White" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Label Content="分析"  Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,0,0,0"  FontSize="50" Grid.Row="0"></Label>
@@ -20,11 +20,11 @@
             <Label Content="训练进展（单位：千卡）" Name="lable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
             
             <!-- 图表 -->
-            <WebBrowser Name="Web">
+            <WebBrowser Name="Web" MinHeight="480">
             </WebBrowser>
 
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="480" Margin="20,0" Grid.Row="2" VerticalAlignment="Top" Width="1453.3">
+        <StackPanel HorizontalAlignment="Left" MinHeight="370" Margin="20,0" Grid.Row="2" VerticalAlignment="Top" Width="1453.3">
             <Label Content="训练计划" Name="lable_planName" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
             <Border BorderThickness="2" BorderBrush="#04243D" Background="#f1f1f1" Margin="20" CornerRadius="10" Height="200" MouseLeftButtonDown="Border_MouseLeftButtonDown">
                 <WrapPanel>
@@ -58,7 +58,7 @@
             </Border>
         </StackPanel>
         <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,50" VerticalAlignment="Bottom" Grid.Row="2" Grid.RowSpan="2"/>
-        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}"/>
+        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}" Click="Button_Click_Back"/>
 
 
     </Grid>

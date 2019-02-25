@@ -22,10 +22,13 @@
         <ScrollViewer Grid.Column="1">
             <StackPanel Grid.Column="1">
                 <WrapPanel Margin="20,0,0,0">
-                    <Label Content="详情" Style="{DynamicResource h1}" Margin="20 20 0 0" FontFamily="Microsoft JhengHei UI"/>
+                    <Label Content="创建训练课程" Style="{DynamicResource h1}" Margin="0 20 0 0" />
+                </WrapPanel>
+                <WrapPanel>
+                    <Label Content="持续时间" Style="{DynamicResource h3}" Margin="20 20 0 0"/>
                 </WrapPanel>
                 <WrapPanel >
-                    <GridSplitter  Width="1080" Height="3" Margin="10,33,0,0" Background="Gray" />
+                    <GridSplitter  Width="1080" Height="3" Margin="10,10,0,0" Background="Gray" />
                 </WrapPanel>
                 <WrapPanel Margin="200,20,0,20">
                     <StackPanel>
@@ -33,7 +36,7 @@
                             <WrapPanel>
                                 <WrapPanel Width="31" Name="time_mark"/>
                                 <WrapPanel Width="29" Name="tip1">
-                                    <Path Data="{DynamicResource glyphicon-play}" Margin="9,0,0,0" Fill="Black" Height="12" Width="10" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
+                                    <Path Data="{DynamicResource glyphicon-play}" Margin="0,0,0,0" Fill="Black" Height="12" Width="10" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
                                         <Path.RenderTransform>
                                             <TransformGroup>
                                                 <ScaleTransform/>
@@ -124,11 +127,11 @@
                             </WrapPanel>
                             <WrapPanel Margin="0,5,0,0">
                                 <WrapPanel>
-                                    <Label Content="2019-02-13" HorizontalContentAlignment="Center" FontSize="14" Name="time_size1"/>
+                                    <Label Content="2019-02-23" HorizontalContentAlignment="Center" FontSize="14" Name="time_size1" Foreground="#04243D"/>
                                 </WrapPanel>
                                 <WrapPanel Width="240" Name="time_position"/>
                                 <WrapPanel>
-                                    <Label Content="2019-02-28"  HorizontalContentAlignment="Center" FontSize="14" Name="time_size2"/>
+                                    <Label Content="2019-02-25"  HorizontalContentAlignment="Center" FontSize="14" Name="time_size2" Foreground="#04243D"/>
                                 </WrapPanel>
                             </WrapPanel>
                         </StackPanel>
@@ -136,9 +139,9 @@
                 </WrapPanel>
                 <GridSplitter HorizontalAlignment="Stretch" Height="1"/>
                 <WrapPanel Margin="200,20,0,0">
-                    <Border BorderBrush="Black" BorderThickness="10" Height="99" Width="3" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
-                    <Border BorderBrush="Black" BorderThickness="10" Height="3" Width="15" Margin="0,0,0,40"/>
-                    <Path Data="{DynamicResource glyphicon-play}" Margin="0,0,0,40" Fill="Black" />
+                    <Border BorderBrush="#04243D" BorderThickness="10" Height="99" Width="3" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
+                    <Border BorderBrush="#04243D" BorderThickness="10" Height="3" Width="15" Margin="0,0,0,40"/>
+                    <Path Data="{DynamicResource glyphicon-play}" Margin="0,0,0,40" Fill="#04243D" />
 
                     <Border BorderBrush="LightGray" BorderThickness="1" Height="130" Width="100" Margin="5,5,10,20">
                         <StackPanel>
@@ -150,59 +153,66 @@
 
                             </WrapPanel>
                             <WrapPanel HorizontalAlignment="Center" Margin="0,10,0,0">
-                                <Label Content="训练活动" FontSize="18" FontWeight="Bold"/>
+                                <Label Content="训练活动" FontSize="18" FontWeight="Bold" Foreground="#04243D"/>
                             </WrapPanel>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="LightGray" BorderThickness="1" Height="130" Width="90" Margin="0,5,10,20">
                         <StackPanel>
                             <WrapPanel HorizontalAlignment="Center" Margin="10">
-                                <Label Name="pausetime_content" Content="1" FontSize="18"/>
-                                <Label Content="天" FontSize="18"/>
+                                <Label Name="pausetime_content" Content="1" FontSize="18" Foreground="#04243D"/>
+                                <Label Content="天" FontSize="18" Foreground="#04243D"/>
                             </WrapPanel>
                             <WrapPanel HorizontalAlignment="Center" Margin="10">
                                 <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="18" Background="{x:Null}" BorderBrush="{x:Null}" Height="18" Padding="0" Margin="0,0,5,0" Click="Pausetime_minus">
                                     <Path Data="{DynamicResource glyphicon-minus}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="20" Width="20"/>
                                 </Button>
                                 <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Background="{x:Null}" BorderBrush="{x:Null}" Height="20" Padding="0"  x:Name="button">
-                                    <Path Data="{DynamicResource glyphicon-pause}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="20" Width="20"/>
+                                    <Path Data="{DynamicResource glyphicon-pause}" Margin="0" Fill="#04243D" RenderTransformOrigin="9.68,0.578" Height="20" Width="20"/>
                                 </Button>
                                 <Button HorizontalAlignment="Left"  VerticalAlignment="Top" Width="18" Background="{x:Null}" BorderBrush="{x:Null}" Height="18" Padding="0" Margin="5,0,0,0" Click="Pausetime_plus">
                                     <Path Data="{DynamicResource glyphicon-plus}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="16" Width="16"/>
                                 </Button>
                             </WrapPanel>
                             <WrapPanel HorizontalAlignment="Center" Margin="10">
-                                <Label Content="暂停" FontSize="18" FontWeight="Bold" RenderTransformOrigin="0.478,1.404" Margin="0  10 0 0" />
+                                <Label Content="暂停" FontSize="18" FontWeight="Bold" Foreground="#04243D" RenderTransformOrigin="0.478,1.404" />
                             </WrapPanel>
                         </StackPanel>
                     </Border>
                     <Path Data="{DynamicResource glyphicon-play}" Margin="25,0,10,40" Fill="#FFB6B2B2" Height="30" Stretch="Fill" Width="22"/>
-                    <Border BorderBrush="Black" BorderThickness="10" Height="3" Width="18" Margin="0,0,0,40"/>
-                    <Border BorderBrush="Black" BorderThickness="10" Height="99" Width="3" VerticalAlignment="Bottom"/>
+                    <Border BorderBrush="#04243D" BorderThickness="10" Height="3" Width="18" Margin="0,0,0,40"/>
+                    <Border BorderBrush="#04243D" BorderThickness="10" Height="99" Width="3" VerticalAlignment="Bottom"/>
 
                 </WrapPanel>
                 <WrapPanel Margin="210,0,0,0">
-                    <Border BorderBrush="Black" BorderThickness="10" Height="3" Width="350"/>
+                    <Border BorderBrush="#04243D" BorderThickness="10" Height="3" Width="331"/>
                 </WrapPanel>
-                <WrapPanel Margin="155,15,0,30">
-                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="23" Background="{x:Null}" BorderBrush="{x:Null}" Height="23" Padding="0" Margin="150,5,20,0" Click="Xunliantime_minus">
+                <WrapPanel Margin="200,15,0,30">
+                    <Label Content="课程次数："  Style="{DynamicResource h3}" Margin="5,5,0,0"></Label>
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="23" Background="{x:Null}" BorderBrush="{x:Null}" Height="23" Padding="0" Margin="0,5,20,0" Click="Xunliantime_minus">
                         <Path Data="{DynamicResource glyphicon-minus}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="20" Width="20"/>
                     </Button>
-                    <TextBox Name="xunliantime_text" HorizontalAlignment="Left" Height="35"  TextWrapping="Wrap" Text="16" VerticalAlignment="Top" Width="46" Margin="5,0,5,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <TextBox Name="xunliantime_text" Style="{StaticResource input-sm}" IsReadOnly="True" HorizontalAlignment="Left" Height="35"  TextWrapping="Wrap" Text="16" VerticalAlignment="Top" Width="46" Margin="5,0,5,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
                     <Button HorizontalAlignment="Left"  VerticalAlignment="Top" Width="23" Background="{x:Null}" BorderBrush="{x:Null}" Height="23" Padding="0" Margin="20,5,0,0" Click="Xunliantime_plus">
                         <Path Data="{DynamicResource glyphicon-plus}" Margin="0" Fill="#FFB6B2B2" RenderTransformOrigin="9.68,0.578" Height="20" Width="20"/>
                     </Button>
                 </WrapPanel>
 
-                <WrapPanel Margin="350,0,0,0">
-                    <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Center" Height="50" Width="50" CornerRadius="25">
+                <WrapPanel Margin="325,0,0,0">
+                    <Button x:Name="Btn_SaveCourse" Content="保存" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}" Click="Btn_SaveCourse_Click"/>
+                    <!--加号按钮-->
+                    <!--<Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Center" Height="50" Width="50" CornerRadius="25">
                         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Padding="0" Height="25" Margin="9,10,10,10" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
                             <Path Data="{DynamicResource glyphicon-plus}" Margin="0" Fill="Gray"  Height="25" Width="25" Stretch="Fill"/>
                         </Button>
-                    </Border>
+                    </Border>-->
 
                 </WrapPanel>
-                <Frame x:Name="_number" Width="1493.3" Height="850"></Frame>
+
+
+
+                <!--放两个训练活动frame，先添加后切换到设置-->
+                <Frame x:Name="ActivityFrame" Width="1493.3" Height="850"></Frame>
             </StackPanel>
 
         </ScrollViewer>

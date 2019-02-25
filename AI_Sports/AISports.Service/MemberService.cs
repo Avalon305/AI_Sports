@@ -103,8 +103,34 @@ namespace AI_Sports.Service
             //根据卡号查询会员
             MemberEntity member = memberDAO.GetMember(memberId);
             CommUtil.UpdateSettingString("memberPrimarykey", (member.Id).ToString());
+            //7.更新会员最近登录时间
+            UpdateLastLoginDate();
         }
-
-
+        /// <summary>
+        /// 查询7天内登陆的活跃会员
+        /// </summary>
+        /// <returns></returns>
+        public List<MemberEntity> ListActiveMember()
+        {
+            return memberDAO.ListActiveMember();
+        }
+        /// <summary>
+        /// 查询大于7天未登录的不活跃会员
+        /// </summary>
+        /// <returns></returns>
+        public List<MemberEntity> ListInactiveMember()
+        {
+            return memberDAO.ListInactiveMember();
+        }
+        /// <summary>
+        /// 更新会员的登陆时间
+        /// </summary>
+        public void UpdateLastLoginDate()
+        {
+            MemberEntity memberEntity = new MemberEntity();
+            memberEntity.Id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
+            memberEntity.Last_login_date = new DateTime();
+            memberDAO.UpdateByPrimaryKey(memberEntity);
+        }
     }
 }

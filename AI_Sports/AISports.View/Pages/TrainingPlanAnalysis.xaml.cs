@@ -61,6 +61,16 @@ namespace AI_Sports.AISports.View.Pages
             //NavigationService.GetNavigationService(this).GoForward();//向后转
             //NavigationService.GetNavigationService(this).GoBack();　 //向前转
         }
+        /// <summary>
+        /// 点击后退按钮。退到分析导航页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
+        {
+           // NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/TrainingCourseAnalysis.xaml", UriKind.Relative));
+
+        }
     }
 
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -109,6 +119,7 @@ namespace AI_Sports.AISports.View.Pages
             return szJson;
         }
 
+        
 
     }
 

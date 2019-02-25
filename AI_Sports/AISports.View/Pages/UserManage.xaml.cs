@@ -63,7 +63,7 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn3.Background = null;
             this.btn4.Background = null;
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddPlan.xaml", UriKind.Relative);//跳转页面
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/newPlan.xaml", UriKind.Relative);//跳转页面
         }
         //图表分析页面
         private void Btn3_Click(object sender, RoutedEventArgs e)//
@@ -90,6 +90,15 @@ namespace AI_Sports.AISports.View.Pages
         {
             System.Windows.Forms.Application.Restart();
             AI_Sports.App.Current.Shutdown();
+        }
+        /// <summary>
+        /// 发卡按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Write_Card_Click(object sender, RoutedEventArgs e)
+        {
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/TrainingActivityAnalysis.xaml", UriKind.Relative);//跳转页面
         }
     }
 }

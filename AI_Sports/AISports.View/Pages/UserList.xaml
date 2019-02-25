@@ -5,34 +5,40 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
+      d:DesignHeight="1080" d:DesignWidth="1493.3"
       Title="UserList">
-    <Grid Background="White" Height="1080" Width=" 1492">
+    <Grid Background="White" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="活跃会员" TextAlignment="Left" FontSize="30" FontWeight="Bold" />
-        <TextBlock Grid.Column="1" Text="不活跃会员" TextAlignment="Left" FontSize="30" FontWeight="Bold" />
+        <TextBlock Grid.Column="0" Text="活跃会员" TextAlignment="Left" FontSize="30" FontWeight="Bold" Margin="20,0"/>
+        <TextBlock Grid.Column="1" Text="不活跃会员" TextAlignment="Left" FontSize="30" FontWeight="Bold" Margin="20,0"/>
         <StackPanel Grid.Column="0" x:Name="stackPanel0" Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="15,30,5,0">
             <ListBox Margin="0,20,0,0" ItemsSource="{Binding}" BorderBrush="#FFF4F6FB"  >
                 <ListBox.ItemTemplate>
                     <DataTemplate >
 
                         <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Auto" >
-                            <Image Source="{Binding Image}" Width="53" Height="50"/>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/photo.png" Width="53" Height="50"/>
                             <StackPanel Margin="0,0,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock  Text="{Binding Path=Member_firstName}" TextAlignment="Right"  Height="25" Width="30"   Background="#E7EAED" ></TextBlock>
-                                    <TextBlock  Text="{Binding Path=Member_familyName}"   Width="530" Height="25"   Background="#E7EAED" ></TextBlock>
-                                    <TextBlock  Text="年龄"   Width="35" Height="25"   Background="#E7EAED" ></TextBlock>
+                                    <TextBlock  FontSize="18"  Height="25"  Width="530"  Background="#E7EAED" >
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="姓名：{0}{1}">
+                                                <Binding Path="Member_familyName" />
+                                                <Binding Path="Member_firstName" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock  Text="年龄:"   Width="38" Height="25" FontSize="18"  Background="#E7EAED" ></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock  Text="登陆时间："  Margin="5,0,5,5" Width="50" Height="25"  ></TextBlock>
-                                    <TextBlock  Text="{Binding Path=Time}"  Margin="5,0,5,5" Width="510" Height="25"  ></TextBlock>
+                                    <TextBlock  Text="登录时间:"   Margin="0,0,5,5" Width="80" Height="25"  FontSize="18"></TextBlock>
+                                    <TextBlock  Text="{Binding Path=Last_login_date,StringFormat='yyyy-MM-dd HH:mm'}"  FontSize="18" Margin="5,0,5,5"  Height="25"  ></TextBlock>
                                 </StackPanel>
                             </StackPanel>
-                            <TextBlock  Text="{Binding Path=Age}"  Margin="5,0,5,0" Width="33" Height="25" TextAlignment="Center" Background="#FF092542" Foreground="#FFF3E4E4" Padding="0" VerticalAlignment="Top" ></TextBlock>
+                            <TextBlock  Text="{Binding Path=Age}" FontSize="18"  Margin="5,0,5,0" Width="33" Height="25" TextAlignment="Center" Background="#FF092542" Foreground="#FFF3E4E4" Padding="0" VerticalAlignment="Top" ></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -43,19 +49,25 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate >
                         <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalAlignment="Center" >
-                            <Image Source="{Binding Image}" Width="53" Height="50"/>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/photo.png" Width="53" Height="50"/>
                             <StackPanel Margin="0,0,0,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock  Text="{Binding Path=Member_firstName}" Height="25" Width="30" TextAlignment="Right"  Background="#E7EAED" ></TextBlock>
-                                    <TextBlock  Text="{Binding Path=Member_familyName}"   Width="530" Height="25"   Background="#E7EAED" ></TextBlock>
-                                    <TextBlock  Text="年龄"   Width="35" Height="25"   Background="#E7EAED" ></TextBlock>
+                                    <TextBlock  FontSize="18"  Height="25"  Width="530"  Background="#E7EAED" >
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="姓名：{0}{1}">
+                                                <Binding Path="Member_familyName" />
+                                                <Binding Path="Member_firstName" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                     <TextBlock  Text="年龄:"   Width="38" Height="25" FontSize="18"  Background="#E7EAED" ></TextBlock>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock  Text="登陆时间："  Margin="5,0,5,5" Width="50" Height="25"  ></TextBlock>
-                                    <TextBlock  Text="{Binding Path=Time}"  Margin="5,0,5,5" Width="510" Height="25"  ></TextBlock>
+                                    <TextBlock  Text="登录时间:"   Margin="0,0,5,5" Width="80" Height="25"  FontSize="18"></TextBlock>
+                                    <TextBlock  Text="{Binding Path=Last_login_date,StringFormat='yyyy-MM-dd HH:mm'}"  FontSize="18" Margin="5,0,5,5"  Height="25"  ></TextBlock>
                                 </StackPanel>
                             </StackPanel>
-                            <TextBlock  Text="{Binding Path=Age}"  Margin="5,0,5,0" Width="33" Height="25" TextAlignment="Center" Background="#FF092542" Foreground="#FFF3E4E4" Padding="0" VerticalAlignment="Top" ></TextBlock>
+                            <TextBlock  Text="{Binding Path=Age}" FontSize="18"  Margin="5,0,5,0" Width="33" Height="25" TextAlignment="Center" Background="#FF092542" Foreground="#FFF3E4E4" Padding="0" VerticalAlignment="Top" ></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

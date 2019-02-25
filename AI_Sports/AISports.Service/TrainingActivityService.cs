@@ -21,6 +21,9 @@ namespace AI_Sports.Service
                 activity.Member_id = CommUtil.GetSettingString("memberId");
                 activity.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
                 activity.Fk_training_course_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
+                activity.Gmt_create = System.DateTime.Now;
+                activity.Is_complete = false;
+                activity.current_turn_number = 0;
             }
             return activityDAO.BatchInsert(activities);
         }
@@ -36,10 +39,19 @@ namespace AI_Sports.Service
         /// 训练活动分页页面的list查询
         /// </summary>
         /// <returns></returns>
-        public List<TrainingActivityVO> ListActivityRecords()
+        public List<TrainingActivityVO> ListActivityRecords(int? currentCourseCount)
         {
-            string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
+            //string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
             return trainingActivityRecordDAO.ListActivityRecords(currentCourseCount);
+        }
+        /// <summary>
+        /// 用于转换器，根据活动记录id查询活动名
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public string GetActivityType(string id)
+        {
+            return trainingActivityRecordDAO.GetActivityType(id);
         }
     }
 }

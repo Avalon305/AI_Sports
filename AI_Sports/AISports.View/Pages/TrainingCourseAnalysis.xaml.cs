@@ -1,5 +1,6 @@
 ﻿using AI_Sports.Entity;
 using AI_Sports.Service;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -44,14 +45,34 @@ namespace AI_Sports.AISports.View.Pages
 
         private void TrainingCourseRecords_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            int? Course_count = (this.TrainingCourseRecords.SelectedItem as TrainingCourseVO).Course_count;
+            TrainingCourseVO trainingCourseVO = this.TrainingCourseRecords.SelectedItem as TrainingCourseVO;
+            if(trainingCourseVO != null)
+            {
+                int? Course_count = trainingCourseVO.Course_count;
 
-            Console.WriteLine("选中行的course_count："+ Course_count);
+                Console.WriteLine("课程页选中行的course_count：" + Course_count);
+                //跳转到训练活动页面 传参只需要在后边加上参数即可
+                TrainingActivityAnalysis trainingActivityAnalysis = new TrainingActivityAnalysis();
+                this.NavigationService.Navigate(trainingActivityAnalysis, Course_count);
+                //加载从训练课程页面传来的参数 //注意LoadCompleted 事件的位置在 Page1.cs 中
+                this.NavigationService.LoadCompleted += trainingActivityAnalysis.NavigationService_LoadCompleted;
+
+            }
 
         }
 
         private void TrainingCourseRecords_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+        }
+        /// <summary>
+        /// 点击后退按钮，退到训练计划页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/TrainingPlanAnalysis.xaml", UriKind.Relative));
 
         }
     }

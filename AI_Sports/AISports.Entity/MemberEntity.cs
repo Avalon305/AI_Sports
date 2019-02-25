@@ -74,5 +74,11 @@ namespace AI_Sports.Entity
         /// 创建时间
         public DateTime? Gmt_create { get; set; }
         public DateTime? Gmt_modified { get; set; }
+        /// <summary>
+        /// 最近登陆时间
+        /// </summary>
+        public DateTime? Last_login_date { get; set; }
+
+
     }
 }

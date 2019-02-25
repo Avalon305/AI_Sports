@@ -3,13 +3,25 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
+      xmlns:local="clr-namespace:AI_Sports.Util"
       mc:Ignorable="d" 
       Background="White"
       d:DesignHeight="1080" d:DesignWidth="1493.3"
       Title="TrainingActivityAnalysis">
+    
+    <Page.Resources>
+        <CollectionViewSource x:Key="ListViewGroupSource"  Source="{Binding}" >
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Fk_training_activity_record_id"/>
+            </CollectionViewSource.GroupDescriptions>
+            
+        </CollectionViewSource>
+        <!--转换器资源-->
+        <local:ActivityGroupHeadConvert x:Key="ActivityGroupHeadConvert"></local:ActivityGroupHeadConvert>
+    </Page.Resources>
+   
 
-    <Grid  >
+    <Grid>
         <ScrollViewer Width="auto" VerticalAlignment="Bottom" Margin="0,0,0,50">
             <Grid>
                 <Grid.RowDefinitions>
@@ -21,15 +33,68 @@
                 <StackPanel HorizontalAlignment="Left" Height="970" Margin="20,0" Grid.Row="1" VerticalAlignment="Top" Width="1453.3">
                     <Label Content="周五 2018年12月7日 16:09" Name="lable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
                     <Label  Content="训练课程：" Name="Lab_Training_course" FontFamily="yahei" Style="{DynamicResource h3}" Margin="0"></Label>
+                    <ListView x:Name="listView" SelectionMode="Extended" MinHeight="860" ItemsSource="{Binding Source={StaticResource ResourceKey=ListViewGroupSource}}" FontSize="20">
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Margin" Value="0,0,0,5"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type GroupItem}">
+
+                                                    <Expander IsExpanded="True" BorderBrush="Gray" BorderThickness="0" >
+                                                        <Expander.Header>
+                                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+
+                                                                <TextBlock FontWeight="Bold" Text="{Binding Path=Name,Converter={StaticResource ActivityGroupHeadConvert}}" />
+                                                                <TextBlock FontWeight="Bold" Text="{Binding Path=ItemCount,StringFormat=(共{0}条)}" />
+                                                               
+
+                                                            </StackPanel>
+                                                        </Expander.Header>
+                                                        <Expander.Content>
+                                                            <ItemsPresenter/>
+                                                        </Expander.Content>
+                                                    </Expander>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
+
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="DeviceImage">
+                                    <!--<GridViewColumn.Header>
+                                        <TextBlock></TextBlock>
+                                    </GridViewColumn.Header>-->
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="/AI_Sports;component/AISports.View/Images/deviceImageTest.jpg" Width="50" Height="50"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="设备名" DisplayMemberBinding="{Binding Path=Code_d_value}" Width="300"/>
+                                <GridViewColumn Header="运动个数" DisplayMemberBinding="{Binding Path=Count}" Width="300"/>
+                                <GridViewColumn Header="顺向力"  DisplayMemberBinding="{Binding Path=Consequent_force}" Width="300"/>
+                                <GridViewColumn Header="反向力"  DisplayMemberBinding="{Binding Path=Reverse_force}" Width="300"/>
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
 
 
                 </StackPanel>
-                
+
             </Grid>
         </ScrollViewer>
         <!--底部分隔条以及后退按钮-->
         <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,50" VerticalAlignment="Bottom" Grid.Row="2" Grid.RowSpan="2"/>
-        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,0,0,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}"/>
+        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,0,0,10" Grid.Row="3" VerticalAlignment="Bottom" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}" Click="Button_Click_Back"/>
 
     </Grid>
 </Page>

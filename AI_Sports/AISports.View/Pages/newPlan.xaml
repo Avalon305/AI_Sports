@@ -1,16 +1,16 @@
-﻿<Page x:Class="AI_Sports.AISports.View.Pages.新建训练计划"
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.NewPlan"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1493.3"
-      Title="新建训练计划">
+      Title="NewPlan">
 
     <Grid Background="White" >
         
-            <Frame  x:Name="all" Width="1980" Height="1080"></Frame>
             
 
         
@@ -62,20 +62,31 @@
             </WrapPanel>
             <WrapPanel Margin="200,35,0,0" Height="69">
                 <Label Content="标       题：" Style="{DynamicResource h2}" FontWeight="Bold" FontSize="28" ></Label>
-                <TextBox x:Name="text" Text="请输入标题" Style="{StaticResource input-lg}" Width="500"  Height="60" Margin="0 5 0 0" FontFamily="Microsoft YaHei Light" FontSize="22" GotFocus="Text_GotFocus" LostFocus="Text_LostFocus"/>
+                <TextBox x:Name="TB_Title" Text="请输入标题" Style="{StaticResource input-lg}" Width="500"  Height="60" Margin="0 5 0 0" FontFamily="Microsoft YaHei Light" FontSize="22" GotFocus="Text_GotFocus" />
             </WrapPanel>
             <WrapPanel Margin="200,35,0,0" Height="69">
                 <Label Content="起始日期：" Style="{DynamicResource h2}" FontWeight="Bold" FontSize="28"></Label>
-                <DatePicker Width="500"  Height="60" Margin=" 0 5 0 0" FontFamily="Microsoft YaHei Light" FontSize="22"  />
+                <DatePicker x:Name="DP_StartDate"  SelectedDate="{x:Static sys:DateTime.Now}" Width="500"  Height="60" Margin="0 5 0 0" FontFamily="Microsoft YaHei Light" FontSize="22" />
             </WrapPanel>
             <WrapPanel Margin="200,35,0,0" Height="69">
                 <Label Content="训练目标：" Style="{DynamicResource h2}" FontWeight="Bold" FontSize="28"></Label>
+                <ComboBox x:Name="CB_Target"  Text="请输入您的目标" Width="500" Height="60"  FontSize="22" Margin="0 5 0 0" >
 
-                <TextBox x:Name="aim"  LostFocus="Aim_LostFocus" GotFocus="Aim_GotFocus"  Text="请输入您的目标" Style="{StaticResource input-lg}" Width="500" Height="60" FontFamily="Microsoft YaHei Light" FontSize="22" Margin="0 5 0 0"/>
+                    <ComboBoxItem>增肌</ComboBoxItem>
+
+                    <ComboBoxItem>减脂</ComboBoxItem>
+
+                    <ComboBoxItem>塑形</ComboBoxItem>
+
+                    <ComboBoxItem>康复</ComboBoxItem>
+
+
+                </ComboBox>
+                <!--<TextBox x:Name="TB_Target"  LostFocus="Aim_LostFocus" GotFocus="Aim_GotFocus"  Text="请输入您的目标" Style="{StaticResource input-lg}" Width="500" Height="60" FontFamily="Microsoft YaHei Light" FontSize="22" Margin="0 5 0 0"/>-->
             </WrapPanel>
-            <WrapPanel Margin="200,36,0,0" Height="69">
-                <Button Content="取消" Style="{DynamicResource btn-success }"  Width="150" Height="80" FontSize="28" FontFamily="Constantia" Background="#FFF6D600"></Button>
-                <Button Content="确认" Background="#FF04243D" Style="{DynamicResource btn-success }"  Width="150" Height="100"  Margin=" 250 0 0 0" FontFamily="Constantia" FontSize="28" Click="Button_Click_2"/>
+            <WrapPanel Margin="200,35,0,0" Height="69">
+                <Button Content="取消" Style="{DynamicResource btn-warning}" FontSize="20" Width="75" Height="35" Click="Button_Cancle"></Button>
+                <Button Content="确认" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="22"  Width="75" Height="35" Margin="490 0 0 0" Click="Button_Save"/>
                 
             </WrapPanel>
         </StackPanel>

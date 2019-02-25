@@ -11,8 +11,8 @@
     <Grid Background="White" >
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Label Content="分析"  Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,0,0,0"  FontSize="50" Grid.Row="0"></Label>
@@ -20,14 +20,31 @@
             <Label Content="训练进展（单位：千卡）" Name="lable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
 
             <!-- 图表 -->
-            <WebBrowser  Name="Web">
+            <WebBrowser  Name="Web" MinHeight="470">
             </WebBrowser>
 
         </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="480" Margin="20,0" Grid.Row="2" VerticalAlignment="Top" Width="1453.3">
+        <StackPanel HorizontalAlignment="Left" MinHeight="430" Margin="20,0" Grid.Row="2" VerticalAlignment="Top" Width="1453.3">
             <Label Content="训练课程记录" Name="lable_planName" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
-            <DataGrid AutoGenerateColumns="False" x:Name="TrainingCourseRecords" DataContext="{Binding}" ItemsSource="{Binding Collection}" DataGridRow.MouseUp="TrainingCourseRecords_MouseUp">
+            <DataGrid AutoGenerateColumns="False" x:Name="TrainingCourseRecords" DataContext="{Binding}" ItemsSource="{Binding Collection}" DataGridRow.MouseUp="TrainingCourseRecords_MouseUp" FontSize="20">
+                <!--列标题的样式，直接用的bootstrapt 样式文件里的 删掉了一些东西 才能够设置列头的字体大小和加粗-->
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#fff"/>
+                        <Setter Property="Foreground" Value="#000"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="BorderBrush" Value="#ddd"/>
+                        <Setter Property="BorderThickness" Value="0,0,0,2"/>
+                        <!--调节间距-->
+                        <Setter Property="Padding" Value="15,0"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
                 <DataGrid.Columns>
+                    
+                    
                     <DataGridTextColumn Binding="{Binding Course_count}" Header="课程记录序号" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Sum_time}" Header="训练总时间/分钟" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Sum_energy}" Header="训练总耗能/千卡" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
@@ -40,7 +57,8 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}"/>
+        <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,50" VerticalAlignment="Bottom" Grid.Row="2" Grid.RowSpan="2"/>
+        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}" Click="Button_Click_Back"/>
 
 
     </Grid>

@@ -54,7 +54,22 @@ namespace AI_Sports.Dao
                 return conn.Query<TrainingCourseVO>(query, new { @TrainingCourseId = trainingCourseId }).ToList();
             }
         }
+        /// <summary>
+        /// 更新训练课程
+        /// </summary>
+        /// <param name="memberEntity"></param>
+        /// <returns></returns>
+        public int UpdateTrainingCourseById(int? restDays, DateTime? endDate, int? targetCourseCount,long? id)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+        
+                const string query = "UPDATE bdl_training_course SET rest_days =  @RestDays,end_date = @EndDate,target_course_count = @TargetCourseCount  WHERE id = @Id ";
 
+                return conn.Execute(query, new { RestDays = restDays, EndDate = endDate , TargetCourseCount = targetCourseCount ,@Id = id});
+
+            }
+        }
 
         public int selectMAxCourseRecord()
         {

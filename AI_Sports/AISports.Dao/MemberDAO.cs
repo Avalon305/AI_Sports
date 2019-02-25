@@ -86,8 +86,30 @@ namespace AI_Sports.Dao
                 return conn.Query<MemberEntity>(query, new { Fk_coach_id = memberEntity.Fk_coach_id }).ToList();
             }
         }
-
-
+        /// <summary>
+        /// 查询7天内登陆的活跃会员
+        /// </summary>
+        /// <returns></returns>
+        public List<MemberEntity> ListActiveMember()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT * FROM bdl_member WHERE DATEDIFF(CURDATE(),last_login_date) > 0 AND DATEDIFF(CURDATE(),last_login_date) < 7";
+                return conn.Query<MemberEntity>(query).ToList();
+            }
+        }
+        /// <summary>
+        /// 查询大于7天未登录的不活跃会员
+        /// </summary>
+        /// <returns></returns>
+        public List<MemberEntity> ListInactiveMember()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT * FROM bdl_member WHERE DATEDIFF(CURDATE(),last_login_date) > 7";
+                return conn.Query<MemberEntity>(query).ToList();
+            }
+        }
     }
 
 

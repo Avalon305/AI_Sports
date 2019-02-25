@@ -15,17 +15,17 @@ namespace AI_Sports.Service
         private TrainingPlanDAO trainingPlanDAO = new TrainingPlanDAO();
         private TrainingCourseDAO trainingCourseDAO = new TrainingCourseDAO();
         private ActivityDAO activityDAO = new ActivityDAO();
+        private TrainingCourseService trainingCourseService = new TrainingCourseService();
         /// <summary>
         /// 添加新的训练计划，需要先删除旧的训练计划
         /// </summary>
         /// <param name="trainingPlan"></param>
         /// <returns></returns>
-        public long SaveNewTrainingPlan(TrainingPlanEntity trainingPlan)
+        public void SaveNewTrainingPlan(TrainingPlanEntity trainingPlan)
         {
             //使整个代码块成为事务性代码
             using (TransactionScope ts = new TransactionScope())
             {
-                long result;
                 //会员卡号ID
                 string memberId = CommUtil.GetSettingString("memberId");
                 //1.删除旧的训练计划
@@ -40,12 +40,18 @@ namespace AI_Sports.Service
                 trainingPlan.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
                 //  设置会员卡号
                 trainingPlan.Member_id = CommUtil.GetSettingString("memberId");
-                //  插入
-                result = trainingPlanDAO.Insert(trainingPlan);
+                //  设置状态为未删除
+                trainingPlan.Is_deleted = false;
+                //  创建时间
+                trainingPlan.Gmt_create = System.DateTime.Now;
+                //  插入新训练计划
+                trainingPlanDAO.Insert(trainingPlan);
                 //5.更新App.config中训练计划id
                 CommUtil.UpdateSettingString("trainingPlanId", (trainingPlan.Id).ToString());
+
+                //插入默认训练课程 课程开始时间 = 训练计划开始时间
+                trainingCourseService.SaveTrainingCourse(trainingPlan.Start_date);
                 ts.Complete();
-                return result;
             }
 
         }

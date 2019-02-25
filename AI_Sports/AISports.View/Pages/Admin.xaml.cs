@@ -70,7 +70,7 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn2.Background = null;
             this.btn4.Background = null;
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/search.xaml", UriKind.Relative);//跳转页面
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/UserList.xaml", UriKind.Relative);//跳转页面
         }
         //控制面板页面
         private void Btn4_Click(object sender, RoutedEventArgs e)//

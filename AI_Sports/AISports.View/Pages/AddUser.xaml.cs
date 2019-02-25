@@ -88,7 +88,7 @@ namespace AI_Sports.AISports.View.Pages
             member.Address = this.Address.Text;
             //时间转化
             DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
-            dtFormat.ShortDatePattern = "yyyy年MM月dd日";
+            dtFormat.ShortDatePattern = "yyyy-MM-dd";
             member.Birth_date = Convert.ToDateTime(this.birthDatePicker.Text, dtFormat);
             member.Email_address = this.Email_address.Text;
             //有权限添加会员的就是当前登陆的教练
