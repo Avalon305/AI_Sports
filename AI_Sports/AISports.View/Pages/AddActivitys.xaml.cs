@@ -121,7 +121,7 @@ namespace AI_Sports
                 //批量添加训练活动
                 trainingActivityService.BatchSaveActivity(activities);
                 //跳转到活动设置页面
-                NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/trainingCourse.xaml", UriKind.Relative));
+                NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/EditActivity.xaml", UriKind.Relative));
 
             }
             else

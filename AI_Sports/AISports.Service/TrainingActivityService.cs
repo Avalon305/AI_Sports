@@ -2,12 +2,16 @@
 using AI_Sports.Entity;
 using System.Collections.Generic;
 using AI_Sports.Util;
+using AI_Sports.AISports.Dto;
+using System.Transactions;
+
 namespace AI_Sports.Service
 {
     class TrainingActivityService
     {
         private ActivityDAO activityDAO = new ActivityDAO();
         private TrainingActivityRecordDAO trainingActivityRecordDAO = new TrainingActivityRecordDAO();
+        private PersonalSettingService personalSettingService = new PersonalSettingService();
         /// <summary>
         /// 批量插入训练活动
         /// </summary>
@@ -15,17 +19,30 @@ namespace AI_Sports.Service
         /// <returns></returns>
         public long BatchSaveActivity(List<ActivityEntity> activities)
         {
-            foreach (var activity in activities)
+            using (TransactionScope ts = new TransactionScope())
             {
-                activity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
-                activity.Member_id = CommUtil.GetSettingString("memberId");
-                activity.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
-                activity.Fk_training_course_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
-                activity.Gmt_create = System.DateTime.Now;
-                activity.Is_complete = false;
-                activity.current_turn_number = 0;
+
+                foreach (var activity in activities)
+                {
+                    activity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
+                    activity.Member_id = CommUtil.GetSettingString("memberId");
+                    activity.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
+                    activity.Fk_training_course_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
+                    activity.Gmt_create = System.DateTime.Now;
+                    activity.Is_complete = false;
+                    activity.current_turn_number = 0;
+                }
+                //批量插入训练活动
+                long result = activityDAO.BatchInsert(activities);
+                //根据训练活动批量插入个人设置记录
+                personalSettingService.SavePersonalSettings();
+
+                
+
+                ts.Complete();
+                return result;
             }
-            return activityDAO.BatchInsert(activities);
+               
         }
         /// <summary>
         /// 根据训练课程ID查询出对应的训练活动
@@ -52,6 +69,17 @@ namespace AI_Sports.Service
         public string GetActivityType(string id)
         {
             return trainingActivityRecordDAO.GetActivityType(id);
+        }
+
+        /// <summary>
+        /// EditActity页活动分组Expnder中的个人设置查询 分组是前端根据活动类型分
+        /// </summary>
+        /// <returns></returns>
+        public List<ActivityGroupDTO> ListActivitysGroupAndPersonalSetting()
+        {
+            //当前正在进行和训练课程ID
+            long courseId = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
+            return activityDAO.ListActivitysGroupAndPersonalSetting(courseId);
         }
     }
 }

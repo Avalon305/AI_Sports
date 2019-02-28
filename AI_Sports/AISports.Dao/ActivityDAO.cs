@@ -1,4 +1,5 @@
-﻿using AI_Sports.Entity;
+﻿using AI_Sports.AISports.Dto;
+using AI_Sports.Entity;
 using AI_Sports.Util;
 using Dapper;
 using System;
@@ -53,5 +54,19 @@ namespace AI_Sports.Dao
                 return conn.QueryFirstOrDefault<int>(query, new { Id });
             }
         }
+        /// <summary>
+        /// 训练活动页面Expander 查询出每个设备的个人设置根据活动类型分组展示并可以更新
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
+        public List<ActivityGroupDTO> ListActivitysGroupAndPersonalSetting(long courseId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT per_set.device_code,per_set.consequent_force,per_set.reverse_force,per_set.power,act.fk_training_course_id,act.target_turn_number,act.current_turn_number,act.is_complete,act.gmt_create,bdl_datacode.code_d_value ,cycleDate.code_d_value AS activity_type,modeType.code_d_value AS training_mode FROM bdl_activity AS act LEFT JOIN bdl_personal_setting AS per_set ON act. id = per_set.fk_training_activity_id JOIN bdl_datacode ON per_set.device_code = bdl_datacode.code_s_value  JOIN bdl_datacode AS cycleDate ON act.activity_type = cycleDate.code_s_value JOIN bdl_datacode AS modeType ON per_set.training_mode = modeType.code_s_value WHERE act.fk_training_course_id = @Fk_training_course_id AND bdl_datacode.code_type_id = 'DEVICE' AND bdl_datacode.code_state = 1 AND cycleDate.code_type_id = 'CYCLE_TYPE' AND cycleDate.code_state = 1 AND modeType.code_type_id = 'TRAIN_MODE' AND modeType.code_state = 1 ORDER BY per_set.activity_type,bdl_datacode.code_xh ";
+                return conn.Query<ActivityGroupDTO>(query, new { Fk_training_course_id = courseId }).ToList();
+            }
+        }
+
     }
 }

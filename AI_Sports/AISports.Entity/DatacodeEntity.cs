@@ -60,6 +60,15 @@ namespace AI_Sports.Entity
         /// 扩展值
         /// </summary>
         public String Code_ext_value { get; set; }
+        /// <summary>
+        /// 扩展值2 用作存储设备的活动类型，与编码表中的循环类型相对应：0力量循环，1力量耐力，需要用作分组查询依据
+        /// </summary>
+        public String Code_ext_value2 { get; set; }
+        /// <summary>
+        /// 扩展值3 用作存储有氧力量类型：0：力量训练设备；1：有氧训练设备
+        /// </summary>
+        public String Code_ext_value3 { get; set; }
+
 
         /// <summary>
         /// 是否启用 0 不启用 1启用

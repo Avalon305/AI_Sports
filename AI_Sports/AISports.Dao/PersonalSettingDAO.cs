@@ -73,7 +73,37 @@ namespace AI_Sports.Dao
             }
 
         }
+        /// <summary>
+        /// 根据会员卡号和活动类型查询个人设置 byCQZ
+        /// </summary>
+        /// <param name="member_id"></param>
+        /// <param name="activityType"></param>
+        /// <returns></returns>
+        public List<PersonalSettingEntity> ListSettingByMemberIdActivityType(string member_id, string activityType)
+        {
+            List<PersonalSettingEntity> result = new List<PersonalSettingEntity>();
+            const string query = @"SELECT * FROM bdl_personal_setting WHERE member_id = @Member_id AND activity_type = @MyActivityType";
+            var para = new { Member_id = member_id, MyActivityType = activityType };
+            using (var conn = DbUtil.getConn())
+            {
+                result = conn.Query<PersonalSettingEntity>(query, para).ToList();
+            }
+            return result;
+        }
+        /// <summary>
+        /// 添加新的训练活动时跟新个人设置表中各个设备的记录对应的活动ID外键，这个活动id外键用于在EditActivity页面联查设置分组展示的条件
+        /// </summary>
+        /// <param name="entity"></param>
+        public void UpdateSettingActivityId(PersonalSettingEntity entity)
+        {
+            string sql = @"update bdl_personal_setting set fk_training_activity_id = @Fk_training_activity_id
+                where member_id = @Member_id and activity_type = @Activity_type 
+            ";
+            using (var conn = DbUtil.getConn())
+            {
+                conn.Execute(sql, entity);
+            }
 
-
+        }
     }
 }

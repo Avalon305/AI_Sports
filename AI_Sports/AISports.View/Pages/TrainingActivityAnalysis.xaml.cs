@@ -79,5 +79,11 @@ namespace AI_Sports.AISports.View.Pages
             NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/TrainingCourseAnalysis.xaml", UriKind.Relative));
 
         }
+        ///按钮绑定测试
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    System.Windows.Controls.Button btn = (System.Windows.Controls.Button)sender;
+        //    System.Windows.MessageBox.Show("当前行的设备类型：" + btn.Tag.ToString());
+        //}
     }
 }

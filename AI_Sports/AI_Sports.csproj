@@ -209,7 +209,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AISports.View\Pages\trainingCourse.xaml">
+    <Page Include="AISports.View\Pages\EditActivity.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -328,6 +328,7 @@
     <Compile Include="AISports.Dao\TrainingCourseDAO.cs" />
     <Compile Include="AISports.Dao\TrainingDeviceRecordDAO.cs" />
     <Compile Include="AISports.Dao\TrainingPlanDAO.cs" />
+    <Compile Include="AISports.Dto\ActivityGroupDTO.cs" />
     <Compile Include="AISports.Dto\DeviceDoneDTO.cs" />
     <Compile Include="AISports.Dto\SettingInfoDTO.cs" />
     <Compile Include="AISports.Entity\ActivityEntity.cs" />
@@ -352,6 +353,7 @@
     <Compile Include="AISports.Service\DeviceCommService.cs" />
     <Compile Include="AISports.Service\MemberService.cs" />
     <Compile Include="AISports.Service\MusclePieChartService.cs" />
+    <Compile Include="AISports.Service\PersonalSettingService.cs" />
     <Compile Include="AISports.Service\TrainingActivityService.cs" />
     <Compile Include="AISports.Service\TrainingCourseService.cs" />
     <Compile Include="AISports.Service\TrainingDeviceRecordService.cs" />
@@ -397,8 +399,8 @@
     <Compile Include="AISports.View\Pages\TrainingActivityAnalysis.xaml.cs">
       <DependentUpon>TrainingActivityAnalysis.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AISports.View\Pages\trainingCourse.xaml.cs">
-      <DependentUpon>trainingCourse.xaml</DependentUpon>
+    <Compile Include="AISports.View\Pages\EditActivity.xaml.cs">
+      <DependentUpon>EditActivity.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\TrainingCourseAnalysis.xaml.cs">
       <DependentUpon>TrainingCourseAnalysis.xaml</DependentUpon>

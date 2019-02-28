@@ -42,7 +42,15 @@ namespace AI_Sports.Dao
 
         }
 
+        public List<DatacodeEntity> ListByTypeIdAndExtValue(string typeId,string cycleType)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "select * from bdl_datacode where code_type_id = @Code_type_id and code_state = 1 And Code_ext_value2 = @Cycle_type order by code_xh";
 
+                return (List<DatacodeEntity>)conn.Query<DatacodeEntity>(query, new { Code_type_id = typeId, Cycle_type = cycleType });
+            }
+        }
 
 
 

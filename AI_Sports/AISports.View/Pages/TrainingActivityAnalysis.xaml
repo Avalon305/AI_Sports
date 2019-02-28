@@ -10,6 +10,7 @@
       Title="TrainingActivityAnalysis">
     
     <Page.Resources>
+        <!--分组资源，设置分组依据-->
         <CollectionViewSource x:Key="ListViewGroupSource"  Source="{Binding}" >
             <CollectionViewSource.GroupDescriptions>
                 <PropertyGroupDescription PropertyName="Fk_training_activity_record_id"/>
@@ -47,9 +48,9 @@
                                                         <Expander.Header>
                                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
 
-                                                                <TextBlock FontWeight="Bold" Text="{Binding Path=Name,Converter={StaticResource ActivityGroupHeadConvert}}" />
+                                                                <TextBlock FontWeight="Bold" Name="TB_ActivityType" Text="{Binding Path=Name,Converter={StaticResource ActivityGroupHeadConvert}}" />
                                                                 <TextBlock FontWeight="Bold" Text="{Binding Path=ItemCount,StringFormat=(共{0}条)}" />
-                                                               
+                                                                <!--<Button Content="编辑"  Tag="{Binding ElementName=TB_ActivityType,Path=Text}" Click="Button_Click"></Button>-->
 
                                                             </StackPanel>
                                                         </Expander.Header>

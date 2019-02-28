@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Transactions;
 using AI_Sports.Dao;
 using AI_Sports.Entity;
@@ -23,6 +19,7 @@ namespace AI_Sports.Service
         /// <returns></returns>
         public void SaveNewTrainingPlan(TrainingPlanEntity trainingPlan)
         {
+            
             //使整个代码块成为事务性代码
             using (TransactionScope ts = new TransactionScope())
             {
