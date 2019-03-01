@@ -397,6 +397,7 @@ namespace AI_Sports
                 Joint LeftHip = new Joint();    //左大腿关节
                 Joint LeftKnee = new Joint();   //左膝盖关节
                 Joint LeftAnkle = new Joint();   //左脚踝
+                Joint Waist = new Joint();    //腰部
                 Console.WriteLine("Joints长度为" + _skeletonData.Skeletons[0].Joints.Length);
 
                 for (int i = 0; i < _skeletonData.Skeletons[0].Joints.Length; i++)
@@ -458,11 +459,17 @@ namespace AI_Sports
                         LeftKnee = skeleton.Joints[i];
                         //Console.WriteLine("左膝盖坐标" + i + "||" + LeftKnee.Real.X + "||" + LeftKnee.Real.Y + "||" + LeftKnee.Real.Z);
                     }
+                    if (skeleton.Joints[i].Type.ToString() == "Waist")
+                    {
+                        Waist = skeleton.Joints[i];
+                        //Console.WriteLine("腰部坐标" + i + "||" + Waist.Real.X + "||" + Waist.Real.Y + "||" + Waist.Real.Z);
+                    }
                     double ShoulderWidth = ComputeDistanceBetween2Joints(LeftShoulder, Collar);
                     double ArmLengthUp = ComputeDistanceBetween2Joints(LeftShoulder, LeftElbow);
                     double ArmLengthDown = ComputeDistanceBetween2Joints(LeftElbow, LeftWrist);
                     double LegLengthUp = ComputeDistanceBetween2Joints(LeftHip, LeftKnee);
                     double LegLengthDown = ComputeDistanceBetween2Joints(LeftKnee, LeftAnkle);
+                    double BodyLength = ComputeDistanceBetween2Joints(Collar, Waist);
                     // Console.WriteLine("距离差为" + (LeftHip.Real.Z - LeftKnee.Real.Z) + "是否举手" + (LeftWrist.Real.Y - LeftShoulder.Real.Y));
 
                     if ((LeftHip.Real.Z - LeftKnee.Real.Z > 150 && LeftHip.Real.Z - LeftKnee.Real.Z < 300) && (LeftWrist.Real.Y > LeftShoulder.Real.Y && LeftAnkle.Real.Y != 0))
@@ -486,6 +493,7 @@ namespace AI_Sports
                                 Arm_length_down.Text = ArmLengthDown.ToString();
                                 Leg_length_up.Text = LegLengthUp.ToString();
                                 Leg_length_down.Text = LegLengthDown.ToString();
+                                Body_length.Text = BodyLength.ToString();
                             });
                             break;
                         }
