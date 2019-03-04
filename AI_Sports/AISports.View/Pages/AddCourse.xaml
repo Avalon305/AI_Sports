@@ -212,7 +212,7 @@
 
 
                 <!--放两个训练活动frame，先添加后切换到设置-->
-                <Frame x:Name="ActivityFrame" Width="1493.3" Height="1080"></Frame>
+                <Frame x:Name="ActivityFrame" Width="1493.3" Height="1500"></Frame>
             </StackPanel>
 
         </ScrollViewer>

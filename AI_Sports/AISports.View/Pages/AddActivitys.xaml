@@ -37,8 +37,8 @@
                             </Button>
                         </WrapPanel>
                         <WrapPanel  HorizontalAlignment="Center" Margin="0,20,0,0">
-                            <Label Content="4" Name="lunci_content" FontSize="22"/>
-                            <Label Content="轮次" FontSize="22"/>
+                            <Label Content="4" Name="lunci_content" FontSize="22" FontWeight="Bold"/>
+                            <Label Content="轮次" FontSize="22" FontWeight="Bold"/>
                         </WrapPanel>
                     </StackPanel>
                 </Border>

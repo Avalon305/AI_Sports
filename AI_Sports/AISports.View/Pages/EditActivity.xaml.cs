@@ -40,11 +40,35 @@ namespace AI_Sports.AISports.View.Pages
             ListViewGroupSource.Source = activityGroupDTOs;
         }
 
-        ///按钮绑定测试
+        /// <summary>
+        /// 点击活动分组Expander的编辑训练活动
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Edit_Activity(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button btn = (System.Windows.Controls.Button)sender;
-            System.Windows.MessageBox.Show("当前行的设备类型：" + btn.Tag.ToString());
+            //System.Windows.MessageBox.Show("当前行的活动类型：" + btn.Tag.ToString());
+            Console.WriteLine("当前行的活动类型：" + btn.Tag.ToString());
+            //Expander分组头的名 为 XX循环（x轮次）这种格式
+            string groupHead = btn.Tag.ToString();
+            //活动类型变量
+            string activityType = null;
+            if (groupHead.Contains("力量循环"))
+            {
+                activityType = "0";
+            }
+            else if (groupHead.Contains("力量耐力循环"))
+            {
+                activityType = "1";
+            }
+            
+            //跳转到更新训练活动页面 传参只需要在后边加上参数即可
+            UpdateActivity updateActivity = new UpdateActivity();
+            this.NavigationService.Navigate(updateActivity, activityType);
+            //加载从训练课程页面传来的参数 //注意LoadCompleted 事件的位置在 Page1.cs 中
+            this.NavigationService.LoadCompleted += updateActivity.NavigationService_LoadCompleted;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -63,5 +63,9 @@ namespace AI_Sports.Entity
         /// gmt_modified
         /// </summary>
         public DateTime? Gmt_modified { get; set; }
+        /// <summary>
+        /// 系统版本 0：普通版 1：豪华版 豪华版多三种训练模式
+        /// </summary>
+        public int? System_version { get; set; }
     }
 }

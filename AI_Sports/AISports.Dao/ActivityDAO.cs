@@ -55,6 +55,21 @@ namespace AI_Sports.Dao
             }
         }
         /// <summary>
+        /// EditActivity页面分组头转换器用 根据课程id和活动类型查出目标伦次
+        /// </summary>
+        /// <param name="Type"></param>
+        /// <param name="CouseId"></param>
+        /// <returns></returns>
+        public int GetTargetTurnNumByTypeCourseId(string Type,string CouseId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT target_turn_number FROM bdl_activity  WHERE activity_type = @Type And fk_training_course_id = @CouseId";
+                return conn.QueryFirstOrDefault<int>(query, new { Type, CouseId });
+            }
+        }
+
+        /// <summary>
         /// 训练活动页面Expander 查询出每个设备的个人设置根据活动类型分组展示并可以更新
         /// </summary>
         /// <param name="courseId"></param>
@@ -67,6 +82,20 @@ namespace AI_Sports.Dao
                 return conn.Query<ActivityGroupDTO>(query, new { Fk_training_course_id = courseId }).ToList();
             }
         }
+        /// <summary>
+        /// 根据课程id和活动类型更新活动目标轮次
+        /// </summary>
+        /// <param name="activityEntity"></param>
+        /// <returns></returns>
+        public int UpdateTargetTurnNumber(ActivityEntity activityEntity)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "UPDATE bdl_activity SET target_turn_number = @Target_turn_number WHERE fk_training_course_id = @Fk_training_course_id AND activity_type = @Activity_type";
 
+                return conn.Execute(query, activityEntity);
+
+            }
+        }
     }
 }

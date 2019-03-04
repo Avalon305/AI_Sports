@@ -7,6 +7,9 @@ using System.Transactions;
 
 namespace AI_Sports.Service
 {
+    /// <summary>
+    /// 训练活动表和训练活动记录表的service
+    /// </summary>
     class TrainingActivityService
     {
         private ActivityDAO activityDAO = new ActivityDAO();
@@ -70,7 +73,16 @@ namespace AI_Sports.Service
         {
             return trainingActivityRecordDAO.GetActivityType(id);
         }
-
+        /// <summary>
+        /// EditActivity页面分组头转换器用 根据课程id和活动类型查出目标伦次
+        /// </summary>
+        /// <param name="activityType"></param>
+        /// <returns></returns>
+        public int GetTargetTurnNumByType(string activityType)
+        {
+            string courseId = CommUtil.GetSettingString("trainingCourseId");
+            return activityDAO.GetTargetTurnNumByTypeCourseId(activityType,courseId);
+        }
         /// <summary>
         /// EditActity页活动分组Expnder中的个人设置查询 分组是前端根据活动类型分
         /// </summary>
@@ -81,5 +93,15 @@ namespace AI_Sports.Service
             long courseId = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
             return activityDAO.ListActivitysGroupAndPersonalSetting(courseId);
         }
+        /// <summary>
+        /// 根据课程id和活动类型更新活动目标轮次
+        /// </summary>
+        /// <param name="activityEntity"></param>
+        /// <returns></returns>
+        public int UpdateTargetTurnNumber(ActivityEntity activityEntity)
+        {
+            return activityDAO.UpdateTargetTurnNumber(activityEntity);
+        }
+
     }
 }

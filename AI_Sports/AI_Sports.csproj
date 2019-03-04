@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -56,6 +56,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -94,6 +95,12 @@
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand, Version=10.2018.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InTheHand.Pontoon.10.2018.3.19\lib\portable-net45+netcore45+wpa81+wp8\InTheHand.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Devices.Bluetooth, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Network.Bluetooth.4.0.1803.22\lib\net35\InTheHand.Devices.Bluetooth.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignColors, Version=1.0.0.14576, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.1\lib\net45\MaterialDesignColors.dll</HintPath>
@@ -173,7 +180,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AISports.View\Pages\allSettings.xaml">
+    <Page Include="AISports.View\Pages\MTK1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\UpdateActivity.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -324,6 +335,7 @@
     <Compile Include="AISports.Dao\MusclePieChartDAO.cs" />
     <Compile Include="AISports.Dao\PersonalSettingDAO.cs" />
     <Compile Include="AISports.Dao\SkeletonLengthDAO.cs" />
+    <Compile Include="AISports.Dao\SystemSettingDAO.cs" />
     <Compile Include="AISports.Dao\TrainingActivityRecordDAO.cs" />
     <Compile Include="AISports.Dao\TrainingCourseDAO.cs" />
     <Compile Include="AISports.Dao\TrainingDeviceRecordDAO.cs" />
@@ -362,12 +374,16 @@
     <Compile Include="AISports.Util\CommUtil.cs" />
     <Compile Include="AISports.Util\ConfigUtil.cs" />
     <Compile Include="AISports.Util\DataCodeCache.cs" />
+    <Compile Include="AISports.Util\EditActivityGroupHeadConvert.cs" />
     <Compile Include="AISports.Util\KeyGenerator.cs" />
     <Compile Include="AISports.Util\ParseIntegerUtil.cs" />
     <Compile Include="AISports.Util\DbUtil.cs" />
     <Compile Include="AISports.Util\SpeechUtil.cs" />
-    <Compile Include="AISports.View\Pages\allSettings.xaml.cs">
-      <DependentUpon>allSettings.xaml</DependentUpon>
+    <Compile Include="AISports.View\Pages\MTK1.xaml.cs">
+      <DependentUpon>MTK1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\UpdateActivity.xaml.cs">
+      <DependentUpon>UpdateActivity.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\firstTest.xaml.cs">
       <DependentUpon>firstTest.xaml</DependentUpon>
@@ -582,6 +598,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AISports.Echarts\dist\chart\" />
+    <Folder Include="AISports.View\BluetoothLE\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

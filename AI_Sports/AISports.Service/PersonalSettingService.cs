@@ -84,6 +84,21 @@ namespace AI_Sports.Service
             }
             return true;
         }
-
+        /// <summary>
+        /// 根据会员id，活动类型，更新力量设备的个人设置 除去12号和16号单车、跑步机
+        /// </summary>
+        /// <param name="entity"></param>
+        public void UpdateStrengthDeviceSettingByType(PersonalSettingEntity entity)
+        {
+             personalSettingDAO.UpdateStrengthDeviceSettingByType(entity);
+        }
+        /// <summary>
+        /// 根据会员id，活动类型 更新耐力训练设备 单车和跑步机
+        /// </summary>
+        /// <param name="entity"></param>
+        public void UpdateEnduranceDeviceSettingByType(PersonalSettingEntity entity)
+        {
+            personalSettingDAO.UpdateEnduranceDeviceSettingByType(entity);
+        }
     }
 }

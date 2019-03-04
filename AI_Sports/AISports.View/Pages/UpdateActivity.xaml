@@ -1,4 +1,4 @@
-﻿<Page x:Class="AI_Sports.AISports.View.Pages.allSettings"
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.UpdateActivity"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="850" d:DesignWidth="1493.3"
-      Title="lastlast">
+      Title="UpdateActivity">
     <Page.Resources>
         <Style BasedOn="{StaticResource glyphicon}" TargetType="{x:Type Path}">
             <Setter Property="Margin" Value="0,15"></Setter>
@@ -38,8 +38,8 @@
                                     </Button>
                                 </WrapPanel>
                                 <WrapPanel  HorizontalAlignment="Center" Margin="0,10,0,0">
-                                    <Label Content="4" x:Name="lunci_content" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold"/>
-                                    <Label Content="轮次" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold"/>
+                                    <Label Content="4" x:Name="lunci_content" FontFamily="Microsoft JhengHei UI" FontSize="22" FontWeight="Bold"/>
+                                    <Label Content="轮次" FontFamily="Microsoft JhengHei UI" FontSize="22" FontWeight="Bold"/>
                                 </WrapPanel>
                             </StackPanel>
                         </Border>
@@ -47,13 +47,13 @@
                     <Button   Margin="50 20 0 20" Width="130" Height="130" BorderBrush="Black" Style="{DynamicResource btn-success }" Background="White"  Click="Button_Click">
                         <Button.Content>
                             <Grid >
-                                <Label Content="所有设备"  Margin="0 50 0 0" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold"></Label>
-                                <Label Content="  的设置"  Margin="0 75 0 0" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold"></Label>
-                                <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-wrench}"  Margin="0 -50 0 0"/>
+                                <Label Content="所有设备"  Margin="0 50 0 0" FontFamily="Microsoft JhengHei UI"  FontSize="22" FontWeight="Bold"></Label>
+                                <Label Content="  的设置"  Margin="0 75 0 0" FontFamily="Microsoft JhengHei UI"  FontSize="22" FontWeight="Bold"></Label>
+                                <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-wrench}" Height="40" Width="40" Stretch="Fill"  Margin="0 -50 0 0"/>
                             </Grid>
                         </Button.Content>
                     </Button>
-                    <Button   Margin="50 20 0 20" Width="130" Height="130" BorderBrush="Black" Style="{DynamicResource btn-success }" Background="White" >
+                    <!--<Button   Margin="50 20 0 20" Width="130" Height="130" BorderBrush="Black" Style="{DynamicResource btn-success }" Background="White" >
                         <Button.Content>
                             <Grid >
                                 <Grid.ColumnDefinitions>
@@ -64,19 +64,19 @@
                                 <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-remove-circle}" Margin="29.8,10,28.8,62.2" Grid.ColumnSpan="2" Height="Auto" Stretch="Fill" Width="Auto" RenderTransformOrigin="-0.132,0.403"/>
                             </Grid>
                         </Button.Content>
-                    </Button>
+                    </Button>-->
                 </WrapPanel>
 
 
             </StackPanel>
             <WrapPanel Margin="0 35 0 0">
-                <Label Content="宝德龙所有设备的设置" Style="{DynamicResource h3}" Margin="20 0 0 0" FontFamily="Microsoft JhengHei UI" FontWeight="Bold"></Label>
+                <Label Content="所有设备的设置" Style="{DynamicResource h3}" Margin="20 0 0 0" FontFamily="Microsoft JhengHei UI" FontWeight="Bold"></Label>
             </WrapPanel>
             <WrapPanel >
                 <GridSplitter  Width="1080" Height="2" Margin="10,15,0,0" Background="Gray" />
             </WrapPanel>
             <WrapPanel>
-                <Label Content="离心力"  Style="{DynamicResource h3}" Margin="200 35 -150 35"></Label>
+                <Label Content="顺向力"  Style="{DynamicResource h3}" Margin="200 35 -150 35"></Label>
                 <Button Margin="200 20 0 20"  Width="60" Height="37"  Background="White" Click="Button_Click_1">
                     <Button.Content>
                         <Grid >
@@ -85,7 +85,7 @@
                         </Grid>
                     </Button.Content>
                 </Button>
-                <Label  x:Name="out" Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1"></Label>
+                <Label  x:Name="LB_consequent_force" Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1"></Label>
                 <Label   Style="{DynamicResource h3}" Margin="120 35 -150 35" Content="%"></Label>
                 <Button Margin="200 20 0 20" Width="60" Height="37"  Background="White"  Click="Button_Click">
                     <Button.Content>
@@ -97,7 +97,7 @@
                 </Button>
             </WrapPanel>
             <WrapPanel>
-                <Label Content="向心力" Style="{DynamicResource h3}" Margin="200 35 -150 35"></Label>
+                <Label Content="反向力" Style="{DynamicResource h3}" Margin="200 35 -150 35"></Label>
                 <Button Margin="200 20 0 20"  Width="60" Height="37"  Background="White" Click="Button_Click_3">
                     <Button.Content>
                         <Grid >
@@ -106,7 +106,7 @@
                         </Grid>
                     </Button.Content>
                 </Button>
-                <Label  Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1" x:Name="minus"></Label>
+                <Label  Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1" x:Name="LB_Reverse_force"></Label>
                 <Label   Style="{DynamicResource h3}" Margin="120 35 -150 35" Content="%"></Label>
                 <Button Margin="200 20 0 20" Width="60" Height="37"  Background="White" Click="Button_Click_2">
                     <Button.Content>
@@ -118,38 +118,33 @@
                 </Button>
             </WrapPanel>
             <WrapPanel>
-                <Label Content="速       度" Style="{DynamicResource h3}"  Margin="200 20  35 35">
+                <Label Content="速       度" Style="{DynamicResource h3}"  Margin="200 20  30 35">
 
                 </Label>
-                <ComboBox Height="50" Width="310"  >
+                <ComboBox Height="50" Width="310" Name="CB_speed" FontSize="22" >
 
-                    <ComboBoxItem>1</ComboBoxItem>
 
-                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem Content="慢"  />
 
-                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem Content="标准" />
+
+                    <ComboBoxItem Content="快速" />
 
                 </ComboBox>
 
             </WrapPanel>
             <WrapPanel>
-                <Label Content="训练种类" Style="{DynamicResource h3}"  Margin="200 20 35 35">
+                <Label Content="训练模式" Style="{DynamicResource h3}"  Margin="200 20 30 35">
 
                 </Label>
-                <ComboBox Height="50" Width="310">
-
-                    <ComboBoxItem>1</ComboBoxItem>
-
-                    <ComboBoxItem>2</ComboBoxItem>
-
-                    <ComboBoxItem>3</ComboBoxItem>
-
+                <!--从后台加载数据 DisplayMemberPath为展示值 SelectedValuePath为存储值 -->
+                <ComboBox Height="50" Width="310" FontSize="22" Name="CB_train_mode"  DisplayMemberPath="Code_d_value" SelectedValuePath="Code_s_value">
                 </ComboBox>
             </WrapPanel>
             <WrapPanel Margin="0 35 0 0"/>
             <WrapPanel Margin="200,-20,0,0" Height="69">
-                <Button Content="取消" Background="#FFF6D600" Style="{DynamicResource btn-success }"  Width="150" Height="100" FontSize="24" FontFamily="Constantia" Click="Button_Click_4"></Button>
-                <Button Content="确认" Background="#FF04243D" Style="{DynamicResource btn-success }"  Width="150" Height="100"  Margin=" 250 0 0 0" FontFamily="Constantia" FontSize="24" Click="Button_Click_5" />
+                <Button Content="取消" Style="{DynamicResource btn-warning}" FontSize="20" Width="75" Height="35" FontFamily="Constantia" Click="Button_Click_4"></Button>
+                <Button Content="确认" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35"  Margin=" 290 0 0 0" FontFamily="Constantia"  Click="Button_Click_5" />
             </WrapPanel>
         </StackPanel>
     </Grid>

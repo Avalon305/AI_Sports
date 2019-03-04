@@ -105,5 +105,36 @@ namespace AI_Sports.Dao
             }
 
         }
+        /// <summary>
+        /// 更新力量设备 除去12号和16号单车、跑步机 更新训练模式 顺向反向力
+        /// </summary>
+        /// <param name="entity"></param>
+        public void UpdateStrengthDeviceSettingByType(PersonalSettingEntity entity)
+        {
+            string sql = @"update bdl_personal_setting set training_mode = @Training_mode,consequent_force = @Consequent_force,
+                    reverse_force = @Reverse_force
+                where member_id = @Member_id and activity_type = @Activity_type and device_code != '12' and device_code != '16'
+            ";
+            using (var conn = DbUtil.getConn())
+            {
+                conn.Execute(sql, entity);
+            }
+
+        }
+        /// <summary>
+        /// 更新耐力训练设备 单车和跑步机 更新功率,不更新训练模式 单车跑步机就一种标准模式
+        /// </summary>
+        /// <param name="entity"></param>
+        public void UpdateEnduranceDeviceSettingByType(PersonalSettingEntity entity)
+        {
+            string sql = @"update bdl_personal_setting set power = @Power
+                where member_id = @Member_id and activity_type = @Activity_type and device_code = '12' or device_code = '16'
+            ";
+            using (var conn = DbUtil.getConn())
+            {
+                conn.Execute(sql, entity);
+            }
+
+        }
     }
 }

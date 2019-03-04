@@ -86,7 +86,7 @@
             </WrapPanel>
             <WrapPanel Margin="200,35,0,0" Height="69">
                 <Button Content="取消" Style="{DynamicResource btn-warning}" FontSize="20" Width="75" Height="35" Click="Button_Cancle"></Button>
-                <Button Content="确认" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="22"  Width="75" Height="35" Margin="490 0 0 0" Click="Button_Save"/>
+                <Button Content="确认" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35" Margin="490 0 0 0" Click="Button_Save"/>
                 
             </WrapPanel>
         </StackPanel>
