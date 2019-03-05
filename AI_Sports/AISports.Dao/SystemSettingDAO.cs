@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AI_Sports.AISports.Dao
+namespace AI_Sports.Dao
 {
     /// <summary>
     /// 系统设置DAO
