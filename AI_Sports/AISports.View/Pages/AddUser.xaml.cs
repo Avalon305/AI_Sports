@@ -79,7 +79,11 @@ namespace AI_Sports.AISports.View.Pages
             this.Birth_date.Text = this.birthDatePicker.Text;
             Console.WriteLine("");
         }
-
+        /// <summary>
+        /// 点击保存按钮，保存用户，跳转到MemberInfo页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
@@ -91,11 +95,10 @@ namespace AI_Sports.AISports.View.Pages
             dtFormat.ShortDatePattern = "yyyy-MM-dd";
             member.Birth_date = Convert.ToDateTime(this.birthDatePicker.Text, dtFormat);
             member.Email_address = this.Email_address.Text;
-            //有权限添加会员的就是当前登陆的教练
-            member.Fk_coach_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
+            
             member.Height = double.Parse(this.height.Text);
             member.Weight = double.Parse(this.weight.Text);
-            //member.Label_name = this.Label_name.
+            
             member.Max_heart_rate = ParseIntegerUtil.ParseInt(this.Max_heart_rate.Text);
             member.Member_familyName = this.Member_familyName.Text;
             member.Member_firstName = this.Member_firstName.Text;
@@ -112,6 +115,27 @@ namespace AI_Sports.AISports.View.Pages
             {
                 member.Sex = "女";
             }
+            //添加会员标签 用英文逗号分隔
+            StringBuilder lableBuilder = new StringBuilder();
+            if (this.CB_Zengji.IsChecked == true)
+            {
+                lableBuilder.Append("增肌,");
+            }
+            if (this.CB_Jianzhi.IsChecked == true)
+            {
+                lableBuilder.Append("减脂,");
+            }
+            if (this.CB_Suxing.IsChecked == true)
+            {
+                lableBuilder.Append("塑形,");
+            }
+            if (this.CB_Kangfu.IsChecked == true)
+            {
+                lableBuilder.Append("康复,");
+            }
+            member.Label_name = lableBuilder.ToString();
+
+
             Console.WriteLine("录入会员信息："+member.ToString());
             //插入会员
             long count = memberService.InsertMember(member);
@@ -119,10 +143,9 @@ namespace AI_Sports.AISports.View.Pages
             {
                 Console.WriteLine("增加会员成功");
             }
+            //跳转到会员信息页面
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative));
 
-            //跳转到查看会员信息页面
-            userinfo memberInfo = new userinfo();
-            this.Content = memberInfo;
 
 
         }

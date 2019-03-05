@@ -42,9 +42,15 @@ namespace AI_Sports.Service
             //设置主键id
             memberEntity.Id = KeyGenerator.GetNextKeyValueLong("bdl_member");
             //设置创建时间
-            memberEntity.Gmt_create = new DateTime();
+            memberEntity.Gmt_create = System.DateTime.Now;
+            //当前登陆的教练Id
+            memberEntity.Fk_coach_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("coachId"));
             //使用基类插入新会员
-            return memberDAO.Insert(memberEntity);
+            long resultCode =  memberDAO.Insert(memberEntity);
+            //更新APP中会员id
+            CommUtil.UpdateSettingString("memberPrimarykey",memberEntity.Id.ToString());
+            //使用基类插入新会员
+            return resultCode;
         }
 
         /// <summary>
@@ -58,12 +64,24 @@ namespace AI_Sports.Service
         }
 
         /// <summary>
-        /// 查询出刚添加的会员信息，准备写卡
+        /// 根据主键查询会员，可用于查询教练
+        /// </summary>
+        /// <param name="Member_id"></param>
+        /// <returns></returns>
+        public MemberEntity GetMemberByPk(int? Member_id)
+        {
+            return memberDAO.Load(Member_id);
+        }
+
+        /// <summary>
+        /// 根据APP中的主键memberPrimarykey，查询用户，可以用于写卡前的查询、加载用户信息页面
         /// </summary>
         /// <returns></returns>
-        public MemberEntity GetMemberToWriteCard()
+        public MemberEntity InitMemberInfo()
         {
-            return memberDAO.GetMemberToWriteCard();
+            
+            return memberDAO.Load(CommUtil.GetSettingString("memberPrimarykey"));
+            
         }
 
         /// <summary>
@@ -132,5 +150,26 @@ namespace AI_Sports.Service
             memberEntity.Last_login_date = new DateTime();
             memberDAO.UpdateByPrimaryKey(memberEntity);
         }
+
+
+        /// <summary>
+        /// 查询会员的初次训练日期
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        public DateTime? GetMinTrainingDate(string memberId)
+        {
+            return memberDAO.GetMinTrainingDate(memberId);
+        }
+        /// <summary>
+        /// 查询最近训练日期
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        public DateTime? GetMaxTrainingDate(string memberId)
+        {
+            return memberDAO.GetMaxTrainingDate(memberId);
+        }
+
     }
 }

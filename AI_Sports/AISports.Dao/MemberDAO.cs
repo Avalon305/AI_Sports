@@ -52,26 +52,15 @@ namespace AI_Sports.Dao
         /// </summary>
         /// <param name="memberEntity"></param>
         /// <returns></returns>
-        public MemberEntity GetMember(string Member_id)
+        public MemberEntity GetMember(string memberId)
         {
             using (var conn = DbUtil.getConn())
             {
                 const string query = "SELECT * FROM bdl_member WHERE member_id = @Member_id";
-                return conn.QueryFirstOrDefault<MemberEntity>(query, new { Member_id = Member_id });
+                return conn.QueryFirstOrDefault<MemberEntity>(query, new { Member_id = memberId });
             }
         }
-        /// <summary>
-        /// /查询新增用户时只保存了基本信息还没有写卡的会员，查询条件是memeber_id为NULL
-        /// </summary>
-        /// <returns></returns>
-        public MemberEntity GetMemberToWriteCard()
-        {
-            using (var conn = DbUtil.getConn())
-            {
-                const string query = "SELECT bdl_member.id,bdl_member.member_id,bdl_member.member_firstName,bdl_member.member_familyName,bdl_member.birth_date,bdl_member.sex,bdl_member.address,bdl_member.email_address,bdl_member.work_phone,bdl_member.personal_phone,bdl_member.mobile_phone,bdl_member.weight,bdl_member.height,bdl_member.age,bdl_member.max_heart_rate,bdl_member.suitable_heart_rate,bdl_member.role_id,bdl_member.fk_coach_id,bdl_member.label_name,bdl_member.is_open_fat_reduction,bdl_member.remark,bdl_member.gmt_create,bdl_member.gmt_modified FROM bdl_member WHERE ISNULL(member_id)";
-                return conn.QueryFirstOrDefault<MemberEntity>(query);
-            }
-        }
+       
 
         /// <summary>
         /// 根据教练ID查出其对应的会员集合
@@ -108,6 +97,32 @@ namespace AI_Sports.Dao
             {
                 const string query = "SELECT * FROM bdl_member WHERE DATEDIFF(CURDATE(),last_login_date) > 7";
                 return conn.Query<MemberEntity>(query).ToList();
+            }
+        }
+        /// <summary>
+        /// 查询会员的初次训练日期
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        public DateTime? GetMinTrainingDate(string memberId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT Min(gmt_create) FROM bdl_training_device_record WHERE member_id = @Member_id";
+                return conn.QueryFirstOrDefault<DateTime>(query, new { Member_id = memberId });
+            }
+        }
+        /// <summary>
+        /// 查询最近训练日期
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        public DateTime? GetMaxTrainingDate(string memberId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT Max(gmt_create) FROM bdl_training_device_record WHERE member_id = @Member_id";
+                return conn.QueryFirstOrDefault<DateTime>(query, new { Member_id = memberId });
             }
         }
     }

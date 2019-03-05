@@ -27,7 +27,7 @@
                         </Image.OpacityMask>
                     </Image>
 
-                    <Label  Margin="220,0,0,0" Content="{Binding Name}" Foreground="#04243D"  FontFamily="Microsoft YaHei" Name="Name"  Height="58" VerticalAlignment="Top" HorizontalAlignment="Left" Width="136" Grid.RowSpan="3" Style="{DynamicResource h1}"/>
+                    <Label  Margin="220,0,0,0" Content="{Binding Name}" Foreground="#04243D"  FontFamily="Microsoft YaHei" Name="Name"  Height="58" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="500" Grid.RowSpan="3" Style="{DynamicResource h1}"/>
                     <Label Content="关联教练" Margin="220,70,0,0" Foreground="#04243D" Style="{DynamicResource h3}"  FontFamily="Microsoft YaHei" FontSize="22px"  Grid.RowSpan="4"  />
                     <Label  Margin="440,70,0,0" Grid.Column="1"  Name="L1" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22px" Content="{Binding Path=Coach}" Grid.RowSpan="4" ></Label>
                     <Label Content="初次训练日期"  Margin="220,120,0,0" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22px"  Grid.RowSpan="5" />
@@ -58,7 +58,7 @@
                         -->
 
                     </StackPanel>
-                    <GridSplitter Height="5" Width="2600"/>
+                    <GridSplitter Height="5" Width="1493.3"/>
                 </StackPanel>
 
 
@@ -74,16 +74,16 @@
                     <WrapPanel Margin="10 0 0 0">
                         <Button Style="{DynamicResource btn-success}" Height="20" Width="20" Click="Button_Click" Margin="20,0,0,0"/>
                         <Label Content="进程" VerticalContentAlignment="Center" Margin="5,0,0,0" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22px"  />
-                        <ContentControl x:Name="Jincheng" Style="{StaticResource panel-body}" Foreground="#04243D" FontFamily="Microsoft YaHei"  HorizontalAlignment="Left" Content="训练课程已完成" Width="1000"  FontSize="22"/>
+                        <ContentControl x:Name="Jincheng" Style="{StaticResource panel-body}" Foreground="#04243D" FontFamily="Microsoft YaHei"  HorizontalAlignment="Left"  Width="1000"  FontSize="22"/>
                         <ContentControl x:Name="JinchengJindu" Style="{StaticResource panel-body}" Foreground="#04243D" HorizontalAlignment="Left" Content="" Width="100" FontFamily="Microsoft YaHei" FontSize="22"/>
                     </WrapPanel>
                     <WrapPanel Margin="10 0 0 0">
                         <Button Style="{DynamicResource btn-primary}" Height="20" Width="20"  Margin="20,0,0,0" />
                         <Label Content="目标" Foreground="#04243D" Style="{DynamicResource h3}" Margin="5,0,0,0" FontFamily="Microsoft YaHei" FontSize="22px" VerticalContentAlignment="Center" />
-                        <ContentControl x:Name="Mubiao" Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="训练计划已完成" Width="1000" Foreground="#04243D" FontFamily="Microsoft YaHei" FontSize="22"/>
+                        <ContentControl x:Name="Mubiao" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Width="1000" Foreground="#04243D" FontFamily="Microsoft YaHei" FontSize="22"/>
                         <ContentControl x:Name="MubiaoJindu" Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="" Width="100" Foreground="#04243D" FontFamily="Microsoft YaHei" FontSize="22"/>
                     </WrapPanel>
-                    <Button Content="前往训练计划" Background="#FF04243D" Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" Margin="20,5,5,5" RenderTransformOrigin="0.341,-0.515"/>
+                    <Button Content="前往训练计划" Background="#FF04243D" Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" Margin="20,5,5,5" RenderTransformOrigin="0.341,-0.515" Click="Button_Click"/>
 
                 </StackPanel>
 
@@ -99,7 +99,7 @@
                     <Label Content="身份识别卡" Style="{DynamicResource h1}" Margin="20,20,0,0" Foreground="#04243D" FontFamily="Microsoft YaHei"/>
                     <GridSplitter Height="5" Width="2600"/>
                     <StackPanel x:Name="stackPanel2" HorizontalAlignment="Right" Margin="0,30,20,20" Width="1453.3">
-                        <Label Name="x1" Content="用户在此需要进行身份验证" FontSize="22px" Foreground="#04243D" FontFamily="Microsoft YaHei" VerticalContentAlignment="Center" Height="30" Margin="0,30,0,0"  Background="WhiteSmoke"/>
+                        <Label Name="x1" Content="用户在此需要进行身份验证" FontSize="22px" Foreground="#04243D" FontFamily="Microsoft YaHei" VerticalContentAlignment="Center" Height="40"  Margin="0,30,0,0"  Background="WhiteSmoke"/>
                         <Border Name="x2" Width="400" Height="200" Background="WhiteSmoke" CornerRadius="8" HorizontalAlignment="Left" Margin="20,25,0,0" Grid.Column="1">
                             <Label Name="x3" Height="45" Content="{Binding Path=Score1}" VerticalContentAlignment="Center" Foreground="#04243D" HorizontalAlignment="Center" Margin="0,0,0,0" FontFamily="Microsoft YaHei" FontSize="16px"/>
                         </Border>

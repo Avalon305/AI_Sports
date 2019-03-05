@@ -39,6 +39,8 @@ namespace AI_Sports.Service
             trainingCourseEntity.End_date = trainingCourseEntity.Start_date.Value.AddDays(trainingCourseEntity.Rest_days.Value * (trainingCourseEntity.Target_course_count.Value - 1));
             //  状态未完成
             trainingCourseEntity.Is_complete = false;
+            //  当前计数默认0
+            trainingCourseEntity.Current_course_count = 0;
             //  保存课程
 
 

@@ -45,13 +45,15 @@ namespace AI_Sports.Entity
         /// 训练模式
         public string Training_mode { get; set; }
         /// 座位高度cm
-        public int? Seat_height { get; set; }
+        public double? Seat_height { get; set; }
         /// 靠背距离cm
-        public int? Backrest_distance { get; set; }
+        public double? Backrest_distance { get; set; }
+        /// 踏板距离cm
+        public double? Footboard_distance { get; set; }
         /// 前方限制cm
-        public int? Front_limit { get; set; }
+        public double? Front_limit { get; set; }
         /// 后方限制cm
-        public int? Back_limit { get; set; }
+        public double? Back_limit { get; set; }
         /// 顺向力
         public double? Consequent_force { get; set; }
         /// 反向力
@@ -61,7 +63,7 @@ namespace AI_Sports.Entity
         /// <summary>
         /// 杠杆长度 cm
         /// </summary>
-        public int? Lever_length { get; set; }
+        public double? Lever_length { get; set; }
         /// <summary>
         /// 杠杆角度
         /// </summary>
