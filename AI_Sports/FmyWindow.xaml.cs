@@ -54,5 +54,17 @@ namespace AI_Sports
 
             Console.WriteLine(resp);
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var req = new PersonalSetRequest();
+            req.Uid = "123456";
+            req.DeviceType = DeviceType.E10;
+            req.ForwardLimit = 333;
+            req.ActivityType = ActivityType.EnduranceCycle;
+            req.DefatModeEnable = false;
+            var resp = new DeviceCommService().PersonalSetRequest(req);
+            Console.WriteLine(resp);
+        }
     }
 }

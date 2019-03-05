@@ -22,77 +22,96 @@ public static partial class BdlProtoReflection {
   static BdlProtoReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "Cg5CZGxQcm90by5wcm90byJZChBLZWVwYWxpdmVSZXF1ZXN0EhAKCGRldmlj",
-          "ZUlkGAEgASgJEh8KCmRldmljZVR5cGUYAiABKA4yCy5EZXZpY2VUeXBlEhIK",
-          "CmNsaWVudFRpbWUYAyABKAkibgoRS2VlcGFsaXZlUmVzcG9uc2USEAoIZGV2",
-          "aWNlSWQYASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5cGUS",
-          "EgoKY2xpZW50VGltZRgDIAEoCRISCgpzZXJ2ZXJUaW1lGAQgASgJImEKDExv",
-          "Z2luUmVxdWVzdBILCgN1aWQYASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjIL",
-          "LkRldmljZVR5cGUSIwoMYWN0aXZpdHlUeXBlGAMgASgOMg0uQWN0aXZpdHlU",
-          "eXBlIqsDCg1Mb2dpblJlc3BvbnNlEgsKA3VpZBgBIAEoCRIiCg1kZXZpY2VU",
-          "eXBlQXJyGAIgAygOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0eVR5cGUYAyAB",
-          "KA4yDS5BY3Rpdml0eVR5cGUSFQoNZXhpc2l0U2V0dGluZxgEIAEoCBIdCgl0",
-          "cmFpbk1vZGUYBSABKA4yCi5UcmFpbk1vZGUSFwoPZGVmYXRNb2RlRW5hYmxl",
-          "GAYgASgIEhIKCnNlYXRIZWlnaHQYByABKAUSFAoMYmFja0Rpc3RhbmNlGAgg",
-          "ASgFEhMKC2xldmVyTGVuZ3RoGAkgASgFEhQKDGZvcndhcmRMaW1pdBgKIAEo",
-          "BRIRCgliYWNrTGltaXQYCyABKAUSEgoKbGV2ZXJBbmdsZRgMIAEoARIUCgxm",
-          "b3J3YXJkRm9yY2UYDSABKAESFAoMcmV2ZXJzZUZvcmNlGA4gASgBEg0KBXBv",
-          "d2VyGA8gASgBEhAKCGNvdXJzZUlkGBIgASgDEhIKCmFjdGl2aXR5SWQYEyAB",
-          "KAMSGAoQYWN0aXZpdHlSZWNvcmRJZBgUIAEoAyKtAwoNVXBsb2FkUmVxdWVz",
-          "dBILCgN1aWQYASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5",
-          "cGUSIwoMYWN0aXZpdHlUeXBlGAMgASgOMg0uQWN0aXZpdHlUeXBlEh0KCXRy",
-          "YWluTW9kZRgEIAEoDjIKLlRyYWluTW9kZRIXCg9kZWZhdE1vZGVFbmFibGUY",
-          "BSABKAgSFAoMcmV2ZXJzZUZvcmNlGAYgASgBEhQKDGZvcndhcmRGb3JjZRgH",
-          "IAEoARINCgVwb3dlchgIIAEoARITCgtmaW5pc2hDb3VudBgJIAEoBRIVCg1m",
-          "aW5hbERpc3RhbmNlGAsgASgBEg8KB2NhbG9yaWUYDCABKAESEQoJdHJhaW5U",
-          "aW1lGA0gASgFEhYKDmhlYXJ0X3JhdGVfYXZnGA4gASgFEhYKDmhlYXJ0X3Jh",
-          "dGVfbWF4GA8gASgFEhYKDmhlYXJ0X3JhdGVfbWluGBAgASgFEhAKCGNvdXJz",
-          "ZUlkGBEgASgDEhIKCmFjdGl2aXR5SWQYEiABKAMSGAoQYWN0aXZpdHlSZWNv",
-          "cmRJZBgTIAEoAyKGAQoOVXBsb2FkUmVzcG9uc2USCwoDdWlkGAEgASgJEh8K",
-          "CmRldmljZVR5cGUYAiABKA4yCy5EZXZpY2VUeXBlEiMKDGFjdGl2aXR5VHlw",
-          "ZRgEIAEoDjINLkFjdGl2aXR5VHlwZRIQCghmaW5pc2hlZBgFIAEoCBIPCgdz",
-          "dWNjZXNzGAYgASgIIpADCgdNZXNzYWdlEhcKBHR5cGUYASABKA4yCS5IZWFk",
-          "VHlwZRIQCghzZXF1ZW5jZRgCIAEoBRIrChBrZWVwYWxpdmVSZXF1ZXN0GAMg",
-          "ASgLMhEuS2VlcGFsaXZlUmVxdWVzdBItChFrZWVwYWxpdmVSZXNwb25zZRgE",
-          "IAEoCzISLktlZXBhbGl2ZVJlc3BvbnNlEiMKDGxvZ2luUmVxdWVzdBgFIAEo",
-          "CzINLkxvZ2luUmVxdWVzdBIlCg1sb2dpblJlc3BvbnNlGAYgASgLMg4uTG9n",
-          "aW5SZXNwb25zZRIlCg11cGxvYWRSZXF1ZXN0GAcgASgLMg4uVXBsb2FkUmVx",
-          "dWVzdBInCg51cGxvYWRSZXNwb25zZRgIIAEoCzIPLlVwbG9hZFJlc3BvbnNl",
-          "Ei8KEnBlcnNvbmFsU2V0UmVxdWVzdBgJIAEoCzITLlBlcnNvbmFsU2V0UmVx",
-          "dWVzdBIxChNwZXJzb25hbFNldFJlc3BvbnNlGAogASgLMhQuUGVyc29uYWxT",
-          "ZXRSZXNwb25zZSKbAgoSUGVyc29uYWxTZXRSZXF1ZXN0EgsKA3VpZBgBIAEo",
-          "CRIfCgpkZXZpY2VUeXBlGAIgASgOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0",
-          "eVR5cGUYAyABKA4yDS5BY3Rpdml0eVR5cGUSEgoKc2VhdEhlaWdodBgEIAEo",
-          "BRIUCgxiYWNrRGlzdGFuY2UYBSABKAUSEwoLbGV2ZXJMZW5ndGgYBiABKAUS",
-          "EgoKbGV2ZXJBbmdsZRgHIAEoARIUCgxmb3J3YXJkTGltaXQYCCABKAUSEQoJ",
-          "YmFja0xpbWl0GAkgASgFEh0KCXRyYWluTW9kZRgKIAEoDjIKLlRyYWluTW9k",
-          "ZRIXCg9kZWZhdE1vZGVFbmFibGUYCyABKAgieQoTUGVyc29uYWxTZXRSZXNw",
-          "b25zZRIfCgpkZXZpY2VUeXBlGAEgASgOMgsuRGV2aWNlVHlwZRIjCgxhY3Rp",
-          "dml0eVR5cGUYAiABKA4yDS5BY3Rpdml0eVR5cGUSCwoDdWlkGAMgASgJEg8K",
-          "B3N1Y2Nlc3MYBCABKAgq1QEKCEhlYWRUeXBlEhUKEUtlZXBhbGl2ZV9SZXF1",
-          "ZXN0EAASFgoSS2VlcGFsaXZlX1Jlc3BvbnNlEAESEQoNTG9naW5fUmVxdWVz",
-          "dBACEhIKDkxvZ2luX1Jlc3BvbnNlEAMSEgoOVXBsb2FkX1JlcXVlc3QQBBIT",
-          "Cg9VcGxvYWRfUmVzcG9uc2UQBRIXChNDb3VudERvd25fQnJvYWRDYXN0EAYS",
-          "FwoTUGVyc29uYWxTZXRfUmVxdWVzdBAHEhgKFFBlcnNvbmFsU2V0X1Jlc3Bv",
-          "bnNlEAgqcQoJVHJhaW5Nb2RlEhEKDVNUQU5EQVJEX01PREUQABIQCgxBREFQ",
-          "VEVSX01PREUQARIUChBDT05TVF9TUEVFRF9NT0RFEAISEwoPSEVBUlRfUkFU",
-          "RV9NT0RFEAMSFAoQQUREX01VU0NMRVNfTU9ERRAEKqUBCgpEZXZpY2VUeXBl",
-          "EgcKA1AwMBAAEgcKA1AwMRABEgcKA1AwMhACEgcKA1AwMxADEgcKA1AwNBAE",
-          "EgcKA1AwNRAFEgcKA1AwNhAGEgcKA1AwNxAHEgcKA1AwOBAIEgcKA1AwORAJ",
-          "EgcKA0UxMBAKEgcKA0UxMRALEgcKA0UxMhAMEgcKA0UxMxANEgcKA0UxNBAO",
-          "EgcKA0UxNRAPEgcKA0UxNhAQKjIKDEFjdGl2aXR5VHlwZRIOCgpQb3dlckN5",
-          "Y2xlEAASEgoORW5kdXJhbmNlQ3ljbGUQAWIGcHJvdG8z"));
+          "Cg5CZGxQcm90by5wcm90byJMChJDb3VudERvd25Ccm9hZENhc3QSJQoNY291",
+          "bnREb3duVHlwZRgBIAEoDjIOLkNvdW50RG93blR5cGUSDwoHc2Vjb25kcxgC",
+          "IAEoBSJZChBLZWVwYWxpdmVSZXF1ZXN0EhAKCGRldmljZUlkGAEgASgJEh8K",
+          "CmRldmljZVR5cGUYAiABKA4yCy5EZXZpY2VUeXBlEhIKCmNsaWVudFRpbWUY",
+          "AyABKAkibgoRS2VlcGFsaXZlUmVzcG9uc2USEAoIZGV2aWNlSWQYASABKAkS",
+          "HwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5cGUSEgoKY2xpZW50VGlt",
+          "ZRgDIAEoCRISCgpzZXJ2ZXJUaW1lGAQgASgJIlsKEkN1cnJlbnRUaW1lUmVx",
+          "dWVzdBIQCghkZXZpY2VJZBgBIAEoCRIfCgpkZXZpY2VUeXBlGAIgASgOMgsu",
+          "RGV2aWNlVHlwZRISCgpjbGllbnRUaW1lGAMgASgJIpsBChNDdXJyZW50VGlt",
+          "ZVJlc3BvbnNlEhAKCGRldmljZUlkGAEgASgJEh8KCmRldmljZVR5cGUYAiAB",
+          "KA4yCy5EZXZpY2VUeXBlEhIKCmNsaWVudFRpbWUYAyABKAkSJQoNY291bnRE",
+          "b3duVHlwZRgEIAEoDjIOLkNvdW50RG93blR5cGUSFgoOY3VycmVudFNlY29u",
+          "ZHMYBSABKAUiYQoMTG9naW5SZXF1ZXN0EgsKA3VpZBgBIAEoCRIfCgpkZXZp",
+          "Y2VUeXBlGAIgASgOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0eVR5cGUYAyAB",
+          "KA4yDS5BY3Rpdml0eVR5cGUimwQKDUxvZ2luUmVzcG9uc2USCwoDdWlkGAEg",
+          "ASgJEiIKDWRldmljZVR5cGVBcnIYAiADKA4yCy5EZXZpY2VUeXBlEiMKDGFj",
+          "dGl2aXR5VHlwZRgDIAEoDjINLkFjdGl2aXR5VHlwZRIVCg1leGlzaXRTZXR0",
+          "aW5nGAQgASgIEh0KCXRyYWluTW9kZRgFIAEoDjIKLlRyYWluTW9kZRIXCg9k",
+          "ZWZhdE1vZGVFbmFibGUYBiABKAgSEgoKc2VhdEhlaWdodBgHIAEoBRIUCgxi",
+          "YWNrRGlzdGFuY2UYCCABKAUSEwoLbGV2ZXJMZW5ndGgYCSABKAUSFAoMZm9y",
+          "d2FyZExpbWl0GAogASgFEhEKCWJhY2tMaW1pdBgLIAEoBRISCgpsZXZlckFu",
+          "Z2xlGAwgASgBEhQKDGZvcndhcmRGb3JjZRgNIAEoARIUCgxyZXZlcnNlRm9y",
+          "Y2UYDiABKAESDQoFcG93ZXIYDyABKAESEAoIY291cnNlSWQYEiABKAMSEgoK",
+          "YWN0aXZpdHlJZBgTIAEoAxIYChBhY3Rpdml0eVJlY29yZElkGBQgASgDEhUK",
+          "DXBlZGFsRGlzdGFuY2UYFSABKAUSEgoKc3lzVmVyc2lvbhgWIAEoBRIWCg5o",
+          "ZWFydF9yYXRlX21heBgXIAEoBRIOCgZyb2xlSWQYGCABKAUSDgoGd2VpZ2h0",
+          "GBkgASgBEgsKA2FnZRgaIAEoBSKtAwoNVXBsb2FkUmVxdWVzdBILCgN1aWQY",
+          "ASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5cGUSIwoMYWN0",
+          "aXZpdHlUeXBlGAMgASgOMg0uQWN0aXZpdHlUeXBlEh0KCXRyYWluTW9kZRgE",
+          "IAEoDjIKLlRyYWluTW9kZRIXCg9kZWZhdE1vZGVFbmFibGUYBSABKAgSFAoM",
+          "cmV2ZXJzZUZvcmNlGAYgASgBEhQKDGZvcndhcmRGb3JjZRgHIAEoARINCgVw",
+          "b3dlchgIIAEoARITCgtmaW5pc2hDb3VudBgJIAEoBRIVCg1maW5hbERpc3Rh",
+          "bmNlGAsgASgBEg8KB2NhbG9yaWUYDCABKAESEQoJdHJhaW5UaW1lGA0gASgF",
+          "EhYKDmhlYXJ0X3JhdGVfYXZnGA4gASgFEhYKDmhlYXJ0X3JhdGVfbWF4GA8g",
+          "ASgFEhYKDmhlYXJ0X3JhdGVfbWluGBAgASgFEhAKCGNvdXJzZUlkGBEgASgD",
+          "EhIKCmFjdGl2aXR5SWQYEiABKAMSGAoQYWN0aXZpdHlSZWNvcmRJZBgTIAEo",
+          "AyKGAQoOVXBsb2FkUmVzcG9uc2USCwoDdWlkGAEgASgJEh8KCmRldmljZVR5",
+          "cGUYAiABKA4yCy5EZXZpY2VUeXBlEiMKDGFjdGl2aXR5VHlwZRgEIAEoDjIN",
+          "LkFjdGl2aXR5VHlwZRIQCghmaW5pc2hlZBgFIAEoCBIPCgdzdWNjZXNzGAYg",
+          "ASgIIqUECgdNZXNzYWdlEhcKBHR5cGUYASABKA4yCS5IZWFkVHlwZRIQCghz",
+          "ZXF1ZW5jZRgCIAEoBRIrChBrZWVwYWxpdmVSZXF1ZXN0GAMgASgLMhEuS2Vl",
+          "cGFsaXZlUmVxdWVzdBItChFrZWVwYWxpdmVSZXNwb25zZRgEIAEoCzISLktl",
+          "ZXBhbGl2ZVJlc3BvbnNlEiMKDGxvZ2luUmVxdWVzdBgFIAEoCzINLkxvZ2lu",
+          "UmVxdWVzdBIlCg1sb2dpblJlc3BvbnNlGAYgASgLMg4uTG9naW5SZXNwb25z",
+          "ZRIlCg11cGxvYWRSZXF1ZXN0GAcgASgLMg4uVXBsb2FkUmVxdWVzdBInCg51",
+          "cGxvYWRSZXNwb25zZRgIIAEoCzIPLlVwbG9hZFJlc3BvbnNlEi8KEnBlcnNv",
+          "bmFsU2V0UmVxdWVzdBgJIAEoCzITLlBlcnNvbmFsU2V0UmVxdWVzdBIxChNw",
+          "ZXJzb25hbFNldFJlc3BvbnNlGAogASgLMhQuUGVyc29uYWxTZXRSZXNwb25z",
+          "ZRIvChJjb3VudERvd25Ccm9hZENhc3QYCyABKAsyEy5Db3VudERvd25Ccm9h",
+          "ZENhc3QSLwoSY3VycmVudFRpbWVSZXF1ZXN0GAwgASgLMhMuQ3VycmVudFRp",
+          "bWVSZXF1ZXN0EjEKE2N1cnJlbnRUaW1lUmVzcG9uc2UYDSABKAsyFC5DdXJy",
+          "ZW50VGltZVJlc3BvbnNlIrICChJQZXJzb25hbFNldFJlcXVlc3QSCwoDdWlk",
+          "GAEgASgJEh8KCmRldmljZVR5cGUYAiABKA4yCy5EZXZpY2VUeXBlEiMKDGFj",
+          "dGl2aXR5VHlwZRgDIAEoDjINLkFjdGl2aXR5VHlwZRISCgpzZWF0SGVpZ2h0",
+          "GAQgASgFEhQKDGJhY2tEaXN0YW5jZRgFIAEoBRITCgtsZXZlckxlbmd0aBgG",
+          "IAEoBRISCgpsZXZlckFuZ2xlGAcgASgBEhQKDGZvcndhcmRMaW1pdBgIIAEo",
+          "BRIRCgliYWNrTGltaXQYCSABKAUSHQoJdHJhaW5Nb2RlGAogASgOMgouVHJh",
+          "aW5Nb2RlEhcKD2RlZmF0TW9kZUVuYWJsZRgLIAEoCBIVCg1wZWRhbERpc3Rh",
+          "bmNlGAwgASgFInkKE1BlcnNvbmFsU2V0UmVzcG9uc2USHwoKZGV2aWNlVHlw",
+          "ZRgBIAEoDjILLkRldmljZVR5cGUSIwoMYWN0aXZpdHlUeXBlGAIgASgOMg0u",
+          "QWN0aXZpdHlUeXBlEgsKA3VpZBgDIAEoCRIPCgdzdWNjZXNzGAQgASgIKiYK",
+          "DUNvdW50RG93blR5cGUSCwoHUlVOTklORxAAEggKBFNUT1AQASqIAgoISGVh",
+          "ZFR5cGUSFQoRS2VlcGFsaXZlX1JlcXVlc3QQABIWChJLZWVwYWxpdmVfUmVz",
+          "cG9uc2UQARIRCg1Mb2dpbl9SZXF1ZXN0EAISEgoOTG9naW5fUmVzcG9uc2UQ",
+          "AxISCg5VcGxvYWRfUmVxdWVzdBAEEhMKD1VwbG9hZF9SZXNwb25zZRAFEhcK",
+          "E0NvdW50RG93bl9Ccm9hZENhc3QQBhIXChNQZXJzb25hbFNldF9SZXF1ZXN0",
+          "EAcSGAoUUGVyc29uYWxTZXRfUmVzcG9uc2UQCBIXChNDdXJyZW50VGltZV9S",
+          "ZXF1ZXN0EAkSGAoUQ3VycmVudFRpbWVfUmVzcG9uc2UQCipxCglUcmFpbk1v",
+          "ZGUSEQoNU1RBTkRBUkRfTU9ERRAAEhAKDEFEQVBURVJfTU9ERRABEhQKEENP",
+          "TlNUX1NQRUVEX01PREUQAhITCg9IRUFSVF9SQVRFX01PREUQAxIUChBBRERf",
+          "TVVTQ0xFU19NT0RFEAQqpQEKCkRldmljZVR5cGUSBwoDUDAwEAASBwoDUDAx",
+          "EAESBwoDUDAyEAISBwoDUDAzEAMSBwoDUDA0EAQSBwoDUDA1EAUSBwoDUDA2",
+          "EAYSBwoDUDA3EAcSBwoDUDA4EAgSBwoDUDA5EAkSBwoDRTEwEAoSBwoDRTEx",
+          "EAsSBwoDRTEyEAwSBwoDRTEzEA0SBwoDRTE0EA4SBwoDRTE1EA8SBwoDRTE2",
+          "EBAqMgoMQWN0aXZpdHlUeXBlEg4KClBvd2VyQ3ljbGUQABISCg5FbmR1cmFu",
+          "Y2VDeWNsZRABYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
-        new pbr::GeneratedClrTypeInfo(new[] {typeof(global::HeadType), typeof(global::TrainMode), typeof(global::DeviceType), typeof(global::ActivityType), }, new pbr::GeneratedClrTypeInfo[] {
+        new pbr::GeneratedClrTypeInfo(new[] {typeof(global::CountDownType), typeof(global::HeadType), typeof(global::TrainMode), typeof(global::DeviceType), typeof(global::ActivityType), }, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(typeof(global::CountDownBroadCast), global::CountDownBroadCast.Parser, new[]{ "CountDownType", "Seconds" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::KeepaliveRequest), global::KeepaliveRequest.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::KeepaliveResponse), global::KeepaliveResponse.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime", "ServerTime" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::CurrentTimeRequest), global::CurrentTimeRequest.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::CurrentTimeResponse), global::CurrentTimeResponse.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime", "CountDownType", "CurrentSeconds" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginRequest), global::LoginRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::LoginResponse), global::LoginResponse.Parser, new[]{ "Uid", "DeviceTypeArr", "ActivityType", "ExisitSetting", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "Power", "CourseId", "ActivityId", "ActivityRecordId" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::LoginResponse), global::LoginResponse.Parser, new[]{ "Uid", "DeviceTypeArr", "ActivityType", "ExisitSetting", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "Power", "CourseId", "ActivityId", "ActivityRecordId", "PedalDistance", "SysVersion", "HeartRateMax", "RoleId", "Weight", "Age" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecordId" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::UploadResponse), global::UploadResponse.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "Finished", "Success" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::Message), global::Message.Parser, new[]{ "Type", "Sequence", "KeepaliveRequest", "KeepaliveResponse", "LoginRequest", "LoginResponse", "UploadRequest", "UploadResponse", "PersonalSetRequest", "PersonalSetResponse" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "SeatHeight", "BackDistance", "LeverLength", "LeverAngle", "ForwardLimit", "BackLimit", "TrainMode", "DefatModeEnable" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::Message), global::Message.Parser, new[]{ "Type", "Sequence", "KeepaliveRequest", "KeepaliveResponse", "LoginRequest", "LoginResponse", "UploadRequest", "UploadResponse", "PersonalSetRequest", "PersonalSetResponse", "CountDownBroadCast", "CurrentTimeRequest", "CurrentTimeResponse" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "SeatHeight", "BackDistance", "LeverLength", "LeverAngle", "ForwardLimit", "BackLimit", "TrainMode", "DefatModeEnable", "PedalDistance" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetResponse), global::PersonalSetResponse.Parser, new[]{ "DeviceType", "ActivityType", "Uid", "Success" }, null, null, null)
         }));
   }
@@ -100,6 +119,20 @@ public static partial class BdlProtoReflection {
 
 }
 #region Enums
+/// <summary>
+/// 倒计时类型
+/// </summary>
+public enum CountDownType {
+  /// <summary>
+  ///运动
+  /// </summary>
+  [pbr::OriginalName("RUNNING")] Running = 0,
+  /// <summary>
+  ///休息
+  /// </summary>
+  [pbr::OriginalName("STOP")] Stop = 1,
+}
+
 /// <summary>
 ///通讯类型
 /// </summary>
@@ -140,6 +173,14 @@ public enum HeadType {
   ///个人设置响应
   /// </summary>
   [pbr::OriginalName("PersonalSet_Response")] PersonalSetResponse = 8,
+  /// <summary>
+  ///当前倒计时时间请求
+  /// </summary>
+  [pbr::OriginalName("CurrentTime_Request")] CurrentTimeRequest = 9,
+  /// <summary>
+  ///当前倒计时时间响应
+  /// </summary>
+  [pbr::OriginalName("CurrentTime_Response")] CurrentTimeResponse = 10,
 }
 
 /// <summary>
@@ -260,6 +301,172 @@ public enum ActivityType {
 
 #region Messages
 /// <summary>
+/// 倒计时指令
+/// </summary>
+public sealed partial class CountDownBroadCast : pb::IMessage<CountDownBroadCast> {
+  private static readonly pb::MessageParser<CountDownBroadCast> _parser = new pb::MessageParser<CountDownBroadCast>(() => new CountDownBroadCast());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<CountDownBroadCast> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[0]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public CountDownBroadCast() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public CountDownBroadCast(CountDownBroadCast other) : this() {
+    countDownType_ = other.countDownType_;
+    seconds_ = other.seconds_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public CountDownBroadCast Clone() {
+    return new CountDownBroadCast(this);
+  }
+
+  /// <summary>Field number for the "countDownType" field.</summary>
+  public const int CountDownTypeFieldNumber = 1;
+  private global::CountDownType countDownType_ = 0;
+  /// <summary>
+  ///倒计时类型
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::CountDownType CountDownType {
+    get { return countDownType_; }
+    set {
+      countDownType_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "seconds" field.</summary>
+  public const int SecondsFieldNumber = 2;
+  private int seconds_;
+  /// <summary>
+  ///倒计时时间
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int Seconds {
+    get { return seconds_; }
+    set {
+      seconds_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as CountDownBroadCast);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(CountDownBroadCast other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (CountDownType != other.CountDownType) return false;
+    if (Seconds != other.Seconds) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (CountDownType != 0) hash ^= CountDownType.GetHashCode();
+    if (Seconds != 0) hash ^= Seconds.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (CountDownType != 0) {
+      output.WriteRawTag(8);
+      output.WriteEnum((int) CountDownType);
+    }
+    if (Seconds != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(Seconds);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (CountDownType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CountDownType);
+    }
+    if (Seconds != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Seconds);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(CountDownBroadCast other) {
+    if (other == null) {
+      return;
+    }
+    if (other.CountDownType != 0) {
+      CountDownType = other.CountDownType;
+    }
+    if (other.Seconds != 0) {
+      Seconds = other.Seconds;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          countDownType_ = (global::CountDownType) input.ReadEnum();
+          break;
+        }
+        case 16: {
+          Seconds = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
+/// <summary>
 /// 心跳请求
 /// </summary>
 public sealed partial class KeepaliveRequest : pb::IMessage<KeepaliveRequest> {
@@ -270,7 +477,7 @@ public sealed partial class KeepaliveRequest : pb::IMessage<KeepaliveRequest> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::BdlProtoReflection.Descriptor.MessageTypes[0]; }
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[1]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -467,7 +674,7 @@ public sealed partial class KeepaliveResponse : pb::IMessage<KeepaliveResponse> 
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::BdlProtoReflection.Descriptor.MessageTypes[1]; }
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[2]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -685,6 +892,462 @@ public sealed partial class KeepaliveResponse : pb::IMessage<KeepaliveResponse> 
 }
 
 /// <summary>
+///安卓请求开始训练的倒计时时间点
+/// </summary>
+public sealed partial class CurrentTimeRequest : pb::IMessage<CurrentTimeRequest> {
+  private static readonly pb::MessageParser<CurrentTimeRequest> _parser = new pb::MessageParser<CurrentTimeRequest>(() => new CurrentTimeRequest());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<CurrentTimeRequest> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[3]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public CurrentTimeRequest() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public CurrentTimeRequest(CurrentTimeRequest other) : this() {
+    deviceId_ = other.deviceId_;
+    deviceType_ = other.deviceType_;
+    clientTime_ = other.clientTime_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public CurrentTimeRequest Clone() {
+    return new CurrentTimeRequest(this);
+  }
+
+  /// <summary>Field number for the "deviceId" field.</summary>
+  public const int DeviceIdFieldNumber = 1;
+  private string deviceId_ = "";
+  /// <summary>
+  ///设备ID
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string DeviceId {
+    get { return deviceId_; }
+    set {
+      deviceId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "deviceType" field.</summary>
+  public const int DeviceTypeFieldNumber = 2;
+  private global::DeviceType deviceType_ = 0;
+  /// <summary>
+  ///设备类型
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::DeviceType DeviceType {
+    get { return deviceType_; }
+    set {
+      deviceType_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "clientTime" field.</summary>
+  public const int ClientTimeFieldNumber = 3;
+  private string clientTime_ = "";
+  /// <summary>
+  ///客户端时间戳
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string ClientTime {
+    get { return clientTime_; }
+    set {
+      clientTime_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as CurrentTimeRequest);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(CurrentTimeRequest other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (DeviceId != other.DeviceId) return false;
+    if (DeviceType != other.DeviceType) return false;
+    if (ClientTime != other.ClientTime) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (DeviceId.Length != 0) hash ^= DeviceId.GetHashCode();
+    if (DeviceType != 0) hash ^= DeviceType.GetHashCode();
+    if (ClientTime.Length != 0) hash ^= ClientTime.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (DeviceId.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(DeviceId);
+    }
+    if (DeviceType != 0) {
+      output.WriteRawTag(16);
+      output.WriteEnum((int) DeviceType);
+    }
+    if (ClientTime.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(ClientTime);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (DeviceId.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceId);
+    }
+    if (DeviceType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DeviceType);
+    }
+    if (ClientTime.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientTime);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(CurrentTimeRequest other) {
+    if (other == null) {
+      return;
+    }
+    if (other.DeviceId.Length != 0) {
+      DeviceId = other.DeviceId;
+    }
+    if (other.DeviceType != 0) {
+      DeviceType = other.DeviceType;
+    }
+    if (other.ClientTime.Length != 0) {
+      ClientTime = other.ClientTime;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 10: {
+          DeviceId = input.ReadString();
+          break;
+        }
+        case 16: {
+          deviceType_ = (global::DeviceType) input.ReadEnum();
+          break;
+        }
+        case 26: {
+          ClientTime = input.ReadString();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
+/// <summary>
+///安卓请求当前倒计时时间点
+/// </summary>
+public sealed partial class CurrentTimeResponse : pb::IMessage<CurrentTimeResponse> {
+  private static readonly pb::MessageParser<CurrentTimeResponse> _parser = new pb::MessageParser<CurrentTimeResponse>(() => new CurrentTimeResponse());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<CurrentTimeResponse> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[4]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public CurrentTimeResponse() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public CurrentTimeResponse(CurrentTimeResponse other) : this() {
+    deviceId_ = other.deviceId_;
+    deviceType_ = other.deviceType_;
+    clientTime_ = other.clientTime_;
+    countDownType_ = other.countDownType_;
+    currentSeconds_ = other.currentSeconds_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public CurrentTimeResponse Clone() {
+    return new CurrentTimeResponse(this);
+  }
+
+  /// <summary>Field number for the "deviceId" field.</summary>
+  public const int DeviceIdFieldNumber = 1;
+  private string deviceId_ = "";
+  /// <summary>
+  ///设备ID
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string DeviceId {
+    get { return deviceId_; }
+    set {
+      deviceId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "deviceType" field.</summary>
+  public const int DeviceTypeFieldNumber = 2;
+  private global::DeviceType deviceType_ = 0;
+  /// <summary>
+  ///设备类型
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::DeviceType DeviceType {
+    get { return deviceType_; }
+    set {
+      deviceType_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "clientTime" field.</summary>
+  public const int ClientTimeFieldNumber = 3;
+  private string clientTime_ = "";
+  /// <summary>
+  ///客户端时间戳
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string ClientTime {
+    get { return clientTime_; }
+    set {
+      clientTime_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "countDownType" field.</summary>
+  public const int CountDownTypeFieldNumber = 4;
+  private global::CountDownType countDownType_ = 0;
+  /// <summary>
+  ///倒计时类型
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::CountDownType CountDownType {
+    get { return countDownType_; }
+    set {
+      countDownType_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "currentSeconds" field.</summary>
+  public const int CurrentSecondsFieldNumber = 5;
+  private int currentSeconds_;
+  /// <summary>
+  ///倒计时时间
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CurrentSeconds {
+    get { return currentSeconds_; }
+    set {
+      currentSeconds_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as CurrentTimeResponse);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(CurrentTimeResponse other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (DeviceId != other.DeviceId) return false;
+    if (DeviceType != other.DeviceType) return false;
+    if (ClientTime != other.ClientTime) return false;
+    if (CountDownType != other.CountDownType) return false;
+    if (CurrentSeconds != other.CurrentSeconds) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (DeviceId.Length != 0) hash ^= DeviceId.GetHashCode();
+    if (DeviceType != 0) hash ^= DeviceType.GetHashCode();
+    if (ClientTime.Length != 0) hash ^= ClientTime.GetHashCode();
+    if (CountDownType != 0) hash ^= CountDownType.GetHashCode();
+    if (CurrentSeconds != 0) hash ^= CurrentSeconds.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (DeviceId.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(DeviceId);
+    }
+    if (DeviceType != 0) {
+      output.WriteRawTag(16);
+      output.WriteEnum((int) DeviceType);
+    }
+    if (ClientTime.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(ClientTime);
+    }
+    if (CountDownType != 0) {
+      output.WriteRawTag(32);
+      output.WriteEnum((int) CountDownType);
+    }
+    if (CurrentSeconds != 0) {
+      output.WriteRawTag(40);
+      output.WriteInt32(CurrentSeconds);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (DeviceId.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(DeviceId);
+    }
+    if (DeviceType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DeviceType);
+    }
+    if (ClientTime.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientTime);
+    }
+    if (CountDownType != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CountDownType);
+    }
+    if (CurrentSeconds != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurrentSeconds);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(CurrentTimeResponse other) {
+    if (other == null) {
+      return;
+    }
+    if (other.DeviceId.Length != 0) {
+      DeviceId = other.DeviceId;
+    }
+    if (other.DeviceType != 0) {
+      DeviceType = other.DeviceType;
+    }
+    if (other.ClientTime.Length != 0) {
+      ClientTime = other.ClientTime;
+    }
+    if (other.CountDownType != 0) {
+      CountDownType = other.CountDownType;
+    }
+    if (other.CurrentSeconds != 0) {
+      CurrentSeconds = other.CurrentSeconds;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 10: {
+          DeviceId = input.ReadString();
+          break;
+        }
+        case 16: {
+          deviceType_ = (global::DeviceType) input.ReadEnum();
+          break;
+        }
+        case 26: {
+          ClientTime = input.ReadString();
+          break;
+        }
+        case 32: {
+          countDownType_ = (global::CountDownType) input.ReadEnum();
+          break;
+        }
+        case 40: {
+          CurrentSeconds = input.ReadInt32();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
+/// <summary>
 /// 登陆请求
 /// </summary>
 public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
@@ -695,7 +1358,7 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::BdlProtoReflection.Descriptor.MessageTypes[2]; }
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[5]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -892,7 +1555,7 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::BdlProtoReflection.Descriptor.MessageTypes[3]; }
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[6]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -927,6 +1590,12 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     courseId_ = other.courseId_;
     activityId_ = other.activityId_;
     activityRecordId_ = other.activityRecordId_;
+    pedalDistance_ = other.pedalDistance_;
+    sysVersion_ = other.sysVersion_;
+    heartRateMax_ = other.heartRateMax_;
+    roleId_ = other.roleId_;
+    weight_ = other.weight_;
+    age_ = other.age_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1186,6 +1855,90 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     }
   }
 
+  /// <summary>Field number for the "pedalDistance" field.</summary>
+  public const int PedalDistanceFieldNumber = 21;
+  private int pedalDistance_;
+  /// <summary>
+  ///踏板距离（cm）
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int PedalDistance {
+    get { return pedalDistance_; }
+    set {
+      pedalDistance_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "sysVersion" field.</summary>
+  public const int SysVersionFieldNumber = 22;
+  private int sysVersion_;
+  /// <summary>
+  ///系统版本,0普通版、1豪华版
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int SysVersion {
+    get { return sysVersion_; }
+    set {
+      sysVersion_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "heart_rate_max" field.</summary>
+  public const int HeartRateMaxFieldNumber = 23;
+  private int heartRateMax_;
+  /// <summary>
+  ///最大心率计算值
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int HeartRateMax {
+    get { return heartRateMax_; }
+    set {
+      heartRateMax_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "roleId" field.</summary>
+  public const int RoleIdFieldNumber = 24;
+  private int roleId_;
+  /// <summary>
+  ///角色ID。1会员0教练
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int RoleId {
+    get { return roleId_; }
+    set {
+      roleId_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "weight" field.</summary>
+  public const int WeightFieldNumber = 25;
+  private double weight_;
+  /// <summary>
+  ///体重，（kg）
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public double Weight {
+    get { return weight_; }
+    set {
+      weight_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "age" field.</summary>
+  public const int AgeFieldNumber = 26;
+  private int age_;
+  /// <summary>
+  ///年龄
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int Age {
+    get { return age_; }
+    set {
+      age_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as LoginResponse);
@@ -1217,6 +1970,12 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     if (CourseId != other.CourseId) return false;
     if (ActivityId != other.ActivityId) return false;
     if (ActivityRecordId != other.ActivityRecordId) return false;
+    if (PedalDistance != other.PedalDistance) return false;
+    if (SysVersion != other.SysVersion) return false;
+    if (HeartRateMax != other.HeartRateMax) return false;
+    if (RoleId != other.RoleId) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Weight, other.Weight)) return false;
+    if (Age != other.Age) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -1241,6 +2000,12 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     if (CourseId != 0L) hash ^= CourseId.GetHashCode();
     if (ActivityId != 0L) hash ^= ActivityId.GetHashCode();
     if (ActivityRecordId != 0L) hash ^= ActivityRecordId.GetHashCode();
+    if (PedalDistance != 0) hash ^= PedalDistance.GetHashCode();
+    if (SysVersion != 0) hash ^= SysVersion.GetHashCode();
+    if (HeartRateMax != 0) hash ^= HeartRateMax.GetHashCode();
+    if (RoleId != 0) hash ^= RoleId.GetHashCode();
+    if (Weight != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Weight);
+    if (Age != 0) hash ^= Age.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -1323,6 +2088,30 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
       output.WriteRawTag(160, 1);
       output.WriteInt64(ActivityRecordId);
     }
+    if (PedalDistance != 0) {
+      output.WriteRawTag(168, 1);
+      output.WriteInt32(PedalDistance);
+    }
+    if (SysVersion != 0) {
+      output.WriteRawTag(176, 1);
+      output.WriteInt32(SysVersion);
+    }
+    if (HeartRateMax != 0) {
+      output.WriteRawTag(184, 1);
+      output.WriteInt32(HeartRateMax);
+    }
+    if (RoleId != 0) {
+      output.WriteRawTag(192, 1);
+      output.WriteInt32(RoleId);
+    }
+    if (Weight != 0D) {
+      output.WriteRawTag(201, 1);
+      output.WriteDouble(Weight);
+    }
+    if (Age != 0) {
+      output.WriteRawTag(208, 1);
+      output.WriteInt32(Age);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -1382,6 +2171,24 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     }
     if (ActivityRecordId != 0L) {
       size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActivityRecordId);
+    }
+    if (PedalDistance != 0) {
+      size += 2 + pb::CodedOutputStream.ComputeInt32Size(PedalDistance);
+    }
+    if (SysVersion != 0) {
+      size += 2 + pb::CodedOutputStream.ComputeInt32Size(SysVersion);
+    }
+    if (HeartRateMax != 0) {
+      size += 2 + pb::CodedOutputStream.ComputeInt32Size(HeartRateMax);
+    }
+    if (RoleId != 0) {
+      size += 2 + pb::CodedOutputStream.ComputeInt32Size(RoleId);
+    }
+    if (Weight != 0D) {
+      size += 2 + 8;
+    }
+    if (Age != 0) {
+      size += 2 + pb::CodedOutputStream.ComputeInt32Size(Age);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1445,6 +2252,24 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     }
     if (other.ActivityRecordId != 0L) {
       ActivityRecordId = other.ActivityRecordId;
+    }
+    if (other.PedalDistance != 0) {
+      PedalDistance = other.PedalDistance;
+    }
+    if (other.SysVersion != 0) {
+      SysVersion = other.SysVersion;
+    }
+    if (other.HeartRateMax != 0) {
+      HeartRateMax = other.HeartRateMax;
+    }
+    if (other.RoleId != 0) {
+      RoleId = other.RoleId;
+    }
+    if (other.Weight != 0D) {
+      Weight = other.Weight;
+    }
+    if (other.Age != 0) {
+      Age = other.Age;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -1530,6 +2355,30 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
           ActivityRecordId = input.ReadInt64();
           break;
         }
+        case 168: {
+          PedalDistance = input.ReadInt32();
+          break;
+        }
+        case 176: {
+          SysVersion = input.ReadInt32();
+          break;
+        }
+        case 184: {
+          HeartRateMax = input.ReadInt32();
+          break;
+        }
+        case 192: {
+          RoleId = input.ReadInt32();
+          break;
+        }
+        case 201: {
+          Weight = input.ReadDouble();
+          break;
+        }
+        case 208: {
+          Age = input.ReadInt32();
+          break;
+        }
       }
     }
   }
@@ -1547,7 +2396,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::BdlProtoReflection.Descriptor.MessageTypes[4]; }
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[7]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2209,7 +3058,7 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::BdlProtoReflection.Descriptor.MessageTypes[5]; }
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[8]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2465,7 +3314,7 @@ public sealed partial class Message : pb::IMessage<Message> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::BdlProtoReflection.Descriptor.MessageTypes[6]; }
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[9]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2492,6 +3341,9 @@ public sealed partial class Message : pb::IMessage<Message> {
     uploadResponse_ = other.uploadResponse_ != null ? other.uploadResponse_.Clone() : null;
     personalSetRequest_ = other.personalSetRequest_ != null ? other.personalSetRequest_.Clone() : null;
     personalSetResponse_ = other.personalSetResponse_ != null ? other.personalSetResponse_.Clone() : null;
+    countDownBroadCast_ = other.countDownBroadCast_ != null ? other.countDownBroadCast_.Clone() : null;
+    currentTimeRequest_ = other.currentTimeRequest_ != null ? other.currentTimeRequest_.Clone() : null;
+    currentTimeResponse_ = other.currentTimeResponse_ != null ? other.currentTimeResponse_.Clone() : null;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -2616,6 +3468,39 @@ public sealed partial class Message : pb::IMessage<Message> {
     }
   }
 
+  /// <summary>Field number for the "countDownBroadCast" field.</summary>
+  public const int CountDownBroadCastFieldNumber = 11;
+  private global::CountDownBroadCast countDownBroadCast_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::CountDownBroadCast CountDownBroadCast {
+    get { return countDownBroadCast_; }
+    set {
+      countDownBroadCast_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "currentTimeRequest" field.</summary>
+  public const int CurrentTimeRequestFieldNumber = 12;
+  private global::CurrentTimeRequest currentTimeRequest_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::CurrentTimeRequest CurrentTimeRequest {
+    get { return currentTimeRequest_; }
+    set {
+      currentTimeRequest_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "currentTimeResponse" field.</summary>
+  public const int CurrentTimeResponseFieldNumber = 13;
+  private global::CurrentTimeResponse currentTimeResponse_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::CurrentTimeResponse CurrentTimeResponse {
+    get { return currentTimeResponse_; }
+    set {
+      currentTimeResponse_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as Message);
@@ -2639,6 +3524,9 @@ public sealed partial class Message : pb::IMessage<Message> {
     if (!object.Equals(UploadResponse, other.UploadResponse)) return false;
     if (!object.Equals(PersonalSetRequest, other.PersonalSetRequest)) return false;
     if (!object.Equals(PersonalSetResponse, other.PersonalSetResponse)) return false;
+    if (!object.Equals(CountDownBroadCast, other.CountDownBroadCast)) return false;
+    if (!object.Equals(CurrentTimeRequest, other.CurrentTimeRequest)) return false;
+    if (!object.Equals(CurrentTimeResponse, other.CurrentTimeResponse)) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -2655,6 +3543,9 @@ public sealed partial class Message : pb::IMessage<Message> {
     if (uploadResponse_ != null) hash ^= UploadResponse.GetHashCode();
     if (personalSetRequest_ != null) hash ^= PersonalSetRequest.GetHashCode();
     if (personalSetResponse_ != null) hash ^= PersonalSetResponse.GetHashCode();
+    if (countDownBroadCast_ != null) hash ^= CountDownBroadCast.GetHashCode();
+    if (currentTimeRequest_ != null) hash ^= CurrentTimeRequest.GetHashCode();
+    if (currentTimeResponse_ != null) hash ^= CurrentTimeResponse.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -2708,6 +3599,18 @@ public sealed partial class Message : pb::IMessage<Message> {
       output.WriteRawTag(82);
       output.WriteMessage(PersonalSetResponse);
     }
+    if (countDownBroadCast_ != null) {
+      output.WriteRawTag(90);
+      output.WriteMessage(CountDownBroadCast);
+    }
+    if (currentTimeRequest_ != null) {
+      output.WriteRawTag(98);
+      output.WriteMessage(CurrentTimeRequest);
+    }
+    if (currentTimeResponse_ != null) {
+      output.WriteRawTag(106);
+      output.WriteMessage(CurrentTimeResponse);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -2745,6 +3648,15 @@ public sealed partial class Message : pb::IMessage<Message> {
     }
     if (personalSetResponse_ != null) {
       size += 1 + pb::CodedOutputStream.ComputeMessageSize(PersonalSetResponse);
+    }
+    if (countDownBroadCast_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(CountDownBroadCast);
+    }
+    if (currentTimeRequest_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(CurrentTimeRequest);
+    }
+    if (currentTimeResponse_ != null) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(CurrentTimeResponse);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -2810,6 +3722,24 @@ public sealed partial class Message : pb::IMessage<Message> {
         personalSetResponse_ = new global::PersonalSetResponse();
       }
       PersonalSetResponse.MergeFrom(other.PersonalSetResponse);
+    }
+    if (other.countDownBroadCast_ != null) {
+      if (countDownBroadCast_ == null) {
+        countDownBroadCast_ = new global::CountDownBroadCast();
+      }
+      CountDownBroadCast.MergeFrom(other.CountDownBroadCast);
+    }
+    if (other.currentTimeRequest_ != null) {
+      if (currentTimeRequest_ == null) {
+        currentTimeRequest_ = new global::CurrentTimeRequest();
+      }
+      CurrentTimeRequest.MergeFrom(other.CurrentTimeRequest);
+    }
+    if (other.currentTimeResponse_ != null) {
+      if (currentTimeResponse_ == null) {
+        currentTimeResponse_ = new global::CurrentTimeResponse();
+      }
+      CurrentTimeResponse.MergeFrom(other.CurrentTimeResponse);
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -2886,6 +3816,27 @@ public sealed partial class Message : pb::IMessage<Message> {
           input.ReadMessage(personalSetResponse_);
           break;
         }
+        case 90: {
+          if (countDownBroadCast_ == null) {
+            countDownBroadCast_ = new global::CountDownBroadCast();
+          }
+          input.ReadMessage(countDownBroadCast_);
+          break;
+        }
+        case 98: {
+          if (currentTimeRequest_ == null) {
+            currentTimeRequest_ = new global::CurrentTimeRequest();
+          }
+          input.ReadMessage(currentTimeRequest_);
+          break;
+        }
+        case 106: {
+          if (currentTimeResponse_ == null) {
+            currentTimeResponse_ = new global::CurrentTimeResponse();
+          }
+          input.ReadMessage(currentTimeResponse_);
+          break;
+        }
       }
     }
   }
@@ -2903,7 +3854,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::BdlProtoReflection.Descriptor.MessageTypes[7]; }
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[10]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2931,6 +3882,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     backLimit_ = other.backLimit_;
     trainMode_ = other.trainMode_;
     defatModeEnable_ = other.defatModeEnable_;
+    pedalDistance_ = other.pedalDistance_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -3093,6 +4045,20 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
   }
 
+  /// <summary>Field number for the "pedalDistance" field.</summary>
+  public const int PedalDistanceFieldNumber = 12;
+  private int pedalDistance_;
+  /// <summary>
+  ///踏板距离（cm）
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int PedalDistance {
+    get { return pedalDistance_; }
+    set {
+      pedalDistance_ = value;
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as PersonalSetRequest);
@@ -3117,6 +4083,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (BackLimit != other.BackLimit) return false;
     if (TrainMode != other.TrainMode) return false;
     if (DefatModeEnable != other.DefatModeEnable) return false;
+    if (PedalDistance != other.PedalDistance) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -3134,6 +4101,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (BackLimit != 0) hash ^= BackLimit.GetHashCode();
     if (TrainMode != 0) hash ^= TrainMode.GetHashCode();
     if (DefatModeEnable != false) hash ^= DefatModeEnable.GetHashCode();
+    if (PedalDistance != 0) hash ^= PedalDistance.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -3191,6 +4159,10 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
       output.WriteRawTag(88);
       output.WriteBool(DefatModeEnable);
     }
+    if (PedalDistance != 0) {
+      output.WriteRawTag(96);
+      output.WriteInt32(PedalDistance);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -3231,6 +4203,9 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
     if (DefatModeEnable != false) {
       size += 1 + 1;
+    }
+    if (PedalDistance != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(PedalDistance);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -3275,6 +4250,9 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
     if (other.DefatModeEnable != false) {
       DefatModeEnable = other.DefatModeEnable;
+    }
+    if (other.PedalDistance != 0) {
+      PedalDistance = other.PedalDistance;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -3331,6 +4309,10 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
           DefatModeEnable = input.ReadBool();
           break;
         }
+        case 96: {
+          PedalDistance = input.ReadInt32();
+          break;
+        }
       }
     }
   }
@@ -3348,7 +4330,7 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::BdlProtoReflection.Descriptor.MessageTypes[8]; }
+    get { return global::BdlProtoReflection.Descriptor.MessageTypes[11]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

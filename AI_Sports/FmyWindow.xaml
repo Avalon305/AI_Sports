@@ -9,7 +9,7 @@
     <Grid>
         <Button Content="获取个人设置" HorizontalAlignment="Left" Margin="95,71,0,0" VerticalAlignment="Top" Width="148" Click="Button_Click"/>
         <Button Content="上报训练结果" HorizontalAlignment="Left" Margin="95,156,0,0" VerticalAlignment="Top" Width="148" Click="Button_Click_1"/>
-        <Button Content="更新个人设置" HorizontalAlignment="Left" Margin="95,236,0,0" VerticalAlignment="Top" Width="148"/>
+        <Button Content="更新个人设置" HorizontalAlignment="Left" Margin="95,236,0,0" VerticalAlignment="Top" Width="148" Click="Button_Click_2"/>
 
     </Grid>
 </Window>
