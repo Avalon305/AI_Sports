@@ -3,62 +3,148 @@
 <html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
 <!-- saved from url=(0013)about:internet -->
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+	<meta charset="utf-8" />
+	<title></title>
 </head>
 <body scroll="no">
-    <div id="Op">
-        <button onclick="click1()" style="width:100px;height:20px">测试</button>
-        <script>
-        function click1()
-        { 
-			alert(window.external.AerobicEnergy());
-        }
-        </script>
-    </div>
-    <div id="main" style="width:1360px;height:500px" />
-    <script src="echarts.js"></script>
-    <script src="echarts-all.js"></script>
-    <script src="shine.js"></script>
-    <script>
-        function click()
-        {
-            alert("dasda");
-            window.external.ShowMsg("这是一条信息");           
-        }       
-        function Type(info)
-        {
-            if (info == 0) {
-                myChart.clear();
-            }
-            else {
-                myChart.setOption(option);
-            }
-        }
-        myChart = echarts.init(document.getElementById('main'),'shine');
+	<div id="Op">
+		<button onclick="click1()" style="width:100px;height:20px">测试</button>
+		<script>
+			function click1() {
+				//alert(window.external.aerobicEnergy().data);
+				//alert(eval('(' + window.external.aerobicEnergy() + ')'));
+			}
 
- 
-option = {
- tooltip : {
-        trigger: 'axis',
-        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-            type : ''        // 默认为直线，可选为：'line' | 'shadow'
-        }
-    },
-    xAxis: {
-        type: 'time'
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [[1533164400000,150],[1533168000000,150],[1533189600000,200],[1533204000000,350],[1533211200000,200]],
-        type: 'line'
-    }]
-};
-		
+		</script>
+	</div>
+	<div id="main" style="width:1360px;height:700px" />
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+	</script>
+	<script src="echarts.js"></script>
+	<script src="echarts-all.js"></script>
+	<script src="shine.js"></script>
+	<script>
+		function click() {
+			alert("dasda");
+			// window.external.ShowMsg("这是一条信息");
+		}
+		function Type(info) {
+			if (info == 0) {
+				myChart.clear();
+			}
+			else {
+				myChart.setOption(option);
+			}
+		}
+		myChart = echarts.init(document.getElementById('main'), 'shine');
+		option = {
+			//去掉外部边框
+			grid: { show: 'true', borderWidth: '0' },
+			tooltip: {
+				trigger: 'axis',
+				formatter: "{a}:{c}",
+				axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+					type: ''        // 默认为直线，可选为：'line' | 'shadow'
+				}
+			},
+			//自定义legend颜色
+			color: ['#4472C5'],
+			legend: {
+				data: ['平均值(千克)']
+			},
+			//辅助线等   设为false
+			toolbox: {
+				show: false,
+				orient: 'vertical',
+				x: 'right',
+				y: 'center',
+				feature: {
+					mark: { show: true },
+					dataView: { show: true, readOnly: false },
+					magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+					restore: { show: true },
+					saveAsImage: { show: true }
+				}
+			},
+			calculable: false,
+			xAxis: [
+				{
+					type: 'category',
+					data: [],
+					axisLabel: {
+						//控制文字倾斜
+						interval: 0,
+						rotate: 10,
+						formatter: function (value) {
+							var time = value.slice(6, 19);
+							var date = new Date(parseInt(time));
+							//alert(date);
+							return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + '   ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+						}
+					},
+					splitLine: {     //网格线
+						show: false
+					}
+				}
+			],
+			yAxis: [
+				{
+					//splitLine:{show: true},//去除网格线
+					type: 'value',
+					//splitArea : {show : true},//保留网格区域
+					axisLine: {       //y轴
+						show: false
+
+					},
+					axisTick: {       //y轴刻度线
+						show: false
+					},
+					splitLine: {     //网格线
+						show: false
+					},
+					//网格样式
+					splitLine: {
+						show: true,
+						lineStyle: {
+							color: ['rgb(199,237,237)'],
+							width: 2,
+							type: 'solid'
+						}
+					}
+					//固定y轴,
+					//min:'0',
+					//max:'100',
+					//splitNumber:'4'
+
+				}
+			],
+			series: [
+				{
+					name: '平均值(千克)',
+					type: 'bar',
+					stack: '广告',
+					barWidth: 100,//柱图宽度
+					data: []
+				}
+			]
+		};
+		//动态向X轴赋值
+		var arr = new Array();
+		//for(i=0;i<window.external.recordNumber();i++){
+		//arr.push("")
+		//};
+		//option.xAxis[0].data = ['',''];
+		arr = eval('(' + window.external.selectStrengthCreateTime() + ')');
+		option.xAxis[0].data = arr;
+
+		//动态向y轴赋值
+		var avgValueArray = new Array();
+		avgValueArray = eval('(' + window.external.avgStrengthValue() + ')');
+		option.series[0].data = avgValueArray;
+
+
 		//加载图表
-        myChart.setOption(option);
-    </script>
+		myChart.setOption(option);
+	</script>
 </body>
 </html>

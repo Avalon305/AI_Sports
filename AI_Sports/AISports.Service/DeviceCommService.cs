@@ -22,6 +22,7 @@ namespace AI_Sports.Service
         private TrainingActivityRecordDAO trainingActivityRecordDAO = new TrainingActivityRecordDAO();
         private TrainingDeviceRecordDAO trainingDeviceRecordDAO = new TrainingDeviceRecordDAO();
         private TrainingCourseDAO trainingCourseDAO = new TrainingCourseDAO();
+        private SystemSettingDAO SystemSettingDAO = new SystemSettingDAO();
         /// <summary>
         /// 处理登录请求
         /// </summary>
@@ -76,6 +77,25 @@ namespace AI_Sports.Service
                 trainingActivityRecordDAO.Insert(recordEntity);
             }
             response.ActivityRecordId = recordEntity.Id;
+            //踏板距离
+            response.PedalDistance = pSetting.Footboard_distance == null ? 0 : (int)pSetting.Footboard_distance;
+            //最大心率计算值
+            response.HeartRateMax = member.Max_heart_rate == null ? 0 : (int)member.Max_heart_rate;
+            //角色ID
+            response.RoleId = member.Role_id == null ? 0 : (int)member.Role_id;
+            response.Weight = member.Weight == null ? 0.0 : (double)member.Weight;
+            response.Age = member.Age == null ? 0 : (int)member.Age;
+            //当前系统版本
+            List<SystemSettingEntity> list = SystemSettingDAO.ListAll();
+            if (list != null && list.Count > 0)
+            {
+               int ver =  list[0].System_version==null?0: (int)list[0].System_version;
+                response.SysVersion = ver;
+            }
+            else
+            {
+                response.SysVersion = 0;
+            }
 
             // 待训练列表
             List<DeviceType> todoDevices = GenToDoDevices(request.Uid, request.ActivityType, setDto.Is_open_fat_reduction);
@@ -219,6 +239,7 @@ namespace AI_Sports.Service
                 Front_limit = request.ForwardLimit,
                 Back_limit = request.BackLimit,
                 Training_mode = ((int)request.TrainMode).ToString(),
+                Footboard_distance = request.PedalDistance
             };
             using (TransactionScope ts = new TransactionScope()) //使整个代码块成为事务性代码
             {
