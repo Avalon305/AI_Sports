@@ -72,7 +72,7 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn2.Background = null;
             this.btn4.Background = null;
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/TrainingPlanAnalysis.xaml", UriKind.Relative);//跳转页面
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative);//跳转页面
         }
         //生命体征页面
         private void Btn4_Click(object sender, RoutedEventArgs e)//
@@ -82,7 +82,7 @@ namespace AI_Sports.AISports.View.Pages
             this.btn2.Background = null;
             this.btn3.Background = null;
             //this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面TrainingCourseAnalysis
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/TrainingCourseAnalysis.xaml", UriKind.Relative);//跳转页面
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面
 
         }
         //退出登录重新启动
@@ -98,7 +98,18 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Write_Card_Click(object sender, RoutedEventArgs e)
         {
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/TrainingActivityAnalysis.xaml", UriKind.Relative);//跳转页面
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/MTK1.xaml", UriKind.Relative);//跳转页面
         }
+
+        /// <summary>
+        /// 3D扫描
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_3DScan(object sender, RoutedEventArgs e)
+        {
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/NuitrackScan.xaml", UriKind.Relative);//跳转页面
+        }
+
     }
 }

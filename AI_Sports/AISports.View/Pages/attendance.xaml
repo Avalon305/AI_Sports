@@ -29,16 +29,14 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0"  Grid.Column="0" Content="上次阻力更改" ></Label>
-                    <Label Grid.Row="0"  Grid.Column="1" Content="2小时前" ></Label>
+                    
                     <Label Grid.Row="1"  Grid.Column="0" Content="初次训练的日期"  ></Label>
                     <Label Grid.Row="1"  Grid.Column="1" Content="2018年12月7日120:00"  ></Label>
                     <Label Grid.Row="2"  Grid.Column="0" Content="上次训练日期"  ></Label>
                     <Label Grid.Row="2"  Grid.Column="1" Content="2018年12月7日120:00"  ></Label>
-                    <Label Grid.Row="3"  Grid.Column="0" Content="整个训练过程"  ></Label>
+                    <Label Grid.Row="3"  Grid.Column="0" Content="整个训练过程训练次数"  ></Label>
                     <Label Grid.Row="3"  Grid.Column="1" Content="4"  ></Label>
-                    <Label Grid.Row="4"  Grid.Column="0" Content="前八周训练"  ></Label>
-                    <Label Grid.Row="4"  Grid.Column="1" Content="4"  ></Label>
+                    
                     <Label Grid.Row="5"  Grid.Column="0" Content="每月平均锻炼次数"  ></Label>
                     <Label Grid.Row="5"  Grid.Column="1" Content="----"  ></Label>
                 </Grid>

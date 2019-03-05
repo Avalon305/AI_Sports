@@ -117,7 +117,7 @@ namespace AI_Sports.AISports.View.Pages
                     jinchengJindu = Math.Round(jinchengJindu * 100);
 
                     //例如30%，进程后的百分比数字
-                    this.JinchengJindu.Content = jinchengJindu + "%";
+                    this.JinchengJindu.Content = jinchengJindu + "%"; 
                     //进度条进度设置
                     this.progressBar.Maximum = 100;
                     this.progressBar.Value = (double)jinchengJindu;

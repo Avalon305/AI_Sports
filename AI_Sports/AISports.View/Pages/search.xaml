@@ -5,9 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
+     d:DesignHeight="1080" d:DesignWidth="1920"
       Title="search">
-
     <Grid Background="White">
         <StackPanel Margin="8,8,0,8">
             <TextBlock FontSize="30" Height="42" Margin="0,0,858,0" >搜索会员</TextBlock>
@@ -25,41 +24,26 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform>教练对应会员列表</TextBlock>
         </StackPanel>
-        <Grid Height="460" Width=" 750" Margin="100,120,225,0">
-            <DataGrid x:Name="grid" AutoGenerateColumns="False" >
+        <Grid  Width="750" Margin="100,120,225,0">
+            <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Stretch"   x:Name="stackPanel" VerticalAlignment="Stretch" ItemsSource="{Binding}" HorizontalGridLinesBrush="Gainsboro" VerticalGridLinesBrush="Gainsboro">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="会员头像" Width="150">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding Path=Image }" Width="150" ></Image>
+                                <Image Source="{Binding Image }" Width="150" Height="20" ></Image>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="性别" Width="150" Binding="{ Binding Path=Sex}" >
+                    <DataGridTextColumn Header="性别" Width="150" Binding="{ Binding Sex}" >
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="年龄" Width="150" Binding="{ Binding Path=Age}">
+                    <DataGridTextColumn Header="姓名" Width="150" Binding="{ Binding Member_firstName}">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="日期" Width="150" Binding="{ Binding Path=Name}">
+                    <DataGridTextColumn Header="出生日期" Width="150" Binding="{ Binding Birth_date}">
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="状态" Width="150" Binding="{ Binding Path=Time}">
+                    <DataGridTextColumn Header="训练目的" Width="150" Binding="{ Binding Label_name}">
                     </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel x:Name="stackPanel" >
-                <ListBox Margin="0,39,0,0" ItemsSource="{Binding}" >
-                    <ListBox.ItemTemplate>
-                        <DataTemplate >
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding Image}" Width="150" Height="20" />
-                                <TextBlock Text="{Binding Path=Sex}"  Width="150"></TextBlock>
-                                <TextBlock Text="{Binding Path=Age}"  Width="150"></TextBlock>
-                                <TextBlock Text="{Binding Path=Time}" Width="150"></TextBlock>
-                                <TextBlock Text="{Binding Path=Zhuang}" Width="130"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </StackPanel>
         </Grid>
     </Grid>
 </Page>

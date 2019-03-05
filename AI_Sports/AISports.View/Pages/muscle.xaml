@@ -32,7 +32,7 @@
                     <StackPanel>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,20" Foreground="#04243D" Content="主动肌及对抗肌" Style="{DynamicResource h1}" FontFamily="Microsoft YaHei" FontSize="50"></Label>
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="#04243D" Content="力量耐力循环" Style="{DynamicResource h1}" FontFamily="Microsoft YaHei"></Label>
-                        <GridSplitter Height="5" Width="2600"/>
+                        <GridSplitter Height="5" Width="1494"/>
                     </StackPanel>
                 </Grid>
 
@@ -265,22 +265,22 @@
                     </StackPanel>
                 </Grid>
 
-                <Grid Grid.Row="12">
+                <Grid Grid.Row="12" Height="800">
                     <Label HorizontalAlignment="Center" Margin="0,150,0,0" Foreground="#04243D" Content="力量耐力循环柱状图填充位置" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
 
-                    <WebBrowser  Name="Web">
-                    </WebBrowser>
+                    <!--<WebBrowser  Name="Web">
+                    </WebBrowser>-->
 
                 </Grid>
-                <Grid Grid.Row="13">
+                <Grid Grid.Row="13" Height="800">
                     <StackPanel>
 
                         <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="#04243D" Content="力量循环" Style="{DynamicResource h1}" FontFamily="Microsoft YaHei"></Label>
                         <GridSplitter Height="5" Width="2600"></GridSplitter>
-                        <Label HorizontalAlignment="Center" Margin="0,150,0,0" Foreground="#04243D" Content="力量柱状图填充位置" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
+                        <!--<Label HorizontalAlignment="Center" Margin="0,150,0,0" Foreground="#04243D" Content="力量柱状图填充位置" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>-->
 
-                        <WebBrowser  Name="Endurance">
-                        </WebBrowser>
+                        <!--<WebBrowser  Name="Endurance">
+                        </WebBrowser>-->
 
                     </StackPanel>
                 </Grid>

@@ -32,7 +32,7 @@ namespace AI_Sports
  
            // this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
  
-            this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+            this.mainpage.Navigate(new Uri("AISports.View/Pages/muscle.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
           //  this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
  
             //if (loginWindow.DialogResult == true)//返回dialogresult为教练
