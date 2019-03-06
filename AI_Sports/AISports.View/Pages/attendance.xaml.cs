@@ -1,5 +1,10 @@
-﻿using System;
+﻿using AI_Sports.AISports.Service;
+using AI_Sports.Entity;
+using AI_Sports.Service;
+using AI_Sports.Util;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Calendar = System.Windows.Controls.Calendar;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -20,9 +26,46 @@ namespace AI_Sports.AISports.View.Pages
     /// </summary>
     public partial class attendance : Page
     {
+        MemberService memberService = new MemberService();
+        TrainingDeviceRecordService trainingDeviceRecordService = new TrainingDeviceRecordService();
         public attendance()
         {
+
+
             InitializeComponent();
+            this.LB_FirstDate.Content = memberService.GetMinTrainingDate(CommUtil.GetSettingString("memberId")).ToString();
+            this.LB_LastDate.Content = memberService.GetMaxTrainingDate(CommUtil.GetSettingString("memberId")).ToString();
+            string memberId = CommUtil.GetSettingString("memberId");
+
+           
+            //根据会员id查询出勤，加载到日历中
+            if (memberId != null && memberId != "")
+            {
+                List<TrainingDeviceRecordEntity> trainingDeviceRecords =  trainingDeviceRecordService.ListRecordById(memberId);
+
+                //DateTime dt;
+                //DateTimeFormatInfo dtFormat = new System.Globalization.DateTimeFormatInfo();
+                //dtFormat.ShortDatePattern = "yyyy/MM/dd";
+                //DateTime[] dateTimes = { };
+                //List<DateTime> dateTimes = new List<DateTime>();
+                foreach (var item in trainingDeviceRecords)
+                {
+                    //dt = Convert.ToDateTime(item.Gmt_create.Value.ToString(), dtFormat);
+                    //calendarWithBlackoutDates.SelectedDates.Add(item.Gmt_create.Value);
+                    Calendar_Attendance.SelectedDates.Add(item.Gmt_create.Value);
+
+                }
+            }
+
+           
+
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative));
+
         }
     }
 }

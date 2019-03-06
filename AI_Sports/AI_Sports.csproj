@@ -184,7 +184,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AISports.View\Pages\MTK1.xaml">
+    <Page Include="AISports.View\Pages\WriteCardWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\Process.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -334,6 +338,7 @@
     <Compile Include="AISports.Dao\MemberDAO.cs" />
     <Compile Include="AISports.Dao\MusclePieChartDAO.cs" />
     <Compile Include="AISports.Dao\PersonalSettingDAO.cs" />
+    <Compile Include="AISports.Dao\ProcessDAO.cs" />
     <Compile Include="AISports.Dao\SkeletonLengthDAO.cs" />
     <Compile Include="AISports.Dao\SystemSettingDAO.cs" />
     <Compile Include="AISports.Dao\TrainingActivityRecordDAO.cs" />
@@ -349,6 +354,7 @@
     <Compile Include="AISports.Entity\KeyEntity.cs" />
     <Compile Include="AISports.Entity\MemberEntity.cs" />
     <Compile Include="AISports.Entity\PersonalSettingEntity.cs" />
+    <Compile Include="AISports.Entity\ProcessVO.cs" />
     <Compile Include="AISports.Entity\SkeletonLengthEntity.cs" />
     <Compile Include="AISports.Entity\SystemSettingEntity.cs" />
     <Compile Include="AISports.Entity\TrainingActivityRecordEntity.cs" />
@@ -366,6 +372,7 @@
     <Compile Include="AISports.Service\MemberService.cs" />
     <Compile Include="AISports.Service\MusclePieChartService.cs" />
     <Compile Include="AISports.Service\PersonalSettingService.cs" />
+    <Compile Include="AISports.Service\ProcessService.cs" />
     <Compile Include="AISports.Service\TrainingActivityService.cs" />
     <Compile Include="AISports.Service\TrainingCourseService.cs" />
     <Compile Include="AISports.Service\TrainingDeviceRecordService.cs" />
@@ -380,8 +387,11 @@
     <Compile Include="AISports.Util\DbUtil.cs" />
     <Compile Include="AISports.Util\SpeechUtil.cs" />
     <Compile Include="AISports.View\Pages\analyze.xaml.cs" />
-    <Compile Include="AISports.View\Pages\MTK1.xaml.cs">
-      <DependentUpon>MTK1.xaml</DependentUpon>
+    <Compile Include="AISports.View\Pages\WriteCardWindow.xaml.cs">
+      <DependentUpon>WriteCardWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\Process.xaml.cs">
+      <DependentUpon>Process.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\UpdateActivity.xaml.cs">
       <DependentUpon>UpdateActivity.xaml</DependentUpon>
@@ -549,6 +559,7 @@
     <Content Include="AISports.Echarts\dist\Test.html" />
     <Content Include="AISports.Echarts\dist\TrainingUnit.html" />
     <Content Include="AISports.Lib\nuitrack.net.dll" />
+    <Resource Include="AISports.View\Images\Abdominal muscle training.png" />
     <Content Include="AISports.View\Images\defaultphoto.png" />
     <Resource Include="AISports.View\Images\eef81f78c35e498da4d9263cb70cc329_th.jpeg" />
     <Resource Include="AISports.View\Images\logodark.jpg" />
@@ -568,6 +579,21 @@
     <Resource Include="AISports.View\Images\deviceImageTest.jpg" />
     <Resource Include="AISports.View\Images\muscle1.jpg" />
     <Resource Include="AISports.View\Images\muscle2.jpg" />
+    <Resource Include="AISports.View\Images\Elliptical treadmill.png" />
+    <Resource Include="AISports.View\Images\Leg bender.png" />
+    <Resource Include="AISports.View\Images\Leg camber.png" />
+    <Resource Include="AISports.View\Images\Leg press.png" />
+    <Resource Include="AISports.View\Images\Reverse butterfly.png" />
+    <Resource Include="AISports.View\Images\Seated chest pushing.png" />
+    <Resource Include="AISports.View\Images\Seated rowing.png" />
+    <Resource Include="AISports.View\Images\Sit-type leg bending training.png" />
+    <Resource Include="AISports.View\Images\Sitting back stretching.png" />
+    <Resource Include="AISports.View\Images\Sitting lats high puller.png" />
+    <Resource Include="AISports.View\Images\Sitting leg stretch training.png" />
+    <Resource Include="AISports.View\Images\stationary bike.png" />
+    <Resource Include="AISports.View\Images\The butterfly.png" />
+    <Resource Include="AISports.View\Images\Torsional trunk assembly.png" />
+    <Resource Include="AISports.View\Images\Triceps training.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

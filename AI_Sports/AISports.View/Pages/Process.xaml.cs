@@ -25,7 +25,7 @@ namespace AI_Sports.AISports.View.Pages
     /// <summary>
     /// Process.xaml 的交互逻辑
     /// </summary>
-    public partial class Process : Window
+    public partial class Process : Page
     {
         public Process()
         {

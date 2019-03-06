@@ -159,14 +159,14 @@ namespace AI_Sports.AISports.View.Pages
 
                     //如果卡号为空或者MTK没有点击确定按钮，就把 卡的形状隐藏 暴露出“用户在此需要进行身份验证”一行字
 
-                    if (jiekou.card.Score1 == null || Window1.success_Flag == false)
+                    if (jiekou.card.Score1 == null || WriteCardWindow.success_Flag == false)
                     {
                         x1.Visibility = Visibility.Visible;
                         x2.Visibility = Visibility.Collapsed;
 
                     }
                     else
-                    if (Window1.success_Flag) //MTK中点击确定按钮后，success_Flag原本为false，变为true
+                    if (WriteCardWindow.success_Flag) //MTK中点击确定按钮后，success_Flag原本为false，变为true
                     {
 
                         x1.Visibility = Visibility.Collapsed;
@@ -197,7 +197,7 @@ namespace AI_Sports.AISports.View.Pages
         //前往训练计划按钮
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/Training.xaml", UriKind.Relative));
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/TrainingProgram.xaml", UriKind.Relative));
 
         }
 
@@ -238,10 +238,10 @@ namespace AI_Sports.AISports.View.Pages
 
 
             //从MTK页面传过来已经赋好值customer类
-            Customer customer = Window1.customer;
+            Customer customer = WriteCardWindow.customer;
 
             //将卡号传给card.Scorel
-            card.Score1 = Window1.customer.ID;
+            card.Score1 = WriteCardWindow.customer.ID;
 
         }
 

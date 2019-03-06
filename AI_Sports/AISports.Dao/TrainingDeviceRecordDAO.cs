@@ -53,5 +53,20 @@ namespace AI_Sports.Dao
                 return conn.QueryFirstOrDefault<int>(query, new { Id });
             }
         }
+        /// <summary>
+        /// 根据会员卡号查出训练记录
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        public List<TrainingDeviceRecordEntity> ListRecordById(string memberId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT * FROM bdl_training_device_record WHERE member_id = @memberId";
+                return conn.Query<TrainingDeviceRecordEntity>(query, new { memberId }).ToList();
+
+            }
+        }
+
     }
 }

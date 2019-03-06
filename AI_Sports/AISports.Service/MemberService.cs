@@ -27,14 +27,7 @@ namespace AI_Sports.Service
         /// <returns></returns>
         public long InsertMember(MemberEntity memberEntity)
         {
-            //通过出生日期获得出生年份字符串
-            string birthYear = memberEntity.Birth_date.Value.ToString("yyyy");
-            //安全得将出生年份字符串转换为整型
-            int? parseInt = ParseIntegerUtil.ParseInt(birthYear);
-            //当前年份转为整型
-            int? currentYear = ParseIntegerUtil.ParseInt(DateTime.Now.Year.ToString());
-            //当前年份与出生年份相减计算年龄    
-            memberEntity.Age = (currentYear - parseInt);
+           
             //计算最大心率 = 220 - 年龄
             memberEntity.Max_heart_rate = 220 - memberEntity.Age;
             //计算最宜心率 = （最大心率 * 76.5%）然后四舍五入为整数

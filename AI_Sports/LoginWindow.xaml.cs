@@ -13,6 +13,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AI_Sports
@@ -66,6 +67,13 @@ namespace AI_Sports
             {
                 Console.WriteLine("无效卡！");
             }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            this.Close();
+            // this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
         }
     }
 }

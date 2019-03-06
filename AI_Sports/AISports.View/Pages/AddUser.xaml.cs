@@ -98,7 +98,14 @@ namespace AI_Sports.AISports.View.Pages
             
             member.Height = double.Parse(this.height.Text);
             member.Weight = double.Parse(this.weight.Text);
-            
+            //通过出生日期获得出生年份字符串
+            string birthYear = member.Birth_date.Value.ToString("yyyy");
+            //安全得将出生年份字符串转换为整型
+            int? parseInt = ParseIntegerUtil.ParseInt(birthYear);
+            //当前年份转为整型
+            int? currentYear = ParseIntegerUtil.ParseInt(DateTime.Now.Year.ToString());
+            //当前年份与出生年份相减计算年龄    
+            member.Age = (currentYear - parseInt);
             member.Max_heart_rate = ParseIntegerUtil.ParseInt(this.Max_heart_rate.Text);
             member.Member_familyName = this.Member_familyName.Text;
             member.Member_firstName = this.Member_firstName.Text;
@@ -149,54 +156,58 @@ namespace AI_Sports.AISports.View.Pages
 
 
         }
-        public class Person1
-        {
-            public string Name { get; set; }
-        }
-        //TextBox中只能输入数字
-        private void Tb3_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        //手机号码和电话号码只能输入数字
+        private void Personal_phone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9.\\-]+");
             e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void Max_rate_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
 
         }
-        //根据出生年月日计算出年龄
-        public int GetAgeByBirthdate(DateTime birthdate)
+        //验证邮箱格式
+        private void Email_address_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            DateTime now = DateTime.Now;
-            int age = now.Year - birthdate.Year;
-            if (now.Month < birthdate.Month || (now.Month == birthdate.Month && now.Day < birthdate.Day))
+            //string emailStr =@"([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,5})+";
+            //Regex emailReg = new Regex(emailStr);
+            //if (emailReg.IsMatch(Email_address.Text.Trim()))
+            //{
+            //    Console.WriteLine("格式正确");
+
+            //}
+            //else
+            //{
+            //    Console.WriteLine("格式错误，请重新输入");
+            //}
+            Regex r = new Regex(@"([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,5})+");
+            e.Handled = r.IsMatch(e.Text);
+
+            //if (r.IsMatch(jieta@sina.com))
+            //{
+            //    MessageBox.Show("This is a true email");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("This is not a email");
+            //}
+        }
+
+        private void Birth_date_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.birthDatePicker.Text != null && this.birthDatePicker.Text != "")
             {
-                age--;
+                DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+                dtFormat.ShortDatePattern = "yyyy-MM-dd";
+                DateTime Birth_date = Convert.ToDateTime(this.birthDatePicker.Text, dtFormat);
+                //通过出生日期获得出生年份字符串
+                string birthYear = Birth_date.ToString("yyyy");
+                //安全得将出生年份字符串转换为整型
+                int? parseInt = ParseIntegerUtil.ParseInt(birthYear);
+                //当前年份转为整型
+                int? currentYear = DateTime.Now.Year;
+                //当前年份与出生年份相减计算年龄    
+                int? Age = (currentYear - parseInt);
+                this.LB_SuggestMaxHeartRate.Content = "建议最大心率:" + Age.ToString();
             }
-            return age < 0 ? 0 : age;
+            
         }
-        //获得数据参数
-        class Person
-        {
-            public string Name { get; set; }
-        }
-
-       
-
-        //private void Slider3_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        //{
-        //    GetAgeByBirthdate;
-
-        //}
-        //     private void Grid1_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //     Grid1.DataContext = getpersonfromdeatabase();
-        //}
-        // private Person GetPersonFromDateBase()
-        // {
-        //     //从数据库获得数据对象《演示》
-        //     return new Person() (Name = "JRH");
-
-        // }
     }
 }

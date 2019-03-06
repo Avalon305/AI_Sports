@@ -41,7 +41,7 @@ namespace AI_Sports.AISports.View.Pages
         }
         private void Button_Click_Process(object sender, RoutedEventArgs e)
         {
-            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/Process.xaml", UriKind.Relative));
         }
         private void Button_Click_Muscle(object sender, RoutedEventArgs e)
         {

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
 	Title="attendance">
@@ -11,18 +12,20 @@
       
     </Page.Resources>
     <Grid Background="White">
-        <StackPanel>
+        <StackPanel Name="root">
             <Label Margin="10 0 0 0"  Content="出勤" Style="{DynamicResource h1}"/>
-            <Calendar Margin="10,0,0,10"/>
+            <Calendar Margin="10,0,0,10" SelectionMode="MultipleRange" Name="Calendar_Attendance"   IsTodayHighlighted="false" 
+          
+          xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                
+            </Calendar>
             <ContentControl Margin="10 0 0 0" Style="{StaticResource panel-default}">
                 <Grid Width="auto">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition Height="30"></RowDefinition>
-                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="60"></RowDefinition>
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -30,21 +33,20 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     
-                    <Label Grid.Row="1"  Grid.Column="0" Content="初次训练的日期"  ></Label>
-                    <Label Grid.Row="1"  Grid.Column="1" Content="2018年12月7日120:00"  ></Label>
-                    <Label Grid.Row="2"  Grid.Column="0" Content="上次训练日期"  ></Label>
-                    <Label Grid.Row="2"  Grid.Column="1" Content="2018年12月7日120:00"  ></Label>
-                    <Label Grid.Row="3"  Grid.Column="0" Content="整个训练过程训练次数"  ></Label>
-                    <Label Grid.Row="3"  Grid.Column="1" Content="4"  ></Label>
-                    
-                    <Label Grid.Row="5"  Grid.Column="0" Content="每月平均锻炼次数"  ></Label>
-                    <Label Grid.Row="5"  Grid.Column="1" Content="----"  ></Label>
+                    <Label Grid.Row="0"  Grid.Column="0" Content="初次训练的日期" Style="{DynamicResource h3}" ></Label>
+                    <Label Grid.Row="0"  Grid.Column="1" Content="2018年12月7日" Style="{DynamicResource h3}" Name="LB_FirstDate"></Label>
+                    <Label Grid.Row="1"  Grid.Column="0" Content="上次训练日期" Style="{DynamicResource h3}" ></Label>
+                    <Label Grid.Row="1"  Grid.Column="1" Content="2019年3月4日"  Style="{DynamicResource h3}" Name="LB_LastDate"></Label>
+                    <Label Grid.Row="2"  Grid.Column="0" Content="总训练次数" Style="{DynamicResource h3}" ></Label>
+                    <Label Grid.Row="2"  Grid.Column="1" Content="4"  Style="{DynamicResource h3}"></Label>
+                    <Label Grid.Row="3"  Grid.Column="0" Content="每月平均锻炼次数" Style="{DynamicResource h3}" ></Label>
+                    <Label Grid.Row="3"  Grid.Column="1" Content="----"  Style="{DynamicResource h3}"></Label>
                 </Grid>
                 
                 
             </ContentControl>
-          
-            <Button Content="后退" Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" Margin="10" ></Button>
+            <Button Content="后退" Style="{DynamicResource btn-warning}" FontSize="20" Width="75" Height="35" HorizontalAlignment="Left" Margin="10" Click="Button_Click"></Button>
+
 
         </StackPanel>
     </Grid>

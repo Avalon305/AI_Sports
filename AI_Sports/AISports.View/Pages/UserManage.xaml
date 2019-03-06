@@ -57,6 +57,9 @@
                         </Grid>
                     </Button.Content>
                 </Button>
+
+                
+
                 <!--训练计划按钮-->
                 <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,105,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn2" Click="Btn2_Click" BorderBrush="{x:Null}" Panel.ZIndex="5">
                     <Button.Content>
@@ -81,6 +84,15 @@
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-cog}" Width="20" Height="20" Fill="White"></Path>
                             <TextBlock Margin="67,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="生命体征"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <!--添加用户按钮-->
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,420,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn5" Click="Btn5_Click" BorderBrush="{x:Null}" Panel.ZIndex="5">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-stats}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="68,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="添加会员"/>
                         </Grid>
                     </Button.Content>
                 </Button>

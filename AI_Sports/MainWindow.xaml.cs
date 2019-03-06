@@ -25,14 +25,14 @@ namespace AI_Sports
             InitializeComponent();
 
             //显示欢迎页，验证后返回。
-            //LoginWindow loginWindow = new LoginWindow();
-            //loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
             //                          //测试CQZ
             //loginWindow.Close();//关闭欢迎页
  
            // this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
- 
-            this.mainpage.Navigate(new Uri("AISports.View/Pages/muscle.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+            this.mainpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/UserManage.xaml", UriKind.Relative);//跳转页面
+
           //  this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
  
             //if (loginWindow.DialogResult == true)//返回dialogresult为教练

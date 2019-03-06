@@ -54,6 +54,8 @@ namespace AI_Sports.AISports.View.Pages
             this.btn2.Background = null;
             this.btn3.Background = null;
             this.btn4.Background = null;
+            this.btn5.Background = null;
+
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative);//跳转页面
         }
         //训练计划页面
@@ -63,6 +65,8 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn3.Background = null;
             this.btn4.Background = null;
+            this.btn5.Background = null;
+
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/newPlan.xaml", UriKind.Relative);//跳转页面
         }
         //图表分析页面
@@ -72,6 +76,8 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn2.Background = null;
             this.btn4.Background = null;
+            this.btn5.Background = null;
+
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative);//跳转页面
         }
         //生命体征页面
@@ -81,15 +87,32 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn2.Background = null;
             this.btn3.Background = null;
+            this.btn5.Background = null;
             //this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面TrainingCourseAnalysis
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面
 
         }
+        //添加会员页面
+        private void Btn5_Click(object sender, RoutedEventArgs e)//
+        {
+            this.btn5.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            this.btn1.Background = null;
+            this.btn2.Background = null;
+            this.btn3.Background = null;
+            this.btn4.Background = null;
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddUser.xaml", UriKind.Relative);//跳转页面
+
+        }
+
         //退出登录重新启动
         private void Logout(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.Application.Restart();
-            AI_Sports.App.Current.Shutdown();
+            //System.Windows.Forms.Application.Restart();
+            //AI_Sports.App.Current.Shutdown();
+            //显示欢迎页，验证后返回。
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
+
         }
         /// <summary>
         /// 发卡按钮
@@ -98,7 +121,10 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Write_Card_Click(object sender, RoutedEventArgs e)
         {
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/MTK1.xaml", UriKind.Relative);//跳转页面
+            WriteCardWindow writeCardWindow = new WriteCardWindow();
+            //弹出窗体的时候将程序中断在pw窗体，它的操作会对下面的程序产生影响，从而使pw窗体影响下面运行的效果。
+            //比如说下面的程序要通过pw窗体中的某个参数进行判断来运行的话，用这种方法很合适。
+            writeCardWindow.ShowDialog();
         }
 
         /// <summary>

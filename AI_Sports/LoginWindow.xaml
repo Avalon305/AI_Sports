@@ -9,6 +9,7 @@
         Width="1920"
         Title="LoginWindow"
         WindowState="Maximized"
+        KeyDown="Window_KeyDown"
         WindowStyle="None">
     <Window.Resources>
         <Color x:Key="Color1">#FF04243D</Color>
