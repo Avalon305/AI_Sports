@@ -48,9 +48,17 @@
 					type: ''        // 默认为直线，可选为：'line' | 'shadow'
 				}
 			},
+			title: {
+				text: '力量耐力循环(有氧)',
+				x: 'center',
+				y: 'top',
+				textAlign: 'center'
+			},
 			//自定义legend颜色
 			color: ['#4472C5'],
 			legend: {
+				x: 'center',
+				y: 'bottom',
 				data: ['平均值(千克)']
 			},
 			//辅助线等   设为false
@@ -140,7 +148,7 @@
 
 		//动态向y轴赋值
 		var avgValueArray = new Array();
-		avgValueArray = eval('(' + window.external.selectAerobicCreateTime() + ')');
+		avgValueArray = eval('(' + window.external.avgAerobicValue() + ')');
 		option.series[0].data = avgValueArray;
 
 

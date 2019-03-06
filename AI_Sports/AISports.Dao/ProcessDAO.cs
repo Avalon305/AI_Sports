@@ -44,7 +44,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT avg(((bdl_training_device_record.consequent_force) + (bdl_training_device_record.reverse_force)) / 2) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id WHERE bdl_training_activity_record.gmt_create > DATE_ADD(NOW(), INTERVAL - 1440 MINUTE) AND bdl_training_activity_record.activity_type = 0 GROUP BY course_count";
+                const string query = "SELECT avg(((bdl_training_device_record.consequent_force) + (bdl_training_device_record.reverse_force)) / 2) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id WHERE bdl_training_activity_record.gmt_create > DATE_ADD(NOW(), INTERVAL - 1440 MINUTE) GROUP BY course_count";
                 return (List<double>)conn.Query<double>(query);
             }
         }
