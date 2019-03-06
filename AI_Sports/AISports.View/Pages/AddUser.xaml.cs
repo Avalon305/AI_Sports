@@ -190,7 +190,13 @@ namespace AI_Sports.AISports.View.Pages
             //}
         }
 
-        private void Birth_date_LostFocus(object sender, RoutedEventArgs e)
+       
+        /// <summary>
+        /// 选择日期改变时触发计算建议最大心率
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BirthDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.birthDatePicker.Text != null && this.birthDatePicker.Text != "")
             {
@@ -205,9 +211,8 @@ namespace AI_Sports.AISports.View.Pages
                 int? currentYear = DateTime.Now.Year;
                 //当前年份与出生年份相减计算年龄    
                 int? Age = (currentYear - parseInt);
-                this.LB_SuggestMaxHeartRate.Content = "建议最大心率:" + Age.ToString();
+                this.LB_SuggestMaxHeartRate.Content = "建议最大心率:" + (220-Age).ToString();
             }
-            
         }
     }
 }

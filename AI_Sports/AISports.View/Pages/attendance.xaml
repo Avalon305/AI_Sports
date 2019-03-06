@@ -12,11 +12,15 @@
       
     </Page.Resources>
     <Grid Background="White">
-        <StackPanel Name="root">
-            <Label Margin="10 0 0 0"  Content="出勤" Style="{DynamicResource h1}"/>
-            <Calendar Margin="10,0,0,10" SelectionMode="MultipleRange" Name="Calendar_Attendance"   IsTodayHighlighted="false" 
-          
-          xmlns:sys="clr-namespace:System;assembly=mscorlib">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Margin="10 0 0 0"  Content="出勤" Style="{DynamicResource h1}" Grid.Row="0"/>
+        <StackPanel Name="root" Grid.Row="1">
+            
+            <Calendar  Margin="10,0,0,10" SelectionMode="MultipleRange" Name="Calendar_Attendance"   IsTodayHighlighted="false">
                 
             </Calendar>
             <ContentControl Margin="10 0 0 0" Style="{StaticResource panel-default}">
@@ -45,9 +49,10 @@
                 
                 
             </ContentControl>
-            <Button Content="后退" Style="{DynamicResource btn-warning}" FontSize="20" Width="75" Height="35" HorizontalAlignment="Left" Margin="10" Click="Button_Click"></Button>
 
 
         </StackPanel>
+        <Button Grid.Row="2" Content="后退" Style="{DynamicResource btn-primary}" Background="#FF04243D" FontSize="20" Width="75" Height="35" HorizontalAlignment="Left" Margin="10" Click="Button_Click"></Button>
+
     </Grid>
 </Page>

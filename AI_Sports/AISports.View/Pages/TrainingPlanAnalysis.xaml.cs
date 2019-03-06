@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.Serialization.Json;
+using AI_Sports.AISports.Util;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -25,6 +26,9 @@ namespace AI_Sports.AISports.View.Pages
     /// </summary>
     public partial class TrainingPlanAnalysis : Page
     {
+        string sumEnergy = null;
+        string sumTime = null;
+        string courseCount = null;
         public TrainingPlanAnalysis()
         {
             InitializeComponent();
@@ -50,7 +54,10 @@ namespace AI_Sports.AISports.View.Pages
             this.Lab_SumEnergy.Content = (trainingPlanVO.SumEnergy/1000)+ "千卡";
             //绑定总时间
             this.Lab_SumTime.Content = (trainingPlanVO.SumTime / 60) + "分钟";
-
+            //给语音分析参数赋值
+            sumEnergy = this.Lab_SumEnergy.Content.ToString();
+            sumTime = this.Lab_SumTime.Content.ToString();
+            courseCount = this.Lab_Current_course_count.Content.ToString();
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -70,6 +77,17 @@ namespace AI_Sports.AISports.View.Pages
         {
            // NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/TrainingCourseAnalysis.xaml", UriKind.Relative));
 
+        }
+        /// <summary>
+        /// 语音分析按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Speech_Click(object sender, RoutedEventArgs e)
+        {
+            String speechText = "您本次训练计划共进行"+ courseCount + ",共消耗热量" + sumEnergy + ",训练总时间" + sumTime + ",请继续加油！";
+            Console.WriteLine("训练计划语音文本："+speechText);
+            SpeechUtil.read(speechText);
         }
     }
 
@@ -119,7 +137,7 @@ namespace AI_Sports.AISports.View.Pages
             return szJson;
         }
 
-        
+       
 
     }
 

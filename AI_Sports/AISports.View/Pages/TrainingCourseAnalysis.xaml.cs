@@ -1,4 +1,5 @@
-﻿using AI_Sports.Entity;
+﻿using AI_Sports.AISports.Util;
+using AI_Sports.Entity;
 using AI_Sports.Service;
 using NLog;
 using System;
@@ -61,6 +62,8 @@ namespace AI_Sports.AISports.View.Pages
 
         }
 
+
+
         private void TrainingCourseRecords_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -73,6 +76,41 @@ namespace AI_Sports.AISports.View.Pages
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
             NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/TrainingPlanAnalysis.xaml", UriKind.Relative));
+
+        }
+
+        private void Speech_Click(object sender, RoutedEventArgs e)
+        {
+            //查询课程记录集合 绑定ItemsSource
+            List<TrainingCourseVO> trainingCourseVOs = trainingCourseService.listCourseRecord();
+            StringBuilder speechText = new StringBuilder();
+            speechText.Append("您总共进行了");
+            speechText.Append(trainingCourseVOs.Count);
+            speechText.Append("次训练课程。");
+            foreach (var item in trainingCourseVOs)
+            {
+                
+                speechText.Append("第");
+                speechText.Append(item.Course_count);
+                speechText.Append("次训练课程训练");
+                speechText.Append(item.Sum_time);
+                speechText.Append("分钟，消耗热量");
+                speechText.Append(item.Sum_energy);
+                speechText.Append("千卡，总共使用设备完成了");
+                speechText.Append(item.Sum_count);
+                speechText.Append("次往复运动，");
+                speechText.Append("在不同设备上进行了");
+                speechText.Append(item.Dev_count);
+                speechText.Append("次一分钟的训练，");
+                speechText.Append("其中平均顺向力为");
+                speechText.Append(item.Avg_consequent_force);
+                speechText.Append("千克，平均反向力为");
+                speechText.Append(item.Avg_reverse_force);
+                speechText.Append("千克。");
+
+            }
+            Console.WriteLine("训练课程语音文本："+speechText.ToString());
+            SpeechUtil.read(speechText.ToString());
 
         }
     }

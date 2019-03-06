@@ -35,6 +35,7 @@ namespace AI_Sports.AISports.View.Pages
             InitializeComponent();
             this.LB_FirstDate.Content = memberService.GetMinTrainingDate(CommUtil.GetSettingString("memberId")).ToString();
             this.LB_LastDate.Content = memberService.GetMaxTrainingDate(CommUtil.GetSettingString("memberId")).ToString();
+
             string memberId = CommUtil.GetSettingString("memberId");
 
            
@@ -42,19 +43,22 @@ namespace AI_Sports.AISports.View.Pages
             if (memberId != null && memberId != "")
             {
                 List<TrainingDeviceRecordEntity> trainingDeviceRecords =  trainingDeviceRecordService.ListRecordById(memberId);
-
-                //DateTime dt;
-                //DateTimeFormatInfo dtFormat = new System.Globalization.DateTimeFormatInfo();
-                //dtFormat.ShortDatePattern = "yyyy/MM/dd";
-                //DateTime[] dateTimes = { };
-                //List<DateTime> dateTimes = new List<DateTime>();
+                
                 foreach (var item in trainingDeviceRecords)
                 {
-                    //dt = Convert.ToDateTime(item.Gmt_create.Value.ToString(), dtFormat);
-                    //calendarWithBlackoutDates.SelectedDates.Add(item.Gmt_create.Value);
-                    Calendar_Attendance.SelectedDates.Add(item.Gmt_create.Value);
+                    DateTime date = item.Gmt_create.Value;
+                    int year = date.Year;
+                    int month = date.Month;
+                    int day = date.Day;
+
+                    Console.WriteLine("时间:" + date);
+                    //DateTime date = item.Gmt_create.Value;
+                    Calendar_Attendance.SelectedDates.Add(new DateTime(year, month, day));
+                   
 
                 }
+
+                //Calendar_Attendance.SelectedDates.AddRange(new DateTime(2019,3,1),new DateTime(2019,3,6));
             }
 
            

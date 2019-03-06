@@ -109,7 +109,7 @@ namespace AI_Sports
             try
             {
                 Nuitrack.Init("");
-                Console.WriteLine("Initialize succeed.");
+                Console.WriteLine("Initialize succneed.");
             }
             catch (nuitrack.Exception exception)
             {
