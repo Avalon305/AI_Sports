@@ -27,6 +27,21 @@ namespace AI_Sports.Dao
             }
         }
         /// <summary>
+        /// 根据当前课程ID完成/跳过训练课程 计数+1
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int UpdateCourseCount(string id)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "UPDATE bdl_training_course SET current_course_count = (current_course_count + 1) WHERE id = @id";
+
+                return conn.Execute(query, new { id });
+
+            }
+        }
+        /// <summary>
         /// 根据会员id联查训练计划表和课程表，查询出当前登录会员正在进行的课程
         /// </summary>
         /// <param name="memberId"></param>

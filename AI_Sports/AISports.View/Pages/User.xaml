@@ -90,6 +90,6 @@
             </Button>
             <Rectangle Visibility="Visible" Fill="#FFF6D600" HorizontalAlignment="Right" Height="1080" Margin="0,0,0,0" VerticalAlignment="Top" Width="10"/>
         </Grid>
-        <Frame Grid.Column="1" Source="/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml" x:Name="contentpage" Width="1493.3" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="True" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Column="1" Source="/AI_Sports;component/AISports.View/Pages/userinfo.xaml" x:Name="contentpage" Width="1493.3" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="True" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

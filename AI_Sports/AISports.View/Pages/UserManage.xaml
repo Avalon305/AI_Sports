@@ -58,10 +58,18 @@
                     </Button.Content>
                 </Button>
 
-                
+                <!--添加用户按钮-->
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,105,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn5" Click="Btn5_Click" BorderBrush="{x:Null}" Panel.ZIndex="5">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-stats}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="68,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="添加会员"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
 
                 <!--训练计划按钮-->
-                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,105,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn2" Click="Btn2_Click" BorderBrush="{x:Null}" Panel.ZIndex="5">
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,210,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn2" Click="Btn2_Click" BorderBrush="{x:Null}" Panel.ZIndex="5">
                     <Button.Content>
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-stats}" Width="20" Height="20" Fill="White"></Path>
@@ -70,7 +78,7 @@
                     </Button.Content>
                 </Button>
                 <!--分析按钮-->
-                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,210,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn3" Click="Btn3_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,315,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn3" Click="Btn3_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
                     <Button.Content>
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-user}" Width="20" Height="20" Fill="White"></Path>
@@ -78,8 +86,8 @@
                         </Grid>
                     </Button.Content>
                 </Button>
-                <!--控制面板按钮-->
-                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,315,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn4" Click="Btn4_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
+                <!--生命体征按钮-->
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,420,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn4" Click="Btn4_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
                     <Button.Content>
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-cog}" Width="20" Height="20" Fill="White"></Path>
@@ -87,16 +95,31 @@
                         </Grid>
                     </Button.Content>
                 </Button>
-                <!--添加用户按钮-->
-                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,420,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn5" Click="Btn5_Click" BorderBrush="{x:Null}" Panel.ZIndex="5">
+
+                <!--会员管理按钮-->
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,535,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="Btn_MemberManage" Click="Btn_MemberManage_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
                     <Button.Content>
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-stats}" Width="20" Height="20" Fill="White"></Path>
-                            <TextBlock Margin="68,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="添加会员"/>
+                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-user}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="67,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="会员管理"/>
                         </Grid>
                     </Button.Content>
                 </Button>
+
+                <!--控制面板按钮-->
+                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,640,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="Btn_SystemSetting" Click="Btn_SystemSetting_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-cog}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="67,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="系统设置"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                
                 <Rectangle Visibility="Visible" Fill="#FFF6D600" HorizontalAlignment="Left" Height="1080" Margin="0,0,0,0" VerticalAlignment="Top" Width="10" Grid.RowSpan="2"/>
+
+                
+
                 <!--<Rectangle Visibility="Visible" Fill="#FFD1D1D1" HorizontalAlignment="Right" Height="1080" Margin="0,-24,0,0" VerticalAlignment="Top" Width="3"/>-->
             </Grid>
         </Grid>

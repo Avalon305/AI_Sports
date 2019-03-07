@@ -40,4 +40,26 @@ namespace AI_Sports.Constant
         心率模式 = 3,
         增肌模式 = 4
     }
+    /// <summary>
+    /// 返回的登陆页面
+    /// </summary>
+    public enum LoginPageStatus
+    {
+        /// <summary>
+        /// 用户登录页
+        /// </summary>
+        UserPage,
+        /// <summary>
+        /// 教练登陆页面
+        /// </summary>
+        CoachPage,
+        /// <summary>
+        /// 重复登录
+        /// </summary>
+        RepeatLogins,
+        /// <summary>
+        /// 未识别的ID
+        /// </summary>
+        UnknownID,
+    }
 }

@@ -40,12 +40,12 @@ namespace AI_Sports.AISports.View.Pages
         //性别判断
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            sex.Text = "先生";
+            sex.Text = "男";
         }
 
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
-            sex.Text = "女士";
+            sex.Text = "女";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -213,6 +213,21 @@ namespace AI_Sports.AISports.View.Pages
                 int? Age = (currentYear - parseInt);
                 this.LB_SuggestMaxHeartRate.Content = "建议最大心率:" + (220-Age).ToString();
             }
+        }
+
+        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked_3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked_4(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

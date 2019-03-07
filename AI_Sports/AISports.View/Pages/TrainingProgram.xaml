@@ -29,7 +29,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Style="{DynamicResource btn-primary}" Background="#04243D" Width="200" Height="45" Margin="10">
+                    <Button Style="{DynamicResource btn-primary}" Background="#04243D" Width="200" Height="45" Margin="10" Click="Button_Click">
                         <StackPanel Orientation="Horizontal" Margin="10,0,10,0">
                             <Image Source="/AI_Sports;component/AISports.View/Images/next.png"  RenderOptions.BitmapScalingMode="Fant" Margin="0,0,5,0" Height="20" Width="20"/>
                             <TextBlock UseLayoutRounding="True" Foreground="White" FontFamily="youyuan" FontSize="15" Text="跳过/完成课程" Height="20" Width="100"/>

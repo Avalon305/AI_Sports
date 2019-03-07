@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using AI_Sports.Service;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -22,6 +23,7 @@ namespace AI_Sports.AISports.View.Pages
     /// </summary>
     public partial class UserManage : Page
     {
+        private MemberService memberService = new MemberService();
         public UserManage()
         {
             InitializeComponent();
@@ -55,7 +57,8 @@ namespace AI_Sports.AISports.View.Pages
             this.btn3.Background = null;
             this.btn4.Background = null;
             this.btn5.Background = null;
-
+            this.Btn_MemberManage.Background = null;
+            this.Btn_SystemSetting.Background = null;
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative);//跳转页面
         }
         //训练计划页面
@@ -66,7 +69,8 @@ namespace AI_Sports.AISports.View.Pages
             this.btn3.Background = null;
             this.btn4.Background = null;
             this.btn5.Background = null;
-
+            this.Btn_MemberManage.Background = null;
+            this.Btn_SystemSetting.Background = null;
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/newPlan.xaml", UriKind.Relative);//跳转页面
         }
         //图表分析页面
@@ -77,7 +81,8 @@ namespace AI_Sports.AISports.View.Pages
             this.btn2.Background = null;
             this.btn4.Background = null;
             this.btn5.Background = null;
-
+            this.Btn_MemberManage.Background = null;
+            this.Btn_SystemSetting.Background = null;
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative);//跳转页面
         }
         //生命体征页面
@@ -88,6 +93,8 @@ namespace AI_Sports.AISports.View.Pages
             this.btn2.Background = null;
             this.btn3.Background = null;
             this.btn5.Background = null;
+            this.Btn_MemberManage.Background = null;
+            this.Btn_SystemSetting.Background = null;
             //this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面TrainingCourseAnalysis
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面
 
@@ -100,6 +107,41 @@ namespace AI_Sports.AISports.View.Pages
             this.btn2.Background = null;
             this.btn3.Background = null;
             this.btn4.Background = null;
+            this.Btn_MemberManage.Background = null;
+            this.Btn_SystemSetting.Background = null;
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddUser.xaml", UriKind.Relative);//跳转页面
+
+        }
+        /// <summary>
+        /// 系统设置点击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_SystemSetting_Click(object sender, RoutedEventArgs e)
+        {
+            this.Btn_SystemSetting.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            this.btn1.Background = null;
+            this.btn2.Background = null;
+            this.btn3.Background = null;
+            this.btn4.Background = null;
+            this.btn5.Background = null;
+            this.Btn_MemberManage.Background = null;
+            //this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddUser.xaml", UriKind.Relative);//跳转页面
+        }
+        /// <summary>
+        /// 会员管理点击
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_MemberManage_Click(object sender, RoutedEventArgs e)
+        {
+            this.Btn_MemberManage.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            this.btn1.Background = null;
+            this.btn2.Background = null;
+            this.btn3.Background = null;
+            this.btn4.Background = null;
+            this.btn5.Background = null;
+            this.Btn_SystemSetting.Background = null;
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddUser.xaml", UriKind.Relative);//跳转页面
 
         }
@@ -107,10 +149,12 @@ namespace AI_Sports.AISports.View.Pages
         //退出登录重新启动
         private void Logout(object sender, RoutedEventArgs e)
         {
-            //System.Windows.Forms.Application.Restart();
-            //AI_Sports.App.Current.Shutdown();
-            //显示欢迎页，验证后返回。
-            LoginWindow loginWindow = new LoginWindow();
+            //清空配置类
+            memberService.Logout();
+             //System.Windows.Forms.Application.Restart();
+             //AI_Sports.App.Current.Shutdown();
+             //显示欢迎页，验证后返回。
+             LoginWindow loginWindow = new LoginWindow();
             loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
 
         }
@@ -137,5 +181,6 @@ namespace AI_Sports.AISports.View.Pages
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/NuitrackScan.xaml", UriKind.Relative);//跳转页面
         }
 
+        
     }
 }

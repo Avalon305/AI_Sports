@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using AI_Sports.Service;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -21,6 +22,8 @@ namespace AI_Sports.AISports.View.Pages
     /// </summary>
     public partial class User : Page
     {
+        private MemberService memberService = new MemberService();
+
         public User()
         {
             InitializeComponent();
@@ -59,7 +62,7 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn3.Background = null;
             this.btn4.Background = null;
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/userFrist.xaml", UriKind.Relative);
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/currentProgress.xaml", UriKind.Relative);
         }
         private void Btn3_Click(object sender, RoutedEventArgs e)//训练计划
         {
@@ -75,13 +78,18 @@ namespace AI_Sports.AISports.View.Pages
             this.btn1.Background = null;
             this.btn2.Background = null;
             this.btn3.Background = null;
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/Welcome_first.xaml", UriKind.Relative);
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative);
         }
 
         private void Logout(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.Application.Restart();
-            AI_Sports.App.Current.Shutdown();
+            //清空配置类
+            memberService.Logout();
+            //System.Windows.Forms.Application.Restart();
+            //AI_Sports.App.Current.Shutdown();
+            //显示欢迎页，验证后返回。
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
         }
 
     }

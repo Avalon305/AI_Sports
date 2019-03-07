@@ -41,10 +41,10 @@ namespace AI_Sports.AISports.View.Pages
                 switch (activity.Activity_type)
                 {
                     case "0":
-                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量循环.ToString() + "(" + activity.Target_turn_number +"轮次)"});
+                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量循环.ToString() + "(目标轮次/当前轮次" + activity.Target_turn_number +"轮次)"});
                         break;
                     case "1":
-                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量耐力循环.ToString() + "(" + activity.Target_turn_number + "轮次)" });
+                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量耐力循环.ToString() + "(目标轮次/当前轮次" + activity.Target_turn_number + "轮次)" });
                         break;
 
                     default:
@@ -97,5 +97,14 @@ namespace AI_Sports.AISports.View.Pages
             this.listBox.ItemsSource = viewModel.trainingPlanGroup;
             
         }
-	}
+        /// <summary>
+        /// 跳过训练课程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("训练课程已完成");
+        }
+    }
 }

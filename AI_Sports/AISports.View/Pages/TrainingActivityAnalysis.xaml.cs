@@ -1,4 +1,5 @@
-﻿using AI_Sports.Entity;
+﻿using AI_Sports.AISports.Util;
+using AI_Sports.Entity;
 using AI_Sports.Service;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,8 @@ namespace AI_Sports.AISports.View.Pages
     {
 
         TrainingActivityService trainingActivityService = new TrainingActivityService();
-
+        //全局当前课程记录变量
+        int? currentCourseCount = 0;
 
 
         public TrainingActivityAnalysis()
@@ -45,7 +47,7 @@ namespace AI_Sports.AISports.View.Pages
         {
             if (e.ExtraData != null)
             {
-                int? currentCourseCount = (int?)e.ExtraData;
+                currentCourseCount = (int?)e.ExtraData;
                 Console.WriteLine("活动分析页收到的currentCourseCount：" + currentCourseCount);
                 //传入课程记录id，根据此id查询加载表格
                 InitList(currentCourseCount);
@@ -79,6 +81,43 @@ namespace AI_Sports.AISports.View.Pages
             NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/TrainingCourseAnalysis.xaml", UriKind.Relative));
 
         }
+
+        private void Speech_Click(object sender, RoutedEventArgs e)
+        {
+            List<TrainingActivityVO> trainingActivities = trainingActivityService.ListActivityRecords(currentCourseCount);
+            int? strengthActivityCount = 0;
+            int? enduranceActivityCount = 0;
+
+            foreach (var item in trainingActivities)
+            {
+                if ("0".Equals(item.Activity_type))
+                {
+                    //力量循环加一
+                    strengthActivityCount++;
+                }
+                else if ("1".Equals(item.Activity_type))
+                {
+                    //力量耐力循环加一
+                    enduranceActivityCount++;
+                }
+            }
+
+            StringBuilder speechText = new StringBuilder();
+            speechText.Append("您当前查看的是第");
+            speechText.Append(currentCourseCount);
+            speechText.Append("次课程记录。");
+            speechText.Append("总共进行了");
+            speechText.Append(trainingActivities.Count);
+            speechText.Append("轮训练活动，其中力量循环");
+            speechText.Append(strengthActivityCount);
+            speechText.Append("轮，");
+            speechText.Append("力量耐力循环");
+            speechText.Append(enduranceActivityCount);
+            speechText.Append("轮。您可以点击训练活动展开查看详细记录。");
+            SpeechUtil.read(speechText.ToString());
+
+        }
+
         ///按钮绑定测试
         //private void Button_Click(object sender, RoutedEventArgs e)
         //{
