@@ -20,7 +20,7 @@ namespace AI_Sports.Service
         /// 添加训练活动后，自动根据数据库中的训练活动记录，往个人设置表插入记录
         /// </summary>
         /// <returns></returns>
-        public bool SavePersonalSettings()
+        public bool SavePersonalSettings(long userPK)
         {
             //使整个代码块成为事务性代码
             using (TransactionScope ts = new TransactionScope())
@@ -50,7 +50,8 @@ namespace AI_Sports.Service
                             personalSetting.Training_mode = "0";
                             personalSetting.Device_code = item.Code_s_value;
                             personalSetting.Device_order_number = item.Code_xh;
-                            personalSetting.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
+                            //主键设置为传入的主键，因为传入前判断是登陆的教练单独训练还是有用户登录
+                            personalSetting.Fk_member_id = userPK;
                             personalSetting.Member_id = CommUtil.GetSettingString("memberId");
                             personalSetting.Gmt_create = System.DateTime.Now;
                             //这个外键id用于展示的时候联查活动表和设置表。能够根据当前存在的训练活动查出相应的设置。根据活动id联查是最简单的方法。

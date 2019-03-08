@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AI_Sports.Constant;
+using AI_Sports.Service;
+using AI_Sports.Util;
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +24,9 @@ namespace AI_Sports
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MemberService memberService = new MemberService();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,16 +36,24 @@ namespace AI_Sports
             loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
             //                          //测试CQZ
             //loginWindow.Close();//关闭欢迎页
- 
-           // this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
-            this.mainpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/UserManage.xaml", UriKind.Relative);//跳转页面
+            //只要教练ID不为空就登陆到教练页面
+            if (CommUtil.GetSettingString("coachId") != null && CommUtil.GetSettingString("coachId") != "")
+            {
+                this.mainpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/UserManage.xaml", UriKind.Relative);//跳转页面
+            }
+            else
+            {
+                this.mainpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/User.xaml", UriKind.Relative);//跳转页面
 
-          //  this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
- 
+            }
+            // this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
+            //  this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
             //if (loginWindow.DialogResult == true)//返回dialogresult为教练
             //{
             //    loginWindow.Close();//关闭欢迎页
-                //this.mainpage.Navigate(new Uri("AISports.View/Pages/Admin.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+            //this.mainpage.Navigate(new Uri("AISports.View/Pages/Admin.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
             //}
             //else if (loginWindow.DialogResult == false)//返回dialogresult为用户
             //{
@@ -47,7 +62,47 @@ namespace AI_Sports
             //}
 
         }
+        /// <summary>
+        /// 四种登录情况的测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            Enum resultCode = null;
+            if (e.Key == Key.D1)
+            {
+                resultCode = memberService.Login("305865088");
+            }
+            else if (e.Key == Key.D0)
+            {
+                resultCode = memberService.Login("17863979633");
+                
+            }
 
+            switch (resultCode)
+            {
+                case LoginPageStatus.CoachPage:
+                    logger.Debug("教练正常登陆");
+                    //this.Close();
+                    break;
+                case LoginPageStatus.UserPage:
+                    logger.Debug("用户正常登陆");
+                    //this.Close();
+                    break;
+                case LoginPageStatus.RepeatLogins:
+                    logger.Debug("拦截重复登陆，请先退出。");
+                    break;
+                case LoginPageStatus.UnknownID:
+                    logger.Debug("未知ID，禁止登录。");
+                    break;
+                default:
+                    break;
+            }
+
+            // this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
+        }
         //private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
 

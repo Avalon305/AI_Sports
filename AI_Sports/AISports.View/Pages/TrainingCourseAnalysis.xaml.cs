@@ -43,7 +43,11 @@ namespace AI_Sports.AISports.View.Pages
             this.TrainingCourseRecords.ItemsSource = trainingCourseVOs;
 
         }
-
+        /// <summary>
+        /// 点击表格行，鼠标抬起时传参跳转
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TrainingCourseRecords_MouseUp(object sender, MouseButtonEventArgs e)
         {
             TrainingCourseVO trainingCourseVO = this.TrainingCourseRecords.SelectedItem as TrainingCourseVO;

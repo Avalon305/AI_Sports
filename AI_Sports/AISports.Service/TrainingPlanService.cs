@@ -33,8 +33,25 @@ namespace AI_Sports.Service
                 activityDAO.UpdateCompleteState(memberId, true);
                 //4.新增训练计划
                 trainingPlan.Id = KeyGenerator.GetNextKeyValueLong("bdl_training_plan");
-                //  从app.config中取id,转成int赋值
-                trainingPlan.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
+
+                //判断登陆用户，是教练自己锻炼。还是教练为用户进行设置。决定传哪个主键设置
+                string currentMemberPK = CommUtil.GetSettingString("memberPrimarykey");
+                string currentCoachId = CommUtil.GetSettingString("coachId");
+                if ((currentMemberPK == null || currentMemberPK == "") && (currentCoachId != null && currentCoachId != ""))
+                {
+                    //无用户登陆。教练单独登陆时
+                    //  从app.config中取id,转成int赋值
+                    trainingPlan.Fk_member_id = ParseIntegerUtil.ParseInt(currentCoachId);
+                }
+                else
+                {
+                    //只要用户登录，就是为用户进行设置
+                    //  从app.config中取id,转成int赋值
+                    trainingPlan.Fk_member_id = ParseIntegerUtil.ParseInt(currentMemberPK);
+
+                }
+
+                
                 //  设置会员卡号
                 trainingPlan.Member_id = CommUtil.GetSettingString("memberId");
                 //  设置状态为未删除

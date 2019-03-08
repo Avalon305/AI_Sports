@@ -8,6 +8,7 @@
         Title="MainWindow"
         WindowState="Maximized"
         WindowStyle="None"
+        KeyDown="Window_KeyDown"
         >
     <Frame x:Name="mainpage" NavigationUIVisibility="Hidden"/>
 </Window>

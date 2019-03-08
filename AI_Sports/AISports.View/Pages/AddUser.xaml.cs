@@ -113,14 +113,16 @@ namespace AI_Sports.AISports.View.Pages
             member.Personal_phone = this.Personal_phone.Text;
             member.Work_phone = this.Work_phone.Text;
             member.Remark = this.Remark.Text;
-            member.Role_id = 1;
-            if ("先生".Equals(this.sex.Text))
+            member.Sex = sex.Text;
+            //插入角色
+            if ("会员".Equals(TB_Role.Text))
             {
-                member.Sex = "男";
+                member.Role_id = 1;
             }
-            else
+            else if ("教练".Equals(TB_Role.Text))
             {
-                member.Sex = "女";
+                member.Role_id = 0;
+
             }
             //添加会员标签 用英文逗号分隔
             StringBuilder lableBuilder = new StringBuilder();
@@ -219,15 +221,23 @@ namespace AI_Sports.AISports.View.Pages
         {
 
         }
-
+        /// <summary>
+        /// 角色：会员
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioButton_Checked_3(object sender, RoutedEventArgs e)
         {
-
+            TB_Role.Text = "会员";
         }
-
+        /// <summary>
+        /// 角色：教练
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioButton_Checked_4(object sender, RoutedEventArgs e)
         {
-
+            TB_Role.Text = "教练";
         }
     }
 }

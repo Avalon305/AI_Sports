@@ -74,9 +74,22 @@ namespace AI_Sports.Service
         /// <returns></returns>
         public MemberEntity InitMemberInfo()
         {
-            
-            return memberDAO.Load(CommUtil.GetSettingString("memberPrimarykey"));
-            
+            //判断登陆用户，是教练自己锻炼。还是教练为用户进行设置。决定传哪个参数
+            string currentMemberPK = CommUtil.GetSettingString("memberPrimarykey");
+            string currentCoachId = CommUtil.GetSettingString("coachId");
+            if ((currentMemberPK == null || currentMemberPK == "") && (currentCoachId != null && currentCoachId != ""))
+            {
+                //无用户登陆。教练单独登陆时显示教练的信息。
+                return memberDAO.Load(currentCoachId);
+            }
+            else
+            {
+                //只要用户登录，教练不管是否登录 都显示用户信息
+                return memberDAO.Load(currentMemberPK);
+
+            }
+
+
         }
 
         /// <summary>
@@ -84,7 +97,7 @@ namespace AI_Sports.Service
         /// </summary>
         /// <param name="memberEntity"></param>
         /// <returns></returns>
-        public List<MemberEntity> ListMemberByCoachId(MemberEntity memberEntity)
+         List<MemberEntity> ListMemberByCoachId(MemberEntity memberEntity)
         {
             return memberDAO.listMemberByCoachId(memberEntity);
         }
@@ -94,7 +107,7 @@ namespace AI_Sports.Service
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private Enum Login(string memberId)
+        public Enum Login(string memberId)
         {
             //1.获得登录会员的会员id与权限
             Console.WriteLine("登陆会员的memberId:{0}", memberId);
@@ -120,137 +133,193 @@ namespace AI_Sports.Service
         /// 1.该方法可用于登陆后，根据传入卡号更新App.config。
         /// 2.允许教练单独登陆，那么这些设置都是教练的，可以和普通用户一样查看图表。教练、用户同时登陆则保留用户的信息，两个主键位都有值
         /// 3.参roleId 1代表用户 0代表教练
+        /// 4.登陆成功的情况更新数据库最近登陆时间
         /// </summary>
         /// <param name="memberId"></param>
         /// <param name="roleId"></param>
         private Enum UpdateSetting(string memberId, string roleId)
         {
-            //系统允许至多一位教练和一位用户同时登录，存一个用户主键和一系列ID，存一个教练id
-            string currentMemberPK = CommUtil.GetSettingString("memberPrimarykey");
-            string currentCoachId = CommUtil.GetSettingString("coachId");
-            if ((currentMemberPK == null || currentMemberPK == "") && (currentCoachId == null || currentCoachId == ""))
+            try
             {
-                //同时为空 无人登陆
-                //判断登陆者角色 
-                if ("1".Equals(roleId))//用户
+                //系统允许至多一位教练和一位用户同时登录，存一个用户主键和一系列ID，存一个教练id
+                string currentMemberPK = CommUtil.GetSettingString("memberPrimarykey");
+                string currentCoachId = CommUtil.GetSettingString("coachId");
+                if ((currentMemberPK == null || currentMemberPK == "") && (currentCoachId == null || currentCoachId == ""))
                 {
-                    //1.更新会员卡号ID
-                    CommUtil.UpdateSettingString("memberId", memberId);
-                    //3.更新当前登陆用户的训练计划id
-                    TrainingPlanEntity trainingPlanEntity = trainingPlanDAO.GetTrainingPlanByMumberId(memberId);
-                    CommUtil.UpdateSettingString("trainingPlanId", (trainingPlanEntity.Id).ToString());
-                    //4.更新当前登陆用户的训练课程id
-                    TrainingCourseEntity trainingCourseEntity = trainingCourseDAO.GetCourseByMemberId(memberId);
-                    CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
-                    //5.更新当前登陆用户的当前课程记录id current_course_count 
-                    CommUtil.UpdateSettingString("currentCourseCount", (trainingCourseEntity.Current_course_count).ToString());
-                    //5.更新当前登陆用户的目标课程记录id 
-                    CommUtil.UpdateSettingString("targetCourseCount", (trainingCourseEntity.Target_course_count).ToString());
-                    //6.更新当前登陆会员的主键
-                    //根据卡号查询会员
-                    MemberEntity member = memberDAO.GetMember(memberId);
-                    CommUtil.UpdateSettingString("memberPrimarykey", (member.Id).ToString());
-                    //7.更新会员最近登录时间
-                    UpdateLastLoginDate();
-                    logger.Debug("用户登录，ID："+memberId);
-                    //需要返回的页面类型
-                    return LoginPageStatus.UserPage;
+                    //同时为空 无人登陆
+                    //判断登陆者角色 
+                    if ("1".Equals(roleId))//用户
+                    {
+                        //1.更新会员卡号ID
+                        CommUtil.UpdateSettingString("memberId", memberId);
+                        //3.更新当前登陆用户的训练计划id
+                        TrainingPlanEntity trainingPlanEntity = trainingPlanDAO.GetTrainingPlanByMumberId(memberId);
+                        if (trainingPlanEntity != null)
+                        {
+                            CommUtil.UpdateSettingString("trainingPlanId", (trainingPlanEntity.Id).ToString());
+
+                        }
+                        //4.更新当前登陆用户的训练课程id
+                        TrainingCourseEntity trainingCourseEntity = trainingCourseDAO.GetCourseByMemberId(memberId);
+                        if (trainingCourseEntity != null)
+                        {
+                            CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
+                            //5.更新当前登陆用户的当前课程记录id current_course_count 
+                            CommUtil.UpdateSettingString("currentCourseCount", (trainingCourseEntity.Current_course_count).ToString());
+                            //5.更新当前登陆用户的目标课程记录id 
+                            CommUtil.UpdateSettingString("targetCourseCount", (trainingCourseEntity.Target_course_count).ToString());
+                        }
+                        
+                        //6.更新当前登陆会员的主键
+                        //根据卡号查询会员
+                        MemberEntity member = memberDAO.GetMember(memberId);
+                        if (member != null)
+                        {
+                            CommUtil.UpdateSettingString("memberPrimarykey", (member.Id).ToString());
+                            //7.更新会员最近登录时间
+                            member.Last_login_date = System.DateTime.Now;
+                            UpdateLastLoginDate(member);
+                        }
+                        
+                        logger.Debug("用户登录，ID：" + memberId);
+                        //需要返回的页面类型
+                        return LoginPageStatus.UserPage;
+                    }
+                    else if ("0".Equals(roleId))//教练登陆
+                    {
+                        //1.更新会员卡号ID
+                        CommUtil.UpdateSettingString("memberId", memberId);
+                        //3.更新当前登陆用户的训练计划id
+                        TrainingPlanEntity trainingPlanEntity = trainingPlanDAO.GetTrainingPlanByMumberId(memberId);
+                        if (trainingPlanEntity != null)
+                        {
+                            CommUtil.UpdateSettingString("trainingPlanId", (trainingPlanEntity.Id).ToString());
+
+                        }
+                        //4.更新当前登陆用户的训练课程id
+                        TrainingCourseEntity trainingCourseEntity = trainingCourseDAO.GetCourseByMemberId(memberId);
+                        if (trainingCourseEntity != null)
+                        {
+                            CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
+                            //5.更新当前登陆用户的当前课程记录id current_course_count 
+                            CommUtil.UpdateSettingString("currentCourseCount", (trainingCourseEntity.Current_course_count).ToString());
+                            //5.更新当前登陆用户的目标课程记录id 
+                            CommUtil.UpdateSettingString("targetCourseCount", (trainingCourseEntity.Target_course_count).ToString());
+                        }
+                        //6.更新当前登陆用户的主键
+                        //根据卡号查询用户
+                        MemberEntity member = memberDAO.GetMember(memberId);
+                        if (member != null)
+                        {
+                           
+                            //7.更新教练最近登录时间
+                            member.Last_login_date = System.DateTime.Now;
+                            UpdateLastLoginDate(member);
+                            //8.更新教练ID
+                            CommUtil.UpdateSettingString("coachId", (member.Id).ToString());
+                        }
+                       
+                        
+                        logger.Debug("教练登录，ID：" + memberId);
+                        //需要返回的页面类型
+                        return LoginPageStatus.CoachPage;
+                    }
                 }
-                else if ("0".Equals(roleId))//教练登陆
+                else if ((currentMemberPK == null || currentMemberPK == "") && (currentCoachId != null && currentCoachId != ""))
                 {
-                    //1.更新会员卡号ID
-                    CommUtil.UpdateSettingString("memberId", memberId);
-                    //3.更新当前登陆用户的训练计划id
-                    TrainingPlanEntity trainingPlanEntity = trainingPlanDAO.GetTrainingPlanByMumberId(memberId);
-                    CommUtil.UpdateSettingString("trainingPlanId", (trainingPlanEntity.Id).ToString());
-                    //4.更新当前登陆用户的训练课程id
-                    TrainingCourseEntity trainingCourseEntity = trainingCourseDAO.GetCourseByMemberId(memberId);
-                    CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
-                    //5.更新当前登陆用户的当前课程记录id current_course_count 
-                    CommUtil.UpdateSettingString("currentCourseCount", (trainingCourseEntity.Current_course_count).ToString());
-                    //5.更新当前登陆用户的目标课程记录id 
-                    CommUtil.UpdateSettingString("targetCourseCount", (trainingCourseEntity.Target_course_count).ToString());
-                    //6.更新当前登陆会员的主键
-                    //根据卡号查询会员
-                    MemberEntity member = memberDAO.GetMember(memberId);
-                    CommUtil.UpdateSettingString("memberPrimarykey", (member.Id).ToString());
-                    //7.更新会员最近登录时间
-                    UpdateLastLoginDate();
-                    //8.更新教练ID
-                    CommUtil.UpdateSettingString("coachId", (member.Id).ToString());
-                    logger.Debug("教练登录，ID：" + memberId);
-                    //需要返回的页面类型
-                    return LoginPageStatus.CoachPage;
+                    //会员未登陆 教练已经登陆
+                    //判断登陆者角色 
+                    if ("1".Equals(roleId))//用户
+                    {
+                        //1.更新会员卡号ID
+                        CommUtil.UpdateSettingString("memberId", memberId);
+                        //3.更新当前登陆用户的训练计划id
+                        TrainingPlanEntity trainingPlanEntity = trainingPlanDAO.GetTrainingPlanByMumberId(memberId);
+                        if (trainingPlanEntity != null)
+                        {
+                            CommUtil.UpdateSettingString("trainingPlanId", (trainingPlanEntity.Id).ToString());
+
+                        }
+                        //4.更新当前登陆用户的训练课程id
+                        TrainingCourseEntity trainingCourseEntity = trainingCourseDAO.GetCourseByMemberId(memberId);
+                        if (trainingCourseEntity != null)
+                        {
+                            CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
+                            //5.更新当前登陆用户的当前课程记录id current_course_count 
+                            CommUtil.UpdateSettingString("currentCourseCount", (trainingCourseEntity.Current_course_count).ToString());
+                            //5.更新当前登陆用户的目标课程记录id 
+                            CommUtil.UpdateSettingString("targetCourseCount", (trainingCourseEntity.Target_course_count).ToString());
+                        }
+
+                        //6.更新当前登陆会员的主键
+                        //根据卡号查询会员
+                        MemberEntity member = memberDAO.GetMember(memberId);
+                        if (member != null)
+                        {
+                            CommUtil.UpdateSettingString("memberPrimarykey", (member.Id).ToString());
+                            //7.更新会员最近登录时间
+                            member.Last_login_date = System.DateTime.Now;
+                            UpdateLastLoginDate(member);
+                        }
+                        
+                        logger.Debug("用户登录，ID：" + memberId);
+                        return LoginPageStatus.UserPage;
+                    }
+                    else if ("0".Equals(roleId))//教练重复登陆
+                    {
+                        logger.Debug("其他教练重复登录，已拦截，ID：" + memberId);
+                        return LoginPageStatus.RepeatLogins;
+                    }
+
                 }
-            }
-            else if ((currentMemberPK == null || currentMemberPK == "") && (currentCoachId != null && currentCoachId != ""))
-            {
-                //会员未登陆 教练已经登陆
-                //判断登陆者角色 
-                if ("1".Equals(roleId))//用户
+                else if ((currentMemberPK != null && currentMemberPK != "") && (currentCoachId == null || currentCoachId == ""))
                 {
-                    //1.更新会员卡号ID
-                    CommUtil.UpdateSettingString("memberId", memberId);
-                    //3.更新当前登陆用户的训练计划id
-                    TrainingPlanEntity trainingPlanEntity = trainingPlanDAO.GetTrainingPlanByMumberId(memberId);
-                    CommUtil.UpdateSettingString("trainingPlanId", (trainingPlanEntity.Id).ToString());
-                    //4.更新当前登陆用户的训练课程id
-                    TrainingCourseEntity trainingCourseEntity = trainingCourseDAO.GetCourseByMemberId(memberId);
-                    CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
-                    //5.更新当前登陆用户的当前课程记录id current_course_count 
-                    CommUtil.UpdateSettingString("currentCourseCount", (trainingCourseEntity.Current_course_count).ToString());
-                    //5.更新当前登陆用户的目标课程记录id 
-                    CommUtil.UpdateSettingString("targetCourseCount", (trainingCourseEntity.Target_course_count).ToString());
-                    //6.更新当前登陆会员的主键
-                    //根据卡号查询会员
-                    MemberEntity member = memberDAO.GetMember(memberId);
-                    CommUtil.UpdateSettingString("memberPrimarykey", (member.Id).ToString());
-                    //7.更新会员最近登录时间
-                    UpdateLastLoginDate();
-                    logger.Debug("用户登录，ID：" + memberId);
-                    return LoginPageStatus.UserPage;
+                    //会员已登陆 教练未登录
+                    //判断登陆者角色 
+                    if ("1".Equals(roleId))//用户
+                    {
+                        logger.Debug("其他用户重复登录，已拦截，ID：" + memberId);
+                        return LoginPageStatus.RepeatLogins;
+                    }
+                    else if ("0".Equals(roleId))//教练登陆 原用户的设置不动 只增加教练ID
+                    {
+                        //8.更新教练ID
+                        MemberEntity member = memberDAO.GetMember(memberId);
+                        if (member != null)
+                        {
+                            CommUtil.UpdateSettingString("coachId", (member.Id).ToString());
+                            //更新教练最近登录时间
+                            member.Last_login_date = System.DateTime.Now;
+                            UpdateLastLoginDate(member);
+                        }
+                        
+                        logger.Debug("教练登录，ID：" + memberId);
+                        //需要返回的页面类型
+                        return LoginPageStatus.CoachPage;
+                    }
+
                 }
-                else if ("0".Equals(roleId))//教练重复登陆
+                else if ((currentMemberPK != null && currentMemberPK != "") && (currentCoachId != null && currentCoachId != ""))
                 {
-                    logger.Debug("其他教练重复登录，ID：" + memberId);
+                    //会员已登录 教练已登录
+                    logger.Debug("已有登陆会员和教练。重复登录，ID：" + memberId);
+
                     return LoginPageStatus.RepeatLogins;
                 }
-
-            }
-            else if ((currentMemberPK != null && currentMemberPK != "") && (currentCoachId == null || currentCoachId == ""))
-            {
-                //会员已登陆 教练未登录
-                //判断登陆者角色 
-                if ("1".Equals(roleId))//用户
+                else
                 {
-                    logger.Debug("其他用户重复登录，ID：" + memberId);
-                    return LoginPageStatus.RepeatLogins;
-                }
-                else if ("0".Equals(roleId))//教练登陆 原用户的设置不动 只增加教练ID
-                {
-                    //8.更新教练ID
-                    MemberEntity member = memberDAO.GetMember(memberId);
-                    CommUtil.UpdateSettingString("coachId", (member.Id).ToString());
-                    logger.Debug("教练登录，ID：" + memberId);
-                    //需要返回的页面类型
-                    return LoginPageStatus.CoachPage;
+                    return LoginPageStatus.UnknownID;
                 }
 
             }
-            else if ((currentMemberPK != null && currentMemberPK != "") && (currentCoachId != null && currentCoachId != ""))
+            catch (Exception e)
             {
-                //会员已登录 教练已登录
-                logger.Debug("已有登陆会员和教练。重复登录，ID：" + memberId);
+                logger.Warn("用户登录更新配置类出现异常");
+            }
+            
+                return LoginPageStatus.UnknownID;
 
-                return LoginPageStatus.RepeatLogins;
-            }
-            else
-            {
-                return LoginPageStatus.RepeatLogins;
-            }
-            return LoginPageStatus.RepeatLogins;
-            
-            
+
         }
         /// <summary>
         /// 所有配置清空
@@ -292,11 +361,8 @@ namespace AI_Sports.Service
         /// <summary>
         /// 更新会员的登陆时间
         /// </summary>
-        public void UpdateLastLoginDate()
+        public void UpdateLastLoginDate(MemberEntity memberEntity)
         {
-            MemberEntity memberEntity = new MemberEntity();
-            memberEntity.Id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
-            memberEntity.Last_login_date = new DateTime();
             memberDAO.UpdateByPrimaryKey(memberEntity);
         }
 

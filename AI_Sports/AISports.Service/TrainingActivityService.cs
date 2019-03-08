@@ -24,21 +24,50 @@ namespace AI_Sports.Service
         {
             using (TransactionScope ts = new TransactionScope())
             {
-
-                foreach (var activity in activities)
+                long result = 0;
+                //判断登陆用户，是教练自己锻炼。还是教练为用户进行设置。决定传哪个参数
+                string currentMemberPK = CommUtil.GetSettingString("memberPrimarykey");
+                string currentCoachId = CommUtil.GetSettingString("coachId");
+                if ((currentMemberPK == null || currentMemberPK == "") && (currentCoachId != null && currentCoachId != ""))
                 {
-                    activity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
-                    activity.Member_id = CommUtil.GetSettingString("memberId");
-                    activity.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
-                    activity.Fk_training_course_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
-                    activity.Gmt_create = System.DateTime.Now;
-                    activity.Is_complete = false;
-                    activity.current_turn_number = 0;
+                    //无用户登陆。教练单独登陆时对教练进行设置
+                    foreach (var activity in activities)
+                    {
+                        activity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
+                        activity.Member_id = CommUtil.GetSettingString("memberId");
+                        activity.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("coachId"));
+                        activity.Fk_training_course_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
+                        activity.Gmt_create = System.DateTime.Now;
+                        activity.Is_complete = false;
+                        activity.current_turn_number = 0;
+                    }
+                    //批量插入训练活动
+                    result = activityDAO.BatchInsert(activities);
+                    //根据训练活动批量插入个人设置记录 传入教练的主键id
+                    personalSettingService.SavePersonalSettings(ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("coachId")));
                 }
-                //批量插入训练活动
-                long result = activityDAO.BatchInsert(activities);
-                //根据训练活动批量插入个人设置记录
-                personalSettingService.SavePersonalSettings();
+                else
+                {
+                    //只要用户登录，为用户进行设置
+                    foreach (var activity in activities)
+                    {
+                        activity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
+                        activity.Member_id = CommUtil.GetSettingString("memberId");
+                        activity.Fk_member_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey"));
+                        activity.Fk_training_course_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
+                        activity.Gmt_create = System.DateTime.Now;
+                        activity.Is_complete = false;
+                        activity.current_turn_number = 0;
+                    }
+                    //批量插入训练活动
+                    result = activityDAO.BatchInsert(activities);
+                    //根据训练活动批量插入个人设置记录 传入会员的主键id
+                    personalSettingService.SavePersonalSettings(ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey")));
+                }
+
+
+                
+                
 
                 
 
