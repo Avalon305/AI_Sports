@@ -181,7 +181,7 @@ namespace AI_Sports.Service
                             UpdateLastLoginDate(member);
                         }
                         
-                        logger.Debug("用户登录，ID：" + memberId);
+                        logger.Debug("状态：无教练无用户登录。用户登录，返回用户页 ID：" + memberId);
                         //需要返回的页面类型
                         return LoginPageStatus.UserPage;
                     }
@@ -220,16 +220,16 @@ namespace AI_Sports.Service
                         }
                        
                         
-                        logger.Debug("教练登录，ID：" + memberId);
+                        logger.Debug("状态：无教练无用户登录。教练登录，返回教练页面。ID：" + memberId);
                         //需要返回的页面类型
                         return LoginPageStatus.CoachPage;
                     }
                 }
                 else if ((currentMemberPK == null || currentMemberPK == "") && (currentCoachId != null && currentCoachId != ""))
                 {
-                    //会员未登陆 教练已经登陆
+                    //教练已经登陆 会员未登陆 
                     //判断登陆者角色 
-                    if ("1".Equals(roleId))//用户
+                    if ("1".Equals(roleId))//此时用户登陆还是在教练页面
                     {
                         //1.更新会员卡号ID
                         CommUtil.UpdateSettingString("memberId", memberId);
@@ -262,12 +262,12 @@ namespace AI_Sports.Service
                             UpdateLastLoginDate(member);
                         }
                         
-                        logger.Debug("用户登录，ID：" + memberId);
-                        return LoginPageStatus.UserPage;
+                        logger.Debug("状态：教练已经登陆 会员未登陆。用户登录，返回教练页面。ID：" + memberId);
+                        return LoginPageStatus.CoachPage;
                     }
                     else if ("0".Equals(roleId))//教练重复登陆
                     {
-                        logger.Debug("其他教练重复登录，已拦截，ID：" + memberId);
+                        logger.Debug("状态：教练已经登陆 会员未登陆。其他教练重复登录，已拦截，ID：" + memberId);
                         return LoginPageStatus.RepeatLogins;
                     }
 
@@ -278,7 +278,7 @@ namespace AI_Sports.Service
                     //判断登陆者角色 
                     if ("1".Equals(roleId))//用户
                     {
-                        logger.Debug("其他用户重复登录，已拦截，ID：" + memberId);
+                        logger.Debug("状态：会员已登陆 教练未登录。其他用户重复登录，已拦截，ID：" + memberId);
                         return LoginPageStatus.RepeatLogins;
                     }
                     else if ("0".Equals(roleId))//教练登陆 原用户的设置不动 只增加教练ID
@@ -293,7 +293,7 @@ namespace AI_Sports.Service
                             UpdateLastLoginDate(member);
                         }
                         
-                        logger.Debug("教练登录，ID：" + memberId);
+                        logger.Debug("状态：会员已登陆 教练未登录。教练登录，ID：" + memberId);
                         //需要返回的页面类型
                         return LoginPageStatus.CoachPage;
                     }
@@ -302,7 +302,7 @@ namespace AI_Sports.Service
                 else if ((currentMemberPK != null && currentMemberPK != "") && (currentCoachId != null && currentCoachId != ""))
                 {
                     //会员已登录 教练已登录
-                    logger.Debug("已有登陆会员和教练。重复登录，ID：" + memberId);
+                    logger.Debug("状态：会员已登录 教练已登录。已有登陆会员和教练。重复登录，ID：" + memberId);
 
                     return LoginPageStatus.RepeatLogins;
                 }
@@ -312,9 +312,10 @@ namespace AI_Sports.Service
                 }
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 logger.Warn("用户登录更新配置类出现异常");
+                throw new Exception("用户登录更新配置类出现异常", ex);
             }
             
                 return LoginPageStatus.UnknownID;

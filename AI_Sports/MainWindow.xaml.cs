@@ -30,22 +30,23 @@ namespace AI_Sports
         public MainWindow()
         {
             InitializeComponent();
+            this.mainpage.Source = new Uri("/AI_Sports;component/LoginWindow.xaml", UriKind.Relative);//跳转页面
 
             //显示欢迎页，验证后返回。
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
+            //LoginWindow loginWindow = new LoginWindow();
+            //loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
             //                          //测试CQZ
             //loginWindow.Close();//关闭欢迎页
             //只要教练ID不为空就登陆到教练页面
-            if (CommUtil.GetSettingString("coachId") != null && CommUtil.GetSettingString("coachId") != "")
-            {
-                this.mainpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/UserManage.xaml", UriKind.Relative);//跳转页面
-            }
-            else
-            {
-                this.mainpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/User.xaml", UriKind.Relative);//跳转页面
+            //if (CommUtil.GetSettingString("coachId") != null && CommUtil.GetSettingString("coachId") != "")
+            //{
+            //    this.mainpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/UserManage.xaml", UriKind.Relative);//跳转页面
+            //}
+            //else
+            //{
+            //    this.mainpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/User.xaml", UriKind.Relative);//跳转页面
 
-            }
+            //}
             // this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
             //  this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
@@ -71,34 +72,62 @@ namespace AI_Sports
         {
             Enum resultCode = null;
             if (e.Key == Key.D1)
-            {
+            {//模拟用户登录
                 resultCode = memberService.Login("305865088");
+                switch (resultCode)
+                {
+                    case LoginPageStatus.CoachPage:
+                        logger.Info("返回教练登陆页面");
+                        //this.Close();
+                        this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
+                        break;
+                    case LoginPageStatus.UserPage:
+                        logger.Debug("返回用户登陆页面");
+                        //this.Close();
+                        this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
+                        break;
+                    case LoginPageStatus.RepeatLogins:
+                        logger.Debug("拦截重复登陆，请先退出。");
+                        break;
+                    case LoginPageStatus.UnknownID:
+                        logger.Debug("未知ID，禁止登录。");
+                        break;
+                    default:
+                        break;
+                }
             }
             else if (e.Key == Key.D0)
-            {
+            {//模拟教练登陆
                 resultCode = memberService.Login("17863979633");
-                
+                switch (resultCode)
+                {
+                    case LoginPageStatus.CoachPage:
+                        logger.Debug("教练正常登陆");
+                        //this.Close();
+                        this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
+                        break;
+                    case LoginPageStatus.UserPage:
+                        logger.Debug("用户正常登陆");
+                        //this.Close();
+                        this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
+                        break;
+                    case LoginPageStatus.RepeatLogins:
+                        logger.Debug("拦截重复登陆，请先退出。");
+                        break;
+                    case LoginPageStatus.UnknownID:
+                        logger.Debug("未知ID，禁止登录。");
+                        break;
+                    default:
+                        break;
+                }
+
             }
 
-            switch (resultCode)
-            {
-                case LoginPageStatus.CoachPage:
-                    logger.Debug("教练正常登陆");
-                    //this.Close();
-                    break;
-                case LoginPageStatus.UserPage:
-                    logger.Debug("用户正常登陆");
-                    //this.Close();
-                    break;
-                case LoginPageStatus.RepeatLogins:
-                    logger.Debug("拦截重复登陆，请先退出。");
-                    break;
-                case LoginPageStatus.UnknownID:
-                    logger.Debug("未知ID，禁止登录。");
-                    break;
-                default:
-                    break;
-            }
+            
 
             // this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 

@@ -85,11 +85,15 @@ namespace AI_Sports.AISports.View.Pages
         {
             //清空配置类
             memberService.Logout();
+            //退出登录 跳转到登录页
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/LoginWindow.xaml", UriKind.Relative));
+
             //System.Windows.Forms.Application.Restart();
             //AI_Sports.App.Current.Shutdown();
             //显示欢迎页，验证后返回。
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
+            //LoginWindow loginWindow = new LoginWindow();
+            ////loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
+            //this.Content = loginWindow;
         }
 
     }
