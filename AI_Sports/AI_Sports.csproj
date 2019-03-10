@@ -385,6 +385,7 @@
     <Compile Include="AISports.Util\KeyGenerator.cs" />
     <Compile Include="AISports.Util\ParseIntegerUtil.cs" />
     <Compile Include="AISports.Util\DbUtil.cs" />
+    <Compile Include="AISports.Util\SerialPortUtil.cs" />
     <Compile Include="AISports.Util\SpeechUtil.cs" />
     <Compile Include="AISports.View\Pages\analyze.xaml.cs" />
     <Compile Include="AISports.View\Pages\WriteCardWindow.xaml.cs">
@@ -501,10 +502,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NolleTestSerial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NolleTest.xaml.cs">
       <DependentUpon>NolleTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NolleTestSerial.xaml.cs">
+      <DependentUpon>NolleTestSerial.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
