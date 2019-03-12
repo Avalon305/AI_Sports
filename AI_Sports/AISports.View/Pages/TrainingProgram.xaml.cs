@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AI_Sports.Constant;
+using AI_Sports.AISports.Util;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -25,7 +26,9 @@ namespace AI_Sports.AISports.View.Pages
 	/// </summary>
 	class MainWindowViewModel
 	{
-		public CompleteFlag completeFlag;
+        
+
+        public CompleteFlag completeFlag;
 		public ObservableCollection<TrainingPlan> trainingPlanGroup;
 
 		public MainWindowViewModel()
@@ -68,13 +71,14 @@ namespace AI_Sports.AISports.View.Pages
 	public partial class TrainingProgram : Page
 	{
 		private MainWindowViewModel viewModel = new MainWindowViewModel();
-		public TrainingProgram()
+        private TrainingPlanService trainingPlanService = new TrainingPlanService();
+        private TrainingActivityService activityService = new TrainingActivityService();
+        public TrainingProgram()
 		{
 			InitializeComponent();
 
            
-            TrainingPlanService trainingPlanService = new TrainingPlanService();
-            TrainingActivityService activityService = new TrainingActivityService();
+            
             //查询训练计划
             TrainingPlanEntity trainingPlanEntity = trainingPlanService.GetPlanByMumberId();
             //计划标题
@@ -105,6 +109,73 @@ namespace AI_Sports.AISports.View.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("训练课程已完成");
+        }
+
+        private void Speech_Click(object sender, RoutedEventArgs e)
+        {
+            List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
+            StringBuilder speechBuilder = new StringBuilder();
+            speechBuilder.Append("您可以在此查看当前训练课程中包含的训练活动的详细信息和进度。");
+
+            if (activityList != null && activityList.Count > 0)
+            {
+                speechBuilder.Append("您的训练活动类型为");
+                foreach (var activity in activityList)
+                {
+                    switch (activity.Activity_type)
+                    {
+                        case "0":
+                            speechBuilder.Append("力量循环,");
+                            break;
+                        case "1":
+                            speechBuilder.Append("力量耐力循环,");
+                            break;
+                        default:
+                            break;
+
+                    }
+
+                }
+                foreach (var activity in activityList)
+                {
+                    switch (activity.Activity_type)
+                    {
+                        case "0":
+                            speechBuilder.Append("力量循环当前已经完成");
+                            speechBuilder.Append(activity.current_turn_number);
+                            speechBuilder.Append("轮，目标轮次为");
+                            speechBuilder.Append(activity.Target_turn_number);
+                            speechBuilder.Append("轮，还需要完成");
+                            speechBuilder.Append(activity.Target_turn_number - activity.current_turn_number);
+                            speechBuilder.Append("轮。");
+
+
+
+                            break;
+                        case "1":
+                            speechBuilder.Append("力量耐力循环当前已经完成");
+                            speechBuilder.Append(activity.current_turn_number);
+                            speechBuilder.Append("轮，目标轮次为");
+                            speechBuilder.Append(activity.Target_turn_number);
+                            speechBuilder.Append("轮，还需要完成");
+                            speechBuilder.Append(activity.Target_turn_number - activity.current_turn_number);
+                            speechBuilder.Append("轮。");
+                            break;
+                        default:
+                            break;
+
+                    }
+
+                }
+                speechBuilder.Append("加油！坚持完成每一个目标，持之以恒才能达到理想的锻炼效果。");
+            }
+            
+
+            Console.WriteLine("训练活动页TrainingProgram语音文本："+speechBuilder.ToString());
+
+            //调用工具类读
+            SpeechUtil.read(speechBuilder.ToString());
+
         }
     }
 }

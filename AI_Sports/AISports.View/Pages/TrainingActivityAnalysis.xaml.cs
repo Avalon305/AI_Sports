@@ -103,7 +103,7 @@ namespace AI_Sports.AISports.View.Pages
             }
 
             StringBuilder speechText = new StringBuilder();
-            speechText.Append("您当前查看的是第");
+            speechText.Append("您可以在此查看选择的训练课程记录的详细信息，包括各轮训练活动记录，您当前查看的是第");
             speechText.Append(currentCourseCount);
             speechText.Append("次课程记录。");
             speechText.Append("总共进行了");
@@ -114,6 +114,8 @@ namespace AI_Sports.AISports.View.Pages
             speechText.Append("力量耐力循环");
             speechText.Append(enduranceActivityCount);
             speechText.Append("轮。您可以点击训练活动展开查看详细记录。");
+
+            Console.WriteLine("训练活动分析页面语音文本:"+speechText.ToString());
             SpeechUtil.read(speechText.ToString());
 
         }

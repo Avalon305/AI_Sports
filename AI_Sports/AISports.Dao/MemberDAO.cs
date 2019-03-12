@@ -99,32 +99,7 @@ namespace AI_Sports.Dao
                 return conn.Query<MemberEntity>(query).ToList();
             }
         }
-        /// <summary>
-        /// 查询会员的初次训练日期
-        /// </summary>
-        /// <param name="memberId"></param>
-        /// <returns></returns>
-        public DateTime? GetMinTrainingDate(string memberId)
-        {
-            using (var conn = DbUtil.getConn())
-            {
-                const string query = "SELECT Min(gmt_create) FROM bdl_training_device_record WHERE member_id = @memberId";
-                return conn.QueryFirstOrDefault<DateTime?>(query, new { memberId });
-            }
-        }
-        /// <summary>
-        /// 查询最近训练日期
-        /// </summary>
-        /// <param name="memberId"></param>
-        /// <returns></returns>
-        public DateTime? GetMaxTrainingDate(string memberId)
-        {
-            using (var conn = DbUtil.getConn())
-            {
-                const string query = "SELECT Max(gmt_create) FROM bdl_training_device_record WHERE member_id = @memberId";
-                return conn.QueryFirstOrDefault<DateTime?>(query, new { memberId });
-            }
-        }
+       
     }
 
 

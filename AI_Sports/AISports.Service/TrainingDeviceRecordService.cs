@@ -34,5 +34,34 @@ namespace AI_Sports.AISports.Service
             return trainingDeviceRecordDAO.ListRecordById(memberId);
             
         }
+        /// <summary>
+        /// 查询用户当前月训练记录 出勤页
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        public List<TrainingDeviceRecordEntity> ListCurrentMonthRecordById(string memberId)
+        {
+            return trainingDeviceRecordDAO.ListCurrentMonthRecordById(memberId);
+
+        }
+
+        /// <summary>
+        /// 查询会员的初次训练日期
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        public DateTime? GetMinTrainingDate(string memberId)
+        {
+            return trainingDeviceRecordDAO.GetMinTrainingDate(memberId);
+        }
+        /// <summary>
+        /// 查询最近训练日期
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        public DateTime? GetMaxTrainingDate(string memberId)
+        {
+            return trainingDeviceRecordDAO.GetMaxTrainingDate(memberId);
+        }
     }
 }

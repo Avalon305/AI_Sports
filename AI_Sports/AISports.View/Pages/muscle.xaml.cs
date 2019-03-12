@@ -1,4 +1,5 @@
 ﻿using AI_Sports.AISports.Service;
+using AI_Sports.AISports.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,18 @@ namespace AI_Sports.AISports.View.Pages
         {
 
 
+        }
+        /// <summary>
+        /// 语音分析
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Speech_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder speechBuilder = new StringBuilder();
+            speechBuilder.Append("您可以在此查看您的主动肌对抗肌锻炼进度和各大肌肉群锻炼比例以及各个设备对应锻炼的肌肉群分布，从而结合您的训练目标选择最适合您的设备进行锻炼。");
+            Console.WriteLine("肌肉页面语音文本："+speechBuilder.ToString());
+            SpeechUtil.read(speechBuilder.ToString());
         }
     }
 

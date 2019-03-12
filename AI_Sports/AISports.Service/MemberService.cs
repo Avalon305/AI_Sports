@@ -368,24 +368,7 @@ namespace AI_Sports.Service
         }
 
 
-        /// <summary>
-        /// 查询会员的初次训练日期
-        /// </summary>
-        /// <param name="memberId"></param>
-        /// <returns></returns>
-        public DateTime? GetMinTrainingDate(string memberId)
-        {
-            return memberDAO.GetMinTrainingDate(memberId);
-        }
-        /// <summary>
-        /// 查询最近训练日期
-        /// </summary>
-        /// <param name="memberId"></param>
-        /// <returns></returns>
-        public DateTime? GetMaxTrainingDate(string memberId)
-        {
-            return memberDAO.GetMaxTrainingDate(memberId);
-        }
+        
 
     }
 }

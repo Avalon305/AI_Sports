@@ -66,7 +66,7 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT course.current_course_count,plan.gmt_create,Sum(dev.training_time) AS SumTime,Sum(dev.energy) AS SumEnergy,plan.title FROM bdl_training_plan AS plan JOIN bdl_training_course AS course ON plan.id = course.fk_training_plan_id JOIN bdl_training_activity_record as act ON act.fk_training_course_id = course.id JOIN bdl_training_device_record as dev ON act.id = dev.fk_training_activity_record_id WHERE plan.id = @TrainingPlanId AND course.id = @TrainingCourseId"; 
+                const string query = "SELECT course.current_course_count,course.target_course_count,plan.gmt_create,Sum(dev.training_time) AS SumTime,Sum(dev.energy) AS SumEnergy,plan.title FROM bdl_training_plan AS plan JOIN bdl_training_course AS course ON plan.id = course.fk_training_plan_id JOIN bdl_training_activity_record as act ON act.fk_training_course_id = course.id JOIN bdl_training_device_record as dev ON act.id = dev.fk_training_activity_record_id WHERE plan.id = @TrainingPlanId AND course.id = @TrainingCourseId"; 
                 return conn.QueryFirstOrDefault<TrainingPlanVO>(query, new { @TrainingPlanId = trainingPlanId , @TrainingCourseId = trainingCourseId });
             }
         }

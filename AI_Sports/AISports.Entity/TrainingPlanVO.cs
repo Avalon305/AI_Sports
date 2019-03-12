@@ -22,6 +22,9 @@ namespace AI_Sports.Entity
         /// 当前课程轮次计数
         public int? Current_course_count { get; set; }
 
+        /// 目标课程轮次计数=前端课程天
+        public int? Target_course_count { get; set; }
+
         /// 训练计划总耗能 单位卡路里
         public double? SumEnergy { get; set; }
         /// 训练计划总时间 单位秒

@@ -58,8 +58,8 @@
             </DataGrid>
         </StackPanel>
         <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,50" VerticalAlignment="Bottom" Grid.Row="2" Grid.RowSpan="2"/>
-        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}" Click="Button_Click_Back"/>
-        <Button x:Name="speech" Content="语音分析" HorizontalAlignment="Left" Margin="100,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"  Style="{DynamicResource btn-success}" Click="Speech_Click"/>
+        <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}" FontSize="20" Click="Button_Click_Back"/>
+        <Button x:Name="speech" Content="AI教练" HorizontalAlignment="Left" Margin="100,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"  Style="{DynamicResource btn-success}" FontSize="20" Click="Speech_Click"/>
 
     </Grid>
 </Page>

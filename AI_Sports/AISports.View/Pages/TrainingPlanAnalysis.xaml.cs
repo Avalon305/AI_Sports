@@ -26,9 +26,10 @@ namespace AI_Sports.AISports.View.Pages
     /// </summary>
     public partial class TrainingPlanAnalysis : Page
     {
-        string sumEnergy = null;
-        string sumTime = null;
-        string courseCount = null;
+        string sumEnergy = "";
+        string sumTime = "";
+        int? courseCount = new int?();//当前次数
+        int? targetCourseCount = new int?(); //目标次数
         public TrainingPlanAnalysis()
         {
             InitializeComponent();
@@ -57,7 +58,8 @@ namespace AI_Sports.AISports.View.Pages
             //给语音分析参数赋值
             sumEnergy = this.Lab_SumEnergy.Content.ToString();
             sumTime = this.Lab_SumTime.Content.ToString();
-            courseCount = this.Lab_Current_course_count.Content.ToString();
+            courseCount = trainingPlanVO.Current_course_count;
+            targetCourseCount = trainingPlanVO.Target_course_count;
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -85,7 +87,7 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Speech_Click(object sender, RoutedEventArgs e)
         {
-            String speechText = "您本次训练计划共进行"+ courseCount + ",共消耗热量" + sumEnergy + ",训练总时间" + sumTime + ",请继续加油！";
+            String speechText = "您本次训练计划共完成"+ courseCount + "次训练课程,共消耗热量" + sumEnergy + ",训练总时间" + sumTime + "，目标总课时数为" + targetCourseCount +"次，还需要完成"+ (targetCourseCount - courseCount) + "次训练课程" + ",请继续加油！";
             Console.WriteLine("训练计划语音文本："+speechText);
             SpeechUtil.read(speechText);
         }

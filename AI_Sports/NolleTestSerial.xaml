@@ -15,7 +15,7 @@
                     <Grid>
 
                         <Label x:Name="label" Content="串口号：" HorizontalAlignment="Left"  Margin="10,10,0,20" VerticalAlignment="Center" RenderTransformOrigin="0.5,2.438" Height="34"/>
-                        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="88,2,0,34" VerticalAlignment="Center" Width="112" RenderTransformOrigin="0.333,4.409" DropDownOpened="comboBox_DropDownOpened" Height="34" FontSize="16"/>
+                        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="88,2,0,34" VerticalAlignment="Center" Width="112" RenderTransformOrigin="0.333,4.409" DropDownOpened="ComboBox_DropDownOpened" Height="34" FontSize="16"/>
                         <Button x:Name="button" Content="连接" Width="100" HorizontalAlignment="Left" Margin="382,2,0,34" VerticalAlignment="Stretch"  Click="button_Click"  RenderTransformOrigin="0.5,0.5" Style="{DynamicResource btn-success}" Height="Auto"/>
                     </Grid>
                 </ContentControl>

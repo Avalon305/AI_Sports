@@ -10,8 +10,8 @@
                         <Ellipse.Fill>
                             <RadialGradientBrush 
           GradientOrigin="0.5,0.5" Center="0.5,0.5" 
-          RadiusX="1" RadiusY="0.5">
-                                <GradientStop Color="Gray" Offset="1" />
+          RadiusX="2" RadiusY="1" >
+                                <GradientStop Color="Black" Offset="1" />
                                 <GradientStop Color="White" Offset="0" />
                             </RadialGradientBrush>
                         </Ellipse.Fill>
@@ -26,8 +26,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">
-                    <Border SnapsToDevicePixels="True" Background="DeepSkyBlue" BorderThickness="1" 
-                                CornerRadius="5" BorderBrush="DeepSkyBlue" Height="10"/>
+                    <Border SnapsToDevicePixels="True" Background="#FF04243D" BorderThickness="1" 
+                                CornerRadius="5" BorderBrush="#FF04243D" Height="10"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

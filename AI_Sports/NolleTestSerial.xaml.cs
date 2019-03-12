@@ -94,5 +94,10 @@ namespace AI_Sports
             }
 
         }
+
+        private void ComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+
+        }
     }
 }

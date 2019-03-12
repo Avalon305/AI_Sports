@@ -88,7 +88,7 @@ namespace AI_Sports.AISports.View.Pages
             //查询课程记录集合 绑定ItemsSource
             List<TrainingCourseVO> trainingCourseVOs = trainingCourseService.listCourseRecord();
             StringBuilder speechText = new StringBuilder();
-            speechText.Append("您总共进行了");
+            speechText.Append("您可以在此查看各次训练课程的统计信息，您总共进行了");
             speechText.Append(trainingCourseVOs.Count);
             speechText.Append("次训练课程。");
             foreach (var item in trainingCourseVOs)
