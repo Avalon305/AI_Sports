@@ -389,7 +389,7 @@ namespace AI_Sports
                     Console.WriteLine("Skeletons为空进行Update");
                     Thread.Sleep(100);
                 }
-
+                Joint Head = new Joint();   //衣领位置
                 Joint Collar = new Joint();   //衣领位置
                 Joint LeftShoulder = new Joint();  //左肩关节
                 Joint LeftElbow = new Joint();  //左胳膊肘
@@ -412,7 +412,7 @@ namespace AI_Sports
                         System.Windows.Media.Brush brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
                         foreach (var joint in skeleton.Joints)
                         {
-                            drawingContext.DrawEllipse(brush, new System.Windows.Media.Pen(), new System.Windows.Point((joint.Proj.X * _bitmap.Width - 10 / 2) - 53, (joint.Proj.Y * _bitmap.Height - 10 / 2) - 80), 5, 5);
+                            drawingContext.DrawEllipse(brush, new System.Windows.Media.Pen(), new System.Windows.Point((joint.Proj.X * _bitmap.Width - 10 / 2) - 53, (joint.Proj.Y * _bitmap.Height - 10 / 2) - 70), 5, 5);
                         }
                         drawingContext.Close();
                         RenderTargetBitmap bmp = new RenderTargetBitmap(640, 480, 120, 120, PixelFormats.Pbgra32);
@@ -424,6 +424,11 @@ namespace AI_Sports
 
                     });
                     Console.WriteLine("类型" + i + " " + skeleton.Joints[i].Type.ToString());
+                    if (skeleton.Joints[i].Type.ToString() == "Head")
+                    {
+                        Head = skeleton.Joints[i];
+                        // Console.WriteLine("头部位置坐标" + i + "||" + Head.Real.X + "||" + Head.Real.Y + "||" + Head.Real.Z);
+                    }
                     if (skeleton.Joints[i].Type.ToString() == "LeftCollar")
                     {
                         Collar = skeleton.Joints[i];
@@ -488,12 +493,12 @@ namespace AI_Sports
                             //在输入框中渲染数据
                             this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                             {
-                                Shoulder_width.Text = ShoulderWidth.ToString();
-                                Arm_length_up.Text = ArmLengthUp.ToString();
-                                Arm_length_down.Text = ArmLengthDown.ToString();
-                                Leg_length_up.Text = LegLengthUp.ToString();
-                                Leg_length_down.Text = LegLengthDown.ToString();
-                                Body_length.Text = BodyLength.ToString();
+                                Shoulder_width.Text = ShoulderWidth.ToString("f2");
+                                Arm_length_up.Text = ArmLengthUp.ToString("f2");
+                                Arm_length_down.Text = ArmLengthDown.ToString("f2");
+                                Leg_length_up.Text = LegLengthUp.ToString("f2");
+                                Leg_length_down.Text = LegLengthDown.ToString("f2");
+                                Body_length.Text = BodyLength.ToString("f2");
                             });
                             break;
                         }
