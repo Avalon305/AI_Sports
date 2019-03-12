@@ -2,15 +2,26 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:AI_Sports">
     <Style TargetType="{x:Type Thumb}" x:Key="SliderThumbStyle">
+        <!--滑块样式-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Ellipse Width="25" Height="25" Fill="Black"/>
+                    <Ellipse Width="30" Height="30">
+                        <Ellipse.Fill>
+                            <RadialGradientBrush 
+          GradientOrigin="0.5,0.5" Center="0.5,0.5" 
+          RadiusX="1" RadiusY="0.5">
+                                <GradientStop Color="Gray" Offset="1" />
+                                <GradientStop Color="White" Offset="0" />
+                            </RadialGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
+    <!--滑块左侧进度条样式-->
     <Style TargetType="RepeatButton" x:Key="Slider_DecreaseRepeatBtnStyle">
         <Setter Property="Template">
             <Setter.Value>
@@ -21,7 +32,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <!--滑块右侧进度条样式-->
     <Style TargetType="{x:Type Slider}">
         <Setter Property="Template">
             <Setter.Value>

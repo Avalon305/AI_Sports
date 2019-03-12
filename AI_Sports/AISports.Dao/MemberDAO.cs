@@ -56,8 +56,8 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT * FROM bdl_member WHERE member_id = @Member_id";
-                return conn.QueryFirstOrDefault<MemberEntity>(query, new { Member_id = memberId });
+                const string query = "SELECT * FROM bdl_member WHERE member_id = @memberId";
+                return conn.QueryFirstOrDefault<MemberEntity>(query, new { memberId });
             }
         }
        
@@ -108,8 +108,8 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT Min(gmt_create) FROM bdl_training_device_record WHERE member_id = @Member_id";
-                return conn.QueryFirstOrDefault<DateTime>(query, new { Member_id = memberId });
+                const string query = "SELECT Min(gmt_create) FROM bdl_training_device_record WHERE member_id = @memberId";
+                return conn.QueryFirstOrDefault<DateTime?>(query, new { memberId });
             }
         }
         /// <summary>
@@ -121,8 +121,8 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT Max(gmt_create) FROM bdl_training_device_record WHERE member_id = @Member_id";
-                return conn.QueryFirstOrDefault<DateTime>(query, new { Member_id = memberId });
+                const string query = "SELECT Max(gmt_create) FROM bdl_training_device_record WHERE member_id = @memberId";
+                return conn.QueryFirstOrDefault<DateTime?>(query, new { memberId });
             }
         }
     }

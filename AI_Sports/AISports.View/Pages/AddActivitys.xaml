@@ -45,7 +45,7 @@
             </WrapPanel>
 
             <WrapPanel>
-                <Label Content="创建训练活动" Style="{DynamicResource h3}" Margin="20 20 0 0"/>
+                <Label Content="训练活动类型" Style="{DynamicResource h3}" Margin="20 20 0 0"/>
             </WrapPanel>
             <WrapPanel >
                 <GridSplitter  Width="1080" Height="2" Margin="10,10,0,0" Background="Gray" />

@@ -38,8 +38,10 @@ namespace AI_Sports.AISports.View.Pages
 
         TrainingCourseService trainingCourseService = new TrainingCourseService();
         MemberService memberService = new MemberService();
-
-
+        //语音分析用 进度条进度数字
+        private double jinchengJindu = 0;
+        //训练目的标签数组
+        private String[] label_Name = { };
         public MemberInfo()
         {
 
@@ -65,7 +67,7 @@ namespace AI_Sports.AISports.View.Pages
                     if (memberEntity.Label_name != null && memberEntity.Label_name != "")
                     {
                         //会员的训练目标数组，用英文逗号分隔
-                        String[] label_Name = memberEntity.Label_name.Split(',');
+                        label_Name = memberEntity.Label_name.Split(',');
                         //使用lambda表达式过滤掉空字符串
                         label_Name = label_Name.Where(s => !string.IsNullOrEmpty(s)).ToArray();
 
@@ -121,7 +123,7 @@ namespace AI_Sports.AISports.View.Pages
                         this.Jincheng.Content = current + "/" + target + " 训练课程已完成";
 
                         //进程百分比,整数
-                        double jinchengJindu = current / target;
+                        jinchengJindu = current / target;
                         jinchengJindu = Math.Round(jinchengJindu * 100);
 
                         //例如30%，进程后的百分比数字
@@ -131,9 +133,19 @@ namespace AI_Sports.AISports.View.Pages
                         this.progressBar.Value = (double)jinchengJindu;
 
                         //初次训练日期
-                        this.L2.Content = memberService.GetMinTrainingDate(memberId).ToString();
+                        DateTime? firstTrainDate = memberService.GetMinTrainingDate(memberId);
+                        if (firstTrainDate != null)
+                        {
+                            this.L2.Content = firstTrainDate.ToString();
+
+                        }
                         //上次最近训练日期
-                        this.L3.Content = memberService.GetMaxTrainingDate(memberId).ToString();
+                        DateTime? leastTrainDate = memberService.GetMaxTrainingDate(memberId);
+                        if (leastTrainDate != null)
+                        {
+                            this.L3.Content = leastTrainDate.ToString();
+
+                        }
                     }
 
 
@@ -209,6 +221,105 @@ namespace AI_Sports.AISports.View.Pages
 
         }
 
+        private void Speech_Click(object sender, RoutedEventArgs e)
+        {
+            TrainingCourseEntity trainingCourseEntity = trainingCourseService.GetCourseByMemberId();
+            if (trainingCourseEntity != null)
+            {
+                StringBuilder speechBuilder = new StringBuilder();
+                speechBuilder.Append("您当前训练课程共");
+                speechBuilder.Append(trainingCourseEntity.Target_course_count);
+                speechBuilder.Append("课时，现在已完成");
+                speechBuilder.Append(trainingCourseEntity.Current_course_count);
+                speechBuilder.Append("课时，为总进度的百分之");
+                speechBuilder.Append(jinchengJindu);
+                speechBuilder.Append("。当前课程开始日期为");
+                speechBuilder.Append(trainingCourseEntity.Start_date.Value.Year);
+                speechBuilder.Append("年");
+                speechBuilder.Append(trainingCourseEntity.Start_date.Value.Month);
+                speechBuilder.Append("月");
+                speechBuilder.Append(trainingCourseEntity.Start_date.Value.Day);
+                speechBuilder.Append("日,");
+                speechBuilder.Append("您的训练频率为每");
+                speechBuilder.Append(trainingCourseEntity.Rest_days);
+                speechBuilder.Append("天一次，根据您当前进度计算出预计结束日期为");
+                //如果当前预计结束日期不为空，则使用当前预计结束日期 否则使用end_date
+                if (trainingCourseEntity.Current_end_date != null)
+                {
+                    speechBuilder.Append(trainingCourseEntity.Current_end_date.Value.Year);
+                    speechBuilder.Append("年");
+                    speechBuilder.Append(trainingCourseEntity.Current_end_date.Value.Month);
+                    speechBuilder.Append("月");
+                    speechBuilder.Append(trainingCourseEntity.Current_end_date.Value.Day);
+                    speechBuilder.Append("日");
+                }
+                else
+                {
+                    speechBuilder.Append(trainingCourseEntity.End_date.Value.Year);
+                    speechBuilder.Append("年");
+                    speechBuilder.Append(trainingCourseEntity.End_date.Value.Month);
+                    speechBuilder.Append("月");
+                    speechBuilder.Append(trainingCourseEntity.End_date.Value.Day);
+                    speechBuilder.Append("日。");
+                }
+                //训练标签分析
+                if (label_Name != null && label_Name.Length > 0)
+                {
+                    speechBuilder.Append("您的训练目的为");
+                    speechBuilder.Append(label_Name.ToString());
+                    speechBuilder.Append(",AI教练建议您使用");
+                    
+                    if (label_Name.Contains("增肌"))
+                    {
+                        speechBuilder.Append("增肌模式、");
+
+                    }
+                    else if (label_Name.Contains("塑形"))
+                    {
+                        speechBuilder.Append("适应性模式、");
+
+                    }
+                    else if (label_Name.Contains("减脂"))
+                    {
+                        speechBuilder.Append("减脂模式、");
+
+                    }
+                    else if (label_Name.Contains("康复"))
+                    {
+                        speechBuilder.Append("等速模式、被动模式、主被动模式");
+
+                    }
+                    speechBuilder.Append("进行训练。");
+
+                    //各个模式的特点说明
+                    if (label_Name.Contains("增肌"))
+                    {
+                        speechBuilder.Append("增肌模式会根据您的力量智能渐进增加训练强度，充分刺激六大肌群每一块肌肉，塑造健康饱满身材。");
+
+                    }
+                    else if (label_Name.Contains("塑形"))
+                    {
+                        speechBuilder.Append("适应性模式会根据您的体力情况智能调节训练强度，对全身主要肌群进行刺激以达到塑形效果，使全身肌肉线条更加匀称美观，塑造紧致苗条身材。");
+
+                    }
+                    else if (label_Name.Contains("减脂"))
+                    {
+                        speechBuilder.Append("减脂模式会结合力量耐力循环，智能指导您充分使用有氧设备，辅助使用力量设备进行训练，每次训练包括全身唤醒、心肺改善、强化燃脂三个阶段。根据HIIT全身燃动理论，通过高强度力量训练与有氧训练交替进行，可以在短时间内达到超高的能量消耗效果，并且让身体在训练后也继续保持燃脂状态，达到优秀的减脂效果。");
+
+                    }
+                    else if (label_Name.Contains("康复"))
+                    {
+                        speechBuilder.Append("等速模式会根据您的每次发力智能调节设备力度，保持设备力度等于您的力度，在安全稳定的前提下最大程度使肌肉得到充分锻炼。被动模式为康复初级模式，设备会平缓得带动您完成每一次运动，使肌肉充分伸展、刺激恢复。主被动模式为康复进阶模式，您可以主动发力控制设备运动，设备也可以随时自动切换到被动模式辅助您完成运动，进行安全高效的康复训练。");
+
+                    }
+
+                }
+
+            }
+
+
+
+        }
     }
 
     class jieMain

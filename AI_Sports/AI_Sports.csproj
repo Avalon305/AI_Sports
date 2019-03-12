@@ -272,7 +272,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="input1.xaml">
+    <Page Include="AISports.View\Resource\SliderStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -377,11 +377,11 @@
     <Compile Include="AISports.Service\TrainingCourseService.cs" />
     <Compile Include="AISports.Service\TrainingDeviceRecordService.cs" />
     <Compile Include="AISports.Service\TrainingPlanService.cs" />
-    <Compile Include="AISports.Util\ActivityGroupHeadConvert.cs" />
+    <Compile Include="AISports.View\Converter\ActivityGroupHeadConvert.cs" />
     <Compile Include="AISports.Util\CommUtil.cs" />
     <Compile Include="AISports.Util\ConfigUtil.cs" />
     <Compile Include="AISports.Util\DataCodeCache.cs" />
-    <Compile Include="AISports.Util\EditActivityGroupHeadConvert.cs" />
+    <Compile Include="AISports.View\Converter\EditActivityGroupHeadConvert.cs" />
     <Compile Include="AISports.Util\KeyGenerator.cs" />
     <Compile Include="AISports.Util\ParseIntegerUtil.cs" />
     <Compile Include="AISports.Util\DbUtil.cs" />
@@ -624,7 +624,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AISports.Echarts\dist\chart\" />
-    <Folder Include="AISports.View\BluetoothLE\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

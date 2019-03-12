@@ -41,10 +41,10 @@ namespace AI_Sports.AISports.View.Pages
                 switch (activity.Activity_type)
                 {
                     case "0":
-                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量循环.ToString() + "(目标轮次/当前轮次" + activity.Target_turn_number +"轮次)"});
+                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量循环.ToString() + "(当前轮次/目标轮次:" + activity.current_turn_number + "/" + activity.Target_turn_number +")"});
                         break;
                     case "1":
-                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量耐力循环.ToString() + "(目标轮次/当前轮次" + activity.Target_turn_number + "轮次)" });
+                        trainingPlanGroup.Add(new TrainingPlan() { trainingPlan = CycleTypeEnum.力量耐力循环.ToString() + "(当前轮次/目标轮次:" + activity.current_turn_number + "/" + activity.Target_turn_number + ")"});
                         break;
 
                     default:

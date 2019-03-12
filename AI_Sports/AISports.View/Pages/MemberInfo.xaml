@@ -72,7 +72,7 @@
                     <ProgressBar Value="{Binding Content, ElementName=progess}" Name="progressBar" Height="25px" Style="{DynamicResource progress-bar-success}" Margin="10,20,250,10" />
 
                     <WrapPanel Margin="10 0 0 0">
-                        <Button Style="{DynamicResource btn-success}" Height="20" Width="20" Click="Button_Click" Margin="20,0,0,0"/>
+                        <Button Style="{DynamicResource btn-success}" Height="20" Width="20"  Margin="20,0,0,0"/>
                         <Label Content="进程" VerticalContentAlignment="Center" Margin="5,0,0,0" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22px"  />
                         <ContentControl x:Name="Jincheng" Style="{StaticResource panel-body}" Foreground="#04243D" FontFamily="Microsoft YaHei"  HorizontalAlignment="Left"  Width="1000"  FontSize="22"/>
                         <ContentControl x:Name="JinchengJindu" Style="{StaticResource panel-body}" Foreground="#04243D" HorizontalAlignment="Left" Content="" Width="100" FontFamily="Microsoft YaHei" FontSize="22"/>
@@ -99,7 +99,7 @@
                     <Label Content="身份识别卡" Style="{DynamicResource h1}" Margin="20,20,0,0" Foreground="#04243D" FontFamily="Microsoft YaHei"/>
                     <GridSplitter Height="5" Width="2600"/>
                     <StackPanel x:Name="stackPanel2" HorizontalAlignment="Right" Margin="0,30,20,20" Width="1453.3">
-                        <Label Name="x1" Content="用户在此需要进行身份验证" FontSize="22px" Foreground="#04243D" FontFamily="Microsoft YaHei" VerticalContentAlignment="Center" Height="40"  Margin="0,30,0,0"  Background="WhiteSmoke"/>
+                        <Label Visibility="Visible"  Name="x1" Content="用户在此需要进行身份验证" FontSize="22px" Foreground="#04243D" FontFamily="Microsoft YaHei" VerticalContentAlignment="Center" Height="40"  Margin="0,30,0,0"  Background="WhiteSmoke"/>
                         <Border Name="x2" Width="400" Height="200" Background="WhiteSmoke" CornerRadius="8" HorizontalAlignment="Left" Margin="20,25,0,0" Grid.Column="1">
                             <Label Name="x3" Height="45" Content="{Binding Path=Score1}" VerticalContentAlignment="Center" Foreground="#04243D" HorizontalAlignment="Center" Margin="0,0,0,0" FontFamily="Microsoft YaHei" FontSize="16px"/>
                         </Border>
@@ -117,7 +117,8 @@
 
         <!--身份识别卡-->
         <GridSplitter Height="2" Margin="0,0,0,48"  VerticalAlignment="Bottom" Width="2600"/>
-        <Button Content="编辑" Background="#FF04243D" Style="{DynamicResource btn-primary}" HorizontalAlignment="Center" Margin="20,0,0,10"  VerticalAlignment="Bottom" Width="75" />
-        
+        <!--<Button Content="编辑" Background="#FF04243D" Style="{DynamicResource btn-primary}" HorizontalAlignment="Center" Margin="20,0,0,10"  VerticalAlignment="Bottom" Width="75" />-->
+        <Button x:Name="speech" Content="AI教练" HorizontalAlignment="Left" Margin="20,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="100" FontSize="20" Style="{DynamicResource btn-success}" Click="Speech_Click"/>
+
     </Grid>
 </Page>

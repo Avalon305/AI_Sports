@@ -3,26 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:AI_Sports"
              StartupUri="MainWindow.xaml">
-     
+
     <Application.Resources>
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="input1.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/BootstrapWpfStyle;component/Styles/Bootstrap.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/BootstrapWpfStyle;component/PathGeometries/Glyphicons.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+                <!--最后加载的进度条资源会覆盖之前的-->
+                <ResourceDictionary Source="pack://application:,,,/AI_Sports;component/AISports.View/Resource/SliderStyle.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 
 
-   
-      
-    
-    
+
+
+
+
 
 </Application>

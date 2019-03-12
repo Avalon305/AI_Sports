@@ -46,7 +46,8 @@ namespace AI_Sports.AISports.View.Pages
             {
                 this.headphoto.Source = new BitmapImage(new Uri(@photopath, UriKind.Relative));
             }
-
+            //MemberInfo memberInfo = new MemberInfo();
+            //this.contentpage.Content = memberInfo;
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative);//跳转页面
         }
         //用户信息页面

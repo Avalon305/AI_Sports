@@ -7,9 +7,10 @@
       mc:Ignorable="d" 
       Background="White"
       d:DesignHeight="1080" 
-      d:DesignWidth="1920"
+      d:DesignWidth="1494"
       Title="Input">
     <Page.Resources>
+        <!--<Slider x:Key="SliderStyle" />-->
         <!--<local:Person x:Key="Person" Name="JRH"/>-->
     </Page.Resources>
     <Grid>
@@ -21,8 +22,10 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>-->
-        <Grid Name="Grid1"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="AliceBlue" Height="540" Width="1920">
-            <Label Content="个人信息" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="50,5,0,0" VerticalAlignment="Top" Height="60" Width="206" Style="{DynamicResource h1}" Foreground="#04243D" FontFamily="Microsoft YaHei" />
+        <Grid Name="Grid1"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="AliceBlue" Height="540" Width="1494">
+            <Label Content="个人信息" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="20,5,0,0" VerticalAlignment="Top" Height="60" Width="206" Style="{DynamicResource h1}" Foreground="#04243D" FontFamily="Microsoft YaHei" />
+            <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="50,50,0,0" VerticalAlignment="Top"/>
+
             <TextBox Text="" Tag="姓" Name="Member_familyName"  Style="{DynamicResource input-group-addon left}" VerticalAlignment="Top" Margin="50,70,0,0" HorizontalAlignment="Left" FontSize="22" Width="600" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="Auto" />
             <TextBox Text="" Tag="名" Name="Member_firstName" Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="600" Margin="766,70,0,0" FontFamily="Microsoft YaHei" FontSize="22" Foreground="#04243D" Height="Auto"  ></TextBox>
             <TextBox Text="" Tag="出生日期" Name="Birth_date"  Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Margin="50,160,0,0" Height="40" FontFamily="Microsoft YaHei" Foreground="#04243D" FontSize="22"></TextBox>
@@ -40,12 +43,11 @@
             <TextBox Text="" Tag="手机号码" Name="Mobile_phone" Style="{DynamicResource input-group-addon left}" PreviewTextInput="Personal_phone_PreviewTextInput" HorizontalAlignment="Left" VerticalAlignment="Top" Width="600" Margin="50,340,0,0" FontFamily="Microsoft YaHei" Foreground="#04243D"  FontSize="22" Height="Auto" />
             <TextBox Text="" Tag="工作电话" Name="Work_phone"  Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left"  PreviewTextInput="Personal_phone_PreviewTextInput" VerticalAlignment="Top" Width="600" Margin="766,340,0,0" FontFamily="Microsoft YaHei" FontSize="22"  Foreground="#04243D" Height="Auto" />
             <TextBox Text="" Tag="电子邮箱" Name="Email_address" Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" PreviewTextInput="Email_address_PreviewTextInput" VerticalAlignment="Top" Width="600" Margin="50,431,0,0" FontFamily="Microsoft YaHei" FontSize="22"  Foreground="#04243D" Height="Auto"  />
-            <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="261,41,0,0" VerticalAlignment="Top"/>
         </Grid>
         <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="56,1044,118,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
-        <Grid   Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="AliceBlue" Height="540" Width="1920" Margin="0,0,0,0">
-            <Label Content="个人标签" HorizontalAlignment="Left" Margin="50,10,0,0" VerticalAlignment="Top" Width="211" Style="{DynamicResource h1}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#04243D" FontFamily="Microsoft YaHei"/>
-            <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="50,80,0,0" VerticalAlignment="Top"/>
+        <Grid   Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="AliceBlue" Height="540" Width="1494" Margin="0,0,0,0">
+            <Label Content="个人标签" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="211" Style="{DynamicResource h1}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#04243D" FontFamily="Microsoft YaHei"/>
+            <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="50,60,0,0" VerticalAlignment="Top"/>
             <TextBox Text="{Binding ElementName=slider2,Path=Value,Mode=TwoWay}" Tag="体重(公斤)" x:Name="weight"  Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="167" Margin="50,100,0,0"  Height="40"  FontStyle="{Binding ElementName=slider1,Path=Value}"  Foreground="#04243D" FontSize="22" FontFamily="Microsoft YaHei" />
             <Slider HorizontalAlignment="Left" Name="slider2" Maximum="200" Minimum="0" Value="60"  IsSnapToTickEnabled="True" Margin="250,100,0,0" VerticalAlignment="Top" Height="43" Width="411" TickPlacement="TopLeft"  TickFrequency="1"/>
             <TextBox Text="{Binding ElementName=slider1,Path=Value,Mode=TwoWay}"  Tag="身高" x:Name="height"  Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="766,100,0,0"  Height="Auto" FontStyle="{Binding ElementName=slider1,Path=Value}" FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" />

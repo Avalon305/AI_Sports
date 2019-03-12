@@ -1,4 +1,5 @@
-﻿using AI_Sports.Constant;
+﻿using AI_Sports.AISports.View.Pages;
+using AI_Sports.Constant;
 using AI_Sports.Service;
 using AI_Sports.Util;
 using NLog;
@@ -79,13 +80,18 @@ namespace AI_Sports
                     case LoginPageStatus.CoachPage:
                         logger.Info("返回教练登陆页面");
                         //this.Close();
-                        this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+                        //用这种实例化的方法可以刷新页面，导航方式不会刷新
+                        UserManage userManage = new UserManage();
+                        this.mainpage.Content = userManage;
+                        //this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
                         break;
                     case LoginPageStatus.UserPage:
                         logger.Debug("返回用户登陆页面");
                         //this.Close();
-                        this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+                        User user = new User();
+                        this.mainpage.Content = user;
+                        //this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
                         break;
                     case LoginPageStatus.RepeatLogins:

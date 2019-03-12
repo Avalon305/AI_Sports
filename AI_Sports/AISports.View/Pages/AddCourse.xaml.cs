@@ -26,11 +26,23 @@ namespace AI_Sports
     public partial class AddCourse : Page
     {
         private TrainingCourseService trainingCourseService = new TrainingCourseService();
+        private TrainingActivityService trainingActivityService = new TrainingActivityService();
         public AddCourse()
         {
             InitializeComponent();
-            //初始化添加训练活动frame
-            this.ActivityFrame.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddActivitys.xaml", UriKind.Relative);
+            //如果当前课程的训练活动记录不为NULL，就显示编辑活动页面，否则显示添加活动页面
+            List<ActivityEntity> activityEntities = trainingActivityService.ListActivitysByCourseId();
+            if (activityEntities.Count > 0)
+            {
+                //跳转编辑训练活动frame
+                this.ActivityFrame.Source = new Uri("/AI_Sports;component/AISports.View/Pages/EditActivity.xaml", UriKind.Relative);
+            }
+            else
+            {
+                //跳转添加训练活动frame
+                this.ActivityFrame.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddActivitys.xaml", UriKind.Relative);
+            }
+            
 
 
             //时间轴时间大小初始化

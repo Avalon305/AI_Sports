@@ -103,6 +103,16 @@ namespace AI_Sports.AISports.View.Pages
             this.DP_StartDate.Text = "";
             this.CB_Target.Text = "";
         }
+        /// <summary>
+        /// 查看当前课程点击事件 跳转到当前课程页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_CurrentCourse(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
+
+        }
 
         //private void Text_LostFocus(object sender, RoutedEventArgs e)
         //{
