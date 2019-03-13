@@ -99,6 +99,56 @@ namespace AI_Sports.Dao
                 return conn.Query<MemberEntity>(query).ToList();
             }
         }
+                /// <summary>
+        /// 查询所有会员信息，暂时用于search.xaml.cs中
+        /// </summary>
+        /// <returns></returns>
+        public List<MemberEntity> ListAllMember()
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT * FROM bdl_member";
+                return conn.Query<MemberEntity>(query).ToList();
+            }
+        }
+
+        /// <summary>
+        /// 模糊查询名字手机号，暂时用于search.xaml.cs中
+        /// </summary>
+        /// <returns></returns>
+        public List<MemberEntity> ListNameMember(String firstName,String phone_Number)
+        {
+            //mysql语句
+            string query=null;
+            using (var conn = DbUtil.getConn())
+            {
+
+                //四种情况判断
+                if((firstName == "会员名" || firstName == "" || firstName == null)&&(phone_Number == "手机号" || phone_Number == "" || phone_Number == null))
+                {
+                    query = "SELECT * FROM bdl_member";
+                }
+                else
+                
+                    if ((firstName == "会员名" || firstName == "" || firstName == null) && (phone_Number != "手机号" && phone_Number != "" && phone_Number != null))
+                    {
+                        query = "select * from bdl_member where mobile_phone like '%"+phone_Number+"%'";
+                    }
+                else
+                    if ((firstName != "会员名" && firstName != "" && firstName != null) && (phone_Number == "手机号" || phone_Number == "" || phone_Number == null))
+                    {
+                        query = "select * from bdl_member where member_firstName like '%" + firstName + "%'";
+                    }
+                else
+                    if ((firstName != "会员名" && firstName != "" && firstName != null) && (phone_Number != "手机号" && phone_Number != "" && phone_Number != null))
+                {
+                    query = "select * from bdl_member where member_firstName like '%" + firstName + "%' and mobile_phone like '%" + phone_Number + "%'";
+                }
+
+                
+                return conn.Query<MemberEntity>(query).ToList();
+            }
+        }
        
     }
 
