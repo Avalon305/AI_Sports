@@ -116,7 +116,7 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT COUNT(*),gmt_create FROM bdl_training_device_record   WHERE member_id = @memberId AND DATE_FORMAT(gmt_create,'% Y % c') = DATE_FORMAT(NOW(),'% Y % c')  GROUP BY DATE_FORMAT(gmt_create,'% Y % c % e')";
+                const string query = "SELECT COUNT(*) as count,gmt_create FROM bdl_training_device_record   WHERE member_id = @memberId AND DATE_FORMAT(gmt_create,'%Y%c') = DATE_FORMAT(NOW(),'%Y%c')  GROUP BY DATE_FORMAT(gmt_create,'%Y%c%e')";
                 return conn.Query<TrainingDeviceRecordEntity>(query, new { memberId }).ToList();
 
             }

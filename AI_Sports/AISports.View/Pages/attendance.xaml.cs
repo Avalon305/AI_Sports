@@ -128,9 +128,9 @@ namespace AI_Sports.AISports.View.Pages
 
                 speechBuilder.Append("您的训练频率为每");
                 speechBuilder.Append(trainingCourseEntity.Rest_days);
-                speechBuilder.Append("天一次，每月至少出勤训练");
+                speechBuilder.Append("天一次，每月计划训练");
                 speechBuilder.Append(30 / trainingCourseEntity.Rest_days);
-                speechBuilder.Append("天才能完成目标。当前课程开始日期为");
+                speechBuilder.Append("天。当前课程开始日期为");
                 speechBuilder.Append(trainingCourseEntity.Start_date.Value.Year);
                 speechBuilder.Append("年");
                 speechBuilder.Append(trainingCourseEntity.Start_date.Value.Month);
@@ -146,7 +146,7 @@ namespace AI_Sports.AISports.View.Pages
                     speechBuilder.Append(trainingCourseEntity.Current_end_date.Value.Month);
                     speechBuilder.Append("月");
                     speechBuilder.Append(trainingCourseEntity.Current_end_date.Value.Day);
-                    speechBuilder.Append("日");
+                    speechBuilder.Append("日。");
                 }
                 else
                 {
@@ -159,8 +159,8 @@ namespace AI_Sports.AISports.View.Pages
                 }
             }
             //根据训练目标分析训练间隔时间建议
-            MemberEntity memberEntity = new MemberEntity();
-            if (memberEntity != null)
+            MemberEntity memberEntity = memberService.GetMember(memberId);
+            if ((memberEntity != null) && (memberEntity.Label_name != null) && (memberEntity.Label_name != ""))
             {
                 //会员的训练目标数组，用英文逗号分隔
                 string[] label_Name = memberEntity.Label_name.Split(',');
@@ -171,12 +171,12 @@ namespace AI_Sports.AISports.View.Pages
                 if (label_Name != null && label_Name.Length > 0)
                 {
                     speechBuilder.Append("您的训练目标为");
-                    speechBuilder.Append(label_Name.ToString());
+                    speechBuilder.Append(memberEntity.Label_name);
                     speechBuilder.Append(",智能教练建议您，");
 
                     if (label_Name.Contains("增肌"))
                     {
-                        speechBuilder.Append("增肌训练每周锻炼三到五次，建议采用隔天锻炼，也可以采用锻炼两天或三天休息一天的模式。休息是为了让锻炼的肌肉得到恢复，从而更好得增长。");
+                        speechBuilder.Append("增肌训练每周锻炼三到五次，建议采用隔天锻炼，也可以采用锻炼两天休息一天的模式。休息是为了让锻炼的肌肉得到恢复，从而更好得增长。");
 
                     }
 
@@ -188,22 +188,43 @@ namespace AI_Sports.AISports.View.Pages
 
                     if (label_Name.Contains("减脂"))
                     {
-                        speechBuilder.Append("减脂训练每周至少锻炼3次，最好天天进行有氧锻炼，训练次数越多，消耗的热量也就越多，减脂效果也就越好。");
+                        speechBuilder.Append("减脂训练每周至少锻炼3次，最好每天进行有氧锻炼，训练次数越多，消耗的热量也就越多，减脂效果也就越好。");
 
                     }
 
                     if (label_Name.Contains("康复"))
                     {
-                        speechBuilder.Append("康复训练每周锻炼3次，采用隔天锻炼。可以使用力量循环与量耐力循环，采用力量训练和有氧训练相结合的方式进行。建议使用设备上的专业康复训练模式：等速模式、被动模式、主被动模式，可以达到更加安全高效的康复训练效果。");
+                        speechBuilder.Append("康复训练每周锻炼3次，采用隔天锻炼。可以使用力量循环与力量耐力循环，采用力量训练和有氧训练相结合的方式进行。建议使用设备上的专业康复训练模式：如等速模式、被动模式、主被动模式，从而可以达到更加安全高效的康复训练效果。");
 
                     }
 
                 }
-                Console.WriteLine("出勤页面语音文本："+speechBuilder.ToString());
+                //本月每天运动次数
+                if (currentMonthRecord != null)
+                {
+                    speechBuilder.Append("您本月每天具体运动次数为:");
+                    foreach (var item in currentMonthRecord)
+                    {
+                        
+                        speechBuilder.Append(item.Gmt_create.Value.Month);
+                        speechBuilder.Append("月");
+                        speechBuilder.Append(item.Gmt_create.Value.Day);
+                        speechBuilder.Append("日运动");
+                        speechBuilder.Append(item.Count);
+                        speechBuilder.Append("次，");
+                    }
+                   
 
-                //调用API读
-                SpeechUtil.read(speechBuilder.ToString());
+                }
+
+               
             }
+
+            Console.WriteLine("出勤页面语音文本：" + speechBuilder.ToString());
+
+            //调用API读
+            SpeechUtil.read(speechBuilder.ToString());
+
         }
     }
 }

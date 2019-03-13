@@ -9,13 +9,25 @@ namespace AI_Sports.AISports.Util
 {
     class SpeechUtil
     {
+        private static SpeechSynthesizer speech = new SpeechSynthesizer();
+
         public static void read(string text)
         {
-            SpeechSynthesizer speech = new SpeechSynthesizer();
-            speech.SelectVoice("Microsoft Huihui Desktop");
-            //speech.SelectVoice("Microsoft Lili");
-            speech.Rate = -3;
-            speech.Speak(text);
+           
+                speech.SelectVoice("Microsoft Huihui Desktop");
+                //speech.SelectVoice("Microsoft Lili");
+                speech.Rate = -3;
+                speech.Speak(text);
+          
+            
         }
+        /// <summary>
+        /// 停止语音
+        /// </summary>
+        public static void stop()
+        {
+            speech.Dispose();
+        }
+
     }
 }

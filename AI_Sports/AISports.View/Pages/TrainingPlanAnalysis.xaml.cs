@@ -77,7 +77,7 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
-           // NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/TrainingCourseAnalysis.xaml", UriKind.Relative));
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative));
 
         }
         /// <summary>

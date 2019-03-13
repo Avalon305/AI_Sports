@@ -110,7 +110,11 @@ namespace AI_Sports.AISports.View.Pages
         {
             MessageBox.Show("训练课程已完成");
         }
-
+        /// <summary>
+        /// 语音分析按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Speech_Click(object sender, RoutedEventArgs e)
         {
             List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
@@ -119,16 +123,16 @@ namespace AI_Sports.AISports.View.Pages
 
             if (activityList != null && activityList.Count > 0)
             {
-                speechBuilder.Append("您的训练活动类型为");
+                speechBuilder.Append("您的训练活动包括");
                 foreach (var activity in activityList)
                 {
                     switch (activity.Activity_type)
                     {
                         case "0":
-                            speechBuilder.Append("力量循环,");
+                            speechBuilder.Append("力量循环、");
                             break;
                         case "1":
-                            speechBuilder.Append("力量耐力循环,");
+                            speechBuilder.Append("力量耐力循环、");
                             break;
                         default:
                             break;
@@ -141,7 +145,7 @@ namespace AI_Sports.AISports.View.Pages
                     switch (activity.Activity_type)
                     {
                         case "0":
-                            speechBuilder.Append("力量循环当前已经完成");
+                            speechBuilder.Append("力量循环当前已完成");
                             speechBuilder.Append(activity.current_turn_number);
                             speechBuilder.Append("轮，目标轮次为");
                             speechBuilder.Append(activity.Target_turn_number);
@@ -153,7 +157,7 @@ namespace AI_Sports.AISports.View.Pages
 
                             break;
                         case "1":
-                            speechBuilder.Append("力量耐力循环当前已经完成");
+                            speechBuilder.Append("力量耐力循环当前已完成");
                             speechBuilder.Append(activity.current_turn_number);
                             speechBuilder.Append("轮，目标轮次为");
                             speechBuilder.Append(activity.Target_turn_number);

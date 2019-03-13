@@ -43,8 +43,8 @@
                     <Label Grid.Row="1"  Grid.Column="1" Content="----"  Style="{DynamicResource h3}" Name="LB_LastDate"></Label>
                     <Label Grid.Row="2"  Grid.Column="0" Content="总训练天数" Style="{DynamicResource h3}" ></Label>
                     <Label Grid.Row="2"  Grid.Column="1" Content="----"  Style="{DynamicResource h3}" Name="LB_AllDayCount"></Label>
-                    <Label Grid.Row="3"  Grid.Column="0" Content="本月训练天数" Style="{DynamicResource h3}" Name="LB_CurrentMonthDayCount"></Label>
-                    <Label Grid.Row="3"  Grid.Column="1" Content="----"  Style="{DynamicResource h3}"></Label>
+                    <Label Grid.Row="3"  Grid.Column="0" Content="本月训练天数" Style="{DynamicResource h3}" ></Label>
+                    <Label Grid.Row="3"  Grid.Column="1" Content="----"  Style="{DynamicResource h3}" Name="LB_CurrentMonthDayCount"></Label>
                 </Grid>
                 
                 

@@ -50,7 +50,7 @@ namespace AI_Sports.AISports.View.Pages
         private void Speech_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder speechBuilder = new StringBuilder();
-            speechBuilder.Append("您可以在此查看您的主动肌对抗肌锻炼进度和各大肌肉群锻炼比例以及各个设备对应锻炼的肌肉群分布，从而结合您的训练目标选择最适合您的设备进行锻炼。");
+            speechBuilder.Append("您可以在此查看您的主动肌对抗肌锻炼进度和各大肌肉群锻炼比例，以及各个设备对应锻炼的肌肉群分布，从而结合您的训练目标选择最适合您的设备进行锻炼。");
             Console.WriteLine("肌肉页面语音文本："+speechBuilder.ToString());
             SpeechUtil.read(speechBuilder.ToString());
         }
