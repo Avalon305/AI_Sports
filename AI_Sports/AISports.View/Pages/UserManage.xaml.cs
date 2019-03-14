@@ -168,6 +168,9 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Write_Card_Click(object sender, RoutedEventArgs e)
         {
+            //串口测试页面
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/NolleTestSerial.xaml", UriKind.Relative));
+
             WriteCardWindow writeCardWindow = new WriteCardWindow();
             //弹出窗体的时候将程序中断在pw窗体，它的操作会对下面的程序产生影响，从而使pw窗体影响下面运行的效果。
             //比如说下面的程序要通过pw窗体中的某个参数进行判断来运行的话，用这种方法很合适。

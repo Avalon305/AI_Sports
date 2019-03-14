@@ -13,14 +13,29 @@ namespace AI_Sports.AISports.Util
 
         public static void read(string text)
         {
-           
+            try
+            {
                 speech.SelectVoice("Microsoft Huihui Desktop");
                 //speech.SelectVoice("Microsoft Lili");
                 speech.Rate = -3;
+                //先停止别的语音再重新说
+                speech.SpeakAsyncCancelAll();
+                //播放语音
                 speech.Speak(text);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("语音停止播放");
+            }
+                
+            
+           
+               
           
             
         }
+
         /// <summary>
         /// 停止语音
         /// </summary>

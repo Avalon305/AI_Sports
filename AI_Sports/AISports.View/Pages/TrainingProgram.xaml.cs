@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AI_Sports.Constant;
 using AI_Sports.AISports.Util;
+using System.ComponentModel;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -31,7 +32,9 @@ namespace AI_Sports.AISports.View.Pages
         public CompleteFlag completeFlag;
 		public ObservableCollection<TrainingPlan> trainingPlanGroup;
 
-		public MainWindowViewModel()
+        
+
+        public MainWindowViewModel()
 		{
 			completeFlag = new CompleteFlag();
 			completeFlag.flag = 1;
@@ -73,6 +76,10 @@ namespace AI_Sports.AISports.View.Pages
 		private MainWindowViewModel viewModel = new MainWindowViewModel();
         private TrainingPlanService trainingPlanService = new TrainingPlanService();
         private TrainingActivityService activityService = new TrainingActivityService();
+
+        //语音分析的后台任务
+        private BackgroundWorker worker = new BackgroundWorker();
+
         public TrainingProgram()
 		{
 			InitializeComponent();
@@ -117,69 +124,113 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Speech_Click(object sender, RoutedEventArgs e)
         {
-            List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
-            StringBuilder speechBuilder = new StringBuilder();
-            speechBuilder.Append("您可以在此查看当前训练课程中包含的训练活动的详细信息和进度。");
 
-            if (activityList != null && activityList.Count > 0)
+
+            //显示停止按钮
+            this.stop.Visibility = Visibility.Visible;
+            //禁用分析按钮
+            this.speech.IsEnabled = false;
+
+            // worker 要做的事情 使用了匿名的事件响应函数
+            worker.DoWork += (o, ea) =>
             {
-                speechBuilder.Append("您的训练活动包括");
-                foreach (var activity in activityList)
+                List < ActivityEntity > activityList = activityService.ListActivitysByCourseId();
+                StringBuilder speechBuilder = new StringBuilder();
+                speechBuilder.Append("您可以在此查看当前训练课程中包含的训练活动的详细信息和进度。");
+
+                if (activityList != null && activityList.Count > 0)
                 {
-                    switch (activity.Activity_type)
+                    speechBuilder.Append("您的训练活动包括");
+                    foreach (var activity in activityList)
                     {
-                        case "0":
-                            speechBuilder.Append("力量循环、");
-                            break;
-                        case "1":
-                            speechBuilder.Append("力量耐力循环、");
-                            break;
-                        default:
-                            break;
+                        switch (activity.Activity_type)
+                        {
+                            case "0":
+                                speechBuilder.Append("力量循环。");
+                                break;
+                            case "1":
+                                speechBuilder.Append("力量耐力循环。");
+                                break;
+                            default:
+                                break;
+
+                        }
 
                     }
-
-                }
-                foreach (var activity in activityList)
-                {
-                    switch (activity.Activity_type)
+                    foreach (var activity in activityList)
                     {
-                        case "0":
-                            speechBuilder.Append("力量循环当前已完成");
-                            speechBuilder.Append(activity.current_turn_number);
-                            speechBuilder.Append("轮，目标轮次为");
-                            speechBuilder.Append(activity.Target_turn_number);
-                            speechBuilder.Append("轮，还需要完成");
-                            speechBuilder.Append(activity.Target_turn_number - activity.current_turn_number);
-                            speechBuilder.Append("轮。");
+                        switch (activity.Activity_type)
+                        {
+                            case "0":
+                                speechBuilder.Append("力量循环当前已完成");
+                                speechBuilder.Append(activity.current_turn_number);
+                                speechBuilder.Append("轮，目标轮次为");
+                                speechBuilder.Append(activity.Target_turn_number);
+                                speechBuilder.Append("轮，还需要完成");
+                                speechBuilder.Append(activity.Target_turn_number - activity.current_turn_number);
+                                speechBuilder.Append("轮。");
 
 
 
-                            break;
-                        case "1":
-                            speechBuilder.Append("力量耐力循环当前已完成");
-                            speechBuilder.Append(activity.current_turn_number);
-                            speechBuilder.Append("轮，目标轮次为");
-                            speechBuilder.Append(activity.Target_turn_number);
-                            speechBuilder.Append("轮，还需要完成");
-                            speechBuilder.Append(activity.Target_turn_number - activity.current_turn_number);
-                            speechBuilder.Append("轮。");
-                            break;
-                        default:
-                            break;
+                                break;
+                            case "1":
+                                speechBuilder.Append("力量耐力循环当前已完成");
+                                speechBuilder.Append(activity.current_turn_number);
+                                speechBuilder.Append("轮，目标轮次为");
+                                speechBuilder.Append(activity.Target_turn_number);
+                                speechBuilder.Append("轮，还需要完成");
+                                speechBuilder.Append(activity.Target_turn_number - activity.current_turn_number);
+                                speechBuilder.Append("轮。");
+                                break;
+                            default:
+                                break;
+
+                        }
 
                     }
-
+                    speechBuilder.Append("加油，坚持完成每一个目标，持之以恒才能达到理想的锻炼效果。");
                 }
-                speechBuilder.Append("加油！坚持完成每一个目标，持之以恒才能达到理想的锻炼效果。");
-            }
+
+
+                Console.WriteLine("训练活动页TrainingProgram语音文本：" + speechBuilder.ToString());
+
+                //调用工具类读
+                SpeechUtil.read(speechBuilder.ToString());
+
+            };
+
+
+            //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
+            worker.RunWorkerAsync();
+
+
+
+
             
 
-            Console.WriteLine("训练活动页TrainingProgram语音文本："+speechBuilder.ToString());
-
-            //调用工具类读
-            SpeechUtil.read(speechBuilder.ToString());
-
         }
+
+        /// <summary>
+        /// 停止语音分析
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            //停止语音线程
+            //worker.CancelAsync();
+            // worker 完成事件响应
+
+            SpeechUtil.stop();
+
+
+            //隐藏停止按钮
+            this.stop.Visibility = Visibility.Hidden;
+            //可用分析按钮
+            this.speech.IsEnabled = true;
+        }
+
+
+
     }
 }

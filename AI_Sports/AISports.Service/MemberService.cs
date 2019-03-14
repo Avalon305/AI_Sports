@@ -38,8 +38,12 @@ namespace AI_Sports.Service
             memberEntity.Id = KeyGenerator.GetNextKeyValueLong("bdl_member");
             //设置创建时间
             memberEntity.Gmt_create = System.DateTime.Now;
-            //当前登陆的教练Id
-            memberEntity.Fk_coach_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("coachId"));
+            if (memberEntity.Role_id == 1)//只有添加的角色是用户才设置教练外键
+            {
+                //当前登陆的教练Id
+                memberEntity.Fk_coach_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("coachId"));
+            }
+            
             //使用基类插入新会员
             long resultCode =  memberDAO.Insert(memberEntity);
             //更新APP中会员id

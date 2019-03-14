@@ -31,9 +31,8 @@ namespace AI_Sports.AISports.View.Pages
         double? height = new double?();
         int? max_heart_rate = new int?();
         int? suitable_heart_rate = new int?();
-        //语音分析的后台任务
+        //语音分析的后台任务 不用后台任务则界面卡死 无法进行其他操作
         private BackgroundWorker worker = new BackgroundWorker();
-
         public userinfo()
         {
             InitializeComponent();
@@ -152,20 +151,13 @@ namespace AI_Sports.AISports.View.Pages
         {
             //显示停止按钮
             this.stop.Visibility = Visibility.Visible;
-
+            //禁用分析按钮
+            this.speech.IsEnabled = false;
 
             // worker 要做的事情 使用了匿名的事件响应函数
             worker.DoWork += (o, ea) =>
             {
-                //WPF中线程只能控制自己创建的控件，
-                //如果要修改主线程创建的MainWindow界面的内容,
-                //可以委托主线程的Dispatcher处理。
-                //在这里，委托内容为一个匿名的Action对象。
-                //this.Dispatcher.Invoke((Action)(() =>
-                //{
-                //    this.TextBox1.Text = "worker started";
-                //}));
-                //Thread.Sleep(1000);
+              
 
 
                 if (weight != null && height != null)
@@ -220,7 +212,7 @@ namespace AI_Sports.AISports.View.Pages
 
                     Console.WriteLine("用户页面userInfo语音文本：" + speechBuilder.ToString());
 
-                   
+
                     //调用Util读
                     SpeechUtil.read(speechBuilder.ToString());
                        
@@ -249,12 +241,14 @@ namespace AI_Sports.AISports.View.Pages
             //停止语音线程
             //worker.CancelAsync();
             // worker 完成事件响应
-            
-                SpeechUtil.stop();
+
+            SpeechUtil.stop();
                
             
             //隐藏停止按钮
             this.stop.Visibility = Visibility.Hidden;
+            //可用分析按钮
+            this.speech.IsEnabled = true;
         }
     }
 }

@@ -5,6 +5,7 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Permissions;
 using System.Text;
@@ -27,6 +28,10 @@ namespace AI_Sports.AISports.View.Pages
     public partial class TrainingCourseAnalysis : Page
     {
         TrainingCourseService trainingCourseService = new TrainingCourseService();
+
+        //语音分析的后台任务 不用后台任务则界面卡死 无法进行其他操作
+        private BackgroundWorker worker = new BackgroundWorker();
+
         public TrainingCourseAnalysis()
         {
             InitializeComponent();
@@ -85,37 +90,90 @@ namespace AI_Sports.AISports.View.Pages
 
         private void Speech_Click(object sender, RoutedEventArgs e)
         {
-            //查询课程记录集合 绑定ItemsSource
-            List<TrainingCourseVO> trainingCourseVOs = trainingCourseService.listCourseRecord();
-            StringBuilder speechText = new StringBuilder();
-            speechText.Append("您可以在此查看各次训练课程的统计信息，您总共进行了");
-            speechText.Append(trainingCourseVOs.Count);
-            speechText.Append("次训练课程。");
-            foreach (var item in trainingCourseVOs)
+
+            //显示停止按钮
+            this.stop.Visibility = Visibility.Visible;
+            //禁用分析按钮
+            this.speech.IsEnabled = false;
+
+            // worker 要做的事情 使用了匿名的事件响应函数
+            worker.DoWork += (o, ea) =>
             {
+                //查询课程记录集合 绑定ItemsSource
+                List<TrainingCourseVO> trainingCourseVOs = trainingCourseService.listCourseRecord();
+
+                StringBuilder speechText = new StringBuilder();
+
+                if (trainingCourseVOs != null && trainingCourseVOs.Count > 0)
+                {
+                    speechText.Append("您可以在此查看各次训练课程的统计信息，您总共进行了");
+                    speechText.Append(trainingCourseVOs.Count);
+                    speechText.Append("次训练课程。");
+                    foreach (var item in trainingCourseVOs)
+                    {
+
+                        speechText.Append("第");
+                        speechText.Append(item.Course_count);
+                        speechText.Append("次训练课程训练");
+                        speechText.Append(item.Sum_time);
+                        speechText.Append("分钟，消耗热量");
+                        speechText.Append(item.Sum_energy);
+                        speechText.Append("千卡，总共使用设备完成了");
+                        speechText.Append(item.Sum_count);
+                        speechText.Append("次往复运动，");
+                        speechText.Append("在不同设备上进行了");
+                        speechText.Append(item.Dev_count);
+                        speechText.Append("次一分钟的训练，");
+                        speechText.Append("其中平均顺向力为");
+                        speechText.Append(item.Avg_consequent_force);
+                        speechText.Append("千克，平均反向力为");
+                        speechText.Append(item.Avg_reverse_force);
+                        speechText.Append("千克。");
+
+                    }
+                }
+                else
+                {
+                    speechText.Append("您还没有训练记录，请在设备上完成一轮训练课程后再查看分析。");
+                }
+
                 
-                speechText.Append("第");
-                speechText.Append(item.Course_count);
-                speechText.Append("次训练课程训练");
-                speechText.Append(item.Sum_time);
-                speechText.Append("分钟，消耗热量");
-                speechText.Append(item.Sum_energy);
-                speechText.Append("千卡，总共使用设备完成了");
-                speechText.Append(item.Sum_count);
-                speechText.Append("次往复运动，");
-                speechText.Append("在不同设备上进行了");
-                speechText.Append(item.Dev_count);
-                speechText.Append("次一分钟的训练，");
-                speechText.Append("其中平均顺向力为");
-                speechText.Append(item.Avg_consequent_force);
-                speechText.Append("千克，平均反向力为");
-                speechText.Append(item.Avg_reverse_force);
-                speechText.Append("千克。");
+                Console.WriteLine("训练课程语音文本：" + speechText.ToString());
+                SpeechUtil.read(speechText.ToString());
 
-            }
-            Console.WriteLine("训练课程语音文本："+speechText.ToString());
-            SpeechUtil.read(speechText.ToString());
 
+            
+
+            };
+
+
+            //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
+            worker.RunWorkerAsync();
+
+
+            
+
+        }
+
+
+        /// <summary>
+        /// 停止语音分析
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            //停止语音线程
+            //worker.CancelAsync();
+            // worker 完成事件响应
+
+            SpeechUtil.stop();
+
+
+            //隐藏停止按钮
+            this.stop.Visibility = Visibility.Hidden;
+            //可用分析按钮
+            this.speech.IsEnabled = true;
         }
     }
 

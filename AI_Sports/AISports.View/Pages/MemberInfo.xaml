@@ -28,7 +28,7 @@
                     </Image>
 
                     <Label  Margin="220,0,0,0" Content="{Binding Name}" Foreground="#04243D"  FontFamily="Microsoft YaHei" Name="Name"  Height="58" VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="500" Grid.RowSpan="3" Style="{DynamicResource h1}"/>
-                    <Label Content="关联教练" Margin="220,70,0,0" Foreground="#04243D" Style="{DynamicResource h3}"  FontFamily="Microsoft YaHei" FontSize="22px"  Grid.RowSpan="4"  />
+                    <Label Name="AssociateCoach" Content="关联教练" Margin="220,70,0,0" Foreground="#04243D" Style="{DynamicResource h3}"  FontFamily="Microsoft YaHei" FontSize="22px"  Grid.RowSpan="4"  />
                     <Label  Margin="440,70,0,0" Grid.Column="1"  Name="L1" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22px" Content="{Binding Path=Coach}" Grid.RowSpan="4" ></Label>
                     <Label Content="初次训练日期"  Margin="220,120,0,0" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22px"  Grid.RowSpan="5" />
                     <Label  Margin="440,120,0,0" Grid.Column="1"  Name="L2" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22px" Content="{Binding Path=FirstTime}" Grid.RowSpan="5"></Label>
@@ -119,6 +119,7 @@
         <GridSplitter Height="2" Margin="0,0,0,48"  VerticalAlignment="Bottom" Width="2600"/>
         <!--<Button Content="编辑" Background="#FF04243D" Style="{DynamicResource btn-primary}" HorizontalAlignment="Center" Margin="20,0,0,10"  VerticalAlignment="Bottom" Width="75" />-->
         <Button x:Name="speech" Content="AI教练" HorizontalAlignment="Left" Margin="20,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="100" FontSize="20" Style="{DynamicResource btn-success}" Click="Speech_Click"/>
+        <Button x:Name="stop" Content="STOP" HorizontalAlignment="Left" Margin="130,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="100" FontSize="20" Style="{DynamicResource btn-danger}" Click="Stop_Click" Visibility="Hidden"/>
 
     </Grid>
 </Page>

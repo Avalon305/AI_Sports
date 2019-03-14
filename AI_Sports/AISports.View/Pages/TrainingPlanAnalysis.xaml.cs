@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.Serialization.Json;
 using AI_Sports.AISports.Util;
+using System.ComponentModel;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -30,6 +31,10 @@ namespace AI_Sports.AISports.View.Pages
         string sumTime = "";
         int? courseCount = new int?();//当前次数
         int? targetCourseCount = new int?(); //目标次数
+
+        //语音分析的后台任务 不适用后台任务则界面卡死 无法进行其他操作
+        private BackgroundWorker worker = new BackgroundWorker();
+
         public TrainingPlanAnalysis()
         {
             InitializeComponent();
@@ -87,10 +92,73 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Speech_Click(object sender, RoutedEventArgs e)
         {
-            String speechText = "您本次训练计划共完成"+ courseCount + "次训练课程,共消耗热量" + sumEnergy + ",训练总时间" + sumTime + "，目标总课时数为" + targetCourseCount +"次，还需要完成"+ (targetCourseCount - courseCount) + "次训练课程" + ",请继续加油！";
-            Console.WriteLine("训练计划语音文本："+speechText);
-            SpeechUtil.read(speechText);
+
+            //显示停止按钮
+            this.stop.Visibility = Visibility.Visible;
+            //禁用分析按钮
+            this.speech.IsEnabled = false;
+
+            // worker 要做的事情 使用了匿名的事件响应函数
+            worker.DoWork += (o, ea) =>
+            {
+                //WPF中线程只能控制自己创建的控件，
+                //如果要修改主线程创建的MainWindow界面的内容,
+                //可以委托主线程的Dispatcher处理。
+                //在这里，委托内容为一个匿名的Action对象。
+                //this.Dispatcher.Invoke((Action)(() =>
+                //{
+                //    this.TextBox1.Text = "worker started";
+                //}));
+                //Thread.Sleep(1000);
+                if (courseCount != null && sumEnergy != null && sumTime != null && targetCourseCount != null && courseCount !=null)
+                {
+                    String speechText = "您本次训练计划共完成" + courseCount + "次训练课程,共消耗热量" + sumEnergy + ",训练总时间" + sumTime + "，目标总课时数为" + targetCourseCount + "次，还需要完成" + (targetCourseCount - courseCount) + "次训练课程" + ",请继续加油！";
+                    Console.WriteLine("训练计划语音文本：" + speechText);
+                    SpeechUtil.read(speechText);
+                }
+                else
+                {
+                    string speechText = "您还没有训练计划，请联系教练添加训练计划。";
+                    SpeechUtil.read(speechText);
+
+                    Console.WriteLine("无训练计划数据，播报提示信息");
+                }
+
+                
+
+
+            };
+
+
+            //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
+            worker.RunWorkerAsync();
+
+
+
+
+            
         }
+
+        /// <summary>
+        /// 停止语音分析
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            //停止语音线程
+            //worker.CancelAsync();
+            // worker 完成事件响应
+
+            SpeechUtil.stop();
+
+
+            //隐藏停止按钮
+            this.stop.Visibility = Visibility.Hidden;
+            //可用分析按钮
+            this.speech.IsEnabled = true;
+        }
+
     }
 
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]

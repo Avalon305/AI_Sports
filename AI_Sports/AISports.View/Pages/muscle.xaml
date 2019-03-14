@@ -290,6 +290,7 @@
         <GridSplitter Height="2" Margin="0,0,0,48"  VerticalAlignment="Bottom" Width="2600"/>
         <Button x:Name="button" Content="后退" HorizontalAlignment="Left" Margin="20,0,0,10"  VerticalAlignment="Bottom" Width="75" Background="#FF04243D" FontSize="20" Style="{DynamicResource btn-primary}" Click="button_Click"/>
         <Button x:Name="speech" Content="AI教练" HorizontalAlignment="Left" Margin="100,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="100" FontSize="20" Style="{DynamicResource btn-success}" Click="Speech_Click"/>
+        <Button x:Name="stop" Content="STOP" HorizontalAlignment="Left" Margin="205,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="100" FontSize="20" Style="{DynamicResource btn-danger}" Click="Stop_Click" Visibility="Hidden"/>
 
     </Grid>
 
