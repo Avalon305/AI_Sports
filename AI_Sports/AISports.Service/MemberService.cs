@@ -370,6 +370,24 @@ namespace AI_Sports.Service
         {
             memberDAO.UpdateByPrimaryKey(memberEntity);
         }
+          /// <summary>
+        /// 查询所有会员信息
+        /// </summary>
+        /// <returns></returns>
+        public List<MemberEntity> ListAllMember()
+        {
+            return memberDAO.ListAllMember();
+        }
+
+
+        /// <summary>
+        /// 模糊查询名字手机号
+        /// </summary>
+        /// <returns></returns>
+        public List<MemberEntity> ListNameMember(String firstName,String phone_Number)
+        {
+            return memberDAO.ListNameMember(firstName,phone_Number);
+        }
 
 
         
