@@ -157,7 +157,8 @@ namespace AI_Sports.Service
             {
                 Uid = request.Uid,
                 DeviceType = request.DeviceType,
-                ActivityType = request.ActivityType
+                ActivityType = request.ActivityType,
+                DataId = request.DataId
             };
 
             response.Finished = true;
@@ -225,7 +226,8 @@ namespace AI_Sports.Service
                 Uid = request.Uid,
                 DeviceType = request.DeviceType,
                 ActivityType = request.ActivityType,
-                Success = false
+                Success = false,
+                DataId = request.DataId
             };
             var setEntity = new PersonalSettingEntity
             {
