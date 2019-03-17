@@ -143,8 +143,19 @@
                     </Grid>
                 </Button.Content>
             </Button>
+
+            <!--发手环按钮-->
+            <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="6,210,0,0" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Write_WristStrap_Click">
+                <Button.Content>
+                    <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-credit-card}" Width="20" Height="20" Fill="White"></Path>
+                        <TextBlock Margin="60,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="新增手环"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+
             <!--3D扫描按钮-->
-            <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="6,210,0,0" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Button_Click_3DScan">
+            <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="6,315,0,0" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Button_Click_3DScan">
                 <Button.Content>
                     <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-camera}" Width="20" Height="20" Fill="White"></Path>

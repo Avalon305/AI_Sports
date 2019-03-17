@@ -186,6 +186,16 @@ namespace AI_Sports.AISports.View.Pages
         {
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/NuitrackScan.xaml", UriKind.Relative);//跳转页面
         }
+        /// <summary>
+        /// 弹出新增手环窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Write_WristStrap_Click(object sender, RoutedEventArgs e)
+        {
+            WriteBluetooth writeBluetooth = new WriteBluetooth();
+            writeBluetooth.Show();
+        }
 
         
     }

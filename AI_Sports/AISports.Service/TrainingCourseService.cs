@@ -46,8 +46,11 @@ namespace AI_Sports.Service
 
             //这个插入基类有BUG 明明插入进入了 但是返回的结果为0，所以不要返回值了。反正如果插入失败也报异常，返回值也没啥用
             trainingCourseDAO.Insert(trainingCourseEntity);
-            //更新配置中的课程id
+            //更新配置中的课程id 
             CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
+            //训练课程目标天数
+            CommUtil.UpdateSettingString("targetCourseCount", (trainingCourseEntity.Target_course_count).ToString());
+
 
         }
         /// <summary>

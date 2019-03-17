@@ -28,7 +28,7 @@ namespace AI_Sports.Dao
             }
         }
         /// <summary>
-        /// 查询训练活动id
+        /// 查询训练活动id 不需要根据完成状态查询。一个课程至多对应两条活动记录
         /// </summary>
         /// <param name="courseId"></param>
         /// <returns></returns>
@@ -36,7 +36,7 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT * FROM bdl_activity  WHERE fk_training_course_id = @Fk_training_course_id AND is_complete = 0";
+                const string query = "SELECT * FROM bdl_activity  WHERE fk_training_course_id = @Fk_training_course_id";
                 return conn.Query<ActivityEntity>(query, new { Fk_training_course_id = courseId }).ToList();
             }
         }

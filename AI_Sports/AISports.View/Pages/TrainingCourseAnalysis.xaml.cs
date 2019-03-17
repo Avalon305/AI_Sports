@@ -66,7 +66,7 @@ namespace AI_Sports.AISports.View.Pages
                 this.NavigationService.Navigate(trainingActivityAnalysis, Course_count);
                 //加载从训练课程页面传来的参数 //注意LoadCompleted 事件的位置在 Page1.cs 中
                 this.NavigationService.LoadCompleted += trainingActivityAnalysis.NavigationService_LoadCompleted;
-
+                
             }
 
         }
