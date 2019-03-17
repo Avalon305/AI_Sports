@@ -469,12 +469,14 @@ namespace AI_Sports
                         Waist = skeleton.Joints[i];
                         //Console.WriteLine("腰部坐标" + i + "||" + Waist.Real.X + "||" + Waist.Real.Y + "||" + Waist.Real.Z);
                     }
+                    double NeckLength = ComputeDistanceBetween2Joints(Head, Collar);
                     double ShoulderWidth = ComputeDistanceBetween2Joints(LeftShoulder, Collar);
                     double ArmLengthUp = ComputeDistanceBetween2Joints(LeftShoulder, LeftElbow);
                     double ArmLengthDown = ComputeDistanceBetween2Joints(LeftElbow, LeftWrist);
                     double LegLengthUp = ComputeDistanceBetween2Joints(LeftHip, LeftKnee);
                     double LegLengthDown = ComputeDistanceBetween2Joints(LeftKnee, LeftAnkle);
                     double BodyLength = ComputeDistanceBetween2Joints(Collar, Waist);
+                    double Height = LegLengthUp + LegLengthDown + BodyLength + NeckLength + 10.0;
                     // Console.WriteLine("距离差为" + (LeftHip.Real.Z - LeftKnee.Real.Z) + "是否举手" + (LeftWrist.Real.Y - LeftShoulder.Real.Y));
 
                     if ((LeftHip.Real.Z - LeftKnee.Real.Z > 150 && LeftHip.Real.Z - LeftKnee.Real.Z < 300) && (LeftWrist.Real.Y > LeftShoulder.Real.Y && LeftAnkle.Real.Y != 0))
@@ -499,6 +501,7 @@ namespace AI_Sports
                                 Leg_length_up.Text = LegLengthUp.ToString("f2");
                                 Leg_length_down.Text = LegLengthDown.ToString("f2");
                                 Body_length.Text = BodyLength.ToString("f2");
+                                Man_Height.Text = Height.ToString("f2");
                             });
                             break;
                         }
@@ -569,10 +572,22 @@ namespace AI_Sports
             {
                 skeletonLengthDAO.insertSkeletonLengthRecord(skeletonLengthEntity);
             }
-            else {
+            else
+            {
                 skeletonLengthDAO.updateSkeletonLengthRecord(skeletonLengthEntity);
             }
             MessageBox.Show("保存成功");
+        }
+
+        private void Button_Click_Clear(object sender, RoutedEventArgs e)
+        {
+            Man_Height.Text = null;
+            Shoulder_width.Text = null;
+            Arm_length_up.Text = null;
+            Arm_length_down.Text = null;
+            Leg_length_up.Text = null;
+            Leg_length_down.Text = null;
+            Body_length.Text = null;
         }
 
         public static BitmapImage BitmapToBitmapImage(Bitmap bitmap)

@@ -48,7 +48,7 @@ public static partial class BdlProtoReflection {
           "YWN0aXZpdHlJZBgTIAEoAxIYChBhY3Rpdml0eVJlY29yZElkGBQgASgDEhUK",
           "DXBlZGFsRGlzdGFuY2UYFSABKAUSEgoKc3lzVmVyc2lvbhgWIAEoBRIWCg5o",
           "ZWFydF9yYXRlX21heBgXIAEoBRIOCgZyb2xlSWQYGCABKAUSDgoGd2VpZ2h0",
-          "GBkgASgBEgsKA2FnZRgaIAEoBSKtAwoNVXBsb2FkUmVxdWVzdBILCgN1aWQY",
+          "GBkgASgBEgsKA2FnZRgaIAEoBSK+AwoNVXBsb2FkUmVxdWVzdBILCgN1aWQY",
           "ASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5cGUSIwoMYWN0",
           "aXZpdHlUeXBlGAMgASgOMg0uQWN0aXZpdHlUeXBlEh0KCXRyYWluTW9kZRgE",
           "IAEoDjIKLlRyYWluTW9kZRIXCg9kZWZhdE1vZGVFbmFibGUYBSABKAgSFAoM",
@@ -58,46 +58,48 @@ public static partial class BdlProtoReflection {
           "EhYKDmhlYXJ0X3JhdGVfYXZnGA4gASgFEhYKDmhlYXJ0X3JhdGVfbWF4GA8g",
           "ASgFEhYKDmhlYXJ0X3JhdGVfbWluGBAgASgFEhAKCGNvdXJzZUlkGBEgASgD",
           "EhIKCmFjdGl2aXR5SWQYEiABKAMSGAoQYWN0aXZpdHlSZWNvcmRJZBgTIAEo",
-          "AyKGAQoOVXBsb2FkUmVzcG9uc2USCwoDdWlkGAEgASgJEh8KCmRldmljZVR5",
-          "cGUYAiABKA4yCy5EZXZpY2VUeXBlEiMKDGFjdGl2aXR5VHlwZRgEIAEoDjIN",
-          "LkFjdGl2aXR5VHlwZRIQCghmaW5pc2hlZBgFIAEoCBIPCgdzdWNjZXNzGAYg",
-          "ASgIIqUECgdNZXNzYWdlEhcKBHR5cGUYASABKA4yCS5IZWFkVHlwZRIQCghz",
-          "ZXF1ZW5jZRgCIAEoBRIrChBrZWVwYWxpdmVSZXF1ZXN0GAMgASgLMhEuS2Vl",
-          "cGFsaXZlUmVxdWVzdBItChFrZWVwYWxpdmVSZXNwb25zZRgEIAEoCzISLktl",
-          "ZXBhbGl2ZVJlc3BvbnNlEiMKDGxvZ2luUmVxdWVzdBgFIAEoCzINLkxvZ2lu",
-          "UmVxdWVzdBIlCg1sb2dpblJlc3BvbnNlGAYgASgLMg4uTG9naW5SZXNwb25z",
-          "ZRIlCg11cGxvYWRSZXF1ZXN0GAcgASgLMg4uVXBsb2FkUmVxdWVzdBInCg51",
-          "cGxvYWRSZXNwb25zZRgIIAEoCzIPLlVwbG9hZFJlc3BvbnNlEi8KEnBlcnNv",
-          "bmFsU2V0UmVxdWVzdBgJIAEoCzITLlBlcnNvbmFsU2V0UmVxdWVzdBIxChNw",
-          "ZXJzb25hbFNldFJlc3BvbnNlGAogASgLMhQuUGVyc29uYWxTZXRSZXNwb25z",
-          "ZRIvChJjb3VudERvd25Ccm9hZENhc3QYCyABKAsyEy5Db3VudERvd25Ccm9h",
-          "ZENhc3QSLwoSY3VycmVudFRpbWVSZXF1ZXN0GAwgASgLMhMuQ3VycmVudFRp",
-          "bWVSZXF1ZXN0EjEKE2N1cnJlbnRUaW1lUmVzcG9uc2UYDSABKAsyFC5DdXJy",
-          "ZW50VGltZVJlc3BvbnNlIrICChJQZXJzb25hbFNldFJlcXVlc3QSCwoDdWlk",
-          "GAEgASgJEh8KCmRldmljZVR5cGUYAiABKA4yCy5EZXZpY2VUeXBlEiMKDGFj",
-          "dGl2aXR5VHlwZRgDIAEoDjINLkFjdGl2aXR5VHlwZRISCgpzZWF0SGVpZ2h0",
-          "GAQgASgFEhQKDGJhY2tEaXN0YW5jZRgFIAEoBRITCgtsZXZlckxlbmd0aBgG",
-          "IAEoBRISCgpsZXZlckFuZ2xlGAcgASgBEhQKDGZvcndhcmRMaW1pdBgIIAEo",
-          "BRIRCgliYWNrTGltaXQYCSABKAUSHQoJdHJhaW5Nb2RlGAogASgOMgouVHJh",
-          "aW5Nb2RlEhcKD2RlZmF0TW9kZUVuYWJsZRgLIAEoCBIVCg1wZWRhbERpc3Rh",
-          "bmNlGAwgASgFInkKE1BlcnNvbmFsU2V0UmVzcG9uc2USHwoKZGV2aWNlVHlw",
-          "ZRgBIAEoDjILLkRldmljZVR5cGUSIwoMYWN0aXZpdHlUeXBlGAIgASgOMg0u",
-          "QWN0aXZpdHlUeXBlEgsKA3VpZBgDIAEoCRIPCgdzdWNjZXNzGAQgASgIKiYK",
-          "DUNvdW50RG93blR5cGUSCwoHUlVOTklORxAAEggKBFNUT1AQASqIAgoISGVh",
-          "ZFR5cGUSFQoRS2VlcGFsaXZlX1JlcXVlc3QQABIWChJLZWVwYWxpdmVfUmVz",
-          "cG9uc2UQARIRCg1Mb2dpbl9SZXF1ZXN0EAISEgoOTG9naW5fUmVzcG9uc2UQ",
-          "AxISCg5VcGxvYWRfUmVxdWVzdBAEEhMKD1VwbG9hZF9SZXNwb25zZRAFEhcK",
-          "E0NvdW50RG93bl9Ccm9hZENhc3QQBhIXChNQZXJzb25hbFNldF9SZXF1ZXN0",
-          "EAcSGAoUUGVyc29uYWxTZXRfUmVzcG9uc2UQCBIXChNDdXJyZW50VGltZV9S",
-          "ZXF1ZXN0EAkSGAoUQ3VycmVudFRpbWVfUmVzcG9uc2UQCipxCglUcmFpbk1v",
-          "ZGUSEQoNU1RBTkRBUkRfTU9ERRAAEhAKDEFEQVBURVJfTU9ERRABEhQKEENP",
-          "TlNUX1NQRUVEX01PREUQAhITCg9IRUFSVF9SQVRFX01PREUQAxIUChBBRERf",
-          "TVVTQ0xFU19NT0RFEAQqpQEKCkRldmljZVR5cGUSBwoDUDAwEAASBwoDUDAx",
-          "EAESBwoDUDAyEAISBwoDUDAzEAMSBwoDUDA0EAQSBwoDUDA1EAUSBwoDUDA2",
-          "EAYSBwoDUDA3EAcSBwoDUDA4EAgSBwoDUDA5EAkSBwoDRTEwEAoSBwoDRTEx",
-          "EAsSBwoDRTEyEAwSBwoDRTEzEA0SBwoDRTE0EA4SBwoDRTE1EA8SBwoDRTE2",
-          "EBAqMgoMQWN0aXZpdHlUeXBlEg4KClBvd2VyQ3ljbGUQABISCg5FbmR1cmFu",
-          "Y2VDeWNsZRABYgZwcm90bzM="));
+          "AxIPCgdkYXRhX2lkGBQgASgJIpcBCg5VcGxvYWRSZXNwb25zZRILCgN1aWQY",
+          "ASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5cGUSIwoMYWN0",
+          "aXZpdHlUeXBlGAQgASgOMg0uQWN0aXZpdHlUeXBlEhAKCGZpbmlzaGVkGAUg",
+          "ASgIEg8KB3N1Y2Nlc3MYBiABKAgSDwoHZGF0YV9pZBgHIAEoCSKlBAoHTWVz",
+          "c2FnZRIXCgR0eXBlGAEgASgOMgkuSGVhZFR5cGUSEAoIc2VxdWVuY2UYAiAB",
+          "KAUSKwoQa2VlcGFsaXZlUmVxdWVzdBgDIAEoCzIRLktlZXBhbGl2ZVJlcXVl",
+          "c3QSLQoRa2VlcGFsaXZlUmVzcG9uc2UYBCABKAsyEi5LZWVwYWxpdmVSZXNw",
+          "b25zZRIjCgxsb2dpblJlcXVlc3QYBSABKAsyDS5Mb2dpblJlcXVlc3QSJQoN",
+          "bG9naW5SZXNwb25zZRgGIAEoCzIOLkxvZ2luUmVzcG9uc2USJQoNdXBsb2Fk",
+          "UmVxdWVzdBgHIAEoCzIOLlVwbG9hZFJlcXVlc3QSJwoOdXBsb2FkUmVzcG9u",
+          "c2UYCCABKAsyDy5VcGxvYWRSZXNwb25zZRIvChJwZXJzb25hbFNldFJlcXVl",
+          "c3QYCSABKAsyEy5QZXJzb25hbFNldFJlcXVlc3QSMQoTcGVyc29uYWxTZXRS",
+          "ZXNwb25zZRgKIAEoCzIULlBlcnNvbmFsU2V0UmVzcG9uc2USLwoSY291bnRE",
+          "b3duQnJvYWRDYXN0GAsgASgLMhMuQ291bnREb3duQnJvYWRDYXN0Ei8KEmN1",
+          "cnJlbnRUaW1lUmVxdWVzdBgMIAEoCzITLkN1cnJlbnRUaW1lUmVxdWVzdBIx",
+          "ChNjdXJyZW50VGltZVJlc3BvbnNlGA0gASgLMhQuQ3VycmVudFRpbWVSZXNw",
+          "b25zZSLDAgoSUGVyc29uYWxTZXRSZXF1ZXN0EgsKA3VpZBgBIAEoCRIfCgpk",
+          "ZXZpY2VUeXBlGAIgASgOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0eVR5cGUY",
+          "AyABKA4yDS5BY3Rpdml0eVR5cGUSEgoKc2VhdEhlaWdodBgEIAEoBRIUCgxi",
+          "YWNrRGlzdGFuY2UYBSABKAUSEwoLbGV2ZXJMZW5ndGgYBiABKAUSEgoKbGV2",
+          "ZXJBbmdsZRgHIAEoARIUCgxmb3J3YXJkTGltaXQYCCABKAUSEQoJYmFja0xp",
+          "bWl0GAkgASgFEh0KCXRyYWluTW9kZRgKIAEoDjIKLlRyYWluTW9kZRIXCg9k",
+          "ZWZhdE1vZGVFbmFibGUYCyABKAgSFQoNcGVkYWxEaXN0YW5jZRgMIAEoBRIP",
+          "CgdkYXRhX2lkGA0gASgJIooBChNQZXJzb25hbFNldFJlc3BvbnNlEh8KCmRl",
+          "dmljZVR5cGUYASABKA4yCy5EZXZpY2VUeXBlEiMKDGFjdGl2aXR5VHlwZRgC",
+          "IAEoDjINLkFjdGl2aXR5VHlwZRILCgN1aWQYAyABKAkSDwoHc3VjY2VzcxgE",
+          "IAEoCBIPCgdkYXRhX2lkGAUgASgJKiYKDUNvdW50RG93blR5cGUSCwoHUlVO",
+          "TklORxAAEggKBFNUT1AQASqIAgoISGVhZFR5cGUSFQoRS2VlcGFsaXZlX1Jl",
+          "cXVlc3QQABIWChJLZWVwYWxpdmVfUmVzcG9uc2UQARIRCg1Mb2dpbl9SZXF1",
+          "ZXN0EAISEgoOTG9naW5fUmVzcG9uc2UQAxISCg5VcGxvYWRfUmVxdWVzdBAE",
+          "EhMKD1VwbG9hZF9SZXNwb25zZRAFEhcKE0NvdW50RG93bl9Ccm9hZENhc3QQ",
+          "BhIXChNQZXJzb25hbFNldF9SZXF1ZXN0EAcSGAoUUGVyc29uYWxTZXRfUmVz",
+          "cG9uc2UQCBIXChNDdXJyZW50VGltZV9SZXF1ZXN0EAkSGAoUQ3VycmVudFRp",
+          "bWVfUmVzcG9uc2UQCiqUAQoJVHJhaW5Nb2RlEhEKDVNUQU5EQVJEX01PREUQ",
+          "ABIQCgxBREFQVEVSX01PREUQARIUChBDT05TVF9TUEVFRF9NT0RFEAISEwoP",
+          "SEVBUlRfUkFURV9NT0RFEAMSFAoQQUREX01VU0NMRVNfTU9ERRAEEg8KC0FD",
+          "VElWRV9NT0RFEAUSEAoMUEFTU0lWRV9NT0RFEAYqpQEKCkRldmljZVR5cGUS",
+          "BwoDUDAwEAASBwoDUDAxEAESBwoDUDAyEAISBwoDUDAzEAMSBwoDUDA0EAQS",
+          "BwoDUDA1EAUSBwoDUDA2EAYSBwoDUDA3EAcSBwoDUDA4EAgSBwoDUDA5EAkS",
+          "BwoDRTEwEAoSBwoDRTExEAsSBwoDRTEyEAwSBwoDRTEzEA0SBwoDRTE0EA4S",
+          "BwoDRTE1EA8SBwoDRTE2EBAqMgoMQWN0aXZpdHlUeXBlEg4KClBvd2VyQ3lj",
+          "bGUQABISCg5FbmR1cmFuY2VDeWNsZRABYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::CountDownType), typeof(global::HeadType), typeof(global::TrainMode), typeof(global::DeviceType), typeof(global::ActivityType), }, new pbr::GeneratedClrTypeInfo[] {
@@ -108,11 +110,11 @@ public static partial class BdlProtoReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::CurrentTimeResponse), global::CurrentTimeResponse.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime", "CountDownType", "CurrentSeconds" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginRequest), global::LoginRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginResponse), global::LoginResponse.Parser, new[]{ "Uid", "DeviceTypeArr", "ActivityType", "ExisitSetting", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "Power", "CourseId", "ActivityId", "ActivityRecordId", "PedalDistance", "SysVersion", "HeartRateMax", "RoleId", "Weight", "Age" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecordId" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::UploadResponse), global::UploadResponse.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "Finished", "Success" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecordId", "DataId" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::UploadResponse), global::UploadResponse.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "Finished", "Success", "DataId" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Message), global::Message.Parser, new[]{ "Type", "Sequence", "KeepaliveRequest", "KeepaliveResponse", "LoginRequest", "LoginResponse", "UploadRequest", "UploadResponse", "PersonalSetRequest", "PersonalSetResponse", "CountDownBroadCast", "CurrentTimeRequest", "CurrentTimeResponse" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "SeatHeight", "BackDistance", "LeverLength", "LeverAngle", "ForwardLimit", "BackLimit", "TrainMode", "DefatModeEnable", "PedalDistance" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetResponse), global::PersonalSetResponse.Parser, new[]{ "DeviceType", "ActivityType", "Uid", "Success" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "SeatHeight", "BackDistance", "LeverLength", "LeverAngle", "ForwardLimit", "BackLimit", "TrainMode", "DefatModeEnable", "PedalDistance", "DataId" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetResponse), global::PersonalSetResponse.Parser, new[]{ "DeviceType", "ActivityType", "Uid", "Success", "DataId" }, null, null, null)
         }));
   }
   #endregion
@@ -207,6 +209,14 @@ public enum TrainMode {
   ///增肌模式 
   /// </summary>
   [pbr::OriginalName("ADD_MUSCLES_MODE")] AddMusclesMode = 4,
+  /// <summary>
+  ///主动模式
+  /// </summary>
+  [pbr::OriginalName("ACTIVE_MODE")] ActiveMode = 5,
+  /// <summary>
+  ///被动模式
+  /// </summary>
+  [pbr::OriginalName("PASSIVE_MODE")] PassiveMode = 6,
 }
 
 /// <summary>
@@ -2431,6 +2441,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     courseId_ = other.courseId_;
     activityId_ = other.activityId_;
     activityRecordId_ = other.activityRecordId_;
+    dataId_ = other.dataId_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -2691,6 +2702,20 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     }
   }
 
+  /// <summary>Field number for the "data_id" field.</summary>
+  public const int DataIdFieldNumber = 20;
+  private string dataId_ = "";
+  /// <summary>
+  ///安卓端定义的记录主键，用于标识该条记录是否上传成功
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string DataId {
+    get { return dataId_; }
+    set {
+      dataId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as UploadRequest);
@@ -2722,6 +2747,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (CourseId != other.CourseId) return false;
     if (ActivityId != other.ActivityId) return false;
     if (ActivityRecordId != other.ActivityRecordId) return false;
+    if (DataId != other.DataId) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -2746,6 +2772,7 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (CourseId != 0L) hash ^= CourseId.GetHashCode();
     if (ActivityId != 0L) hash ^= ActivityId.GetHashCode();
     if (ActivityRecordId != 0L) hash ^= ActivityRecordId.GetHashCode();
+    if (DataId.Length != 0) hash ^= DataId.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -2831,6 +2858,10 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
       output.WriteRawTag(152, 1);
       output.WriteInt64(ActivityRecordId);
     }
+    if (DataId.Length != 0) {
+      output.WriteRawTag(162, 1);
+      output.WriteString(DataId);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -2892,6 +2923,9 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     }
     if (ActivityRecordId != 0L) {
       size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActivityRecordId);
+    }
+    if (DataId.Length != 0) {
+      size += 2 + pb::CodedOutputStream.ComputeStringSize(DataId);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -2957,6 +2991,9 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     }
     if (other.ActivityRecordId != 0L) {
       ActivityRecordId = other.ActivityRecordId;
+    }
+    if (other.DataId.Length != 0) {
+      DataId = other.DataId;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -3041,6 +3078,10 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
           ActivityRecordId = input.ReadInt64();
           break;
         }
+        case 162: {
+          DataId = input.ReadString();
+          break;
+        }
       }
     }
   }
@@ -3080,6 +3121,7 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     activityType_ = other.activityType_;
     finished_ = other.finished_;
     success_ = other.success_;
+    dataId_ = other.dataId_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -3158,6 +3200,20 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     }
   }
 
+  /// <summary>Field number for the "data_id" field.</summary>
+  public const int DataIdFieldNumber = 7;
+  private string dataId_ = "";
+  /// <summary>
+  ///安卓端定义的记录主键，用于标识该条记录是否上传成功
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string DataId {
+    get { return dataId_; }
+    set {
+      dataId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as UploadResponse);
@@ -3176,6 +3232,7 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     if (ActivityType != other.ActivityType) return false;
     if (Finished != other.Finished) return false;
     if (Success != other.Success) return false;
+    if (DataId != other.DataId) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -3187,6 +3244,7 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     if (ActivityType != 0) hash ^= ActivityType.GetHashCode();
     if (Finished != false) hash ^= Finished.GetHashCode();
     if (Success != false) hash ^= Success.GetHashCode();
+    if (DataId.Length != 0) hash ^= DataId.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -3220,6 +3278,10 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
       output.WriteRawTag(48);
       output.WriteBool(Success);
     }
+    if (DataId.Length != 0) {
+      output.WriteRawTag(58);
+      output.WriteString(DataId);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -3242,6 +3304,9 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     }
     if (Success != false) {
       size += 1 + 1;
+    }
+    if (DataId.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(DataId);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -3268,6 +3333,9 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
     }
     if (other.Success != false) {
       Success = other.Success;
+    }
+    if (other.DataId.Length != 0) {
+      DataId = other.DataId;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -3298,6 +3366,10 @@ public sealed partial class UploadResponse : pb::IMessage<UploadResponse> {
         }
         case 48: {
           Success = input.ReadBool();
+          break;
+        }
+        case 58: {
+          DataId = input.ReadString();
           break;
         }
       }
@@ -3883,6 +3955,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     trainMode_ = other.trainMode_;
     defatModeEnable_ = other.defatModeEnable_;
     pedalDistance_ = other.pedalDistance_;
+    dataId_ = other.dataId_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -4059,6 +4132,20 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
   }
 
+  /// <summary>Field number for the "data_id" field.</summary>
+  public const int DataIdFieldNumber = 13;
+  private string dataId_ = "";
+  /// <summary>
+  ///安卓端的记录ID
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string DataId {
+    get { return dataId_; }
+    set {
+      dataId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as PersonalSetRequest);
@@ -4084,6 +4171,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (TrainMode != other.TrainMode) return false;
     if (DefatModeEnable != other.DefatModeEnable) return false;
     if (PedalDistance != other.PedalDistance) return false;
+    if (DataId != other.DataId) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -4102,6 +4190,7 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     if (TrainMode != 0) hash ^= TrainMode.GetHashCode();
     if (DefatModeEnable != false) hash ^= DefatModeEnable.GetHashCode();
     if (PedalDistance != 0) hash ^= PedalDistance.GetHashCode();
+    if (DataId.Length != 0) hash ^= DataId.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -4163,6 +4252,10 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
       output.WriteRawTag(96);
       output.WriteInt32(PedalDistance);
     }
+    if (DataId.Length != 0) {
+      output.WriteRawTag(106);
+      output.WriteString(DataId);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -4206,6 +4299,9 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
     if (PedalDistance != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(PedalDistance);
+    }
+    if (DataId.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(DataId);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -4253,6 +4349,9 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
     }
     if (other.PedalDistance != 0) {
       PedalDistance = other.PedalDistance;
+    }
+    if (other.DataId.Length != 0) {
+      DataId = other.DataId;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -4313,6 +4412,10 @@ public sealed partial class PersonalSetRequest : pb::IMessage<PersonalSetRequest
           PedalDistance = input.ReadInt32();
           break;
         }
+        case 106: {
+          DataId = input.ReadString();
+          break;
+        }
       }
     }
   }
@@ -4351,6 +4454,7 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
     activityType_ = other.activityType_;
     uid_ = other.uid_;
     success_ = other.success_;
+    dataId_ = other.dataId_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -4415,6 +4519,20 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
     }
   }
 
+  /// <summary>Field number for the "data_id" field.</summary>
+  public const int DataIdFieldNumber = 5;
+  private string dataId_ = "";
+  /// <summary>
+  ///安卓端的记录ID
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string DataId {
+    get { return dataId_; }
+    set {
+      dataId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as PersonalSetResponse);
@@ -4432,6 +4550,7 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
     if (ActivityType != other.ActivityType) return false;
     if (Uid != other.Uid) return false;
     if (Success != other.Success) return false;
+    if (DataId != other.DataId) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -4442,6 +4561,7 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
     if (ActivityType != 0) hash ^= ActivityType.GetHashCode();
     if (Uid.Length != 0) hash ^= Uid.GetHashCode();
     if (Success != false) hash ^= Success.GetHashCode();
+    if (DataId.Length != 0) hash ^= DataId.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -4471,6 +4591,10 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
       output.WriteRawTag(32);
       output.WriteBool(Success);
     }
+    if (DataId.Length != 0) {
+      output.WriteRawTag(42);
+      output.WriteString(DataId);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -4490,6 +4614,9 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
     }
     if (Success != false) {
       size += 1 + 1;
+    }
+    if (DataId.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(DataId);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -4513,6 +4640,9 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
     }
     if (other.Success != false) {
       Success = other.Success;
+    }
+    if (other.DataId.Length != 0) {
+      DataId = other.DataId;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -4539,6 +4669,10 @@ public sealed partial class PersonalSetResponse : pb::IMessage<PersonalSetRespon
         }
         case 32: {
           Success = input.ReadBool();
+          break;
+        }
+        case 42: {
+          DataId = input.ReadString();
           break;
         }
       }

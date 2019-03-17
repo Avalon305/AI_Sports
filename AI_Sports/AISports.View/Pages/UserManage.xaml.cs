@@ -127,7 +127,7 @@ namespace AI_Sports.AISports.View.Pages
             this.btn4.Background = null;
             this.btn5.Background = null;
             this.Btn_MemberManage.Background = null;
-            //this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddUser.xaml", UriKind.Relative);//跳转页面
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/SystemSeting.xaml.xaml", UriKind.Relative);//跳转页面
         }
         /// <summary>
         /// 会员管理点击

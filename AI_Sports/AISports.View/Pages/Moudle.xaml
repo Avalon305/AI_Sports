@@ -1,0 +1,22 @@
+﻿<Window x:Class="AI_Sports.AISports.View.Pages.Moudle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
+        mc:Ignorable="d"
+        Title="Moudle" Height="450" Width="800">
+	<StackPanel Orientation="Vertical"  >
+		<StackPanel Orientation="Vertical" Height="370" Background="AliceBlue">
+			<Grid>
+				<Label Content="请输入系统设置密码：" Margin="48,60,460,-60" FontSize="17"></Label>
+				<PasswordBox x:Name="SystemPassword" Password="" Style="{StaticResource has-success}" Margin="229,50,243,-50"/>
+			</Grid>
+
+		</StackPanel>
+		<StackPanel Height="50" Orientation="Horizontal" Background="DimGray">
+			<Button Content="确定" Style="{DynamicResource btn-success}" Width="80" Margin="580,2,10,5" Click="Button_Click"></Button>
+			<Button Content="取消"  Width="80" Margin="10,2,5,5" Click="Button1_Click"></Button>
+		</StackPanel>
+	</StackPanel>
+</Window>
