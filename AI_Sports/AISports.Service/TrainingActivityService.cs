@@ -132,5 +132,30 @@ namespace AI_Sports.Service
             return activityDAO.UpdateTargetTurnNumber(activityEntity);
         }
 
-    }
+		///zfc
+		/// <summary>
+		/// 根据外键训练课程id完成训练活动，把is_complete标志位置为1代表完成
+		/// </summary>
+		/// <param name="trainingcourseid"></param>
+		/// <param name="complete"></param>
+		/// <returns></returns>
+		public int UpdateCompleteFinish(int trainingcourseid, int complete)
+		{
+			return activityDAO.UpdateCompleteFinish(trainingcourseid, complete);
+		}
+
+		///zfc
+		/// <summary>
+		/// 根据训练课程id更新训练活动记录 完成状态
+		/// </summary>
+		/// <param name="fk_training_course_id"></param>
+		/// <param name="complete"></param>
+		public void UpdateRecordCompleteFinish(int trainingcourseid, int complete)
+		{
+
+			trainingActivityRecordDAO.UpdateCompleteFinish(trainingcourseid, complete);
+
+		}
+
+	}
 }

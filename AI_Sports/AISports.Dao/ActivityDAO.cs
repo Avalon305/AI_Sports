@@ -27,12 +27,31 @@ namespace AI_Sports.Dao
 
             }
         }
-        /// <summary>
-        /// 查询训练活动id 不需要根据完成状态查询。一个课程至多对应两条活动记录
-        /// </summary>
-        /// <param name="courseId"></param>
-        /// <returns></returns>
-        public List<ActivityEntity> ListActivitysByCourseId(long courseId)
+		///zfc
+		/// <summary>
+		/// 根据外键训练课程id完成训练活动，把is_complete标志位置为1代表完成
+		/// </summary>
+		/// <param name="trainingcourseid"></param>
+		/// <param name="complete"></param>
+		/// <returns></returns>
+		public int UpdateCompleteFinish(int trainingcourseid, int complete)
+		{
+			using (var conn = DbUtil.getConn())
+			{
+				const string query = "UPDATE bdl_activity SET is_complete = @Complete WHERE fk_training_course_id  = @fk_training_course_id ";
+
+				return conn.Execute(query, new { fk_training_course_id = trainingcourseid, Complete = complete });
+
+			}
+		}
+
+
+		/// <summary>
+		/// 查询训练活动id 不需要根据完成状态查询。一个课程至多对应两条活动记录
+		/// </summary>
+		/// <param name="courseId"></param>
+		/// <returns></returns>
+		public List<ActivityEntity> ListActivitysByCourseId(long courseId)
         {
             using (var conn = DbUtil.getConn())
             {
