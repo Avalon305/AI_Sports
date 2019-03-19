@@ -140,7 +140,7 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "UPDATE bdl_activity SET target_turn_number = 0,is_complete = 0 WHERE fk_training_course_id = @Fk_training_course_id ";
+                const string query = "UPDATE bdl_activity SET current_turn_number = 0,is_complete = 0 WHERE fk_training_course_id = @Fk_training_course_id ";
 
                 conn.Execute(query, new { Fk_training_course_id = courseId });
 
