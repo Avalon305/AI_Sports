@@ -1,4 +1,6 @@
-﻿using AI_Sports.Constant;
+﻿using AI_Sports.AISports.Dao;
+using AI_Sports.AISports.Entity;
+using AI_Sports.Constant;
 using AI_Sports.Dao;
 using AI_Sports.Entity;
 using AI_Sports.Util;
@@ -9,6 +11,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows;
 
 namespace AI_Sports.Service
@@ -21,6 +24,7 @@ namespace AI_Sports.Service
         private MemberDAO memberDAO = new MemberDAO();
         private TrainingPlanDAO trainingPlanDAO = new TrainingPlanDAO();
         private TrainingCourseDAO trainingCourseDAO = new TrainingCourseDAO();
+        private BluetoothReadDAO bluetoothReadDAO = new BluetoothReadDAO();
         private static Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// 新增保存会员信息
@@ -29,27 +33,80 @@ namespace AI_Sports.Service
         /// <returns></returns>
         public long InsertMember(MemberEntity memberEntity)
         {
-           
-            //计算最大心率 = 220 - 年龄
-            memberEntity.Max_heart_rate = 220 - memberEntity.Age;
-            //计算最宜心率 = （最大心率 * 76.5%）然后四舍五入为整数
-            memberEntity.Suitable_heart_rate = (int?)Math.Round(memberEntity.Max_heart_rate.Value * 0.765);
-            //设置主键id
-            memberEntity.Id = KeyGenerator.GetNextKeyValueLong("bdl_member");
-            //设置创建时间
-            memberEntity.Gmt_create = System.DateTime.Now;
-            if (memberEntity.Role_id == 1)//只有添加的角色是用户才设置教练外键
+
+            //使整个代码块成为事务性代码
+            using (TransactionScope ts = new TransactionScope())
             {
-                //当前登陆的教练Id
-                memberEntity.Fk_coach_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("coachId"));
+
+                //计算最大心率 = 220 - 年龄
+                memberEntity.Max_heart_rate = 220 - memberEntity.Age;
+                //计算最宜心率 = （最大心率 * 76.5%）然后四舍五入为整数
+                memberEntity.Suitable_heart_rate = (int?)Math.Round(memberEntity.Max_heart_rate.Value * 0.765);
+                //设置主键id
+                memberEntity.Id = KeyGenerator.GetNextKeyValueLong("bdl_member");
+                //设置创建时间
+                memberEntity.Gmt_create = System.DateTime.Now;
+                //设置会员ID
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.Append(memberEntity.Member_familyName);
+                stringBuilder.Append(memberEntity.Member_firstName);
+                //用户名5个字符以内
+                if (stringBuilder.Length > 5)
+                {
+                    stringBuilder.ToString().Substring(0,5);
+                }
+                //手机号不为空则拼接手机号后四位
+                if (memberEntity.Mobile_phone != null && memberEntity.Mobile_phone != "")
+                {
+                    stringBuilder.Append(memberEntity.Mobile_phone.Substring(memberEntity.Mobile_phone.Length - 4));
+
+                }
+                else
+                {
+                    logger.Warn("拼接用户id时，用户手机号为空。用户名："+memberEntity.Member_familyName+memberEntity.Member_firstName);
+                }
+
+                //设置用户id
+                memberEntity.Member_id = stringBuilder.ToString();
+
+                if (memberEntity.Role_id == 1)//只有添加的角色是用户才设置教练外键
+                {
+                    //当前登陆的教练Id
+                    memberEntity.Fk_coach_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("coachId"));
+                }
+
+                //使用基类插入新会员
+                long resultCode = memberDAO.Insert(memberEntity);
+
+                //插入数据到蓝牙读取表
+                BluetoothReadEntity bluetoothReadEntity = new BluetoothReadEntity();
+                bluetoothReadEntity.Member_id = stringBuilder.ToString();
+                bluetoothReadEntity.Scan_count = 0;
+                //bluetoothReadEntity.Gmt_create = System.DateTime.Now;
+                //插入蓝牙读取表
+                bluetoothReadDAO.Insert(bluetoothReadEntity);
+
+                //更新APP中会员设置，让新增的该会员登陆 强制更新配置类，将当前登陆用户踢出
+
+                //1.更新会员卡号ID
+                CommUtil.UpdateSettingString("memberId", memberEntity.Member_id);
+                //3.更新当前登陆用户的训练计划id
+                CommUtil.UpdateSettingString("trainingPlanId", "");
+                //4.更新当前登陆用户的训练课程id
+                CommUtil.UpdateSettingString("trainingCourseId", "");
+                //5.更新当前登陆用户的当前课程记录id current_course_count 
+                CommUtil.UpdateSettingString("currentCourseCount", "");
+                //5.更新当前登陆用户的目标课程记录id 
+                CommUtil.UpdateSettingString("targetCourseCount", "");
+                //6.更新当前登陆会员的主键
+                CommUtil.UpdateSettingString("memberPrimarykey", memberEntity.Id.ToString());
+
+                ts.Complete();
+                //使用基类插入新会员
+                return resultCode;
+
+                
             }
-            
-            //使用基类插入新会员
-            long resultCode =  memberDAO.Insert(memberEntity);
-            //更新APP中会员id
-            CommUtil.UpdateSettingString("memberPrimarykey",memberEntity.Id.ToString());
-            //使用基类插入新会员
-            return resultCode;
         }
 
         /// <summary>
@@ -101,7 +158,7 @@ namespace AI_Sports.Service
         /// </summary>
         /// <param name="memberEntity"></param>
         /// <returns></returns>
-         List<MemberEntity> ListMemberByCoachId(MemberEntity memberEntity)
+        List<MemberEntity> ListMemberByCoachId(MemberEntity memberEntity)
         {
             return memberDAO.listMemberByCoachId(memberEntity);
         }
@@ -121,7 +178,7 @@ namespace AI_Sports.Service
             if (member != null)
             {
                 //把卡号和角色传递给该方法 判断四种登陆情况下该返回哪个主页面。 
-                Enum resultCode =  UpdateSetting(memberId, member.Role_id.ToString());
+                Enum resultCode = UpdateSetting(memberId, member.Role_id.ToString());
                 return resultCode;
             }
             else
@@ -173,7 +230,7 @@ namespace AI_Sports.Service
                             //5.更新当前登陆用户的目标课程记录id 
                             CommUtil.UpdateSettingString("targetCourseCount", (trainingCourseEntity.Target_course_count).ToString());
                         }
-                        
+
                         //6.更新当前登陆会员的主键
                         //根据卡号查询会员
                         MemberEntity member = memberDAO.GetMember(memberId);
@@ -184,7 +241,7 @@ namespace AI_Sports.Service
                             member.Last_login_date = System.DateTime.Now;
                             UpdateLastLoginDate(member);
                         }
-                        
+
                         logger.Debug("状态：无教练无用户登录。用户登录，返回用户页 ID：" + memberId);
                         //需要返回的页面类型
                         return LoginPageStatus.UserPage;
@@ -215,15 +272,15 @@ namespace AI_Sports.Service
                         MemberEntity member = memberDAO.GetMember(memberId);
                         if (member != null)
                         {
-                           
+
                             //7.更新教练最近登录时间
                             member.Last_login_date = System.DateTime.Now;
                             UpdateLastLoginDate(member);
                             //8.更新教练ID
                             CommUtil.UpdateSettingString("coachId", (member.Id).ToString());
                         }
-                       
-                        
+
+
                         logger.Debug("状态：无教练无用户登录。教练登录，返回教练页面。ID：" + memberId);
                         //需要返回的页面类型
                         return LoginPageStatus.CoachPage;
@@ -265,7 +322,7 @@ namespace AI_Sports.Service
                             member.Last_login_date = System.DateTime.Now;
                             UpdateLastLoginDate(member);
                         }
-                        
+
                         logger.Debug("状态：教练已经登陆 会员未登陆。用户登录，返回教练页面。ID：" + memberId);
                         return LoginPageStatus.CoachPage;
                     }
@@ -296,7 +353,7 @@ namespace AI_Sports.Service
                             member.Last_login_date = System.DateTime.Now;
                             UpdateLastLoginDate(member);
                         }
-                        
+
                         logger.Debug("状态：会员已登陆 教练未登录。教练登录，ID：" + memberId);
                         //需要返回的页面类型
                         return LoginPageStatus.CoachPage;
@@ -321,8 +378,8 @@ namespace AI_Sports.Service
                 logger.Warn("用户登录更新配置类出现异常");
                 throw new Exception("用户登录更新配置类出现异常", ex);
             }
-            
-                return LoginPageStatus.UnknownID;
+
+            return LoginPageStatus.UnknownID;
 
 
         }
@@ -370,7 +427,7 @@ namespace AI_Sports.Service
         {
             memberDAO.UpdateByPrimaryKey(memberEntity);
         }
-          /// <summary>
+        /// <summary>
         /// 查询所有会员信息
         /// </summary>
         /// <returns></returns>
@@ -384,13 +441,13 @@ namespace AI_Sports.Service
         /// 模糊查询名字手机号
         /// </summary>
         /// <returns></returns>
-        public List<MemberEntity> ListNameMember(String firstName,String phone_Number)
+        public List<MemberEntity> ListNameMember(String firstName, String phone_Number)
         {
-            return memberDAO.ListNameMember(firstName,phone_Number);
+            return memberDAO.ListNameMember(firstName, phone_Number);
         }
 
 
-        
+
 
     }
 }

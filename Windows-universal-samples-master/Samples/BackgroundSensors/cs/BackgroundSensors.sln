@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundSensors", "BackgroundSensors.csproj", "{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundTask", "BackgroundTask\BackgroundTask.csproj", "{B4B032D6-342E-53F3-AF98-4373118CA5A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Debug|ARM.ActiveCfg = Debug|ARM
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Debug|ARM.Build.0 = Debug|ARM
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Debug|ARM.Deploy.0 = Debug|ARM
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Debug|x64.ActiveCfg = Debug|x64
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Debug|x64.Build.0 = Debug|x64
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Debug|x64.Deploy.0 = Debug|x64
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Debug|x86.ActiveCfg = Debug|x86
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Debug|x86.Build.0 = Debug|x86
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Debug|x86.Deploy.0 = Debug|x86
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Release|ARM.ActiveCfg = Release|ARM
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Release|ARM.Build.0 = Release|ARM
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Release|ARM.Deploy.0 = Release|ARM
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Release|x64.ActiveCfg = Release|x64
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Release|x64.Build.0 = Release|x64
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Release|x64.Deploy.0 = Release|x64
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Release|x86.ActiveCfg = Release|x86
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Release|x86.Build.0 = Release|x86
+		{9F54078F-84CC-5A69-BFA0-FA5FFF0BE090}.Release|x86.Deploy.0 = Release|x86
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Debug|ARM.ActiveCfg = Debug|ARM
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Debug|ARM.Build.0 = Debug|ARM
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Debug|x64.ActiveCfg = Debug|x64
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Debug|x64.Build.0 = Debug|x64
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Debug|x86.ActiveCfg = Debug|x86
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Debug|x86.Build.0 = Debug|x86
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Release|ARM.ActiveCfg = Release|ARM
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Release|ARM.Build.0 = Release|ARM
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Release|x64.ActiveCfg = Release|x64
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Release|x64.Build.0 = Release|x64
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Release|x86.ActiveCfg = Release|x86
+		{B4B032D6-342E-53F3-AF98-4373118CA5A7}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

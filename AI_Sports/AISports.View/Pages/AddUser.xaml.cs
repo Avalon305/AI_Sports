@@ -86,74 +86,154 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
-
-            MemberEntity member = new MemberEntity();
-            member.Address = this.Address.Text;
-            //时间转化
-            DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
-            dtFormat.ShortDatePattern = "yyyy-MM-dd";
-            member.Birth_date = Convert.ToDateTime(this.birthDatePicker.Text, dtFormat);
-            member.Email_address = this.Email_address.Text;
-            
-            member.Height = double.Parse(this.height.Text);
-            member.Weight = double.Parse(this.weight.Text);
-            //通过出生日期获得出生年份字符串
-            string birthYear = member.Birth_date.Value.ToString("yyyy");
-            //安全得将出生年份字符串转换为整型
-            int? parseInt = ParseIntegerUtil.ParseInt(birthYear);
-            //当前年份转为整型
-            int? currentYear = ParseIntegerUtil.ParseInt(DateTime.Now.Year.ToString());
-            //当前年份与出生年份相减计算年龄    
-            member.Age = (currentYear - parseInt);
-            member.Max_heart_rate = ParseIntegerUtil.ParseInt(this.Max_heart_rate.Text);
-            member.Member_familyName = this.Member_familyName.Text;
-            member.Member_firstName = this.Member_firstName.Text;
-            member.Mobile_phone = this.Mobile_phone.Text;
-            member.Personal_phone = this.Personal_phone.Text;
-            member.Work_phone = this.Work_phone.Text;
-            member.Remark = this.Remark.Text;
-            member.Sex = sex.Text;
-            //插入角色
-            if ("会员".Equals(TB_Role.Text))
+            int? inputCount = 0;
+            StringBuilder stringBuilder = new StringBuilder();
+            //判断输入的内容是否为空
+            if (string.IsNullOrWhiteSpace(Member_familyName.Text))
             {
-                member.Role_id = 1;
+                stringBuilder.Append("姓氏");
+                inputCount++;
             }
-            else if ("教练".Equals(TB_Role.Text))
+            if (string.IsNullOrWhiteSpace(Member_firstName.Text))
             {
-                member.Role_id = 0;
+                stringBuilder.Append("名字");
+
+                inputCount++;
 
             }
-            //添加会员标签 用英文逗号分隔
-            StringBuilder lableBuilder = new StringBuilder();
-            if (this.CB_Zengji.IsChecked == true)
+            if (string.IsNullOrWhiteSpace(birthDatePicker.Text))
             {
-                lableBuilder.Append("增肌,");
+                inputCount++;
+
             }
-            if (this.CB_Jianzhi.IsChecked == true)
+            if (string.IsNullOrWhiteSpace(Address.Text))
             {
-                lableBuilder.Append("减脂,");
+                inputCount++;
+
             }
-            if (this.CB_Suxing.IsChecked == true)
+            if (string.IsNullOrWhiteSpace(sex.Text))
             {
-                lableBuilder.Append("塑形,");
+                inputCount++;
+
             }
-            if (this.CB_Kangfu.IsChecked == true)
+            if (string.IsNullOrWhiteSpace(Personal_phone.Text))
             {
-                lableBuilder.Append("康复,");
+                inputCount++;
+
             }
-            member.Label_name = lableBuilder.ToString();
+            if (string.IsNullOrWhiteSpace(Mobile_phone.Text))
+            {
+                inputCount++;
+
+            }
+            if (string.IsNullOrWhiteSpace(Work_phone.Text))
+            {
+                inputCount++;
+
+            }
+            if (string.IsNullOrWhiteSpace(Email_address.Text))
+            {
+                inputCount++;
+
+            }
+            if (string.IsNullOrWhiteSpace(weight.Text))
+            {
+                inputCount++;
+
+            }
+            if (string.IsNullOrWhiteSpace(height.Text))
+            {
+                inputCount++;
+
+            }
+            if (string.IsNullOrWhiteSpace(Max_heart_rate.Text))
+            {
+                inputCount++;
+
+            }
+            if (string.IsNullOrWhiteSpace(Remark.Text))
+            {
+                inputCount++;
+
+            }
+
+            //都不为空则添加
+            if (inputCount ==0)
+            {
+
+                MemberEntity member = new MemberEntity();
+                member.Address = this.Address.Text;
+                //时间转化
+                DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+                dtFormat.ShortDatePattern = "yyyy-MM-dd";
+                member.Birth_date = Convert.ToDateTime(this.birthDatePicker.Text, dtFormat);
+                member.Email_address = this.Email_address.Text;
+
+                member.Height = double.Parse(this.height.Text);
+                member.Weight = double.Parse(this.weight.Text);
+                //通过出生日期获得出生年份字符串
+                string birthYear = member.Birth_date.Value.ToString("yyyy");
+                //安全得将出生年份字符串转换为整型
+                int? parseInt = ParseIntegerUtil.ParseInt(birthYear);
+                //当前年份转为整型
+                int? currentYear = ParseIntegerUtil.ParseInt(DateTime.Now.Year.ToString());
+                //当前年份与出生年份相减计算年龄    
+                member.Age = (currentYear - parseInt);
+                member.Max_heart_rate = ParseIntegerUtil.ParseInt(this.Max_heart_rate.Text);
+                member.Member_familyName = this.Member_familyName.Text;
+                member.Member_firstName = this.Member_firstName.Text;
+                member.Mobile_phone = this.Mobile_phone.Text;
+                member.Personal_phone = this.Personal_phone.Text;
+                member.Work_phone = this.Work_phone.Text;
+                member.Remark = this.Remark.Text;
+                member.Sex = sex.Text;
+                //插入角色
+                if ("会员".Equals(TB_Role.Text))
+                {
+                    member.Role_id = 1;
+                }
+                else if ("教练".Equals(TB_Role.Text))
+                {
+                    member.Role_id = 0;
+
+                }
+                //添加会员标签 用英文逗号分隔
+                StringBuilder lableBuilder = new StringBuilder();
+                if (this.CB_Zengji.IsChecked == true)
+                {
+                    lableBuilder.Append("增肌,");
+                }
+                if (this.CB_Jianzhi.IsChecked == true)
+                {
+                    lableBuilder.Append("减脂,");
+                }
+                if (this.CB_Suxing.IsChecked == true)
+                {
+                    lableBuilder.Append("塑形,");
+                }
+                if (this.CB_Kangfu.IsChecked == true)
+                {
+                    lableBuilder.Append("康复,");
+                }
+                member.Label_name = lableBuilder.ToString();
 
 
-            Console.WriteLine("录入会员信息："+member.ToString());
-            //插入会员
-            long count = memberService.InsertMember(member);
-            if (count > 0)
-            {
-                Console.WriteLine("增加会员成功");
+                Console.WriteLine("录入会员信息：" + member.ToString());
+                //插入会员
+                long count = memberService.InsertMember(member);
+                if (count > 0)
+                {
+                    Console.WriteLine("增加会员成功");
+                }
+                //跳转到会员信息页面
+                NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative));
             }
-            //跳转到会员信息页面
-            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative));
+            else
+            {
+                  //弹出提示框
+            }
+
+
 
 
 

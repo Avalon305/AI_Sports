@@ -27,6 +27,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x64</PlatformTarget>
@@ -139,6 +141,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite, Version=1.0.110.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.110.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Management" />
@@ -183,6 +188,18 @@
     <Page Include="AISports.View\Pages\analyze.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\BluetoothLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AISports.View\Pages\MessageBoxX.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\WriteBluetooth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AISports.View\Pages\WriteCardWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -333,6 +350,8 @@
     <Compile Include="AISports.Dao\ActivityDAO.cs" />
     <Compile Include="AISports.Dao\AuthDAO.cs" />
     <Compile Include="AISports.Dao\Base\BaseDAO.cs" />
+    <Compile Include="AISports.Dao\BluetoothReadDAO.cs" />
+    <Compile Include="AISports.Dao\BluetoothWriteDAO.cs" />
     <Compile Include="AISports.Dao\DatacodeDAO.cs" />
     <Compile Include="AISports.Dao\KeyDAO.cs" />
     <Compile Include="AISports.Dao\MemberDAO.cs" />
@@ -349,6 +368,8 @@
     <Compile Include="AISports.Dto\DeviceDoneDTO.cs" />
     <Compile Include="AISports.Dto\SettingInfoDTO.cs" />
     <Compile Include="AISports.Entity\ActivityEntity.cs" />
+    <Compile Include="AISports.Entity\BluetoothReadEntity.cs" />
+    <Compile Include="AISports.Entity\BluetoothWriteEntity.cs" />
     <Compile Include="AISports.Entity\CustomExpander.cs" />
     <Compile Include="AISports.Entity\DatacodeEntity.cs" />
     <Compile Include="AISports.Entity\KeyEntity.cs" />
@@ -377,6 +398,7 @@
     <Compile Include="AISports.Service\TrainingCourseService.cs" />
     <Compile Include="AISports.Service\TrainingDeviceRecordService.cs" />
     <Compile Include="AISports.Service\TrainingPlanService.cs" />
+    <Compile Include="AISports.Util\SQLiteUtil.cs" />
     <Compile Include="AISports.View\Converter\ActivityGroupHeadConvert.cs" />
     <Compile Include="AISports.Util\CommUtil.cs" />
     <Compile Include="AISports.Util\ConfigUtil.cs" />
@@ -388,6 +410,15 @@
     <Compile Include="AISports.Util\SerialPortUtil.cs" />
     <Compile Include="AISports.Util\SpeechUtil.cs" />
     <Compile Include="AISports.View\Pages\analyze.xaml.cs" />
+    <Compile Include="AISports.View\Pages\BluetoothLogin.xaml.cs">
+      <DependentUpon>BluetoothLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\MessageBoxX.xaml.cs">
+      <DependentUpon>MessageBoxX.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\WriteBluetooth.xaml.cs">
+      <DependentUpon>WriteBluetooth.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AISports.View\Pages\WriteCardWindow.xaml.cs">
       <DependentUpon>WriteCardWindow.xaml</DependentUpon>
     </Compile>
@@ -644,4 +675,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.110.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net45\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.110.0\build\net45\System.Data.SQLite.Core.targets'))" />
+  </Target>
 </Project>

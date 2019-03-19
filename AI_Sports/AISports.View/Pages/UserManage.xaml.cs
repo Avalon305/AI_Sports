@@ -127,7 +127,7 @@ namespace AI_Sports.AISports.View.Pages
             this.btn4.Background = null;
             this.btn5.Background = null;
             this.Btn_MemberManage.Background = null;
-            //this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddUser.xaml", UriKind.Relative);//跳转页面
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/SystemSeting.xaml.xaml", UriKind.Relative);//跳转页面
         }
         /// <summary>
         /// 会员管理点击
@@ -185,6 +185,16 @@ namespace AI_Sports.AISports.View.Pages
         private void Button_Click_3DScan(object sender, RoutedEventArgs e)
         {
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/NuitrackScan.xaml", UriKind.Relative);//跳转页面
+        }
+        /// <summary>
+        /// 弹出新增手环窗口
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Write_WristStrap_Click(object sender, RoutedEventArgs e)
+        {
+            WriteBluetooth writeBluetooth = new WriteBluetooth();
+            writeBluetooth.Show();
         }
 
         
