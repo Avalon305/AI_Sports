@@ -97,5 +97,35 @@ namespace AI_Sports.Dao
 
             }
         }
+
+        /// <summary>
+        /// 获取当前课程当前完成状态的活动数量
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <param name="complete"></param>
+        /// <returns></returns>
+        public int CountByCourseId(long courseId,bool complete)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "SELECT count(*) FROM bdl_activity  WHERE  fk_training_course_id = @CouseId AND  is_complete = @Complete";
+                return conn.QueryFirstOrDefault<int>(query, new { CouseId = courseId, Complete = complete });
+            }
+        }
+
+        /// <summary>
+        /// 同时把该训练课程id对应的bdl_activity(训练活动表）的记录重置了，就是把current_turn_number（当前活动轮次计数）置为0，is_complete置为0。
+        /// </summary>
+        /// <param name="courseId"></param>
+        public void ResetCourseByCourseId(long courseId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+                const string query = "UPDATE bdl_activity SET target_turn_number = 0,is_complete = 0 WHERE fk_training_course_id = @Fk_training_course_id ";
+
+                conn.Execute(query, new { Fk_training_course_id = courseId });
+
+            }
+        }
     }
 }
