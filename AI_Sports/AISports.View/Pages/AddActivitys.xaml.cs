@@ -86,33 +86,36 @@ namespace AI_Sports
             {
                 ListBoxItem item = this.huodong.ItemContainerGenerator.ContainerFromIndex(i) as ListBoxItem;
                 //调用方法通过VisualTreeHelper去找到TextBlock|Checkbox控件
-                
-                CheckBox chkBox = FindFirstElementInVisualTree<CheckBox>(item);
-
-                //如果是被选中的就添加
-                if (chkBox.IsChecked == true)
+                if (item != null)
                 {
-                    //MessageBox.Show(chkBox.Content.ToString());
-                    ActivityEntity activityEntity = new ActivityEntity();
-                    //获得总的训练目标轮次
-                    activityEntity.Target_turn_number = ParseIntegerUtil.ParseInt(lunci_content.Content.ToString());
-                    //获得选中训练活动转化为对应编码，力量循环：0 。力量耐力循环：1
-                    if ("力量循环".Equals(chkBox.Content))
+                    CheckBox chkBox = FindFirstElementInVisualTree<CheckBox>(item);
+
+                    //如果是被选中的就添加
+                    if (chkBox.IsChecked == true)
                     {
-                        activityEntity.Activity_type = "0";
+                        //MessageBox.Show(chkBox.Content.ToString());
+                        ActivityEntity activityEntity = new ActivityEntity();
+                        //获得总的训练目标轮次
+                        activityEntity.Target_turn_number = ParseIntegerUtil.ParseInt(lunci_content.Content.ToString());
+                        //获得选中训练活动转化为对应编码，力量循环：0 。力量耐力循环：1
+                        if ("力量循环".Equals(chkBox.Content))
+                        {
+                            activityEntity.Activity_type = "0";
+
+                        }
+                        else if ("力量耐力循环".Equals(chkBox.Content))
+                        {
+                            activityEntity.Activity_type = "1";
+
+                        }
+
+                        //添加到集合
+                        activities.Add(activityEntity);
+
 
                     }
-                    else if ("力量耐力循环".Equals(chkBox.Content))
-                    {
-                        activityEntity.Activity_type = "1";
-
-                    }
-
-                    //添加到集合
-                    activities.Add(activityEntity);
-
-
                 }
+                
             }
 
             //数组不为空则插入

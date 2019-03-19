@@ -14,7 +14,8 @@ namespace AI_Sports.Util
 
         // 数据库文件夹
         //static string DbPath = Path.Combine(YatesHelper.GetAppDefaultPath(), "Database");
-        static string DbPath = "E:\\usr";
+        //static string DbPath = "E:\\usr";
+        static string DbPath = "C:\\Users\\Saber\\AppData\\Local\\Packages\\Microsoft.SDKSamples.BluetoothLE.CS_8wekyb3d8bbwe\\LocalState";
         //与指定的数据库(实际上就是一个文件)建立连接
         private static SQLiteConnection CreateDatabaseConnection(string dbName = null)
         {
@@ -146,11 +147,11 @@ namespace AI_Sports.Util
                 {
                     StringBuilder sql = new StringBuilder();
 
-                    sql.Append("insert into bluetooth_write ( member_id,bluetooth_name,gmt_modified ) values (");
+                    sql.Append("insert into bluetooth_write ( member_id,bluetooth_name,gmt_modified ) values ('");
                     sql.Append(bluetoothWriteEntity.Member_id);
-                    sql.Append(",");
+                    sql.Append("','");
                     sql.Append(bluetoothWriteEntity.Bluetooth_name);
-                    sql.Append(",");
+                    sql.Append("',");
                     sql.Append(bluetoothWriteEntity.Gmt_modified);
                     sql.Append(")");
 

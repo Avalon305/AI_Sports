@@ -20,6 +20,7 @@ using SQLite.Net.Interop;
 using static System.Diagnostics.Debug;
 using Windows.Storage;
 using TestEntity;
+using BluetoothEntity;
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
 namespace SDKTemplate
@@ -32,7 +33,7 @@ namespace SDKTemplate
         public Test()
         {
             this.InitializeComponent();
-            dbname = "test.db";
+            dbname = "bdl_bluetooth.db";
         }
 
         public string dbname;
@@ -50,7 +51,7 @@ namespace SDKTemplate
             WriteLine("db pathe: " + conn.DatabasePath);
 
             // 创建表
-            int rn = conn.CreateTable<Person>(CreateFlags.None);
+            int rn = conn.CreateTable<BluetoothReadEntity>(CreateFlags.None);
             WriteLine("create table res = {0}", rn);
 
             conn.Dispose();
@@ -59,42 +60,48 @@ namespace SDKTemplate
         //插入数据
         private void OnInsert(object sender, RoutedEventArgs e)
         {
-            string localFolder = ApplicationData.Current.LocalFolder.Path;
-            string dbFullPath = Path.Combine(localFolder, dbname);
-            // 建立连接
-            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
-            {
-                //conn.DeleteAll<Person>();
-                // 插入数据
-                Person[] stus =
-                {
-                    new Person { Name="小王",Age = 21,Gender = "male" },
-                    new Person { Name = "小赵",Age=30,Gender = "male" },
-                    new Person {Name="小丁",Age=25,Gender = "male" },
-                    new Person {Name="小马",Age=27,Gender = "female" },
-                    new Person {Name="小陈",Gender = "male"}
-                };
-                int n = conn.InsertAll(stus);
-                WriteLine($"已插入 {n} 条数据。");
-            }
+            //string localFolder = ApplicationData.Current.LocalFolder.Path;
+            //string dbFullPath = Path.Combine(localFolder, dbname);
+            //// 建立连接
+            //using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
+            //{
+            //    //conn.DeleteAll<Person>();
+            //    // 插入数据
+            //    Person[] stus =
+            //    {
+            //        new Person { Name="小王",Age = 21,Gender = "male" },
+            //        new Person { Name = "小赵",Age=30,Gender = "male" },
+            //        new Person {Name="小丁",Age=25,Gender = "male" },
+            //        new Person {Name="小马",Age=27,Gender = "female" },
+            //        new Person {Name="小陈",Gender = "male"}
+            //    };
+            //    int n = conn.InsertAll(stus);
+            //    WriteLine($"已插入 {n} 条数据。");
+            //}
+            //SQLiteUtil.OnInsert();
         }
 
         //读取数据
         private void OnReadData(object sender, RoutedEventArgs e)
         {
-            string localFolderPath = ApplicationData.Current.LocalFolder.Path;
-            string dbFullpath = Path.Combine(localFolderPath, dbname);
+            //string localFolderPath = ApplicationData.Current.LocalFolder.Path;
+            //string dbFullpath = Path.Combine(localFolderPath, dbname);
 
-            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullpath))
+            //using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullpath))
+            //{
+            //    // 获取列表
+            //    TableQuery<Person> t = conn.Table<Person>();
+            //    var q = from s in t.AsParallel<Person>()
+            //            orderby s.ID
+            //            select s;
+            //    // 绑定
+
+            //    lv.ItemsSource = q;
+            //}
+            List < BluetoothWriteEntity > bluetoothWriteEntities = SQLiteUtil.OnReadWrite();
+            foreach (var item in bluetoothWriteEntities)
             {
-                // 获取列表
-                TableQuery<Person> t = conn.Table<Person>();
-                var q = from s in t.AsParallel<Person>()
-                        orderby s.ID
-                        select s;
-                // 绑定
-
-                lv.ItemsSource = q;
+                Debug.WriteLine("测试write查询"+item.Bluetooth_name + item.Member_id + item.Write_state + item.Gmt_modified);
             }
         }
 

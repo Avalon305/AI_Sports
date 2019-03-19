@@ -88,24 +88,29 @@ namespace AI_Sports.AISports.View.Pages
             
             //查询训练计划
             TrainingPlanEntity trainingPlanEntity = trainingPlanService.GetPlanByMumberId();
-            //计划标题
-            this.lable_planName.Content += trainingPlanEntity.Title; 
 
-            String[] text = { "已完成", "持续进行" };
-			if (trainingPlanEntity.Is_deleted == true)
-			{
-				this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[0] });
-			}
-			else if(trainingPlanEntity.Is_deleted == false)
-			{
-				this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[1] });
-			}
-            //加载训练活动
-            List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
-            //添加数据
-            viewModel.AddThreePlans(activityList);
-            //集合数据绑定
-            this.listBox.ItemsSource = viewModel.trainingPlanGroup;
+            if (trainingPlanEntity != null)
+            {
+                //计划标题
+                this.lable_planName.Content += trainingPlanEntity.Title;
+
+                String[] text = { "已完成", "持续进行" };
+                if (trainingPlanEntity.Is_deleted == true)
+                {
+                    this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[0] });
+                }
+                else if (trainingPlanEntity.Is_deleted == false)
+                {
+                    this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[1] });
+                }
+                //加载训练活动
+                List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
+                //添加数据
+                viewModel.AddThreePlans(activityList);
+                //集合数据绑定
+                this.listBox.ItemsSource = viewModel.trainingPlanGroup;
+            }
+           
             
         }
         /// <summary>

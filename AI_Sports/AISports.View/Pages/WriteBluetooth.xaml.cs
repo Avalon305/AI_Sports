@@ -60,26 +60,29 @@ namespace AI_Sports.AISports.View.Pages
             {
                 ListBoxItem item = this.LB_BluetoothName.ItemContainerGenerator.ContainerFromIndex(i) as ListBoxItem;
                 //调用方法通过VisualTreeHelper去找到TextBlock|Checkbox控件
-
-                CheckBox chkBox = FindFirstElementInVisualTree<CheckBox>(item);
-
-                //如果是被选中的就添加
-                if (chkBox.IsChecked == true)
+                if (item != null)
                 {
-                    //MessageBox.Show(chkBox.Content.ToString());
-                    BluetoothWriteEntity writeEntity = new BluetoothWriteEntity();
-                    writeEntity.Member_id = TB_Member_Id.Text;
-                    writeEntity.Write_state = 0;
-                    //writeEntity.Gmt_create = System.DateTime.Now;
-                    writeEntity.Bluetooth_name = chkBox.Content.ToString();
-                    //生成修改时间时间戳
-                    TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-                    writeEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
-                    
-                    //添加到集合
-                    writeEntities.Add(writeEntity);
+                    CheckBox chkBox = FindFirstElementInVisualTree<CheckBox>(item);
 
+                    //如果是被选中的就添加
+                    if (chkBox.IsChecked == true)
+                    {
+                        //MessageBox.Show(chkBox.Content.ToString());
+                        BluetoothWriteEntity writeEntity = new BluetoothWriteEntity();
+                        writeEntity.Member_id = TB_Member_Id.Text;
+                        writeEntity.Write_state = 0;
+                        //writeEntity.Gmt_create = System.DateTime.Now;
+                        writeEntity.Bluetooth_name = chkBox.Content.ToString();
+                        //生成修改时间时间戳
+                        TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+                        writeEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
+
+                        //添加到集合
+                        writeEntities.Add(writeEntity);
+
+                    }
                 }
+                
             }
             
             //数组选中了一条就插入 然后轮询

@@ -32,6 +32,9 @@ namespace SDKTemplate
         {
             this.InitializeComponent();
             this.Construct();
+
+            //项目启动初始化创建数据库
+            SQLiteUtil.InitializeDatabase();
         }
 
         /// <summary>
@@ -76,7 +79,10 @@ namespace SDKTemplate
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                //设置启动页面为Test页面
+                //rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                rootFrame.Navigate(typeof(Test), e.Arguments);
+
             }
 
             // Ensure the current window is active
