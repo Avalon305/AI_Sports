@@ -11,7 +11,7 @@
     <AssemblyName>BluetoothLEUniversal</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -104,6 +104,8 @@
     <Compile Include="..\..\..\SharedContent\cs\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="BluetoothLE.Entity\BluetoothReadEntity.cs" />
+    <Compile Include="BluetoothLE.Entity\BluetoothWriteEntity.cs" />
     <Compile Include="BluetoothLE.Entity\TestEntity.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="..\..\..\SharedContent\cs\DispatcherTaskExtensions.cs">
@@ -121,6 +123,7 @@
     <Compile Include="Scenario2_Client.xaml.cs">
       <DependentUpon>Scenario2_Client.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SQLiteUtil.cs" />
     <Compile Include="Test.xaml.cs">
       <DependentUpon>Test.xaml</DependentUpon>
     </Compile>

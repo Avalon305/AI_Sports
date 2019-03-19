@@ -99,7 +99,9 @@ namespace SDKTemplate
             bluetoothLeDevice = null;
             return true;
         }
-
+        /// <summary>
+        /// 1.连接按钮
+        /// </summary>
         private async void ConnectButton_Click()
         {
             ConnectButton.IsEnabled = false;
@@ -312,7 +314,9 @@ namespace SDKTemplate
                 rootPage.NotifyUser($"Read failed: {result.Status}", NotifyType.ErrorMessage);
             }
         }
-
+        /// <summary>
+        /// 写入UTF-8字符串
+        /// </summary>
         private async void CharacteristicWriteButton_Click()
         {
             if (!String.IsNullOrEmpty(CharacteristicWriteValue.Text))
