@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using AI_Sports.Constant;
 using AI_Sports.AISports.Util;
 using System.ComponentModel;
+using System.Transactions;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -75,12 +76,14 @@ namespace AI_Sports.AISports.View.Pages
 	{
 		private MainWindowViewModel viewModel = new MainWindowViewModel();
         private TrainingPlanService trainingPlanService = new TrainingPlanService();
-        private TrainingActivityService activityService = new TrainingActivityService();
+		private TrainingCourseService trainingCourseService = new TrainingCourseService();
+		private TrainingActivityService activityService = new TrainingActivityService();
 
         //语音分析的后台任务
         private BackgroundWorker worker = new BackgroundWorker();
+		
 
-        public TrainingProgram()
+		public TrainingProgram()
 		{
 			InitializeComponent();
 
@@ -120,8 +123,27 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("训练课程已完成");
-        }
+			//MessageBox.Show("训练课程已完成");
+			//zfc
+			using (TransactionScope ts = new TransactionScope())
+			{
+				//将bdl_traning_course中的current_course_count 更新+1
+				int id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
+				trainingCourseService.UpdateCourseCount(id);
+
+				//将bdl_activity对应的最多2种类型训练活动中的is_complete 的value 更新为 1
+
+				activityService.UpdateCompleteFinish(id, 1);
+
+				//将bdl_activity_record对应的最多2种类型训练活动记录中的is_complete的value更新为 1
+				activityService.UpdateRecordCompleteFinish(id, 1);
+				ts.Complete();
+
+			}
+			//刷新页面
+			MessageBox.Show("成功跳过此次训练课程");
+		}
+	
         /// <summary>
         /// 语音分析按钮
         /// </summary>

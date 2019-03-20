@@ -31,7 +31,7 @@ namespace AI_Sports.Dao
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int UpdateCourseCount(string id)
+        public int UpdateCourseCount(int id)
         {
             using (var conn = DbUtil.getConn())
             {

@@ -39,12 +39,29 @@ namespace AI_Sports.Dao
                 conn.Execute(query, new { Id = id, Complete = complete });
             }
         }
-        /// <summary>
-        /// 训练活动分析页面：联查训练活动记录表、设备记录表、编码表。根据课程记录id分组查询训练的详细数据。
-        /// </summary>
-        /// <param name="courseCount"></param>
-        /// <returns></returns>
-        public List<TrainingActivityVO> ListActivityRecords (int? courseCount)
+		///zfc
+		/// <summary>
+		/// 根据训练课程id更新训练活动记录 完成状态
+		/// </summary>
+		/// <param name="fk_training_course_id"></param>
+		/// <param name="complete"></param>
+		public void UpdateCompleteFinish(int fk_training_course_id, int complete)
+		{
+			using (var conn = DbUtil.getConn())
+			{
+				const string query = "update bdl_training_activity_record set is_complete = @Complete where fk_training_course_id = @Fk_training_course_id";
+				conn.Execute(query, new { Fk_training_course_id = fk_training_course_id, Complete = complete });
+			}
+
+		}
+
+
+		/// <summary>
+		/// 训练活动分析页面：联查训练活动记录表、设备记录表、编码表。根据课程记录id分组查询训练的详细数据。
+		/// </summary>
+		/// <param name="courseCount"></param>
+		/// <returns></returns>
+		public List<TrainingActivityVO> ListActivityRecords (int? courseCount)
         {
             using (var conn = DbUtil.getConn())
             {

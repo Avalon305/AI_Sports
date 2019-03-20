@@ -80,8 +80,18 @@ namespace AI_Sports.Service
         {
             return trainingCourseDAO.UpdateTrainingCourseById(restDays,endDate,targetCourseCount,Id);
         }
+		///zfc
+		/// <summary>
+		/// 根据当前课程ID完成/跳过训练课程 计数+1
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public int UpdateCourseCount(int id)
+		{
+			return trainingCourseDAO.UpdateCourseCount(id);
+		}
 
-        public int selectMAxCourseRecord()
+		public int selectMAxCourseRecord()
         {
             return trainingCourseDAO.selectMAxCourseRecord();
         }

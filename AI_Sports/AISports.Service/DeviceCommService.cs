@@ -52,7 +52,7 @@ namespace AI_Sports.Service
             // 可动杠杆长度cm
             response.LeverLength = pSetting.Lever_length == null ? 0 : (int)pSetting.Lever_length;
             response.ForwardLimit = pSetting.Front_limit == null ? 0 : (int)pSetting.Front_limit;
-            response.BackLimit = pSetting.Backrest_distance == null ? 0 : (int)pSetting.Backrest_distance;
+            response.BackLimit = pSetting.Back_limit == null ? 0 : (int)pSetting.Back_limit;
             //杠杆角度
             response.LeverAngle = pSetting.Lever_angle == null ? 0 : (double)pSetting.Lever_angle;
             response.ForwardForce = pSetting.Consequent_force == null ? 0 : (double)pSetting.Consequent_force;
