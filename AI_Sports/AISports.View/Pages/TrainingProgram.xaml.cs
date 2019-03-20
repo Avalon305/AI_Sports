@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using AI_Sports.Constant;
 using AI_Sports.AISports.Util;
 using System.ComponentModel;
+using System.Transactions;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -75,12 +76,14 @@ namespace AI_Sports.AISports.View.Pages
 	{
 		private MainWindowViewModel viewModel = new MainWindowViewModel();
         private TrainingPlanService trainingPlanService = new TrainingPlanService();
-        private TrainingActivityService activityService = new TrainingActivityService();
+		private TrainingCourseService trainingCourseService = new TrainingCourseService();
+		private TrainingActivityService activityService = new TrainingActivityService();
 
         //语音分析的后台任务
         private BackgroundWorker worker = new BackgroundWorker();
+		
 
-        public TrainingProgram()
+		public TrainingProgram()
 		{
 			InitializeComponent();
 
@@ -140,7 +143,7 @@ namespace AI_Sports.AISports.View.Pages
 			//刷新页面
 			MessageBox.Show("成功跳过此次训练课程");
 		}
-	}
+	
         /// <summary>
         /// 语音分析按钮
         /// </summary>
