@@ -39,7 +39,7 @@ namespace AI_Sports.Service
             {
 
                 //计算最大心率 = 220 - 年龄
-                memberEntity.Max_heart_rate = 220 - memberEntity.Age;
+                //memberEntity.Max_heart_rate = 220 - memberEntity.Age;
                 //计算最宜心率 = （最大心率 * 76.5%）然后四舍五入为整数
                 memberEntity.Suitable_heart_rate = (int?)Math.Round(memberEntity.Max_heart_rate.Value * 0.765);
                 //设置主键id
