@@ -27,7 +27,9 @@ namespace SDKTemplate
             new Scenario() { Title="Client: Connect to a server", ClassType=typeof(Scenario2_Client) },
             new Scenario() { Title="Server: Publish foreground", ClassType=typeof(Scenario3_ServerForeground) },
         };
-
+        /// <summary>
+        /// 存储当前选择的设备的ID和名称
+        /// </summary>
         public string SelectedBleDeviceId;
         public string SelectedBleDeviceName = "No device selected";
     }

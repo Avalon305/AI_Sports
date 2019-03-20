@@ -9,8 +9,9 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace SDKTemplate
 {
+    
     /// <summary>
-    ///     Represents the display of an attribute - both characteristics and services.
+    ///     Represents the display of an attribute - both characteristics and services. 蓝牙属性的展示类 包括服务和特征
     /// </summary>
     public class BluetoothLEAttributeDisplay
     {

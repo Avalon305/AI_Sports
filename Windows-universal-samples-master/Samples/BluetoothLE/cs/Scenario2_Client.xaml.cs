@@ -155,7 +155,10 @@ namespace SDKTemplate
         }
         #endregion
 
-        #region Enumerating Characteristics
+        #region Enumerating Characteristics 
+        /// <summary>
+        /// 服务列表选择事件
+        /// </summary>
         private async void ServiceList_SelectionChanged()
         {
             var attributeInfoDisp = (BluetoothLEAttributeDisplay)ServiceList.SelectedItem;
@@ -211,6 +214,11 @@ namespace SDKTemplate
         }
         #endregion
 
+        
+
+
+
+
         private void AddValueChangedHandler()
         {
             ValueChangedSubscribeToggle.Content = "Unsubscribe from value changes";
@@ -232,7 +240,9 @@ namespace SDKTemplate
                 subscribedForNotifications = false;
             }
         }
-
+        /// <summary>
+        /// 选择特征事件
+        /// </summary>
         private async void CharacteristicList_SelectionChanged()
         {
             selectedCharacteristic = null;
@@ -319,11 +329,15 @@ namespace SDKTemplate
         /// </summary>
         private async void CharacteristicWriteButton_Click()
         {
+            //判断要写入的文本不为空
             if (!String.IsNullOrEmpty(CharacteristicWriteValue.Text))
             {
                 var writeBuffer = CryptographicBuffer.ConvertStringToBinary(CharacteristicWriteValue.Text,
                     BinaryStringEncoding.Utf8);
+                Debug.WriteLine("原本写入的2进制数据串："+ writeBuffer);
+                
 
+                //调用写入方法
                 var writeSuccessful = await WriteBufferToSelectedCharacteristicAsync(writeBuffer);
             }
             else
@@ -355,11 +369,16 @@ namespace SDKTemplate
                 rootPage.NotifyUser("No data to write to device", NotifyType.ErrorMessage);
             }
         }
-
+        /// <summary>
+        /// 写入UTF-8按钮点击事件调用的写入函数 传入要写入的2进制字符串
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <returns></returns>
         private async Task<bool> WriteBufferToSelectedCharacteristicAsync(IBuffer buffer)
         {
             try
             {
+                //猜测BT_CODE代表比特码？将字节写入方法
                 // BT_Code: Writes the value from the buffer to the characteristic.
                 var result = await selectedCharacteristic.WriteValueWithResultAsync(buffer);
 

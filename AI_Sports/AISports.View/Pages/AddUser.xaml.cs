@@ -158,8 +158,8 @@ namespace AI_Sports.AISports.View.Pages
             }
 
             //都不为空则添加
-            if (inputCount ==0)
-            {
+            //if (inputCount ==0)
+            //{
 
                 MemberEntity member = new MemberEntity();
                 member.Address = this.Address.Text;
@@ -227,11 +227,11 @@ namespace AI_Sports.AISports.View.Pages
                 }
                 //跳转到会员信息页面
                 NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative));
-            }
-            else
-            {
-                  //弹出提示框
-            }
+            //}
+            //else
+            //{
+            //      //弹出提示框
+            //}
 
 
 

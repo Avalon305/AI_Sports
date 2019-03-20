@@ -80,8 +80,8 @@ namespace SDKTemplate
                 // configuring the new page by passing required information as a navigation
                 // parameter
                 //设置启动页面为Test页面
-                //rootFrame.Navigate(typeof(MainPage), e.Arguments);
-                rootFrame.Navigate(typeof(Test), e.Arguments);
+                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                //rootFrame.Navigate(typeof(Test), e.Arguments);
 
             }
 

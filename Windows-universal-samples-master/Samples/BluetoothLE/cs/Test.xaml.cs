@@ -21,6 +21,9 @@ using static System.Diagnostics.Debug;
 using Windows.Storage;
 using TestEntity;
 using BluetoothEntity;
+using Windows.Security.Cryptography;
+using System.Text;
+
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
 namespace SDKTemplate
@@ -79,6 +82,25 @@ namespace SDKTemplate
             //    WriteLine($"已插入 {n} 条数据。");
             //}
             //SQLiteUtil.OnInsert();
+            //string memberId = "手环名测试9633";
+            //var testBuffer = CryptographicBuffer.DecodeFromHexString("A1B2C3D4E5F69手环名测试9633");
+
+            //byte[] result = new byte[memberId.Length];
+            //for (int i = 0; i < memberId.Length; i++)
+            //{
+            //    result[i] = Convert.ToByte(memberId.Substring(i , 1), 16);
+            //}
+            //byte[] buffer = Encoding.GetEncoding("GBK").GetBytes(memberId);
+            //string hexString = ProtocolUtil.StringToHexString(memberId);
+            //byte[] buffer = ProtocolUtil.StringToBcd(hexString);
+           
+            string memberId = "一二三1234";
+            
+           
+            byte[] group = Encoding.UTF8.GetBytes(memberId);
+
+            byte[] writeData = ProtocolUtil.packWriteData(group);
+
         }
 
         //读取数据

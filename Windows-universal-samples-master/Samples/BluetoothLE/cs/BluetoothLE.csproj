@@ -123,10 +123,11 @@
     <Compile Include="Scenario2_Client.xaml.cs">
       <DependentUpon>Scenario2_Client.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SQLiteUtil.cs" />
     <Compile Include="Test.xaml.cs">
       <DependentUpon>Test.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\ProtocolUtil.cs" />
+    <Compile Include="Util\SQLiteUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
