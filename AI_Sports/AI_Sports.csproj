@@ -197,6 +197,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AISports.View\Pages\Moudle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\SystemSeting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AISports.View\Pages\WriteBluetooth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -416,6 +424,12 @@
     </Compile>
     <Compile Include="AISports.View\Pages\MessageBoxX.xaml.cs">
       <DependentUpon>MessageBoxX.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\Moudle.xaml.cs">
+      <DependentUpon>Moudle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\SystemSeting.xaml.cs">
+      <DependentUpon>SystemSeting.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\WriteBluetooth.xaml.cs">
       <DependentUpon>WriteBluetooth.xaml</DependentUpon>

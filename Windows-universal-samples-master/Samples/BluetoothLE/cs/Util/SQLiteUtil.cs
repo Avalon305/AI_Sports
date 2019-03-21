@@ -78,7 +78,9 @@ namespace SDKTemplate
 
                 bluetoothWriteEntities = (from s in t.AsParallel<BluetoothWriteEntity>()
                                           where (s.Write_state == 0)
+                                          orderby s.Gmt_modified descending
                                           select s).ToList();
+
                 //bluetoothWriteEntities = (from s in conn.Table<BluetoothWriteEntity>()
                 //                          where (s.Write_state == 0)
                 //                          select s).ToList();

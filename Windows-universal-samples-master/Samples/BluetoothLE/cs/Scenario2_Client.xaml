@@ -51,6 +51,7 @@
                 Selected device: <Run Text="{x:Bind rootPage.SelectedBleDeviceName}" FontWeight="Bold"/>
             </TextBlock>
             <Button x:Name="ConnectButton" Content="Connect" Click="{x:Bind ConnectButton_Click}" Margin="0,10,0,0"/>
+            <!--服务列表选择与下边的属性选择-->
             <ComboBox x:Name="ServiceList" Margin="0,10,0,0" PlaceholderText="Choose a service" Visibility="Collapsed"
                       ItemsSource="{x:Bind ServiceCollection}" DisplayMemberPath="Name"
                       SelectionChanged="{x:Bind ServiceList_SelectionChanged}"/>
