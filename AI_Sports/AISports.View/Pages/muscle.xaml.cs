@@ -1,5 +1,6 @@
 ﻿using AI_Sports.AISports.Service;
 using AI_Sports.AISports.Util;
+using AI_Sports.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -115,35 +116,38 @@ namespace AI_Sports.AISports.View.Pages
             return "60";
         }
         MusclePieChartService musclePieChartService = new MusclePieChartService();
+        //获取 trainingCourseId
+        string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
         //力量循环腹部训练个数
-        public int abdomenTraining()
+        public int abdomenTraining(string trainingCourseId)
         {
-            Console.WriteLine("成功:" + musclePieChartService.selectAbdomenTraining());
-            return musclePieChartService.selectAbdomenTraining();
+            Console.WriteLine("肌肉饼图训练课程ID" + trainingCourseId);
+            Console.WriteLine("成功:" + musclePieChartService.selectAbdomenTraining(trainingCourseId)); 
+            return musclePieChartService.selectAbdomenTraining(trainingCourseId);
         }
 
         //力量循环胸部训练个数
-        public int chestTraining()
+        public int chestTraining(string trainingCourseId)
         {
-            return musclePieChartService.selectchestTraining();
+            return musclePieChartService.selectchestTraining(trainingCourseId);
         }
 
         //力量循环腿部训练个数
-        public int legTraining()
+        public int legTraining(string trainingCourseId)
         {
-            return musclePieChartService.selectLegTraining();
+            return musclePieChartService.selectLegTraining(trainingCourseId);
         }
 
         //力量循环手臂训练个数
-        public int armTraining()
+        public int armTraining(string trainingCourseId)
         {
-            return musclePieChartService.selectArmTraining();
+            return musclePieChartService.selectArmTraining(trainingCourseId);
         }
 
         //力量循环躯干训练个数
-        public int trunkTraining()
+        public int trunkTraining(string trainingCourseId)
         {
-            return musclePieChartService.selectTrunkTraining();
+            return musclePieChartService.selectTrunkTraining(trainingCourseId);
         }
 
 
@@ -160,29 +164,32 @@ namespace AI_Sports.AISports.View.Pages
             return "60";
         }
         MusclePieChartService musclePieChartService = new MusclePieChartService();
+        //获取 trainingCourseId
+        string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
 
         //力量耐力循环胸部训练个数
-        public int chestEnduranceTraining()
+        public int chestEnduranceTraining(string trainingCourseId)
         {
-            return musclePieChartService.selectchestEnduranceTraining();
+            Console.WriteLine("肌肉饼图训练课程ID" + trainingCourseId);
+            return musclePieChartService.selectchestEnduranceTraining(trainingCourseId);
         }
 
         //力量耐力循环腿部训练个数
-        public int legEnduranceTraining()
+        public int legEnduranceTraining(string trainingCourseId)
         {
-            return musclePieChartService.selectLegEnduranceTraining();
+            return musclePieChartService.selectLegEnduranceTraining(trainingCourseId);
         }
 
         //力量耐力循环手臂训练个数
-        public int armEnduranceTraining()
+        public int armEnduranceTraining(string trainingCourseId)
         {
-            return musclePieChartService.selectEnduranceArmTraining();
+            return musclePieChartService.selectEnduranceArmTraining(trainingCourseId);
         }
 
         //力量耐力循环躯干训练个数
-        public int trunkEnduranceTraining()
+        public int trunkEnduranceTraining(string trainingCourseId)
         {
-            return musclePieChartService.selectTrunkEnduranceTraining();
+            return musclePieChartService.selectTrunkEnduranceTraining(trainingCourseId);
         }
     }
 

@@ -394,6 +394,7 @@
     <Compile Include="AISports.Service\MusclePieChartService.cs" />
     <Compile Include="AISports.Service\PersonalSettingService.cs" />
     <Compile Include="AISports.Service\ProcessService.cs" />
+    <Compile Include="AISports.Service\SystemSettingService.cs" />
     <Compile Include="AISports.Service\TrainingActivityService.cs" />
     <Compile Include="AISports.Service\TrainingCourseService.cs" />
     <Compile Include="AISports.Service\TrainingDeviceRecordService.cs" />

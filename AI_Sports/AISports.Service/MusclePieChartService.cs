@@ -10,49 +10,49 @@ namespace AI_Sports.AISports.Service
     class MusclePieChartService
     {
         MusclePieChartDAO musclePieChartDAO = new MusclePieChartDAO();
-        public int selectAbdomenTraining()
+        public int selectAbdomenTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectAbdomenTraining();
+            return musclePieChartDAO.selectAbdomenTraining(trainingCourseId);
         }
 
-        public int selectchestTraining()
+        public int selectchestTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectchestTraining();
+            return musclePieChartDAO.selectchestTraining(trainingCourseId);
         }
 
-        public int selectLegTraining()
+        public int selectLegTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectLegTraining();
+            return musclePieChartDAO.selectLegTraining(trainingCourseId);
         }
 
-        public int selectArmTraining()
+        public int selectArmTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectArmTraining();
+            return musclePieChartDAO.selectArmTraining(trainingCourseId);
         }
 
-        public int selectTrunkTraining()
+        public int selectTrunkTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectTrunkTraining();
+            return musclePieChartDAO.selectTrunkTraining(trainingCourseId);
         }
 
-        public int selectchestEnduranceTraining()
+        public int selectchestEnduranceTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectchestEnduranceTraining();
+            return musclePieChartDAO.selectchestEnduranceTraining(trainingCourseId);
         }
 
-        public int selectLegEnduranceTraining()
+        public int selectLegEnduranceTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectLegEnduranceTraining();
+            return musclePieChartDAO.selectLegEnduranceTraining(trainingCourseId);
         }
 
-        public int selectEnduranceArmTraining()
+        public int selectEnduranceArmTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectEnduranceArmTraining();
+            return musclePieChartDAO.selectEnduranceArmTraining(trainingCourseId);
         }
 
-        public int selectTrunkEnduranceTraining()
+        public int selectTrunkEnduranceTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectTrunkEnduranceTraining();
+            return musclePieChartDAO.selectTrunkEnduranceTraining(trainingCourseId);
         }
     }
 }

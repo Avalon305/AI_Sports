@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using System.Runtime.Serialization.Json;
 using AI_Sports.AISports.Util;
 using System.ComponentModel;
+using AI_Sports.Util;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -167,17 +168,29 @@ namespace AI_Sports.AISports.View.Pages
     {
 
         TrainingPlanService trainingPlanService = new TrainingPlanService();
+        //获取 trainingPlanId
+        string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
+        //获取 currentCourseCount
+        string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
 
-        //X轴动态加载数据
+        //X轴动态加载数据(未用到)
         public int recordNumber()
         {
             int recordNumber = trainingPlanService.selectRecordNumber();
             return recordNumber;
         }
-        //根据课程轮次数从小到大排序查询有氧训练设备的总能量
-        public String aerobicEnergy()
+
+        //X轴动态加载数据
+        public string  Xaxis()
         {
-            List<double> aerobicEnergy = trainingPlanService.selectAerobicEnergy();
+            return currentCourseCount;
+        }
+
+        //根据课程轮次数从小到大排序查询有氧训练设备的总能量
+        public String aerobicEnergy(string trainingPlanId)
+        {
+            Console.WriteLine("训练计划ID"+ trainingPlanId);
+            List<double> aerobicEnergy = trainingPlanService.selectAerobicEnergy(trainingPlanId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(aerobicEnergy.GetType());
             string szJson = "";
             //序列化
@@ -191,9 +204,9 @@ namespace AI_Sports.AISports.View.Pages
             return szJson.ToString();
         }
         //根据课程轮次数从小到大排序查询力量训练设备的总能量
-        public String forceEnergy()
+        public String forceEnergy(string trainingPlanId)
         {
-            List<double> forceEnergy = trainingPlanService.selectForceEnergy();
+            List<double> forceEnergy = trainingPlanService.selectForceEnergy(trainingPlanId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(forceEnergy.GetType());
             string szJson = "";
             //序列化

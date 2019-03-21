@@ -10,86 +10,86 @@ namespace AI_Sports.AISports.Dao
 {
     class MusclePieChartDAO
     {
-        public int selectAbdomenTraining()
+        public int selectAbdomenTraining(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = 1 AND course_count = 1 AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '腹部'GROUP BY code_ext_value";
+                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = trainingCourseId AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '腹部'";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
 
 
-        public int selectchestTraining()
+        public int selectchestTraining(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = 1 AND course_count = 1 AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '胸部'GROUP BY code_ext_value";
+                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = trainingCourseId AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '胸部'";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
 
 
-        public int selectLegTraining()
+        public int selectLegTraining(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = 1 AND course_count = 1 AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '腿部'GROUP BY code_ext_value";
+                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = trainingCourseId AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '腿部'";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
 
-        public int selectArmTraining()
+        public int selectArmTraining(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = 1 AND course_count = 1 AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '手臂'GROUP BY code_ext_value";
+                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = trainingCourseId AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '手臂'";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
 
-        public int selectTrunkTraining()
+        public int selectTrunkTraining(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = 1 AND course_count = 1 AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '躯干'GROUP BY code_ext_value";
+                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = trainingCourseId AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' AND code_ext_value = '躯干'";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
 
-        public int selectchestEnduranceTraining()
+        public int selectchestEnduranceTraining(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = 1 AND course_count = 1 AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' AND code_ext_value = '胸部'GROUP BY code_ext_value";
+                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = trainingCourseId AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' AND code_ext_value = '胸部'";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
 
-        public int selectLegEnduranceTraining()
+        public int selectLegEnduranceTraining(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = 1 AND course_count = 1 AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' AND code_ext_value = '腿部'GROUP BY code_ext_value";
+                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = trainingCourseId AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' AND code_ext_value = '腿部'";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
 
 
-        public int selectEnduranceArmTraining()
+        public int selectEnduranceArmTraining(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = 1 AND course_count = 1 AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' AND code_ext_value = '手臂'GROUP BY code_ext_value";
+                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = trainingCourseId AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' AND code_ext_value = '手臂'";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
 
-        public int selectTrunkEnduranceTraining()
+        public int selectTrunkEnduranceTraining(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = 1 AND course_count = 1 AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' AND code_ext_value = '躯干'GROUP BY code_ext_value";
+                const string query = "SELECT sum(count) FROM bdl_training_course LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_course.id = trainingCourseId AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' AND code_ext_value = '躯干'";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
