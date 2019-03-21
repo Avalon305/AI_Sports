@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage.Streams;
 
 namespace SDKTemplate
 {
@@ -326,7 +327,7 @@ namespace SDKTemplate
         }
 
         /// <summary>
-        /// 打包蓝牙协议写入数据 CQZ
+        /// 根据蓝牙协议打包写入数据 CQZ
         /// </summary>
         /// <param name="cmd"></param>
         /// <param name="data"></param>
@@ -350,10 +351,23 @@ namespace SDKTemplate
             }
 
             
-            Debug.WriteLine("发送写入的协议："+ ByteToStringOk(result));
+            Debug.WriteLine("打包转成Hex字节数组后的写入数据："+ ByteToStringOk(result));
 
 
             return result;
+        }
+        /// <summary>
+        /// 字节数组转成IBuffer 用于最后一步写入数据
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public static IBuffer Bytes2Buffer(byte[] bytes)
+        {
+            using (var dataWriter = new DataWriter())
+            {
+                dataWriter.WriteBytes(bytes);
+                return dataWriter.DetachBuffer();
+            }
         }
 
     }

@@ -39,9 +39,11 @@ namespace SDKTemplate
                 switch (AttributeDisplayType)
                 {
                     case AttributeType.Service:
+                        //服务名字 看IsSigDefinedUuid这个方法的解释是：蓝牙技术联盟(Bluetooth SIG)有给服务的UUID赋值的标准，为了确定搜索到的服务是不是SIG官方定义的，来进行比对。若是自定义的就显示Custom service
                         if (IsSigDefinedUuid(service.Uuid))
                         {
                             GattNativeServiceUuid serviceName;
+                            //如果是官方定义的服务就能转成官方服务名 比如Heart Reat
                             if (Enum.TryParse(Utilities.ConvertUuidToShortId(service.Uuid).ToString(), out serviceName))
                             {
                                 return serviceName.ToString();
