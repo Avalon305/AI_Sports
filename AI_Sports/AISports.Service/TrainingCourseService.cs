@@ -96,19 +96,19 @@ namespace AI_Sports.Service
             return trainingCourseDAO.selectMAxCourseRecord();
         }
 
-        public double selectAerobicEnduranceEnergy()
+        public double selectAerobicEnduranceEnergy(string trainingPlanId)
         {
-            return trainingCourseDAO.selectAerobicEnduranceEnergy();
+            return trainingCourseDAO.selectAerobicEnduranceEnergy(trainingPlanId);
         }
 
-        public double selectForceEnduranceEnergy()
+        public double selectForceEnduranceEnergy(string trainingPlanId)
         {
-            return trainingCourseDAO.selectForceEnduranceEnergy();
+            return trainingCourseDAO.selectForceEnduranceEnergy(trainingPlanId);
         }
 
-        public double selectForceEnergy()
+        public double selectForceEnergy(string trainingPlanId)
         {
-            return trainingCourseDAO.selectForceEnergy();
+            return trainingCourseDAO.selectForceEnergy(trainingPlanId);
         }
     }
 }

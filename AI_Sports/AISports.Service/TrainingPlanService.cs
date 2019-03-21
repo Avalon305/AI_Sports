@@ -95,14 +95,14 @@ namespace AI_Sports.Service
             return trainingPlanDAO.selectRecordNumber();
         }
 
-        public List<double> selectAerobicEnergy()
+        public List<double> selectAerobicEnergy(string trainingPlanId)
         {
-            return trainingPlanDAO.selectAerobicEnergy();
+            return trainingPlanDAO.selectAerobicEnergy(trainingPlanId);
         }
 
-        public List<double> selectForceEnergy()
+        public List<double> selectForceEnergy(string trainingPlanId)
         {
-            return trainingPlanDAO.selectForceEnergy();
+            return trainingPlanDAO.selectForceEnergy(trainingPlanId);
         }
     }
 }
