@@ -18,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Navigation;
 using AI_Sports.Util;
+using System.Windows.Threading;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -36,16 +37,38 @@ namespace AI_Sports.AISports.View.Pages
         //传值事件
         public event PassValuesHandler PassValuesEvent;
 
+        //声明定时任务 WPF与界面交互专用定时任务
+        private static DispatcherTimer readDataTimer = new DispatcherTimer();
+        
+
         public BluetoothWindow()
         {
             InitializeComponent();
+            //初始化注册定时器
+            readDataTimer.Tick += new EventHandler(timeCycle);
+            //五秒一次查询，更新登陆列表
+            readDataTimer.Interval = new TimeSpan(0, 0, 0, 5);
+            readDataTimer.Start();
 
-            //List<BluetoothReadEntity> bluetoothReadEntities = bluetoothReadDAO.ListCurrentLoginUser();
-            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser();
 
+            
+        }
+
+        //定时任务调用方法 每五秒查询一次扫描手环表
+        private void timeCycle(object sender, EventArgs e)
+        {
+            //生成修改时间时间戳
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            var currentTime = Convert.ToInt64(ts.TotalSeconds);
+            //当前时间减2分钟 查询最近2分钟被扫描到的手环
+            currentTime = currentTime - (2 * 60);
+            //查询最近读取表中扫描到的用户
+            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
 
             this.dataGrid.ItemsSource = bluetoothReadEntities;
+            Console.WriteLine("查询扫描手环，更新登陆列表成功");
         }
+
         /// <summary>
         /// 取消按钮
         /// </summary>
@@ -74,7 +97,7 @@ namespace AI_Sports.AISports.View.Pages
             {
                 //传递卡号参数给mainwindow
                 PassValuesEvent(bluetoothReadEntity.Member_id);
-                Console.WriteLine("已经传递卡号给主窗体 id："+ bluetoothReadEntity.Member_id);
+                Console.WriteLine("已经传递卡号给主窗体 id：" + bluetoothReadEntity.Member_id);
                 this.Close();
 
             }
@@ -90,7 +113,7 @@ namespace AI_Sports.AISports.View.Pages
         {
 
 
-           
+
         }
     }
 }

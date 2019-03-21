@@ -2,6 +2,7 @@
 using AI_Sports.AISports.Entity;
 using AI_Sports.Service;
 using AI_Sports.Util;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -26,18 +28,81 @@ namespace AI_Sports.AISports.View.Pages
         private BluetoothReadDAO bluetoothReadDAO = new BluetoothReadDAO();
         private BluetoothWriteDAO bluetoothWriteDAO = new BluetoothWriteDAO();
         private MemberService memberService = new MemberService();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
+        //声明定时任务 WPF与界面交互专用定时任务
+        private static DispatcherTimer readDataTimer = new DispatcherTimer();
 
         public WriteBluetooth()
         {
             InitializeComponent();
 
-            //List<BluetoothReadEntity> bluetoothReadEntities = bluetoothReadDAO.ListCurrentLoginUser();
-            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser();
+            //生成修改时间时间戳
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            var currentTime = Convert.ToInt64(ts.TotalSeconds);
+            //当前时间减2分钟 查询最近2分钟被扫描到的手环
+            currentTime = currentTime - (2 * 60);
+
+            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
+
             this.LB_BluetoothName.ItemsSource = bluetoothReadEntities;
 
             this.TB_Member_Id.Text = CommUtil.GetSettingString("memberId");
 
         }
+
+
+        //定时任务调用方法 每2秒查询一次扫描手环写入表 并根据结果在页面提示
+        private void timeCycle(object sender, EventArgs e)
+        {
+
+            //根据当前会员ID获得最新的写入的数据
+            BluetoothWriteEntity bluetoothWriteEntity = SQLiteUtil.GetBluetoothWrite(CommUtil.GetSettingString("memberId"));
+
+            if (bluetoothWriteEntity != null)
+            {
+                //write_state字段的值代表的意义：0：待读取；1：写入成功；2：写入失败; 3：已读取数据。
+                switch (bluetoothWriteEntity.Write_state)
+                {
+                    case 0:
+                        Console.WriteLine("数据待读取");
+                        logger.Debug("数据待读取");
+                        this.Lab_Tips.Foreground = Brushes.DarkOrange;
+
+                        this.Lab_Tips.Content = "正在扫描手环，请稍等......";
+                        break;
+                    case 1:
+                        Console.WriteLine("写入手环成功");
+                        logger.Debug("写入手环成功");
+
+                        this.Lab_Tips.Foreground = Brushes.Green;
+
+                        this.Lab_Tips.Content = "手环保存成功";
+                        break;
+                    case 2:
+                        Console.WriteLine("写入手环失败");
+                        logger.Debug("写入手环失败");
+
+                        this.Lab_Tips.Foreground = Brushes.OrangeRed;
+
+                        this.Lab_Tips.Content = "手环保存失败";
+                        break;
+                    case 3:
+                        Console.WriteLine("UWP已经读取待写入数据");
+                        logger.Debug("UWP已经读取待写入数据");
+
+                        this.Lab_Tips.Foreground = Brushes.Orange;
+
+                        this.Lab_Tips.Content = "正在保存手环，请稍等......";
+                        break;
+                    default:
+                        break;
+                }
+            }
+           
+
+        }
+
         /// <summary>
         /// 取消
         /// </summary>
@@ -77,7 +142,7 @@ namespace AI_Sports.AISports.View.Pages
                         TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
                         writeEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                        //添加到集合
+                        //添加到写入集合
                         writeEntities.Add(writeEntity);
 
                     }
@@ -91,17 +156,24 @@ namespace AI_Sports.AISports.View.Pages
                 BluetoothWriteEntity writeEntity = writeEntities[0];
                 if (writeEntity.Member_id != null && writeEntity.Member_id != "")
                 {
+                    //插入SQLite write表
                     //long addResult = bluetoothWriteDAO.Insert(writeEntity);
                     SQLiteUtil.InsertBluetoothWrite(writeEntity);
-                    Console.WriteLine("手环写入成功");
-                    this.Lab_Tips.Foreground = Brushes.Green;
+                    Console.WriteLine("手环数据插入write表成功");
+                    
 
-                    this.Lab_Tips.Content = "手环保存成功";
+                    //然后执行定时任务开始查询写入状态
+                    //初始化注册定时器
+                    readDataTimer.Tick += new EventHandler(timeCycle);
+                    //2秒一次查询，更新登陆列表
+                    readDataTimer.Interval = new TimeSpan(0, 0, 0, 2);
+                    readDataTimer.Start();
+
                 }
                 else
                 {
                     this.Lab_Tips.Foreground = Brushes.OrangeRed;
-                    this.Lab_Tips.Content = "用户ID不能为空 请重新添加用户";
+                    this.Lab_Tips.Content = "用户ID 请重新添加用户";
                 }
             }
             else

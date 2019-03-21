@@ -50,10 +50,10 @@ namespace AI_Sports.Service
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.Append(memberEntity.Member_familyName);
                 stringBuilder.Append(memberEntity.Member_firstName);
-                //用户名5个字符以内
-                if (stringBuilder.Length > 5)
+                //用户名3个字符以内 写入时UTF-8编码每个汉字占3个字节
+                if (stringBuilder.Length > 3)
                 {
-                    stringBuilder.ToString().Substring(0,5);
+                    stringBuilder.ToString().Substring(0,3);
                 }
                 //手机号不为空则拼接手机号后四位
                 if (memberEntity.Mobile_phone != null && memberEntity.Mobile_phone != "")
@@ -83,8 +83,7 @@ namespace AI_Sports.Service
                 bluetoothReadEntity.Member_id = stringBuilder.ToString();
                 bluetoothReadEntity.Scan_count = 0;
                 //bluetoothReadEntity.Gmt_create = System.DateTime.Now;
-                //插入蓝牙读取表
-                bluetoothReadDAO.Insert(bluetoothReadEntity);
+
 
                 //更新APP中会员设置，让新增的该会员登陆 强制更新配置类，将当前登陆用户踢出
 

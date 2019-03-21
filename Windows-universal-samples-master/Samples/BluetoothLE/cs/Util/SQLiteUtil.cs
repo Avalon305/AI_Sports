@@ -90,6 +90,52 @@ namespace SDKTemplate
 
             return bluetoothWriteEntities;
         }
+
+        //读取bluetooth_read表数据 查询条件是手环名称 = 会员id。因为已经改了名的手环名就是memeber_id。这个就是查询扫描到的手环在数据库有没有
+        public static List<BluetoothReadEntity> GetReadEntityByBluetoothName(string bluetoothName)
+        {
+            //string localFolderPath = ApplicationData.Current.LocalFolder.Path;
+            List<BluetoothReadEntity> bluetoothReadEntitys = new List<BluetoothReadEntity>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
+            {
+                // 获取列表
+                TableQuery<BluetoothReadEntity> t = conn.Table<BluetoothReadEntity>();
+
+                bluetoothReadEntitys = (from s in t.AsParallel<BluetoothReadEntity>()
+                                          where (s.Member_id == bluetoothName)
+                                          orderby s.Gmt_modified descending
+                                          select s).ToList();
+
+                //bluetoothWriteEntities = (from s in conn.Table<BluetoothWriteEntity>()
+                //                          where (s.Write_state == 0)
+                //                          select s).ToList();
+
+
+            }
+
+            return bluetoothReadEntitys;
+        }
+
+
+        //更新写入状态
+        public static void UpdateTable(Object bluetoothEntity)
+        {
+            // 建立连接
+            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
+            {
+
+                //BluetoothReadEntity[] stus =
+                //{
+                //    new BluetoothReadEntity{ Member_id = "UWPTest",Gmt_modified = 321231 }
+                //};
+                int n = conn.Update(bluetoothEntity);
+                WriteLine($"已更新 {n} 条数据。");
+
+            };
+
+        }
+
     }
 
     

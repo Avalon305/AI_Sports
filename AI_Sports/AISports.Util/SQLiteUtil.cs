@@ -91,9 +91,9 @@ namespace AI_Sports.Util
         }
 
         /// <summary>
-        /// 查询最近登录的用户
+        /// 查询最近登录的用户 传入时间戳 查询最近几分钟扫描到的手环
         /// </summary>
-        public static List<BluetoothReadEntity> ListCurrentLoginUser()
+        public static List<BluetoothReadEntity> ListCurrentLoginUser(string timeStamp)
         {
             // 确保连接打开
             Open(connection);
@@ -103,7 +103,9 @@ namespace AI_Sports.Util
             {
                 using (var command = connection.CreateCommand())
                 {
-                    string sql = "select * from bluetooth_read";
+                    string sql = "select * from bluetooth_read where gmt_modefied >= ";
+                    sql += timeStamp;
+
                     command.CommandText = sql;
 
                     // 执行查询会返回一个SQLiteDataReader对象
@@ -163,15 +165,16 @@ namespace AI_Sports.Util
         }
 
 
+
         /// <summary>
-        /// 查询最近登录的用户
+        /// 根据传入的用户id查询最新一条写入的记录
         /// </summary>
         public static BluetoothWriteEntity GetBluetoothWrite(string memberId)
         {
             // 确保连接打开
             Open(connection);
             //实例化实体类
-            BluetoothWriteEntity bluetoothReadEntity = new BluetoothWriteEntity();
+            BluetoothWriteEntity bluetoothWriteEntity = new BluetoothWriteEntity();
 
             using (var tr = connection.BeginTransaction())
             {
@@ -180,6 +183,7 @@ namespace AI_Sports.Util
                     StringBuilder sql = new StringBuilder();
                     sql.Append("select * from bluetooth_write where member_id = ");
                     sql.Append(memberId);
+                    sql.Append("AND gmt_modified = (select MAX(gmt_modified) from bluetooth_write)");
                     command.CommandText = sql.ToString();
 
                     // 执行查询会返回一个SQLiteDataReader对象
@@ -192,16 +196,16 @@ namespace AI_Sports.Util
 
                         // 有一系列的Get方法，方法的参数是列数。意思是获取第n列的数据，转成Type返回。
                         // 比如这里的语句，意思就是：获取第0列的数据，转成int值返回。
-                        bluetoothReadEntity.Id = reader.GetInt64(0);
-                        bluetoothReadEntity.Member_id = reader.GetString(1);
-                        bluetoothReadEntity.Write_state = reader.GetInt32(2);
-                        bluetoothReadEntity.Bluetooth_name = reader.GetString(3);
-                        bluetoothReadEntity.Gmt_modified = reader.GetInt64(4);
+                        bluetoothWriteEntity.Id = reader.GetInt64(0);
+                        bluetoothWriteEntity.Member_id = reader.GetString(1);
+                        bluetoothWriteEntity.Write_state = reader.GetInt32(2);
+                        bluetoothWriteEntity.Bluetooth_name = reader.GetString(3);
+                        bluetoothWriteEntity.Gmt_modified = reader.GetInt64(4);
                     }
 
                 }
                 tr.Commit();
-                return bluetoothReadEntity;
+                return bluetoothWriteEntity;
 
             }
         }
