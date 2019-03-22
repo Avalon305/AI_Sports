@@ -13,8 +13,8 @@
 
     <ScrollViewer>
         <StackPanel Margin="5">
-            <Label FontSize="30" Foreground="#FF506E7C" >练习</Label>
-            <Label FontSize="18" Foreground="#FF506E7C">力量耐力循环</Label>
+            <Label Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,0,0,0"  FontSize="50" Grid.Row="0">练习</Label>
+            <Label Foreground="#04243D" Style="{DynamicResource h1}">力量耐力循环</Label>
             <Label BorderThickness="0,1,0,1" BorderBrush="#eaeaea">
                 <Grid Width="1300" Height="auto" >
                     <Grid.RowDefinitions>
@@ -110,7 +110,7 @@
                     </StackPanel>
                 </Grid>
             </Expander>
-            <Label  FontSize="18" Foreground="#FF506E7C">力量循环</Label>
+            <Label  Foreground="#04243D" Style="{DynamicResource h1}">力量循环</Label>
             <Label BorderThickness="0,1,0,1" BorderBrush="#eaeaea">
                 <Grid Width="1300" Height="auto" >
                     <Grid.RowDefinitions>

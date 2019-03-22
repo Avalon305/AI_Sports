@@ -358,6 +358,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="AISports.Constant\CodeConstant.cs" />
+    <Compile Include="AISports.Constant\CommondConstant.cs" />
     <Compile Include="AISports.Constant\TableNameConst.cs" />
     <Compile Include="AISports.Dao\ActivityDAO.cs" />
     <Compile Include="AISports.Dao\AuthDAO.cs" />
