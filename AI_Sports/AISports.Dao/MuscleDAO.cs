@@ -14,7 +14,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 10 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 10 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -23,7 +23,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 11 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 11 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -32,7 +32,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 15 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 15 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -41,7 +41,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 14 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 14 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -50,7 +50,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 9 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 9 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -59,7 +59,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 13 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 13 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -68,7 +68,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 16 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 16 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -77,7 +77,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 12 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 12 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -86,7 +86,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 1 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 1 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -95,7 +95,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 2 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 2 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -104,7 +104,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 3 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 3 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -113,7 +113,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 4 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 4 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -122,7 +122,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 5 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 5 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -131,7 +131,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 6 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 6 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -140,7 +140,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 7 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 7 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -149,7 +149,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 8 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 8 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
@@ -158,7 +158,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 0 AND bdl_training_activity_record.course_count = currentCourseCount";
+                const string query = "SELECT count(*) FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = bdl_training_device_record.fk_training_activity_record_id LEFT JOIN bdl_datacode ON bdl_training_device_record.device_code = code_s_value WHERE code_type_id = 'DEVICE'AND device_code = 0 AND bdl_training_activity_record.course_count = @currentCourseCount";
                 return conn.QueryFirstOrDefault<int>(query);
             }
         }
