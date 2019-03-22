@@ -46,7 +46,7 @@
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="坐式推胸机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Image Source="/AI_Sports;component/AISports.View/Images/Seated chest pushing.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Label x:Name="data1" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="8/60%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
+                            <Label x:Name="data1" HorizontalAlignment="Center"  Margin="0,0,0,0"  Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
                         </StackPanel>
                     </Grid>

@@ -277,6 +277,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AndyTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="FmyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -363,6 +367,7 @@
     <Compile Include="AISports.Dao\DatacodeDAO.cs" />
     <Compile Include="AISports.Dao\KeyDAO.cs" />
     <Compile Include="AISports.Dao\MemberDAO.cs" />
+    <Compile Include="AISports.Dao\MuscleDAO.cs" />
     <Compile Include="AISports.Dao\MusclePieChartDAO.cs" />
     <Compile Include="AISports.Dao\PersonalSettingDAO.cs" />
     <Compile Include="AISports.Dao\ProcessDAO.cs" />
@@ -400,6 +405,7 @@
     <Compile Include="AISports.Service\DeviceCommService.cs" />
     <Compile Include="AISports.Service\MemberService.cs" />
     <Compile Include="AISports.Service\MusclePieChartService.cs" />
+    <Compile Include="AISports.Service\MuscleService.cs" />
     <Compile Include="AISports.Service\PersonalSettingService.cs" />
     <Compile Include="AISports.Service\ProcessService.cs" />
     <Compile Include="AISports.Service\SystemSettingService.cs" />
@@ -529,6 +535,9 @@
     </Compile>
     <Compile Include="AISports.View\Pages\AddActivitys.xaml.cs">
       <DependentUpon>AddActivitys.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AndyTest.xaml.cs">
+      <DependentUpon>AndyTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
