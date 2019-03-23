@@ -1,6 +1,10 @@
 ﻿using AI_Sports.AISports.Constant;
+using AI_Sports.AISports.Dao;
+using AI_Sports.AISports.Entity;
 using AI_Sports.AISports.Util;
+using AI_Sports.Service;
 using AI_Sports.Util;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,20 +21,44 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
-namespace AI_Sports
+namespace AI_Sports.AISports.View.Pages
 {
     /// <summary>
-    /// NolleTestSerial.xaml 的交互逻辑
+    /// WriteBluetooth.xaml 的交互逻辑
     /// </summary>
-    public partial class NolleTestSerial : Window
+    public partial class SendCard : Window
     {
-
         public static SerialPort serialPort = null;
-        public NolleTestSerial()
+
+        public SendCard()
         {
             InitializeComponent();
-            comboBox.ItemsSource = SerialPortUtil.initPort();
+            serialPort = new SerialPort();
+            serialPort.PortName = "COM3";
+            serialPort.BaudRate = 115200;
+            serialPort.ReadTimeout = 3000; //单位毫秒
+            serialPort.WriteTimeout = 3000; //单位毫秒
+            serialPort.ReceivedBytesThreshold = 1;
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
+            try
+            {
+                serialPort.Open();
+
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("串口被占用", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("串口不存在", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
+            this.TB_Member_Id.Text = CommUtil.GetSettingString("memberId");
+
         }
 
         /// <summary>
@@ -71,6 +99,7 @@ namespace AI_Sports
             //下面是完整数据
             if (buffer != null)
             {
+                Console.WriteLine("buffer不为空，通过校验");
                 //既然已经到了这里说明帧头帧尾已校验通过
 
                 //取出命令字
@@ -98,13 +127,38 @@ namespace AI_Sports
                 }
 
                 //如果命令字等于发卡的应答
-                if (cmd[0].Equals(CommondConstant.ResSendCard))
+                Console.WriteLine("cmd为" + cmd[0]);
+                Console.WriteLine("CommondConstant.ResSendCard为" + CommondConstant.ResSendCard[0]);
+                if (cmd[0] == CommondConstant.ResSendCard[0])
                 {
-                    MessageBox.Show("发卡成功");
+                    //MessageBox.Show("发卡成功");
+                    if (obj_data[0] == CommondConstant.error)
+                    {
+                        this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+                        {
+                            Lab_Tips.Content = "发卡失败";
+                        });
+                    }
+
+                    if (obj_data[0] == CommondConstant.success)
+                    {
+                        this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+                        {
+                            Lab_Tips.Content = "发卡成功";
+                        });
+                    }
+
+                    if (obj_data[0] == CommondConstant.noCard)
+                    {
+                        this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+                        {
+                            Lab_Tips.Content = "无卡";
+                        });
+                    }
                 }
 
                 //如果命令字等于读卡
-                if (cmd[0].Equals(CommondConstant.ResSendCard))
+                if (cmd[0] == CommondConstant.readCard[0])
                 {
                     byte[] namebytewithzero = new byte[10];
                     byte[] phonebyte = new byte[4];
@@ -118,63 +172,6 @@ namespace AI_Sports
 
             }
         }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (button.Content.ToString() == "断开")
-            {
-                button.Content = "连接";
-                comboBox.IsEnabled = true;
-                button.Style = FindResource("btn-success") as Style;
-                button.ApplyTemplate();
-                try
-                {
-                    serialPort.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("串口关闭失败");
-                }
-                return;
-            }
-
-            if (comboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show("请选择串口", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-            comboBox.IsEnabled = false;
-
-
-            string name1 = comboBox.SelectedValue.ToString();
-            serialPort = new SerialPort();
-            serialPort.PortName = name1;
-            serialPort.BaudRate = 115200;
-            serialPort.ReadTimeout = 3000; //单位毫秒
-            serialPort.WriteTimeout = 3000; //单位毫秒
-            serialPort.ReceivedBytesThreshold = 1;
-            serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
-            try
-            {
-                serialPort.Open();
-                button.Content = "断开";
-                button.Style = FindResource("btn-danger") as Style;
-                button.ApplyTemplate();
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                MessageBox.Show("串口被占用", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-                comboBox.IsEnabled = true;
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show("串口不存在", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-                comboBox.IsEnabled = true;
-            }
-
-        }
-
         /// <summary>
         /// 发卡按钮
         /// </summary>
@@ -192,35 +189,19 @@ namespace AI_Sports
             byte[] data = new byte[14];
             //打包数据
             packSendCard(ref data);
-            Console.WriteLine("数据部分"+SerialPortUtil.ByteToHexStr(data));
+            Console.WriteLine("数据部分" + SerialPortUtil.ByteToHexStr(data));
             //组装协议头、协议尾
             byte[] buffer = SerialPortUtil.packData(CommondConstant.sendCard, data);
             //给出等待提示-正在发卡,请稍后
             //发卡
             serialPort.Write(buffer, 0, buffer.Length);
         }
+
         /// <summary>
         /// 发卡前校检 TODO
         /// </summary>
         private bool validateSendCard()
         {
-            if (button.Content.ToString() == "xx")
-            {
-                MessageBox.Show("您没有发卡权限", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
-            if (button.Content.ToString() == "连接")
-            {
-                MessageBox.Show("请先连接串口", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-
-            }
-            else if (button.Content.ToString() == "未插卡")
-            {
-                MessageBox.Show("请先连接读卡器", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-
-            }
             return true;
         }
         /// <summary>
@@ -234,8 +215,8 @@ namespace AI_Sports
             string name = "";
             string phone = "";
             byte[] crc = new byte[2];
-            SerialPortUtil.splitMemberId(ref name,ref crc,ref phone,memberId);
-            Console.WriteLine("name:"+name);
+            SerialPortUtil.splitMemberId(ref name, ref crc, ref phone, memberId);
+            Console.WriteLine("name:" + name);
             Console.WriteLine("phone:" + phone);
             Console.WriteLine("crc:" + SerialPortUtil.ByteToHexStr(crc));
 
@@ -244,10 +225,17 @@ namespace AI_Sports
             Buffer.BlockCopy(crc, 0, data, 12, crc.Length);
 
         }
-
-        private void ComboBox_DropDownOpened(object sender, EventArgs e)
+        /// <summary>
+        /// 取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
+
     }
+
 }
+

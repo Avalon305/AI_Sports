@@ -134,14 +134,14 @@ namespace AI_Sports
             }
             else if (e.Key == Key.Enter)
             {
-                BluetoothWindow bluetoothWindow = new BluetoothWindow();
+                BluetoothLogin bluetoothWindow = new BluetoothLogin();
 
 
                 // 订阅事件
-                bluetoothWindow.PassValuesEvent += new BluetoothWindow.PassValuesHandler(ReceiveValues);
+                bluetoothWindow.PassValuesEvent += new BluetoothLogin.PassValuesHandler(ReceiveValues);
 
 
-                bluetoothWindow.Show();
+                bluetoothWindow.ShowDialog();
             }
 
             
@@ -185,6 +185,40 @@ namespace AI_Sports
                     break;
             }
         }
+
+
+        private void Login(string sender)
+        {
+            string memberId = sender;
+            Console.WriteLine("串口登陆 用户ID：" + memberId);
+            Enum resultCode = null;
+
+            resultCode = memberService.Login(memberId);
+            switch (resultCode)
+            {
+                case LoginPageStatus.CoachPage:
+                    logger.Debug("教练正常登陆");
+                    //this.Close();
+                    this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
+                    break;
+                case LoginPageStatus.UserPage:
+                    logger.Debug("用户正常登陆");
+                    //this.Close();
+                    this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
+                    break;
+                case LoginPageStatus.RepeatLogins:
+                    logger.Debug("拦截重复登陆，请先退出。");
+                    break;
+                case LoginPageStatus.UnknownID:
+                    logger.Debug("未知ID，禁止登录。");
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 
 

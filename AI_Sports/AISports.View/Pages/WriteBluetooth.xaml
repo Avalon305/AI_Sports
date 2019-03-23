@@ -35,8 +35,9 @@
                 </WrapPanel>
             </StackPanel>
             <StackPanel Height="50" Orientation="Horizontal" Background="DimGray">
-                <Button Content="保存"  Style="{DynamicResource btn-success}" Width="80" Margin="600,2,10,5" Click="Button_Click_1"></Button>
-                <Button Content="取消"  Width="80" Margin="10,2,10,5" Style="{DynamicResource btn-warning}" Click="Button_Click"></Button>
+                <Button Content="重新扫描" Style="{DynamicResource btn-primary}"  Width="80" Margin="520,6,0,5" Click="Button_Click_2"></Button>
+                <Button Content="保存"  Style="{DynamicResource btn-success}" Width="80" Margin="10,6,0,5" Click="Button_Click_1"></Button>
+                <Button Content="取消"  Width="80" Margin="10,6,10,5" Style="{DynamicResource btn-warning}" Click="Button_Click"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>

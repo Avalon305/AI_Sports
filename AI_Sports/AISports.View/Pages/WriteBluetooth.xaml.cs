@@ -36,17 +36,9 @@ namespace AI_Sports.AISports.View.Pages
         public WriteBluetooth()
         {
             InitializeComponent();
-
-            //生成修改时间时间戳
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            var currentTime = Convert.ToInt64(ts.TotalSeconds);
-            //当前时间减2分钟 查询最近2分钟被扫描到的手环
-            currentTime = currentTime - (2 * 60);
-
-            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
-
-            this.LB_BluetoothName.ItemsSource = bluetoothReadEntities;
-
+            //加载手环列表
+            LoadBluetoothList();
+            //加载用户ID
             this.TB_Member_Id.Text = CommUtil.GetSettingString("memberId");
 
         }
@@ -55,7 +47,7 @@ namespace AI_Sports.AISports.View.Pages
         //定时任务调用方法 每2秒查询一次扫描手环写入表 并根据结果在页面提示
         private void timeCycle(object sender, EventArgs e)
         {
-
+            Console.WriteLine("定时任务：查询写入数据状态");
             //根据当前会员ID获得最新的写入的数据
             BluetoothWriteEntity bluetoothWriteEntity = SQLiteUtil.GetBluetoothWrite(CommUtil.GetSettingString("memberId"));
 
@@ -100,6 +92,22 @@ namespace AI_Sports.AISports.View.Pages
                 }
             }
            
+
+        }
+        /// <summary>
+        /// 加载手环列表
+        /// </summary>
+        public void LoadBluetoothList()
+        {
+            //生成修改时间时间戳
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            var currentTime = Convert.ToInt64(ts.TotalSeconds);
+            //当前时间减2分钟 查询最近2分钟被扫描到的手环
+            currentTime = currentTime - (2 * 60);
+
+            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
+
+            this.LB_BluetoothName.ItemsSource = bluetoothReadEntities;
 
         }
 
@@ -158,16 +166,20 @@ namespace AI_Sports.AISports.View.Pages
                 {
                     //插入SQLite write表
                     //long addResult = bluetoothWriteDAO.Insert(writeEntity);
-                    SQLiteUtil.InsertBluetoothWrite(writeEntity);
-                    Console.WriteLine("手环数据插入write表成功");
-                    
+                    int result = SQLiteUtil.InsertBluetoothWrite(writeEntity);
+                    if (result > 0)
+                    {
+                        Console.WriteLine("手环数据插入write表成功");
+
+                    }
+
 
                     //然后执行定时任务开始查询写入状态
                     //初始化注册定时器
-                    readDataTimer.Tick += new EventHandler(timeCycle);
-                    //2秒一次查询，更新登陆列表
-                    readDataTimer.Interval = new TimeSpan(0, 0, 0, 2);
-                    readDataTimer.Start();
+                    //readDataTimer.Tick += new EventHandler(timeCycle);
+                    ////2秒一次查询，更新登陆列表
+                    //readDataTimer.Interval = new TimeSpan(0, 0, 0, 5);
+                    //readDataTimer.Start();
 
                 }
                 else
@@ -211,7 +223,15 @@ namespace AI_Sports.AISports.View.Pages
             }
             return null;
         }
-
+        /// <summary>
+        /// 重新扫描按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            LoadBluetoothList();
+        }
     }
  
 }

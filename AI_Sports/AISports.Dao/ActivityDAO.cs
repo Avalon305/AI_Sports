@@ -29,7 +29,7 @@ namespace AI_Sports.Dao
         }
 		///zfc
 		/// <summary>
-		/// 根据外键训练课程id完成训练活动，把is_complete标志位置为1代表完成
+		/// 根据外键训练课程id完成训练活动，把is_complete标志位置为0，current_turn_number置为0
 		/// </summary>
 		/// <param name="trainingcourseid"></param>
 		/// <param name="complete"></param>
@@ -38,7 +38,7 @@ namespace AI_Sports.Dao
 		{
 			using (var conn = DbUtil.getConn())
 			{
-				const string query = "UPDATE bdl_activity SET is_complete = @Complete WHERE fk_training_course_id  = @fk_training_course_id ";
+				const string query = "UPDATE bdl_activity SET is_complete = @Complete ,current_turn_number = @Complete WHERE fk_training_course_id  = @fk_training_course_id ";
 
 				return conn.Execute(query, new { fk_training_course_id = trainingcourseid, Complete = complete });
 

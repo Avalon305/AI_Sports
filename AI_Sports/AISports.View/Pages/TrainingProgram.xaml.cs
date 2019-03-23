@@ -20,6 +20,7 @@ using AI_Sports.Constant;
 using AI_Sports.AISports.Util;
 using System.ComponentModel;
 using System.Transactions;
+using System.Threading;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -75,7 +76,8 @@ namespace AI_Sports.AISports.View.Pages
 	public partial class TrainingProgram : Page
 	{
 		private MainWindowViewModel viewModel = new MainWindowViewModel();
-        private TrainingPlanService trainingPlanService = new TrainingPlanService();
+		private MainWindowViewModel viewModel2 = new MainWindowViewModel();
+		private TrainingPlanService trainingPlanService = new TrainingPlanService();
 		private TrainingCourseService trainingCourseService = new TrainingCourseService();
 		private TrainingActivityService activityService = new TrainingActivityService();
 
@@ -87,35 +89,35 @@ namespace AI_Sports.AISports.View.Pages
 		{
 			InitializeComponent();
 
-           
-            
-            //查询训练计划
-            TrainingPlanEntity trainingPlanEntity = trainingPlanService.GetPlanByMumberId();
 
-            if (trainingPlanEntity != null)
-            {
-                //计划标题
-                this.lable_planName.Content += trainingPlanEntity.Title;
 
-                String[] text = { "已完成", "持续进行" };
-                if (trainingPlanEntity.Is_deleted == true)
-                {
-                    this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[0] });
-                }
-                else if (trainingPlanEntity.Is_deleted == false)
-                {
-                    this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[1] });
-                }
-                //加载训练活动
-                List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
-                //添加数据
-                viewModel.AddThreePlans(activityList);
-                //集合数据绑定
-                this.listBox.ItemsSource = viewModel.trainingPlanGroup;
-            }
-           
-            
-        }
+			//查询训练计划
+			TrainingPlanEntity trainingPlanEntity = trainingPlanService.GetPlanByMumberId();
+
+			if (trainingPlanEntity != null)
+			{
+				//计划标题
+				this.lable_planName.Content += trainingPlanEntity.Title;
+
+				String[] text = { "已完成", "持续进行" };
+				if (trainingPlanEntity.Is_deleted == true)
+				{
+					this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[0] });
+				}
+				else if (trainingPlanEntity.Is_deleted == false)
+				{
+					this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[1] });
+				}
+				//加载训练活动
+				List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
+				//添加数据
+				viewModel.AddThreePlans(activityList);
+				//集合数据绑定
+				this.listBox.ItemsSource = viewModel.trainingPlanGroup;
+			}
+
+
+		}
         /// <summary>
         /// 跳过训练课程
         /// </summary>
@@ -131,17 +133,36 @@ namespace AI_Sports.AISports.View.Pages
 				int id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("trainingCourseId"));
 				trainingCourseService.UpdateCourseCount(id);
 
-				//将bdl_activity对应的最多2种类型训练活动中的is_complete 的value 更新为 1
+				//将bdl_activity对应的最多2种类型训练活动中的is_complete 的value 更新为 0,current_turn_number置为0
 
-				activityService.UpdateCompleteFinish(id, 1);
+				activityService.UpdateCompleteFinish(id, 0);
 
 				//将bdl_activity_record对应的最多2种类型训练活动记录中的is_complete的value更新为 1
-				activityService.UpdateRecordCompleteFinish(id, 1);
+				activityService.UpdateRecordCompleteFinish(id, 0);
 				ts.Complete();
 
 			}
 			//刷新页面
 			MessageBox.Show("成功跳过此次训练课程");
+			int flag = 1;
+			if(flag == 1)
+			{
+				this.listBox.ItemsSource = null;
+				flag = 0;
+			}
+			if (flag == 0)
+			{
+				//加载训练活动
+
+				List<ActivityEntity> activityList2 = activityService.ListActivitysByCourseId();
+				//添加数据
+				viewModel2.AddThreePlans(activityList2);
+				//集合数据绑定
+				this.listBox.ItemsSource = viewModel2.trainingPlanGroup;
+			}	
+		
+
+
 		}
 	
         /// <summary>

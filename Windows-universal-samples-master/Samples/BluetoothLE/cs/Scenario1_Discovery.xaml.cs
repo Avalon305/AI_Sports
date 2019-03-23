@@ -73,41 +73,15 @@ namespace SDKTemplate
         public Scenario1_Discovery()
         {
             InitializeComponent();
-            //StartBleDeviceWatcher();
-            //WriteLine("qqq");
 
-            // Additional properties we would like about the device.
-            // Property strings are documented here https://msdn.microsoft.com/en-us/library/windows/desktop/ff521659(v=vs.85).aspx
-            string[] requestedProperties = { "System.Devices.Aep.DeviceAddress", "System.Devices.Aep.IsConnected", "System.Devices.Aep.Bluetooth.Le.IsConnectable" };
-
-            // BT_Code: Example showing paired and non-paired in a single query.
-            string aqsAllBluetoothLEDevices = "(System.Devices.Aep.ProtocolId:=\"{bb7bb05e-5972-42b5-94fc-76eaa7084d49}\")";
-
-            deviceWatcher =
-                    DeviceInformation.CreateWatcher(
-                        aqsAllBluetoothLEDevices,
-                        requestedProperties,
-                        DeviceInformationKind.AssociationEndpoint);
-
-            // Register event handlers before starting the watcher.
-            deviceWatcher.Added += DeviceWatcher_Added;
-            deviceWatcher.Updated += DeviceWatcher_Updated;
-            deviceWatcher.Removed += DeviceWatcher_Removed;
-            //在这个搜索完成事件中会更新、插入read表 并且停止watcher
-            deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
-            //在停止事件中会重新开始搜索蓝牙 这样不用定时任务也可以一直搜索蓝牙名称读取
-            deviceWatcher.Stopped += DeviceWatcher_Stopped;
+            //启动搜索蓝牙
+            StartBleDeviceWatcher();
 
 
-
-            // Start over with an empty collection.
-            KnownDevices.Clear();
-            
-            deviceWatcher.Start();
-            Debug.WriteLine("初次启动搜索蓝牙" + System.DateTime.Now);
-
-            //启动定时任务 定时查询要写入的数据，如果有要写入的数据就连接蓝牙写入
+            //启动读取写入指令定时任务 定时查询要写入的数据，如果有要写入的数据就连接蓝牙写入
             Timer();
+
+
         }
         public void test(object source, ElapsedEventArgs e)
         {
@@ -122,16 +96,16 @@ namespace SDKTemplate
         {
             //开启定时任务 遍历数据库查询要写入的数据
             TimeSpan period = TimeSpan.FromSeconds(5);
-            var timer = ThreadPoolTimer.CreatePeriodicTimer((source) =>
+            var timer = ThreadPoolTimer.CreatePeriodicTimer(async (source) =>
             {
                 try
                 {
                     //do something
-                    WriteLine("定时任务开启 "+ System.DateTime.Now);
+                    WriteLine("定时任务开启 " + System.DateTime.Now);
                     //if (deviceWatcher == null)
                     //{
                     //查询要写入的数据
-                    List<BluetoothWriteEntity> bluetoothWriteEntitys = SQLiteUtil.OnReadWrite();
+                    List<BluetoothWriteEntity> bluetoothWriteEntitys = await SQLiteUtil.OnReadWrite();
 
                     string bluetoothName = "";
                     //写入集合大于0则写入，说明有写入命令 给需要连接的手环名赋值  有写入命令才进行接下来的连接、搜索、写入操作
@@ -144,9 +118,10 @@ namespace SDKTemplate
                         bluetoothWriteEntity = bluetoothWriteEntitys[0];
                         //已经取得写入对象，更新数据库写入状态为3：已读取 防止出现有数据状态一直为0，一直连接造成connect方法灾难性异常
                         bluetoothWriteEntity.Write_state = 3;
-                        SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                        //更新写入表
+                        await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
 
-                        Debug.WriteLine("收到写入蓝牙命令：从库查到的写入设备名："+ bluetoothName+",写入状态："+ bluetoothWriteEntitys[0].Write_state + "，用户ID：" + bluetoothWriteEntitys[0].Member_id);
+                        Debug.WriteLine("收到写入蓝牙命令：从库查到的写入设备名：" + bluetoothName + ",写入状态：" + bluetoothWriteEntitys[0].Write_state + "，用户ID：" + bluetoothWriteEntitys[0].Member_id);
 
 
                         //遍历搜索到的蓝牙集合 找出对应要写入的蓝牙实体类 传递给配对方法
@@ -159,19 +134,36 @@ namespace SDKTemplate
                             //1.配对 2.连接
                             if ((bluetoothLEDeviceDisplay.Name).Equals(bluetoothName))
                             {
-                                //对象锁
-                                object lockThis = new object();
-                                lock (lockThis)
+
+                                Debug.WriteLine("找到对应手环，开始配对。名称:" + bluetoothLEDeviceDisplay.Name);
+                                //与蓝牙手环配对成功才进行连接，否则不连接
+                                DevicePairingResult devicePairingResult = await PairBluetooth(bluetoothLEDeviceDisplay);
+
+                                if (devicePairingResult.Status == DevicePairingResultStatus.Paired || devicePairingResult.Status == DevicePairingResultStatus.AlreadyPaired)
                                 {
-                                    Debug.WriteLine("找到对应手环，开始配对。名称:" + bluetoothLEDeviceDisplay.Name);
-                                    //与蓝牙手环配对
-                                    PairBluetooth(bluetoothLEDeviceDisplay);
                                     //设置配置类的蓝牙id和名称 后边写入需要这两个数据
                                     rootPage.SelectedBleDeviceId = bluetoothLEDeviceDisplay.Id;
                                     rootPage.SelectedBleDeviceName = bluetoothLEDeviceDisplay.Name;
                                     //与选择手环自动连接 该方法连接成功后调用搜索服务、搜索特征、自动写入
                                     ConnectButton_Click();
                                 }
+                                else
+                                {//配对不成功则更新为写入失败
+                                    Debug.WriteLine("【写入蓝牙：设备配对失败】");
+
+                                    rootPage.NotifyUser("蓝牙配对失败"+ devicePairingResult.Status.ToString(), NotifyType.ErrorMessage);
+                                    //更新状态为写入失败
+                                    //时间戳
+                                    TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+                                    //更新数据库write表写入状态
+                                    bluetoothWriteEntity.Write_state = 2;//代表写入失败
+                                    bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
+
+                                    await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
+
+                                }
+                                
+
 
 
                             }
@@ -185,7 +177,7 @@ namespace SDKTemplate
 
                     }
 
-                    
+
 
                 }
                 catch (Exception e)
@@ -274,15 +266,9 @@ namespace SDKTemplate
             deviceWatcher.Updated += DeviceWatcher_Updated;
             deviceWatcher.Removed += DeviceWatcher_Removed;
             deviceWatcher.EnumerationCompleted += DeviceWatcher_EnumerationCompleted;
+            //触发停止事件时，对搜索到的数据进行更新、插入数据库操作
             deviceWatcher.Stopped += DeviceWatcher_Stopped;
 
-            foreach (var item in KnownDevices)
-            {
-                BluetoothLEDeviceDisplay bluetoothLEDeviceDisplay = item as BluetoothLEDeviceDisplay;
-                Debug.WriteLine("蓝牙列表" + bluetoothLEDeviceDisplay.Id + bluetoothLEDeviceDisplay.Name);
-
-
-            }
 
             // Start over with an empty collection.
             KnownDevices.Clear();
@@ -293,6 +279,8 @@ namespace SDKTemplate
             // use the BluetoothLEAdvertisementWatcher runtime class. See the BluetoothAdvertisement
             // sample for an example.
             deviceWatcher.Start();
+            Debug.WriteLine("初次启动搜索蓝牙" + System.DateTime.Now);
+
         }
 
         /// <summary>
@@ -440,56 +428,13 @@ namespace SDKTemplate
         {
 
 
-            //deviceWatcher.Start();
-            //Debug.WriteLine("启动搜索蓝牙");
-            //自己加的 在这里搜索完成的时候停止搜索
+
+            //开始之前清空蓝牙设备集合 不再async事件里调用操作主线程全局变量的方法 会报应用程序调用一个已为另一线程的接口异常，直接退出 反正自己也会Remove不必要了
+            //KnownDevices.Clear();
+
+            //停止事件重新开始搜索蓝牙 注意别在DeviceWatcher_Stopped里自我调用 否则死循环
             deviceWatcher.Stop();
-            Debug.WriteLine("停止搜索蓝牙" + System.DateTime.Now);
 
-
-            //实例化插入集合
-            List<BluetoothReadEntity> bluetoothReadEntities = new List<BluetoothReadEntity>();
-
-            foreach (var item in KnownDevices)
-            {
-                BluetoothLEDeviceDisplay bluetoothLEDeviceDisplay = item as BluetoothLEDeviceDisplay;
-                Debug.WriteLine("搜索到的蓝牙设备" + bluetoothLEDeviceDisplay.Id + bluetoothLEDeviceDisplay.Name);
-                //时间戳
-                TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-
-                //根据蓝牙名称查询数据库，若有数据就更新scan_count +1 ，否则插入数据。防止重复插入造成表中数据过多
-                List<BluetoothReadEntity> queryReadEntitys = SQLiteUtil.GetReadEntityByBluetoothName(bluetoothLEDeviceDisplay.Name);
-                
-                var bluetoothReadEntity = new BluetoothReadEntity();
-
-                
-                //数据库中有该手环数据就更新计数 否则添加新纪录
-                if (queryReadEntitys.Count > 0)
-                {
-                    //因为sql只能返回集合 所以根据修改时间由大到小排序选择最新第一条
-                    bluetoothReadEntity = queryReadEntitys[0];
-                    bluetoothReadEntity.Scan_count += 1;
-                    bluetoothReadEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
-                    //更新read表
-                    SQLiteUtil.UpdateTable(bluetoothReadEntity);
-                }
-                else//数据库中没有该手环数据  添加进插入集合
-                {
-                    bluetoothReadEntity.Member_id = bluetoothLEDeviceDisplay.Name;
-                    bluetoothReadEntity.Scan_count = 0;
-                    bluetoothReadEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
-
-                    //添加进插入集合
-                    bluetoothReadEntities.Add(bluetoothReadEntity);
-                }
-
-                
-                
-
-            }
-
-            //把数据库中没有的数据 批量插入数据库
-            SQLiteUtil.BatchInsertRead(bluetoothReadEntities);
 
             // We must update the collection on the UI thread because the collection is databound to a UI element.
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -499,10 +444,10 @@ namespace SDKTemplate
                 {
                     rootPage.NotifyUser($"{KnownDevices.Count} devices found. Enumeration completed.",
                         NotifyType.StatusMessage);
+
                 }
-
-
             });
+
         }
         /// <summary>
         /// 停止搜索
@@ -513,7 +458,74 @@ namespace SDKTemplate
         {
             // Start over with an empty collection. 先清空列表再搜索
 
+            Debug.WriteLine("触发搜索蓝牙停止事件" + System.DateTime.Now);
+
+            //这个地方更新Read表的时候可能和定时任务里更新write表并发冲突报Busy异常 SQLite没有复杂的锁机制
+            try
+            {
+                //deviceWatcher.Start();
+                //Debug.WriteLine("启动搜索蓝牙");
+
+                //自己加的 在这里搜索完成的时候停止搜索
+
+                Debug.WriteLine("对搜索到的蓝牙设备进行更新、插入处理");
+
+                //实例化插入集合
+                List<BluetoothReadEntity> bluetoothReadEntities = new List<BluetoothReadEntity>();
+
+                foreach (var item in KnownDevices)
+                {
+                    BluetoothLEDeviceDisplay bluetoothLEDeviceDisplay = item as BluetoothLEDeviceDisplay;
+                    Debug.WriteLine("搜索到的蓝牙设备" + bluetoothLEDeviceDisplay.Id + bluetoothLEDeviceDisplay.Name);
+                    //时间戳
+                    TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+
+                    //根据蓝牙名称查询数据库，若有数据就更新scan_count +1 ，否则插入数据。防止重复插入造成表中数据过多
+                    List<BluetoothReadEntity> queryReadEntitys = await SQLiteUtil.GetReadEntityByBluetoothName(bluetoothLEDeviceDisplay.Name);
+
+                    var bluetoothReadEntity = new BluetoothReadEntity();
+
+
+                    //数据库中有该手环数据就更新计数 否则添加新纪录
+                    if (queryReadEntitys.Count > 0)
+                    {
+                        //因为sql只能返回集合 所以根据修改时间由大到小排序选择最新第一条
+                        bluetoothReadEntity = queryReadEntitys[0];
+                        bluetoothReadEntity.Scan_count += 1;
+                        bluetoothReadEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
+                        //更新read表
+                        await SQLiteUtil.UpdateReadTable(bluetoothReadEntity);
+                    }
+                    else//数据库中没有该手环数据  添加进插入集合
+                    {
+                        bluetoothReadEntity.Member_id = bluetoothLEDeviceDisplay.Name;
+                        bluetoothReadEntity.Scan_count = 0;
+                        bluetoothReadEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
+
+                        //添加进插入集合
+                        bluetoothReadEntities.Add(bluetoothReadEntity);
+                    }
+
+
+
+
+                }
+
+                //把数据库中没有的数据 批量插入数据库
+                await SQLiteUtil.BatchInsertRead(bluetoothReadEntities);
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            //重新开始搜索蓝牙
             deviceWatcher.Start();
+
             Debug.WriteLine("STOP事件重新开始搜索蓝牙" + System.DateTime.Now);
             // We must update the collection on the UI thread because the collection is databound to a UI element.
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -521,7 +533,7 @@ namespace SDKTemplate
                 // Protect against race condition if the task runs after the app stopped the deviceWatcher.
                 if (sender == deviceWatcher)
                 {
-                    rootPage.NotifyUser($"No longer watching for devices.",
+                    rootPage.NotifyUser($"搜索停止No longer watching for devices.",
                             sender.Status == DeviceWatcherStatus.Aborted ? NotifyType.ErrorMessage : NotifyType.StatusMessage);
                 }
             });
@@ -536,17 +548,22 @@ namespace SDKTemplate
         /// 配对连接方法 根据配对按钮改造 传入实体类参数
         /// </summary>
         /// <param name="bluetoothLEDeviceDisplay"></param>
-        private async void PairBluetooth(BluetoothLEDeviceDisplay bluetoothLEDeviceDisplay)
+        private async Task<DevicePairingResult> PairBluetooth(BluetoothLEDeviceDisplay bluetoothLEDeviceDisplay)
         {
+            //新的连接方式 根据传入对象连接
+            var bleDeviceDisplay = bluetoothLEDeviceDisplay;
+            // BT_Code: Pair the currently selected device.
+            DevicePairingResult result = await bleDeviceDisplay.DeviceInformation.Pairing.PairAsync();
+
             // Do not allow a new Pair operation to start if an existing one is in progress.
             if (isBusy)
             {
-                return;
+                return result;
             }
 
             isBusy = true;
 
-            rootPage.NotifyUser("Pairing started. Please wait...", NotifyType.StatusMessage);
+            rootPage.NotifyUser("已经开始配对 Pairing started. Please wait...", NotifyType.StatusMessage);
 
             // For more information about device pairing, including examples of
             // customizing the pairing process, see the DeviceEnumerationAndPairing sample.
@@ -554,23 +571,23 @@ namespace SDKTemplate
             // Capture the current selected item in case the user changes it while we are pairing.
             //原来的连接方式 根据选择的连
             //var bleDeviceDisplay = ResultsListView.SelectedItem as BluetoothLEDeviceDisplay;
-            //新的连接方式 根据传入对象连接
-            var bleDeviceDisplay = bluetoothLEDeviceDisplay;
-            // BT_Code: Pair the currently selected device.
-            DevicePairingResult result = await bleDeviceDisplay.DeviceInformation.Pairing.PairAsync();
-            Debug.WriteLine("配对手环连接结果 = "+result.Status);
 
-            //如果配对成功 给配置类中存储的id和手环名称赋值：
-
-
-            rootPage.NotifyUser($"Pairing result = {result.Status}",
+            Debug.WriteLine("配对手环连接结果 = " + result.Status);
+            rootPage.NotifyUser($"配对结果 Pairing result = {result.Status}",
                 result.Status == DevicePairingResultStatus.Paired || result.Status == DevicePairingResultStatus.AlreadyPaired
                     ? NotifyType.StatusMessage
                     : NotifyType.ErrorMessage);
-
+            //如果配对成功 给配置类中存储的id和手环名称赋值：
 
 
             isBusy = false;
+
+            return result;
+
+
+
+
+
         }
 
 
@@ -645,7 +662,7 @@ namespace SDKTemplate
                     bluetoothWriteEntity.Write_state = 2;//代表写入失败
                     bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                    SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                    await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
                 }
 
 
@@ -653,6 +670,7 @@ namespace SDKTemplate
                 if (bluetoothLeDevice != null)
                 {
                     Debug.WriteLine("蓝牙连接成功");
+                    rootPage.NotifyUser("蓝牙连接成功", NotifyType.StatusMessage);
 
                     // Note: BluetoothLEDevice.GattServices property will return an empty list for unpaired devices. For all uses we recommend using the GetGattServicesAsync method.
                     // BT_Code: GetGattServicesAsync returns a list of all the supported services of the device (even if it's not paired to the system).
@@ -688,15 +706,15 @@ namespace SDKTemplate
                                 ServiceList_SelectionChanged(bluetoothLEAttributeDisplay);
                             }
 
-                            
+
                         }
 
                     }
                     else
                     {
-                        Debug.WriteLine("【写入蓝牙：设备连接失败 Device unreachable】");
+                        Debug.WriteLine("【写入蓝牙：获取GATT服务失败 Device unreachable】");
 
-                        rootPage.NotifyUser("Device unreachable", NotifyType.ErrorMessage);
+                        rootPage.NotifyUser("获取GATT服务失败 Device unreachable", NotifyType.ErrorMessage);
                         //更新状态为写入失败
                         //时间戳
                         TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
@@ -704,7 +722,7 @@ namespace SDKTemplate
                         bluetoothWriteEntity.Write_state = 2;//代表写入失败
                         bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                        SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                        await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
                     }
                 }
 
@@ -719,9 +737,9 @@ namespace SDKTemplate
                 bluetoothWriteEntity.Write_state = 2;//代表写入失败
                 bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
             }
-           
+
             //ConnectButton.IsEnabled = true;
         }
         #endregion
@@ -756,11 +774,11 @@ namespace SDKTemplate
                         //然后遍历可以给全局变量当前选择的特征赋值 我们要选择的特征是6522
                         foreach (var characteristic in characteristics)
                         {
-                            Debug.WriteLine("当前服务包含的特征：AttributeHandle:{0},UserDescription:{1},Uuid:{2},典型属性：{3}", characteristic.AttributeHandle,characteristic.UserDescription, characteristic.Uuid, characteristic.CharacteristicProperties);
+                            Debug.WriteLine("当前服务包含的特征：AttributeHandle:{0},UserDescription:{1},Uuid:{2},典型属性：{3}", characteristic.AttributeHandle, characteristic.UserDescription, characteristic.Uuid, characteristic.CharacteristicProperties);
                             //65282:AttributeHandle(特征唯一ID) = 12,CharacteristicProperties(特征属性):writeWithoutResponse
                             //65283:AttributeHandle(特征唯一ID) = 14,CharacteristicProperties(特征属性):write
                             //65282:AttributeHandle(特征唯一ID) = 16,CharacteristicProperties(特征属性):Read | Notify
-                            
+
                             //这里是根据AttributeHandle判断的所需服务 也可以根据UUID判断
                             if (characteristic.AttributeHandle == 12)
                             {
@@ -768,11 +786,6 @@ namespace SDKTemplate
                                 selectedCharacteristic = characteristic;
                                 Debug.WriteLine("【已经找到指定特征，准备写入】");
 
-                                //WriteBufferToSelectedCharacteristicAsync();
-                            }
-                            //选择特征不为空 则调用写入数据方法
-                            if (selectedCharacteristic != null)
-                            {
                                 if (memberId != null && memberId != "")
                                 {
                                     Debug.WriteLine("需要写入的用户ID：" + memberId);
@@ -784,13 +797,15 @@ namespace SDKTemplate
                                     //调用写入方法
                                     await WriteBufferToSelectedCharacteristicAsync(ProtocolUtil.Bytes2Buffer(writeData));
                                 }
+                                //WriteBufferToSelectedCharacteristicAsync();
                             }
+                            
 
                         }
                     }
                     else
                     {
-                        rootPage.NotifyUser("Error accessing service.", NotifyType.ErrorMessage);
+                        rootPage.NotifyUser("无法搜索服务 Error accessing service.", NotifyType.ErrorMessage);
 
                         // On error, act as if there are no characteristics.
                         characteristics = new List<GattCharacteristic>();
@@ -802,13 +817,13 @@ namespace SDKTemplate
                         bluetoothWriteEntity.Write_state = 2;//代表写入失败
                         bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                        SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                        await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
                     }
                 }
                 else
                 {
                     // Not granted access
-                    rootPage.NotifyUser("Error accessing service.", NotifyType.ErrorMessage);
+                    rootPage.NotifyUser("无法搜索服务 Error accessing service.", NotifyType.ErrorMessage);
 
                     // On error, act as if there are no characteristics.
                     characteristics = new List<GattCharacteristic>();
@@ -821,12 +836,12 @@ namespace SDKTemplate
                     bluetoothWriteEntity.Write_state = 2;//代表写入失败
                     bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                    SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                    await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
                 }
             }
             catch (Exception ex)
             {
-                rootPage.NotifyUser("Restricted service. Can't read characteristics: " + ex.Message,
+                rootPage.NotifyUser("无法读取特征 Restricted service. Can't read characteristics: " + ex.Message,
                     NotifyType.ErrorMessage);
                 // On error, act as if there are no characteristics.
                 characteristics = new List<GattCharacteristic>();
@@ -838,7 +853,7 @@ namespace SDKTemplate
                 bluetoothWriteEntity.Write_state = 2;//代表写入失败
                 bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
             }
             //界面特征集合
             //foreach (GattCharacteristic c in characteristics)
@@ -950,7 +965,7 @@ namespace SDKTemplate
                     bluetoothWriteEntity.Write_state = 1;//代表写入成功
                     bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                    SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                    await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
                     return true;
                 }
                 else
@@ -965,7 +980,7 @@ namespace SDKTemplate
                     bluetoothWriteEntity.Write_state = 2;//代表写入失败
                     bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                    SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                    await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
                     return false;
                 }
             }
@@ -979,7 +994,7 @@ namespace SDKTemplate
                 bluetoothWriteEntity.Write_state = 2;//代表写入失败
                 bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
 
                 rootPage.NotifyUser(ex.Message, NotifyType.ErrorMessage);
                 return false;
@@ -994,7 +1009,7 @@ namespace SDKTemplate
                 bluetoothWriteEntity.Write_state = 2;//代表写入失败
                 bluetoothWriteEntity.Gmt_modified = Convert.ToInt64(ts.TotalSeconds);
 
-                SQLiteUtil.UpdateTable(bluetoothWriteEntity);
+                await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
 
                 // This usually happens when a device reports that it support writing, but it actually doesn't.
                 rootPage.NotifyUser(ex.Message, NotifyType.ErrorMessage);

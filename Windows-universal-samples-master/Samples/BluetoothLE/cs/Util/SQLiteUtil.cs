@@ -2,20 +2,19 @@
 using System.Linq;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using SQLite.Net;
-using SQLite.Net.Attributes;
 using SQLite.Net.Platform.WinRT;
 using SQLite.Net.Interop;
 using static System.Diagnostics.Debug;
 using Windows.Storage;
-using TestEntity;
 using System.IO;
 using BluetoothEntity;
+using SQLite.Net.Async;
+using System.Threading.Tasks;
 
 namespace SDKTemplate
 {
-     class SQLiteUtil
+    class SQLiteUtil
     {
 
         //public static string dbname = "bdl_bluetooth.db";
@@ -25,120 +24,265 @@ namespace SDKTemplate
         static string dbname = "bdl_bluetooth.db";
         private static string dbFullPath = Path.Combine(localFolder, dbname);
         //string dbFullPath = Path.Combine(localFolder, dbname);
-
         //private static SQLiteConnection connection = CreateDatabaseConnection("bdl_bluetooth.db");
-       
-        public  static void InitializeDatabase()
+        /// <summary>
+        /// 异步初始化数据库方法
+        /// </summary>
+        /// <returns></returns>
+        public static async Task InitializeDatabase()
         {
+
+            var db = GetDbConnectionAsync();
+
+            await db.CreateTableAsync<BluetoothReadEntity>();
+            await db.CreateTableAsync<BluetoothWriteEntity>();
+
+
             // 建立连接
-            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
-            {
+            //using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
+            //{
+            //    WriteLine("db pathe: " + conn.DatabasePath);
 
-                WriteLine("db pathe: " + conn.DatabasePath);
+            //    // 创建表
+            //    int rn = conn.CreateTable<BluetoothReadEntity>(CreateFlags.None);
+            //    rn = conn.CreateTable<BluetoothWriteEntity>(CreateFlags.None);
+            //    WriteLine("create table res = {0}", rn);
 
-                // 创建表
-                int rn = conn.CreateTable<BluetoothReadEntity>(CreateFlags.None);
-                rn = conn.CreateTable<BluetoothWriteEntity>(CreateFlags.None);
-                WriteLine("create table res = {0}", rn);
+            //    conn.Dispose();
 
-                conn.Dispose();
+            //};
+        }
+        /// <summary>
+        /// 创建异步的数据库连接并返回
+        /// </summary>
+        /// <returns></returns>
+        public static SQLiteAsyncConnection GetDbConnectionAsync()
 
-            };
+        {
+            var connectionFactory = new Func<SQLiteConnectionWithLock>(() => new SQLiteConnectionWithLock(new SQLitePlatformWinRT(), new SQLiteConnectionString(dbFullPath, storeDateTimeAsTicks: false)));
+
+            var asyncConnection = new SQLiteAsyncConnection(connectionFactory);
+
+            return asyncConnection;
+
         }
 
         //批量插入数据
-        public static void BatchInsertRead(List<BluetoothReadEntity> bluetoothReadEntities)
-        {
-            // 建立连接
-            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
-            {
-               
-                //BluetoothReadEntity[] stus =
-                //{
-                //    new BluetoothReadEntity{ Member_id = "UWPTest",Gmt_modified = 321231 }
-                //};
-                int n = conn.InsertAll(bluetoothReadEntities);
-                WriteLine($"已插入 {n} 条数据。");
+        public static async Task<int> BatchInsertRead(List<BluetoothReadEntity> bluetoothReadEntities)
 
-            };
+        {
+
+            int result = 0;
+
+            var conn = GetDbConnectionAsync();
+
+            result = await conn.InsertAllAsync(bluetoothReadEntities);
+
+                WriteLine($"已插入 {result} 条数据。");
+
+            return result;
+
+        }
+
+
+
+        //批量插入数据
+        //public static void BatchInsertRead(List<BluetoothReadEntity> bluetoothReadEntities)
+        //{
+        //    // 建立连接
+        //    using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
+        //    {
+        //        //Busy等待时间  时 分 5秒
+        //        conn.BusyTimeout = new TimeSpan(0, 0, 5);
+        //        //BluetoothReadEntity[] stus =
+        //        //{
+        //        //    new BluetoothReadEntity{ Member_id = "UWPTest",Gmt_modified = 321231 }
+        //        //};
+        //        int n = conn.InsertAll(bluetoothReadEntities);
+        //        WriteLine($"已插入 {n} 条数据。");
+
+        //    };
+
+        //}
+
+
+        public static async Task<List<BluetoothWriteEntity>> OnReadWrite()
+
+        {
+
+            List<BluetoothWriteEntity> result = new List<BluetoothWriteEntity>();
+
+            var conn = GetDbConnectionAsync();
+            // 获取列表
+            var t = conn.Table<BluetoothWriteEntity>();
+
+            //result = (from s in t.AsParallel<BluetoothWriteEntity>()
+            //                          where (s.Write_state == 0)
+            //                          orderby s.Gmt_modified descending
+            //                          select s).ToList();
+            result = await conn.Table<BluetoothWriteEntity>().Where(x => x.Write_state == 0).OrderByDescending(x => x.Gmt_modified).ToListAsync();
+
+            return result;
 
         }
 
 
         //读取写入表数据 写入状态为0的
-        public static List<BluetoothWriteEntity> OnReadWrite()
+        //public static List<BluetoothWriteEntity> OnReadWrite()
+        //{
+        //    //string localFolderPath = ApplicationData.Current.LocalFolder.Path;
+        //    List<BluetoothWriteEntity> bluetoothWriteEntities = new List<BluetoothWriteEntity>();
+
+        //    using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
+        //    {
+        //        //Busy等待时间  时 分 5秒
+        //        conn.BusyTimeout = new TimeSpan(0, 0, 5);
+        //        // 获取列表
+        //        TableQuery<BluetoothWriteEntity> t = conn.Table<BluetoothWriteEntity>();
+
+        //        bluetoothWriteEntities = (from s in t.AsParallel<BluetoothWriteEntity>()
+        //                                  where (s.Write_state == 0)
+        //                                  orderby s.Gmt_modified descending
+        //                                  select s).ToList();
+
+        //        //bluetoothWriteEntities = (from s in conn.Table<BluetoothWriteEntity>()
+        //        //                          where (s.Write_state == 0)
+        //        //                          select s).ToList();
+
+
+        //    }
+
+        //    return bluetoothWriteEntities;
+        //}
+
+
+        public static async Task<List<BluetoothReadEntity>> GetReadEntityByBluetoothName(string bluetoothName)
+
         {
-            //string localFolderPath = ApplicationData.Current.LocalFolder.Path;
-            List<BluetoothWriteEntity> bluetoothWriteEntities = new List<BluetoothWriteEntity>();
 
-            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
-            {
-                // 获取列表
-                TableQuery<BluetoothWriteEntity> t = conn.Table<BluetoothWriteEntity>();
+            List<BluetoothReadEntity> result = new List<BluetoothReadEntity>();
 
-                bluetoothWriteEntities = (from s in t.AsParallel<BluetoothWriteEntity>()
-                                          where (s.Write_state == 0)
-                                          orderby s.Gmt_modified descending
-                                          select s).ToList();
+            var conn = GetDbConnectionAsync();
+            // 获取列表
+            var t = conn.Table<BluetoothReadEntity>();
 
-                //bluetoothWriteEntities = (from s in conn.Table<BluetoothWriteEntity>()
-                //                          where (s.Write_state == 0)
-                //                          select s).ToList();
+            //result = (from s in t.AsParallel<BluetoothWriteEntity>()
+            //                          where (s.Write_state == 0)
+            //                          orderby s.Gmt_modified descending
+            //                          select s).ToList();
+            result = await conn.Table<BluetoothReadEntity>().Where(s => s.Member_id == bluetoothName).OrderByDescending(s => s.Gmt_modified).ToListAsync();
 
+            return result;
 
-            }
-
-            return bluetoothWriteEntities;
         }
+
 
         //读取bluetooth_read表数据 查询条件是手环名称 = 会员id。因为已经改了名的手环名就是memeber_id。这个就是查询扫描到的手环在数据库有没有
-        public static List<BluetoothReadEntity> GetReadEntityByBluetoothName(string bluetoothName)
+        //public static List<BluetoothReadEntity> GetReadEntityByBluetoothName(string bluetoothName)
+        //{
+        //    //string localFolderPath = ApplicationData.Current.LocalFolder.Path;
+        //    List<BluetoothReadEntity> bluetoothReadEntitys = new List<BluetoothReadEntity>();
+
+        //    using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
+        //    {
+        //        //Busy等待时间  时 分 5秒
+        //        conn.BusyTimeout = new TimeSpan(0, 0, 5);
+        //        // 获取列表
+        //        TableQuery<BluetoothReadEntity> t = conn.Table<BluetoothReadEntity>();
+
+        //        bluetoothReadEntitys = (from s in t.AsParallel<BluetoothReadEntity>()
+        //                                where (s.Member_id == bluetoothName)
+        //                                orderby s.Gmt_modified descending
+        //                                select s).ToList();
+
+        //        //bluetoothWriteEntities = (from s in conn.Table<BluetoothWriteEntity>()
+        //        //                          where (s.Write_state == 0)
+        //        //                          select s).ToList();
+
+
+        //    }
+
+        //    return bluetoothReadEntitys;
+        //}
+
+
+
+        public static async Task<int> UpdateReadTable(BluetoothReadEntity bluetoothEntity)
+
         {
-            //string localFolderPath = ApplicationData.Current.LocalFolder.Path;
-            List<BluetoothReadEntity> bluetoothReadEntitys = new List<BluetoothReadEntity>();
 
-            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
-            {
-                // 获取列表
-                TableQuery<BluetoothReadEntity> t = conn.Table<BluetoothReadEntity>();
+            int result = 0;
 
-                bluetoothReadEntitys = (from s in t.AsParallel<BluetoothReadEntity>()
-                                          where (s.Member_id == bluetoothName)
-                                          orderby s.Gmt_modified descending
-                                          select s).ToList();
+            var conn = GetDbConnectionAsync();
 
-                //bluetoothWriteEntities = (from s in conn.Table<BluetoothWriteEntity>()
-                //                          where (s.Write_state == 0)
-                //                          select s).ToList();
+            result = await conn.UpdateAsync(bluetoothEntity);
 
+            WriteLine($"已更新Read表 {result} 条数据。");
 
-            }
+            return result;
 
-            return bluetoothReadEntitys;
         }
 
+        //更新Read表 SQLIte不能同时调用同一个方法  不然后有BUSY异常 因为他就相当于读写文件
+        //public static void UpdateReadTable(BluetoothReadEntity bluetoothEntity)
+        //{
+        //    //SQLite3.BusyTimeout();
 
-        //更新写入状态
-        public static void UpdateTable(Object bluetoothEntity)
+        //    // 建立连接
+        //    using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
+        //    {
+        //        //Busy等待时间  时 分 5秒
+        //        conn.BusyTimeout = new TimeSpan(0, 0, 5);
+        //        //BluetoothReadEntity[] stus =
+        //        //{
+        //        //    new BluetoothReadEntity{ Member_id = "UWPTest",Gmt_modified = 321231 }
+        //        //};
+        //        int n = conn.Update(bluetoothEntity);
+        //        WriteLine($"已更新 {n} 条数据。");
+
+        //    };
+
+        //}
+
+
+        public static async Task<int> UpdateWriteTable(BluetoothWriteEntity bluetoothEntity)
+
         {
-            // 建立连接
-            using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
-            {
 
-                //BluetoothReadEntity[] stus =
-                //{
-                //    new BluetoothReadEntity{ Member_id = "UWPTest",Gmt_modified = 321231 }
-                //};
-                int n = conn.Update(bluetoothEntity);
-                WriteLine($"已更新 {n} 条数据。");
+            int result = 0;
 
-            };
+            var conn = GetDbConnectionAsync();
+
+            result = await conn.UpdateAsync(bluetoothEntity);
+
+            WriteLine($"已更新Write表 {result} 条数据。");
+
+            return result;
 
         }
+
+        //更新write表
+        //public static void UpdateWriteTable(BluetoothWriteEntity bluetoothEntity)
+        //{
+        //    // 建立连接
+        //    using (SQLiteConnection conn = new SQLiteConnection(new SQLitePlatformWinRT(), dbFullPath))
+        //    {
+        //        //Busy等待时间  时 分 5秒
+        //        conn.BusyTimeout = new TimeSpan(0, 0, 5);
+        //        //BluetoothReadEntity[] stus =
+        //        //{
+        //        //    new BluetoothReadEntity{ Member_id = "UWPTest",Gmt_modified = 321231 }
+        //        //};
+        //        int n = conn.Update(bluetoothEntity);
+        //        WriteLine($"已更新 {n} 条数据。");
+
+        //    };
+
+        //}
 
     }
 
-    
+
 
 
 
@@ -343,5 +487,5 @@ namespace SDKTemplate
 
 
 }
-    
+
 

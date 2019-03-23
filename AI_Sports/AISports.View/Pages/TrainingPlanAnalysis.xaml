@@ -26,7 +26,7 @@
         </StackPanel>
         <StackPanel HorizontalAlignment="Left" MinHeight="370" Margin="20,0" Grid.Row="2" VerticalAlignment="Top" Width="1453.3">
             <Label Content="训练计划" Name="lable_planName" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
-            <Border BorderThickness="2" BorderBrush="#04243D" Background="#f1f1f1" Margin="20" CornerRadius="10" Height="200" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Border BorderThickness="2" BorderBrush="#04243D" Background="#f1f1f1" Margin="20" CornerRadius="10" Height="200" MouseUp="Border_MouseLeftButtonDown">
                 <WrapPanel>
                     <StackPanel Height="200" Width="900" HorizontalAlignment="Left">
                         <Label  Name="Lab_Title" Content="训练计划标题" Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,40"></Label>

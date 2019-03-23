@@ -11,7 +11,6 @@ namespace AI_Sports.Util
 {
     class SQLiteUtil
     {
-
         // 数据库文件夹
         //static string DbPath = Path.Combine(YatesHelper.GetAppDefaultPath(), "Database");
         //static string DbPath = "E:\\usr";
@@ -103,7 +102,7 @@ namespace AI_Sports.Util
             {
                 using (var command = connection.CreateCommand())
                 {
-                    string sql = "select * from bluetooth_read where gmt_modefied >= ";
+                    string sql = "select * from bluetooth_read where gmt_modified >= ";
                     sql += timeStamp;
 
                     command.CommandText = sql;
@@ -138,30 +137,33 @@ namespace AI_Sports.Util
         /// 往write表写入 传入实体类
         /// </summary>
         /// <param name="sql"></param>
-        public static void InsertBluetoothWrite(BluetoothWriteEntity bluetoothWriteEntity)
+        public static int InsertBluetoothWrite(BluetoothWriteEntity bluetoothWriteEntity)
         {
             // 确保连接打开
             Open(connection);
-
+            int result = 0;
             using (var tr = connection.BeginTransaction())
             {
                 using (var command = connection.CreateCommand())
                 {
                     StringBuilder sql = new StringBuilder();
 
-                    sql.Append("insert into bluetooth_write ( member_id,bluetooth_name,gmt_modified ) values ('");
+                    sql.Append("insert into bluetooth_write ( member_id,bluetooth_name,gmt_modified ,write_state) values ('");
                     sql.Append(bluetoothWriteEntity.Member_id);
                     sql.Append("','");
                     sql.Append(bluetoothWriteEntity.Bluetooth_name);
                     sql.Append("',");
                     sql.Append(bluetoothWriteEntity.Gmt_modified);
+                    sql.Append(",");
+                    sql.Append(bluetoothWriteEntity.Write_state);
                     sql.Append(")");
 
                     command.CommandText = sql.ToString();
-                    command.ExecuteNonQuery();
+                    result = command.ExecuteNonQuery();
                 }
                 tr.Commit();
             }
+            return result;
         }
 
 
@@ -183,7 +185,7 @@ namespace AI_Sports.Util
                     StringBuilder sql = new StringBuilder();
                     sql.Append("select * from bluetooth_write where member_id = ");
                     sql.Append(memberId);
-                    sql.Append("AND gmt_modified = (select MAX(gmt_modified) from bluetooth_write)");
+                    sql.Append(" AND gmt_modified = (select MAX(gmt_modified) from bluetooth_write)");
                     command.CommandText = sql.ToString();
 
                     // 执行查询会返回一个SQLiteDataReader对象

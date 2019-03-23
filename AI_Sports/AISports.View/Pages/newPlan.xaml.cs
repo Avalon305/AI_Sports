@@ -35,8 +35,10 @@ namespace AI_Sports.AISports.View.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/newPlan.xaml", UriKind.Relative));
-        }
+			//NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/newPlan.xaml", UriKind.Relative));
+			this.SITE.Visibility = Visibility.Visible;
+			this.SITE.IsExpanded = true;
+		}
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -113,11 +115,14 @@ namespace AI_Sports.AISports.View.Pages
             NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
 
         }
+		
 
-        //private void Text_LostFocus(object sender, RoutedEventArgs e)
-        //{
-        //    this.TB_Title.Text = "请输入标题";
-        //}
-    }
+	
+
+		//private void Text_LostFocus(object sender, RoutedEventArgs e)
+		//{
+		//    this.TB_Title.Text = "请输入标题";
+		//}
+	}
    
 }

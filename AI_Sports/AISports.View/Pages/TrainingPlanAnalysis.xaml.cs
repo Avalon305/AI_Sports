@@ -39,6 +39,17 @@ namespace AI_Sports.AISports.View.Pages
         public TrainingPlanAnalysis()
         {
             InitializeComponent();
+<<<<<<< HEAD
+=======
+
+            //获取 trainingPlanId
+            string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
+            //获取 currentCourseCount
+            // string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
+            string currentCourseCount = "6";
+            Console.WriteLine("是v， 颗粒分布slk/A : " + currentCourseCount);
+
+>>>>>>> 4b33fc65b11f1d0cd8728484ff69bc6046fc8df9
             //图表
             this.Web.ObjectForScripting = new WebAdapter();
             //获取项目的根路径
@@ -179,9 +190,9 @@ namespace AI_Sports.AISports.View.Pages
         public string  Xaxis()
         {
             //获取 currentCourseCount
-            string currentCourseCountValue = CommUtil.GetSettingString("currentCourseCount");
-            Console.WriteLine("的时间考虑不能士大夫"+ currentCourseCountValue);
+            string currentCourseCountValue = CommUtil.GetSettingString("currentCourseCount");         
             return currentCourseCountValue;
+
         }
 
         //根据课程轮次数从小到大排序查询有氧训练设备的总能量

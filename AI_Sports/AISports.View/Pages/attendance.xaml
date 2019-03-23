@@ -17,10 +17,10 @@
             <RowDefinition Height="18*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Label Margin="10 0 0 0"  Content="出勤" Style="{DynamicResource h1}" Grid.Row="0"/>
+        <Label Margin="10 0 0 0"  Content="出勤" Style="{DynamicResource h1}" Foreground="#04243D" FontSize="50" Grid.Row="0"/>
         <StackPanel Name="root" Grid.Row="1">
             
-            <Calendar  Margin="10,0,0,10" SelectionMode="MultipleRange" Name="Calendar_Attendance"   IsTodayHighlighted="false">
+            <Calendar HorizontalAlignment="Center"  SelectionMode="MultipleRange" Name="Calendar_Attendance"   IsTodayHighlighted="false">
                 
             </Calendar>
             <ContentControl Margin="10 0 0 0" Style="{StaticResource panel-default}">
