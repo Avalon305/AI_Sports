@@ -39,17 +39,10 @@ namespace AI_Sports.AISports.View.Pages
         public TrainingPlanAnalysis()
         {
             InitializeComponent();
-<<<<<<< HEAD
-=======
 
             //获取 trainingPlanId
             string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
-            //获取 currentCourseCount
-            // string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
-            string currentCourseCount = "6";
-            Console.WriteLine("是v， 颗粒分布slk/A : " + currentCourseCount);
 
->>>>>>> 4b33fc65b11f1d0cd8728484ff69bc6046fc8df9
             //图表
             this.Web.ObjectForScripting = new WebAdapter();
             //获取项目的根路径
