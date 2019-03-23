@@ -183,7 +183,8 @@ namespace AI_Sports.AISports.View.Pages
         public string  Xaxis()
         {
             //获取 currentCourseCount
-            string currentCourseCountValue = CommUtil.GetSettingString("currentCourseCount");         
+            string currentCourseCountValue = CommUtil.GetSettingString("currentCourseCount");
+            Console.WriteLine("训练计划currentCourseCount" + currentCourseCountValue);
             return currentCourseCountValue;
 
         }
