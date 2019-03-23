@@ -90,7 +90,7 @@ namespace AI_Sports
                 data_xor[0] = cmd[0];
                 data_xor[1] = buffer[2];
                 Buffer.BlockCopy(obj_data, 0, data_xor, 2, obj_data.Length);
-                byte compute_xor = SerialPortUtil.XorByByte(data_xor);
+                byte compute_xor = SerialPortUtil.Get_CheckXor(data_xor);
                 if (!buffer[buffer.Length - 2].Equals(compute_xor))
                 {
                     return;

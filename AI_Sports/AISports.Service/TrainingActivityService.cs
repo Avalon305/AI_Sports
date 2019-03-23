@@ -134,7 +134,7 @@ namespace AI_Sports.Service
 
 		///zfc
 		/// <summary>
-		/// 根据外键训练课程id完成训练活动，把is_complete标志位置为1代表完成
+		/// 根据外键训练课程id完成训练活动，把is_complete标志位置为0，current_turn_number置为0
 		/// </summary>
 		/// <param name="trainingcourseid"></param>
 		/// <param name="complete"></param>
