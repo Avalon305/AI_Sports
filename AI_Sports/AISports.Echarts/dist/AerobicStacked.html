@@ -137,6 +137,7 @@
 				}
 			]
 		};
+		try {
 		//动态向X轴赋值
 		var arr = new Array();
 		//for(i=0;i<window.external.recordNumber();i++){
@@ -151,9 +152,12 @@
 		avgValueArray = eval('(' + window.external.avgAerobicValue() + ')');
 		option.series[0].data = avgValueArray;
 
-
 		//加载图表
-		myChart.setOption(option);
+			myChart.setOption(option);
+		} catch (e) {
+			//alert("出错了");
+		}
+			
 	</script>
 </body>
 </html>

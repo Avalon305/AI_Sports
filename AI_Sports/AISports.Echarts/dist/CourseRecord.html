@@ -142,28 +142,33 @@
         }
     ]
 };
-        //动态向X轴赋值
-		var arr = new Array();
-		for(i=0;i<window.external.Xaxis();i++){
-		arr.push("")
-		};
-		option.xAxis[0].data = arr;
 
-		//动态向力量耐力循环（有氧）赋值  
-		var aerobicEnduranceEnergy = new Array();
-		aerobicEnduranceEnergy.push(window.external.aerobicEnduranceEnergy());
-		option.series[0].data = aerobicEnduranceEnergy;
-		//动态向力量耐力循环（力量）赋值
-		var forceEnduranceEnergy = new Array();
-		forceEnduranceEnergy.push(window.external.forceEnduranceEnergy());
-		option.series[1].data = forceEnduranceEnergy;
-		//动态向力量训练设备赋值
-		var forceArray = new Array();
-		forceArray.push(window.external.forceEnergy());
-		option.series[2].data = forceArray;
-		
-		//加载图表
-        myChart.setOption(option);
+		try {
+			//动态向X轴赋值
+			var arr = new Array();
+			for (i = 0; i < window.external.Xaxis(); i++) {
+				arr.push("")
+			};
+			option.xAxis[0].data = arr;
+
+			//动态向力量耐力循环（有氧）赋值  
+			var aerobicEnduranceEnergy = new Array();
+			aerobicEnduranceEnergy.push(window.external.aerobicEnduranceEnergy());
+			option.series[0].data = aerobicEnduranceEnergy;
+			//动态向力量耐力循环（力量）赋值
+			var forceEnduranceEnergy = new Array();
+			forceEnduranceEnergy.push(window.external.forceEnduranceEnergy());
+			option.series[1].data = forceEnduranceEnergy;
+			//动态向力量训练设备赋值
+			var forceArray = new Array();
+			forceArray.push(window.external.forceEnergy());
+			option.series[2].data = forceArray;
+
+			//加载图表
+			myChart.setOption(option);
+		} catch (e) {
+			//alert("出错了");
+		}
     </script>
 </body>
 </html>	

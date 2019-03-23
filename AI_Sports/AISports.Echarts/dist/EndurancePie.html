@@ -37,7 +37,8 @@
             }
         }
         myChart = echarts.init(document.getElementById('main'),'macarons');
-		//ScrollBarsEnabled = false;
+		ScrollBarsEnabled = false;
+		try {
 option = {
    
             title : {
@@ -64,7 +65,10 @@ option = {
             ]
    
 };                  
-        myChart.setOption(option);
+			myChart.setOption(option);
+		} catch (e) {
+			//alert("出错了");
+		}
     </script>
 </body>
 </html>
