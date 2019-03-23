@@ -1,4 +1,6 @@
-﻿using AI_Sports.AISports.View.Pages;
+﻿using AI_Sports.AISports.Constant;
+using AI_Sports.AISports.Util;
+using AI_Sports.AISports.View.Pages;
 using AI_Sports.Constant;
 using AI_Sports.Service;
 using AI_Sports.Util;
@@ -27,6 +29,7 @@ namespace AI_Sports
     {
         private MemberService memberService = new MemberService();
         private static Logger logger = LogManager.GetCurrentClassLogger();
+        public static SerialPort serialPort = null;
 
         public MainWindow()
         {
@@ -62,7 +65,119 @@ namespace AI_Sports
             //    loginWindow.Close();//关闭欢迎页
             //    this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定用户页面 urlkind相对uri
             //}
+            serialPort = new SerialPort();
+            serialPort.PortName = "COM4";
+            serialPort.BaudRate = 115200;
+            serialPort.ReadTimeout = 3000; //单位毫秒
+            serialPort.WriteTimeout = 3000; //单位毫秒
+            serialPort.ReceivedBytesThreshold = 1;
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
+            try
+            {
+                //serialPort.Open();
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("串口被占用", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("串口不存在", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
+        }
+        /// <summary>
+        /// 接收方法
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnPortDataReceived(Object sender, SerialDataReceivedEventArgs e)
+        {
+            Console.WriteLine("接受到数据");
+            Thread.Sleep(50);
+            byte[] buffer = null; ;
+            int len = serialPort.BytesToRead;
+            byte[] first = new byte[len];
+            serialPort.Read(first, 0, len);
+            Console.WriteLine(SerialPortUtil.ByteToHexStr(first));
+            int offset = 0;
+            //校验帧头
+            if (len > 0 && first[0] == 0xAA)
+            {
+
+                byte datalen = first[2];
+                buffer = new byte[datalen + 5];
+
+                for (int i = 0; i < first.Length; i++)
+                {
+                    buffer[i] = first[i];
+                }
+                offset = first.Length;
+
+            }
+            else
+            {
+                serialPort.DiscardInBuffer();
+                return;
+            }
+
+            //下面是完整数据
+            if (buffer != null)
+            {
+                Console.WriteLine("buffer不为空，通过校验");
+                //既然已经到了这里说明帧头帧尾已校验通过
+
+                //取出命令字
+                byte[] cmd = { buffer[1] };
+
+                //取出数据长度 byte中为0x10那么string(x2)就为10,string()为16
+                int data_len = int.Parse(buffer[2].ToString());
+
+                //取出数据
+                byte[] obj_data = new byte[data_len];
+                for (int i = 0; i < data_len; i++)
+                {
+                    obj_data[i] = buffer[i + 3];
+                }
+
+                //XOR校验,如果错误直接返回
+                byte[] data_xor = new byte[2 + obj_data.Length];
+                data_xor[0] = cmd[0];
+                data_xor[1] = buffer[2];
+                Buffer.BlockCopy(obj_data, 0, data_xor, 2, obj_data.Length);
+                Console.WriteLine(SerialPortUtil.ByteToHexStr(data_xor));
+                byte compute_xor = SerialPortUtil.Get_CheckXor(data_xor);
+                Console.WriteLine("compute_xor为" + compute_xor.ToString("x2"));
+                if (!buffer[buffer.Length - 2].Equals(compute_xor))
+                {
+                    return;
+                }
+
+                //如果命令字等于发卡的应答
+                Console.WriteLine("cmd为" + cmd[0]);
+                Console.WriteLine("CommondConstant.readCard" + CommondConstant.readCard[0]);
+
+                //如果命令字等于读卡
+                if (cmd[0] == CommondConstant.readCard[0])
+                {
+                    byte[] namebytewithzero = new byte[10];
+                    byte[] phonebyte = new byte[2];
+                    byte[] crc = new byte[2];
+                    Buffer.BlockCopy(obj_data, 0, namebytewithzero, 0, namebytewithzero.Length);//提取姓名
+                    string strName = SerialPortUtil.GetEndString(namebytewithzero, 0);
+                    Console.WriteLine(strName);//解析姓名
+                    Buffer.BlockCopy(obj_data, 10, phonebyte, 0, phonebyte.Length);//提取手机号
+                    string strPhone = Encoding.ASCII.GetString(phonebyte);
+                    Console.WriteLine(strPhone);//解析手机号
+                    Buffer.BlockCopy(obj_data, 12, crc, 0, crc.Length);//提取CRC
+                    string strCRC = SerialPortUtil.ByteToHexStr(crc);
+                    Console.WriteLine(strCRC);//解析CRC
+                    ReceiveValues(strName + strPhone + strCRC);
+
+                }
+
+
+            }
         }
         /// <summary>
         /// 四种登录情况的测试
@@ -172,7 +287,11 @@ namespace AI_Sports
                 case LoginPageStatus.UserPage:
                     logger.Debug("用户正常登陆");
                     //this.Close();
-                    this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+                    this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+                    {
+                        this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+
+                    });
 
                     break;
                 case LoginPageStatus.RepeatLogins:
