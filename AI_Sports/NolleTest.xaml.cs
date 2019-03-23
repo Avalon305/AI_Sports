@@ -27,7 +27,10 @@ namespace AI_Sports
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SpeechUtil.read("hello 徐靖皓");
+            //SpeechUtil.read("hello 徐靖皓");
+            string name = "徐靖皓";
+            Console.WriteLine(name.Length);
+            Console.WriteLine(SerialPortUtil.strToToHexByte("1010")[0].ToString("x2")) ;
 
         }
     }
