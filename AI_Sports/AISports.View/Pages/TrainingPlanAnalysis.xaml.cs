@@ -39,12 +39,6 @@ namespace AI_Sports.AISports.View.Pages
         public TrainingPlanAnalysis()
         {
             InitializeComponent();
-
-            //获取 trainingPlanId
-            string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
-            //获取 currentCourseCount
-            string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
-
             //图表
             this.Web.ObjectForScripting = new WebAdapter();
             //获取项目的根路径
@@ -172,6 +166,8 @@ namespace AI_Sports.AISports.View.Pages
     public class WebAdapter
     {
         TrainingPlanService trainingPlanService = new TrainingPlanService();
+        //获取 trainingPlanId
+        string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
         //X轴动态加载数据(未用到)
         public int recordNumber()
         {
@@ -180,15 +176,17 @@ namespace AI_Sports.AISports.View.Pages
         }
 
         //X轴动态加载数据
-        public string  Xaxis(string currentCourseCount)
+        public string  Xaxis()
         {
-            return currentCourseCount;
+            //获取 currentCourseCount
+            string currentCourseCountValue = CommUtil.GetSettingString("currentCourseCount");
+            Console.WriteLine("的时间考虑不能士大夫"+ currentCourseCountValue);
+            return currentCourseCountValue;
         }
 
         //根据课程轮次数从小到大排序查询有氧训练设备的总能量
-        public String aerobicEnergy(string trainingPlanId)
-        {
-            Console.WriteLine("训练计划ID"+ trainingPlanId);
+        public String aerobicEnergy()
+        {  
             List<double> aerobicEnergy = trainingPlanService.selectAerobicEnergy(trainingPlanId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(aerobicEnergy.GetType());
             string szJson = "";
@@ -203,8 +201,10 @@ namespace AI_Sports.AISports.View.Pages
             return szJson.ToString();
         }
         //根据课程轮次数从小到大排序查询力量训练设备的总能量
-        public String forceEnergy(string trainingPlanId)
+        public String forceEnergy()
         {
+            //获取 trainingPlanId
+            string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
             List<double> forceEnergy = trainingPlanService.selectForceEnergy(trainingPlanId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(forceEnergy.GetType());
             string szJson = "";

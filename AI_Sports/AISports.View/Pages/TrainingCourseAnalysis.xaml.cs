@@ -36,12 +36,7 @@ namespace AI_Sports.AISports.View.Pages
         public TrainingCourseAnalysis()
         {
             InitializeComponent();
-
-            //获取 trainingPlanId
-            string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
-            //获取 currentCourseCount
-            string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
-
+           
             //图表
             Web.ObjectForScripting = new WebTrainingCourse();
             //获取项目的根路径
@@ -190,6 +185,9 @@ namespace AI_Sports.AISports.View.Pages
     {
 
         TrainingCourseService trainingCourseService = new TrainingCourseService();
+        
+        //获取 trainingPlanId
+        string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
 
         //X轴动态加载数据(未用到)
         public int maxCourseRecord()
@@ -199,25 +197,27 @@ namespace AI_Sports.AISports.View.Pages
             return maxCourseRecord;
         }
         //X轴动态加载数据
-        public string Xaxis(string currentCourseCount)
+        public string Xaxis()
         {
+            //获取 currentCourseCount
+            string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
             return currentCourseCount;
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（有氧）的总能量
-        public double aerobicEnduranceEnergy(string trainingPlanId)
+        public double aerobicEnduranceEnergy()
         {
             double aerobicEnduranceEnergy = trainingCourseService.selectAerobicEnduranceEnergy(trainingPlanId);
             return aerobicEnduranceEnergy;
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（力量）的总能量
-        public double forceEnduranceEnergy(string trainingPlanId)
+        public double forceEnduranceEnergy()
         {
             double forceEnduranceEnergy = trainingCourseService.selectForceEnduranceEnergy(trainingPlanId);
             return forceEnduranceEnergy;
         }
 
         //根据课程轮次数从小到大排序查询力量循环的总能量
-        public double forceEnergy(string trainingPlanId)
+        public double forceEnergy()
         {
             double forceEnergy = trainingCourseService.selectForceEnergy(trainingPlanId);
             return forceEnergy;

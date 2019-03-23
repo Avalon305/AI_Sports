@@ -37,7 +37,7 @@
             }
         }
         myChart = echarts.init(document.getElementById('main'),'macarons');
-		ScrollBarsEnabled = false;
+		//ScrollBarsEnabled = false;
 option = {
    
             title : {
@@ -55,7 +55,7 @@ option = {
                     center: ['60%', '40%'],
                     radius: '50%',
                     data:[
-                        {value:1,name:'胸部'},
+						{value: window.external.chestEnduranceTraining(),name:'胸部'},
                         {value: window.external.legEnduranceTraining(),name:'腿部'},
                         {value: window.external.armEnduranceTraining(),name:'躯干'},
                         {value: window.external.armEnduranceTraining(),name:'手臂'}
