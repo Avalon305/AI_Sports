@@ -39,7 +39,7 @@ namespace AI_Sports.AISports.Util
             Buffer.BlockCopy(data, 0, result, 3, data.Length);
             Buffer.BlockCopy(result, 1, data_xor, 0, data_xor.Length);
             Console.WriteLine(ByteToHexStr(data_xor));
-            byte xor = XorByByte(data_xor);
+            byte xor = Get_CheckXor(data_xor);
             Console.WriteLine(xor.ToString("x2"));
             result[result.Length - 2] = xor;
             result[result.Length - 1] = 0xCC;
@@ -52,16 +52,15 @@ namespace AI_Sports.AISports.Util
         /// </summary>
         /// <param name="hex"></param>
         /// <returns></returns>
-        public static byte XorByByte(byte[] bytes)
+        public  static byte Get_CheckXor(byte[] data)
         {
-            byte temp = bytes[0];
-            for (int i = 2; i < bytes.Length; i++)
+            byte CheckCode = 0;
+            int len = data.Length;
+            for (int i = 0; i < len; i++)
             {
-                temp ^= bytes[i];
+                CheckCode ^= data[i];
             }
-
-
-            return temp;
+            return CheckCode;
         }
 
 

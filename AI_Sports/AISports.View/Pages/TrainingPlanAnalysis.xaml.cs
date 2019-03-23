@@ -43,7 +43,9 @@ namespace AI_Sports.AISports.View.Pages
             //获取 trainingPlanId
             string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
             //获取 currentCourseCount
-            string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
+            // string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
+            string currentCourseCount = "6";
+            Console.WriteLine("是v， 颗粒分布slk/A : " + currentCourseCount);
 
             //图表
             this.Web.ObjectForScripting = new WebAdapter();
@@ -180,8 +182,10 @@ namespace AI_Sports.AISports.View.Pages
         }
 
         //X轴动态加载数据
-        public string  Xaxis(string currentCourseCount)
+        public string  Xaxis()
         {
+            string currentCourseCount = "7";
+            Console.WriteLine("反对v八年， 拨打免费"+ currentCourseCount);
             return currentCourseCount;
         }
 
