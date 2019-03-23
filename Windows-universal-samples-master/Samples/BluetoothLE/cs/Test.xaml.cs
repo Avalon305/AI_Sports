@@ -120,11 +120,11 @@ namespace SDKTemplate
 
             //    lv.ItemsSource = q;
             //}
-            List < BluetoothWriteEntity > bluetoothWriteEntities = SQLiteUtil.OnReadWrite();
-            foreach (var item in bluetoothWriteEntities)
-            {
-                Debug.WriteLine("测试write查询"+item.Bluetooth_name + item.Member_id + item.Write_state + item.Gmt_modified);
-            }
+            //List < BluetoothWriteEntity > bluetoothWriteEntities = SQLiteUtil.OnReadWrite();
+            //foreach (var item in bluetoothWriteEntities)
+            //{
+            //    Debug.WriteLine("测试write查询"+item.Bluetooth_name + item.Member_id + item.Write_state + item.Gmt_modified);
+            //}
         }
 
         //删除数据

@@ -55,7 +55,7 @@ namespace AI_Sports.AISports.View.Pages
         //定时任务调用方法 每2秒查询一次扫描手环写入表 并根据结果在页面提示
         private void timeCycle(object sender, EventArgs e)
         {
-
+            Console.WriteLine("定时任务：查询写入数据状态");
             //根据当前会员ID获得最新的写入的数据
             BluetoothWriteEntity bluetoothWriteEntity = SQLiteUtil.GetBluetoothWrite(CommUtil.GetSettingString("memberId"));
 
@@ -158,9 +158,13 @@ namespace AI_Sports.AISports.View.Pages
                 {
                     //插入SQLite write表
                     //long addResult = bluetoothWriteDAO.Insert(writeEntity);
-                    SQLiteUtil.InsertBluetoothWrite(writeEntity);
-                    Console.WriteLine("手环数据插入write表成功");
-                    
+                    int result = SQLiteUtil.InsertBluetoothWrite(writeEntity);
+                    if (result > 0)
+                    {
+                        Console.WriteLine("手环数据插入write表成功");
+
+                    }
+
 
                     //然后执行定时任务开始查询写入状态
                     //初始化注册定时器

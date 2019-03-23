@@ -174,7 +174,7 @@ namespace AI_Sports.AISports.View.Pages
             WriteCardWindow writeCardWindow = new WriteCardWindow();
             //弹出窗体的时候将程序中断在pw窗体，它的操作会对下面的程序产生影响，从而使pw窗体影响下面运行的效果。
             //比如说下面的程序要通过pw窗体中的某个参数进行判断来运行的话，用这种方法很合适。
-            writeCardWindow.ShowDialog();
+            writeCardWindow.Show();
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace AI_Sports.AISports.View.Pages
         private void Write_WristStrap_Click(object sender, RoutedEventArgs e)
         {
             WriteBluetooth writeBluetooth = new WriteBluetooth();
-            writeBluetooth.Show();
+            writeBluetooth.ShowDialog();
         }
 
         

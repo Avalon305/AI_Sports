@@ -11,7 +11,6 @@ namespace AI_Sports.Util
 {
     class SQLiteUtil
     {
-
         // 数据库文件夹
         //static string DbPath = Path.Combine(YatesHelper.GetAppDefaultPath(), "Database");
         //static string DbPath = "E:\\usr";
@@ -103,7 +102,7 @@ namespace AI_Sports.Util
             {
                 using (var command = connection.CreateCommand())
                 {
-                    string sql = "select * from bluetooth_read where gmt_modefied >= ";
+                    string sql = "select * from bluetooth_read where gmt_modified >= ";
                     sql += timeStamp;
 
                     command.CommandText = sql;
@@ -138,11 +137,11 @@ namespace AI_Sports.Util
         /// 往write表写入 传入实体类
         /// </summary>
         /// <param name="sql"></param>
-        public static void InsertBluetoothWrite(BluetoothWriteEntity bluetoothWriteEntity)
+        public static int InsertBluetoothWrite(BluetoothWriteEntity bluetoothWriteEntity)
         {
             // 确保连接打开
             Open(connection);
-
+            int result = 0;
             using (var tr = connection.BeginTransaction())
             {
                 using (var command = connection.CreateCommand())
@@ -158,10 +157,11 @@ namespace AI_Sports.Util
                     sql.Append(")");
 
                     command.CommandText = sql.ToString();
-                    command.ExecuteNonQuery();
+                    result = command.ExecuteNonQuery();
                 }
                 tr.Commit();
             }
+            return result;
         }
 
 

@@ -25,7 +25,7 @@ namespace AI_Sports.AISports.View.Pages
     /// <summary>
     /// BluetoothWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class BluetoothWindow : Window
+    public partial class BluetoothLogin : Window
     {
         private BluetoothReadDAO bluetoothReadDAO = new BluetoothReadDAO();
 
@@ -41,7 +41,7 @@ namespace AI_Sports.AISports.View.Pages
         private static DispatcherTimer readDataTimer = new DispatcherTimer();
         
 
-        public BluetoothWindow()
+        public BluetoothLogin()
         {
             InitializeComponent();
             //初始化注册定时器
@@ -51,7 +51,7 @@ namespace AI_Sports.AISports.View.Pages
             readDataTimer.Start();
 
 
-            
+
         }
 
         //定时任务调用方法 每五秒查询一次扫描手环表
@@ -67,6 +67,11 @@ namespace AI_Sports.AISports.View.Pages
 
             this.dataGrid.ItemsSource = bluetoothReadEntities;
             Console.WriteLine("查询扫描手环，更新登陆列表成功");
+            foreach (var item in bluetoothReadEntities)
+            {
+                Console.WriteLine("更新的蓝牙："+item.Member_id);
+
+            }
         }
 
         /// <summary>
