@@ -148,12 +148,14 @@ namespace AI_Sports.Util
                 {
                     StringBuilder sql = new StringBuilder();
 
-                    sql.Append("insert into bluetooth_write ( member_id,bluetooth_name,gmt_modified ) values ('");
+                    sql.Append("insert into bluetooth_write ( member_id,bluetooth_name,gmt_modified ,write_state) values ('");
                     sql.Append(bluetoothWriteEntity.Member_id);
                     sql.Append("','");
                     sql.Append(bluetoothWriteEntity.Bluetooth_name);
                     sql.Append("',");
                     sql.Append(bluetoothWriteEntity.Gmt_modified);
+                    sql.Append(",");
+                    sql.Append(bluetoothWriteEntity.Write_state);
                     sql.Append(")");
 
                     command.CommandText = sql.ToString();
@@ -183,7 +185,7 @@ namespace AI_Sports.Util
                     StringBuilder sql = new StringBuilder();
                     sql.Append("select * from bluetooth_write where member_id = ");
                     sql.Append(memberId);
-                    sql.Append("AND gmt_modified = (select MAX(gmt_modified) from bluetooth_write)");
+                    sql.Append(" AND gmt_modified = (select MAX(gmt_modified) from bluetooth_write)");
                     command.CommandText = sql.ToString();
 
                     // 执行查询会返回一个SQLiteDataReader对象

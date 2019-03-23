@@ -45,10 +45,10 @@ namespace AI_Sports.AISports.View.Pages
         {
             InitializeComponent();
             //初始化注册定时器
-            readDataTimer.Tick += new EventHandler(timeCycle);
-            //五秒一次查询，更新登陆列表
-            readDataTimer.Interval = new TimeSpan(0, 0, 0, 5);
-            readDataTimer.Start();
+            //readDataTimer.Tick += new EventHandler(timeCycle);
+            ////五秒一次查询，更新登陆列表
+            //readDataTimer.Interval = new TimeSpan(0, 0, 0, 5);
+            //readDataTimer.Start();
 
 
 
@@ -83,10 +83,28 @@ namespace AI_Sports.AISports.View.Pages
         {
             this.Close();
         }
-
+        /// <summary>
+        /// 重新扫描按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            //生成修改时间时间戳
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            var currentTime = Convert.ToInt64(ts.TotalSeconds);
+            //当前时间减2分钟 查询最近2分钟被扫描到的手环
+            currentTime = currentTime - (2 * 60);
+            //查询最近读取表中扫描到的用户
+            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
 
+            this.dataGrid.ItemsSource = bluetoothReadEntities;
+            Console.WriteLine("查询扫描手环，更新登陆列表成功");
+            foreach (var item in bluetoothReadEntities)
+            {
+                Console.WriteLine("更新的蓝牙：" + item.Member_id);
+
+            }
         }
         /// <summary>
         /// 选中某行登陆
@@ -98,12 +116,16 @@ namespace AI_Sports.AISports.View.Pages
 
             BluetoothReadEntity bluetoothReadEntity = this.dataGrid.SelectedItem as BluetoothReadEntity;
 
-            if (bluetoothReadEntity.Member_id != null && bluetoothReadEntity.Member_id != "")
+            if (bluetoothReadEntity != null)
             {
-                //传递卡号参数给mainwindow
-                PassValuesEvent(bluetoothReadEntity.Member_id);
-                Console.WriteLine("已经传递卡号给主窗体 id：" + bluetoothReadEntity.Member_id);
-                this.Close();
+                if (bluetoothReadEntity.Member_id != null)
+                {
+                    //传递卡号参数给mainwindow
+                    PassValuesEvent(bluetoothReadEntity.Member_id);
+                    Console.WriteLine("已经传递卡号给主窗体 id：" + bluetoothReadEntity.Member_id);
+                    this.Close();
+                }
+                
 
             }
 

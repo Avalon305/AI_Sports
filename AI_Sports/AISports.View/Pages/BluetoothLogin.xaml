@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
         mc:Ignorable="d"
         Title="请选择登录用户" Height="450" Width="800">
-    
-        <Window.Resources>
-            <Color x:Key="Color1">#FF04243D</Color>
-            <Color x:Key="Color2">#FFF6D600</Color>
-        </Window.Resources>
-        <StackPanel Orientation="Vertical"  >
-            <StackPanel Orientation="Vertical" Height="370" Background="#FF1C4364">
+
+    <Window.Resources>
+        <Color x:Key="Color1">#FF04243D</Color>
+        <Color x:Key="Color2">#FFF6D600</Color>
+    </Window.Resources>
+    <StackPanel Orientation="Vertical"  >
+        <StackPanel Orientation="Vertical" Height="370" Background="#FF1C4364">
             <WrapPanel>
                 <Label Content="请选择要登录的用户" Style="{DynamicResource h3}" Foreground="#FFF6D600"  Margin="20 20 0 0"/>
             </WrapPanel>
@@ -33,10 +33,10 @@
                 </DataGrid>
             </ScrollViewer>
         </StackPanel>
-            <StackPanel Height="50" Orientation="Horizontal" Background="DimGray">
-                <!--<Button Content="确定" Style="{DynamicResource btn-success}" Width="80" Margin="580,2,10,5" Click="Button_Click_1"></Button>-->
-            <Button Content="取消"  Width="80" Margin="700,2,10,5" Style="{DynamicResource btn-warning}" Click="Button_Click"></Button>
-            </StackPanel>
-        </StackPanel>
-    
+        <WrapPanel Height="50" Orientation="Horizontal" Background="DimGray">
+            <Button Content="重新扫描" Style="{DynamicResource btn-primary}"  Width="80" Margin="610,6,0,0" Click="Button_Click_1"></Button>
+            <Button Content="取消"  Width="80" Margin="10,6,0,0" Style="{DynamicResource btn-warning}" Click="Button_Click"></Button>
+        </WrapPanel>
+    </StackPanel>
+
 </Window>
