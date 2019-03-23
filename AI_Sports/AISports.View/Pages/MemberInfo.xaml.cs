@@ -119,6 +119,9 @@ namespace AI_Sports.AISports.View.Pages
                    
                     //获得会员卡号 查询训练日期必须要求卡号不为空
                     string memberId = CommUtil.GetSettingString("memberId");
+
+                    //在界面加载memeberId
+                    this.Lab_memberId.Content = memberId;
                     //如果训练课程不为空 加载进度条以及进度信息
                     //查询训练课程
                     TrainingCourseEntity trainingCourse = trainingCourseService.GetCourseByMemberId();

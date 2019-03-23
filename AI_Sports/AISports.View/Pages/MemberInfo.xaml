@@ -99,9 +99,9 @@
                     <Label Content="身份识别卡" Style="{DynamicResource h1}" Margin="20,20,0,0" Foreground="#04243D" FontFamily="Microsoft YaHei"/>
                     <GridSplitter Height="5" Width="2600"/>
                     <StackPanel x:Name="stackPanel2" HorizontalAlignment="Right" Margin="0,30,20,20" Width="1453.3">
-                        <Label Visibility="Visible"  Name="x1" Content="用户在此需要进行身份验证" FontSize="22px" Foreground="#04243D" FontFamily="Microsoft YaHei" VerticalContentAlignment="Center" Height="40"  Margin="0,30,0,0"  Background="WhiteSmoke"/>
+                        <!--<Label Visibility="Visible"  Name="x1" Content="用户尚未注册宝德龙卡" FontSize="22px" Foreground="#04243D" FontFamily="Microsoft YaHei" VerticalContentAlignment="Center" Height="40"  Margin="0,30,0,0"  Background="WhiteSmoke"/>-->
                         <Border Name="x2" Width="400" Height="200" Background="WhiteSmoke" CornerRadius="8" HorizontalAlignment="Left" Margin="20,25,0,0" Grid.Column="1">
-                            <Label Name="x3" Height="45" Content="{Binding Path=Score1}" VerticalContentAlignment="Center" Foreground="#04243D" HorizontalAlignment="Center" Margin="0,0,0,0" FontFamily="Microsoft YaHei" FontSize="16px"/>
+                            <Label Name="Lab_memberId" Height="45" Content="{Binding Path=Score1}" VerticalContentAlignment="Center" Foreground="#04243D" HorizontalAlignment="Center" Margin="0,0,0,0" FontFamily="Microsoft YaHei" FontSize="16px"/>
                         </Border>
                     </StackPanel>
                     

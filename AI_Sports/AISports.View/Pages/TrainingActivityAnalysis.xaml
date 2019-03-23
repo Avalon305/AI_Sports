@@ -32,7 +32,7 @@
                 </Grid.RowDefinitions>
                 <Label Content="分析"  Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,0,0,0"  FontSize="50" Grid.Row="0"></Label>
                 <StackPanel HorizontalAlignment="Left" Height="970" Margin="20,0" Grid.Row="1" VerticalAlignment="Top" Width="1453.3">
-                    <Label Content="周五 2018年12月7日 16:09" Name="lable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
+                    <Label Content="周五 2018年12月7日 16:09" Name="timeLable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
                     <Label  Content="训练课程：" Name="Lab_Training_course" FontFamily="yahei" Style="{DynamicResource h3}" Margin="0"></Label>
                     <ListView x:Name="listView" SelectionMode="Extended" MinHeight="860" ItemsSource="{Binding Source={StaticResource ResourceKey=ListViewGroupSource}}" FontSize="20">
                         <ListView.GroupStyle>

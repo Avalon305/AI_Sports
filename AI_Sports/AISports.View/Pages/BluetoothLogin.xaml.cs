@@ -44,6 +44,8 @@ namespace AI_Sports.AISports.View.Pages
         public BluetoothLogin()
         {
             InitializeComponent();
+            //加载手环列表
+            LoadBluetoothList();
             //初始化注册定时器
             //readDataTimer.Tick += new EventHandler(timeCycle);
             ////五秒一次查询，更新登陆列表
@@ -75,6 +77,29 @@ namespace AI_Sports.AISports.View.Pages
         }
 
         /// <summary>
+        /// 加载手环列表
+        /// </summary>
+        public void LoadBluetoothList()
+        {
+            //生成修改时间时间戳
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            var currentTime = Convert.ToInt64(ts.TotalSeconds);
+            //当前时间减2分钟 查询最近2分钟被扫描到的手环
+            currentTime = currentTime - (2 * 60);
+
+            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
+
+            this.dataGrid.ItemsSource = bluetoothReadEntities;
+            Console.WriteLine("查询扫描手环，更新登陆列表成功");
+            foreach (var item in bluetoothReadEntities)
+            {
+                Console.WriteLine("更新的蓝牙：" + item.Member_id);
+
+            }
+
+        }
+
+        /// <summary>
         /// 取消按钮
         /// </summary>
         /// <param name="sender"></param>
@@ -90,21 +115,7 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //生成修改时间时间戳
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            var currentTime = Convert.ToInt64(ts.TotalSeconds);
-            //当前时间减2分钟 查询最近2分钟被扫描到的手环
-            currentTime = currentTime - (2 * 60);
-            //查询最近读取表中扫描到的用户
-            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
-
-            this.dataGrid.ItemsSource = bluetoothReadEntities;
-            Console.WriteLine("查询扫描手环，更新登陆列表成功");
-            foreach (var item in bluetoothReadEntities)
-            {
-                Console.WriteLine("更新的蓝牙：" + item.Member_id);
-
-            }
+            LoadBluetoothList();
         }
         /// <summary>
         /// 选中某行登陆

@@ -143,7 +143,7 @@ namespace AI_Sports.AISports.View.Pages
             this.btn4.Background = null;
             this.btn5.Background = null;
             this.Btn_SystemSetting.Background = null;
-            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddUser.xaml", UriKind.Relative);//跳转页面
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/search.xaml", UriKind.Relative);//跳转页面
 
         }
 

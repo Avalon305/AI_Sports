@@ -68,9 +68,9 @@ namespace AI_Sports.AISports.View.Pages
                 int? Course_count = trainingCourseVO.Course_count;
 
                 Console.WriteLine("课程页选中行的course_count：" + Course_count);
-                //跳转到训练活动页面 传参只需要在后边加上参数即可
+                //跳转到训练活动页面 传参只需要在后边加上参数即可 传递整个对象
                 TrainingActivityAnalysis trainingActivityAnalysis = new TrainingActivityAnalysis();
-                this.NavigationService.Navigate(trainingActivityAnalysis, Course_count);
+                this.NavigationService.Navigate(trainingActivityAnalysis, trainingCourseVO);
                 //加载从训练课程页面传来的参数 //注意LoadCompleted 事件的位置在 Page1.cs 中
                 this.NavigationService.LoadCompleted += trainingActivityAnalysis.NavigationService_LoadCompleted;
                 
