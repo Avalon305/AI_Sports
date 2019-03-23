@@ -124,5 +124,37 @@ namespace AI_Sports.AISports.Util
             return returnStr;
         }
 
+        //将16进制的字符串转为byte[]   "01"-0x01
+        public static byte[] strToToHexByte(string hexString)
+        {
+            hexString = hexString.Replace(" ", "");
+            if ((hexString.Length % 2) != 0)
+                hexString += " ";
+            byte[] returnBytes = new byte[hexString.Length / 2];
+            for (int i = 0; i < returnBytes.Length; i++)
+                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
+            return returnBytes;
+        }
+        /// <summary>
+        /// 切分memberID
+        /// </summary>
+        public static void splitMemberId(ref string name,ref byte[] crc,ref string phone,string memberId)
+        {
+            if (memberId.Length==9) {
+                //3+2+4
+                name = memberId.Substring(0, 3);
+                phone = memberId.Substring(3, 2);
+                crc = strToToHexByte(memberId.Substring(5, 4));
+            }
+            if (memberId.Length == 8) {
+                //2+2+4
+                name = memberId.Substring(0, 2);
+                phone = memberId.Substring(2, 2);
+                crc = strToToHexByte(memberId.Substring(4, 4));
+            }
+
+
+        }
+
     }
 }
