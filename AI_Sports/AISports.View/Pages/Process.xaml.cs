@@ -53,6 +53,8 @@ namespace AI_Sports.AISports.View.Pages
     public class WebStrength
     {
         ProcessService processService = new ProcessService();
+        //获取 trainingCourseId
+        string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
 
         //力量循环X轴动态数据加载(查询系统时间前24小时的创建时间)
         public string selectCreateTime()
@@ -75,7 +77,7 @@ namespace AI_Sports.AISports.View.Pages
         //力量循环平均值
         public String avgValue()
         {
-            List<double> avgValue = processService.selectAvgValue();
+            List<double> avgValue = processService.selectAvgValue(trainingCourseId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(avgValue.GetType());
             string szJson = "";
             //序列化
@@ -97,25 +99,6 @@ namespace AI_Sports.AISports.View.Pages
             return count;
         }
 
-        public string strength()
-        {
-            List<ProcessVO> strength = processService.selectStrength();
-
-            DataContractJsonSerializer json = new DataContractJsonSerializer(strength.GetType());
-            string szJson = "";
-
-            //序列化
-            using (MemoryStream stream = new MemoryStream())
-            {
-                json.WriteObject(stream, strength);
-                szJson = Encoding.UTF8.GetString(stream.ToArray());
-
-            }
-
-            Console.WriteLine("成功" + szJson.ToString());
-            return szJson;
-
-        }
 
     }
 
@@ -126,6 +109,8 @@ namespace AI_Sports.AISports.View.Pages
     {
 
         ProcessService processService = new ProcessService();
+        //获取 trainingCourseId
+        string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
         //力量耐力循环(力量)X轴动态数据加载(查询系统时间前24小时的创建时间)
         public string selectStrengthCreateTime()
         {
@@ -147,7 +132,7 @@ namespace AI_Sports.AISports.View.Pages
         //力量耐力循环(力量)平均值
         public String avgStrengthValue()
         {
-            List<double> avgValue = processService.selectavgStrengthValue();
+            List<double> avgValue = processService.selectavgStrengthValue(trainingCourseId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(avgValue.GetType());
             string szJson = "";
             //序列化
@@ -171,6 +156,8 @@ namespace AI_Sports.AISports.View.Pages
     public class WebAerobic
     {
         ProcessService processService = new ProcessService();
+        //获取 trainingCourseId
+        string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
         //力量耐力循环(有氧)X轴动态数据加载(查询系统时间前24小时的创建时间)
         public string selectAerobicCreateTime()
         {
@@ -192,7 +179,7 @@ namespace AI_Sports.AISports.View.Pages
         //力量耐力循环(有氧)平均值
         public String avgAerobicValue()
         {
-            List<double> avgValue = processService.selectavgAerobicValue();
+            List<double> avgValue = processService.selectavgAerobicValue(trainingCourseId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(avgValue.GetType());
             string szJson = "";
             //序列化

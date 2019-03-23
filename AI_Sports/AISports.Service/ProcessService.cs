@@ -17,14 +17,9 @@ namespace AI_Sports.AISports.Service
 
         }
 
-        public List<ProcessVO> selectStrength()
+        public List<double> selectAvgValue(string trainingCourseId)
         {
-            return processDAO.selectStrength();
-        }
-
-        public List<double> selectAvgValue()
-        {
-            return processDAO.selectAvgValue();
+            return processDAO.selectAvgValue(trainingCourseId);
         }
 
         public int selectCount()
@@ -37,9 +32,9 @@ namespace AI_Sports.AISports.Service
             return processDAO.selectStrengthCreateTime();
         }
 
-        public List<double> selectavgStrengthValue()
+        public List<double> selectavgStrengthValue(string trainingCourseId)
         {
-            return processDAO.selectavgStrengthValue();
+            return processDAO.selectavgStrengthValue(trainingCourseId);
         }
 
         public List<DateTime> selectAerobicCreateTime()
@@ -47,9 +42,9 @@ namespace AI_Sports.AISports.Service
             return processDAO.selectAerobicCreateTime();
         }
 
-        public List<double> selectavgAerobicValue()
+        public List<double> selectavgAerobicValue(string trainingCourseId)
         {
-            return processDAO.selectavgAerobicValue();
+            return processDAO.selectavgAerobicValue(trainingCourseId);
         }
     }
 }

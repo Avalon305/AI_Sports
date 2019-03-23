@@ -83,7 +83,7 @@ namespace AI_Sports
                 byte[] obj_data = new byte[data_len];
                 for (int i = 0; i < data_len; i++)
                 {
-                    obj_data[i] = buffer[i + 2];
+                    obj_data[i] = buffer[i + 3];
                 }
 
                 //XOR校验,如果错误直接返回
@@ -109,7 +109,7 @@ namespace AI_Sports
                     byte[] namebytewithzero = new byte[10];
                     byte[] phonebyte = new byte[4];
                     Buffer.BlockCopy(obj_data, 0, namebytewithzero, 0, namebytewithzero.Length);//提取姓名
-                    Console.WriteLine(Encoding.GetEncoding("GBK").GetString(namebytewithzero));//解析姓名
+                    Console.WriteLine(SerialPortUtil.GetEndString(namebytewithzero, 0));//解析姓名
                     Buffer.BlockCopy(obj_data, 10, phonebyte, 0, phonebyte.Length);//提取手机号
                     Console.WriteLine(Encoding.ASCII.GetString(phonebyte));//解析手机号
 
@@ -192,7 +192,7 @@ namespace AI_Sports
             byte[] data = new byte[14];
             //打包数据
             packSendCard(ref data);
-            Console.WriteLine("数据部分"+SerialPortUtil.ByteToHexStr(data));
+            Console.WriteLine("数据部分" + SerialPortUtil.ByteToHexStr(data));
             //组装协议头、协议尾
             byte[] buffer = SerialPortUtil.packData(CommondConstant.sendCard, data);
             //给出等待提示-正在发卡,请稍后
@@ -234,8 +234,8 @@ namespace AI_Sports
             string name = "";
             string phone = "";
             byte[] crc = new byte[2];
-            SerialPortUtil.splitMemberId(ref name,ref crc,ref phone,memberId);
-            Console.WriteLine("name:"+name);
+            SerialPortUtil.splitMemberId(ref name, ref crc, ref phone, memberId);
+            Console.WriteLine("name:" + name);
             Console.WriteLine("phone:" + phone);
             Console.WriteLine("crc:" + SerialPortUtil.ByteToHexStr(crc));
 
