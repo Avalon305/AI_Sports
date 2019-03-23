@@ -201,18 +201,21 @@ namespace AI_Sports.AISports.View.Pages
         {
             //获取 currentCourseCount
             string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
+            Console.WriteLine("强强强强强强强强强强强强强强强强"+ currentCourseCount);
             return currentCourseCount;
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（有氧）的总能量
         public double aerobicEnduranceEnergy()
         {
             double aerobicEnduranceEnergy = trainingCourseService.selectAerobicEnduranceEnergy(trainingPlanId);
+            Console.WriteLine("力量耐力循环（有氧）的总能量" + aerobicEnduranceEnergy);
             return aerobicEnduranceEnergy;
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（力量）的总能量
         public double forceEnduranceEnergy()
         {
             double forceEnduranceEnergy = trainingCourseService.selectForceEnduranceEnergy(trainingPlanId);
+            Console.WriteLine("力量耐力循环（力量）的总能量" + forceEnduranceEnergy);
             return forceEnduranceEnergy;
         }
 
@@ -220,6 +223,7 @@ namespace AI_Sports.AISports.View.Pages
         public double forceEnergy()
         {
             double forceEnergy = trainingCourseService.selectForceEnergy(trainingPlanId);
+            Console.WriteLine("力量循环的总能量" + forceEnergy);
             return forceEnergy;
         }
 
