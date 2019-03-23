@@ -40,6 +40,11 @@ namespace AI_Sports.AISports.View.Pages
         {
             InitializeComponent();
 
+            //获取 trainingPlanId
+            string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
+            //获取 currentCourseCount
+            string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
+
             //图表
             this.Web.ObjectForScripting = new WebAdapter();
             //获取项目的根路径
@@ -166,13 +171,7 @@ namespace AI_Sports.AISports.View.Pages
     [System.Runtime.InteropServices.ComVisible(true)]//给予权限并设置可见
     public class WebAdapter
     {
-
         TrainingPlanService trainingPlanService = new TrainingPlanService();
-        //获取 trainingPlanId
-        string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
-        //获取 currentCourseCount
-        string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
-
         //X轴动态加载数据(未用到)
         public int recordNumber()
         {
@@ -181,7 +180,7 @@ namespace AI_Sports.AISports.View.Pages
         }
 
         //X轴动态加载数据
-        public string  Xaxis()
+        public string  Xaxis(string currentCourseCount)
         {
             return currentCourseCount;
         }

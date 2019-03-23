@@ -36,6 +36,12 @@ namespace AI_Sports.AISports.View.Pages
         public TrainingCourseAnalysis()
         {
             InitializeComponent();
+
+            //获取 trainingPlanId
+            string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
+            //获取 currentCourseCount
+            string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
+
             //图表
             Web.ObjectForScripting = new WebTrainingCourse();
             //获取项目的根路径
@@ -184,10 +190,6 @@ namespace AI_Sports.AISports.View.Pages
     {
 
         TrainingCourseService trainingCourseService = new TrainingCourseService();
-        //获取 trainingPlanId
-        string trainingPlanId = CommUtil.GetSettingString("trainingPlanId");
-        //获取 currentCourseCount
-        string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
 
         //X轴动态加载数据(未用到)
         public int maxCourseRecord()
@@ -197,7 +199,7 @@ namespace AI_Sports.AISports.View.Pages
             return maxCourseRecord;
         }
         //X轴动态加载数据
-        public string Xaxis()
+        public string Xaxis(string currentCourseCount)
         {
             return currentCourseCount;
         }

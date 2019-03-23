@@ -1,5 +1,6 @@
 ﻿using AI_Sports.AISports.Entity;
 using AI_Sports.AISports.Service;
+using AI_Sports.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,6 +31,10 @@ namespace AI_Sports.AISports.View.Pages
         public Process()
         {
             InitializeComponent();
+      
+            //获取 currentCourseCount
+            string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
+
             Strength.ObjectForScripting = new WebStrength();
             StrengthEndurance.ObjectForScripting = new StrengthEndurance();
             Aerobic.ObjectForScripting = new WebAerobic();
