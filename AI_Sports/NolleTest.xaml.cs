@@ -30,8 +30,9 @@ namespace AI_Sports
             //SpeechUtil.read("hello 徐靖皓");
             string name = "徐靖皓";
             Console.WriteLine(name.Length);
-            Console.WriteLine(SerialPortUtil.strToToHexByte("1010")[0].ToString("x2")) ;
-
+            Console.WriteLine(SerialPortUtil.strToToHexByte("1010")[0].ToString("x2"));
+            byte[] arr = { 0x31, 0x32, 0x33, 0x34 };
+           Console.WriteLine( SerialPortUtil.CRC16(arr)[0].ToString());
         }
     }
 }
