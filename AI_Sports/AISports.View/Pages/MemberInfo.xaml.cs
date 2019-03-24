@@ -58,7 +58,7 @@ namespace AI_Sports.AISports.View.Pages
 
             try
             {
-                x1.Visibility = Visibility.Visible;
+                //x1.Visibility = Visibility.Visible;
                 x2.Visibility = Visibility.Collapsed;
 
                 String image_Path = "/AI_Sports;component/AISports.View/Images/photo.png";
