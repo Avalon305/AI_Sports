@@ -97,33 +97,33 @@ namespace AI_Sports.Dao
         }
 
         
-        public double selectAerobicEnduranceEnergy(string trainingPlanId)
+        public List<double> selectAerobicEnduranceEnergy(string trainingPlanId)
         {
             using (var conn = DbUtil.getConn())
             {
                 const string query = "SELECT sum(bdl_training_device_record.energy) FROM bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_plan.id = @trainingPlanId AND code_ext_value3 = 1 AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' GROUP BY course_count ORDER BY course_count ASC";
                 var para = new { trainingPlanId };
-                return conn.QueryFirstOrDefault<double>(query, para);
+                return (List<double>)conn.Query<double>(query, para);
             }
         }
 
-        public double selectForceEnduranceEnergy(string trainingPlanId)
+        public List<double> selectForceEnduranceEnergy(string trainingPlanId)
         {
             using (var conn = DbUtil.getConn())
             {
                 const string query = "SELECT sum(bdl_training_device_record.energy) FROM bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_plan.id = @trainingPlanId AND code_ext_value3 = 0 AND code_ext_value2 = 1 AND code_type_id = 'DEVICE' GROUP BY course_count ORDER BY course_count ASC";
                 var para = new { trainingPlanId };
-                return conn.QueryFirstOrDefault<double>(query, para);
+                return (List<double>)conn.Query<double>(query, para);
             }
         }
 
-        public double selectForceEnergy(string trainingPlanId)
+        public List<double> selectForceEnergy(string trainingPlanId)
         {
             using (var conn = DbUtil.getConn())
             {
                 const string query = "SELECT sum(bdl_training_device_record.energy) FROM bdl_training_plan LEFT JOIN bdl_training_course ON bdl_training_plan.id = fk_training_plan_id LEFT JOIN bdl_training_activity_record ON bdl_training_course.id = bdl_training_activity_record.fk_training_course_id LEFT JOIN bdl_training_device_record ON bdl_training_activity_record.id = fk_training_activity_record_id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_plan.id = @trainingPlanId  AND code_ext_value2 = 0 AND code_type_id = 'DEVICE' GROUP BY course_count ORDER BY course_count ASC";
                 var para = new { trainingPlanId };
-                return conn.QueryFirstOrDefault<double>(query, para);
+                return (List<double>)conn.Query<double>(query, para);
             }
         }
     }

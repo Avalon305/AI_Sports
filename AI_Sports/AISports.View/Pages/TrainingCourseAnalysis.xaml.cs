@@ -7,7 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
@@ -205,26 +207,55 @@ namespace AI_Sports.AISports.View.Pages
             return currentCourseCount;
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（有氧）的总能量
-        public double aerobicEnduranceEnergy()
+        public string aerobicEnduranceEnergy()
         {
-            double aerobicEnduranceEnergy = trainingCourseService.selectAerobicEnduranceEnergy(trainingPlanId);
+            List<double> aerobicEnduranceEnergy = trainingCourseService.selectAerobicEnduranceEnergy(trainingPlanId);
             Console.WriteLine("力量耐力循环（有氧）的总能量" + aerobicEnduranceEnergy);
-            return aerobicEnduranceEnergy;
+            DataContractJsonSerializer json = new DataContractJsonSerializer(aerobicEnduranceEnergy.GetType());
+            string szJson = "";
+            //序列化
+            using (MemoryStream stream = new MemoryStream())
+            {
+                json.WriteObject(stream, aerobicEnduranceEnergy);
+                szJson = Encoding.UTF8.GetString(stream.ToArray());
+
+            }
+            Console.WriteLine("成功:" + szJson);
+            return szJson;
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（力量）的总能量
-        public double forceEnduranceEnergy()
+        public string forceEnduranceEnergy()
         {
-            double forceEnduranceEnergy = trainingCourseService.selectForceEnduranceEnergy(trainingPlanId);
-            Console.WriteLine("力量耐力循环（力量）的总能量" + forceEnduranceEnergy);
-            return forceEnduranceEnergy;
+            List<double> forceEnduranceEnergy = trainingCourseService.selectForceEnduranceEnergy(trainingPlanId);
+            DataContractJsonSerializer json = new DataContractJsonSerializer(forceEnduranceEnergy.GetType());
+            string szJson = "";
+            //序列化
+            using (MemoryStream stream = new MemoryStream())
+            {
+                json.WriteObject(stream, forceEnduranceEnergy);
+                szJson = Encoding.UTF8.GetString(stream.ToArray());
+
+            }
+            Console.WriteLine("成功:" + szJson);
+            return szJson;
         }
 
         //根据课程轮次数从小到大排序查询力量循环的总能量
-        public double forceEnergy()
+        public string forceEnergy()
         {
-            double forceEnergy = trainingCourseService.selectForceEnergy(trainingPlanId);
+            List<double> forceEnergy = trainingCourseService.selectForceEnergy(trainingPlanId);
             Console.WriteLine("力量循环的总能量" + forceEnergy);
-            return forceEnergy;
+            DataContractJsonSerializer json = new DataContractJsonSerializer(forceEnergy.GetType());
+            string szJson = "";
+            //序列化
+            using (MemoryStream stream = new MemoryStream())
+            {
+                json.WriteObject(stream, forceEnergy);
+                szJson = Encoding.UTF8.GetString(stream.ToArray());
+
+            }
+            Console.WriteLine("成功:" + szJson);
+            return szJson;
         }
 
     }
