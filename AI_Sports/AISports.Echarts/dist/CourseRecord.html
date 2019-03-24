@@ -37,8 +37,10 @@
                 myChart.setOption(option);
             }
         }
-        myChart = echarts.init(document.getElementById('main'),'shine');
-		
+		myChart = echarts.init(document.getElementById('main'), 'shine');
+
+		//异常处理
+		try {	
  option = {
   //去掉外部边框
   grid: {show:'true',borderWidth:'0'},
@@ -143,7 +145,6 @@
     ]
 };
 
-		try {
 			//动态向X轴赋值
 			var arr = new Array();
 			for (i = 0; i < window.external.Xaxis(); i++) {
