@@ -173,8 +173,11 @@ namespace AI_Sports
                     Buffer.BlockCopy(obj_data, 10, phonebyte, 0, phonebyte.Length);//提取手机号
                     string strPhone = Encoding.ASCII.GetString(phonebyte);
                     Console.WriteLine(strPhone);//解析手机号
-                    Buffer.BlockCopy(obj_data, 12, crc, 0, crc.Length);//提取CRC
-                    string strCRC = SerialPortUtil.ByteToHexStr(crc);
+                    //Buffer.BlockCopy(obj_data, 12, crc, 0, crc.Length);//提取CRC
+                    //string strCRC = SerialPortUtil.ByteToHexStr(crc);
+                    string lowStrCRC = obj_data[12].ToString();
+                    string highStrCRC = obj_data[13].ToString();
+                    string strCRC = lowStrCRC + highStrCRC;
                     Console.WriteLine(strCRC);//解析CRC
                     ReceiveValues(strName + strPhone + strCRC);
 
