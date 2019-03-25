@@ -91,75 +91,58 @@ namespace AI_Sports.AISports.View.Pages
             //判断输入的内容是否为空
             if (string.IsNullOrWhiteSpace(Member_familyName.Text))
             {
-                stringBuilder.Append("姓氏");
+                stringBuilder.Append("姓氏 ");
                 inputCount++;
             }
             if (string.IsNullOrWhiteSpace(Member_firstName.Text))
             {
-                stringBuilder.Append("名字");
+                stringBuilder.Append("名字 ");
 
                 inputCount++;
 
             }
             if (string.IsNullOrWhiteSpace(birthDatePicker.Text))
             {
-                inputCount++;
-
-            }
-            if (string.IsNullOrWhiteSpace(Address.Text))
-            {
-                inputCount++;
+				stringBuilder.Append("出生日期 ");
+				inputCount++;
 
             }
             if (string.IsNullOrWhiteSpace(sex.Text))
             {
-                inputCount++;
+				stringBuilder.Append("性别 ");
+				inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(Personal_phone.Text))
-            {
-                inputCount++;
-
-            }
+         
             if (string.IsNullOrWhiteSpace(Mobile_phone.Text))
             {
-                inputCount++;
-
-            }
-            if (string.IsNullOrWhiteSpace(Work_phone.Text))
-            {
-                inputCount++;
-
-            }
-            if (string.IsNullOrWhiteSpace(Email_address.Text))
-            {
-                inputCount++;
+				stringBuilder.Append("电话号码 ");
+				inputCount++;
 
             }
             if (string.IsNullOrWhiteSpace(weight.Text))
             {
-                inputCount++;
+				stringBuilder.Append("体重 ");
+				inputCount++;
 
             }
             if (string.IsNullOrWhiteSpace(height.Text))
             {
-                inputCount++;
+				stringBuilder.Append("身高 ");
+				inputCount++;
 
             }
             if (string.IsNullOrWhiteSpace(Max_heart_rate.Text))
             {
-                inputCount++;
+				stringBuilder.Append("最大心率 ");
+				inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(Remark.Text))
-            {
-                inputCount++;
-
-            }
+       
 
             //都不为空则添加
-            //if (inputCount ==0)
-            //{
+            if (inputCount ==0)
+            {
 
                 MemberEntity member = new MemberEntity();
                 member.Address = this.Address.Text;
@@ -227,11 +210,15 @@ namespace AI_Sports.AISports.View.Pages
                 }
                 //跳转到会员信息页面
                 NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative));
-            //}
-            //else
-            //{
-            //      //弹出提示框
-            //}
+             }
+            else
+            {
+				//弹出提示框
+				
+				MessageBoxX.Show("提示", stringBuilder.ToString() + "不能为空");
+
+				//MessageBox.Show("不能为空哦");
+            }
 
 
 
