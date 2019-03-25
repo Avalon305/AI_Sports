@@ -37,6 +37,8 @@
 				}
 			}
 			myChart = echarts.init(document.getElementById('main'), 'shine');
+			//异常处理
+			try {
 			option = {
 				//去掉外部边框
 				grid: { show: 'true', borderWidth: '0' },
@@ -152,7 +154,10 @@
 
 
 			//加载图表
-			myChart.setOption(option);
+				myChart.setOption(option);
+			} catch (e) {
+				//alert("出错了");
+			}
 		</script>
 	</body>
 	</html>

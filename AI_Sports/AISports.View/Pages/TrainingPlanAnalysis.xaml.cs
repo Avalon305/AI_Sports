@@ -54,21 +54,25 @@ namespace AI_Sports.AISports.View.Pages
 
             //查询VO
             TrainingPlanVO trainingPlanVO = trainingPlanService.GetTrainingPlanVO();
-            //绑定训练计划标题
-            this.Lab_Title.Content = trainingPlanVO.Title;
-            //绑定训练计划创建时间
-            this.Lab_Gmt_create.Content += trainingPlanVO.Gmt_create.ToString();
-            //绑定课程记录
-            this.Lab_Current_course_count.Content = trainingPlanVO.Current_course_count + "次";
-            //绑定总耗能
-            this.Lab_SumEnergy.Content = (trainingPlanVO.SumEnergy/1000)+ "千卡";
-            //绑定总时间
-            this.Lab_SumTime.Content = (trainingPlanVO.SumTime / 60) + "分钟";
-            //给语音分析参数赋值
-            sumEnergy = this.Lab_SumEnergy.Content.ToString();
-            sumTime = this.Lab_SumTime.Content.ToString();
-            courseCount = trainingPlanVO.Current_course_count;
-            targetCourseCount = trainingPlanVO.Target_course_count;
+            if (trainingPlanVO != null)
+            {
+                //绑定训练计划标题
+                this.Lab_Title.Content = trainingPlanVO.Title;
+                //绑定训练计划创建时间
+                this.Lab_Gmt_create.Content += trainingPlanVO.Gmt_create.ToString();
+                //绑定课程记录
+                this.Lab_Current_course_count.Content = trainingPlanVO.Current_course_count + "次";
+                //绑定总耗能
+                this.Lab_SumEnergy.Content = (trainingPlanVO.SumEnergy / 1000) + "千卡";
+                //绑定总时间
+                this.Lab_SumTime.Content = (trainingPlanVO.SumTime / 60) + "分钟";
+                //给语音分析参数赋值
+                sumEnergy = this.Lab_SumEnergy.Content.ToString();
+                sumTime = this.Lab_SumTime.Content.ToString();
+                courseCount = trainingPlanVO.Current_course_count;
+                targetCourseCount = trainingPlanVO.Target_course_count;
+            }
+            
         }
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -183,7 +187,8 @@ namespace AI_Sports.AISports.View.Pages
         public string  Xaxis()
         {
             //获取 currentCourseCount
-            string currentCourseCountValue = CommUtil.GetSettingString("currentCourseCount");         
+            string currentCourseCountValue = CommUtil.GetSettingString("currentCourseCount");
+            Console.WriteLine("训练计划currentCourseCount" + currentCourseCountValue);
             return currentCourseCountValue;
 
         }

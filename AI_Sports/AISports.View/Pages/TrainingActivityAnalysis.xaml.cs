@@ -30,14 +30,16 @@ namespace AI_Sports.AISports.View.Pages
         TrainingActivityService trainingActivityService = new TrainingActivityService();
         //全局当前课程记录变量
         int? currentCourseCount = 0;
+        //用于接收课程页面传来的对象
+        TrainingCourseVO trainingCourseVO = new TrainingCourseVO();
+
         //语音分析的后台任务 不用后台任务则界面卡死 无法进行其他操作
         private BackgroundWorker worker = new BackgroundWorker();
 
         public TrainingActivityAnalysis()
         {
             InitializeComponent();
-            
-            
+           
 
         }
         /// <summary>
@@ -49,10 +51,22 @@ namespace AI_Sports.AISports.View.Pages
         {
             if (e.ExtraData != null)
             {
-                currentCourseCount = (int?)e.ExtraData;
-                Console.WriteLine("活动分析页收到的currentCourseCount：" + currentCourseCount);
-                //传入课程记录id，根据此id查询加载表格
-                InitList(currentCourseCount);
+
+                trainingCourseVO = (TrainingCourseVO)e.ExtraData;
+                if (trainingCourseVO != null)
+                {
+                    currentCourseCount = trainingCourseVO.Course_count;
+                    Console.WriteLine("活动分析页收到的currentCourseCount：" + currentCourseCount);
+                    //传入课程记录id，根据此id查询加载表格
+                    InitList(currentCourseCount);
+                    //加载创建时间 格式化为 这种格式：2016年5月9日 13:09
+                    string gmtCreate = trainingCourseVO.Gmt_create.Value.ToString("f");
+
+                  
+
+                    this.timeLable.Content = gmtCreate;
+                }
+
             }
            
         }

@@ -1,5 +1,6 @@
 ﻿using AI_Sports.AISports.Dao;
 using AI_Sports.AISports.Entity;
+using AI_Sports.AISports.Util;
 using AI_Sports.Constant;
 using AI_Sports.Dao;
 using AI_Sports.Entity;
@@ -58,14 +59,23 @@ namespace AI_Sports.Service
                 //手机号不为空则拼接手机号后四位
                 if (memberEntity.Mobile_phone != null && memberEntity.Mobile_phone != "")
                 {
-                    stringBuilder.Append(memberEntity.Mobile_phone.Substring(memberEntity.Mobile_phone.Length - 4));
+                    stringBuilder.Append(memberEntity.Mobile_phone.Substring(memberEntity.Mobile_phone.Length - 2));
 
                 }
                 else
                 {
                     logger.Warn("拼接用户id时，用户手机号为空。用户名："+memberEntity.Member_familyName+memberEntity.Member_firstName);
                 }
-
+                //添加CRC校验
+                string fullName = memberEntity.Member_familyName + memberEntity.Member_firstName;
+                string phone = memberEntity.Mobile_phone.Substring(memberEntity.Mobile_phone.Length - 2);
+                byte[] dataCRC = new byte[12];
+                Encoding.GetEncoding("GBK").GetBytes(fullName, 0, fullName.Length, dataCRC, 0);
+                Encoding.GetEncoding("ASCII").GetBytes(phone, 0, phone.Length, dataCRC, 10);
+                string lowStrCRC = SerialPortUtil.CRC16(dataCRC)[0].ToString();
+                string highStrCRC = SerialPortUtil.CRC16(dataCRC)[1].ToString();
+                string fullCRC = lowStrCRC + highStrCRC;
+                stringBuilder.Append(fullCRC);
                 //设置用户id
                 memberEntity.Member_id = stringBuilder.ToString();
 
@@ -74,7 +84,7 @@ namespace AI_Sports.Service
                     //当前登陆的教练Id
                     memberEntity.Fk_coach_id = ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("coachId"));
                 }
-
+               
                 //使用基类插入新会员
                 long resultCode = memberDAO.Insert(memberEntity);
 

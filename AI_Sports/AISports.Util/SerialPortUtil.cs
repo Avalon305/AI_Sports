@@ -146,6 +146,13 @@ namespace AI_Sports.AISports.Util
                 phone = memberId.Substring(3, 2);
                 crc = strToToHexByte(memberId.Substring(5, 4));
             }
+            if (memberId.Length == 10)
+            {
+                //4+2+4
+                name = memberId.Substring(0, 4);
+                phone = memberId.Substring(4, 2);
+                crc = strToToHexByte(memberId.Substring(6, 4));
+            }
             if (memberId.Length == 8) {
                 //2+2+4
                 name = memberId.Substring(0, 2);
@@ -154,6 +161,29 @@ namespace AI_Sports.AISports.Util
             }
 
 
+        }
+
+        public static byte[] CRC16(byte[] data)
+        {
+            int len = data.Length;
+            if (len > 0)
+            {
+                ushort crc = 0xFFFF;
+
+                for (int i = 0; i < len; i++)
+                {
+                    crc = (ushort)(crc ^ (data[i]));
+                    for (int j = 0; j < 8; j++)
+                    {
+                        crc = (crc & 1) != 0 ? (ushort)((crc >> 1) ^ 0xA001) : (ushort)(crc >> 1);
+                    }
+                }
+                byte hi = (byte)((crc & 0xFF00) >> 8);  //高位置
+                byte lo = (byte)(crc & 0x00FF);         //低位置
+
+                return new byte[] { hi, lo };
+            }
+            return new byte[] { 0, 0 };
         }
 
     }

@@ -42,8 +42,8 @@ namespace AI_Sports.AISports.View.Pages
             SystemSettingEntity systemSettingEntity = systemSettingDAO.Load(1);
             if (systemSettingEntity.System_version == 0)
             {
-                //普通版少3中训练模式 移除指定索引段 移除心率模式和增肌模式
-                datacodeEntities.RemoveRange(3, 2);
+                //普通版少3中训练模式 移除指定索引段 移除心率模式和增肌模式被动模式和主被动模式
+                datacodeEntities.RemoveRange(3, 4);
                 Console.WriteLine("当前系统为标准版");
 
             }

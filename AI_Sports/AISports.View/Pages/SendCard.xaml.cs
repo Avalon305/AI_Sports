@@ -36,7 +36,7 @@ namespace AI_Sports.AISports.View.Pages
         {
             InitializeComponent();
             serialPort = new SerialPort();
-            serialPort.PortName = "COM3";
+            serialPort.PortName = "COM4";
             serialPort.BaudRate = 115200;
             serialPort.ReadTimeout = 3000; //单位毫秒
             serialPort.WriteTimeout = 3000; //单位毫秒
@@ -112,7 +112,7 @@ namespace AI_Sports.AISports.View.Pages
                 byte[] obj_data = new byte[data_len];
                 for (int i = 0; i < data_len; i++)
                 {
-                    obj_data[i] = buffer[i + 2];
+                    obj_data[i] = buffer[i + 3];
                 }
 
                 //XOR校验,如果错误直接返回
@@ -120,7 +120,9 @@ namespace AI_Sports.AISports.View.Pages
                 data_xor[0] = cmd[0];
                 data_xor[1] = buffer[2];
                 Buffer.BlockCopy(obj_data, 0, data_xor, 2, obj_data.Length);
+                Console.WriteLine(SerialPortUtil.ByteToHexStr(data_xor));
                 byte compute_xor = SerialPortUtil.Get_CheckXor(data_xor);
+                Console.WriteLine("compute_xor为" + compute_xor.ToString("x2"));
                 if (!buffer[buffer.Length - 2].Equals(compute_xor))
                 {
                     return;
@@ -163,7 +165,7 @@ namespace AI_Sports.AISports.View.Pages
                     byte[] namebytewithzero = new byte[10];
                     byte[] phonebyte = new byte[4];
                     Buffer.BlockCopy(obj_data, 0, namebytewithzero, 0, namebytewithzero.Length);//提取姓名
-                    Console.WriteLine(Encoding.GetEncoding("GBK").GetString(namebytewithzero));//解析姓名
+                    Console.WriteLine(SerialPortUtil.GetEndString(namebytewithzero, 0));//解析姓名
                     Buffer.BlockCopy(obj_data, 10, phonebyte, 0, phonebyte.Length);//提取手机号
                     Console.WriteLine(Encoding.ASCII.GetString(phonebyte));//解析手机号
 
@@ -211,7 +213,7 @@ namespace AI_Sports.AISports.View.Pages
         {
             //string telephone = "5791";
             //string name = "徐靖皓";
-            string memberId = "徐靖皓9101AA";//姓名-手机号后两位-CRC CommUtil.GetSettingString("memberId");
+            string memberId = CommUtil.GetSettingString("memberId");//姓名-手机号后两位-CRC(0x01 0x02--12) CommUtil.GetSettingString("memberId");
             string name = "";
             string phone = "";
             byte[] crc = new byte[2];

@@ -40,8 +40,18 @@ namespace AI_Sports.AISports.View.Pages
            
             TrainingActivityService trainingActivityService = new TrainingActivityService();
             List<ActivityEntity> activityEntity = trainingActivityService.ListActivitysByCourseId();
+            int? targetValue;
             //目标值
-            int? targetValue = activityEntity[0].Target_turn_number;
+            if (activityEntity.Count>0)
+            {
+                targetValue = activityEntity[0].Target_turn_number;
+            }
+            else
+            {
+                targetValue = 0;
+            }
+           
+              
             //坐式推胸肌实际值
             int? sittingChestPusherValue = sittingChestPusher(currentCourseCount);
             Console.WriteLine("坐式推胸肌实际值" + sittingChestPusherValue);

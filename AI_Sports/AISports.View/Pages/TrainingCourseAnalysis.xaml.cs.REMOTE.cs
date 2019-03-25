@@ -203,10 +203,8 @@ namespace AI_Sports.AISports.View.Pages
         {
             //获取 currentCourseCount
             string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
-
             Console.WriteLine("强强强强强强强强强强强强强强强强"+ currentCourseCount);
             return currentCourseCount;
-
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（有氧）的总能量
         public string aerobicEnduranceEnergy()

@@ -7,9 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Json;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,9 +63,9 @@ namespace AI_Sports.AISports.View.Pages
                 int? Course_count = trainingCourseVO.Course_count;
 
                 Console.WriteLine("课程页选中行的course_count：" + Course_count);
-                //跳转到训练活动页面 传参只需要在后边加上参数即可 传递整个对象
+                //跳转到训练活动页面 传参只需要在后边加上参数即可
                 TrainingActivityAnalysis trainingActivityAnalysis = new TrainingActivityAnalysis();
-                this.NavigationService.Navigate(trainingActivityAnalysis, trainingCourseVO);
+                this.NavigationService.Navigate(trainingActivityAnalysis, Course_count);
                 //加载从训练课程页面传来的参数 //注意LoadCompleted 事件的位置在 Page1.cs 中
                 this.NavigationService.LoadCompleted += trainingActivityAnalysis.NavigationService_LoadCompleted;
                 
@@ -203,61 +201,26 @@ namespace AI_Sports.AISports.View.Pages
         {
             //获取 currentCourseCount
             string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
-
-            Console.WriteLine("强强强强强强强强强强强强强强强强"+ currentCourseCount);
             return currentCourseCount;
-
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（有氧）的总能量
-        public string aerobicEnduranceEnergy()
+        public double aerobicEnduranceEnergy()
         {
-            List<double> aerobicEnduranceEnergy = trainingCourseService.selectAerobicEnduranceEnergy(trainingPlanId);
-            Console.WriteLine("力量耐力循环（有氧）的总能量" + aerobicEnduranceEnergy);
-            DataContractJsonSerializer json = new DataContractJsonSerializer(aerobicEnduranceEnergy.GetType());
-            string szJson = "";
-            //序列化
-            using (MemoryStream stream = new MemoryStream())
-            {
-                json.WriteObject(stream, aerobicEnduranceEnergy);
-                szJson = Encoding.UTF8.GetString(stream.ToArray());
-
-            }
-            Console.WriteLine("成功:" + szJson);
-            return szJson;
+            double aerobicEnduranceEnergy = trainingCourseService.selectAerobicEnduranceEnergy(trainingPlanId);
+            return aerobicEnduranceEnergy;
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（力量）的总能量
-        public string forceEnduranceEnergy()
+        public double forceEnduranceEnergy()
         {
-            List<double> forceEnduranceEnergy = trainingCourseService.selectForceEnduranceEnergy(trainingPlanId);
-            DataContractJsonSerializer json = new DataContractJsonSerializer(forceEnduranceEnergy.GetType());
-            string szJson = "";
-            //序列化
-            using (MemoryStream stream = new MemoryStream())
-            {
-                json.WriteObject(stream, forceEnduranceEnergy);
-                szJson = Encoding.UTF8.GetString(stream.ToArray());
-
-            }
-            Console.WriteLine("成功:" + szJson);
-            return szJson;
+            double forceEnduranceEnergy = trainingCourseService.selectForceEnduranceEnergy(trainingPlanId);
+            return forceEnduranceEnergy;
         }
 
         //根据课程轮次数从小到大排序查询力量循环的总能量
-        public string forceEnergy()
+        public double forceEnergy()
         {
-            List<double> forceEnergy = trainingCourseService.selectForceEnergy(trainingPlanId);
-            Console.WriteLine("力量循环的总能量" + forceEnergy);
-            DataContractJsonSerializer json = new DataContractJsonSerializer(forceEnergy.GetType());
-            string szJson = "";
-            //序列化
-            using (MemoryStream stream = new MemoryStream())
-            {
-                json.WriteObject(stream, forceEnergy);
-                szJson = Encoding.UTF8.GetString(stream.ToArray());
-
-            }
-            Console.WriteLine("成功:" + szJson);
-            return szJson;
+            double forceEnergy = trainingCourseService.selectForceEnergy(trainingPlanId);
+            return forceEnergy;
         }
 
     }
