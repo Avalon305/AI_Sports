@@ -28,7 +28,14 @@ namespace AI_Sports.AISports.View.Pages
         public NewPlan()
         {
             InitializeComponent();
-           
+
+            TrainingPlanEntity trainingPlanEntity = trainingPlanService.GetPlanByMumberId();
+            if (trainingPlanEntity != null)
+            {
+                this.Lab_Title.Content = trainingPlanEntity.Title;
+                this.Lab_Gmt_create.Content = trainingPlanEntity.Gmt_create;
+            }
+            
         }
 
 

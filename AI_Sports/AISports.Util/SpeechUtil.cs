@@ -17,7 +17,9 @@ namespace AI_Sports.AISports.Util
             {
                 speech.SelectVoice("Microsoft Huihui Desktop");
                 //speech.SelectVoice("Microsoft Lili");
-                speech.Rate = -3;
+                //speech.Rate = -3;
+                //调整语速
+                speech.Rate = -1;
                 //先停止别的语音再重新说
                 speech.SpeakAsyncCancelAll();
                 //播放语音

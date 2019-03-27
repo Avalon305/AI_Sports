@@ -194,7 +194,7 @@ namespace AI_Sports
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             Enum resultCode = null;
-            if (e.Key == Key.D1)
+            if (e.Key == Key.U)
             {//模拟用户登录
                 resultCode = memberService.Login("305865088");
                 switch (resultCode)
@@ -226,7 +226,7 @@ namespace AI_Sports
                         break;
                 }
             }
-            else if (e.Key == Key.D0)
+            else if (e.Key == Key.C)
             {//模拟教练登陆
                 resultCode = memberService.Login("17863979633");
                 switch (resultCode)
