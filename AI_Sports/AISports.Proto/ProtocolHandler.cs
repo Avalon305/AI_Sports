@@ -1,6 +1,7 @@
 ﻿using AI_Sports.Service;
 using DotNetty.Buffers;
 using DotNetty.Transport.Channels;
+using Newtonsoft.Json;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -28,24 +29,31 @@ namespace AI_Sports.Proto
 
             var buffer = message as Message;
             logger.Info("收到报文："+ buffer.ToString());
-            Message response = new Message();
+			//Console.WriteLine("收到报文：-------->" + JsonConvert.SerializeObject(loginResp));
+			Message response = new Message();
             response.Sequence = buffer.Sequence > Int32.MaxValue - 1 ? 0 : buffer.Sequence + 1;
          
             switch (buffer.Type)
             {
                 case HeadType.LoginRequest:
-                    var loginResp = service.LoginRequest(buffer.LoginRequest);
-                    response.Type = HeadType.LoginResponse;
+					Console.WriteLine("收到报文：-------->" + JsonConvert.SerializeObject(buffer.LoginRequest));
+					var loginResp = service.LoginRequest(buffer.LoginRequest);
+					Console.WriteLine("LoginRequestResp-------->" + JsonConvert.SerializeObject(loginResp));
+					response.Type = HeadType.LoginResponse;
                     response.LoginResponse = loginResp;
                     break;
                 case HeadType.PersonalSetRequest:
-                    var setResp = service.PersonalSetRequest(buffer.PersonalSetRequest);
-                    response.Type = HeadType.PersonalSetResponse;
+					Console.WriteLine("收到报文：-------->" + JsonConvert.SerializeObject(buffer.PersonalSetRequest));
+					var setResp = service.PersonalSetRequest(buffer.PersonalSetRequest);
+					Console.WriteLine("PersonalSetRequest-------->" + JsonConvert.SerializeObject(buffer.PersonalSetRequest));
+					response.Type = HeadType.PersonalSetResponse;
                     response.PersonalSetResponse = setResp;
                     break;
                 case HeadType.UploadRequest:
-                    var upResp = service.UploadRequest(buffer.UploadRequest);
-                    response.Type = HeadType.UploadResponse;
+					Console.WriteLine("收到报文：-------->" + JsonConvert.SerializeObject(buffer.UploadRequest));
+					var upResp = service.UploadRequest(buffer.UploadRequest);
+					Console.WriteLine("UploadRequestResp-------->" + JsonConvert.SerializeObject(buffer.UploadRequest));
+					response.Type = HeadType.UploadResponse;
                     response.UploadResponse = upResp;
                     break;
                 default:
