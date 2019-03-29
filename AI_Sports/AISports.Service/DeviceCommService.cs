@@ -19,6 +19,7 @@ namespace AI_Sports.Service
 
         private PersonalSettingDAO personalSettingDAO = new PersonalSettingDAO();
         private MemberDAO memberDAO = new MemberDAO();
+        private MemberService memberService = new MemberService();
         private TrainingActivityRecordDAO trainingActivityRecordDAO = new TrainingActivityRecordDAO();
         private ActivityDAO activityDAO = new ActivityDAO();
         private TrainingDeviceRecordDAO trainingDeviceRecordDAO = new TrainingDeviceRecordDAO();
@@ -33,6 +34,19 @@ namespace AI_Sports.Service
             LoginResponse response = new LoginResponse();
             response.Uid = request.Uid;
             response.ActivityType = request.ActivityType;
+
+            //查询用户是否存在，若不存在 则自动创建用户和一系列训练课程、活动 byCQZ 2019.3.28
+            MemberEntity memberEntity = memberDAO.GetMember(request.Uid);
+            if (memberEntity == null)
+            {
+                //自动创建用户及计划 保证正常锻炼 接收数据
+                memberService.AutoInsertUser(request.Uid);
+                Console.WriteLine("收到的UID:{0}在数据库中不存在，自动创建用户及计划",request.Uid);
+            }
+            else
+            {
+                Console.WriteLine("用户存在");
+            }
 
             var setDto = personalSettingDAO.GetSettingByMemberIdDeviceType(request.Uid, request.DeviceType, request.ActivityType);
             if (setDto != null && setDto.PersonalSettingEntity != null)

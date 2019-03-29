@@ -9,7 +9,7 @@ namespace AI_Sports.AISports.Util
 {
     class SpeechUtil
     {
-        private static SpeechSynthesizer speech = new SpeechSynthesizer();
+        public static SpeechSynthesizer speech = new SpeechSynthesizer();
 
         public static void read(string text)
         {
@@ -24,18 +24,20 @@ namespace AI_Sports.AISports.Util
                 speech.SpeakAsyncCancelAll();
                 //播放语音
                 speech.Speak(text);
+                //停止
+                speech.SpeakAsyncCancelAll();
             }
             catch (Exception)
             {
 
-                Console.WriteLine("语音停止播放");
+                Console.WriteLine("语音播放异常");
             }
-                
-            
-           
-               
-          
-            
+
+
+
+
+
+
         }
 
         /// <summary>
@@ -43,7 +45,17 @@ namespace AI_Sports.AISports.Util
         /// </summary>
         public static void stop()
         {
-            speech.Dispose();
+            try
+            {
+                speech.SpeakAsyncCancelAll();
+                //speech.Dispose();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("停止语音异常");
+            }
+           
+
         }
 
     }

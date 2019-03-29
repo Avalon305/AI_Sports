@@ -175,7 +175,7 @@
                                 </Button>
                             </WrapPanel>
                             <WrapPanel HorizontalAlignment="Center" Margin="10">
-                                <Label Content="暂停" FontSize="18" FontWeight="Bold" Foreground="#04243D" RenderTransformOrigin="0.478,1.404" />
+                                <Label Content="暂停" FontSize="18" FontWeight="Bold" Foreground="#04243D" />
                             </WrapPanel>
                         </StackPanel>
                     </Border>

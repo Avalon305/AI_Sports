@@ -33,7 +33,7 @@ namespace AI_Sports.AISports.View.Pages
             if (trainingPlanEntity != null)
             {
                 this.Lab_Title.Content = trainingPlanEntity.Title;
-                this.Lab_Gmt_create.Content = trainingPlanEntity.Gmt_create;
+                this.Lab_Gmt_create.Content = trainingPlanEntity.Gmt_create.Value.ToString("f");
             }
             
         }
@@ -122,14 +122,24 @@ namespace AI_Sports.AISports.View.Pages
             NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
 
         }
-		
+        /// <summary>
+        /// 点击训练计划边框跳转到训练课程
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Border_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
 
-	
+        }
 
-		//private void Text_LostFocus(object sender, RoutedEventArgs e)
-		//{
-		//    this.TB_Title.Text = "请输入标题";
-		//}
-	}
+
+
+
+        //private void Text_LostFocus(object sender, RoutedEventArgs e)
+        //{
+        //    this.TB_Title.Text = "请输入标题";
+        //}
+    }
    
 }

@@ -26,6 +26,7 @@ namespace AI_Sports.Service
         private TrainingPlanDAO trainingPlanDAO = new TrainingPlanDAO();
         private TrainingCourseDAO trainingCourseDAO = new TrainingCourseDAO();
         private BluetoothReadDAO bluetoothReadDAO = new BluetoothReadDAO();
+        private TrainingPlanService planService = new TrainingPlanService();
         private static Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// 新增保存会员信息
@@ -47,6 +48,9 @@ namespace AI_Sports.Service
                 memberEntity.Id = KeyGenerator.GetNextKeyValueLong("bdl_member");
                 //设置创建时间
                 memberEntity.Gmt_create = System.DateTime.Now;
+                //默认不开启减脂模式
+                memberEntity.Is_open_fat_reduction = false;
+
                 //设置会员ID
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.Append(memberEntity.Member_familyName);
@@ -88,12 +92,6 @@ namespace AI_Sports.Service
                 //使用基类插入新会员
                 long resultCode = memberDAO.Insert(memberEntity);
 
-                //插入数据到蓝牙读取表
-                BluetoothReadEntity bluetoothReadEntity = new BluetoothReadEntity();
-                bluetoothReadEntity.Member_id = stringBuilder.ToString();
-                bluetoothReadEntity.Scan_count = 0;
-                //bluetoothReadEntity.Gmt_create = System.DateTime.Now;
-
 
                 //更新APP中会员设置，让新增的该会员登陆 强制更新配置类，将当前登陆用户踢出
 
@@ -115,6 +113,68 @@ namespace AI_Sports.Service
                 return resultCode;
 
                 
+            }
+        }
+        /// <summary>
+        /// 如果传上来的用户ID在数据库中不存在，则创建默认用户，并创建默认的训练计划、课程活动、个人设置
+        /// </summary>
+        /// <returns></returns>
+        public long AutoInsertUser(string memberId)
+        {
+            //使整个代码块成为事务性代码
+            using (TransactionScope ts = new TransactionScope())
+            {
+                MemberEntity memberEntity = new MemberEntity();
+                //会员UID
+                memberEntity.Member_id = memberId;
+                //自动创建的用户数据使用默认值
+                //姓氏
+                memberEntity.Member_familyName = memberId.Substring(0, 1);
+                //名字
+                if (memberId.Length == 6)
+                {
+                    memberEntity.Member_firstName = memberId.Substring(1, 1);
+
+                }
+                else if (memberId.Length == 7)
+                {
+                    memberEntity.Member_firstName = memberId.Substring(1, 2);
+
+                }
+                else
+                {
+                    memberEntity.Member_firstName = memberId.Substring(1, 2);
+
+                }
+
+                //计算最大心率 = 220 - 年龄,此处因为无数据使用默认值
+                memberEntity.Max_heart_rate = 190;
+                //计算最宜心率 = （最大心率 * 76.5%）然后四舍五入为整数
+                memberEntity.Suitable_heart_rate = (int?)Math.Round(memberEntity.Max_heart_rate.Value * 0.765);
+                //设置主键id
+                memberEntity.Id = KeyGenerator.GetNextKeyValueLong("bdl_member");
+                //设置创建时间
+                memberEntity.Gmt_create = System.DateTime.Now;
+                //默认不开启减脂
+                memberEntity.Is_open_fat_reduction = false;
+                //角色为会员
+                memberEntity.Role_id = 1;
+                //训练目的标签
+                memberEntity.Label_name = "塑形,";
+                //体重使用默认值
+                memberEntity.Weight = 80;
+
+                //使用基类插入新会员
+                long resultCode = memberDAO.Insert(memberEntity);
+
+                //创建模板训练计划 使用力量耐力循环模板
+                planService.AutoSaveNewPlan(memberEntity, PlanTemplate.StrengthEnduranceCycle);
+
+                ts.Complete();
+                //使用基类插入新会员
+                return resultCode;
+
+
             }
         }
 

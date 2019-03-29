@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Transactions;
+using AI_Sports.Constant;
 using AI_Sports.Dao;
 using AI_Sports.Entity;
 using AI_Sports.Util;
@@ -69,6 +70,53 @@ namespace AI_Sports.Service
             }
 
         }
+
+
+        /// <summary>
+        /// 自动创建模板训练计划 2019.3.27
+        /// </summary>
+        /// <param name="memberId"></param>
+        public void AutoSaveNewPlan(MemberEntity memberEntity , PlanTemplate planTemplate)
+        {
+            //使整个代码块成为事务性代码
+            using (TransactionScope ts = new TransactionScope())
+            {
+                TrainingPlanEntity trainingPlan = new TrainingPlanEntity();
+
+                //会员卡号ID
+                string memberId = memberEntity.Member_id;
+
+                //1.删除旧的训练计划
+                trainingPlanDAO.DeletePlanByMemberId(memberId);
+                //2.完成旧的训练课程
+                trainingCourseDAO.UpdateCompleteState(memberId, true);
+                //3.完成旧的训练活动
+                activityDAO.UpdateCompleteState(memberId, true);
+                //4.新增训练计划
+                trainingPlan.Id = KeyGenerator.GetNextKeyValueLong("bdl_training_plan");
+                //外键用户主键id
+                trainingPlan.Fk_member_id = memberEntity.Id;
+                //  设置会员卡号
+                trainingPlan.Member_id = memberEntity.Member_id;
+                // 开始时间
+                trainingPlan.Start_date = System.DateTime.Now;
+                //  设置状态为未删除
+                trainingPlan.Is_deleted = false;
+                //  创建时间
+                trainingPlan.Gmt_create = System.DateTime.Now;
+                //训练计划标题
+                trainingPlan.Title = "力量循环与耐力循环";
+                trainingPlan.Training_target = "塑形";
+                //  插入新训练计划
+                trainingPlanDAO.Insert(trainingPlan);
+
+                //自动创建模板课程
+                trainingCourseService.AutoSaveNewTemplateCourse(trainingPlan, planTemplate);
+                ts.Complete();
+            }
+        }
+
+
         /// <summary>
         /// 根据当前登陆会员 获得其训练计划
         /// </summary>
@@ -89,6 +137,10 @@ namespace AI_Sports.Service
             string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
             return trainingPlanDAO.GetTrainingPlanVO(trainingPlanId, trainingCourseId);
         }
+
+        
+
+
 
         public int selectRecordNumber()
         {

@@ -24,7 +24,7 @@
 					</WrapPanel>
 				</StackPanel>
 				<WrapPanel Margin="20,20,0,0">
-				<Border  BorderThickness="2" BorderBrush="#04243D" Background="#f1f1f1" Height="200" CornerRadius="10" >
+				<Border  BorderThickness="2" BorderBrush="#04243D" Background="#f1f1f1" Height="200" CornerRadius="10" MouseUp="Border_MouseUp">
 					<WrapPanel >
 						<StackPanel Height="224" Width="900" HorizontalAlignment="Left" RenderTransformOrigin="0.484,2.18">
 							<Label  x:Name="Lab_Title" Content="训练计划标题" Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,40"/>
