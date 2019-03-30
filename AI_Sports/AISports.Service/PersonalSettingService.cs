@@ -58,12 +58,20 @@ namespace AI_Sports.Service
                             //否则如果根据会员卡号查有可能出现没选这个训练活动却因为以前添加过设置查出来了。如果再根据类型判断查询也很麻烦。添加活动的时候更新个人设置里这个外键活动id是最好的办法。
                             personalSetting.Fk_training_activity_id = activity.Id;
 
-                            //设置各个属性的默认值
-                            personalSetting.Consequent_force = 21;//顺向力
-                            personalSetting.Reverse_force = 21;//反向力
-                            personalSetting.Front_limit = 100;//前方限制
-                            personalSetting.Back_limit = 0;//后方限制
-                            
+                            //分别设置力度和功率 单车跑步机只设置功率 其他设置力度
+                            if ("12".Equals(item.Code_s_value) || "16".Equals(item.Code_s_value))
+                            {
+                                personalSetting.Power = 30;
+                            }
+                            else
+                            {
+                                //设置各个属性的默认值
+                                personalSetting.Consequent_force = 21;//顺向力
+                                personalSetting.Reverse_force = 21;//反向力
+                                personalSetting.Front_limit = 100;//前方限制
+                                personalSetting.Back_limit = 0;//后方限制
+                            }
+
                             //添加进集合
                             personalSettingList.Add(personalSetting);
                         }
@@ -127,11 +135,21 @@ namespace AI_Sports.Service
                         //否则如果根据会员卡号查有可能出现没选这个训练活动却因为以前添加过设置查出来了。如果再根据类型判断查询也很麻烦。添加活动的时候更新个人设置里这个外键活动id是最好的办法。
                         personalSetting.Fk_training_activity_id = activity.Id;
 
-                        //设置各个属性的默认值
-                        personalSetting.Consequent_force = 21;//顺向力
-                        personalSetting.Reverse_force = 21;//反向力
-                        personalSetting.Front_limit = 100;//前方限制
-                        personalSetting.Back_limit = 0;//后方限制
+                        //分别设置力度和功率 单车跑步机只设置功率 其他设置力度
+                        if ("12".Equals(item.Code_s_value) || "16".Equals(item.Code_s_value))
+                        {
+                            personalSetting.Power = 30;
+                        }
+                        else
+                        {
+                            //设置各个属性的默认值
+                            personalSetting.Consequent_force = 21;//顺向力
+                            personalSetting.Reverse_force = 21;//反向力
+                            personalSetting.Front_limit = 100;//前方限制
+                            personalSetting.Back_limit = 0;//后方限制
+                        }
+                        
+                        
                         //添加进集合
                         personalSettingList.Add(personalSetting);
                     }

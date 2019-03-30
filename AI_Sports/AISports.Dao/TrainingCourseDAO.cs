@@ -86,7 +86,7 @@ namespace AI_Sports.Dao
             }
         }
 
-        public int selectMAxCourseRecord()
+        public int? selectMAxCourseRecord()
         {
             using (var conn = DbUtil.getConn())
             {

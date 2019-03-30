@@ -207,7 +207,7 @@ namespace AI_Sports.Service
         /// </summary>
         /// <param name="activityType"></param>
         /// <returns></returns>
-        public int GetTargetTurnNumByType(string activityType)
+        public int? GetTargetTurnNumByType(string activityType)
         {
             string courseId = CommUtil.GetSettingString("trainingCourseId");
             return activityDAO.GetTargetTurnNumByTypeCourseId(activityType,courseId);

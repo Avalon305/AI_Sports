@@ -240,7 +240,7 @@ namespace AI_Sports.AISports.View.Pages
         //X轴动态加载数据(未用到)
         public int maxCourseRecord()
         {
-            int maxCourseRecord = trainingCourseService.selectMAxCourseRecord();
+            int maxCourseRecord = trainingCourseService.selectMAxCourseRecord().Value;
             Console.WriteLine("成功:" + maxCourseRecord);
             return maxCourseRecord;
         }

@@ -1,8 +1,9 @@
 ﻿
+using System;
 using System.Windows;
 
 using System.Windows.Input;
-
+using System.Windows.Threading;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -11,10 +12,13 @@ namespace AI_Sports.AISports.View.Pages
     /// </summary>
     public partial class MessageBoxX : Window
     {
+
+        //声明定时任务 WPF与界面交互专用定时任务
+        private static DispatcherTimer timer = new DispatcherTimer();
         /// <summary>
         /// 禁止在外部实例化
         /// </summary>
-        private MessageBoxX()
+        public MessageBoxX()
         {
             InitializeComponent();
         }
@@ -43,6 +47,37 @@ namespace AI_Sports.AISports.View.Pages
             msgBox.Title = title;
             msgBox.Message = msg;
             return msgBox.ShowDialog();
+        }
+        /// <summary>
+        /// 自定义加载等待界面，会等待几秒自动关闭
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public void ShowLoading(string title, string msg ,int loadSecond)
+        {
+            //初始化注册定时器
+            timer.Tick += new EventHandler(timeCycle);
+            //3秒后关闭窗口
+            timer.Interval = new TimeSpan(0, 0, 0, loadSecond);
+            timer.Start();
+            //显示提示框
+            //var msgBox = new MessageBoxX();
+            this.Title = title;
+            this.Message = msg;
+            this.ShowDialog();
+            
+
+            
+
+        }
+        //定时任务调用方法 
+        private void timeCycle(object sender, EventArgs e)
+        {
+            //this.DialogResult = true;
+            timer.Stop();
+            timer.Tick -= timeCycle; // 取消注册
+            this.Close();
         }
 
         private void Yes_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

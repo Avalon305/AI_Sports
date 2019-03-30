@@ -30,7 +30,7 @@ namespace AI_Sports.Dao
         /// </summary>
         /// <param name="memberId/Device_code"></param>
         /// <returns></returns>
-        public int GetRecordCountByIdAndDeviceCode(string memberId,string Device_code)
+        public int? GetRecordCountByIdAndDeviceCode(string memberId,string Device_code)
         {
             using (var conn = DbUtil.getConn())
             {
@@ -45,7 +45,7 @@ namespace AI_Sports.Dao
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int GetTrainActivityRecordIdById(long Id)
+        public int? GetTrainActivityRecordIdById(long Id)
         {
             using (var conn = DbUtil.getConn())
             {

@@ -225,7 +225,7 @@ namespace AI_Sports.Service
                         //判断是否完成了这一次课程,即该课程ID下的所有Activity是否都为完成状态
                         if (activity.Is_complete == true)
                         {
-                            int count = activityDAO.CountByCourseId(request.CourseId, false);
+                            int? count = activityDAO.CountByCourseId(request.CourseId, false);
                             if (count == 0)//此课时下的活动都完成了
                             {
                                 TrainingCourseEntity courseEntity = trainingCourseDAO.Load(request.CourseId);

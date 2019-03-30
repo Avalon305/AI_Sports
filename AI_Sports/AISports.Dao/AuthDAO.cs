@@ -18,7 +18,7 @@ namespace AI_Sports.Entity
         /// 获取用户数量
         /// </summary>
         /// <returns></returns>        
-        public int GetAuthCount()
+        public int? GetAuthCount()
         {
             using (var conn = DbUtil.getConn())
             {

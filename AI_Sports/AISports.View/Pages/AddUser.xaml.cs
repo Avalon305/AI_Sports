@@ -235,6 +235,10 @@ namespace AI_Sports.AISports.View.Pages
 
                     }
 
+                    //调用2秒后自动关闭窗口的方法
+                    MessageBoxX messageBoxX = new MessageBoxX();
+                    messageBoxX.ShowLoading("温馨提示", "创建中请稍等......", 2);
+
                     //跳转到会员信息页面
                     NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative));
 
@@ -311,6 +315,7 @@ namespace AI_Sports.AISports.View.Pages
                 int? currentYear = DateTime.Now.Year;
                 //当前年份与出生年份相减计算年龄    
                 int? Age = (currentYear - parseInt);
+                this.LB_SuggestMaxHeartRate.Visibility = Visibility.Visible;
                 this.LB_SuggestMaxHeartRate.Content = "建议最大心率:" + (220 - Age).ToString();
             }
         }

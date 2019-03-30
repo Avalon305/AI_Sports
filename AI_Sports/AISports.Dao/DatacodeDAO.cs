@@ -22,7 +22,7 @@ namespace AI_Sports.Dao
                 return (List<DatacodeEntity>)conn.Query<DatacodeEntity>(query, new { Code_type_id = typeId });
             }
         }
-        public int GetMaxXh(string typeId)
+        public int? GetMaxXh(string typeId)
         {
             using (var conn = DbUtil.getConn())
             {

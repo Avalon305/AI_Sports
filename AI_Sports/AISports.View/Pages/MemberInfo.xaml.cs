@@ -126,7 +126,7 @@ namespace AI_Sports.AISports.View.Pages
 
                     //在界面加载memeberId
                     this.Lab_memberId.Content = memberId;
-                    //如果训练课程不为空 加载进度条以及进度信息
+                    //如果训练课程不为空 加载进度条以及进度信息 若为空则提示
                     //查询训练课程
                     TrainingCourseEntity trainingCourse = trainingCourseService.GetCourseByMemberId();
                     if (trainingCourse != null)
@@ -162,6 +162,11 @@ namespace AI_Sports.AISports.View.Pages
 
                         }
                     }
+                    else
+                    {
+                        MessageBoxX.Show("温馨提示","无训练计划或计划已完成，请联系教练制定训练计划");
+                    }
+                  
 
 
 

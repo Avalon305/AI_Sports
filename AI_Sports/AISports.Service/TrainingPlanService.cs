@@ -105,11 +105,26 @@ namespace AI_Sports.Service
                 //  创建时间
                 trainingPlan.Gmt_create = System.DateTime.Now;
                 //训练计划标题
-                trainingPlan.Title = "力量循环与耐力循环";
+                switch (planTemplate)
+                {
+                    case PlanTemplate.StrengthCycle:
+                        trainingPlan.Title = "力量循环";
+                        break;
+                    case PlanTemplate.EnduranceCycle:
+                        trainingPlan.Title = "力量耐力循环";
+                        break;
+                    case PlanTemplate.StrengthEnduranceCycle:
+                        trainingPlan.Title = "力量循环与力量耐力循环";
+                        break;
+                    default:
+                        break;
+                }
+                
                 trainingPlan.Training_target = "塑形";
                 //  插入新训练计划
                 trainingPlanDAO.Insert(trainingPlan);
-
+                //5.更新App.config中训练计划id
+                CommUtil.UpdateSettingString("trainingPlanId", (trainingPlan.Id).ToString());
                 //自动创建模板课程
                 trainingCourseService.AutoSaveNewTemplateCourse(trainingPlan, planTemplate);
                 ts.Complete();
@@ -150,7 +165,7 @@ namespace AI_Sports.Service
 
 
 
-        public int selectRecordNumber()
+        public int? selectRecordNumber()
         {
             return trainingPlanDAO.selectRecordNumber();
         }
