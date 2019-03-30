@@ -1,4 +1,5 @@
-﻿using AI_Sports.Proto;
+﻿using AI_Sports.AISports.View.Pages;
+using AI_Sports.Proto;
 using MySql.Data.MySqlClient;
 using NLog;
 using System;
@@ -45,7 +46,7 @@ namespace AI_Sports
                 {
                     App.Current.Dispatcher.Invoke(new Action(() =>
                     {
-                        MessageBox.Show("Socket通信端口被占用");
+                        MessageBoxX.Show("提示","Socket通信端口被占用");
                         System.Environment.Exit(0);
                     }));
                 }

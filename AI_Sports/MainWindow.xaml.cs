@@ -82,11 +82,11 @@ namespace AI_Sports
             }
             catch (UnauthorizedAccessException ex)
             {
-                MessageBox.Show("串口被占用", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxX.Show( "温馨提示", "串口被占用");
             }
             catch (IOException ex)
             {
-                MessageBox.Show("串口不存在", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxX.Show( "温馨提示", "串口不存在");
             }
 
         }

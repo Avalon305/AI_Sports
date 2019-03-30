@@ -1,5 +1,6 @@
 ﻿using AI_Sports.AISports.Constant;
 using AI_Sports.AISports.Util;
+using AI_Sports.AISports.View.Pages;
 using AI_Sports.Util;
 using System;
 using System.Collections.Generic;
@@ -100,7 +101,7 @@ namespace AI_Sports
                 //如果命令字等于发卡的应答
                 if (cmd[0].Equals(CommondConstant.ResSendCard))
                 {
-                    MessageBox.Show("发卡成功");
+                    MessageBoxX.Show("成功","发卡成功");
                 }
 
                 //如果命令字等于读卡
@@ -134,14 +135,14 @@ namespace AI_Sports
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("串口关闭失败");
+                    MessageBoxX.Show("失败","串口关闭失败");
                 }
                 return;
             }
 
             if (comboBox.SelectedIndex == -1)
             {
-                MessageBox.Show("请选择串口", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxX.Show( "温馨提示", "请选择串口");
                 return;
             }
             comboBox.IsEnabled = false;
@@ -164,12 +165,12 @@ namespace AI_Sports
             }
             catch (UnauthorizedAccessException ex)
             {
-                MessageBox.Show("串口被占用", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxX.Show( "温馨提示", "串口被占用");
                 comboBox.IsEnabled = true;
             }
             catch (IOException ex)
             {
-                MessageBox.Show("串口不存在", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxX.Show( "温馨提示", "串口不存在");
                 comboBox.IsEnabled = true;
             }
 
@@ -206,18 +207,18 @@ namespace AI_Sports
         {
             if (button.Content.ToString() == "xx")
             {
-                MessageBox.Show("您没有发卡权限", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxX.Show("温馨提示", "您没有发卡权限");
                 return false;
             }
             if (button.Content.ToString() == "连接")
             {
-                MessageBox.Show("请先连接串口", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxX.Show( "温馨提示", "请先连接串口");
                 return false;
 
             }
             else if (button.Content.ToString() == "未插卡")
             {
-                MessageBox.Show("请先连接读卡器", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxX.Show("温馨提示", "请先连接读卡器");
                 return false;
 
             }

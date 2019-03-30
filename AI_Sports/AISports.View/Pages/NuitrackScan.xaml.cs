@@ -1,5 +1,6 @@
 ﻿using AI_Sports.AISports.Dao;
 using AI_Sports.AISports.Entity;
+using AI_Sports.AISports.View.Pages;
 using nuitrack;
 using nuitrack.issues;
 using System;
@@ -576,7 +577,7 @@ namespace AI_Sports
             {
                 skeletonLengthDAO.updateSkeletonLengthRecord(skeletonLengthEntity);
             }
-            MessageBox.Show("保存成功");
+            MessageBoxX.Show("成功","保存成功");
         }
 
         private void Button_Click_Clear(object sender, RoutedEventArgs e)
