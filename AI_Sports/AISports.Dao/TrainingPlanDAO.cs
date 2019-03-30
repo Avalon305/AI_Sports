@@ -56,7 +56,22 @@ namespace AI_Sports.Dao
                 return conn.QueryFirstOrDefault<TrainingPlanEntity>(query, new { Member_id = memberId });
             }
         }
+		/// <summary>
+		/// 根据当前登录会员，获得所有的训练计划
+		/// </summary>
+		/// <param name="memberId"></param>
+		/// <returns></returns>
 
+		public List<TrainingPlanEntity> GetAllPlan(string memberId)
+		{
+
+			using (var conn = DbUtil.getConn())
+			{
+				const string query = "select * FROM bdl_training_plan where member_id = @Member_id";
+			    return conn.Query<TrainingPlanEntity>(query,new { Member_id = memberId }).ToList();
+			}
+		}
+	
         /// <summary>
         /// 查询训练计划分析页面展示的信息
         /// </summary>

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using AI_Sports.Service;
+using AI_Sports.Util;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -27,21 +28,31 @@ namespace AI_Sports.AISports.View.Pages
         public User()
         {
             InitializeComponent();
-            //设置登录用户头像和称呼
-            int sex = 1;
-            string member_familyName = "陈";         //member_familyName是数据库中姓氏的字段
-            if (sex == 1)
-            {
-                this.familyName.Text = member_familyName + "先生";
-            }
-            else if (sex == 0)
-            {
-                this.familyName.Text = member_familyName + "女士";
-            }
-            else
-                this.familyName.Text = "未登录";
+			//设置登录用户头像和称呼
+			//int sex = 1;
+			//string member_familyName = "陈";         //member_familyName是数据库中姓氏的字段
+			//if (sex == 1)
+			//{
+			//    this.familyName.Text = member_familyName + "先生";
+			//}
+			//else if (sex == 0)
+			//{
+			//    this.familyName.Text = member_familyName + "女士";
+			//}
+			//else
+			//    this.familyName.Text = "未登录";
+			string MemberId = (CommUtil.GetSettingString("memberId"));
+			string Name = memberService.GetMember(MemberId).Member_familyName + memberService.GetMember(MemberId).Member_firstName;
+			if (MemberId != null)
+			{
+				this.familyName.Text = Name;
+			}
+			else
+			{
+				this.familyName.Text = "未登录";
+			}
 
-            string photopath = "/AI_Sports;component/AISports.View/Images/photo.png";   //头像路径
+			string photopath = "/AI_Sports;component/AISports.View/Images/photo.png";   //头像路径
             if (File.Exists(photopath) == false)
             {
                 this.headphoto.Source = new BitmapImage(new Uri(@photopath, UriKind.Relative));

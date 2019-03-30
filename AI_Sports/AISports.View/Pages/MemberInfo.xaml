@@ -80,7 +80,7 @@
                     <WrapPanel Margin="10 0 0 0">
                         <Button Style="{DynamicResource btn-primary}" Height="20" Width="20"  Margin="20,0,0,0" />
                         <Label Content="目标" Foreground="#04243D" Style="{DynamicResource h3}" Margin="5,0,0,0" FontFamily="Microsoft YaHei" FontSize="22px" VerticalContentAlignment="Center" />
-                        <ContentControl x:Name="Mubiao" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Width="1000" Foreground="#04243D" FontFamily="Microsoft YaHei" FontSize="22"/>
+                        <ContentControl x:Name="Mubiao" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Width="1000" Foreground="#04243D" FontFamily="Microsoft YaHei" FontSize="22" Content="" />
                         <ContentControl x:Name="MubiaoJindu" Style="{StaticResource panel-body}"  HorizontalAlignment="Left" Content="" Width="100" Foreground="#04243D" FontFamily="Microsoft YaHei" FontSize="22"/>
                     </WrapPanel>
                     <Button Content="前往训练计划" Background="#FF04243D" Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" Margin="20,5,5,5" RenderTransformOrigin="0.341,-0.515" Click="Button_Click"/>

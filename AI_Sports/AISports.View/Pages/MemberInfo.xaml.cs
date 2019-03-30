@@ -41,7 +41,7 @@ namespace AI_Sports.AISports.View.Pages
 
         TrainingCourseService trainingCourseService = new TrainingCourseService();
         TrainingDeviceRecordService trainingDeviceRecordService = new TrainingDeviceRecordService();
-
+		TrainingPlanService trainingPlanService = new TrainingPlanService();
         MemberService memberService = new MemberService();
         //语音分析用 进度条进度数字
         private double jinchengJindu = 0;
@@ -231,7 +231,19 @@ namespace AI_Sports.AISports.View.Pages
                 
                 throw new Exception("MemberInfo页面初始化加载数据异常",ex);
             }
+			//zfc
+			//加上完成的训练计划
+		List<TrainingPlanEntity> trainingPlanEntities = trainingPlanService.GetAllPlan();
+			int finish = 0;
+			foreach(TrainingPlanEntity trainingPlanEntity in trainingPlanEntities)
+			{
+				if (trainingPlanEntity.Is_deleted.Value == true)
+				{
+					finish += 1;
+				}
+			}
 
+			this.Mubiao.Content = finish + "个训练计划完成";
 
 
         }

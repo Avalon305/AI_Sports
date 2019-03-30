@@ -126,7 +126,15 @@ namespace AI_Sports.Service
             string memberId = CommUtil.GetSettingString("memberId");
             return trainingPlanDAO.GetTrainingPlanByMumberId(memberId);
         }
-
+		/// <summary>
+		/// 根据当前登录会员，获得所有的训练计划
+		/// </summary>
+		/// <returns></returns>
+		public List<TrainingPlanEntity> GetAllPlan()
+		{
+			string memberId = CommUtil.GetSettingString("memberId");
+			return trainingPlanDAO.GetAllPlan(memberId);
+		}
         /// <summary>
         ///查询训练计划分析页面展示的信息，参数为AppConfig中的当前训练计划id，当前训练课程id
         /// </summary>
