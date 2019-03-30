@@ -229,7 +229,7 @@ namespace AI_Sports.AISports.View.Pages
         //X轴动态加载数据(未用到)
         public int recordNumber()
         {
-            int recordNumber = trainingPlanService.selectRecordNumber();
+            int recordNumber = trainingPlanService.selectRecordNumber().Value;
             return recordNumber;
         }
 

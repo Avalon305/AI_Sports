@@ -65,6 +65,15 @@
                             </Grid>
                         </Button.Content>
                     </Button>
+                    <Button   Margin="50 20 0 20" Width="130" Height="130" Background="White" Click="Button_Click_Template" >
+                        <Button.Content>
+                            <Grid >
+                                <Label Content="新建"  Margin="25,55,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" Grid.ColumnSpan="2" FontWeight="Bold" />
+                                <Label Content="模板计划"  Margin="10,80,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" />
+                                <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-list-alt}"  Margin="0 -50 0 0"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
 
 
                 </WrapPanel>
@@ -121,7 +130,31 @@
 				</StackPanel>
 			</Expander>
 
-		</StackPanel>
+
+            <Expander  Name="Template"  HeaderTemplate="{StaticResource titleText}"  Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
+
+                <StackPanel>
+                    <WrapPanel Margin="0 15 0 0">
+                        <Label Content="设置" Style="{DynamicResource h3}" Margin="20 0 0 0" FontFamily="Microsoft JhengHei UI" FontWeight="Bold" ></Label>
+                    </WrapPanel>
+
+                    <WrapPanel>
+                        <GridSplitter  Width="1080" Height="2" Margin="10,15,0,0" Background="Gray" />
+                    </WrapPanel>
+                    <Label Content="使用模板自动创建训练计划" Style="{DynamicResource h3}" Height="40" FontSize="22" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="200,10,0,0" FontFamily="Microsoft YaHei" Foreground="#04243D"/>
+                    <RadioButton Name="strengthRadioButton" Margin="200,5,0,0" GroupName="Template" Content="力量循环" Style="{DynamicResource radio has-warning}" FontSize="22" FontFamily="Microsoft YaHei"  Height="40"/>
+                    <RadioButton Name="enduranceRadioButton" Margin="200,5,0,0" GroupName="Template" Content="力量耐力循环" Style="{DynamicResource radio has-success}" FontSize="22" FontFamily="Microsoft YaHei"  Height="40"/>
+                    <RadioButton Name="strengthEnduranceRadioButton" Margin="200,5,0,0" GroupName="Template" Content="力量循环和力量耐力循环" Style="{DynamicResource radio has-error}" FontSize="22" FontFamily="Microsoft YaHei"  Height="40"/>
+                    <WrapPanel Margin="200,35,0,0" Height="69">
+                        <Button Content="取消" Style="{DynamicResource btn-warning}" FontSize="20" Width="75" Height="35" Click="Button_Cancle_Template"></Button>
+                        <Button Content="确认" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35" Margin="490 0 0 0" Click="Button_Save_Template"/>
+
+                    </WrapPanel>
+                </StackPanel>
+                
+            </Expander>
+
+        </StackPanel>
 	
 
 	</Grid>

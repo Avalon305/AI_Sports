@@ -72,7 +72,7 @@ namespace AI_Sports.Dao
         }
 
 
-        public int selectRecordNumber()
+        public int? selectRecordNumber()
         {
             using (var conn = DbUtil.getConn())
             {

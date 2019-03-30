@@ -18,10 +18,10 @@ namespace AI_Sports.AISports.Service
             return trainingDeviceRecordDAO.GetRecordByIdAndTime(memberId);
         }
 
-        public int GetTrainActivityRecordIdById(long Id) {
+        public int? GetTrainActivityRecordIdById(long Id) {
             return trainingDeviceRecordDAO.GetTrainActivityRecordIdById(Id);
         }
-        public int GetRecordCountByIdAndDeviceCode(string memberId, string Device_code) {
+        public int? GetRecordCountByIdAndDeviceCode(string memberId, string Device_code) {
             return trainingDeviceRecordDAO.GetRecordCountByIdAndDeviceCode(memberId, Device_code);
         }
         /// <summary>

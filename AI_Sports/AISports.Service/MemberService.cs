@@ -56,9 +56,11 @@ namespace AI_Sports.Service
                 stringBuilder.Append(memberEntity.Member_familyName);
                 stringBuilder.Append(memberEntity.Member_firstName);
                 //用户名3个字符以内 写入时UTF-8编码每个汉字占3个字节
-                if (stringBuilder.Length > 3)
+                if (stringBuilder.ToString().Length > 3)
                 {
-                    stringBuilder.ToString().Substring(0,3);
+                    string subMemberId = stringBuilder.ToString().Substring(0, 3);
+                    stringBuilder.Clear();
+                    stringBuilder.Append(subMemberId);
                 }
                 //手机号不为空则拼接手机号后四位
                 if (memberEntity.Mobile_phone != null && memberEntity.Mobile_phone != "")
@@ -70,6 +72,7 @@ namespace AI_Sports.Service
                 {
                     logger.Warn("拼接用户id时，用户手机号为空。用户名："+memberEntity.Member_familyName+memberEntity.Member_firstName);
                 }
+                Console.WriteLine("用户名+手机后后两位："+ stringBuilder.ToString());
                 //添加CRC校验
                 string fullName = memberEntity.Member_familyName + memberEntity.Member_firstName;
                 string phone = memberEntity.Mobile_phone.Substring(memberEntity.Mobile_phone.Length - 2);

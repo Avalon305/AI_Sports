@@ -97,7 +97,10 @@ namespace AI_Sports.Service
                 //  保存课程
                 //这个插入基类有BUG 明明插入进入了 但是返回的结果为0，所以不要返回值了。反正如果插入失败也报异常，返回值也没啥用
                 trainingCourseDAO.Insert(trainingCourseEntity);
-
+                //更新配置中的课程id 
+                CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
+                //训练课程目标天数
+                CommUtil.UpdateSettingString("targetCourseCount", (trainingCourseEntity.Target_course_count).ToString());
                 //调用创建模板训练活动
                 trainingActivityService.AutoSaveActivityTemplate(trainingCourseEntity , trainingPlan.Fk_member_id.Value, planTemplate);
                 ts.Complete();
@@ -144,7 +147,7 @@ namespace AI_Sports.Service
             return trainingCourseDAO.UpdateCourseCount(id);
         }
 
-        public int selectMAxCourseRecord()
+        public int? selectMAxCourseRecord()
         {
             return trainingCourseDAO.selectMAxCourseRecord();
         }

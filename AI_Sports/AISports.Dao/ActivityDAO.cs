@@ -65,7 +65,7 @@ namespace AI_Sports.Dao
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public int GetTargetTurnNumById(long Id)
+        public int? GetTargetTurnNumById(long Id)
         {
             using (var conn = DbUtil.getConn())
             {
@@ -79,7 +79,7 @@ namespace AI_Sports.Dao
         /// <param name="Type"></param>
         /// <param name="CouseId"></param>
         /// <returns></returns>
-        public int GetTargetTurnNumByTypeCourseId(string Type,string CouseId)
+        public int? GetTargetTurnNumByTypeCourseId(string Type,string CouseId)
         {
             using (var conn = DbUtil.getConn())
             {
@@ -123,7 +123,7 @@ namespace AI_Sports.Dao
         /// <param name="courseId"></param>
         /// <param name="complete"></param>
         /// <returns></returns>
-        public int CountByCourseId(long courseId,bool complete)
+        public int? CountByCourseId(long courseId,bool complete)
         {
             using (var conn = DbUtil.getConn())
             {

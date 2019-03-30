@@ -107,7 +107,7 @@ namespace AI_Sports
                         ce.Image_address = "0.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list0CF.Add(item.Consequent_force.ToString());
                         list0RF.Add(item.Reverse_force.ToString());
                         list0Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -121,7 +121,7 @@ namespace AI_Sports
                         ce.Image_address = "1.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list1CF.Add(item.Consequent_force.ToString());
                         list1RF.Add(item.Reverse_force.ToString());
                         list1Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -135,7 +135,7 @@ namespace AI_Sports
                         ce.Image_address = "2.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list2CF.Add(item.Consequent_force.ToString());
                         list2RF.Add(item.Reverse_force.ToString());
                         list2Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -149,7 +149,7 @@ namespace AI_Sports
                         ce.Image_address = "3.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list3CF.Add(item.Consequent_force.ToString());
                         list3RF.Add(item.Reverse_force.ToString());
                         list3Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -163,7 +163,7 @@ namespace AI_Sports
                         ce.Image_address = "4.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list4CF.Add(item.Consequent_force.ToString());
                         list4RF.Add(item.Reverse_force.ToString());
                         list4Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -177,7 +177,7 @@ namespace AI_Sports
                         ce.Image_address = "5.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list5CF.Add(item.Consequent_force.ToString());
                         list5RF.Add(item.Reverse_force.ToString());
                         list5Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -191,7 +191,7 @@ namespace AI_Sports
                         ce.Image_address = "6.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list6CF.Add(item.Consequent_force.ToString());
                         list6RF.Add(item.Reverse_force.ToString());
                         list6Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -205,7 +205,7 @@ namespace AI_Sports
                         ce.Image_address = "7.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list7CF.Add(item.Consequent_force.ToString());
                         list7RF.Add(item.Reverse_force.ToString());
                         list7Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -219,7 +219,7 @@ namespace AI_Sports
                         ce.Image_address = "8.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list8CF.Add(item.Consequent_force.ToString());
                         list8RF.Add(item.Reverse_force.ToString());
                         list8Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -233,7 +233,7 @@ namespace AI_Sports
                         ce.Image_address = "9.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list9CF.Add(item.Consequent_force.ToString());
                         list9RF.Add(item.Reverse_force.ToString());
                         list9Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -247,7 +247,7 @@ namespace AI_Sports
                         ce.Image_address = "10.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list10CF.Add(item.Consequent_force.ToString());
                         list10RF.Add(item.Reverse_force.ToString());
                         list10Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -261,7 +261,7 @@ namespace AI_Sports
                         ce.Image_address = "11.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list11CF.Add(item.Consequent_force.ToString());
                         list11RF.Add(item.Reverse_force.ToString());
                         list11Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -276,7 +276,7 @@ namespace AI_Sports
                         ce.Image_address = "12.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Power.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list12CF.Add(item.Consequent_force.ToString());
                         list12RF.Add(item.Reverse_force.ToString());
                         list12Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -290,7 +290,7 @@ namespace AI_Sports
                         ce.Image_address = "13.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list13CF.Add(item.Consequent_force.ToString());
                         list13RF.Add(item.Reverse_force.ToString());
                         list13Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -304,7 +304,7 @@ namespace AI_Sports
                         ce.Image_address = "14.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list14CF.Add(item.Consequent_force.ToString());
                         list14RF.Add(item.Reverse_force.ToString());
                         list14Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -318,7 +318,7 @@ namespace AI_Sports
                         ce.Image_address = "15.png";
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list15CF.Add(item.Consequent_force.ToString());
                         list15RF.Add(item.Reverse_force.ToString());
                         list15Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -334,7 +334,7 @@ namespace AI_Sports
                         ce.Modified_time = item.Gmt_modified.ToString();
                         ce.Current_set = item.Power.ToString();
                         //Rate是期望与实际之比
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id)).ToString();
+                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode("305865088", item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list16CF.Add(item.Consequent_force.ToString());
                         list16RF.Add(item.Reverse_force.ToString());
                         list16Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
