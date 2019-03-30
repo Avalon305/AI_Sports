@@ -146,7 +146,7 @@ namespace AI_Sports.AISports.View.Pages
 			}
 			//刷新页面
 			//MessageBox.Show("成功跳过此次训练课程");
-			MessageBox.Show("成功", "成功跳过此次训练课程");
+			MessageBoxX.Show("成功", "成功跳过此次训练课程");
 			int flag = 1;
 			if(flag == 1)
 			{

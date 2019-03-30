@@ -105,7 +105,7 @@ namespace AI_Sports.AISports.View.Pages
 			}
 			else
 			{
-				MessageBox.Show("错误","密码输入错误");
+				MessageBoxX.Show("错误","密码输入错误");
 			}
 
 		}

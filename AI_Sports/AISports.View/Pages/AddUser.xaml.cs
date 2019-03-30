@@ -52,23 +52,23 @@ namespace AI_Sports.AISports.View.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("保存成功");
+            MessageBoxX.Show("成功","保存成功");
         }
 
         //非法日期的判断
         private void DatePicker_DateValidationError(object sender, DatePickerDateValidationErrorEventArgs e)
         {
-            MessageBox.Show(e.Text + "非法日期" + e.Exception.Message);
+            MessageBoxX.Show("警告",e.Text + "非法日期" + e.Exception.Message);
         }
         private void StackPanel_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("取消");
+            MessageBoxX.Show("取消","取消");
         }
 
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("已取消");
+            MessageBoxX.Show("取消","已取消");
 
         }
         /// <summary>
