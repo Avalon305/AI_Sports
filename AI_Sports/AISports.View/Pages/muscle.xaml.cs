@@ -37,7 +37,9 @@ namespace AI_Sports.AISports.View.Pages
            
             //获取 currentCourseCount
             string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
-           
+            //获取 memberId
+            string memberId = CommUtil.GetSettingString("memberId");
+
             TrainingActivityService trainingActivityService = new TrainingActivityService();
             List<ActivityEntity> activityEntity = trainingActivityService.ListActivitysByCourseId();
             int? targetValue;
@@ -53,40 +55,40 @@ namespace AI_Sports.AISports.View.Pages
            
               
             //坐式推胸肌实际值
-            int? sittingChestPusherValue = sittingChestPusher(currentCourseCount);
+            int? sittingChestPusherValue = sittingChestPusher(currentCourseCount, memberId);
             Console.WriteLine("坐式推胸肌实际值" + sittingChestPusherValue);
             //坐式划船机实际值
-            int? sittingRowerValue = sittingRower(currentCourseCount);
+            int? sittingRowerValue = sittingRower(currentCourseCount, memberId);
             //坐式背部伸展机实际值
-            int? sittingBackStretcherValue = sittingBackStretcher(currentCourseCount);
+            int? sittingBackStretcherValue = sittingBackStretcher(currentCourseCount, memberId);
             //腹肌训练机实际值
-            int? abdominalMuscleTrainingValue = abdominalMuscleTraining(currentCourseCount);
+            int? abdominalMuscleTrainingValue = abdominalMuscleTraining(currentCourseCount, memberId);
             //坐式腿伸展训练机实际值
-            int? sittingLegStretchingValue = sittingLegStretching(currentCourseCount);
+            int? sittingLegStretchingValue = sittingLegStretching(currentCourseCount, memberId);
             //坐式曲腿训练机实际值
-            int? sittingCurvingLegValue = sittingCurvingLeg(currentCourseCount);
+            int? sittingCurvingLegValue = sittingCurvingLeg(currentCourseCount, memberId);
             //健身车实际值
-            int? exerciseBikeValue = exerciseBike(currentCourseCount);
+            int? exerciseBikeValue = exerciseBike(currentCourseCount, memberId);
             //椭圆跑步机实际值
-            int? ellipticalTreadmillValue = ellipticalTreadmill(currentCourseCount);
+            int? ellipticalTreadmillValue = ellipticalTreadmill(currentCourseCount, memberId);
             //坐式背阔肌高拉机实际值
-            int? sittinglatissimusDorsiElevatorValue = sittinglatissimusDorsiElevator(currentCourseCount);
+            int? sittinglatissimusDorsiElevatorValue = sittinglatissimusDorsiElevator(currentCourseCount, memberId);
             //三头肌训练机实际值
-            int? tricepsTrainingMachineValue = tricepsTrainingMachine(currentCourseCount);
+            int? tricepsTrainingMachineValue = tricepsTrainingMachine(currentCourseCount, memberId);
             //腿部内弯机实际值
-            int? legBenderValue = legBender(currentCourseCount);
+            int? legBenderValue = legBender(currentCourseCount, memberId);
             //腿部外弯机实际值
-            int? legValue = leg(currentCourseCount);
+            int? legValue = leg(currentCourseCount, memberId);
             //蝴蝶机实际值
-            int? butterflyMachineValue = butterflyMachine(currentCourseCount);
+            int? butterflyMachineValue = butterflyMachine(currentCourseCount, memberId);
             //反向蝴蝶机实际值
-            int? reverseButterflyMachineValue = reverseButterflyMachine(currentCourseCount);
+            int? reverseButterflyMachineValue = reverseButterflyMachine(currentCourseCount, memberId);
             //坐式背部伸展机实际值
-            int? sittingBackValue = sittingBack(currentCourseCount);
+            int? sittingBackValue = sittingBack(currentCourseCount, memberId);
             //躯干扭转组合实际值
-            int? trunkTorsionCombinationValue = trunkTorsionCombination(currentCourseCount);
+            int? trunkTorsionCombinationValue = trunkTorsionCombination(currentCourseCount, memberId);
             //腿部推蹬机实际值
-            int? legPusherValue = legPusher(currentCourseCount);
+            int? legPusherValue = legPusher(currentCourseCount, memberId);
 
             //坐式推胸肌赋值
             data1.Content = sittingChestPusherValue + "/" + targetValue;
@@ -139,91 +141,91 @@ namespace AI_Sports.AISports.View.Pages
         MuscleService muscleService = new MuscleService();
        
         //坐式推胸肌实际值
-        public int? sittingChestPusher(string currentCourseCount)
+        public int? sittingChestPusher(string currentCourseCount, string memberId)
         {
-            return muscleService.selectsittingChestPusher(currentCourseCount);
+            return muscleService.selectsittingChestPusher(currentCourseCount, memberId);
         }
         //坐式划船机实际值
-        public int? sittingRower(string currentCourseCount)
+        public int? sittingRower(string currentCourseCount, string memberId)
         {
-            return muscleService.selectSittingRower(currentCourseCount);
+            return muscleService.selectSittingRower(currentCourseCount, memberId);
         }
         //坐式背部伸展机实际值
-        public int? sittingBackStretcher(string currentCourseCount)
+        public int? sittingBackStretcher(string currentCourseCount, string memberId)
         {
-            return muscleService.selectsittingBackStretcher(currentCourseCount);
+            return muscleService.selectsittingBackStretcher(currentCourseCount, memberId);
         }
         //腹肌训练机实际值
-        public int? abdominalMuscleTraining(string currentCourseCount)
+        public int? abdominalMuscleTraining(string currentCourseCount, string memberId)
         {
-            return muscleService.selectAbdominalMuscleTraining(currentCourseCount);
+            return muscleService.selectAbdominalMuscleTraining(currentCourseCount, memberId);
         }
         //坐式腿伸展训练机实际值
-        public int? sittingLegStretching(string currentCourseCount)
+        public int? sittingLegStretching(string currentCourseCount, string memberId)
         {
-            return muscleService.selectSittingLegStretching(currentCourseCount);
+            return muscleService.selectSittingLegStretching(currentCourseCount, memberId);
         }
         //坐式曲腿训练机实际值
-        public int? sittingCurvingLeg(string currentCourseCount)
+        public int? sittingCurvingLeg(string currentCourseCount, string memberId)
         {
-            return muscleService.selectSittingCurvingLeg(currentCourseCount);
+            return muscleService.selectSittingCurvingLeg(currentCourseCount, memberId);
         }
         //健身车实际值
-        public int? exerciseBike(string currentCourseCount)
+        public int? exerciseBike(string currentCourseCount, string memberId)
         {
-            return muscleService.selectExerciseBike(currentCourseCount);
+            return muscleService.selectExerciseBike(currentCourseCount, memberId);
         }
         //椭圆跑步机实际值
-        public int? ellipticalTreadmill(string currentCourseCount)
+        public int? ellipticalTreadmill(string currentCourseCount, string memberId)
         {
-            return muscleService.selectEllipticalTreadmill(currentCourseCount);
+            return muscleService.selectEllipticalTreadmill(currentCourseCount, memberId);
         }
         //力量循环肌肉图
 
         //坐式背阔肌高拉机实际值
-        public int? sittinglatissimusDorsiElevator(string currentCourseCount)
+        public int? sittinglatissimusDorsiElevator(string currentCourseCount, string memberId)
         {
-            return muscleService.selectSittinglatissimusDorsiElevator(currentCourseCount);
+            return muscleService.selectSittinglatissimusDorsiElevator(currentCourseCount, memberId);
         }
         //三头肌训练机实际值
-        public int? tricepsTrainingMachine(string currentCourseCount)
+        public int? tricepsTrainingMachine(string currentCourseCount, string memberId)
         {
-            return muscleService.selectTricepsTrainingMachine(currentCourseCount);
+            return muscleService.selectTricepsTrainingMachine(currentCourseCount, memberId);
         }
         //腿部内弯机实际值
-        public int? legBender(string currentCourseCount)
+        public int? legBender(string currentCourseCount, string memberId)
         {
-            return muscleService.selectLegBender(currentCourseCount);
+            return muscleService.selectLegBender(currentCourseCount, memberId);
         }
         //腿部外弯机实际值
-        public int? leg(string currentCourseCount)
+        public int? leg(string currentCourseCount, string memberId)
         {
-            return muscleService.selectLeg(currentCourseCount);
+            return muscleService.selectLeg(currentCourseCount, memberId);
         }
         //蝴蝶机实际值
-        public int? butterflyMachine(string currentCourseCount)
+        public int? butterflyMachine(string currentCourseCount, string memberId)
         {
-            return muscleService.selectButterflyMachine(currentCourseCount);
+            return muscleService.selectButterflyMachine(currentCourseCount, memberId);
         }
         //反向蝴蝶机实际值
-        public int? reverseButterflyMachine(string currentCourseCount)
+        public int? reverseButterflyMachine(string currentCourseCount, string memberId)
         {
-            return muscleService.selectReversebutterflyMachine(currentCourseCount);
+            return muscleService.selectReversebutterflyMachine(currentCourseCount, memberId);
         }
         //坐式背部伸展机实际值
-        public int? sittingBack(string currentCourseCount)
+        public int? sittingBack(string currentCourseCount, string memberId)
         {
-            return muscleService.SittingBack(currentCourseCount);
+            return muscleService.SittingBack(currentCourseCount, memberId);
         }
         //躯干扭转组合实际值
-        public int? trunkTorsionCombination(string currentCourseCount)
+        public int? trunkTorsionCombination(string currentCourseCount, string memberId)
         {
-            return muscleService.selectTrunkTorsionCombination(currentCourseCount);
+            return muscleService.selectTrunkTorsionCombination(currentCourseCount, memberId);
         }
         //腿部推蹬机实际值
-        public int? legPusher(string currentCourseCount)
+        public int? legPusher(string currentCourseCount, string memberId)
         {
-            return muscleService.selectLegPusher(currentCourseCount);
+            return muscleService.selectLegPusher(currentCourseCount, memberId);
         }
 
 

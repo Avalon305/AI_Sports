@@ -11,9 +11,9 @@ namespace AI_Sports.AISports.Service
     class ProcessService
     {
         ProcessDAO processDAO = new ProcessDAO();
-        public List<DateTime> selectCreateTime()
+        public List<DateTime> selectCreateTime(string trainingCourseId)
         {
-            return processDAO.selectCreateTime();
+            return processDAO.selectCreateTime(trainingCourseId);
 
         }
 
@@ -27,9 +27,9 @@ namespace AI_Sports.AISports.Service
             return processDAO.selectCount();
         }
 
-        public List<DateTime> selectStrengthCreateTime()
+        public List<DateTime> selectStrengthCreateTime(string trainingCourseId)
         {
-            return processDAO.selectStrengthCreateTime();
+            return processDAO.selectStrengthCreateTime(trainingCourseId);
         }
 
         public List<double> selectavgStrengthValue(string trainingCourseId)
@@ -37,9 +37,9 @@ namespace AI_Sports.AISports.Service
             return processDAO.selectavgStrengthValue(trainingCourseId);
         }
 
-        public List<DateTime> selectAerobicCreateTime()
+        public List<DateTime> selectAerobicCreateTime(string trainingCourseId)
         {
-            return processDAO.selectAerobicCreateTime();
+            return processDAO.selectAerobicCreateTime(trainingCourseId);
         }
 
         public List<double> selectavgAerobicValue(string trainingCourseId)

@@ -217,7 +217,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AISports.View\Pages\Process.xaml">
+    <Page Include="AISports.View\Pages\ProcessChart.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -451,8 +451,8 @@
     <Compile Include="AISports.View\Pages\WriteCardWindow.xaml.cs">
       <DependentUpon>WriteCardWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AISports.View\Pages\Process.xaml.cs">
-      <DependentUpon>Process.xaml</DependentUpon>
+    <Compile Include="AISports.View\Pages\ProcessChart.xaml.cs">
+      <DependentUpon>ProcessChart.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\UpdateActivity.xaml.cs">
       <DependentUpon>UpdateActivity.xaml</DependentUpon>
