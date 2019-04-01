@@ -22,7 +22,7 @@ namespace AI_Sports.AISports.Service
             return processDAO.selectAvgValue(trainingCourseId);
         }
 
-        public int selectCount()
+        public int? selectCount()
         {
             return processDAO.selectCount();
         }

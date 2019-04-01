@@ -39,7 +39,8 @@ namespace AI_Sports.AISports.View.Pages
         public TrainingActivityAnalysis()
         {
             InitializeComponent();
-           
+            //初始化后台任务
+            InitializeBackgroundWorker();
 
         }
         /// <summary>
@@ -62,13 +63,13 @@ namespace AI_Sports.AISports.View.Pages
                     //加载创建时间 格式化为 这种格式：2016年5月9日 13:09
                     string gmtCreate = trainingCourseVO.Gmt_create.Value.ToString("f");
 
-                  
+
 
                     this.timeLable.Content = gmtCreate;
                 }
 
             }
-           
+
         }
 
         /// <summary>
@@ -81,9 +82,9 @@ namespace AI_Sports.AISports.View.Pages
             //表格加载数据
             CollectionViewSource ListViewGroupSource = (CollectionViewSource)this.FindResource("ListViewGroupSource");
             ListViewGroupSource.Source = trainingActivities;
-            
 
-            
+
+
 
 
         }
@@ -98,19 +99,18 @@ namespace AI_Sports.AISports.View.Pages
 
         }
 
-        private void Speech_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 初始化后台任务worker
+        /// </summary>
+        private void InitializeBackgroundWorker()
         {
-
-
-            //显示停止按钮
-            this.stop.Visibility = Visibility.Visible;
-            //禁用分析按钮
-            this.speech.IsEnabled = false;
-
+            //初始化注册后台事件
+            worker.WorkerReportsProgress = true;
+            worker.WorkerSupportsCancellation = true;
             // worker 要做的事情 使用了匿名的事件响应函数
             worker.DoWork += (o, ea) =>
             {
-              
+
 
 
                 List<TrainingActivityVO> trainingActivities = trainingActivityService.ListActivityRecords(currentCourseCount);
@@ -139,12 +139,12 @@ namespace AI_Sports.AISports.View.Pages
                     speechText.Append("次课程记录。");
                     speechText.Append("总共进行了");
                     speechText.Append(trainingActivities.Count);
-                    speechText.Append("轮训练活动，其中力量循环");
+                    speechText.Append("次训练活动，其中力量循环运动");
                     speechText.Append(strengthActivityCount);
-                    speechText.Append("轮，");
-                    speechText.Append("力量耐力循环");
+                    speechText.Append("次，");
+                    speechText.Append("力量耐力循环运动");
                     speechText.Append(enduranceActivityCount);
-                    speechText.Append("轮。您可以点击训练活动展开查看详细记录。");
+                    speechText.Append("次。您可以点击训练活动展开查看详细记录。");
                 }
                 else
                 {
@@ -160,14 +160,35 @@ namespace AI_Sports.AISports.View.Pages
 
             };
 
-
-            //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
-            worker.RunWorkerAsync();
-
-
+            //worker完成事件
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+        }
 
 
-           
+
+        private void Speech_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            //防止连续点击造成的后台任务繁忙异常
+            if (worker.IsBusy == true)
+            {
+                Console.WriteLine("后台语音任务正忙");
+
+                return;
+            }
+            else
+            {
+                //显示停止按钮
+                this.stop.Visibility = Visibility.Visible;
+                //禁用分析按钮
+                this.speech.IsEnabled = false;
+
+
+                //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
+                worker.RunWorkerAsync();
+            }
+
 
         }
 
@@ -179,25 +200,53 @@ namespace AI_Sports.AISports.View.Pages
         //}
 
         /// <summary>
+        /// 语音后台任务完成事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                Console.WriteLine("语音播放完毕");
+                //隐藏停止按钮
+                this.stop.Visibility = Visibility.Hidden;
+                //可用分析按钮
+                this.speech.IsEnabled = true;
+            }
+            catch (Exception)
+            {
+
+                throw new NotImplementedException();
+
+            }
+        }
+
+        /// <summary>
         /// 停止语音分析
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-            //停止语音线程
-            //worker.CancelAsync();
-            // worker 完成事件响应
-
-            SpeechUtil.stop();
-
-
-            //隐藏停止按钮
-            this.stop.Visibility = Visibility.Hidden;
-            //可用分析按钮
-            this.speech.IsEnabled = true;
+            try
+            {
+                //取消朗读
+                SpeechUtil.stop();
+                //取消后台任务
+                this.worker.CancelAsync();
+                //隐藏停止按钮
+                this.stop.Visibility = Visibility.Hidden;
+                //可用分析按钮
+                this.speech.IsEnabled = true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("停止语音按钮异常");
+                throw;
+            }
         }
 
-        
+
     }
 }

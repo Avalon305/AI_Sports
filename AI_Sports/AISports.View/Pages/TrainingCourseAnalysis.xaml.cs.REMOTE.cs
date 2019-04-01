@@ -38,8 +38,7 @@ namespace AI_Sports.AISports.View.Pages
         public TrainingCourseAnalysis()
         {
             InitializeComponent();
-            //初始化语音后台任务
-            InitializeBackgroundWorker();
+           
             //图表
             Web.ObjectForScripting = new WebTrainingCourse();
             //获取项目的根路径
@@ -92,14 +91,15 @@ namespace AI_Sports.AISports.View.Pages
             NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/TrainingPlanAnalysis.xaml", UriKind.Relative));
 
         }
-        /// <summary>
-        /// 初始化后台任务worker
-        /// </summary>
-        private void InitializeBackgroundWorker()
+
+        private void Speech_Click(object sender, RoutedEventArgs e)
         {
-            //初始化注册后台事件
-            worker.WorkerReportsProgress = true;
-            worker.WorkerSupportsCancellation = true;
+
+            //显示停止按钮
+            this.stop.Visibility = Visibility.Visible;
+            //禁用分析按钮
+            this.speech.IsEnabled = false;
+
             // worker 要做的事情 使用了匿名的事件响应函数
             worker.DoWork += (o, ea) =>
             {
@@ -141,64 +141,24 @@ namespace AI_Sports.AISports.View.Pages
                     speechText.Append("您还没有训练记录，请在设备上完成一轮训练课程后再查看分析。");
                 }
 
-
+                
                 Console.WriteLine("训练课程语音文本：" + speechText.ToString());
                 SpeechUtil.read(speechText.ToString());
 
 
-
+            
 
             };
 
-            //worker完成事件
-            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+
+            //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
+            worker.RunWorkerAsync();
+
+
+            
 
         }
-        private void Speech_Click(object sender, RoutedEventArgs e)
-        {
-            //防止连续点击造成的后台任务繁忙异常
-            if (worker.IsBusy == true)
-            {
-                Console.WriteLine("后台语音任务正忙");
 
-                return;
-            }
-            else
-            {
-                //显示停止按钮
-                this.stop.Visibility = Visibility.Visible;
-                //禁用分析按钮
-                this.speech.IsEnabled = false;
-
-
-                //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
-                worker.RunWorkerAsync();
-            }
-
-
-        }
-        /// <summary>
-        /// 语音后台任务完成事件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            try
-            {
-                Console.WriteLine("语音播放完毕");
-                //隐藏停止按钮
-                this.stop.Visibility = Visibility.Hidden;
-                //可用分析按钮
-                this.speech.IsEnabled = true;
-            }
-            catch (Exception)
-            {
-
-                throw new NotImplementedException();
-
-            }
-        }
 
         /// <summary>
         /// 停止语音分析
@@ -207,23 +167,17 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                //取消朗读
-                SpeechUtil.stop();
-                //取消后台任务
-                this.worker.CancelAsync();
-                //隐藏停止按钮
-                this.stop.Visibility = Visibility.Hidden;
-                //可用分析按钮
-                this.speech.IsEnabled = true;
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("停止语音按钮异常");
-                throw;
-            }
+            //停止语音线程
+            //worker.CancelAsync();
+            // worker 完成事件响应
 
+            SpeechUtil.stop();
+
+
+            //隐藏停止按钮
+            this.stop.Visibility = Visibility.Hidden;
+            //可用分析按钮
+            this.speech.IsEnabled = true;
         }
     }
 
@@ -240,7 +194,7 @@ namespace AI_Sports.AISports.View.Pages
         //X轴动态加载数据(未用到)
         public int maxCourseRecord()
         {
-            int maxCourseRecord = trainingCourseService.selectMAxCourseRecord().Value;
+            int maxCourseRecord = trainingCourseService.selectMAxCourseRecord();
             Console.WriteLine("成功:" + maxCourseRecord);
             return maxCourseRecord;
         }
@@ -249,10 +203,8 @@ namespace AI_Sports.AISports.View.Pages
         {
             //获取 currentCourseCount
             string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
-
             Console.WriteLine("强强强强强强强强强强强强强强强强"+ currentCourseCount);
             return currentCourseCount;
-
         }
         //根据课程轮次数从小到大排序查询力量耐力循环（有氧）的总能量
         public string aerobicEnduranceEnergy()

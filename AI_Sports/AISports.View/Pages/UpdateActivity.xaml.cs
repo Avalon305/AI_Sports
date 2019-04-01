@@ -201,7 +201,8 @@ namespace AI_Sports.AISports.View.Pages
                 }
                 Console.WriteLine("更新活动和个人设置成功");
                 ts.Complete();
-                MessageBox.Show("更新活动成功");
+                //MessageBox.Show("更新活动成功");
+                MessageBoxX.Show("提示", "更新活动与个人设置成功");
             }
             
 

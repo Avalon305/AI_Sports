@@ -88,11 +88,13 @@ namespace AI_Sports.AISports.View.Pages
 		public TrainingProgram()
 		{
 			InitializeComponent();
+            //初始化后台任务
+            InitializeBackgroundWorker();
 
 
 
-			//查询训练计划
-			TrainingPlanEntity trainingPlanEntity = trainingPlanService.GetPlanByMumberId();
+            //查询训练计划
+            TrainingPlanEntity trainingPlanEntity = trainingPlanService.GetPlanByMumberId();
 
 			if (trainingPlanEntity != null)
 			{
@@ -143,7 +145,8 @@ namespace AI_Sports.AISports.View.Pages
 
 			}
 			//刷新页面
-			MessageBox.Show("成功跳过此次训练课程");
+			//MessageBox.Show("成功跳过此次训练课程");
+			MessageBoxX.Show("成功", "成功跳过此次训练课程");
 			int flag = 1;
 			if(flag == 1)
 			{
@@ -164,25 +167,19 @@ namespace AI_Sports.AISports.View.Pages
 
 
 		}
-	
+
+
         /// <summary>
-        /// 语音分析按钮
+        /// 初始化后台任务worker
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Speech_Click(object sender, RoutedEventArgs e)
+        private void InitializeBackgroundWorker()
         {
-
-
-            //显示停止按钮
-            this.stop.Visibility = Visibility.Visible;
-            //禁用分析按钮
-            this.speech.IsEnabled = false;
-
+            worker.WorkerReportsProgress = true;
+            worker.WorkerSupportsCancellation = true;
             // worker 要做的事情 使用了匿名的事件响应函数
             worker.DoWork += (o, ea) =>
             {
-                List < ActivityEntity > activityList = activityService.ListActivitysByCourseId();
+                List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
                 StringBuilder speechBuilder = new StringBuilder();
                 speechBuilder.Append("您可以在此查看当前训练课程中包含的训练活动的详细信息和进度。");
 
@@ -246,17 +243,67 @@ namespace AI_Sports.AISports.View.Pages
                 SpeechUtil.read(speechBuilder.ToString());
 
             };
+            //worker完成事件
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+        }
+        /// <summary>
+        /// 语音分析按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Speech_Click(object sender, RoutedEventArgs e)
+        {
+
+            //防止连续点击造成的后台任务繁忙异常
+            if (worker.IsBusy == true)
+            {
+                Console.WriteLine("后台语音任务正忙");
+
+                return;
+            }
+            else
+            {
+                //显示停止按钮
+                this.stop.Visibility = Visibility.Visible;
+                //禁用分析按钮
+                this.speech.IsEnabled = false;
 
 
-            //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
-            worker.RunWorkerAsync();
+                //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
+                worker.RunWorkerAsync();
+            }
 
 
 
 
-            
 
         }
+        /// <summary>
+        /// 语音后台任务完成事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                Console.WriteLine("语音播放完毕");
+                //隐藏停止按钮
+                this.stop.Visibility = Visibility.Hidden;
+                //可用分析按钮
+                this.speech.IsEnabled = true;
+            }
+            catch (Exception)
+            {
+
+                throw new NotImplementedException();
+
+            }
+        }
+
+
+
+
 
         /// <summary>
         /// 停止语音分析
@@ -265,20 +312,28 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
-            //停止语音线程
-            //worker.CancelAsync();
-            // worker 完成事件响应
+            try
+            {
+                //取消朗读
+                SpeechUtil.stop();
+                //取消后台任务
+                this.worker.CancelAsync();
+                //隐藏停止按钮
+                this.stop.Visibility = Visibility.Hidden;
+                //可用分析按钮
+                this.speech.IsEnabled = true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("停止语音按钮异常");
+                throw;
+            }
 
-            SpeechUtil.stop();
-
-
-            //隐藏停止按钮
-            this.stop.Visibility = Visibility.Hidden;
-            //可用分析按钮
-            this.speech.IsEnabled = true;
         }
 
 
-
     }
+
+
 }
+

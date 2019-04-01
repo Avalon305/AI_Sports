@@ -48,28 +48,55 @@
         <Grid   Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="AliceBlue" Height="540" Width="1494" Margin="0,0,0,0">
             <Label Content="个人标签" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="211" Style="{DynamicResource h1}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#04243D" FontFamily="Microsoft YaHei"/>
             <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="50,60,0,0" VerticalAlignment="Top"/>
-            <TextBox Text="{Binding ElementName=weightSlider,Path=Value,Mode=TwoWay}" Tag="体重(公斤)" x:Name="weight" IsReadOnly="True"  Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="167" Margin="50,100,0,0"  Height="40"  FontStyle="{Binding ElementName=slider1,Path=Value}"  Foreground="#04243D" FontSize="22" FontFamily="Microsoft YaHei" />
-            <Slider HorizontalAlignment="Left" Name="weightSlider" Maximum="200" Minimum="0" Value="60"  IsSnapToTickEnabled="True" Margin="250,100,0,0" VerticalAlignment="Top" Height="43" Width="411" TickPlacement="TopLeft"  TickFrequency="1"/>
-            <TextBox Text="{Binding ElementName=heightSlider,Path=Value,Mode=TwoWay}"  Tag="身高" x:Name="height" IsReadOnly="True" Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="766,100,0,0"  Height="Auto" FontStyle="{Binding ElementName=slider1,Path=Value}" FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" />
-            <Slider HorizontalAlignment="Left" IsSnapToTickEnabled="True" Name="heightSlider" SmallChange="1" Maximum="240" Minimum="100" Value="175" Margin="948,100,0,0" VerticalAlignment="Top" Height="43" Width="411" TickPlacement="TopLeft" TickFrequency="1"/>
+            <TextBox Text="{Binding ElementName=weightSlider,Path=Value,Mode=TwoWay}" Tag="体重(公斤)" x:Name="weight" IsReadOnly="True"  Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="167" Margin="50,100,0,0"  Height="40"  Foreground="#04243D" FontSize="22" FontFamily="Microsoft YaHei" />
+            <Slider HorizontalAlignment="Left" Name="weightSlider" Maximum="200" Minimum="0" Value="0"  IsSnapToTickEnabled="True" Margin="250,100,0,0" VerticalAlignment="Top" Height="43" Width="411" TickPlacement="TopLeft"  TickFrequency="1"/>
+            <TextBox Text="{Binding ElementName=heightSlider,Path=Value,Mode=TwoWay}"  Tag="身高" x:Name="height" IsReadOnly="True" Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="766,100,0,0"  Height="Auto"  FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" />
+            <Slider HorizontalAlignment="Left" IsSnapToTickEnabled="True" Name="heightSlider" SmallChange="1" Maximum="240" Minimum="100" Value="100" Margin="948,100,0,0" VerticalAlignment="Top" Height="43" Width="411" TickPlacement="TopLeft" TickFrequency="1"/>
             <Label  Tag="用户群标签(可多选)" Name="Label_name"  Style="{DynamicResource input-group-addon left}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="AliceBlue" HorizontalAlignment="Left"   Margin="50,190,0,0" VerticalAlignment="Top" Height="40" Width="143" Cursor="None" FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D"/>
             <CheckBox Name="CB_Zengji" Content="增肌" Style="{DynamicResource checkbox has-success}" HorizontalAlignment="Left" Margin="250,190,0,0" VerticalAlignment="Top" Height="40" Width="70" FontSize="22" FontFamily="Microsoft YaHei" />
             <CheckBox Name="CB_Jianzhi" Content="减脂" Style="{DynamicResource checkbox has-warning}"  HorizontalAlignment="Left" Margin="358,190,0,0" VerticalAlignment="Top" FontSize="22" FontFamily="Microsoft YaHei" Height="40"/>
             <CheckBox Name="CB_Suxing" Content="塑形" Style="{DynamicResource checkbox has-error}"  HorizontalAlignment="Left" Margin="476,188,0,0" VerticalAlignment="Top" FontSize="22" FontFamily="Microsoft YaHei" Height="40"/>
             <CheckBox Name="CB_Kangfu" Content="康复" Style="{DynamicResource checkbox has-success}" HorizontalAlignment="Left" Margin="579,188,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.146,0.176" FontSize="22" FontFamily="Microsoft YaHei" Height="40"/>
-            <Label Name="LB_SuggestMaxHeartRate" Content="建议最大心率：" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="left" Margin="770,155,0,0"  Style="{DynamicResource text bg-info}" Height="43" FontSize="22" Foreground="#04243D" FontFamily="Microsoft YaHei"></Label>
-            <TextBox Text="{Binding ElementName=heartSlider,Path=Value}"  Tag="最大心率" Name="Max_heart_rate" IsReadOnly="True" Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="766,205,0,0"  Height="Auto" FontStyle="{Binding ElementName=slider1,Path=Value}" FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" RenderTransformOrigin="0.467,1.488"  />
-            <Slider HorizontalAlignment="Left" Name="heartSlider" Maximum="220" Minimum="0" Value="110" SmallChange="1" IsSnapToTickEnabled="True" Margin="948,203,0,0" VerticalAlignment="Top" Height="43" Width="411" TickPlacement="TopLeft" TickFrequency="1"   />
-            <Label Content="以往病史"  HorizontalAlignment="Left" HorizontalContentAlignment="left" Margin="50,280,0,0" VerticalAlignment="Top" Height="40" Width="611" FontSize="22" Foreground="#04243D"  FontFamily="Microsoft YaHei"/>
+            <Label Name="LB_SuggestMaxHeartRate" Content="建议最大心率：" Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="left" Margin="770,155,0,0"  Style="{DynamicResource text bg-info}" Height="30" FontSize="20" Foreground="#04243D" FontFamily="Microsoft YaHei"></Label>
+            <TextBox Text="{Binding ElementName=heartSlider,Path=Value}"  Tag="最大心率" Name="Max_heart_rate" IsReadOnly="True" Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="766,190,0,0"  Height="Auto"  FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" RenderTransformOrigin="0.467,1.488"  />
+            <Slider HorizontalAlignment="Left" Name="heartSlider" Maximum="220" Minimum="0" Value="0" SmallChange="1" IsSnapToTickEnabled="True" Margin="948,190,0,0" VerticalAlignment="Top" Height="43" Width="411" TickPlacement="TopLeft" TickFrequency="1"   />
+            <Label Content="以往病史" Style="{DynamicResource h3}" HorizontalAlignment="Left"   Margin="50,271,0,0" VerticalAlignment="Top" Height="40" Width="611" FontSize="22" Foreground="#04243D"  FontFamily="Microsoft YaHei"/>
             <TextBox Text="" Name="Remark" Style="{DynamicResource InputGroupAddonBaseStyle}" TextWrapping="Wrap" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Width="611" Margin="50,329,0,0" Height="93" FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" />
             <StackPanel HorizontalAlignment="Left" Height="207" Margin="766,260,0,0" VerticalAlignment="Top" Width="602">
-                <!--<Label Content="使用训练计划模板（自选）" Height="40" FontSize="22" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,10,0,0" FontFamily="Microsoft YaHei" Foreground="#04243D"/>
-                <RadioButton Margin="0,10,0,5" Content="力量循环" Style="{DynamicResource radio has-warning}" FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="40"/>
-                <RadioButton Margin="0,0,0,5" Content="力量耐力循环" Style="{DynamicResource radio has-success}" FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="40"/>
-                <RadioButton Margin="0,10,0,5" Content="力量循环和力量耐力循环" Style="{DynamicResource radio has-error}" IsChecked="True" FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="40"/>-->
+                <Label Content="使用模板自动创建训练计划(可选)" Style="{DynamicResource h3}" Height="40" FontSize="22" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,10,0,0" FontFamily="Microsoft YaHei" Foreground="#04243D"/>
+                <RadioButton Name="strengthRadioButton" Margin="0,5,0,0" GroupName="Template" Content="力量循环" Style="{DynamicResource radio has-warning}" FontSize="22" FontFamily="Microsoft YaHei"  Height="40"/>
+                <RadioButton Name="enduranceRadioButton" Margin="0,5,0,0" GroupName="Template" Content="力量耐力循环" Style="{DynamicResource radio has-success}" FontSize="22" FontFamily="Microsoft YaHei"  Height="40"/>
+                <RadioButton Name="strengthEnduranceRadioButton" Margin="0,5,0,0" GroupName="Template" Content="力量循环和力量耐力循环" Style="{DynamicResource radio has-error}" FontSize="22" FontFamily="Microsoft YaHei"  Height="40"/>
             </StackPanel>
             <Button Margin="50,450,0,0" Content="取消" Style="{DynamicResource btn-warning}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click_1"  FontSize="20" Width="75" Height="35"/>
             <Button  Margin="1368,450,0,0" Content="保存"  Click="Button_Click_2" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35" />
+            <Button x:Name="button" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="666,85,0,0" VerticalAlignment="Top" Width="75"  Click="weightAddClick">
+                <Image  Source="../Images/addButton.png"/>
+
+            </Button>
+
+            <Button x:Name="button1" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="666,122,0,0" VerticalAlignment="Top" Width="75" Click="weightLessClick">
+                <Image  Source="../Images/lessButton.png"/>
+
+            </Button>
+            <Button x:Name="button2" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="1369,85,0,0" VerticalAlignment="Top" Width="75" Click="heightAddClick">
+                <Image  Source="../Images/addButton.png"/>
+
+            </Button>
+            <Button x:Name="button3" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="1369,122,0,0" VerticalAlignment="Top" Width="75" Click="heightLessClick">
+                <Image  Source="../Images/lessButton.png"/>
+
+            </Button>
+            <Button x:Name="button4" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="1369,177,0,0" VerticalAlignment="Top" Width="75" Click="heartAddClick">
+                <Image  Source="../Images/addButton.png"/>
+
+            </Button>
+            <Button x:Name="button5" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="1369,214,0,0" VerticalAlignment="Top" Width="76"  Click="heartLessClick">
+                <Image  Source="../Images/lessButton.png"/>
+
+            </Button>
+            <!--<Button  Margin="1000,450,0,0" Content="自动添加测试"  Click="Button_Click_3" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35" />-->
+
         </Grid>
     </Grid>
 </Page>

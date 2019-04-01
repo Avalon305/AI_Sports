@@ -19,6 +19,7 @@ namespace AI_Sports.Service
 
         private PersonalSettingDAO personalSettingDAO = new PersonalSettingDAO();
         private MemberDAO memberDAO = new MemberDAO();
+        private MemberService memberService = new MemberService();
         private TrainingActivityRecordDAO trainingActivityRecordDAO = new TrainingActivityRecordDAO();
         private ActivityDAO activityDAO = new ActivityDAO();
         private TrainingDeviceRecordDAO trainingDeviceRecordDAO = new TrainingDeviceRecordDAO();
@@ -33,6 +34,19 @@ namespace AI_Sports.Service
             LoginResponse response = new LoginResponse();
             response.Uid = request.Uid;
             response.ActivityType = request.ActivityType;
+
+            //查询用户是否存在，若不存在 则自动创建用户和一系列训练课程、活动 byCQZ 2019.3.28
+            MemberEntity memberEntity = memberDAO.GetMember(request.Uid);
+            if (memberEntity == null)
+            {
+                //自动创建用户及计划 保证正常锻炼 接收数据
+                memberService.AutoInsertUser(request.Uid);
+                Console.WriteLine("收到的UID:{0}在数据库中不存在，自动创建用户及计划",request.Uid);
+            }
+            else
+            {
+                Console.WriteLine("用户存在");
+            }
 
             var setDto = personalSettingDAO.GetSettingByMemberIdDeviceType(request.Uid, request.DeviceType, request.ActivityType);
             if (setDto != null && setDto.PersonalSettingEntity != null)
@@ -197,35 +211,40 @@ namespace AI_Sports.Service
                     trainingActivityRecordDAO.UpdateCompleteState(request.ActivityRecordId, true);
                     //训练活动伦次数量加一
                     ActivityEntity activity = activityDAO.Load(request.ActivityId);
-                    activity.current_turn_number += 1;
-                    if (activity.current_turn_number >= activity.Target_turn_number)//完成这一次活动的话
+                    //测试时出现了活动对象为NULL的异常 于是加此判断 byCQZ
+                    if (activity != null)
                     {
-                        activity.Is_complete = true;
-                        activity.Gmt_modified = DateTime.Now;
-                    }
-                    activityDAO.UpdateByPrimaryKey(activity);
-
-                    //判断是否完成了这一次课程,即该课程ID下的所有Activity是否都为完成状态
-                    if (activity.Is_complete==true)
-                    {
-                        int count = activityDAO.CountByCourseId(request.CourseId, false);
-                        if (count == 0)//此课时下的活动都完成了
+                        activity.current_turn_number += 1;
+                        if (activity.current_turn_number >= activity.Target_turn_number)//完成这一次活动的话
                         {
-                            TrainingCourseEntity courseEntity = trainingCourseDAO.Load(request.CourseId);
-                            courseEntity.Current_course_count += 1;
-                            if (courseEntity.Current_course_count >= courseEntity.Target_course_count)//课程完成的话，这里用>=防止并发被击穿目标次数
-                            {
-                                courseEntity.Current_end_date = DateTime.Now;
-                                courseEntity.Is_complete = true;
-                            }
-                            else//只是完成了一个课时，将Activity的complete置零，current_turn_number置零
-                            {
-                                activityDAO.ResetCourseByCourseId(request.CourseId);
-                            }
-                            trainingCourseDAO.UpdateByPrimaryKey(courseEntity);
+                            activity.Is_complete = true;
+                            activity.Gmt_modified = DateTime.Now;
+                        }
+                        activityDAO.UpdateByPrimaryKey(activity);
 
+                        //判断是否完成了这一次课程,即该课程ID下的所有Activity是否都为完成状态
+                        if (activity.Is_complete == true)
+                        {
+                            int? count = activityDAO.CountByCourseId(request.CourseId, false);
+                            if (count == 0)//此课时下的活动都完成了
+                            {
+                                TrainingCourseEntity courseEntity = trainingCourseDAO.Load(request.CourseId);
+                                courseEntity.Current_course_count += 1;
+                                if (courseEntity.Current_course_count >= courseEntity.Target_course_count)//课程完成的话，这里用>=防止并发被击穿目标次数
+                                {
+                                    courseEntity.Current_end_date = DateTime.Now;
+                                    courseEntity.Is_complete = true;
+                                }
+                                else//只是完成了一个课时，将Activity的complete置零，current_turn_number置零
+                                {
+                                    activityDAO.ResetCourseByCourseId(request.CourseId);
+                                }
+                                trainingCourseDAO.UpdateByPrimaryKey(courseEntity);
+
+                            }
                         }
                     }
+                    
                    
                 }
                 else

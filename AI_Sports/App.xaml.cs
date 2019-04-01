@@ -48,7 +48,7 @@ namespace AI_Sports
                 {
                     App.Current.Dispatcher.Invoke(new Action(() =>
                     {
-                        MessageBox.Show("Socket通信端口被占用");
+                        MessageBoxX.Show("提示","Socket通信端口被占用");
                         System.Environment.Exit(0);
                     }));
                 }

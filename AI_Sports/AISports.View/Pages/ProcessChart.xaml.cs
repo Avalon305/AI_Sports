@@ -95,7 +95,7 @@ namespace AI_Sports.AISports.View.Pages
         //返回值行数
         public int count()
         {
-            int count = processService.selectCount();
+            int count = processService.selectCount().Value;
             return count;
         }
 

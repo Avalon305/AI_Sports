@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using AI_Sports.Util;
 using AI_Sports.AISports.Dto;
 using System.Transactions;
+using AI_Sports.Constant;
 
 namespace AI_Sports.Service
 {
@@ -63,19 +64,118 @@ namespace AI_Sports.Service
                     result = activityDAO.BatchInsert(activities);
                     //根据训练活动批量插入个人设置记录 传入会员的主键id
                     personalSettingService.SavePersonalSettings(ParseIntegerUtil.ParseInt(CommUtil.GetSettingString("memberPrimarykey")));
-                }
-
-
-                
-                
-
-                
+                }                
 
                 ts.Complete();
                 return result;
             }
                
         }
+
+
+        /// <summary>
+        /// 根据模板自动创建训练活动 传入的是用户的数据库主键id
+        /// </summary>
+        /// <param name="trainingCourseEntity"></param>
+        /// <param name="memberPkId"></param>
+        /// <param name="planTemplate"></param>
+        /// <returns></returns>
+        public long AutoSaveActivityTemplate(TrainingCourseEntity trainingCourseEntity, long memberPkId , PlanTemplate planTemplate)
+        {
+            using (TransactionScope ts = new TransactionScope())
+            {
+                long result = 0;
+
+                List<ActivityEntity> activities = new List<ActivityEntity>();
+                //力量循环活动
+                ActivityEntity strengthActivity = new ActivityEntity();
+                //耐力循环活动
+                ActivityEntity enduranceActivity = new ActivityEntity();
+
+                //根据不同模板创建不同的活动
+                switch (planTemplate)
+                {
+                    case PlanTemplate.StrengthCycle://力量循环
+                        strengthActivity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
+                        strengthActivity.Member_id = trainingCourseEntity.Member_id;
+                        strengthActivity.Fk_member_id = memberPkId;
+                        strengthActivity.Fk_training_course_id = trainingCourseEntity.Id;
+                        strengthActivity.Gmt_create = System.DateTime.Now;
+                        strengthActivity.Is_complete = false;
+                        //模板创建默认两轮
+                        strengthActivity.Target_turn_number = 2;
+                        strengthActivity.current_turn_number = 0;
+                        //0:力量循环
+                        strengthActivity.Activity_type = "0";
+
+                        activities.Add(strengthActivity);
+                        break;
+                    case PlanTemplate.EnduranceCycle://耐力循环
+                        enduranceActivity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
+                        enduranceActivity.Member_id = trainingCourseEntity.Member_id;
+                        enduranceActivity.Fk_member_id = memberPkId;
+                        enduranceActivity.Fk_training_course_id = trainingCourseEntity.Id;
+                        enduranceActivity.Gmt_create = System.DateTime.Now;
+                        enduranceActivity.Is_complete = false;
+                        //模板创建默认两轮
+                        enduranceActivity.Target_turn_number = 2;
+                        enduranceActivity.current_turn_number = 0;
+                        //1:耐力循环
+                        enduranceActivity.Activity_type = "1";
+
+                        activities.Add(enduranceActivity);
+
+                        break;
+                    case PlanTemplate.StrengthEnduranceCycle:
+                        //创建力量循环活动
+                        strengthActivity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
+                        strengthActivity.Member_id = trainingCourseEntity.Member_id;
+                        strengthActivity.Fk_member_id = memberPkId;
+                        strengthActivity.Fk_training_course_id = trainingCourseEntity.Id;
+                        strengthActivity.Gmt_create = System.DateTime.Now;
+                        strengthActivity.Is_complete = false;
+                        //模板创建默认两轮
+                        strengthActivity.Target_turn_number = 2;
+                        strengthActivity.current_turn_number = 0;
+                        //0:力量循环
+                        strengthActivity.Activity_type = "0";
+
+                        activities.Add(strengthActivity);
+
+                        //创建耐力循环活动
+                        enduranceActivity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
+                        enduranceActivity.Member_id = trainingCourseEntity.Member_id;
+                        enduranceActivity.Fk_member_id = memberPkId;
+                        enduranceActivity.Fk_training_course_id = trainingCourseEntity.Id;
+                        enduranceActivity.Gmt_create = System.DateTime.Now;
+                        enduranceActivity.Is_complete = false;
+                        //模板创建默认两轮
+                        enduranceActivity.Target_turn_number = 2;
+                        enduranceActivity.current_turn_number = 0;
+                        //1:耐力循环
+                        enduranceActivity.Activity_type = "1";
+
+                        activities.Add(enduranceActivity);
+                        break;
+                    default:
+                        break;
+                }
+
+                //批量插入训练活动
+                result = activityDAO.BatchInsert(activities);
+                //根据训练活动批量插入个人设置记录 传入用户主键id
+                personalSettingService.AutoSavePersonalSettings(memberPkId, trainingCourseEntity.Id , trainingCourseEntity.Member_id);
+
+
+                ts.Complete();
+                return result;
+            }
+
+        }
+
+
+
+
         /// <summary>
         /// 根据训练课程ID查询出对应的训练活动
         /// </summary>
@@ -107,7 +207,7 @@ namespace AI_Sports.Service
         /// </summary>
         /// <param name="activityType"></param>
         /// <returns></returns>
-        public int GetTargetTurnNumByType(string activityType)
+        public int? GetTargetTurnNumByType(string activityType)
         {
             string courseId = CommUtil.GetSettingString("trainingCourseId");
             return activityDAO.GetTargetTurnNumByTypeCourseId(activityType,courseId);

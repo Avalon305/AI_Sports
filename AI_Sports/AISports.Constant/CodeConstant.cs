@@ -62,4 +62,22 @@ namespace AI_Sports.Constant
         /// </summary>
         UnknownID,
     }
+    /// <summary>
+    /// 训练计划模板
+    /// </summary>
+    public enum PlanTemplate
+    {
+        /// <summary>
+        /// 力量循环
+        /// </summary>
+        StrengthCycle,
+        /// <summary>
+        /// 耐力循环
+        /// </summary>
+        EnduranceCycle,
+        /// <summary>
+        /// 力量耐力循环
+        /// </summary>
+        StrengthEnduranceCycle
+    }
 }

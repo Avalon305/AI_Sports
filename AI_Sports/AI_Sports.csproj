@@ -126,6 +126,9 @@
     <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\Windows-universal-samples-master\Samples\BluetoothLE\cs\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.13\lib\net45\NLog.dll</HintPath>
     </Reference>
@@ -631,6 +634,7 @@
     <Content Include="AISports.Echarts\dist\TrainingUnit.html" />
     <Content Include="AISports.Lib\nuitrack.net.dll" />
     <Resource Include="AISports.View\Images\Abdominal muscle training.png" />
+    <Resource Include="AISports.View\Images\addButton.png" />
     <Content Include="AISports.View\Images\defaultphoto.png" />
     <Resource Include="AISports.View\Images\eef81f78c35e498da4d9263cb70cc329_th.jpeg" />
     <Resource Include="AISports.View\Images\logodark.jpg" />
@@ -665,6 +669,9 @@
     <Resource Include="AISports.View\Images\The butterfly.png" />
     <Resource Include="AISports.View\Images\Torsional trunk assembly.png" />
     <Resource Include="AISports.View\Images\Triceps training.png" />
+    <Resource Include="AISports.View\Images\downButton.png" />
+    <Resource Include="AISports.View\Images\upButton.png" />
+    <Resource Include="AISports.View\Images\lessButton.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

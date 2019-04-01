@@ -15,9 +15,9 @@
                     <Label Margin="20,20,0,0" Content="搜索会员" Style="{DynamicResource h1}" FontFamily="Microsoft YaHei" FontSize="50" ></Label>
                     <StackPanel Orientation="Horizontal"  HorizontalAlignment="left" VerticalAlignment="Center" Width="1046">
                         <Label Margin="20,20,0,0"  Content="会员名"  Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                        <TextBox Name="name" Width="200" Margin="20,0,0,0" VerticalAlignment="Center" FontFamily="Microsoft YaHei" Text="会员名" FontSize="22" Height="40" TextChanged="TextBox_TextChanged" />
+                        <TextBox Name="name" Width="200" Margin="20,0,0,0" VerticalAlignment="Center" FontFamily="Microsoft YaHei"  FontSize="22" Height="40" TextChanged="TextBox_TextChanged" />
                         <Label Margin="20,20,0,0"  Content="手机号"  Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                        <TextBox Width="200" Name="phone" Margin="20,0,0,0" VerticalAlignment="Center" FontFamily="Microsoft YaHei" Text="手机号" FontSize="22" Height="40" TextChanged="TextBox_TextChanged" />
+                        <TextBox Width="200" Name="phone" Margin="20,0,0,0" VerticalAlignment="Center" FontFamily="Microsoft YaHei"  FontSize="22" Height="40" TextChanged="TextBox_TextChanged" />
                         <Button Content="查找"  FontFamily="Microsoft YaHei" VerticalAlignment="Center" FontSize="22" Height="40" Width="80" Click="Button_Click"/>
                     </StackPanel>
                     <Label Margin="20,20,0,0" Content="会员列表"  Style="{DynamicResource h1}" FontFamily="Microsoft YaHei" ></Label>

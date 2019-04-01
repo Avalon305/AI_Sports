@@ -21,7 +21,7 @@ namespace AI_Sports.AISports.Dao
             }
         }
 
-        public int selectCount()
+        public int? selectCount()
         {
             using (var conn = DbUtil.getConn())
             {

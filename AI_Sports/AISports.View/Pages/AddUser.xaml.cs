@@ -1,4 +1,5 @@
-﻿using AI_Sports.Entity;
+﻿using AI_Sports.Constant;
+using AI_Sports.Entity;
 using AI_Sports.Service;
 using AI_Sports.Util;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,7 +28,7 @@ namespace AI_Sports.AISports.View.Pages
     public partial class AddUser : Page
     {
         private MemberService memberService = new MemberService();
-
+        private TrainingPlanService trainingPlanService = new TrainingPlanService();
         public AddUser()
         {
             // var temp = this.tb1.Text;
@@ -50,23 +52,23 @@ namespace AI_Sports.AISports.View.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("保存成功");
+            MessageBoxX.Show("成功","保存成功");
         }
 
         //非法日期的判断
         private void DatePicker_DateValidationError(object sender, DatePickerDateValidationErrorEventArgs e)
         {
-            MessageBox.Show(e.Text + "非法日期" + e.Exception.Message);
+            MessageBoxX.Show("警告",e.Text + "非法日期" + e.Exception.Message);
         }
         private void StackPanel_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("取消");
+            MessageBoxX.Show("取消","取消");
         }
 
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("已取消");
+            MessageBoxX.Show("取消","已取消");
 
         }
         /// <summary>
@@ -86,152 +88,172 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+
             int? inputCount = 0;
             StringBuilder stringBuilder = new StringBuilder();
             //判断输入的内容是否为空
             if (string.IsNullOrWhiteSpace(Member_familyName.Text))
             {
-                stringBuilder.Append("姓氏");
+                stringBuilder.Append("姓氏 ");
                 inputCount++;
             }
             if (string.IsNullOrWhiteSpace(Member_firstName.Text))
             {
-                stringBuilder.Append("名字");
+                stringBuilder.Append("名字 ");
 
                 inputCount++;
 
             }
             if (string.IsNullOrWhiteSpace(birthDatePicker.Text))
             {
-                inputCount++;
-
-            }
-            if (string.IsNullOrWhiteSpace(Address.Text))
-            {
+                stringBuilder.Append("出生日期 ");
                 inputCount++;
 
             }
             if (string.IsNullOrWhiteSpace(sex.Text))
             {
+                stringBuilder.Append("性别 ");
                 inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(Personal_phone.Text))
-            {
-                inputCount++;
 
-            }
             if (string.IsNullOrWhiteSpace(Mobile_phone.Text))
             {
+                stringBuilder.Append("手机号码 ");
                 inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(Work_phone.Text))
+            if (string.IsNullOrWhiteSpace(weight.Text) && ("0".Equals(weight.Text)))
             {
+                stringBuilder.Append("体重 ");
                 inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(Email_address.Text))
+            if (string.IsNullOrWhiteSpace(height.Text) && ("0".Equals(height.Text)))
             {
+                stringBuilder.Append("身高 ");
                 inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(weight.Text))
+            if (string.IsNullOrWhiteSpace(Max_heart_rate.Text) && ("0".Equals(Max_heart_rate.Text)))
             {
+                stringBuilder.Append("最大心率 ");
                 inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(height.Text))
-            {
-                inputCount++;
 
-            }
-            if (string.IsNullOrWhiteSpace(Max_heart_rate.Text))
-            {
-                inputCount++;
-
-            }
-            if (string.IsNullOrWhiteSpace(Remark.Text))
-            {
-                inputCount++;
-
-            }
 
             //都不为空则添加
-            //if (inputCount ==0)
-            //{
+            if (inputCount == 0)
+            {
+                //使整个代码块成为事务性代码
+                using (TransactionScope ts = new TransactionScope())
+                {
 
-                MemberEntity member = new MemberEntity();
-                member.Address = this.Address.Text;
-                //时间转化
-                DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
-                dtFormat.ShortDatePattern = "yyyy-MM-dd";
-                member.Birth_date = Convert.ToDateTime(this.birthDatePicker.Text, dtFormat);
-                member.Email_address = this.Email_address.Text;
+                    MemberEntity member = new MemberEntity();
+                    member.Address = this.Address.Text;
+                    //时间转化
+                    DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+                    dtFormat.ShortDatePattern = "yyyy-MM-dd";
+                    member.Birth_date = Convert.ToDateTime(this.birthDatePicker.Text, dtFormat);
+                    member.Email_address = this.Email_address.Text;
 
-                member.Height = double.Parse(this.height.Text);
-                member.Weight = double.Parse(this.weight.Text);
-                //通过出生日期获得出生年份字符串
-                string birthYear = member.Birth_date.Value.ToString("yyyy");
-                //安全得将出生年份字符串转换为整型
-                int? parseInt = ParseIntegerUtil.ParseInt(birthYear);
-                //当前年份转为整型
-                int? currentYear = ParseIntegerUtil.ParseInt(DateTime.Now.Year.ToString());
-                //当前年份与出生年份相减计算年龄    
-                member.Age = (currentYear - parseInt);
-                member.Max_heart_rate = ParseIntegerUtil.ParseInt(this.Max_heart_rate.Text);
-                member.Member_familyName = this.Member_familyName.Text;
-                member.Member_firstName = this.Member_firstName.Text;
-                member.Mobile_phone = this.Mobile_phone.Text;
-                member.Personal_phone = this.Personal_phone.Text;
-                member.Work_phone = this.Work_phone.Text;
-                member.Remark = this.Remark.Text;
-                member.Sex = sex.Text;
-                //插入角色
-                if ("会员".Equals(TB_Role.Text))
-                {
-                    member.Role_id = 1;
-                }
-                else if ("教练".Equals(TB_Role.Text))
-                {
-                    member.Role_id = 0;
+                    member.Height = double.Parse(this.height.Text);
+                    member.Weight = double.Parse(this.weight.Text);
+                    //通过出生日期获得出生年份字符串
+                    string birthYear = member.Birth_date.Value.ToString("yyyy");
+                    //安全得将出生年份字符串转换为整型
+                    int? parseInt = ParseIntegerUtil.ParseInt(birthYear);
+                    //当前年份转为整型
+                    int? currentYear = ParseIntegerUtil.ParseInt(DateTime.Now.Year.ToString());
+                    //当前年份与出生年份相减计算年龄    
+                    member.Age = (currentYear - parseInt);
+                    member.Max_heart_rate = ParseIntegerUtil.ParseInt(this.Max_heart_rate.Text);
+                    member.Member_familyName = this.Member_familyName.Text;
+                    member.Member_firstName = this.Member_firstName.Text;
+                    member.Mobile_phone = this.Mobile_phone.Text;
+                    member.Personal_phone = this.Personal_phone.Text;
+                    member.Work_phone = this.Work_phone.Text;
+                    member.Remark = this.Remark.Text;
+                    member.Sex = sex.Text;
+                    //插入角色
+                    if ("会员".Equals(TB_Role.Text))
+                    {
+                        member.Role_id = 1;
+                    }
+                    else if ("教练".Equals(TB_Role.Text))
+                    {
+                        member.Role_id = 0;
+
+                    }
+                    //添加会员标签 用英文逗号分隔
+                    StringBuilder lableBuilder = new StringBuilder();
+                    if (this.CB_Zengji.IsChecked == true)
+                    {
+                        lableBuilder.Append("增肌,");
+                    }
+                    if (this.CB_Jianzhi.IsChecked == true)
+                    {
+                        lableBuilder.Append("减脂,");
+                    }
+                    if (this.CB_Suxing.IsChecked == true)
+                    {
+                        lableBuilder.Append("塑形,");
+                    }
+                    if (this.CB_Kangfu.IsChecked == true)
+                    {
+                        lableBuilder.Append("康复,");
+                    }
+                    member.Label_name = lableBuilder.ToString();
+
+
+                    Console.WriteLine("录入会员信息：" + member.ToString());
+                    //插入会员
+                    long count = memberService.InsertMember(member);
+                    if (count > 0)
+                    {
+                        Console.WriteLine("增加会员成功");
+                    }
+
+
+                    //2019.3.28新增 如果有选择 就使用模板自动创建训练计划 没选择就不创建
+                    if (strengthRadioButton.IsChecked == true)//力量循环模板
+                    {
+                        trainingPlanService.AutoSaveNewPlan(member, PlanTemplate.StrengthCycle);
+                        Console.WriteLine("创建力量循环模板计划");
+                    }
+                    else if (enduranceRadioButton.IsChecked == true)//耐力循环模板
+                    {
+                        trainingPlanService.AutoSaveNewPlan(member, PlanTemplate.EnduranceCycle);
+                        Console.WriteLine("创建力量耐力循环模板计划");
+
+                    }
+                    else if (strengthEnduranceRadioButton.IsChecked == true)//力量循环与力量耐力循环模板
+                    {
+                        trainingPlanService.AutoSaveNewPlan(member, PlanTemplate.StrengthEnduranceCycle);
+                        Console.WriteLine("创建力量循环与力量耐力循环模板计划");
+
+                    }
+
+                    //调用2秒后自动关闭窗口的方法
+                    MessageBoxX messageBoxX = new MessageBoxX();
+                    messageBoxX.ShowLoading("温馨提示", "创建中请稍等......", 2);
+
+                    //跳转到会员信息页面
+                    NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative));
+
+                    ts.Complete();
 
                 }
-                //添加会员标签 用英文逗号分隔
-                StringBuilder lableBuilder = new StringBuilder();
-                if (this.CB_Zengji.IsChecked == true)
-                {
-                    lableBuilder.Append("增肌,");
-                }
-                if (this.CB_Jianzhi.IsChecked == true)
-                {
-                    lableBuilder.Append("减脂,");
-                }
-                if (this.CB_Suxing.IsChecked == true)
-                {
-                    lableBuilder.Append("塑形,");
-                }
-                if (this.CB_Kangfu.IsChecked == true)
-                {
-                    lableBuilder.Append("康复,");
-                }
-                member.Label_name = lableBuilder.ToString();
+            }
+            else
+            {
+                //弹出提示框
 
+                MessageBoxX.Show("提示", stringBuilder.ToString() + "不能为空");
 
-                Console.WriteLine("录入会员信息：" + member.ToString());
-                //插入会员
-                long count = memberService.InsertMember(member);
-                if (count > 0)
-                {
-                    Console.WriteLine("增加会员成功");
-                }
-                //跳转到会员信息页面
-                NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative));
-            //}
-            //else
-            //{
-            //      //弹出提示框
-            //}
+                //MessageBox.Show("不能为空哦");
+            }
 
 
 
@@ -272,7 +294,7 @@ namespace AI_Sports.AISports.View.Pages
             //}
         }
 
-       
+
         /// <summary>
         /// 选择日期改变时触发计算建议最大心率
         /// </summary>
@@ -293,7 +315,8 @@ namespace AI_Sports.AISports.View.Pages
                 int? currentYear = DateTime.Now.Year;
                 //当前年份与出生年份相减计算年龄    
                 int? Age = (currentYear - parseInt);
-                this.LB_SuggestMaxHeartRate.Content = "建议最大心率:" + (220-Age).ToString();
+                this.LB_SuggestMaxHeartRate.Visibility = Visibility.Visible;
+                this.LB_SuggestMaxHeartRate.Content = "建议最大心率:" + (220 - Age).ToString();
             }
         }
 
@@ -318,6 +341,45 @@ namespace AI_Sports.AISports.View.Pages
         private void RadioButton_Checked_4(object sender, RoutedEventArgs e)
         {
             TB_Role.Text = "教练";
+        }
+        /// <summary>
+        /// 自动添加测试
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            memberService.AutoInsertUser("自测试1234");
+        }
+
+        private void weightAddClick(object sender, RoutedEventArgs e)
+        {
+            this.weightSlider.Value++;
+        }
+
+        private void weightLessClick(object sender, RoutedEventArgs e)
+        {
+            this.weightSlider.Value--;
+
+        }
+
+        private void heightAddClick(object sender, RoutedEventArgs e)
+        {
+            this.heightSlider.Value++;
+        }
+        private void heightLessClick(object sender, RoutedEventArgs e)
+        {
+            this.heightSlider.Value--;
+
+        }
+        private void heartAddClick(object sender, RoutedEventArgs e)
+        {
+            this.heartSlider.Value++;
+        }
+        private void heartLessClick(object sender, RoutedEventArgs e)
+        {
+            this.heartSlider.Value--;
+
         }
     }
 }

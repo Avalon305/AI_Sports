@@ -28,7 +28,7 @@
                            Foreground="Orange" FontSize="22"
                            VerticalAlignment="Center" Margin="5"/>
             </Border>
-            <TextBlock x:Name="lblMsg"
+            <TextBlock x:Name="lblMsg" MaxWidth="380"
                        Foreground="White" FontSize="20" 
                        TextWrapping="Wrap" Text="test"
                        HorizontalAlignment="Center" Canvas.Left="20"
