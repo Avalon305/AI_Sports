@@ -44,9 +44,9 @@
                     <Grid Grid.Column="0">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="坐式推胸机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Seated chest pushing.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs10.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Label x:Name="data1" HorizontalAlignment="Center"  Margin="0,0,0,0"  Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
+                            <Label x:Name="data1" HorizontalAlignment="Center" Content="10%/60%" Margin="0,0,0,0"  Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
                         </StackPanel>
                     </Grid>
@@ -54,7 +54,7 @@
                     <Grid Grid.Column="1">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="坐式划船机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Seated rowing.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs11.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data2" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="10%/40%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -70,7 +70,7 @@
                     <Grid Grid.Column="0">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="坐式背部伸展机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Sitting back stretching.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs7.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data3" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="13%/60%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -80,7 +80,7 @@
                     <Grid Grid.Column="1">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="腹肌训练机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Abdominal muscle training.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs14.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data4" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="13%/40%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -95,7 +95,7 @@
                     <Grid Grid.Column="0">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="坐式腿伸展训练机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Sitting leg stretch training.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs9.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data5" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="15%/60%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"/>
@@ -104,7 +104,7 @@
                     <Grid Grid.Column="1">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="坐式曲腿训练机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Sit-type leg bending training.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs13.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data6" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="14%/40%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"/>
@@ -119,7 +119,7 @@
                     <Grid Grid.Column="0">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="健身车" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/stationary bike.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs16.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data7" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="34%/60%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
 
@@ -128,7 +128,7 @@
                     <Grid Grid.Column="1">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="椭圆跑步机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Elliptical treadmill.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs12.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data8" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="39%/40%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
 
@@ -149,7 +149,7 @@
                     <Grid Grid.Column="0">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="坐式背阔肌高拉机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Sitting lats high puller.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs1.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data9" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="21%/60%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -159,7 +159,7 @@
                     <Grid Grid.Column="1">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="三头肌训练机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Triceps training.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs2.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data10" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="0%/40%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -174,7 +174,7 @@
                     <Grid Grid.Column="0">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="腿部内弯机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Leg bender.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs3.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data11" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="21%/60%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -184,7 +184,7 @@
                     <Grid Grid.Column="1">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="腿部外弯机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Leg camber.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs4.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data12" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="21%/40%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -199,7 +199,7 @@
                     <Grid Grid.Column="0">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="蝴蝶机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/The butterfly.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs5.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data13" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="25%/60%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -209,7 +209,7 @@
                     <Grid Grid.Column="1">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="反向蝴蝶机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Reverse butterfly.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs6.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data14" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="25%/40%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -224,7 +224,7 @@
                     <Grid Grid.Column="0">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="坐式背部伸展机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Sitting back stretching.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs7.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data15" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="29%/60%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -234,7 +234,7 @@
                     <Grid Grid.Column="1">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="躯干扭转组合" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Torsional trunk assembly.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs8.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data16" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="29%/40%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <GridSplitter Height="5" Width="1500"></GridSplitter>
@@ -249,7 +249,7 @@
                     <Grid Grid.Column="0">
                         <StackPanel>
                             <Label HorizontalAlignment="Center"  Margin="0,20,0,0" Content="腿部推蹬机" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
-                            <Image Source="/AI_Sports;component/AISports.View/Images/Leg press.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
+                            <Image Source="/AI_Sports;component/AISports.View/Images/muscle_bs0.png" Width="360" HorizontalAlignment="Center" Margin="0,0,0,0"></Image>
                             <Label HorizontalAlignment="Center"  Margin="0,0,0,0" Content="实际值/目标值" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                             <Label x:Name="data17" HorizontalAlignment="Center"  Margin="0,0,0,0" Content="30%/60%" Foreground="#04243D" Style="{DynamicResource h3}" FontFamily="Microsoft YaHei" FontSize="22"></Label>
                         </StackPanel>
