@@ -55,10 +55,19 @@ namespace AI_Sports
             });
             th.Start();
 
+            try
+            {
+                //起调UWP蓝牙项目
+                Process process = new Process();
+                Process.Start(new ProcessStartInfo("bluetoothzcr:"));
+            }
+            catch (Exception ex)
+            {
 
-            //起调UWP
-            Process process = new Process();
-            Process.Start(new ProcessStartInfo("bluetoothzcr:"));
+                logger.Error("蓝牙UWP启动失败" + ex.ToString());
+
+            }
+
             base.OnStartup(e);
         }
 

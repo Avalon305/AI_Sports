@@ -116,6 +116,8 @@ namespace AI_Sports.AISports.View.Pages
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             LoadBluetoothList();
+            MessageBoxX messageBoxX = new MessageBoxX();
+            messageBoxX.ShowLoading("温馨提示","加载成功",1);
         }
         /// <summary>
         /// 选中某行登陆

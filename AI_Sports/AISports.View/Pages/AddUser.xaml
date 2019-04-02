@@ -22,7 +22,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>-->
-        <Grid Name="Grid1"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="AliceBlue" Height="540" Width="1494">
+        <Grid Name="Grid1"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="540" Width="1494">
             <Label Content="个人信息" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="20,5,0,0" VerticalAlignment="Top" Height="60" Width="206" Style="{DynamicResource h1}" Foreground="#04243D" FontFamily="Microsoft YaHei" />
             <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="50,50,0,0" VerticalAlignment="Top"/>
 
@@ -45,7 +45,7 @@
             <TextBox Text="" Tag="电子邮箱" Name="Email_address" Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" PreviewTextInput="Email_address_PreviewTextInput" VerticalAlignment="Top" Width="600" Margin="50,431,0,0" FontFamily="Microsoft YaHei" FontSize="22"  Foreground="#04243D" Height="Auto"  />
         </Grid>
         <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="56,1044,118,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
-        <Grid   Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="AliceBlue" Height="540" Width="1494" Margin="0,0,0,0">
+        <Grid   Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Height="540" Width="1494" Margin="0,0,0,0">
             <Label Content="个人标签" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="211" Style="{DynamicResource h1}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#04243D" FontFamily="Microsoft YaHei"/>
             <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="50,60,0,0" VerticalAlignment="Top"/>
             <TextBox Text="{Binding ElementName=weightSlider,Path=Value,Mode=TwoWay}" Tag="体重(kg)" x:Name="weight" IsReadOnly="True"  Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="50,100,0,0"  Height="40"  Foreground="#04243D" FontSize="22" FontFamily="Microsoft YaHei" TextChanged="Weight_TextChanged" />
@@ -70,28 +70,28 @@
             </StackPanel>
             <Button Margin="50,450,0,0" Content="取消" Style="{DynamicResource btn-warning}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click_1"  FontSize="20" Width="75" Height="35"/>
             <Button  Margin="1368,450,0,0" Content="保存"  Click="Button_Click_2" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35" />
-            <Button x:Name="button" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="201,101,0,0" Padding="0" VerticalAlignment="Top" Height="40" Width="40" Click="weightAddClick" RenderTransformOrigin="1.275,0.45">
+            <Button x:Name="button" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="201,101,0,0" Padding="0" VerticalAlignment="Top" Height="40" Width="40" Click="weightLessClick" RenderTransformOrigin="1.275,0.45">
                 <Image  Source="../Images/addLeftButton.png" Height="40" Width="40"/>
 
             </Button>
 
-            <Button x:Name="button1" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="670,101,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0" Click="weightLessClick">
+            <Button x:Name="button1" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="670,101,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0" Click="weightAddClick">
                 <Image  Source="../Images/addRightButton.png"/>
 
             </Button>
-            <Button x:Name="button2" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="915,101,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0"  Click="heightAddClick">
+            <Button x:Name="button2" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="915,101,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0"  Click="heightLessClick">
                 <Image  Source="../Images/addLeftButton.png"/>
 
             </Button>
-            <Button x:Name="button3" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="1380,101,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0"  Click="heightLessClick">
+            <Button x:Name="button3" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="1380,101,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0"  Click="heightAddClick">
                 <Image  Source="../Images/addRightButton.png"/>
 
             </Button>
-            <Button x:Name="button4" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="915,191,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0"  Click="heartAddClick">
+            <Button x:Name="button4" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="915,191,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0"  Click="heartLessClick">
                 <Image  Source="../Images/addLeftButton.png"/>
 
             </Button>
-            <Button x:Name="button5" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="1380,191,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0"  Click="heartLessClick">
+            <Button x:Name="button5" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Margin="1380,191,0,0" VerticalAlignment="Top" Height="40" Width="40" Padding="0"  Click="heartAddClick">
                 <Image  Source="../Images/addRightButton.png"/>
 
             </Button>

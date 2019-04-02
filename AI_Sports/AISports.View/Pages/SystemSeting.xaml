@@ -11,7 +11,7 @@
       Title="SystemSeting">
 
     <Grid>
-		<Grid Name="Grid1"   HorizontalAlignment="Left" VerticalAlignment="Top" Background="AliceBlue" Height="1080" Width="1494" >
+		<Grid Name="Grid1"   HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="1080" Width="1494" >
 			<Label Content="系统设置" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="20,5,0,0" VerticalAlignment="Top" Height="60" Width="206" Style="{DynamicResource h1}" Foreground="#04243D" FontFamily="Microsoft YaHei" />
 			<GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="50,50,0,0" VerticalAlignment="Top"/>
     
