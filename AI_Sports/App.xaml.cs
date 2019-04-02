@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -40,6 +41,7 @@ namespace AI_Sports
                 try
                 {
                     NettyLuncher.GetInstance().Start().Wait();
+                    
 
                 }
                 catch (AggregateException ee)
@@ -52,8 +54,17 @@ namespace AI_Sports
                 }
             });
             th.Start();
+
+
+            //起调UWP
+            Process process = new Process();
+            Process.Start(new ProcessStartInfo("bluetoothzcr:"));
             base.OnStartup(e);
         }
+
+        
+        
+
 
         /// <summary>
         /// 退出的时候清理各种资源，尤其是Netty端口占用

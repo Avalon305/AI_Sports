@@ -11,12 +11,13 @@ namespace AI_Sports.AISports.Dao
 {
     class ProcessDAO
     {
-        public List<DateTime> selectCreateTime()
+        public List<DateTime> selectCreateTime(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT bdl_training_activity_record.gmt_create FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id WHERE bdl_training_activity_record.gmt_create > DATE_ADD(NOW(), INTERVAL - 1440 MINUTE) AND bdl_training_activity_record.activity_type = 0 GROUP BY course_count";
-                return (List<DateTime>)conn.Query<DateTime>(query);
+                const string query = "SELECT bdl_training_activity_record.gmt_create FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id WHERE bdl_training_activity_record.activity_type = 0 AND bdl_training_activity_record.fk_training_course_id = @trainingCourseId GROUP BY course_count";
+                var para = new { trainingCourseId };
+                return (List<DateTime>)conn.Query<DateTime>(query, para);
             }
         }
 
@@ -34,18 +35,19 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT avg( ( (bdl_training_device_record.consequent_force) + ( bdl_training_device_record.reverse_force)) / 2) AS AvgValue FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE  bdl_training_activity_record.gmt_create > DATE_ADD(NOW(), INTERVAL - 1440 MINUTE) AND bdl_training_activity_record.activity_type = 0 AND bdl_training_activity_record.fk_training_course_id = @trainingCourseId GROUP BY course_count";
+                const string query = "SELECT avg( ( (bdl_training_device_record.consequent_force) + ( bdl_training_device_record.reverse_force)) / 2) AS AvgValue FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_activity_record.activity_type = 0 AND bdl_training_activity_record.fk_training_course_id = @trainingCourseId GROUP BY course_count";
                 var para = new { trainingCourseId };
                 return (List<double>)conn.Query<double>(query, para);
             }
         }
 
-        public List<DateTime> selectStrengthCreateTime()
+        public List<DateTime> selectStrengthCreateTime(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT bdl_training_activity_record.gmt_create FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE' WHERE bdl_training_activity_record.gmt_create > DATE_ADD(NOW(), INTERVAL - 1440 MINUTE) AND bdl_training_activity_record.activity_type = 1 AND code_ext_value3 = 0 GROUP BY course_count";
-                return (List<DateTime>)conn.Query<DateTime>(query);
+                const string query = "SELECT bdl_training_activity_record.gmt_create FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE' WHERE bdl_training_activity_record.activity_type = 1 AND bdl_training_activity_record.fk_training_course_id = @trainingCourseId AND code_ext_value3 = 0 GROUP BY course_count";
+                var para = new { trainingCourseId };
+                return (List<DateTime>)conn.Query<DateTime>(query, para);
             }
         }
 
@@ -53,18 +55,19 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT avg( ( (bdl_training_device_record.consequent_force) + ( bdl_training_device_record.reverse_force)) / 2) AS AvgValue FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE  bdl_training_activity_record.gmt_create > DATE_ADD(NOW(), INTERVAL - 1440 MINUTE) AND bdl_training_activity_record.activity_type = 1 AND bdl_training_activity_record.fk_training_course_id = @trainingCourseId AND bdl_datacode.code_ext_value3 = 0 GROUP BY course_count";
+                const string query = "SELECT avg( ( (bdl_training_device_record.consequent_force) + ( bdl_training_device_record.reverse_force)) / 2) AS AvgValue FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE  bdl_training_activity_record.activity_type = 1 AND bdl_training_activity_record.fk_training_course_id = @trainingCourseId AND bdl_datacode.code_ext_value3 = 0 GROUP BY course_count";
                 var para = new { trainingCourseId };
                 return (List<double>)conn.Query<double>(query, para);
             }
         }
 
-        public List<DateTime> selectAerobicCreateTime()
+        public List<DateTime> selectAerobicCreateTime(string trainingCourseId)
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT bdl_training_activity_record.gmt_create FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE' WHERE bdl_training_activity_record.gmt_create > DATE_ADD(NOW(), INTERVAL - 1440 MINUTE) AND bdl_training_activity_record.activity_type = 1 AND code_ext_value3 = 1 GROUP BY course_count";
-                return (List<DateTime>)conn.Query<DateTime>(query);
+                const string query = "SELECT bdl_training_activity_record.gmt_create FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value AND code_type_id = 'DEVICE' WHERE bdl_training_activity_record.activity_type = 1 AND bdl_training_activity_record.fk_training_course_id = @trainingCourseId AND code_ext_value3 = 1 GROUP BY course_count";
+                var para = new { trainingCourseId };
+                return (List<DateTime>)conn.Query<DateTime>(query, para);
             }
         }
 
@@ -73,7 +76,7 @@ namespace AI_Sports.AISports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT avg( ( (bdl_training_device_record.consequent_force) + ( bdl_training_device_record.reverse_force)) / 2) AS AvgValue FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE  bdl_training_activity_record.gmt_create > DATE_ADD(NOW(), INTERVAL - 1440 MINUTE) AND bdl_training_activity_record.activity_type = 1 AND bdl_training_activity_record.fk_training_course_id = @trainingCourseId AND bdl_datacode.code_ext_value3 = 1 GROUP BY course_count";
+                const string query = "SELECT avg(power)FROM bdl_training_activity_record LEFT JOIN bdl_training_device_record ON fk_training_activity_record_id = bdl_training_activity_record.id LEFT JOIN bdl_datacode ON device_code = code_s_value WHERE bdl_training_activity_record.activity_type = 1 AND bdl_training_activity_record.fk_training_course_id = @trainingCourseId AND bdl_datacode.code_ext_value3 = 1 GROUP BY course_count";
                 var para = new { trainingCourseId };
                 return (List<double>)conn.Query<double>(query, para);
             }

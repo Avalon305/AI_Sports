@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundTask", "..\..\宝
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks", "..\..\宝德龙技术资料\Windows-universal-samples-master\Samples\BackgroundTask\cs\Tasks\Tasks.csproj", "{B5E880F4-C9AA-59B3-AE23-1AED9F4A2740}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothLE", "Windows-universal-samples-master\Samples\BluetoothLE\cs\BluetoothLE.csproj", "{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,26 @@ Global
 		{B5E880F4-C9AA-59B3-AE23-1AED9F4A2740}.Release|x64.Build.0 = Release|x64
 		{B5E880F4-C9AA-59B3-AE23-1AED9F4A2740}.Release|x86.ActiveCfg = Release|x86
 		{B5E880F4-C9AA-59B3-AE23-1AED9F4A2740}.Release|x86.Build.0 = Release|x86
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|ARM.ActiveCfg = Debug|ARM
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|ARM.Build.0 = Debug|ARM
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|ARM.Deploy.0 = Debug|ARM
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|x64.ActiveCfg = Debug|x64
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|x64.Build.0 = Debug|x64
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|x64.Deploy.0 = Debug|x64
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|x86.ActiveCfg = Debug|x86
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|x86.Build.0 = Debug|x86
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Debug|x86.Deploy.0 = Debug|x86
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|Any CPU.ActiveCfg = Release|x86
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|ARM.ActiveCfg = Release|ARM
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|ARM.Build.0 = Release|ARM
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|ARM.Deploy.0 = Release|ARM
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|x64.ActiveCfg = Release|x64
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|x64.Build.0 = Release|x64
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|x64.Deploy.0 = Release|x64
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|x86.ActiveCfg = Release|x86
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|x86.Build.0 = Release|x86
+		{A112EA3B-DEA8-5F7F-A2FC-2349FF750910}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,9 +26,9 @@ namespace AI_Sports.AISports.View.Pages
     /// <summary>
     /// Process.xaml 的交互逻辑
     /// </summary>
-    public partial class Process : Page
+    public partial class ProcessChart : Page
     {
-        public Process()
+        public ProcessChart()
         {
             InitializeComponent();
       
@@ -59,7 +59,7 @@ namespace AI_Sports.AISports.View.Pages
         //力量循环X轴动态数据加载(查询系统时间前24小时的创建时间)
         public string selectCreateTime()
         {
-            List<DateTime> CreateTime = processService.selectCreateTime();
+            List<DateTime> CreateTime = processService.selectCreateTime(trainingCourseId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(CreateTime.GetType());
             string szJson = "";
             //序列化
@@ -114,7 +114,7 @@ namespace AI_Sports.AISports.View.Pages
         //力量耐力循环(力量)X轴动态数据加载(查询系统时间前24小时的创建时间)
         public string selectStrengthCreateTime()
         {
-            List<DateTime> CreateTime = processService.selectStrengthCreateTime();
+            List<DateTime> CreateTime = processService.selectStrengthCreateTime(trainingCourseId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(CreateTime.GetType());
             string szJson = "";
             //序列化
@@ -161,7 +161,7 @@ namespace AI_Sports.AISports.View.Pages
         //力量耐力循环(有氧)X轴动态数据加载(查询系统时间前24小时的创建时间)
         public string selectAerobicCreateTime()
         {
-            List<DateTime> CreateTime = processService.selectAerobicCreateTime();
+            List<DateTime> CreateTime = processService.selectAerobicCreateTime(trainingCourseId);
             DataContractJsonSerializer json = new DataContractJsonSerializer(CreateTime.GetType());
             string szJson = "";
             //序列化
