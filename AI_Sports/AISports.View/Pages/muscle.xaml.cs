@@ -227,9 +227,14 @@ namespace AI_Sports.AISports.View.Pages
             return muscleService.selectLegPusher(currentCourseCount);
         }
 
-
+        /// <summary>
+        /// 后退按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative));
 
 
         }

@@ -12,7 +12,7 @@
         <Frame x:Name="all" Width="1493.3" Height="1080"></Frame>
         <StackPanel Margin="10,10,-0.4,0.4">
             <WrapPanel>
-                <Label Content="分析" Style="{DynamicResource h1}" Margin="10 0 0 0" FontSize="50"/>
+                <Label Content="分析" Style="{DynamicResource h1}" Margin="10 10 0 0" FontSize="50"/>
             </WrapPanel>
             <GridSplitter Height="5" Width="1494"/>
             <WrapPanel Height="281" Margin="0,0,0.4,0">
@@ -42,15 +42,9 @@
                         </Grid>
                     </Button.Content>
                 </Button>
+               
 
-                <!--<Button   Margin="50 50 0 20" Width="150" Height="150" Background="White" Click="Button_Click_Process" >
-                    <Button.Content>
-                        <Grid >
-                            <Label Content="进程"  Margin="0 50 0 0" FontFamily="Constantia" FontSize="22" FontWeight="Bold"></Label>
-                            <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-tasks}"  Margin="0 -50 0 0"/>
-                        </Grid>
-                    </Button.Content>
-                </Button>-->
+                
 
                 <Button   Margin="50 50 0 20" Width="150" Height="150" Background="White" Click="Button_Click_Muscle" >
                     <Button.Content>
@@ -60,7 +54,14 @@
                         </Grid>
                     </Button.Content>
                 </Button>
-
+                <Button   Margin="50 50 0 20" Width="150" Height="150" Background="White" Click="Button_Click_Process" >
+                    <Button.Content>
+                        <Grid >
+                            <Label Content="进程"  Margin="0 50 0 0" FontFamily="Constantia" FontSize="22" FontWeight="Bold"></Label>
+                            <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-tasks}"  Width="50" Height="50" Margin="0 -50 0 0"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
 
             </WrapPanel>
             

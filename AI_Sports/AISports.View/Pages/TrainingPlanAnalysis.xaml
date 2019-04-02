@@ -10,17 +10,17 @@
 
     <Grid Background="White" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="12*"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Label Content="分析"  Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,0,0,0"  FontSize="50" Grid.Row="0"></Label>
+        <Label Content="分析"  Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,20,0,0"  FontSize="50" Grid.Row="0"></Label>
         <StackPanel HorizontalAlignment="Left" Height="480" Margin="20,0" Grid.Row="1" VerticalAlignment="Top" Width="1453.3">
             <Label Content="训练进展（单位：千卡）" Name="lable" Foreground="#04243D" Style="{DynamicResource h1}"></Label>
             
             <!-- 图表 -->
-            <WebBrowser Name="Web" MinHeight="480">
+            <WebBrowser Name="Web" Height="530">
             </WebBrowser>
 
         </StackPanel>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
         mc:Ignorable="d"
-        Title="请选择登录用户" Height="450" Width="800">
+        Title="请选择登录用户" Height="450" Width="800" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Color x:Key="Color1">#FF04243D</Color>

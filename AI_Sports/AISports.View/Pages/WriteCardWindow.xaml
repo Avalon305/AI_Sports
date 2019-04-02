@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AI_Sports"
         mc:Ignorable="d"
-        Title="WriteCardWindow" Height="455" Width="800" Name="WinWin">
+        Title="WriteCardWindow" Height="455" Width="800" Name="WinWin" AllowsTransparency="True">
     <Window.Resources>
         <Color x:Key="Color1">#FF04243D</Color>
         <Color x:Key="Color2">#FFF6D600</Color>

@@ -381,5 +381,10 @@ namespace AI_Sports.AISports.View.Pages
             this.heartSlider.Value--;
 
         }
+
+        private void Weight_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

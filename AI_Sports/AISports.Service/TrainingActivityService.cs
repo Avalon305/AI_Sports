@@ -190,8 +190,8 @@ namespace AI_Sports.Service
         /// <returns></returns>
         public List<TrainingActivityVO> ListActivityRecords(int? currentCourseCount)
         {
-            //string currentCourseCount = CommUtil.GetSettingString("currentCourseCount");
-            return trainingActivityRecordDAO.ListActivityRecords(currentCourseCount);
+            string memberId = CommUtil.GetSettingString("memberId");
+            return trainingActivityRecordDAO.ListActivityRecords(currentCourseCount , memberId);
         }
         /// <summary>
         /// 用于转换器，根据活动记录id查询活动名

@@ -1,4 +1,5 @@
-﻿using AI_Sports.Dao;
+﻿using AI_Sports.AISports.View.Pages;
+using AI_Sports.Dao;
 using AI_Sports.Entity;
 using AI_Sports.Service;
 using AI_Sports.Util;
@@ -269,10 +270,13 @@ namespace AI_Sports
             if (trainingCourseService.UpdateTrainingCourseById(trainingCourseEntity.Rest_days,trainingCourseEntity.End_date,trainingCourseEntity.Target_course_count,trainingCourseEntity.Id) > 0)
             {
                 Console.WriteLine("保存训练课程成功");
+                MessageBoxX.Show("温馨提示","更新训练课程成功");
             }
             else
             {
                 Console.WriteLine("保存训练课程失败");
+                MessageBoxX.Show("温馨提示", "更新训练课程失败");
+
             }
         }
 

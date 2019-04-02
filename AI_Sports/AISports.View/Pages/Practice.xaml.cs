@@ -781,6 +781,15 @@ namespace AI_Sports
                 return str16Rate;
             }
         }
+        /// <summary>
+        /// 后退按钮到分析页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative));
 
+        }
     }
 }
