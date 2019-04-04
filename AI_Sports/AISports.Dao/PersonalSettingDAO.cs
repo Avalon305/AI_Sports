@@ -13,26 +13,42 @@ namespace AI_Sports.Dao
     public class PersonalSettingDAO : BaseDAO<PersonalSettingEntity>
     {
         /// <summary>
+        /// 查询个人设置
+        /// </summary>
+        /// <param name="member_id"></param>
+        /// <param name="deviceType"></param>
+        /// <param name="activityType"></param>
+        /// <returns></returns>
+        public PersonalSettingEntity GetSettingByMemberId(string member_id, DeviceType deviceType, ActivityType activityType)
+        {
+            const string query = @"SELECT * FROM bdl_personal_setting WHERE member_id = @Member_id AND activity_type = @MyActivityType and 
+                             device_code = @DeviceCode 
+";
+            var para = new { Member_id = member_id, MyActivityType = activityType , DeviceCode  = deviceType};
+            using (var conn = DbUtil.getConn())
+            {
+                return conn.Query<PersonalSettingEntity>(query, para).FirstOrDefault();
+            }
+           
+        }
+
+        /// <summary>
         /// 根据会员ID和设置获取个人设置
         /// </summary>
         /// <param name="member_id"></param>
         /// <param name="deviceType"></param>
         /// <returns></returns>
-        public SettingInfoDTO GetSettingByMemberIdDeviceType(string member_id, DeviceType deviceType, ActivityType activityType)
+        public SettingInfoDTO GetSettingCourseInfoByMemberId(string member_id,  ActivityType activityType)
         {
             using (var conn = DbUtil.getConn())
             {
-                var para = new { Member_id = member_id, DeviceCode = deviceType, MyActivityType = activityType };
-                const string query = @"select d.current_course_count,c.fk_training_course_id,a.is_open_fat_reduction,b.* from bdl_member a 
-                    join bdl_personal_setting b on a.id = b.fk_member_id join bdl_activity c on c.id = b.fk_training_activity_id join bdl_training_course d on d.id = c.fk_training_course_id 
-                    where c.is_complete <> 1 and d.is_complete <> 1 and a.member_id = @Member_id and b.device_code = @DeviceCode and c.activity_type = @MyActivityType 
-                ";
+                var para = new { Member_id = member_id,  MyActivityType = activityType };
+                const string query = @"select a.is_open_fat_reduction,c.target_course_count,c.current_course_count,a.member_id,a.id user_id,c.id course_id,d.id activity_id from bdl_member a join bdl_training_plan b on a.id = b.fk_member_id 
+                    join bdl_training_course c on c.fk_training_plan_id = b.id 
+                    join bdl_activity d on d.fk_training_course_id = c.id 
+                    where b.is_deleted = 0 and a.member_id = @Member_id and d.activity_type = @MyActivityType ";
                 //一对一关联查询
-                return conn.Query<SettingInfoDTO, PersonalSettingEntity, SettingInfoDTO>(query, (dto, set) =>
-                  {
-                      dto.PersonalSettingEntity = set;
-                      return dto;
-                  }, para, splitOn: "Id").FirstOrDefault();
+                return conn.Query< SettingInfoDTO>(query, para).FirstOrDefault();
             }
         }
 
@@ -42,14 +58,14 @@ namespace AI_Sports.Dao
         /// <param name="member_id"></param>
         /// <param name="activityType"></param>
         /// <returns></returns>
-        public List<DeviceDoneDTO> ListDeviceDone(string member_id, ActivityType activityType)
+        public List<DeviceDoneDTO> ListDeviceDone(string member_id, ActivityType activityType, long activityId, int courseCount)
         {
             List<DeviceDoneDTO> result = new List<DeviceDoneDTO>();
             const string query = @"select c.is_open_fat_reduction,b.device_code from    bdl_training_activity_record a join bdl_training_device_record b
                 on a.id = b.fk_training_activity_record_id  join bdl_member c on c.member_id = b.member_id 
-                where b.member_id=@Member_id and a.activity_type = @MyActivityType 
+                where b.member_id=@Member_id and a.activity_type = @MyActivityType and a.fk_activity_id = @ActivityId and a.course_count = @CourseCount
                 ";
-            var para = new { Member_id = member_id, MyActivityType = activityType };
+            var para = new { Member_id = member_id, MyActivityType = activityType, ActivityId = activityId, CourseCount = courseCount };
             using (var conn = DbUtil.getConn())
             {
                 result = conn.Query<DeviceDoneDTO>(query, para).ToList();
