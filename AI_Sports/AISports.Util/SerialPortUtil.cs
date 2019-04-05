@@ -162,6 +162,42 @@ namespace AI_Sports.AISports.Util
 
 
         }
+        /// <summary>
+        /// 切分memberID New
+        /// </summary>
+        public static void splitMemberId(ref string name, ref string phone, string memberId)
+        {
+            if (memberId.Length == 6)
+            {
+                //2+4
+                name = memberId.Substring(0, 3);
+                phone = memberId.Substring(3, 2);
+                crc = strToToHexByte(memberId.Substring(5, 4));
+            }
+            if (memberId.Length == 7)
+            {
+                //3+4
+                name = memberId.Substring(0, 4);
+                phone = memberId.Substring(4, 2);
+                crc = strToToHexByte(memberId.Substring(6, 4));
+            }
+            if (memberId.Length == 8)
+            {
+                //4+4
+                name = memberId.Substring(0, 2);
+                phone = memberId.Substring(2, 2);
+                crc = strToToHexByte(memberId.Substring(4, 4));
+            }
+            if (memberId.Length == 9)
+            {
+                //5+4
+                name = memberId.Substring(0, 2);
+                phone = memberId.Substring(2, 2);
+                crc = strToToHexByte(memberId.Substring(4, 4));
+            }
+
+
+        }
 
         public static byte[] CRC16(byte[] data)
         {
