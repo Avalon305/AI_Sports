@@ -118,11 +118,22 @@ namespace AI_Sports.Service
                 
             }
         }
-        /// <summary>
-        /// 如果传上来的用户ID在数据库中不存在，则创建默认用户，并创建默认的训练计划、课程活动、个人设置
-        /// </summary>
-        /// <returns></returns>
-        public long AutoInsertUser(string memberId)
+
+		/// <summary>
+		/// 更新减脂模式
+		/// </summary>
+		/// <param name="memberId"></param>
+		/// <param name="enable"></param>
+		public void UpdateDeFatState(string memberId, bool enable)
+		{
+			memberDAO.UpdateDeFatState(memberId, enable);
+		}
+
+		/// <summary>
+		/// 如果传上来的用户ID在数据库中不存在，则创建默认用户，并创建默认的训练计划、课程活动、个人设置
+		/// </summary>
+		/// <returns></returns>
+		public long AutoInsertUser(string memberId)
         {
             //使整个代码块成为事务性代码
             using (TransactionScope ts = new TransactionScope())

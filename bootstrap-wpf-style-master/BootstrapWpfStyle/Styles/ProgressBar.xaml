@@ -32,10 +32,10 @@
                                         <Rectangle x:Name="PART_GlowRect" Fill="{StaticResource ProgressBarIndicatorAnimatedFill}" HorizontalAlignment="Left" Margin="-100,0,0,0" Width="100"/>
                                     </Border>
                                 </Decorator>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Label FontSize="{DynamicResource SmallFontSize}" Foreground="#fff" Content="{TemplateBinding Value}"></Label>
                                     <Label FontSize="{DynamicResource SmallFontSize}" Foreground="#fff" Content="%"></Label>
-                                </StackPanel>
+                                </StackPanel>-->
                             </Grid>
                         </Grid>
                     </Grid>

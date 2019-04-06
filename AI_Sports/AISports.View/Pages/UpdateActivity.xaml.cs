@@ -27,11 +27,13 @@ namespace AI_Sports.AISports.View.Pages
     public partial class UpdateActivity : Page
     {
         TrainingActivityService trainingActivityService = new TrainingActivityService();
-        DatacodeDAO datacodeDAO = new DatacodeDAO();
+		MemberService memberService = new MemberService();
+		DatacodeDAO datacodeDAO = new DatacodeDAO();
         SystemSettingDAO systemSettingDAO = new SystemSettingDAO();
         PersonalSettingService personalSettingService = new PersonalSettingService();
-        //静态活动类型参数来接收编辑活动页传来的活动类型
-        private static string activityType = "";
+		MemberEntity memberEntity = new MemberEntity();
+		//静态活动类型参数来接收编辑活动页传来的活动类型
+		private static string activityType = "";
         
         public UpdateActivity()
         {
@@ -40,7 +42,18 @@ namespace AI_Sports.AISports.View.Pages
             List<DatacodeEntity> datacodeEntities = datacodeDAO.ListByTypeId("TRAIN_MODE");
             //查询系统设置表中的版本是豪华版还是普通版 查询id为1的 注意插入的时候直接设置id为1.
             SystemSettingEntity systemSettingEntity = systemSettingDAO.Load(1);
-            if (systemSettingEntity.System_version == 0)
+			//获取登陆对象的个人信息
+			memberEntity = memberService.GetMember(CommUtil.GetSettingString("memberId"));
+			//更新页面是否开启减脂模式
+			if (memberEntity.Is_open_fat_reduction == false)
+			{
+				this.is_open_fat.Text = "未开启";
+			}
+			else
+			{
+				this.is_open_fat.Text = "开启";
+			}
+			if (systemSettingEntity.System_version == 0)
             {
                 //普通版少3中训练模式 移除指定索引段 移除心率模式和增肌模式被动模式和主被动模式
                 datacodeEntities.RemoveRange(3, 4);
@@ -142,7 +155,9 @@ namespace AI_Sports.AISports.View.Pages
         {
             //根据选择的速度给跑步机和单车的功率赋初值
             int? power = 0;
-            switch (this.CB_speed.Text)
+			//默认不开启减脂模式
+			Boolean if_fat = false;
+			switch (this.CB_speed.Text)
             {
                 case "慢":
                     power = 30;
@@ -156,8 +171,20 @@ namespace AI_Sports.AISports.View.Pages
                 default:
                     break;
             }
-            //获得训练模式的存储值
-            string trainMode = this.CB_train_mode.SelectedValue.ToString();
+			switch (this.is_open_fat.Text)
+			{
+				case "开启":
+					if_fat = true;
+					break;
+				case "未开启":
+					if_fat = false;
+					break;
+
+				default:
+					break;
+			}
+			//获得训练模式的存储值
+			string trainMode = this.CB_train_mode.SelectedValue.ToString();
             //顺向力
             double? consequentForce =  ParseIntegerUtil.ParseInt(this.LB_consequent_force.Content.ToString());
             //反向力
@@ -184,8 +211,11 @@ namespace AI_Sports.AISports.View.Pages
                 //更新活动轮次
                 trainingActivityService.UpdateTargetTurnNumber(activityEntity);
 
-                //分类更新个人设置
-                if ("0".Equals(activityType))
+				//更新是否开启减脂模式
+				memberService.UpdateDeFatState(CommUtil.GetSettingString("memberId"), enable: if_fat);
+
+				//分类更新个人设置
+				if ("0".Equals(activityType))
                 {
                     //力量循环更新个人设置，不更新功率
                     personalSettingService.UpdateStrengthDeviceSettingByType(personalSettingEntity);
