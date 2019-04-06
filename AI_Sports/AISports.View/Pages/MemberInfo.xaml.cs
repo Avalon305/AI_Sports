@@ -134,6 +134,13 @@ namespace AI_Sports.AISports.View.Pages
                         
                         double target = (double)trainingCourse.Target_course_count;
                         double current = (double)trainingCourse.Current_course_count;
+                        //如果课程已经完成则提示
+                        if (current >= target)
+                        {
+                            MessageBoxX.Show("温馨提示", "计划已完成，请联系教练制定新的训练计划");
+
+                        }
+
                         // 例如10/32训练课程已完成
                         this.Jincheng.Content = current + "/" + target + " 训练课程已完成";
 
@@ -164,7 +171,7 @@ namespace AI_Sports.AISports.View.Pages
                     }
                     else
                     {
-                        MessageBoxX.Show("温馨提示","无训练计划或计划已完成，请联系教练制定训练计划");
+                        MessageBoxX.Show("温馨提示","当前用户无训练计划，请联系教练制定训练计划");
                     }
                   
 

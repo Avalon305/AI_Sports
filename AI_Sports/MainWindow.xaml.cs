@@ -165,7 +165,8 @@ namespace AI_Sports
                 if (cmd[0] == CommondConstant.readCard[0])
                 {
                     byte[] namebytewithzero = new byte[10];
-                    byte[] phonebyte = new byte[2];
+                    //byte[] phonebyte = new byte[2];
+                    byte[] phonebyte = new byte[4];
                     byte[] crc = new byte[2];
                     Buffer.BlockCopy(obj_data, 0, namebytewithzero, 0, namebytewithzero.Length);//提取姓名
                     string strName = SerialPortUtil.GetEndString(namebytewithzero, 0);
@@ -175,11 +176,13 @@ namespace AI_Sports
                     Console.WriteLine(strPhone);//解析手机号
                     //Buffer.BlockCopy(obj_data, 12, crc, 0, crc.Length);//提取CRC
                     //string strCRC = SerialPortUtil.ByteToHexStr(crc);
-                    string lowStrCRC = obj_data[12].ToString();
-                    string highStrCRC = obj_data[13].ToString();
-                    string strCRC = lowStrCRC + highStrCRC;
-                    Console.WriteLine(strCRC);//解析CRC
-                    ReceiveValues(strName + strPhone + strCRC);
+                    //string lowStrCRC = obj_data[12].ToString();
+                    //string highStrCRC = obj_data[13].ToString();
+                    //string strCRC = lowStrCRC + highStrCRC;
+                    //Console.WriteLine(strCRC);//解析CRC
+                    //ReceiveValues(strName + strPhone + strCRC);
+                    ReceiveValues(strName + strPhone);
+
 
                 }
 
@@ -228,7 +231,7 @@ namespace AI_Sports
             }
             else if (e.Key == Key.C)
             {//模拟教练登陆
-                resultCode = memberService.Login("17863979633");
+                resultCode = memberService.Login("YK-488A");
                 switch (resultCode)
                 {
                     case LoginPageStatus.CoachPage:

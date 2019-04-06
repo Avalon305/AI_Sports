@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
 
         <!--左侧导航栏  深蓝色：#FF04243D-->
-        <Grid Grid.Column="0" HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="auto" Background="White">
+        <Grid Grid.Column="0" HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="auto" Background="#A9A9A9" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -36,7 +36,7 @@
             </Grid>
             <!--按钮部分-->
             <Grid Grid.Row="1">
-                <Image Source="../Images/goldDaLiShi.png" Stretch="UniformToFill"/>
+                <!--<Image Source="../Images/goldDaLiShi.png" Stretch="UniformToFill"/>-->
 
                 <!--个人信息按钮-->
                 <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,0,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="24" FontFamily="Microsoft YaHei Light" x:Name="btn1" Click="Btn1_Click" Panel.ZIndex="1">
@@ -129,9 +129,9 @@
             <GridSplitter x:Name="gridSplitter" Background="Gray" HorizontalAlignment="Left" Height="1080" Margin="212,-74,-5,0" Grid.Row="1" VerticalAlignment="Top" Width="1"/>
         </Grid>
         <!--右侧导航栏-->
-        <Grid Grid.Column="2" HorizontalAlignment="Right" Height="auto" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Background="White">
+        <Grid Grid.Column="2" HorizontalAlignment="Right" Height="auto" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Background="#A9A9A9">
 
-            <Image Source="../Images/goldDaLiShi.png" Stretch="UniformToFill"/>
+            <!--<Image Source="../Images/goldDaLiShi.png" Stretch="UniformToFill"/>-->
 
             <!--退出登录按钮-->
             <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="6,0,0,0" Background="#FF1C4364" FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" x:Name="logoutbtn" Click="Logout">

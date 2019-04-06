@@ -19,7 +19,18 @@
                 <ResourceDictionary Source="pack://application:,,,/AI_Sports;component/AISports.View/Resource/SliderStyle.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
+            <!--全局字体设置-->
+            <Style TargetType="{x:Type TextElement }">
+                <Setter Property="FontFamily" Value="宋体"/>
+                <!--<Setter Property="FontSize" Value="30"/>-->
+            </Style>
+            <Style TargetType="{x:Type TextBlock }">
+                <Setter Property="FontFamily" Value="宋体"/>
+                <!--<Setter Property="FontSize" Value="30"/>-->
+            </Style>
         </ResourceDictionary>
+
+
     </Application.Resources>
 
 

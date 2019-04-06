@@ -95,48 +95,64 @@ namespace AI_Sports.AISports.View.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string addTest = this.LB_consequent_force.Content.ToString();
-            int add = int.Parse(addTest);
-            if (!(add == 100))//如果add等于100或者0为真的话
-            {
-                add = add + 1;
-            }
+			//string addTest = this.LB_consequent_force.Content.ToString();
+			//int add = int.Parse(addTest);
+			//if (!(add == 100))//如果add等于100或者0为真的话
+			//{
+			//    add = add + 1;
+			//}
 
-            this.LB_consequent_force.Content = add;
+			//this.LB_consequent_force.Content = add;
+			if (Convert.ToInt32(this.LB_consequent_force.Content) < 100)
+			{
+				this.LB_consequent_force.Content = Convert.ToString(Convert.ToInt32(this.LB_consequent_force.Content) + 1);
+			}
 
-        }
+		}
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            string addTest = this.LB_consequent_force.Content.ToString();
-            int add = int.Parse(addTest);
-            if (!(add == 1))
-                add = add - 1;
+			//string addTest = this.LB_consequent_force.Content.ToString();
+			//int add = int.Parse(addTest);
+			//if (!(add == 1))
+			//    add = add - 1;
 
-            this.LB_consequent_force.Content = add;
-        }
+			//this.LB_consequent_force.Content = add;
+			if (Convert.ToInt32(this.LB_consequent_force.Content) > 0)
+			{
+				this.LB_consequent_force.Content = Convert.ToString(Convert.ToInt32(this.LB_consequent_force.Content) - 1);
+			}
+		}
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            string minusTest = this.LB_Reverse_force.Content.ToString();
-            int min = int.Parse(minusTest);
-            if (!(min == 100))
-            {
-                min = min + 1;
-            }
-            this.LB_Reverse_force.Content = min;
-        }
+			//string minusTest = this.LB_Reverse_force.Content.ToString();
+			//int min = int.Parse(minusTest);
+			//if (!(min == 100))
+			//{
+			//    min = min + 1;
+			//}
+			//this.LB_Reverse_force.Content = min;
+			if (Convert.ToInt32(this.LB_Reverse_force.Content) < 100)
+			{
+				this.LB_Reverse_force.Content = Convert.ToString(Convert.ToInt32(this.LB_Reverse_force.Content) + 1);
+			}
+		}
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            string minusTest = this.LB_Reverse_force.Content.ToString();
-            int min = int.Parse(minusTest);
-            if (!(min == 1))
-            {
-                min = min - 1;
-            }
-            this.LB_Reverse_force.Content = min;
-        }
+			//string minusTest = this.LB_Reverse_force.Content.ToString();
+			//int min = int.Parse(minusTest);
+			//if (!(min == 1))
+			//{
+			//    min = min - 1;
+			//}
+			//this.LB_Reverse_force.Content = min;
+			if (Convert.ToInt32(this.LB_Reverse_force.Content) >0)
+			{
+				this.LB_Reverse_force.Content = Convert.ToString(Convert.ToInt32(this.LB_Reverse_force.Content) - 1);
+			}
+		}
         /// <summary>
         /// 点击取消回到EditActivity页面
         /// </summary>

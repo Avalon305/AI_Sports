@@ -67,5 +67,10 @@ namespace AI_Sports.AISports.Dto
         /// </summary>
         public String Code_d_value { get; set; }
 
+        /// <summary>
+        /// 设备图片存储路径
+        /// </summary>
+        public String Code_ext_value4 { get; set; }
+
     }
 }

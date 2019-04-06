@@ -10,19 +10,22 @@
         Title="LoginWindow"
         
         >
-	<Page.Resources>
-		<Color x:Key="Color1">#FF04243D</Color>
-		<Color x:Key="Color2">#FFF6D600</Color>
-	</Page.Resources>
+
+    <Page.Resources>
+        <Color x:Key="Color1">#FF1C4364</Color>
+        <Color x:Key="Color2">#FFF6D600</Color>
+    </Page.Resources>
 	<Grid>
-		<Grid>
+		<Grid Background="#D3D3D3">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="*" />
 			</Grid.RowDefinitions>
-			<Image Margin="0,0,0,0" Source="AISports.View/Images/background_Login.jpg" Stretch="Fill"/>
+			<!--<Image Margin="0,0,0,0" Source="AISports.View/Images/background_Login.jpg" Stretch="Fill"/>-->
+			<Image Margin="0,0,0,0" Source="/AI_Sports;component/AISports.View/Images/background2.png" Stretch="Fill"/>
+
 		</Grid>
 		<Grid>
 			<Rectangle HorizontalAlignment="Left" Height="115" VerticalAlignment="Top" Width="1920">
