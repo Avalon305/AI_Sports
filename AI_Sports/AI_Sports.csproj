@@ -642,6 +642,7 @@
     <Resource Include="AISports.View\Images\addLeftButton.png" />
     <Resource Include="AISports.View\Images\addRightButton.png" />
     <Resource Include="AISports.View\Images\blueDaLiShi.png" />
+    <Resource Include="AISports.View\Images\background2.png" />
     <Content Include="AISports.View\Images\defaultphoto.png" />
     <Resource Include="AISports.View\Images\eef81f78c35e498da4d9263cb70cc329_th.jpeg" />
     <Resource Include="AISports.View\Images\logodark.jpg" />
@@ -683,6 +684,7 @@
     <Resource Include="AppIcon.ico" />
     <Resource Include="AISports.View\Images\goldDaLiShi.png" />
     <Resource Include="AISports.View\Images\whiteDaLiShi.png" />
+    <Resource Include="AISports.View\Images\legDeviceTest.jpg" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

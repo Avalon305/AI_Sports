@@ -65,6 +65,9 @@ namespace AI_Sports.AISports.View.Pages
                 this.suitableHeartRate.Content += suitable_heart_rate.ToString() + "次/分钟";//最宜心率
                 string lastlogin = member.Last_login_date.Value.ToString("yyyy年MM月dd日 HH:mm");       //上次登录时间
 
+                //计算BMI指数
+                double? bmiValue = Math.Round(((weight.Value / (height.Value * height.Value)) * 10000), 1);
+
                 if (lastlogin != null)
                 {
                     this.lastTime.Content += lastlogin;       //显示上次登录时间
@@ -93,19 +96,30 @@ namespace AI_Sports.AISports.View.Pages
                     this.addressInfo.Content = address;
                 }
 
-                if (weight != 0)
+                if (weight != null && weight != 0)
                 {
                     this.weightInfo.Content = this.weightInfo.Content + weight.ToString() + "kg";
                 }
                 else
                     this.weightInfo.Content = "尚未提供体重信息";
 
-                if (height != 0)
+                if (height != null && height != 0)
                 {
                     this.heightInfo.Content = this.heightInfo.Content + height.ToString() + "cm";
                 }
                 else
                     this.heightInfo.Content = "尚未提供身高信息";
+
+                if (bmiValue != null && bmiValue != 0)
+                {
+                    this.bmiInfo.Content = bmiValue.Value;
+
+                }
+                else
+                {
+                    this.bmiInfo.Content = "尚未提供BMI信息";
+
+                }
 
                 if (max_heart_rate != 0)
                 {

@@ -58,6 +58,9 @@
                         <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
                             <ContentControl x:Name="heightInfo" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Content="身高： " Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
                         </ContentControl>
+                        <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
+                            <ContentControl x:Name="bmiInfo" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Content="身体质量指数(BMI)： " Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>
+                        </ContentControl>
 
                         <ContentControl Style="{StaticResource panel-body}" Height="90" Margin="0,0,0,0">
                             <ContentControl x:Name="heartRate" Style="{StaticResource panel-body}"  HorizontalAlignment="Left"  Content="最大心率： " Width="1500" FontFamily="Microsoft YaHei" FontSize="22"/>

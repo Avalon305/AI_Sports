@@ -71,8 +71,8 @@ namespace AI_Sports.Entity
         /// </summary>
         public String Code_d_value { get; set; }
         /// <summary>
-        /// 设备图片地址
+        /// 设备图片存储路径
         /// </summary>
-        public String Device_image_path { get; set; }
+        public String Code_ext_value4 { get; set; }
     }
 }

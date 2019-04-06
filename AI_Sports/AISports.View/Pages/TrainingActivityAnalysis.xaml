@@ -74,7 +74,7 @@
                                     </GridViewColumn.Header>-->
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Image Source="/AI_Sports;component/AISports.View/Images/deviceImageTest.jpg" Width="50" Height="50"/>
+                                        <Image Source="{Binding Path=Code_ext_value4}" Width="50" Height="50"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

@@ -68,7 +68,10 @@ namespace AI_Sports.Entity
         /// 扩展值3 用作存储有氧力量类型：0：力量训练设备；1：有氧训练设备
         /// </summary>
         public String Code_ext_value3 { get; set; }
-
+        /// <summary>
+        /// 设备图片存储路径
+        /// </summary>
+        public String Code_ext_value4 { get; set; }
 
         /// <summary>
         /// 是否启用 0 不启用 1启用
