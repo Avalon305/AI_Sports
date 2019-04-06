@@ -48,16 +48,16 @@ namespace AI_Sports.Service
                 Console.WriteLine("用户存在");
             }
 
-            var setDto = personalSettingDAO.GetSettingByMemberIdDeviceType(request.Uid, request.DeviceType, request.ActivityType);
-            if (setDto != null && setDto.PersonalSettingEntity != null)
-            {
+            var pSetting = personalSettingDAO.GetSettingByMemberId(request.Uid, request.DeviceType, request.ActivityType);
+            if (pSetting != null)
+            {//存在个人设置
                 response.ExisitSetting = true;
             }
             else
             {
                 return response;
             }
-            var pSetting = setDto.PersonalSettingEntity;
+
             response.TrainMode = (TrainMode)Enum.Parse(typeof(TrainMode), pSetting.Training_mode);
             MemberEntity member = memberDAO.Load(pSetting.Fk_member_id);
             response.DefatModeEnable = member.Is_open_fat_reduction;
@@ -73,10 +73,13 @@ namespace AI_Sports.Service
             response.ReverseForce = pSetting.Reverse_force == null ? 0 : (double)pSetting.Reverse_force;
             response.Power = pSetting.Power == null ? 0 : (double)pSetting.Power;
             //课程ID、训练活动ID、训练活动记录ID
-            response.CourseId = setDto.Fk_training_course_id;
-            response.ActivityId = pSetting.Fk_training_activity_id;
 
-            var recordEntity = trainingActivityRecordDAO.GetByActivityId(pSetting.Fk_training_activity_id);
+            var setDto = personalSettingDAO.GetSettingCourseInfoByMemberId(request.Uid, request.ActivityType);
+
+            response.CourseId = setDto.Course_id;
+            response.ActivityId = setDto.Activity_id;
+
+            var recordEntity = trainingActivityRecordDAO.GetByActivityPrimaryKey(setDto.Activity_id, setDto.Current_course_count);
             if ((recordEntity == null) || (recordEntity != null && recordEntity.Is_complete == true))
             {//没有训练课程记录就插入一条新的
                 recordEntity = new TrainingActivityRecordEntity
@@ -86,7 +89,7 @@ namespace AI_Sports.Service
                     Fk_activity_id = pSetting.Fk_training_activity_id,
                     Activity_type = ((int)request.ActivityType).ToString(),
                     Is_complete = false,
-                    Fk_training_course_id = setDto.Fk_training_course_id,
+                    Fk_training_course_id = setDto.Course_id,
                     Course_count = setDto.Current_course_count
                 };
                 trainingActivityRecordDAO.Insert(recordEntity);
@@ -100,6 +103,8 @@ namespace AI_Sports.Service
             response.RoleId = member.Role_id == null ? 0 : (int)member.Role_id;
             response.Weight = member.Weight == null ? 0.0 : (double)member.Weight;
             response.Age = member.Age == null ? 0 : (int)member.Age;
+            //当前的课程数
+            response.CourseCount = setDto.Current_course_count;
             //当前系统版本
             List<SystemSettingEntity> list = SystemSettingDAO.ListAll();
             if (list != null && list.Count > 0)
@@ -113,7 +118,7 @@ namespace AI_Sports.Service
             }
 
             // 待训练列表
-            List<DeviceType> todoDevices = GenToDoDevices(request.Uid, request.ActivityType, setDto.Is_open_fat_reduction);
+            List<DeviceType> todoDevices = GenToDoDevices(request.Uid, request.ActivityType, setDto.Is_open_fat_reduction,setDto.Activity_id,setDto.Current_course_count);
             response.DeviceTypeArr.AddRange(todoDevices);
             return response;
         }
@@ -124,9 +129,9 @@ namespace AI_Sports.Service
         /// <param name="request"></param>
         /// <param name="setDto"></param>
         /// <returns></returns>
-        private List<DeviceType> GenToDoDevices(string uid, ActivityType activityType, bool Is_open_fat_reduction)
+        private List<DeviceType> GenToDoDevices(string uid, ActivityType activityType, bool Is_open_fat_reduction,long activityId,int courseCount)
         {
-            List<DeviceDoneDTO> doneList = personalSettingDAO.ListDeviceDone(uid, activityType);
+            List<DeviceDoneDTO> doneList = personalSettingDAO.ListDeviceDone(uid, activityType,activityId,courseCount);
             var todoDevices = new List<DeviceType>();
 
             if (activityType == ActivityType.PowerCycle)//力量循环
@@ -204,7 +209,7 @@ namespace AI_Sports.Service
             {
                 trainingDeviceRecordDAO.Insert(deviceRecord);
                 //查一下是否是该循环最后一个设备，是的话更新课程表数量加一并看一下是否已完成,训练活动记录表标志位已完成，
-                List<DeviceType> todoList = this.GenToDoDevices(request.Uid, request.ActivityType, request.DefatModeEnable);
+                List<DeviceType> todoList = this.GenToDoDevices(request.Uid, request.ActivityType, request.DefatModeEnable,request.ActivityId,request.CourseCount);
                 if (todoList.Count == 0)//训练完毕一个循环,
                 {
                     //更新记录完成状态

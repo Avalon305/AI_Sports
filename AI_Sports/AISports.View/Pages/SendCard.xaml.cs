@@ -216,15 +216,16 @@ namespace AI_Sports.AISports.View.Pages
             string memberId = CommUtil.GetSettingString("memberId");//姓名-手机号后两位-CRC(0x01 0x02--12) CommUtil.GetSettingString("memberId");
             string name = "";
             string phone = "";
-            byte[] crc = new byte[2];
-            SerialPortUtil.splitMemberId(ref name, ref crc, ref phone, memberId);
+            //byte[] crc = new byte[2];
+            //SerialPortUtil.splitMemberId(ref name, ref crc, ref phone, memberId);
+            SerialPortUtil.splitMemberId(ref name, ref phone, memberId);
             Console.WriteLine("name:" + name);
             Console.WriteLine("phone:" + phone);
-            Console.WriteLine("crc:" + SerialPortUtil.ByteToHexStr(crc));
+            //Console.WriteLine("crc:" + SerialPortUtil.ByteToHexStr(crc));
 
             Encoding.GetEncoding("GBK").GetBytes(name, 0, name.Length, data, 0);
             Encoding.GetEncoding("ASCII").GetBytes(phone, 0, phone.Length, data, 10);
-            Buffer.BlockCopy(crc, 0, data, 12, crc.Length);
+            //Buffer.BlockCopy(crc, 0, data, 12, crc.Length);
 
         }
         /// <summary>
