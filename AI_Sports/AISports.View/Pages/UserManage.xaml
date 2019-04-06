@@ -24,7 +24,8 @@
         </Grid.RowDefinitions>
 
         <!--左侧导航栏  深蓝色：#FF04243D-->
-        <Grid Grid.Column="0" HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="auto" Background="#A9A9A9" >
+
+        <Grid Grid.Column="0" HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="auto" Background="#CFCFCF" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -129,7 +130,9 @@
             <GridSplitter x:Name="gridSplitter" Background="Gray" HorizontalAlignment="Left" Height="1080" Margin="212,-74,-5,0" Grid.Row="1" VerticalAlignment="Top" Width="1"/>
         </Grid>
         <!--右侧导航栏-->
-        <Grid Grid.Column="2" HorizontalAlignment="Right" Height="auto" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Background="#A9A9A9">
+
+        <Grid Grid.Column="2" HorizontalAlignment="Right" Height="auto" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Background="#CFCFCF">
+
 
             <!--<Image Source="../Images/goldDaLiShi.png" Stretch="UniformToFill"/>-->
 

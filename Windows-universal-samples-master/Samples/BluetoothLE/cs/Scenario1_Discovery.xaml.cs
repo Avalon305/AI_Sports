@@ -780,7 +780,7 @@ namespace SDKTemplate
                             //65282:AttributeHandle(特征唯一ID) = 16,CharacteristicProperties(特征属性):Read | Notify
 
                             //这里是根据AttributeHandle判断的所需服务 也可以根据UUID判断
-                            if (characteristic.AttributeHandle == 12)
+                            if (characteristic.AttributeHandle == 14)
                             {
                                 //给全局对象选择的特征赋值 写入的时候使用该特征写入
                                 selectedCharacteristic = characteristic;

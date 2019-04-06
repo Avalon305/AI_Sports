@@ -685,7 +685,10 @@
     <Resource Include="AISports.View\Images\goldDaLiShi.png" />
     <Resource Include="AISports.View\Images\whiteDaLiShi.png" />
     <Resource Include="AISports.View\Images\legDeviceTest.jpg" />
+
     <Resource Include="AISports.View\Images\text5.png" />
+
+
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
