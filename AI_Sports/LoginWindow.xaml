@@ -29,12 +29,20 @@
         <Grid>
             <Rectangle HorizontalAlignment="Left" Height="115" VerticalAlignment="Top" Width="1920">
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="{DynamicResource Color1}"/>
+                    <!--<SolidColorBrush Color="{DynamicResource Color1}"/>-->
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="{DynamicResource Color1}" Offset="0" />
+                        <GradientStop Color="#4F94CD" Offset="1" />
+                    </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
             <Rectangle HorizontalAlignment="Left" Height="115" VerticalAlignment="Bottom" Width="1920">
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="{DynamicResource Color1}"/>
+                    <!--<SolidColorBrush Color="{DynamicResource Color1}"/>-->
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#4F94CD" Offset="0" />
+                        <GradientStop Color="{DynamicResource Color1}" Offset="1" />
+                    </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
             <Rectangle HorizontalAlignment="Left" Height="10" Margin="0,110,0,0" VerticalAlignment="Top" Width="1920">
@@ -48,21 +56,36 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Image Margin="0,140,1300,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="86" Width="232" Source="AISports.View/Images/logotrans.png" Stretch="Fill"/>
-            <TextBlock HorizontalAlignment="Right" Margin="0,0,100,0" TextWrapping="Wrap" Text="欢迎使用宝德龙智能健身系统" VerticalAlignment="Center" Width="940" Height="98" FontSize="72" TextDecorations="{x:Null}" RenderTransformOrigin="0.5,0.5" FontFamily="Microsoft YaHei Light">
+            <!--<TextBlock HorizontalAlignment="Right" Margin="0,0,100,0" TextWrapping="Wrap" Text="欢迎使用宝德龙智能健身系统" VerticalAlignment="Center" Width="940" Height="98" FontSize="72" TextDecorations="{x:Null}" RenderTransformOrigin="0.5,0.5" FontFamily="Microsoft YaHei Light">
                 <TextBlock.Foreground>
                     <SolidColorBrush Color="#FFFFF8F8" Opacity="0.45"/>
                 </TextBlock.Foreground>
-            </TextBlock>
+            </TextBlock>-->
 
-            <!--<ProgressBar Style="{DynamicResource progress-bar}" Value="100" HorizontalAlignment="Right" Margin="0,0,100,0"  VerticalAlignment="Center" Width="940" Height="98" FontSize="72" Background="#FF272727">
+            <ProgressBar Style="{DynamicResource progress-bar}" Value="100" HorizontalAlignment="Right" Margin="0,0,100,0"  VerticalAlignment="Center" Width="1000" Height="98" FontSize="72" >
                 <ProgressBar.OpacityMask>
-                    <ImageBrush ImageSource="AISports.View/Images/text3.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="AISports.View/Images/welcomeText.png" Stretch="UniformToFill"/>
                 </ProgressBar.OpacityMask>
-            </ProgressBar>-->
-            <ProgressBar Style="{DynamicResource progress-bar}" Value="100" HorizontalAlignment="Center" Height="55" Margin="0,0,0,130" VerticalAlignment="Bottom" Width="227" Background="#FF272727" Foreground="{x:Null}" FontSize="6">
+                <ProgressBar.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="Yellow" Offset="0.0" />
+                        <GradientStop Color="Red" Offset="0.5" />
+                        <GradientStop Color="#FFF6D600" Offset="0.75" />
+                        <GradientStop Color="Red" Offset="1.0" />
+                    </LinearGradientBrush>
+                </ProgressBar.Foreground>
+            </ProgressBar>
+            <ProgressBar Style="{DynamicResource progress-bar}" Value="100"  HorizontalAlignment="Center" Height="55" Margin="0,0,0,130" VerticalAlignment="Bottom" Width="300"  FontSize="6">
                 <ProgressBar.OpacityMask>
-                    <ImageBrush ImageSource="AISports.View/Images/text3.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="AISports.View/Images/shuakaMicr.png" Stretch="UniformToFill"/>
                 </ProgressBar.OpacityMask>
+                <ProgressBar.Foreground>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#4F94CD" Offset="0" />
+                        <GradientStop Color="{DynamicResource Color1}" Offset="1" />
+
+                    </LinearGradientBrush>
+                </ProgressBar.Foreground>
             </ProgressBar>
         </Grid>
     </Grid>
