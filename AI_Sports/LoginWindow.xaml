@@ -53,6 +53,12 @@
                     <SolidColorBrush Color="#FFFFF8F8" Opacity="0.45"/>
                 </TextBlock.Foreground>
             </TextBlock>
+
+            <!--<ProgressBar Style="{DynamicResource progress-bar}" Value="100" HorizontalAlignment="Right" Margin="0,0,100,0"  VerticalAlignment="Center" Width="940" Height="98" FontSize="72" Background="#FF272727">
+                <ProgressBar.OpacityMask>
+                    <ImageBrush ImageSource="AISports.View/Images/text3.png" Stretch="Uniform"/>
+                </ProgressBar.OpacityMask>
+            </ProgressBar>-->
             <ProgressBar Style="{DynamicResource progress-bar}" Value="100" HorizontalAlignment="Center" Height="55" Margin="0,0,0,130" VerticalAlignment="Bottom" Width="227" Background="#FF272727" Foreground="{x:Null}" FontSize="6">
                 <ProgressBar.OpacityMask>
                     <ImageBrush ImageSource="AISports.View/Images/text3.png" Stretch="Uniform"/>
