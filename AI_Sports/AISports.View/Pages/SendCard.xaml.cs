@@ -150,8 +150,7 @@ namespace AI_Sports.AISports.View.Pages
                     Console.WriteLine(Encoding.ASCII.GetString(phonebyte));//解析手机号
 
                 }
-
-
+                serialPort.Close();
             }
         }
         /// <summary>
@@ -193,7 +192,9 @@ namespace AI_Sports.AISports.View.Pages
         {
             //string telephone = "5791";
             //string name = "徐靖皓";
-            string memberId = CommUtil.GetSettingString("memberId");//姓名-手机号后两位-CRC(0x01 0x02--12) CommUtil.GetSettingString("memberId");
+            string memberId = this.TB_Member_Id.Text;
+            Console.WriteLine("写入用户Id:"+memberId.ToString());
+            //string memberId = CommUtil.GetSettingString("memberId");//姓名-手机号后两位-CRC(0x01 0x02--12) CommUtil.GetSettingString("memberId");
             string name = "";
             string phone = "";
             //byte[] crc = new byte[2];

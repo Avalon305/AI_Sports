@@ -65,24 +65,24 @@ namespace AI_Sports.Service
                 //手机号不为空则拼接手机号后四位
                 if (memberEntity.Mobile_phone != null && memberEntity.Mobile_phone != "")
                 {
-                    stringBuilder.Append(memberEntity.Mobile_phone.Substring(memberEntity.Mobile_phone.Length - 2));
+                    stringBuilder.Append(memberEntity.Mobile_phone.Substring(memberEntity.Mobile_phone.Length - 4));
 
                 }
                 else
                 {
                     logger.Warn("拼接用户id时，用户手机号为空。用户名："+memberEntity.Member_familyName+memberEntity.Member_firstName);
                 }
-                Console.WriteLine("用户名+手机后后两位："+ stringBuilder.ToString());
+                Console.WriteLine("用户名+手机号码后4位："+ stringBuilder.ToString());
                 //添加CRC校验
-                string fullName = memberEntity.Member_familyName + memberEntity.Member_firstName;
-                string phone = memberEntity.Mobile_phone.Substring(memberEntity.Mobile_phone.Length - 2);
-                byte[] dataCRC = new byte[12];
-                Encoding.GetEncoding("GBK").GetBytes(fullName, 0, fullName.Length, dataCRC, 0);
-                Encoding.GetEncoding("ASCII").GetBytes(phone, 0, phone.Length, dataCRC, 10);
-                string lowStrCRC = SerialPortUtil.CRC16(dataCRC)[0].ToString();
-                string highStrCRC = SerialPortUtil.CRC16(dataCRC)[1].ToString();
-                string fullCRC = lowStrCRC + highStrCRC;
-                stringBuilder.Append(fullCRC);
+                //string fullName = memberEntity.Member_familyName + memberEntity.Member_firstName;
+                //string phone = memberEntity.Mobile_phone.Substring(memberEntity.Mobile_phone.Length - 2);
+                //byte[] dataCRC = new byte[12];
+                //Encoding.GetEncoding("GBK").GetBytes(fullName, 0, fullName.Length, dataCRC, 0);
+                //Encoding.GetEncoding("ASCII").GetBytes(phone, 0, phone.Length, dataCRC, 10);
+                //string lowStrCRC = SerialPortUtil.CRC16(dataCRC)[0].ToString();
+                //string highStrCRC = SerialPortUtil.CRC16(dataCRC)[1].ToString();
+                //string fullCRC = lowStrCRC + highStrCRC;
+                //stringBuilder.Append(fullCRC);
                 //设置用户id
                 memberEntity.Member_id = stringBuilder.ToString();
 
