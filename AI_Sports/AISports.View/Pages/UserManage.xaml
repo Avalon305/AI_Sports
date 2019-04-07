@@ -33,9 +33,11 @@
                         <Border Background="{TemplateBinding Background}" Name="BkgBorder">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
+                        
                         <ControlTemplate.Triggers>
                             <!--鼠标悬停时为黄色-->
                             <Trigger Property="IsMouseOver" Value="True">
+                                
                                 <Setter TargetName="BkgBorder" Property="Background">
                                     <Setter.Value>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -44,9 +46,19 @@
                                         </LinearGradientBrush>
                                     </Setter.Value>
                                 </Setter>
+                                
                             </Trigger>
                             <!--点击选中时的触发器变成金黄色 失去焦点又变回去-->
                             <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="BkgBorder" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="Gold" Offset="0" />
+                                            <GradientStop Color="Yellow" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+
                                 <Setter TargetName="BkgBorder" Property="Background">
                                     <Setter.Value>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -62,32 +74,32 @@
             </Setter>
 
             <!--触发器 点击后金黄渐变-->
-            <!--<Style.Triggers>
-                --><!--鼠标悬停时为黄色--><!--
+            <Style.Triggers>
+                <!--鼠标悬停时为黄色-->
                 <Trigger Property="Control.IsMouseOver" Value="True">
-                    <Setter Property="Control.Background" >
+                    <Setter Property="Control.Foreground" >
                         <Setter.Value>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="Gold" Offset="0" />
-                                <GradientStop Color="Yellow" Offset="1" />
+                                <GradientStop Color="#FF1C4364" Offset="0" />
+                                <GradientStop Color="#4F94CD" Offset="1" />
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
-                --><!--点击选中时的触发器变成金黄色 失去焦点又变回去--><!--
+                <!--点击选中时的触发器变成金黄色 失去焦点又变回去-->
                 <Trigger Property="Control.IsFocused" Value="True">
-                    <Setter Property="Control.Background" >
+                    <Setter Property="Control.Foreground" >
                         <Setter.Value>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="Gold" Offset="0" />
-                                <GradientStop Color="Yellow" Offset="1" />
+                                <GradientStop Color="#FF1C4364" Offset="0" />
+                                <GradientStop Color="#4F94CD" Offset="1" />
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
 
                 
-            </Style.Triggers>-->
+            </Style.Triggers>
             
         </Style>
         
@@ -96,7 +108,7 @@
             <Setter Property="Control.Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="1,0.5" EndPoint="0,0.5">
-                        <GradientStop Color="#E8E8E8" Offset="0.8" />
+                        <GradientStop Color="#CFCFCF" Offset="0.8" />
                         <GradientStop Color="White" Offset="1" />
                     </LinearGradientBrush>
                 </Setter.Value>
@@ -108,7 +120,7 @@
             <Setter Property="Control.Background">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                        <GradientStop Color="#E8E8E8" Offset="0.8" />
+                        <GradientStop Color="#CFCFCF" Offset="0.8" />
                         <GradientStop Color="White" Offset="1" />
                     </LinearGradientBrush>
                 </Setter.Value>

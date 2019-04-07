@@ -145,8 +145,8 @@ namespace AI_Sports.Service
                             //设置各个属性的默认值
                             personalSetting.Consequent_force = 21;//顺向力
                             personalSetting.Reverse_force = 21;//反向力
-                            personalSetting.Front_limit = 100;//前方限制
-                            personalSetting.Back_limit = 0;//后方限制
+                            personalSetting.Front_limit = 150;//前方限制
+                            personalSetting.Back_limit = 20;//后方限制
                         }
                         
                         

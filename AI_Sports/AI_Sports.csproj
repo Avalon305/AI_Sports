@@ -687,6 +687,22 @@
     <Resource Include="AISports.View\Images\welcome.png" />
     <Resource Include="AISports.View\Images\loginTip.png" />
     <Resource Include="AISports.View\Images\welcome72.png" />
+    <Resource Include="AISports.View\Images\muscle_bs0.png" />
+    <Resource Include="AISports.View\Images\muscle_bs1.png" />
+    <Resource Include="AISports.View\Images\muscle_bs10.png" />
+    <Resource Include="AISports.View\Images\muscle_bs11.png" />
+    <Resource Include="AISports.View\Images\muscle_bs12.png" />
+    <Resource Include="AISports.View\Images\muscle_bs13.png" />
+    <Resource Include="AISports.View\Images\muscle_bs14.png" />
+    <Resource Include="AISports.View\Images\muscle_bs16.png" />
+    <Resource Include="AISports.View\Images\muscle_bs2.png" />
+    <Resource Include="AISports.View\Images\muscle_bs3.png" />
+    <Resource Include="AISports.View\Images\muscle_bs4.png" />
+    <Resource Include="AISports.View\Images\muscle_bs5.png" />
+    <Resource Include="AISports.View\Images\muscle_bs6.png" />
+    <Resource Include="AISports.View\Images\muscle_bs7.png" />
+    <Resource Include="AISports.View\Images\muscle_bs8.png" />
+    <Resource Include="AISports.View\Images\muscle_bs9.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

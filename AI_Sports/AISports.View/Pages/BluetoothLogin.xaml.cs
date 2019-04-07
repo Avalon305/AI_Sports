@@ -59,21 +59,30 @@ namespace AI_Sports.AISports.View.Pages
         //定时任务调用方法 每五秒查询一次扫描手环表
         private void timeCycle(object sender, EventArgs e)
         {
-            //生成修改时间时间戳
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            var currentTime = Convert.ToInt64(ts.TotalSeconds);
-            //当前时间减2分钟 查询最近2分钟被扫描到的手环
-            currentTime = currentTime - (2 * 60);
-            //查询最近读取表中扫描到的用户
-            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
-
-            this.dataGrid.ItemsSource = bluetoothReadEntities;
-            Console.WriteLine("查询扫描手环，更新登陆列表成功");
-            foreach (var item in bluetoothReadEntities)
+            try
             {
-                Console.WriteLine("更新的蓝牙："+item.Member_id);
+                //生成修改时间时间戳
+                TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+                var currentTime = Convert.ToInt64(ts.TotalSeconds);
+                //当前时间减2分钟 查询最近2分钟被扫描到的手环
+                currentTime = currentTime - (2 * 60);
+                //查询最近读取表中扫描到的用户
+                List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
 
+                this.dataGrid.ItemsSource = bluetoothReadEntities;
+                Console.WriteLine("查询扫描手环，更新登陆列表成功");
+                foreach (var item in bluetoothReadEntities)
+                {
+                    Console.WriteLine("更新的蓝牙：" + item.Member_id);
+
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("蓝牙登陆查询read表异常" + ex.Message);
+                logger.Warn("蓝牙登陆查询read表异常" + ex.Message);
+            }
+           
         }
 
         /// <summary>
@@ -81,21 +90,30 @@ namespace AI_Sports.AISports.View.Pages
         /// </summary>
         public void LoadBluetoothList()
         {
-            //生成修改时间时间戳
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            var currentTime = Convert.ToInt64(ts.TotalSeconds);
-            //当前时间减2分钟 查询最近2分钟被扫描到的手环
-            currentTime = currentTime - (2 * 60);
-
-            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
-
-            this.dataGrid.ItemsSource = bluetoothReadEntities;
-            Console.WriteLine("查询扫描手环，更新登陆列表成功");
-            foreach (var item in bluetoothReadEntities)
+            try
             {
-                Console.WriteLine("更新的蓝牙：" + item.Member_id);
+                //生成修改时间时间戳
+                TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+                var currentTime = Convert.ToInt64(ts.TotalSeconds);
+                //当前时间减2分钟 查询最近2分钟被扫描到的手环
+                currentTime = currentTime - (2 * 60);
 
+                List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
+
+                this.dataGrid.ItemsSource = bluetoothReadEntities;
+                Console.WriteLine("查询扫描手环，更新登陆列表成功");
+                foreach (var item in bluetoothReadEntities)
+                {
+                    Console.WriteLine("更新的蓝牙：" + item.Member_id);
+
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("蓝牙登陆查询read表异常"+ex.Message);
+                logger.Warn("蓝牙登陆查询read表异常"+ex.Message);
+            }
+            
 
         }
 

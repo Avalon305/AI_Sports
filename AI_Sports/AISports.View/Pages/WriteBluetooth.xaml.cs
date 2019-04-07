@@ -99,15 +99,24 @@ namespace AI_Sports.AISports.View.Pages
         /// </summary>
         public void LoadBluetoothList()
         {
-            //生成修改时间时间戳
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            var currentTime = Convert.ToInt64(ts.TotalSeconds);
-            //当前时间减2分钟 查询最近2分钟被扫描到的手环
-            currentTime = currentTime - (2 * 60);
+            try
+            {
+                //生成修改时间时间戳
+                TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+                var currentTime = Convert.ToInt64(ts.TotalSeconds);
+                //当前时间减2分钟 查询最近2分钟被扫描到的手环
+                currentTime = currentTime - (2 * 60);
 
-            List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
+                List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
 
-            this.LB_BluetoothName.ItemsSource = bluetoothReadEntities;
+                this.LB_BluetoothName.ItemsSource = bluetoothReadEntities;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("写入蓝牙窗口 查询read表异常" + ex.Message);
+                logger.Warn("写入蓝牙窗口 查询read表异常" + ex.Message);
+            }
+            
 
         }
 
