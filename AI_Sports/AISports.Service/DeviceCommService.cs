@@ -117,21 +117,21 @@ namespace AI_Sports.Service
                 response.SysVersion = 0;
             }
 
-            // 待训练列表
-            List<DeviceType> todoDevices = GenToDoDevices(request.Uid, request.ActivityType, setDto.Is_open_fat_reduction,setDto.Activity_id,setDto.Current_course_count);
+            // 待训练列表 修改传入的fk_activity_id和course_count参数为活动记录表主键activityRecordId  --ByCQZ 4.7
+            List<DeviceType> todoDevices = GenToDoDevices(request.Uid, request.ActivityType, setDto.Is_open_fat_reduction, recordEntity.Id);
             response.DeviceTypeArr.AddRange(todoDevices);
             return response;
         }
 
         /// <summary>
-        /// 获取待训练设备列表
+        /// 获取待训练设备列表 修改传入的fk_activity_id和course_count参数为活动记录表主键activityRecordId  --ByCQZ 4.7
         /// </summary>
         /// <param name="request"></param>
         /// <param name="setDto"></param>
         /// <returns></returns>
-        private List<DeviceType> GenToDoDevices(string uid, ActivityType activityType, bool Is_open_fat_reduction,long activityId,int courseCount)
+        private List<DeviceType> GenToDoDevices(string uid, ActivityType activityType, bool Is_open_fat_reduction,long activityRecordId)
         {
-            List<DeviceDoneDTO> doneList = personalSettingDAO.ListDeviceDone(uid, activityType,activityId,courseCount);
+            List<DeviceDoneDTO> doneList = personalSettingDAO.ListDeviceDone(uid, activityType, activityRecordId);
             var todoDevices = new List<DeviceType>();
 
             if (activityType == ActivityType.PowerCycle)//力量循环
@@ -208,8 +208,8 @@ namespace AI_Sports.Service
             using (TransactionScope ts = new TransactionScope()) //使整个代码块成为事务性代码
             {
                 trainingDeviceRecordDAO.Insert(deviceRecord);
-                //查一下是否是该循环最后一个设备，是的话更新课程表数量加一并看一下是否已完成,训练活动记录表标志位已完成，
-                List<DeviceType> todoList = this.GenToDoDevices(request.Uid, request.ActivityType, request.DefatModeEnable,request.ActivityId,request.CourseCount);
+                //查一下是否是该循环最后一个设备，是的话更新课程表数量加一并看一下是否已完成,训练活动记录表标志位已完成 修改传入的fk_activity_id和course_count参数为活动记录表主键activityRecordId  --ByCQZ 4.7
+                List<DeviceType> todoList = this.GenToDoDevices(request.Uid, request.ActivityType, request.DefatModeEnable, request.ActivityRecordId);
                 if (todoList.Count == 0)//训练完毕一个循环,
                 {
                     //更新记录完成状态

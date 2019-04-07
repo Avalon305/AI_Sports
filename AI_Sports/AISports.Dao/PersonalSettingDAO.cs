@@ -53,19 +53,19 @@ namespace AI_Sports.Dao
         }
 
         /// <summary>
-        /// 获取训练完的设备列表
+        /// 获取训练完的设备列表 修改传入的fk_activity_id和course_count参数为活动记录表主键activityRecordId  --ByCQZ 4.7
         /// </summary>
         /// <param name="member_id"></param>
         /// <param name="activityType"></param>
         /// <returns></returns>
-        public List<DeviceDoneDTO> ListDeviceDone(string member_id, ActivityType activityType, long activityId, int courseCount)
+        public List<DeviceDoneDTO> ListDeviceDone(string member_id, ActivityType activityType, long activityRecordId)
         {
             List<DeviceDoneDTO> result = new List<DeviceDoneDTO>();
             const string query = @"select c.is_open_fat_reduction,b.device_code from    bdl_training_activity_record a join bdl_training_device_record b
                 on a.id = b.fk_training_activity_record_id  join bdl_member c on c.member_id = b.member_id 
-                where b.member_id=@Member_id and a.activity_type = @MyActivityType and a.fk_activity_id = @ActivityId and a.course_count = @CourseCount
+                where b.member_id=@Member_id and a.id = @ActivityRecordId
                 ";
-            var para = new { Member_id = member_id, MyActivityType = activityType, ActivityId = activityId, CourseCount = courseCount };
+            var para = new { Member_id = member_id, MyActivityType = activityType, ActivityRecordId = activityRecordId};
             using (var conn = DbUtil.getConn())
             {
                 result = conn.Query<DeviceDoneDTO>(query, para).ToList();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace AI_Sports.Dto
 {
     public class SettingInfoDTO
-    {
+    {  
         public int Current_course_count { get; set; }
         public int Target_course_count { get; set; }
         public long Course_id { get; set; }
