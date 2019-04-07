@@ -35,28 +35,8 @@ namespace AI_Sports.AISports.View.Pages
         public SendCard()
         {
             InitializeComponent();
-            serialPort = new SerialPort();
-            serialPort.PortName = "COM4";
-            serialPort.BaudRate = 115200;
-            serialPort.ReadTimeout = 3000; //单位毫秒
-            serialPort.WriteTimeout = 3000; //单位毫秒
-            serialPort.ReceivedBytesThreshold = 1;
-            serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
-            try
-            {
-                serialPort.Open();
-
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                MessageBoxX.Show( "温馨提示", "串口被占用");
-
-            }
-            catch (IOException ex)
-            {
-                MessageBoxX.Show( "温馨提示", "串口不存在");
-
-            }
+            //自动初始化串口
+            autoContentPort();
             this.TB_Member_Id.Text = CommUtil.GetSettingString("memberId");
 
         }
@@ -236,6 +216,117 @@ namespace AI_Sports.AISports.View.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        //无法自动连接时,进行手动连接,初始化下拉列表
+        private void comboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            initPort();
+        }
+
+        /// <summary>
+        /// 初始化搜索到的串口
+        /// </summary>
+        private void initPort()
+        {
+            string[] names = SerialPort.GetPortNames();
+            List<String> list = new List<String>();
+            foreach (string name in names)
+            {
+                list.Add(name);
+            }
+            comboBox.ItemsSource = list;
+        }
+        private void changeStateEnable(bool isEnable)
+        {
+            if (isEnable)
+            {
+                button4.IsEnabled = true;
+            }
+            else
+            {
+                button4.IsEnabled = false;
+            }
+        }
+        private void button_Connect(object sender, RoutedEventArgs e)
+        {
+
+            if (button.Content.ToString() == "断开")
+            {
+                button.Content = "连接";
+                comboBox.IsEnabled = true;
+                button.Style = FindResource("btn-success") as Style;
+                button.ApplyTemplate();
+                //更改发卡按钮可用状态
+                changeStateEnable(true);
+                try
+                {
+                    serialPort.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("串口关闭失败");
+                }
+                return;
+            }
+
+            if (comboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("请选择串口", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            comboBox.IsEnabled = false;
+
+
+            string name1 = comboBox.SelectedValue.ToString();
+            serialPort = new SerialPort();
+            serialPort.PortName = name1;
+            serialPort.BaudRate = 115200;
+            serialPort.ReadTimeout = 3000; //单位毫秒
+            serialPort.WriteTimeout = 3000; //单位毫秒
+            serialPort.ReceivedBytesThreshold = 1;
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
+            try
+            {
+
+                serialPort.Open();
+                button.Content = "断开";
+                button.Style = FindResource("btn-danger") as Style;
+                button.ApplyTemplate();
+
+                //如果连接成功，插入串口号 
+                if (CommUtil.GetSettingString("SerialPort") == "")
+                {
+                    CommUtil.UpdateSettingString("SerialPort", name1);
+                }
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("串口被占用", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                comboBox.IsEnabled = true;
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("串口不存在", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                comboBox.IsEnabled = true;
+            }
+
+        }
+        /// <summary>
+        /// 自动选中串口
+        /// </summary>
+        private void autoContentPort()
+        {
+            string port = "";
+            //从app.config中获取
+            port = CommUtil.GetSettingString("SerialPort");
+            initPort();
+
+            if (port != "")
+            {
+                //如果有串口，选中串口
+                comboBox.SelectedValue = port;
+            }
         }
 
     }
