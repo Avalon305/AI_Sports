@@ -76,69 +76,79 @@
                 <GridSplitter  Width="1080" Height="2" Margin="10,15,0,0" Background="Gray" />
             </WrapPanel>
             <WrapPanel>
-                <Label Content="顺向力"  Style="{DynamicResource h3}" Margin="200 35 -150 35"></Label>
-                <Button Margin="200 20 0 20"  Width="60" Height="37"  Background="White" Click="Button_Click_1">
-                    <Button.Content>
+				<Label Content="顺向力"  Style="{DynamicResource h3}" Margin="200 35 -150 35" Width="100"></Label>
+				<RepeatButton Margin="200 20 0 20"  Width="60" Height="37"  Background="White" Click="Button_Click_1">
+					<RepeatButton.Content>
                         <Grid >
 
                             <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-minus}"  />
                         </Grid>
-                    </Button.Content>
-                </Button>
-                <Label  x:Name="LB_consequent_force" Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1"></Label>
+                    </RepeatButton.Content>
+                </RepeatButton>
+				<Label  x:Name="LB_consequent_force" Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1"></Label>
                 <Label   Style="{DynamicResource h3}" Margin="120 35 -150 35" Content="%"></Label>
-                <Button Margin="200 20 0 20" Width="60" Height="37"  Background="White"  Click="Button_Click">
-                    <Button.Content>
+				<RepeatButton Margin="200 20 0 20" Width="60" Height="37"  Background="White"  Click="Button_Click" >
+					<RepeatButton.Content>
                         <Grid >
 
                             <Path Style="{DynamicResource glyphicon}"  Data="{DynamicResource glyphicon-plus}" Height="Auto" Margin="0,0,0,0" Stretch="Fill" Width="Auto"  />
                         </Grid>
-                    </Button.Content>
-                </Button>
-            </WrapPanel>
+                    </RepeatButton.Content>
+                </RepeatButton  >
+				<!--<Slider  Name="slider1" SmallChange="1" Maximum="100" Minimum="1" Value="1" Width="468" Margin="10"  IsSnapToTickEnabled="True" ></Slider>-->
+			</WrapPanel>
             <WrapPanel>
-                <Label Content="反向力" Style="{DynamicResource h3}" Margin="200 35 -150 35"></Label>
-                <Button Margin="200 20 0 20"  Width="60" Height="37"  Background="White" Click="Button_Click_3">
-                    <Button.Content>
+				<Label Content="反向力" Style="{DynamicResource h3}" Margin="200 35 -150 35" Width="100"></Label>
+				<RepeatButton Margin="200 20 0 20"  Width="60" Height="37"  Background="White" Click="Button_Click_3">
+					<RepeatButton.Content>
                         <Grid >
 
                             <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-minus}"  />
                         </Grid>
-                    </Button.Content>
-                </Button>
-                <Label  Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1" x:Name="LB_Reverse_force"></Label>
+                    </RepeatButton.Content>
+                </RepeatButton>
+				<Label  Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1" x:Name="LB_Reverse_force"></Label>
                 <Label   Style="{DynamicResource h3}" Margin="120 35 -150 35" Content="%"></Label>
-                <Button Margin="200 20 0 20" Width="60" Height="37"  Background="White" Click="Button_Click_2">
-                    <Button.Content>
+				<RepeatButton Margin="200 20 0 20" Width="60" Height="37"  Background="White" Click="Button_Click_2">
+					<RepeatButton.Content>
                         <Grid >
 
                             <Path Style="{DynamicResource glyphicon}"  Data="{DynamicResource glyphicon-plus}" Height="Auto" Margin="0,0,0,0" Stretch="Fill" Width="Auto"  />
                         </Grid>
-                    </Button.Content>
-                </Button>
-            </WrapPanel>
+                    </RepeatButton.Content>
+                </RepeatButton>
+				<!--<Slider Name="slider2" SmallChange="1" Maximum="100" Minimum="1" Value="1" Width="468" Margin="10"  IsSnapToTickEnabled="True"></Slider>-->
+			</WrapPanel>
             <WrapPanel>
-                <Label Content="速       度" Style="{DynamicResource h3}"  Margin="200 20  30 35">
+				<Label Content="速度" Style="{DynamicResource h3}"  Margin="200 20  30 35" Width="100">
 
                 </Label>
-                <ComboBox Height="50" Width="310" Name="CB_speed" FontSize="22" >
+				<ComboBox Height="50" Width="342" x:Name="CB_speed" FontSize="22" >
 
 
-                    <ComboBoxItem Content="慢"  />
+					<ComboBoxItem Content="慢"  />
 
-                    <ComboBoxItem Content="标准" />
+					<ComboBoxItem Content="标准" />
 
-                    <ComboBoxItem Content="快速" />
+					<ComboBoxItem Content="快速" />
 
-                </ComboBox>
+				</ComboBox>
 
-            </WrapPanel>
-            <WrapPanel>
-                <Label Content="训练模式" Style="{DynamicResource h3}"  Margin="200 20 30 35">
+			</WrapPanel>
+			<WrapPanel>
+				<Label Content="减脂模式" Style="{DynamicResource h3}"  Margin="200 20  30 35" Width="100" />
+				<ComboBox Height="50" Width="342" Name="is_open_fat" FontSize="22" >
+					<ComboBoxItem Content="开启"></ComboBoxItem>
+					<ComboBoxItem Content="未开启"></ComboBoxItem>
+				</ComboBox>
+
+			</WrapPanel>
+			<WrapPanel>
+				<Label Content="训练模式" Style="{DynamicResource h3}"  Margin="200 20 30 35" Width="100">
 
                 </Label>
                 <!--从后台加载数据 DisplayMemberPath为展示值 SelectedValuePath为存储值 -->
-                <ComboBox Height="50" Width="310" FontSize="22" Name="CB_train_mode"  DisplayMemberPath="Code_d_value" SelectedValuePath="Code_s_value">
+                <ComboBox Height="50" Width="342" FontSize="22" Name="CB_train_mode"  DisplayMemberPath="Code_d_value" SelectedValuePath="Code_s_value">
                 </ComboBox>
             </WrapPanel>
             <WrapPanel Margin="0 35 0 0"/>

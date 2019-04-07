@@ -54,7 +54,7 @@
             </TextBlock>
             <ProgressBar Style="{DynamicResource progress-bar}" Value="100" HorizontalAlignment="Center" Height="55" Margin="0,0,0,130" VerticalAlignment="Bottom" Width="227" Background="#FF272727" Foreground="{x:Null}" FontSize="6">
                 <ProgressBar.OpacityMask>
-                    <ImageBrush ImageSource="/AI_Sports;component/AISports.View/Images/text3.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="/AI_Sports;component/AISports.View/Images/loginTip.png" Stretch="Uniform"/>
                 </ProgressBar.OpacityMask>
             </ProgressBar>
         </Grid>

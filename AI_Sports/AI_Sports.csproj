@@ -643,6 +643,7 @@
     <Resource Include="AISports.View\Images\addRightButton.png" />
     <Resource Include="AISports.View\Images\blueDaLiShi.png" />
     <Resource Include="AISports.View\Images\background2.png" />
+    <Resource Include="AISports.View\Images\backgroundBlack.jpg" />
     <Content Include="AISports.View\Images\defaultphoto.png" />
     <Resource Include="AISports.View\Images\eef81f78c35e498da4d9263cb70cc329_th.jpeg" />
     <Resource Include="AISports.View\Images\logodark.jpg" />
@@ -654,7 +655,6 @@
     <Resource Include="AISports.View\Images\QQ截图20190119220358.png" />
     <Resource Include="AISports.View\Images\QQ截图20190119220410.png" />
     <Resource Include="AISports.View\Images\round.png" />
-    <Resource Include="AISports.View\Images\text3.png" />
     <Resource Include="AISports.View\Images\VitalSigns.jpg" />
     <Resource Include="AISports.View\Images\next.png" />
     <Resource Include="AISports.View\Images\timg.jpg" />
@@ -684,10 +684,9 @@
     <Resource Include="AISports.View\Images\goldDaLiShi.png" />
     <Resource Include="AISports.View\Images\whiteDaLiShi.png" />
     <Resource Include="AISports.View\Images\legDeviceTest.jpg" />
-    <Resource Include="AISports.View\Images\shuaka.png" />
     <Resource Include="AISports.View\Images\welcome.png" />
-    <Resource Include="AISports.View\Images\shuakaMicr.png" />
-    <Resource Include="AISports.View\Images\welcomeText.png" />
+    <Resource Include="AISports.View\Images\loginTip.png" />
+    <Resource Include="AISports.View\Images\welcome72.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -8,12 +8,13 @@
         Height="1080"
         Width="1920"
         Title="LoginWindow"
-        
         >
+
     <Page.Resources>
         <Color x:Key="Color1">#FF1C4364</Color>
         <Color x:Key="Color2">#FFF6D600</Color>
     </Page.Resources>
+
     <Grid>
         <Grid Background="#D3D3D3">
             <Grid.ColumnDefinitions>
@@ -62,9 +63,10 @@
                 </TextBlock.Foreground>
             </TextBlock>-->
 
-            <ProgressBar Style="{DynamicResource progress-bar}" Value="100" HorizontalAlignment="Right" Margin="0,0,100,0"  VerticalAlignment="Center" Width="1000" Height="98" FontSize="72" >
+            <ProgressBar Style="{DynamicResource progress-bar}" Value="100" HorizontalAlignment="Right" Margin="0,0,100,0"  VerticalAlignment="Center" Width="1000" Height="98"  >
                 <ProgressBar.OpacityMask>
-                    <ImageBrush ImageSource="AISports.View/Images/welcomeText.png" Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="AISports.View/Images/welcome72.png" Stretch="Uniform"/>
+
                 </ProgressBar.OpacityMask>
                 <ProgressBar.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -77,16 +79,17 @@
             </ProgressBar>
             <ProgressBar Style="{DynamicResource progress-bar}" Value="100"  HorizontalAlignment="Center" Height="55" Margin="0,0,0,130" VerticalAlignment="Bottom" Width="300"  FontSize="6">
                 <ProgressBar.OpacityMask>
-                    <ImageBrush ImageSource="AISports.View/Images/shuakaMicr.png" Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="AISports.View/Images/loginTip.png" Stretch="UniformToFill"/>
                 </ProgressBar.OpacityMask>
                 <ProgressBar.Foreground>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#4F94CD" Offset="0" />
-                        <GradientStop Color="{DynamicResource Color1}" Offset="1" />
+                        <GradientStop Color="Gray" Offset="0" />
+                        <GradientStop Color="#FF272727" Offset="1" />
 
                     </LinearGradientBrush>
                 </ProgressBar.Foreground>
             </ProgressBar>
         </Grid>
     </Grid>
+
 </Page>

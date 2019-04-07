@@ -67,49 +67,49 @@ namespace AI_Sports.AISports.View.Pages
         private void Btn1_Click(object sender, RoutedEventArgs e)
         {
             //第一项为黄色 其他按钮都是蓝色
-            this.btn1.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn1.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/MemberInfo.xaml", UriKind.Relative);//跳转页面
         }
         //训练计划页面
         private void Btn2_Click(object sender, RoutedEventArgs e)//
         {
-            this.btn2.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn1.Background = null;
-            this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn2.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn1.Background = null;
+            //this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/newPlan.xaml", UriKind.Relative);//跳转页面
         }
         //图表分析页面
         private void Btn3_Click(object sender, RoutedEventArgs e)//
         {
-            this.btn3.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn1.Background = null;
-            this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn3.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn1.Background = null;
+            //this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative);//跳转页面
         }
         //生命体征页面
         private void Btn4_Click(object sender, RoutedEventArgs e)//
         {
-            this.btn4.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn1.Background = null;
-            this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn4.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn1.Background = null;
+            //this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
             //this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面TrainingCourseAnalysis
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/VitalSigns.xaml", UriKind.Relative);//跳转页面
 
@@ -117,13 +117,13 @@ namespace AI_Sports.AISports.View.Pages
         //添加会员页面
         private void Btn5_Click(object sender, RoutedEventArgs e)//
         {
-            this.btn5.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn1.Background = null;
-            this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn5.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn1.Background = null;
+            //this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/AddUser.xaml", UriKind.Relative);//跳转页面
 
         }
@@ -134,13 +134,13 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Btn_SystemSetting_Click(object sender, RoutedEventArgs e)
         {
-            this.Btn_SystemSetting.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn1.Background = null;
-            this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_SystemSetting.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn1.Background = null;
+            //this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_MemberManage.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/SystemSeting.xaml", UriKind.Relative);//跳转页面
         }
         /// <summary>
@@ -150,13 +150,13 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Btn_MemberManage_Click(object sender, RoutedEventArgs e)
         {
-            this.Btn_MemberManage.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn1.Background = null;
-            this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
-            this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_MemberManage.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn1.Background = null;
+            //this.btn2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.btn5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
+            //this.Btn_SystemSetting.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF1C4364"));
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/search.xaml", UriKind.Relative);//跳转页面
 
         }
