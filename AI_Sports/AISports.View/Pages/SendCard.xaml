@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
         mc:Ignorable="d"
-        Title="请选择要写入的手环" Height="450" Width="500" WindowStartupLocation="CenterScreen">
+        Title="发卡" Height="450" Width="500" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Color x:Key="Color1">#FF04243D</Color>
         <Color x:Key="Color2">#FFF6D600</Color>
     </Window.Resources>
     <Grid>
 
-        <StackPanel Orientation="Vertical"  >
+        <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Vertical" Height="370" Background="#FF1C4364">
                 <WrapPanel>
                     <Label Content="发卡" Style="{DynamicResource h3}" Foreground="#FFF6D600"  Margin="20 20 0 0"/>
@@ -21,12 +21,18 @@
               
                 <TextBox IsReadOnly="True" Text="" Tag="写入用户ID："  Name="TB_Member_Id"  Style="{DynamicResource input-group-addon left}" VerticalAlignment="Top" Margin="20,10,0,0" HorizontalAlignment="Left" FontSize="22" Width="300" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="Auto" />
 
+                <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
+                    <Label x:Name="label" Margin="0,6,0,0" Content="串口号：" Height="34"/>
+                    <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="0,0,30,0" VerticalAlignment="Center" Width="112" RenderTransformOrigin="0.333,4.409" DropDownOpened="comboBox_DropDownOpened" Height="34" FontSize="16" Background="#FFFCFCFC"/>
+                    <Button x:Name="button" Content="连接" Width="100" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Stretch"  Click="button_Connect"  RenderTransformOrigin="0.5,0.5" Style="{DynamicResource btn-success}" Height="Auto"/>
+                </StackPanel>
+
                 <WrapPanel>
                     <Label Name="Lab_Tips" Content="" Style="{DynamicResource h3}" Foreground="Green"  Margin="20 20 0 0" />
                 </WrapPanel>
             </StackPanel>
             <StackPanel Height="50" Orientation="Horizontal" Background="DimGray">
-                <Button Content="发卡"  Style="{DynamicResource btn-success}" Width="80" Margin="300,2,10,5" Click="button4_Click"></Button>
+                <Button Content="发卡" Name="button4"  Style="{DynamicResource btn-success}" Width="80" Margin="300,2,10,5" Click="button4_Click"></Button>
                 <Button Content="关闭"  Width="80" Margin="10,2,10,5" Style="{DynamicResource btn-warning}" Click="Button_Click"></Button>
             </StackPanel>
         </StackPanel>
