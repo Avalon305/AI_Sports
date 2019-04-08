@@ -177,7 +177,9 @@ namespace AI_Sports.Service
                 memberEntity.Label_name = "塑形,";
                 //体重使用默认值
                 memberEntity.Weight = 80;
-
+                //身高默认
+                memberEntity.Height = 170;
+                
                 //使用基类插入新会员
                 long resultCode = memberDAO.Insert(memberEntity);
 

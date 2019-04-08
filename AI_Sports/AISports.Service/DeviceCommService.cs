@@ -134,14 +134,14 @@ namespace AI_Sports.Service
             List<DeviceDoneDTO> doneList = personalSettingDAO.ListDeviceDone(uid, activityType, activityRecordId);
             var todoDevices = new List<DeviceType>();
 
-            if (activityType == ActivityType.PowerCycle)//力量循环
+            if (activityType == ActivityType.PowerCycle)//力量循环 不包括P09，原来写错了 改到耐力循环中ByCQZ 4.8
             {
                 todoDevices.AddRange(new DeviceType[]{
                     DeviceType.P00, DeviceType.P01, DeviceType.P02,DeviceType.P03,DeviceType.P04,DeviceType.P05,DeviceType.P06,
-                    DeviceType.P07,DeviceType.P08,DeviceType.P09
+                    DeviceType.P07,DeviceType.P08
                 });
             }
-            else if (activityType == ActivityType.EnduranceCycle)//力量耐力循环需要考虑减脂模式
+            else if (activityType == ActivityType.EnduranceCycle)//力量耐力循环需要考虑减脂模式 增加P09 ByCQZ 4.8
             {
                 if (Is_open_fat_reduction)
                 {//减脂模式
@@ -149,7 +149,7 @@ namespace AI_Sports.Service
                     todoDevices.Add(DeviceType.E12);//椭圆跑步机
                 }
                 todoDevices.AddRange(new DeviceType[]{
-                    DeviceType.E10,DeviceType.E11,DeviceType.E12,DeviceType.E13,DeviceType.E14,DeviceType.E15,DeviceType.E16
+                    DeviceType.P09,DeviceType.E10,DeviceType.E11,DeviceType.E12,DeviceType.E13,DeviceType.E14,DeviceType.E15,DeviceType.E16
                 });
                 if (Is_open_fat_reduction)
                 {//减脂模式
@@ -231,8 +231,11 @@ namespace AI_Sports.Service
                         if (activity.Is_complete == true)
                         {
                             int? count = activityDAO.CountByCourseId(request.CourseId, false);
-                            if (count == 0)//此课时下的活动都完成了
+                            if (count == 0)//此课时下的活动都完成了 更新课时计数+1
                             {
+                                //课时完成，必须要更新活动的当前次数为0 状态为未完成 ByCQZ 4.8
+                                activityDAO.ResetCourseByCourseId(request.CourseId);
+
                                 TrainingCourseEntity courseEntity = trainingCourseDAO.Load(request.CourseId);
                                 courseEntity.Current_course_count += 1;
                                 if (courseEntity.Current_course_count >= courseEntity.Target_course_count)//课程完成的话，这里用>=防止并发被击穿目标次数
@@ -240,10 +243,10 @@ namespace AI_Sports.Service
                                     courseEntity.Current_end_date = DateTime.Now;
                                     courseEntity.Is_complete = true;
                                 }
-                                else//只是完成了一个课时，将Activity的complete置零，current_turn_number置零
-                                {
-                                    activityDAO.ResetCourseByCourseId(request.CourseId);
-                                }
+                                //else//只是完成了一个课时，将Activity的complete置零，current_turn_number置零 updateByCQZ
+                                //{
+                                //    activityDAO.ResetCourseByCourseId(request.CourseId);
+                                //}
                                 trainingCourseDAO.UpdateByPrimaryKey(courseEntity);
 
                             }

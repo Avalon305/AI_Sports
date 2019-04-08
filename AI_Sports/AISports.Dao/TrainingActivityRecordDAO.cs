@@ -13,7 +13,7 @@ namespace AI_Sports.Dao
     public class TrainingActivityRecordDAO : BaseDAO<TrainingActivityRecordEntity>
     {
         /// <summary>
-        /// 根据活动ID获取
+        /// 根据活动ID获取 修改ByCQZ 4.8 测试过程中出现查询出旧记录的BUG 增加条件AND is_complete = 0 ORDER BY gmt_create DESC 来查询最新未完成记录 
         /// </summary>
         /// <param name="activityId"></param>
         /// <returns></returns>
@@ -21,7 +21,7 @@ namespace AI_Sports.Dao
         {
             using (var conn = DbUtil.getConn())
             {
-                const string query = "SELECT * from bdl_training_activity_record where fk_activity_id = @ActivityId and course_count = @CourseCount";
+                const string query = "SELECT * from bdl_training_activity_record where fk_activity_id = @ActivityId and course_count = @CourseCount AND is_complete = 0 ORDER BY gmt_create DESC";
                 return conn.QueryFirstOrDefault<TrainingActivityRecordEntity>(query, new { ActivityId = activityId, CourseCount = courseCount });
             }
         }

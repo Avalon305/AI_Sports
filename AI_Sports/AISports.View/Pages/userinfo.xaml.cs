@@ -65,8 +65,13 @@ namespace AI_Sports.AISports.View.Pages
                 this.suitableHeartRate.Content += suitable_heart_rate.ToString() + "次/分钟";//最宜心率
                 string lastlogin = member.Last_login_date.Value.ToString("yyyy年MM月dd日 HH:mm");       //上次登录时间
 
-                //计算BMI指数
-                double? bmiValue = Math.Round(((weight.Value / (height.Value * height.Value)) * 10000), 1);
+                double? bmiValue = 0;
+                if (weight != null && weight != 0 && height != null && height != 0)
+                {
+                    //计算BMI指数
+                    bmiValue = Math.Round(((weight.Value / (height.Value * height.Value)) * 10000), 1);
+                }
+                
 
                 if (lastlogin != null)
                 {
