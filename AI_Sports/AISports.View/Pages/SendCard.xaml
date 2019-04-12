@@ -24,7 +24,6 @@
                 <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
                     <Label x:Name="label" Margin="0,6,0,0" Content="串口号：" Height="34"/>
                     <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="0,0,30,0" VerticalAlignment="Center" Width="112" RenderTransformOrigin="0.333,4.409" DropDownOpened="comboBox_DropDownOpened" Height="34" FontSize="16" Background="#FFFCFCFC"/>
-                    <Button x:Name="button" Content="连接" Width="100" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Stretch"  Click="button_Connect"  RenderTransformOrigin="0.5,0.5" Style="{DynamicResource btn-success}" Height="Auto"/>
                 </StackPanel>
 
                 <WrapPanel>

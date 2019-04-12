@@ -118,7 +118,7 @@ namespace AI_Sports.AISports.View.Pages
                     {
                         this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                         {
-                            Lab_Tips.Content = "发卡失败";
+                            MessageBox.Show("发卡失败", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
                         });
                     }
 
@@ -126,7 +126,7 @@ namespace AI_Sports.AISports.View.Pages
                     {
                         this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                         {
-                            Lab_Tips.Content = "发卡成功";
+                            MessageBox.Show("发卡成功", "成功", MessageBoxButton.OK, MessageBoxImage.None);
                         });
                     }
 
@@ -134,12 +134,12 @@ namespace AI_Sports.AISports.View.Pages
                     {
                         this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                         {
-                            Lab_Tips.Content = "无卡";
+                            MessageBox.Show("无卡", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
                         });
                     }
                 }
 
-                //如果命令字等于读卡
+                //如果命令字等于读卡 此处无用！
                 if (cmd[0] == CommondConstant.readCard[0])
                 {
                     byte[] namebytewithzero = new byte[10];
@@ -160,12 +160,8 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void button4_Click(object sender, RoutedEventArgs e)
         {
-            //发卡前校验-是否有发卡权限/是否连接串口/是否连接读卡器
-            bool ispass = validateSendCard();
-            if (!ispass)
-            {
-                return;
-            }
+            //发卡按钮点击自动连接选中的串口
+            Serial_Connect();
             //初始化数组
             byte[] data = new byte[14];
             //打包数据
@@ -178,13 +174,6 @@ namespace AI_Sports.AISports.View.Pages
             serialPort.Write(buffer, 0, buffer.Length);
         }
 
-        /// <summary>
-        /// 发卡前校检 TODO
-        /// </summary>
-        private bool validateSendCard()
-        {
-            return true;
-        }
         /// <summary>
         /// 打包数据部分
         /// </summary>
@@ -249,28 +238,9 @@ namespace AI_Sports.AISports.View.Pages
                 button4.IsEnabled = false;
             }
         }
-        private void button_Connect(object sender, RoutedEventArgs e)
+        //将连接按钮取消，点击发卡时自动连接选中的串口
+        private void Serial_Connect()
         {
-
-            if (button.Content.ToString() == "断开")
-            {
-                button.Content = "连接";
-                comboBox.IsEnabled = true;
-                button.Style = FindResource("btn-success") as Style;
-                button.ApplyTemplate();
-                //更改发卡按钮可用状态
-                changeStateEnable(true);
-                try
-                {
-                    serialPort.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("串口关闭失败");
-                }
-                return;
-            }
-
             if (comboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("请选择串口", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -289,11 +259,7 @@ namespace AI_Sports.AISports.View.Pages
             serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
             try
             {
-
                 serialPort.Open();
-                button.Content = "断开";
-                button.Style = FindResource("btn-danger") as Style;
-                button.ApplyTemplate();
 
                 //如果连接成功，插入串口号 
                 if (CommUtil.GetSettingString("SerialPort") == "")
