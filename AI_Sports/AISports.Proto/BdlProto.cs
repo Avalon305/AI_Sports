@@ -36,7 +36,7 @@ public static partial class BdlProtoReflection {
           "b3duVHlwZRgEIAEoDjIOLkNvdW50RG93blR5cGUSFgoOY3VycmVudFNlY29u",
           "ZHMYBSABKAUiYQoMTG9naW5SZXF1ZXN0EgsKA3VpZBgBIAEoCRIfCgpkZXZp",
           "Y2VUeXBlGAIgASgOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0eVR5cGUYAyAB",
-          "KA4yDS5BY3Rpdml0eVR5cGUisAQKDUxvZ2luUmVzcG9uc2USCwoDdWlkGAEg",
+          "KA4yDS5BY3Rpdml0eVR5cGUimwQKDUxvZ2luUmVzcG9uc2USCwoDdWlkGAEg",
           "ASgJEiIKDWRldmljZVR5cGVBcnIYAiADKA4yCy5EZXZpY2VUeXBlEiMKDGFj",
           "dGl2aXR5VHlwZRgDIAEoDjINLkFjdGl2aXR5VHlwZRIVCg1leGlzaXRTZXR0",
           "aW5nGAQgASgIEh0KCXRyYWluTW9kZRgFIAEoDjIKLlRyYWluTW9kZRIXCg9k",
@@ -48,59 +48,58 @@ public static partial class BdlProtoReflection {
           "YWN0aXZpdHlJZBgTIAEoAxIYChBhY3Rpdml0eVJlY29yZElkGBQgASgDEhUK",
           "DXBlZGFsRGlzdGFuY2UYFSABKAUSEgoKc3lzVmVyc2lvbhgWIAEoBRIWCg5o",
           "ZWFydF9yYXRlX21heBgXIAEoBRIOCgZyb2xlSWQYGCABKAUSDgoGd2VpZ2h0",
-          "GBkgASgBEgsKA2FnZRgaIAEoBRITCgtjb3Vyc2VDb3VudBgbIAEoBSLTAwoN",
-          "VXBsb2FkUmVxdWVzdBILCgN1aWQYASABKAkSHwoKZGV2aWNlVHlwZRgCIAEo",
-          "DjILLkRldmljZVR5cGUSIwoMYWN0aXZpdHlUeXBlGAMgASgOMg0uQWN0aXZp",
-          "dHlUeXBlEh0KCXRyYWluTW9kZRgEIAEoDjIKLlRyYWluTW9kZRIXCg9kZWZh",
-          "dE1vZGVFbmFibGUYBSABKAgSFAoMcmV2ZXJzZUZvcmNlGAYgASgBEhQKDGZv",
-          "cndhcmRGb3JjZRgHIAEoARINCgVwb3dlchgIIAEoARITCgtmaW5pc2hDb3Vu",
-          "dBgJIAEoBRIVCg1maW5hbERpc3RhbmNlGAsgASgBEg8KB2NhbG9yaWUYDCAB",
-          "KAESEQoJdHJhaW5UaW1lGA0gASgFEhYKDmhlYXJ0X3JhdGVfYXZnGA4gASgF",
-          "EhYKDmhlYXJ0X3JhdGVfbWF4GA8gASgFEhYKDmhlYXJ0X3JhdGVfbWluGBAg",
-          "ASgFEhAKCGNvdXJzZUlkGBEgASgDEhIKCmFjdGl2aXR5SWQYEiABKAMSGAoQ",
-          "YWN0aXZpdHlSZWNvcmRJZBgTIAEoAxIPCgdkYXRhX2lkGBQgASgJEhMKC2Nv",
-          "dXJzZUNvdW50GBUgASgFIpcBCg5VcGxvYWRSZXNwb25zZRILCgN1aWQYASAB",
-          "KAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5cGUSIwoMYWN0aXZp",
-          "dHlUeXBlGAQgASgOMg0uQWN0aXZpdHlUeXBlEhAKCGZpbmlzaGVkGAUgASgI",
-          "Eg8KB3N1Y2Nlc3MYBiABKAgSDwoHZGF0YV9pZBgHIAEoCSKlBAoHTWVzc2Fn",
-          "ZRIXCgR0eXBlGAEgASgOMgkuSGVhZFR5cGUSEAoIc2VxdWVuY2UYAiABKAUS",
-          "KwoQa2VlcGFsaXZlUmVxdWVzdBgDIAEoCzIRLktlZXBhbGl2ZVJlcXVlc3QS",
-          "LQoRa2VlcGFsaXZlUmVzcG9uc2UYBCABKAsyEi5LZWVwYWxpdmVSZXNwb25z",
-          "ZRIjCgxsb2dpblJlcXVlc3QYBSABKAsyDS5Mb2dpblJlcXVlc3QSJQoNbG9n",
-          "aW5SZXNwb25zZRgGIAEoCzIOLkxvZ2luUmVzcG9uc2USJQoNdXBsb2FkUmVx",
-          "dWVzdBgHIAEoCzIOLlVwbG9hZFJlcXVlc3QSJwoOdXBsb2FkUmVzcG9uc2UY",
-          "CCABKAsyDy5VcGxvYWRSZXNwb25zZRIvChJwZXJzb25hbFNldFJlcXVlc3QY",
-          "CSABKAsyEy5QZXJzb25hbFNldFJlcXVlc3QSMQoTcGVyc29uYWxTZXRSZXNw",
-          "b25zZRgKIAEoCzIULlBlcnNvbmFsU2V0UmVzcG9uc2USLwoSY291bnREb3du",
-          "QnJvYWRDYXN0GAsgASgLMhMuQ291bnREb3duQnJvYWRDYXN0Ei8KEmN1cnJl",
-          "bnRUaW1lUmVxdWVzdBgMIAEoCzITLkN1cnJlbnRUaW1lUmVxdWVzdBIxChNj",
-          "dXJyZW50VGltZVJlc3BvbnNlGA0gASgLMhQuQ3VycmVudFRpbWVSZXNwb25z",
-          "ZSLDAgoSUGVyc29uYWxTZXRSZXF1ZXN0EgsKA3VpZBgBIAEoCRIfCgpkZXZp",
-          "Y2VUeXBlGAIgASgOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0eVR5cGUYAyAB",
-          "KA4yDS5BY3Rpdml0eVR5cGUSEgoKc2VhdEhlaWdodBgEIAEoBRIUCgxiYWNr",
-          "RGlzdGFuY2UYBSABKAUSEwoLbGV2ZXJMZW5ndGgYBiABKAUSEgoKbGV2ZXJB",
-          "bmdsZRgHIAEoARIUCgxmb3J3YXJkTGltaXQYCCABKAUSEQoJYmFja0xpbWl0",
-          "GAkgASgFEh0KCXRyYWluTW9kZRgKIAEoDjIKLlRyYWluTW9kZRIXCg9kZWZh",
-          "dE1vZGVFbmFibGUYCyABKAgSFQoNcGVkYWxEaXN0YW5jZRgMIAEoBRIPCgdk",
-          "YXRhX2lkGA0gASgJIooBChNQZXJzb25hbFNldFJlc3BvbnNlEh8KCmRldmlj",
-          "ZVR5cGUYASABKA4yCy5EZXZpY2VUeXBlEiMKDGFjdGl2aXR5VHlwZRgCIAEo",
-          "DjINLkFjdGl2aXR5VHlwZRILCgN1aWQYAyABKAkSDwoHc3VjY2VzcxgEIAEo",
-          "CBIPCgdkYXRhX2lkGAUgASgJKiYKDUNvdW50RG93blR5cGUSCwoHUlVOTklO",
-          "RxAAEggKBFNUT1AQASqIAgoISGVhZFR5cGUSFQoRS2VlcGFsaXZlX1JlcXVl",
-          "c3QQABIWChJLZWVwYWxpdmVfUmVzcG9uc2UQARIRCg1Mb2dpbl9SZXF1ZXN0",
-          "EAISEgoOTG9naW5fUmVzcG9uc2UQAxISCg5VcGxvYWRfUmVxdWVzdBAEEhMK",
-          "D1VwbG9hZF9SZXNwb25zZRAFEhcKE0NvdW50RG93bl9Ccm9hZENhc3QQBhIX",
-          "ChNQZXJzb25hbFNldF9SZXF1ZXN0EAcSGAoUUGVyc29uYWxTZXRfUmVzcG9u",
-          "c2UQCBIXChNDdXJyZW50VGltZV9SZXF1ZXN0EAkSGAoUQ3VycmVudFRpbWVf",
-          "UmVzcG9uc2UQCiqUAQoJVHJhaW5Nb2RlEhEKDVNUQU5EQVJEX01PREUQABIQ",
-          "CgxBREFQVEVSX01PREUQARIUChBDT05TVF9TUEVFRF9NT0RFEAISEwoPSEVB",
-          "UlRfUkFURV9NT0RFEAMSFAoQQUREX01VU0NMRVNfTU9ERRAEEg8KC0FDVElW",
-          "RV9NT0RFEAUSEAoMUEFTU0lWRV9NT0RFEAYqpQEKCkRldmljZVR5cGUSBwoD",
-          "UDAwEAASBwoDUDAxEAESBwoDUDAyEAISBwoDUDAzEAMSBwoDUDA0EAQSBwoD",
-          "UDA1EAUSBwoDUDA2EAYSBwoDUDA3EAcSBwoDUDA4EAgSBwoDUDA5EAkSBwoD",
-          "RTEwEAoSBwoDRTExEAsSBwoDRTEyEAwSBwoDRTEzEA0SBwoDRTE0EA4SBwoD",
-          "RTE1EA8SBwoDRTE2EBAqMgoMQWN0aXZpdHlUeXBlEg4KClBvd2VyQ3ljbGUQ",
-          "ABISCg5FbmR1cmFuY2VDeWNsZRABYgZwcm90bzM="));
+          "GBkgASgBEgsKA2FnZRgaIAEoBSK+AwoNVXBsb2FkUmVxdWVzdBILCgN1aWQY",
+          "ASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5cGUSIwoMYWN0",
+          "aXZpdHlUeXBlGAMgASgOMg0uQWN0aXZpdHlUeXBlEh0KCXRyYWluTW9kZRgE",
+          "IAEoDjIKLlRyYWluTW9kZRIXCg9kZWZhdE1vZGVFbmFibGUYBSABKAgSFAoM",
+          "cmV2ZXJzZUZvcmNlGAYgASgBEhQKDGZvcndhcmRGb3JjZRgHIAEoARINCgVw",
+          "b3dlchgIIAEoARITCgtmaW5pc2hDb3VudBgJIAEoBRIVCg1maW5hbERpc3Rh",
+          "bmNlGAsgASgBEg8KB2NhbG9yaWUYDCABKAESEQoJdHJhaW5UaW1lGA0gASgF",
+          "EhYKDmhlYXJ0X3JhdGVfYXZnGA4gASgFEhYKDmhlYXJ0X3JhdGVfbWF4GA8g",
+          "ASgFEhYKDmhlYXJ0X3JhdGVfbWluGBAgASgFEhAKCGNvdXJzZUlkGBEgASgD",
+          "EhIKCmFjdGl2aXR5SWQYEiABKAMSGAoQYWN0aXZpdHlSZWNvcmRJZBgTIAEo",
+          "AxIPCgdkYXRhX2lkGBQgASgJIpcBCg5VcGxvYWRSZXNwb25zZRILCgN1aWQY",
+          "ASABKAkSHwoKZGV2aWNlVHlwZRgCIAEoDjILLkRldmljZVR5cGUSIwoMYWN0",
+          "aXZpdHlUeXBlGAQgASgOMg0uQWN0aXZpdHlUeXBlEhAKCGZpbmlzaGVkGAUg",
+          "ASgIEg8KB3N1Y2Nlc3MYBiABKAgSDwoHZGF0YV9pZBgHIAEoCSKlBAoHTWVz",
+          "c2FnZRIXCgR0eXBlGAEgASgOMgkuSGVhZFR5cGUSEAoIc2VxdWVuY2UYAiAB",
+          "KAUSKwoQa2VlcGFsaXZlUmVxdWVzdBgDIAEoCzIRLktlZXBhbGl2ZVJlcXVl",
+          "c3QSLQoRa2VlcGFsaXZlUmVzcG9uc2UYBCABKAsyEi5LZWVwYWxpdmVSZXNw",
+          "b25zZRIjCgxsb2dpblJlcXVlc3QYBSABKAsyDS5Mb2dpblJlcXVlc3QSJQoN",
+          "bG9naW5SZXNwb25zZRgGIAEoCzIOLkxvZ2luUmVzcG9uc2USJQoNdXBsb2Fk",
+          "UmVxdWVzdBgHIAEoCzIOLlVwbG9hZFJlcXVlc3QSJwoOdXBsb2FkUmVzcG9u",
+          "c2UYCCABKAsyDy5VcGxvYWRSZXNwb25zZRIvChJwZXJzb25hbFNldFJlcXVl",
+          "c3QYCSABKAsyEy5QZXJzb25hbFNldFJlcXVlc3QSMQoTcGVyc29uYWxTZXRS",
+          "ZXNwb25zZRgKIAEoCzIULlBlcnNvbmFsU2V0UmVzcG9uc2USLwoSY291bnRE",
+          "b3duQnJvYWRDYXN0GAsgASgLMhMuQ291bnREb3duQnJvYWRDYXN0Ei8KEmN1",
+          "cnJlbnRUaW1lUmVxdWVzdBgMIAEoCzITLkN1cnJlbnRUaW1lUmVxdWVzdBIx",
+          "ChNjdXJyZW50VGltZVJlc3BvbnNlGA0gASgLMhQuQ3VycmVudFRpbWVSZXNw",
+          "b25zZSLDAgoSUGVyc29uYWxTZXRSZXF1ZXN0EgsKA3VpZBgBIAEoCRIfCgpk",
+          "ZXZpY2VUeXBlGAIgASgOMgsuRGV2aWNlVHlwZRIjCgxhY3Rpdml0eVR5cGUY",
+          "AyABKA4yDS5BY3Rpdml0eVR5cGUSEgoKc2VhdEhlaWdodBgEIAEoBRIUCgxi",
+          "YWNrRGlzdGFuY2UYBSABKAUSEwoLbGV2ZXJMZW5ndGgYBiABKAUSEgoKbGV2",
+          "ZXJBbmdsZRgHIAEoARIUCgxmb3J3YXJkTGltaXQYCCABKAUSEQoJYmFja0xp",
+          "bWl0GAkgASgFEh0KCXRyYWluTW9kZRgKIAEoDjIKLlRyYWluTW9kZRIXCg9k",
+          "ZWZhdE1vZGVFbmFibGUYCyABKAgSFQoNcGVkYWxEaXN0YW5jZRgMIAEoBRIP",
+          "CgdkYXRhX2lkGA0gASgJIooBChNQZXJzb25hbFNldFJlc3BvbnNlEh8KCmRl",
+          "dmljZVR5cGUYASABKA4yCy5EZXZpY2VUeXBlEiMKDGFjdGl2aXR5VHlwZRgC",
+          "IAEoDjINLkFjdGl2aXR5VHlwZRILCgN1aWQYAyABKAkSDwoHc3VjY2VzcxgE",
+          "IAEoCBIPCgdkYXRhX2lkGAUgASgJKiYKDUNvdW50RG93blR5cGUSCwoHUlVO",
+          "TklORxAAEggKBFNUT1AQASqIAgoISGVhZFR5cGUSFQoRS2VlcGFsaXZlX1Jl",
+          "cXVlc3QQABIWChJLZWVwYWxpdmVfUmVzcG9uc2UQARIRCg1Mb2dpbl9SZXF1",
+          "ZXN0EAISEgoOTG9naW5fUmVzcG9uc2UQAxISCg5VcGxvYWRfUmVxdWVzdBAE",
+          "EhMKD1VwbG9hZF9SZXNwb25zZRAFEhcKE0NvdW50RG93bl9Ccm9hZENhc3QQ",
+          "BhIXChNQZXJzb25hbFNldF9SZXF1ZXN0EAcSGAoUUGVyc29uYWxTZXRfUmVz",
+          "cG9uc2UQCBIXChNDdXJyZW50VGltZV9SZXF1ZXN0EAkSGAoUQ3VycmVudFRp",
+          "bWVfUmVzcG9uc2UQCiqUAQoJVHJhaW5Nb2RlEhEKDVNUQU5EQVJEX01PREUQ",
+          "ABIQCgxBREFQVEVSX01PREUQARIUChBDT05TVF9TUEVFRF9NT0RFEAISEwoP",
+          "SEVBUlRfUkFURV9NT0RFEAMSFAoQQUREX01VU0NMRVNfTU9ERRAEEg8KC0FD",
+          "VElWRV9NT0RFEAUSEAoMUEFTU0lWRV9NT0RFEAYqpQEKCkRldmljZVR5cGUS",
+          "BwoDUDAwEAASBwoDUDAxEAESBwoDUDAyEAISBwoDUDAzEAMSBwoDUDA0EAQS",
+          "BwoDUDA1EAUSBwoDUDA2EAYSBwoDUDA3EAcSBwoDUDA4EAgSBwoDRTA5EAkS",
+          "BwoDRTEwEAoSBwoDRTExEAsSBwoDRTEyEAwSBwoDRTEzEA0SBwoDRTE0EA4S",
+          "BwoDRTE1EA8SBwoDRTE2EBAqMgoMQWN0aXZpdHlUeXBlEg4KClBvd2VyQ3lj",
+          "bGUQABISCg5FbmR1cmFuY2VDeWNsZRABYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::CountDownType), typeof(global::HeadType), typeof(global::TrainMode), typeof(global::DeviceType), typeof(global::ActivityType), }, new pbr::GeneratedClrTypeInfo[] {
@@ -110,8 +109,8 @@ public static partial class BdlProtoReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::CurrentTimeRequest), global::CurrentTimeRequest.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::CurrentTimeResponse), global::CurrentTimeResponse.Parser, new[]{ "DeviceId", "DeviceType", "ClientTime", "CountDownType", "CurrentSeconds" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginRequest), global::LoginRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::LoginResponse), global::LoginResponse.Parser, new[]{ "Uid", "DeviceTypeArr", "ActivityType", "ExisitSetting", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "Power", "CourseId", "ActivityId", "ActivityRecordId", "PedalDistance", "SysVersion", "HeartRateMax", "RoleId", "Weight", "Age", "CourseCount" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecordId", "DataId", "CourseCount" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::LoginResponse), global::LoginResponse.Parser, new[]{ "Uid", "DeviceTypeArr", "ActivityType", "ExisitSetting", "TrainMode", "DefatModeEnable", "SeatHeight", "BackDistance", "LeverLength", "ForwardLimit", "BackLimit", "LeverAngle", "ForwardForce", "ReverseForce", "Power", "CourseId", "ActivityId", "ActivityRecordId", "PedalDistance", "SysVersion", "HeartRateMax", "RoleId", "Weight", "Age" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::UploadRequest), global::UploadRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "TrainMode", "DefatModeEnable", "ReverseForce", "ForwardForce", "Power", "FinishCount", "FinalDistance", "Calorie", "TrainTime", "HeartRateAvg", "HeartRateMax", "HeartRateMin", "CourseId", "ActivityId", "ActivityRecordId", "DataId" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::UploadResponse), global::UploadResponse.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "Finished", "Success", "DataId" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::Message), global::Message.Parser, new[]{ "Type", "Sequence", "KeepaliveRequest", "KeepaliveResponse", "LoginRequest", "LoginResponse", "UploadRequest", "UploadResponse", "PersonalSetRequest", "PersonalSetResponse", "CountDownBroadCast", "CurrentTimeRequest", "CurrentTimeResponse" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::PersonalSetRequest), global::PersonalSetRequest.Parser, new[]{ "Uid", "DeviceType", "ActivityType", "SeatHeight", "BackDistance", "LeverLength", "LeverAngle", "ForwardLimit", "BackLimit", "TrainMode", "DefatModeEnable", "PedalDistance", "DataId" }, null, null, null),
@@ -263,7 +262,7 @@ public enum DeviceType {
   /// <summary>
   ///坐式腿伸展训练机
   /// </summary>
-  [pbr::OriginalName("P09")] P09 = 9,
+  [pbr::OriginalName("E09")] E09 = 9,
   /// <summary>
   ///坐式推胸机
   /// </summary>
@@ -1607,7 +1606,6 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     roleId_ = other.roleId_;
     weight_ = other.weight_;
     age_ = other.age_;
-    courseCount_ = other.courseCount_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -1951,20 +1949,6 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     }
   }
 
-  /// <summary>Field number for the "courseCount" field.</summary>
-  public const int CourseCountFieldNumber = 27;
-  private int courseCount_;
-  /// <summary>
-  ///当前课程数，上报时候需要带回来
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int CourseCount {
-    get { return courseCount_; }
-    set {
-      courseCount_ = value;
-    }
-  }
-
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as LoginResponse);
@@ -2002,7 +1986,6 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     if (RoleId != other.RoleId) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Weight, other.Weight)) return false;
     if (Age != other.Age) return false;
-    if (CourseCount != other.CourseCount) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -2033,7 +2016,6 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     if (RoleId != 0) hash ^= RoleId.GetHashCode();
     if (Weight != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Weight);
     if (Age != 0) hash ^= Age.GetHashCode();
-    if (CourseCount != 0) hash ^= CourseCount.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -2140,10 +2122,6 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
       output.WriteRawTag(208, 1);
       output.WriteInt32(Age);
     }
-    if (CourseCount != 0) {
-      output.WriteRawTag(216, 1);
-      output.WriteInt32(CourseCount);
-    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -2221,9 +2199,6 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     }
     if (Age != 0) {
       size += 2 + pb::CodedOutputStream.ComputeInt32Size(Age);
-    }
-    if (CourseCount != 0) {
-      size += 2 + pb::CodedOutputStream.ComputeInt32Size(CourseCount);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -2305,9 +2280,6 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
     }
     if (other.Age != 0) {
       Age = other.Age;
-    }
-    if (other.CourseCount != 0) {
-      CourseCount = other.CourseCount;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -2417,10 +2389,6 @@ public sealed partial class LoginResponse : pb::IMessage<LoginResponse> {
           Age = input.ReadInt32();
           break;
         }
-        case 216: {
-          CourseCount = input.ReadInt32();
-          break;
-        }
       }
     }
   }
@@ -2474,7 +2442,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     activityId_ = other.activityId_;
     activityRecordId_ = other.activityRecordId_;
     dataId_ = other.dataId_;
-    courseCount_ = other.courseCount_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
@@ -2749,20 +2716,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     }
   }
 
-  /// <summary>Field number for the "courseCount" field.</summary>
-  public const int CourseCountFieldNumber = 21;
-  private int courseCount_;
-  /// <summary>
-  ///当前课程数，上报时候需要带回来
-  /// </summary>
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int CourseCount {
-    get { return courseCount_; }
-    set {
-      courseCount_ = value;
-    }
-  }
-
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
     return Equals(other as UploadRequest);
@@ -2795,7 +2748,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (ActivityId != other.ActivityId) return false;
     if (ActivityRecordId != other.ActivityRecordId) return false;
     if (DataId != other.DataId) return false;
-    if (CourseCount != other.CourseCount) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
@@ -2821,7 +2773,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     if (ActivityId != 0L) hash ^= ActivityId.GetHashCode();
     if (ActivityRecordId != 0L) hash ^= ActivityRecordId.GetHashCode();
     if (DataId.Length != 0) hash ^= DataId.GetHashCode();
-    if (CourseCount != 0) hash ^= CourseCount.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -2911,10 +2862,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
       output.WriteRawTag(162, 1);
       output.WriteString(DataId);
     }
-    if (CourseCount != 0) {
-      output.WriteRawTag(168, 1);
-      output.WriteInt32(CourseCount);
-    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -2979,9 +2926,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     }
     if (DataId.Length != 0) {
       size += 2 + pb::CodedOutputStream.ComputeStringSize(DataId);
-    }
-    if (CourseCount != 0) {
-      size += 2 + pb::CodedOutputStream.ComputeInt32Size(CourseCount);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -3050,9 +2994,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
     }
     if (other.DataId.Length != 0) {
       DataId = other.DataId;
-    }
-    if (other.CourseCount != 0) {
-      CourseCount = other.CourseCount;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -3139,10 +3080,6 @@ public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
         }
         case 162: {
           DataId = input.ReadString();
-          break;
-        }
-        case 168: {
-          CourseCount = input.ReadInt32();
           break;
         }
       }

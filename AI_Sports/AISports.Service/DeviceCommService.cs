@@ -103,8 +103,6 @@ namespace AI_Sports.Service
             response.RoleId = member.Role_id == null ? 0 : (int)member.Role_id;
             response.Weight = member.Weight == null ? 0.0 : (double)member.Weight;
             response.Age = member.Age == null ? 0 : (int)member.Age;
-            //当前的课程数
-            response.CourseCount = setDto.Current_course_count;
             //当前系统版本
             List<SystemSettingEntity> list = SystemSettingDAO.ListAll();
             if (list != null && list.Count > 0)
@@ -149,7 +147,7 @@ namespace AI_Sports.Service
                     todoDevices.Add(DeviceType.E12);//椭圆跑步机
                 }
                 todoDevices.AddRange(new DeviceType[]{
-                    DeviceType.P09,DeviceType.E10,DeviceType.E11,DeviceType.E12,DeviceType.E13,DeviceType.E14,DeviceType.E15,DeviceType.E16
+                    DeviceType.E09,DeviceType.E10,DeviceType.E11,DeviceType.E12,DeviceType.E13,DeviceType.E14,DeviceType.E15,DeviceType.E16
                 });
                 if (Is_open_fat_reduction)
                 {//减脂模式
@@ -207,6 +205,8 @@ namespace AI_Sports.Service
             };
             using (TransactionScope ts = new TransactionScope()) //使整个代码块成为事务性代码
             {
+                //更新顺向力反向力和功率
+                personalSettingDAO.UpdateSettingByUid(request.ForwardForce, request.ReverseForce, request.Power, request.Uid, request.DeviceType);
                 trainingDeviceRecordDAO.Insert(deviceRecord);
                 //查一下是否是该循环最后一个设备，是的话更新课程表数量加一并看一下是否已完成,训练活动记录表标志位已完成 修改传入的fk_activity_id和course_count参数为活动记录表主键activityRecordId  --ByCQZ 4.7
                 List<DeviceType> todoList = this.GenToDoDevices(request.Uid, request.ActivityType, request.DefatModeEnable, request.ActivityRecordId);

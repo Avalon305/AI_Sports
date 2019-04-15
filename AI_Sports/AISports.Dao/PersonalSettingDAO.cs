@@ -74,6 +74,25 @@ namespace AI_Sports.Dao
         }
 
         /// <summary>
+        /// 更新顺向力反向力和功率
+        /// </summary>
+        /// <param name="consequent_force"></param>
+        /// <param name="reverse_force"></param>
+        /// <param name="power"></param>
+        /// <param name="uid"></param>
+        /// <param name="deviceType"></param>
+        public void UpdateSettingByUid(double consequent_force,double reverse_force,double power,String uid,DeviceType deviceType)
+        {
+            string sql = @"update bdl_personal_setting set consequent_force = @Consequent_force, reverse_force = @Reverse_force,power = @Power 
+                where member_id = @Uid and device_code = @Devicecode
+";
+            using (var conn = DbUtil.getConn())
+            {
+                conn.Execute(sql, new { Consequent_force = consequent_force, Reverse_force = reverse_force, Power = power, Uid = uid, Devicecode = deviceType });
+            }
+        }
+
+        /// <summary>
         /// 更新
         /// </summary>
         /// <param name="entity"></param>
