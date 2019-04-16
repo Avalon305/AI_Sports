@@ -709,6 +709,7 @@
     <None Include="AISports.Lib\.gitkeep" />
     <None Include="AISports.View\Converter\.gitkeep" />
     <None Include="AISports.View\Fonts\.gitkeep" />
+    <Resource Include="AISports.View\Fonts\NotoSansHans_Light.otf" />
     <None Include="AISports.View\Images\.gitkeep" />
     <None Include="AISports.View\Pages\.gitkeep" />
     <None Include="NLog.xsd">

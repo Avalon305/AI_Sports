@@ -1,5 +1,6 @@
 ﻿using AI_Sports.AISports.View.Pages;
 using AI_Sports.Proto;
+using AI_Sports.Service;
 using MySql.Data.MySqlClient;
 using NLog;
 using System;
@@ -21,7 +22,7 @@ namespace AI_Sports
     public partial class App : Application
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-
+        MemberService memberService = new MemberService();
         /// <summary>
         /// 应用启动的时候生命周期
         /// </summary>
@@ -57,6 +58,8 @@ namespace AI_Sports
 
             try
             {
+                //清楚APP.config中的登陆缓存
+                memberService.Logout();
                 //起调UWP蓝牙项目
                 Process process = new Process();
                 Process.Start(new ProcessStartInfo("bluetoothzcr:"));

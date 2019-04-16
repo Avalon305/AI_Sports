@@ -5,18 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
         mc:Ignorable="d"
-        Title="Moudle" Height="450" Width="800">
+        Title="Moudle" Height="250" Width="800" WindowStartupLocation="CenterScreen">
 	<StackPanel Orientation="Vertical"  >
-		<StackPanel Orientation="Vertical" Height="370" Background="AliceBlue">
-			<Grid>
-				<Label Content="请输入系统设置密码：" Margin="48,60,460,-60" FontSize="17"></Label>
-				<PasswordBox x:Name="SystemPassword" Password="" Style="{StaticResource has-success}" Margin="229,50,243,-50"/>
-			</Grid>
-
-		</StackPanel>
-		<StackPanel Height="50" Orientation="Horizontal" Background="DimGray">
+		<WrapPanel Height="170" Background="AliceBlue">
+			<Label Content="请输入系统设置密码：" Margin="50,50,0,0" FontSize="17" FontWeight="Bold"></Label>
+            <PasswordBox x:Name="SystemPassword" Margin="0,50,0,0" Width="400" Password="" Style="{StaticResource has-success}"/>
+        </WrapPanel>
+		<StackPanel Height="50"  Orientation="Horizontal" Background="DimGray">
 			<Button Content="确定" Style="{DynamicResource btn-success}" Width="80" Margin="580,2,10,5" Click="Button_Click"></Button>
-			<Button Content="取消"  Width="80" Margin="10,2,5,5" Click="Button1_Click"></Button>
+            <Button Content="取消" Style="{DynamicResource btn-warning}" Width="80" Margin="10,2,5,5" Click="Button1_Click"></Button>
 		</StackPanel>
 	</StackPanel>
 </Window>

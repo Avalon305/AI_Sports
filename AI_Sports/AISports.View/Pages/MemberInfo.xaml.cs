@@ -182,7 +182,11 @@ namespace AI_Sports.AISports.View.Pages
                     {
                        
                         MemberEntity coach = memberService.GetMemberByPk(memberEntity.Fk_coach_id);
-                        this.L1.Content = coach.Member_familyName + coach.Member_firstName;
+                        if (coach != null)
+                        {
+                            this.L1.Content = coach.Member_familyName + coach.Member_firstName;
+
+                        }
                     }
                     else
                     {

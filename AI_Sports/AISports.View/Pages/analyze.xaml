@@ -10,11 +10,11 @@
 
     <Grid Background="White" Margin="0,0,0,10">
         <Frame x:Name="all" Width="1493.3" Height="1080"></Frame>
-        <StackPanel Margin="10,10,-0.4,0.4">
+        <StackPanel>
             <WrapPanel>
-                <Label Content="分析" Style="{DynamicResource h1}" Margin="10 10 0 0" FontSize="50"/>
+                <Label Content="分析" Style="{DynamicResource h1}" Margin="20 20 0 20" FontSize="50" />
             </WrapPanel>
-            <GridSplitter Height="5" Width="1494"/>
+            <GridSplitter Height="3" Width="1494"/>
             <WrapPanel Height="281" Margin="0,0,0.4,0">
                 <Button Margin="200 50 0 20"  Width="150" Height="150" FontSize="18"   Background="White" Click="Button_Click_Attendance">
                     <Button.Content>

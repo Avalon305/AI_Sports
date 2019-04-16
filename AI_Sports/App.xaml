@@ -20,14 +20,17 @@
 
             </ResourceDictionary.MergedDictionaries>
             <!--全局字体设置-->
-            <Style TargetType="{x:Type TextElement }">
-                <Setter Property="FontFamily" Value="宋体"/>
-                <!--<Setter Property="FontSize" Value="30"/>-->
+            <!--<Style TargetType="{x:Type TextElement }">
+                <Setter Property="FontFamily" Value="微软雅黑"/>
+                <Setter Property="FontSize" Value="30"/>
             </Style>
             <Style TargetType="{x:Type TextBlock }">
-                <Setter Property="FontFamily" Value="宋体"/>
-                <!--<Setter Property="FontSize" Value="30"/>-->
-            </Style>
+                <Setter Property="FontFamily" Value="微软雅黑"/>
+                <Setter Property="FontSize" Value="30"/>
+            </Style>-->
+
+            <FontFamily x:Key="FontFamily">pack://application:,,,/AI_Sports;component/AISports.View/Fonts/#NotoSansHans_Light</FontFamily>
+            
         </ResourceDictionary>
 
 

@@ -61,6 +61,6 @@
         <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="3" Grid.ColumnSpan="7" Height="540" Width="720" x:Name="statusImage1" Margin="40.8,104.2,40,56.6" >
         </Image>
 
-        <Image Grid.Row="2" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="4" Width="500" Source="AISports.View/Images/front.png" Margin="-52,0.4,9.6,56.6" />
+        <Image Grid.Row="2" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="4" Width="500" Source="../Images/right.png" Margin="-52,0.4,9.6,56.6" />
     </Grid>
 </Page>

@@ -18,16 +18,16 @@
             <StackPanel >
                 <StackPanel>
 
-                    <Label Content="训练计划" Style="{DynamicResource h1}" Margin="20 20 0 0" FontFamily="Microsoft JhengHei UI"/>
+                    <Label Content="训练计划" Style="{DynamicResource h1}" Margin="20 20 0 0" FontSize="50"/>
 					<WrapPanel >
-						<GridSplitter  Width="1080" Height="3" Margin="10,20,0,0" Background="Gray" />
+                        <GridSplitter Width="1494"  Height="3" Margin="0,20,0,0" />
 					</WrapPanel>
 				</StackPanel>
 				<WrapPanel Margin="20,20,0,0">
 				<Border  BorderThickness="2" BorderBrush="#04243D" Background="#f1f1f1" Height="200" CornerRadius="10" MouseUp="Border_MouseUp">
 					<WrapPanel >
 						<StackPanel Height="224" Width="900" HorizontalAlignment="Left" RenderTransformOrigin="0.484,2.18">
-							<Label  x:Name="Lab_Title" Content="训练计划标题" Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,40"/>
+							<Label  x:Name="Lab_Title" Content="无训练计划" Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,40"/>
 							<WrapPanel Margin="20,10,0,0">
 								<Label  Content="创建时间：" x:Name="Lab_Gmt_create" FontFamily="yahei" FontSize="22"/>
 							</WrapPanel>
@@ -38,10 +38,10 @@
 
 
 				<WrapPanel Margin="0 15 0 0">
-					<Label Content="功能" Style="{DynamicResource h3}" Margin="20 0 0 0" FontFamily="Microsoft JhengHei UI" FontWeight="Bold"></Label>
+					<Label Content="功能" Style="{DynamicResource h1}" Margin="20 0 0 0"  FontWeight="Bold"></Label>
 				</WrapPanel>
 				<WrapPanel >
-					<GridSplitter  Width="1080" Height="2" Margin="10,15,0,0" Background="Gray" />
+					<GridSplitter  Width="1494" Height="3" Margin="0,15,0,0"  />
 				</WrapPanel>
 				<WrapPanel>
 					<Button Margin="20 20 0 20"  Width="130" Height="130" FontSize="18"   Background="White" Click="Button_Click">

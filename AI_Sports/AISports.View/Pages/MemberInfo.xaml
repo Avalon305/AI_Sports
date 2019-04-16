@@ -44,7 +44,7 @@
                 <StackPanel Orientation="Vertical" Height="Auto" Width="Auto">
                     
                     <Label Content="训练目的" Foreground="#04243D" FontFamily="Microsoft YaHei"  Margin="20,10,0,0" Style="{DynamicResource h1}"/>
-                    <GridSplitter Height="5" HorizontalAlignment="Left" Width="1493.3" Margin="0,10,0,0"/>
+                    <GridSplitter Height="3" HorizontalAlignment="Left" Width="1493.3" Margin="0,10,0,0"/>
                     <StackPanel x:Name="stackPanel1" Orientation="Horizontal" Margin="20,0,0,0">
                         <!--  这一块我给注释掉了,这个个数是根据一个字符串数组里面有多少那个标签名而决定的
                         <Border Background="Yellow"  CornerRadius="3" Width="10" Height="10" Margin="10,0,5,0"></Border>
@@ -67,7 +67,7 @@
             <Grid Margin="0,20,0,0" Width="1493.3">
                 <StackPanel>
                     <Label Content="当前状态" FontFamily="Microsoft YaHei" Foreground="#04243D" Margin="20,0,0,0" Style="{DynamicResource h1}"/>
-                    <GridSplitter Height="5" Width="1494"/>
+                    <GridSplitter Height="3" Width="1494"/>
 
                     <ProgressBar Value="{Binding Content, ElementName=progess}" Name="progressBar" Height="25px" Style="{DynamicResource progress-bar-success}" Margin="10,20,250,10" />
 
@@ -97,7 +97,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.ColumnSpan="3">
                     <Label Content="身份识别卡" Style="{DynamicResource h1}" Margin="20,20,0,0" Foreground="#04243D" FontFamily="Microsoft YaHei"/>
-                    <GridSplitter Height="5" Width="2600"/>
+                    <GridSplitter Height="3" Width="1494"/>
                     <StackPanel x:Name="stackPanel2" HorizontalAlignment="Right" Margin="0,30,20,20" Width="1453.3">
                         <!--<Label Visibility="Visible"  Name="x1" Content="用户尚未注册宝德龙卡" FontSize="22px" Foreground="#04243D" FontFamily="Microsoft YaHei" VerticalContentAlignment="Center" Height="40"  Margin="0,30,0,0"  Background="WhiteSmoke"/>-->
                         <Border Name="x2" Width="400" Height="200" Background="WhiteSmoke" CornerRadius="8" HorizontalAlignment="Left" Margin="20,25,0,0" Grid.Column="1">

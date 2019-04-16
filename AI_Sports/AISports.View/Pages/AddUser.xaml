@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>-->
         <Grid Name="Grid1"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Height="540" Width="1494">
             <Label Content="个人信息" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="20,5,0,0" VerticalAlignment="Top" Height="60" Width="206" Style="{DynamicResource h1}" Foreground="#04243D" FontFamily="Microsoft YaHei" />
-            <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="50,50,0,0" VerticalAlignment="Top"/>
+            <GridSplitter HorizontalAlignment="Stretch" Height="3" Margin="50,50,50,0" VerticalAlignment="Top"/>
 
             <TextBox Text="" Tag="姓" Name="Member_familyName"  Style="{DynamicResource input-group-addon left}" VerticalAlignment="Top" Margin="50,70,0,0" HorizontalAlignment="Left" FontSize="22" Width="600" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="Auto" />
             <TextBox Text="" Tag="名" Name="Member_firstName" Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="600" Margin="766,70,0,0" FontFamily="Microsoft YaHei" FontSize="22" Foreground="#04243D" Height="Auto"  ></TextBox>
@@ -47,7 +47,7 @@
         <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="56,1044,118,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
         <Grid   Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="White" Height="540" Width="1494" Margin="0,0,0,0">
             <Label Content="个人标签" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="211" Style="{DynamicResource h1}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#04243D" FontFamily="Microsoft YaHei"/>
-            <GridSplitter HorizontalAlignment="Stretch" Height="5" Margin="50,60,0,0" VerticalAlignment="Top"/>
+            <GridSplitter HorizontalAlignment="Stretch" Height="3" Margin="50,60,50,0" VerticalAlignment="Top"/>
             <TextBox Text="{Binding ElementName=weightSlider,Path=Value,Mode=TwoWay}" Tag="体重(kg)" x:Name="weight" IsReadOnly="True"  Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="50,100,0,0"  Height="40"  Foreground="#04243D" FontSize="22" FontFamily="Microsoft YaHei" TextChanged="Weight_TextChanged" />
             <Slider HorizontalAlignment="Left" Name="weightSlider" Maximum="200" Minimum="0" Value="0"  IsSnapToTickEnabled="True" Margin="250,100,0,0" VerticalAlignment="Top" Height="43" Width="411" TickPlacement="TopLeft"  TickFrequency="1"/>
             <TextBox Text="{Binding ElementName=heightSlider,Path=Value,Mode=TwoWay}"  Tag="身高" x:Name="height" IsReadOnly="True" Style="{DynamicResource input-group-addon left}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="766,100,0,0"  Height="Auto"  FontSize="22" FontFamily="Microsoft YaHei" Foreground="#04243D" />

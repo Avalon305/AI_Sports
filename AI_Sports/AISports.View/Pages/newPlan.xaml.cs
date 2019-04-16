@@ -26,6 +26,8 @@ namespace AI_Sports.AISports.View.Pages
     public partial class NewPlan : Page
     {
         TrainingPlanService trainingPlanService = new TrainingPlanService();
+
+        bool havePlanFlag = false;
         public NewPlan()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace AI_Sports.AISports.View.Pages
             TrainingPlanEntity trainingPlanEntity = trainingPlanService.GetPlanByMumberId();
             if (trainingPlanEntity != null)
             {
+                havePlanFlag = true;
                 this.Lab_Title.Content = trainingPlanEntity.Title;
                 this.Lab_Gmt_create.Content = trainingPlanEntity.Gmt_create.Value.ToString("f");
             }
@@ -206,7 +209,16 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Button_Click_CurrentCourse(object sender, RoutedEventArgs e)
         {
-            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
+            if (havePlanFlag)
+            {
+                NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
+
+            }
+            else
+            {
+                MessageBoxX.Show("温馨提示","请先添加训练计划与训练课程。");
+
+            }
 
         }
         /// <summary>
@@ -216,7 +228,15 @@ namespace AI_Sports.AISports.View.Pages
         /// <param name="e"></param>
         private void Border_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
+            if (havePlanFlag)
+            {
+                NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
+
+            }
+            else
+            {
+                MessageBoxX.Show("温馨提示","请先添加训练计划与训练课程。");
+            }
 
         }
 

@@ -28,7 +28,7 @@
                     <Label Content="持续时间" Style="{DynamicResource h3}" Margin="20 20 0 0"/>
                 </WrapPanel>
                 <WrapPanel >
-                    <GridSplitter  Width="1080" Height="3" Margin="10,10,0,0" Background="Gray" />
+                    <GridSplitter  Width="1494" Height="3" Margin="0,10,0,0" />
                 </WrapPanel>
                 <WrapPanel Margin="200,20,0,20">
                     <StackPanel>
@@ -137,7 +137,7 @@
                         </StackPanel>
                     </StackPanel>
                 </WrapPanel>
-                <GridSplitter HorizontalAlignment="Stretch" Height="1"/>
+                <!--<GridSplitter HorizontalAlignment="Stretch" Height="3"/>-->
                 <WrapPanel Margin="200,20,0,0">
                     <Border BorderBrush="#04243D" BorderThickness="10" Height="99" Width="3" VerticalAlignment="Bottom" Margin="10,0,0,0"/>
                     <Border BorderBrush="#04243D" BorderThickness="10" Height="3" Width="15" Margin="0,0,0,40"/>
