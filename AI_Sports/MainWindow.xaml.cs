@@ -221,9 +221,12 @@ namespace AI_Sports
                         break;
                     case LoginPageStatus.RepeatLogins:
                         logger.Debug("拦截重复登陆，请先退出。");
+                        MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
                         break;
                     case LoginPageStatus.UnknownID:
                         logger.Debug("未知ID，禁止登录。");
+                        MessageBoxX.Show("温馨提示", "未知ID，登录失败");
+
                         break;
                     default:
                         break;

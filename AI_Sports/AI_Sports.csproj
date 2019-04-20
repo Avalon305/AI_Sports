@@ -703,6 +703,8 @@
     <Resource Include="AISports.View\Images\muscle_bs7.png" />
     <Resource Include="AISports.View\Images\muscle_bs8.png" />
     <Resource Include="AISports.View\Images\muscle_bs9.png" />
+    <Resource Include="AISports.View\Images\left.JPG" />
+    <Resource Include="AISports.View\Images\right.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

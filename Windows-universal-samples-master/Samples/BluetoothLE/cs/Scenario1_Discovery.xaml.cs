@@ -426,16 +426,6 @@ namespace SDKTemplate
 
         private async void DeviceWatcher_EnumerationCompleted(DeviceWatcher sender, object e)
         {
-
-
-
-            //开始之前清空蓝牙设备集合 不再async事件里调用操作主线程全局变量的方法 会报应用程序调用一个已为另一线程的接口异常，直接退出 反正自己也会Remove不必要了
-            //KnownDevices.Clear();
-
-            //停止事件重新开始搜索蓝牙 注意别在DeviceWatcher_Stopped里自我调用 否则死循环
-            deviceWatcher.Stop();
-
-
             // We must update the collection on the UI thread because the collection is databound to a UI element.
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
@@ -448,17 +438,10 @@ namespace SDKTemplate
                 }
             });
 
-        }
-        /// <summary>
-        /// 停止搜索
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void DeviceWatcher_Stopped(DeviceWatcher sender, object e)
-        {
-            // Start over with an empty collection. 先清空列表再搜索
 
-            Debug.WriteLine("触发搜索蓝牙停止事件" + System.DateTime.Now);
+            //开始之前清空蓝牙设备集合 不再async事件里调用操作主线程全局变量的方法 会报应用程序调用一个已为另一线程的接口异常，直接退出 反正自己也会Remove不必要了
+            //KnownDevices.Clear();
+            //停止事件重新开始搜索蓝牙 注意别在DeviceWatcher_Stopped里自我调用 否则死循环 
 
             //这个地方更新Read表的时候可能和定时任务里更新write表并发冲突报Busy异常 SQLite没有复杂的锁机制
             try
@@ -473,9 +456,9 @@ namespace SDKTemplate
                 //实例化插入集合
                 List<BluetoothReadEntity> bluetoothReadEntities = new List<BluetoothReadEntity>();
 
-                foreach (var item in KnownDevices)
+                for (int i = 0; i < KnownDevices.Count; i++)
                 {
-                    BluetoothLEDeviceDisplay bluetoothLEDeviceDisplay = item as BluetoothLEDeviceDisplay;
+                    BluetoothLEDeviceDisplay bluetoothLEDeviceDisplay = KnownDevices[i] as BluetoothLEDeviceDisplay;
                     Debug.WriteLine("搜索到的蓝牙设备" + bluetoothLEDeviceDisplay.Id + bluetoothLEDeviceDisplay.Name);
                     //时间戳
                     TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
@@ -523,10 +506,34 @@ namespace SDKTemplate
             }
 
 
+            //停止搜索 触发停止事件
+            deviceWatcher.Stop();
+
+
+
+
+
+
+        }
+        /// <summary>
+        /// 停止搜索
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void DeviceWatcher_Stopped(DeviceWatcher sender, object e)
+        {
+            // Start over with an empty collection. 先清空列表再搜索
+
+            Debug.WriteLine("触发搜索蓝牙停止事件" + System.DateTime.Now);
+
+
+            
+
             //重新开始搜索蓝牙
             deviceWatcher.Start();
 
             Debug.WriteLine("STOP事件重新开始搜索蓝牙" + System.DateTime.Now);
+
             // We must update the collection on the UI thread because the collection is databound to a UI element.
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
@@ -983,6 +990,9 @@ namespace SDKTemplate
                     await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
                     return false;
                 }
+                //写入完成后断开蓝牙
+                //调用读取特征
+               
             }
             catch (Exception ex) when (ex.HResult == E_BLUETOOTH_ATT_INVALID_PDU)
             {
@@ -1016,6 +1026,23 @@ namespace SDKTemplate
                 return false;
             }
         }
+        /// <summary>
+        /// 读取数据方法
+        /// </summary>
+        //private async void CharacteristicReadButton_Click()
+        //{
+        //    // BT_Code: Read the actual value from the device by using Uncached.
+        //    GattReadResult result = await selectedCharacteristic.ReadValueAsync(BluetoothCacheMode.Uncached);
+        //    if (result.Status == GattCommunicationStatus.Success)
+        //    {
+        //        string formattedResult = FormatValueByPresentation(result.Value, presentationFormat);
+        //        rootPage.NotifyUser($"Read result: {formattedResult}", NotifyType.StatusMessage);
+        //    }
+        //    else
+        //    {
+        //        rootPage.NotifyUser($"Read failed: {result.Status}", NotifyType.ErrorMessage);
+        //    }
+        //}
 
 
         #endregion

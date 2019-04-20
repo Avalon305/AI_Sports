@@ -118,7 +118,7 @@ namespace AI_Sports.AISports.View.Pages
                     {
                         this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                         {
-                            MessageBox.Show("发卡失败", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBoxX.Show("温馨提示", "发卡失败");
                         });
                     }
 
@@ -126,7 +126,7 @@ namespace AI_Sports.AISports.View.Pages
                     {
                         this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                         {
-                            MessageBox.Show("发卡成功", "成功", MessageBoxButton.OK, MessageBoxImage.None);
+                            MessageBoxX.Show("温馨提示", "发卡成功");
                         });
                     }
 
@@ -134,7 +134,9 @@ namespace AI_Sports.AISports.View.Pages
                     {
                         this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                         {
-                            MessageBox.Show("无卡", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            MessageBoxX.Show("温馨提示", "无卡");
+
+                            //MessageBox.Show("无卡", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
                         });
                     }
                 }
