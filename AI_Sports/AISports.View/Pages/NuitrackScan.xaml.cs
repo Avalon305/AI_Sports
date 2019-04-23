@@ -1,6 +1,8 @@
 ﻿using AI_Sports.AISports.Dao;
 using AI_Sports.AISports.Entity;
 using AI_Sports.AISports.View.Pages;
+using AI_Sports.Service;
+using AI_Sports.Util;
 using nuitrack;
 using nuitrack.issues;
 using System;
@@ -102,7 +104,7 @@ namespace AI_Sports
         bool flag = false;
         int clicknum = 0;
         SkeletonLengthDAO skeletonLengthDAO = new SkeletonLengthDAO();
-
+        PersonalSettingService personalSettingService = new PersonalSettingService();
         public NuitrackScan()
         {
             InitializeComponent();
@@ -560,7 +562,12 @@ namespace AI_Sports
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-            string fk_member_id = "123456";
+            //string fk_member_id = "123456";
+            string memberPK = CommUtil.GetSettingString("memberPrimarykey");
+            string coachId = CommUtil.GetSettingString("coachId");
+
+            string fk_member_id = (memberPK != null && memberPK != "") ? memberPK : coachId;
+
             SkeletonLengthEntity skeletonLengthEntity = new SkeletonLengthEntity();
             skeletonLengthEntity.Shoulder_width = System.Convert.ToDouble(Shoulder_width.Text);
             skeletonLengthEntity.Arm_length_up = System.Convert.ToDouble(Arm_length_up.Text);
@@ -577,6 +584,8 @@ namespace AI_Sports
             {
                 skeletonLengthDAO.updateSkeletonLengthRecord(skeletonLengthEntity);
             }
+            //根据身体数据更新个人设置 byCQZ 2019.4.23 V1.0 未确定具体参数 只是架子
+            personalSettingService.UpdatePersonalSettingBy3DScan();
             MessageBoxX.Show("成功","保存成功");
         }
 

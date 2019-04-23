@@ -187,5 +187,21 @@ namespace AI_Sports.Dao
             }
 
         }
+
+        /// <summary>
+        /// 更新前后方限制和杠杆角度 根据设备类型和会员id
+        /// </summary>
+        /// <param name="entity"></param>
+        public void UpdateLimitByType(PersonalSettingEntity entity)
+        {
+            string sql = @"update bdl_personal_setting set Lever_angle=@Lever_angle,Front_limit=@Front_limit,Back_limit=@Back_limit
+                where member_id = @Member_id and Device_code=@Device_code 
+            ";
+            using (var conn = DbUtil.getConn())
+            {
+                conn.Execute(sql, entity);
+            }
+
+        }
     }
 }
