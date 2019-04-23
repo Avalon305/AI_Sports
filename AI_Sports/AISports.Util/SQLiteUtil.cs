@@ -183,9 +183,9 @@ namespace AI_Sports.Util
                 using (var command = connection.CreateCommand())
                 {
                     StringBuilder sql = new StringBuilder();
-                    sql.Append("select * from bluetooth_write where member_id = ");
+                    sql.Append("select * from bluetooth_write where member_id = '");
                     sql.Append(memberId);
-                    sql.Append(" AND gmt_modified = (select MAX(gmt_modified) from bluetooth_write)");
+                    sql.Append("' AND gmt_modified = (select MAX(gmt_modified) from bluetooth_write)");
                     command.CommandText = sql.ToString();
 
                     // 执行查询会返回一个SQLiteDataReader对象

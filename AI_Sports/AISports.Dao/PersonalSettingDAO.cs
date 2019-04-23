@@ -171,5 +171,21 @@ namespace AI_Sports.Dao
             }
 
         }
+
+        /// <summary>
+        /// 更新所有个人设置根据3D扫描的身体数据
+        /// </summary>
+        /// <param name="entity"></param>
+        public void UpdatePersonalSettingBy3DScan(PersonalSettingEntity entity)
+        {
+            string sql = @"update bdl_personal_setting set seat_height = @Seat_height,backrest_distance = @Backrest_distance,footboard_distance = @Footboard_distance,front_limit = @Front_limit,back_limit = @Back_limit,lever_angle = @Lever_angle
+                where member_id = @Member_id
+            ";
+            using (var conn = DbUtil.getConn())
+            {
+                conn.Execute(sql, entity);
+            }
+
+        }
     }
 }

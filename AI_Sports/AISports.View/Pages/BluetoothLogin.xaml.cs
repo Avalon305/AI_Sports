@@ -57,62 +57,62 @@ namespace AI_Sports.AISports.View.Pages
         }
 
         //定时任务调用方法 每五秒查询一次扫描手环表
-        private void timeCycle(object sender, EventArgs e)
-        {
-            try
-            {
-                //生成修改时间时间戳
-                TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-                var currentTime = Convert.ToInt64(ts.TotalSeconds);
-                //当前时间减2分钟 查询最近2分钟被扫描到的手环
-                currentTime = currentTime - (2 * 60);
-                //查询最近读取表中扫描到的用户
-                List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
+        //private void timeCycle(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        //生成修改时间时间戳
+        //        TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+        //        var currentTime = Convert.ToInt64(ts.TotalSeconds);
+        //        //当前时间减2分钟 查询最近2分钟被扫描到的手环
+        //        currentTime = currentTime - (2 * 60);
+        //        //查询最近读取表中扫描到的用户
+        //        List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
 
-                this.dataGrid.ItemsSource = bluetoothReadEntities;
-                Console.WriteLine("查询扫描手环，更新登陆列表成功");
-                foreach (var item in bluetoothReadEntities)
-                {
-                    Console.WriteLine("更新的蓝牙：" + item.Member_id);
+        //        this.dataGrid.ItemsSource = bluetoothReadEntities;
+        //        Console.WriteLine("查询扫描手环，更新登陆列表成功");
+        //        foreach (var item in bluetoothReadEntities)
+        //        {
+        //            Console.WriteLine("更新的蓝牙：" + item.Member_id);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("蓝牙登陆查询read表异常" + ex.Message);
-                logger.Warn("蓝牙登陆查询read表异常" + ex.Message);
-            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("蓝牙登陆查询read表异常" + ex.Message);
+        //        logger.Warn("蓝牙登陆查询read表异常" + ex.Message);
+        //    }
            
-        }
+        //}
 
         /// <summary>
         /// 加载手环列表
         /// </summary>
         public void LoadBluetoothList()
         {
-            try
-            {
+            //try
+            //{
                 //生成修改时间时间戳
-                TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-                var currentTime = Convert.ToInt64(ts.TotalSeconds);
-                //当前时间减2分钟 查询最近2分钟被扫描到的手环
-                currentTime = currentTime - (2 * 60);
+            //    TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            //    var currentTime = Convert.ToInt64(ts.TotalSeconds);
+            //    //当前时间减2分钟 查询最近2分钟被扫描到的手环
+            //    currentTime = currentTime - (2 * 60);
 
-                List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
+            //    List<BluetoothReadEntity> bluetoothReadEntities = SQLiteUtil.ListCurrentLoginUser(currentTime.ToString());
 
-                this.dataGrid.ItemsSource = bluetoothReadEntities;
-                Console.WriteLine("查询扫描手环，更新登陆列表成功");
-                foreach (var item in bluetoothReadEntities)
-                {
-                    Console.WriteLine("更新的蓝牙：" + item.Member_id);
+            //    this.dataGrid.ItemsSource = bluetoothReadEntities;
+            //    Console.WriteLine("查询扫描手环，更新登陆列表成功");
+            //    foreach (var item in bluetoothReadEntities)
+            //    {
+            //        Console.WriteLine("更新的蓝牙：" + item.Member_id);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("蓝牙登陆查询read表异常"+ex.Message);
-                logger.Warn("蓝牙登陆查询read表异常"+ex.Message);
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("蓝牙登陆查询read表异常"+ex.Message);
+            //    logger.Warn("蓝牙登陆查询read表异常"+ex.Message);
+            //}
             
 
         }
@@ -127,15 +127,27 @@ namespace AI_Sports.AISports.View.Pages
             this.Close();
         }
         /// <summary>
-        /// 重新扫描按钮
+        /// 重新扫描按钮/登陆按钮
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            LoadBluetoothList();
-            MessageBoxX messageBoxX = new MessageBoxX();
-            messageBoxX.ShowLoading("温馨提示","加载成功",1);
+            //输入用户ID登录
+            string memberId = this.TB_MemberId.Text;
+
+            if (memberId != null && memberId != "")
+            {
+                //传递卡号参数给mainwindow
+                PassValuesEvent(memberId);
+                Console.WriteLine("已经传递卡号给主窗体 id：" + memberId);
+                this.Close();
+            }
+
+            //选择蓝牙登陆
+            //LoadBluetoothList();
+            //MessageBoxX messageBoxX = new MessageBoxX();
+            //messageBoxX.ShowLoading("温馨提示","加载成功",1);
         }
         /// <summary>
         /// 选中某行登陆
@@ -145,20 +157,20 @@ namespace AI_Sports.AISports.View.Pages
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            BluetoothReadEntity bluetoothReadEntity = this.dataGrid.SelectedItem as BluetoothReadEntity;
+            //BluetoothReadEntity bluetoothReadEntity = this.dataGrid.SelectedItem as BluetoothReadEntity;
 
-            if (bluetoothReadEntity != null)
-            {
-                if (bluetoothReadEntity.Member_id != null)
-                {
-                    //传递卡号参数给mainwindow
-                    PassValuesEvent(bluetoothReadEntity.Member_id);
-                    Console.WriteLine("已经传递卡号给主窗体 id：" + bluetoothReadEntity.Member_id);
-                    this.Close();
-                }
+            //if (bluetoothReadEntity != null)
+            //{
+            //    if (bluetoothReadEntity.Member_id != null)
+            //    {
+            //        //传递卡号参数给mainwindow
+            //        PassValuesEvent(bluetoothReadEntity.Member_id);
+            //        Console.WriteLine("已经传递卡号给主窗体 id：" + bluetoothReadEntity.Member_id);
+            //        this.Close();
+            //    }
                 
 
-            }
+            //}
 
 
         }

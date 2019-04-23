@@ -1,4 +1,6 @@
-﻿using AI_Sports.Dao;
+﻿using AI_Sports.AISports.Dao;
+using AI_Sports.AISports.Entity;
+using AI_Sports.Dao;
 using AI_Sports.Entity;
 using AI_Sports.Service;
 using AI_Sports.Util;
@@ -16,6 +18,7 @@ namespace AI_Sports.Service
         PersonalSettingDAO personalSettingDAO = new PersonalSettingDAO();
         ActivityDAO activityDAO = new ActivityDAO();
         DatacodeDAO datacodeDao = new DatacodeDAO();
+        SkeletonLengthDAO skeletonLengthDAO = new SkeletonLengthDAO();
         /// <summary>
         /// 添加训练活动后，自动根据数据库中的训练活动记录，往个人设置表插入记录
         /// </summary>
@@ -183,5 +186,32 @@ namespace AI_Sports.Service
         {
             personalSettingDAO.UpdateEnduranceDeviceSettingByType(entity);
         }
+        /// <summary>
+        /// 根据3D扫描的到的用户身体数据更新个人设置的通配参数：座位高度、靠背距离、踏板距离
+        /// </summary>
+        public void UpdatePersonalSettingBy3DScan()
+        {
+            //首先得到用户的身体长度数据
+            string memberId = CommUtil.GetSettingString("memberId");
+            SkeletonLengthEntity skeletonLengthEntity = skeletonLengthDAO.getSkeletonLengthRecord(memberId);
+
+            //计算公式：y=K*X+B ==> 设备参数 = k * 用户某一部位长度 + 常量 具体取值多少合适需要结合实际测试。可能不同的参数需要不同的K和B 根据实际情况修改也写
+            double K = 0.8;
+            double B = 10;
+            var personalSettingEntity = new PersonalSettingEntity
+            {
+                //基于小腿计算座位高度
+                Seat_height = (int?)Math.Round(K * skeletonLengthEntity.Leg_length_down + B),
+                //靠背距离基于大腿长
+                Backrest_distance = (int?)Math.Round(K * skeletonLengthEntity.Leg_length_up + B),
+                //踏板距离基于小腿长
+                Footboard_distance = (int?)Math.Round(K * skeletonLengthEntity.Leg_length_down + B),
+                //前方限制
+                //Front_limit = (int?)Math.Round(K * (skeletonLengthEntity.Arm_length_up + skeletonLengthEntity.Arm_length_down) + B),
+            };
+
+            personalSettingDAO.UpdatePersonalSettingBy3DScan(personalSettingEntity);
+        }
+
     }
 }

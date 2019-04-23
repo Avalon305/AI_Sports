@@ -207,7 +207,7 @@
                 
             </StackPanel>
         </ScrollViewer>
-        <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="20,0,0,0" VerticalAlignment="Bottom" Grid.Row="1"/>
-        <Button HorizontalAlignment="Left" Margin="20,0,0,0"  Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}" FontSize="20"  Grid.Row="2"  Foreground="#ffffff" Padding="10  5 10 5" Click="Button_Click" >后退</Button>
+        <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,50" VerticalAlignment="Bottom" Grid.Row="2"/>
+        <Button HorizontalAlignment="Left" Margin="20,40,0,0"  Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}" FontSize="20"  Grid.Row="2"  Foreground="#ffffff" Click="Button_Click" >后退</Button>
     </Grid>
 </Page>

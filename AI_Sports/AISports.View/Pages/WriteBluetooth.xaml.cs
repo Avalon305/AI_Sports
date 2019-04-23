@@ -5,6 +5,7 @@ using AI_Sports.Util;
 using NLog;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,11 +36,25 @@ namespace AI_Sports.AISports.View.Pages
 
         public WriteBluetooth()
         {
+
+            //起调UWP蓝牙项目
+            Process process = new Process();
+            Process.Start(new ProcessStartInfo("bluetoothzcr:"));
+
             InitializeComponent();
+
+            
+
             //加载手环列表
             LoadBluetoothList();
             //加载用户ID
             this.TB_Member_Id.Text = CommUtil.GetSettingString("memberId");
+
+            //然后执行定时任务开始查询写入状态
+            //初始化注册定时器
+            readDataTimer.Tick += new EventHandler(timeCycle);
+            ////2秒一次查询，更新登陆列表
+            readDataTimer.Interval = new TimeSpan(0, 0, 0, 10);
 
         }
 
@@ -69,7 +84,7 @@ namespace AI_Sports.AISports.View.Pages
 
                         this.Lab_Tips.Foreground = Brushes.Green;
 
-                        this.Lab_Tips.Content = "手环保存成功";
+                        this.Lab_Tips.Content = "手环写入成功";
                         break;
                     case 2:
                         Console.WriteLine("写入手环失败");
@@ -77,22 +92,23 @@ namespace AI_Sports.AISports.View.Pages
 
                         this.Lab_Tips.Foreground = Brushes.OrangeRed;
 
-                        this.Lab_Tips.Content = "手环保存失败";
+                        this.Lab_Tips.Content = "手环写入失败，请确保蓝牙项目正常再重试！";
                         break;
                     case 3:
-                        Console.WriteLine("UWP已经读取待写入数据");
-                        logger.Debug("UWP已经读取待写入数据");
+                        Console.WriteLine("写入结果为3，指令已被接收，但写入失败");
+                        logger.Debug("写入结果为3，指令已被接收，但写入失败");
 
                         this.Lab_Tips.Foreground = Brushes.Orange;
 
-                        this.Lab_Tips.Content = "正在保存手环，请稍等......";
+                        this.Lab_Tips.Content = "获取蓝牙服务失败，请确保蓝牙项目正常再重试！";
                         break;
                     default:
                         break;
                 }
             }
-           
-
+            //关闭定时任务
+            //readDataTimer.Stop();
+            //定时任务已经关闭
         }
         /// <summary>
         /// 加载手环列表
@@ -180,21 +196,21 @@ namespace AI_Sports.AISports.View.Pages
                     {
                         Console.WriteLine("手环数据插入write表成功");
 
+                        this.Lab_Tips.Foreground = Brushes.Green;
+
+                        this.Lab_Tips.Content = "正在写入手环，请稍等......";
+                        
+
                     }
 
-
-                    //然后执行定时任务开始查询写入状态
-                    //初始化注册定时器
-                    //readDataTimer.Tick += new EventHandler(timeCycle);
-                    ////2秒一次查询，更新登陆列表
-                    //readDataTimer.Interval = new TimeSpan(0, 0, 0, 5);
-                    //readDataTimer.Start();
+                   //启动定时任务
+                    readDataTimer.Start();
 
                 }
                 else
                 {
                     this.Lab_Tips.Foreground = Brushes.OrangeRed;
-                    this.Lab_Tips.Content = "用户ID 请重新添加用户";
+                    this.Lab_Tips.Content = "用户ID为空 请重新添加用户";
                 }
             }
             else
