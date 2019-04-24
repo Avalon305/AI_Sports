@@ -190,6 +190,9 @@ namespace AI_Sports.AISports.View.Pages
             string phone = "";
             //byte[] crc = new byte[2];
             //SerialPortUtil.splitMemberId(ref name, ref crc, ref phone, memberId);
+
+            
+
             SerialPortUtil.splitMemberId(ref name, ref phone, memberId);
             Console.WriteLine("name:" + name);
             Console.WriteLine("phone:" + phone);

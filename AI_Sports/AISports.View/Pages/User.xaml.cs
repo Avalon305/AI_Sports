@@ -28,20 +28,23 @@ namespace AI_Sports.AISports.View.Pages
         public User()
         {
             InitializeComponent();
-			//设置登录用户头像和称呼
-			//int sex = 1;
-			//string member_familyName = "陈";         //member_familyName是数据库中姓氏的字段
-			//if (sex == 1)
-			//{
-			//    this.familyName.Text = member_familyName + "先生";
-			//}
-			//else if (sex == 0)
-			//{
-			//    this.familyName.Text = member_familyName + "女士";
-			//}
-			//else
-			//    this.familyName.Text = "未登录";
-			string MemberId = (CommUtil.GetSettingString("memberId"));
+            //首页当前进度
+            this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/currentProgress.xaml", UriKind.Relative);
+
+            //设置登录用户头像和称呼
+            //int sex = 1;
+            //string member_familyName = "陈";         //member_familyName是数据库中姓氏的字段
+            //if (sex == 1)
+            //{
+            //    this.familyName.Text = member_familyName + "先生";
+            //}
+            //else if (sex == 0)
+            //{
+            //    this.familyName.Text = member_familyName + "女士";
+            //}
+            //else
+            //    this.familyName.Text = "未登录";
+            string MemberId = (CommUtil.GetSettingString("memberId"));
 			string Name = memberService.GetMember(MemberId).Member_familyName + memberService.GetMember(MemberId).Member_firstName;
 			if (MemberId != null)
 			{

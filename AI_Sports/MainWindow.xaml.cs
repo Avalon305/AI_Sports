@@ -199,7 +199,7 @@ namespace AI_Sports
             Enum resultCode = null;
             if (e.Key == Key.U)
             {//模拟用户登录
-                resultCode = memberService.Login("YK-488A");
+                resultCode = memberService.Login("305865088");
                 switch (resultCode)
                 {
                     case LoginPageStatus.CoachPage:

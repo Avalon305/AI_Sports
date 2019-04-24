@@ -1,4 +1,4 @@
-﻿<Page x:Class="AI_Sports.AISports.View.Pages.User"
+﻿<Page x:Class="AI_Sports.AISports.View.Pages.User" 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,10 +6,128 @@
       xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="user">
+      Title="User">
     <Page.Resources>
+        <!--按键内图标-->
         <Style BasedOn="{StaticResource glyphicon}" TargetType="{x:Type Path}">
             <Setter Property="Margin" Value="0,15"></Setter>
+        </Style>
+
+        <!--按钮的样式触发器，点击后背景颜色改变成黄色-->
+        <Style x:Key="BlueToYellowBackground" TargetType="{x:Type Button}">
+
+            <!--字体前景色 白色-->
+            <Setter Property="Control.Foreground" Value="White"></Setter>
+            <Setter Property="Button.Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FF1C4364" Offset="0" />
+                        <GradientStop Color="#4F94CD" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <!--可能是因为引用了样式框架，除非重写Button的Template, 不然IsMouseOver时候的背景颜色改变不了，原因是测试时IsFocused触发器正常，IsMouseOver总是变成默认的透明样式-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" Name="BkgBorder">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <!--鼠标悬停时为黄色-->
+                            <Trigger Property="IsMouseOver" Value="True">
+
+                                <Setter TargetName="BkgBorder" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="Gold" Offset="0" />
+                                            <GradientStop Color="Yellow" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                            <!--点击选中时的触发器变成金黄色 失去焦点又变回去-->
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="BkgBorder" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="Gold" Offset="0" />
+                                            <GradientStop Color="Yellow" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <!--触发器 点击后金黄渐变-->
+            <Style.Triggers>
+                <!--鼠标悬停时为黄色-->
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Foreground" >
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FF1C4364" Offset="0" />
+                                <GradientStop Color="#4F94CD" Offset="1" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <!--点击选中时的触发器变成金黄色 失去焦点又变回去-->
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <Setter Property="Control.Foreground" >
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FF1C4364" Offset="0" />
+                                <GradientStop Color="#4F94CD" Offset="1" />
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+
+
+            </Style.Triggers>
+
+        </Style>
+
+        <!--左侧的金属灰色渐变样式-->
+        <Style x:Key="LeftGrayBackground">
+            <Setter Property="Control.Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="1,0.5" EndPoint="0,0.5">
+                        <GradientStop Color="#CFCFCF" Offset="0.8" />
+                        <GradientStop Color="White" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--左侧的金属灰色渐变样式-->
+        <Style x:Key="RightGrayBackground">
+            <Setter Property="Control.Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#CFCFCF" Offset="0.8" />
+                        <GradientStop Color="White" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--两侧金色分隔条样式 不好看不用了-->
+        <Style x:Key="MyGridSplitter">
+            <Setter Property="Rectangle.Fill">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="Gold" Offset="0" />
+                        <GradientStop Color="Yellow" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Page.Resources>
     <Grid>
@@ -21,19 +139,28 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Column="0" HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="auto" Background="#FF04243D">
+
+        <!--左侧导航栏  深蓝色：#FF04243D-->
+
+        <Grid Grid.Column="0" HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="auto" Style="{StaticResource LeftGrayBackground}" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid >
-                <Image x:Name="logo" Source="/AI_Sports;component/AISports.View/Images/logodark.jpg" HorizontalAlignment="Center" Height="auto" VerticalAlignment="Top" Width="auto"/>
+
+            <!--Logo部分-->
+            <Grid Height="auto">
+                <Image Source="/AI_Sports;component/AISports.View/Images/logodark.jpg" HorizontalAlignment="Center" Height="74" VerticalAlignment="Top" Width="213"/>
             </Grid>
+            <!--按钮部分-->
             <Grid Grid.Row="1">
-                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,0,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="24" FontFamily="Microsoft YaHei Light" x:Name="btn1" Click="Btn1_Click">
+                <!--<Image Source="../Images/goldDaLiShi.png" Stretch="UniformToFill"/>-->
+
+                <!--个人信息按钮-->
+                <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Right" Margin="-12,0,0,0" VerticalAlignment="Top" Width="225" Height="100" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="24" FontFamily="Microsoft YaHei Light" x:Name="btn1" Click="Btn1_Click" Panel.ZIndex="1">
                     <Button.Content>
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock x:Name="familyName" Margin="37,34,0,34" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock x:Name="familyName" Margin="35,34,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  TextWrapping = "Wrap" Width="100" Height="65" Text="新用户"/>
                             <Image x:Name="headphoto" Source="/AI_Sports;component/AISports.View/Images/photo.png" Height="80" Width="80" Margin="0,10,12,10" HorizontalAlignment="Right" Stretch="UniformToFill" >
                                 <Image.OpacityMask>
                                     <ImageBrush ImageSource="/AI_Sports;component/AISports.View/Images/photo.png" TileMode="Tile" Stretch="Uniform">
@@ -48,48 +175,138 @@
                                     </ImageBrush>
                                 </Image.OpacityMask>
                             </Image>
-                            <Ellipse HorizontalAlignment="Left" Height="80" Margin="133,10,0,0" VerticalAlignment="Top" Width="80" Stroke="#FF1C4364"/>
+                            <Ellipse HorizontalAlignment="Left" Height="80" Margin="133,10,0,0" VerticalAlignment="Top" Width="80" Stroke="#FF04243D"/>
                         </Grid>
                     </Button.Content>
                 </Button>
-                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,105,0,0" VerticalAlignment="Top" Width="225" Height="100" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn2" Click="Btn2_Click" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}">
+
+                <!--当前进度按钮-->
+                <Button Style="{StaticResource BlueToYellowBackground}"  HorizontalAlignment="Right" Margin="10,105,0,0" VerticalAlignment="Top" Width="225" Height="100"  FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn2" Click="Btn2_Click" BorderBrush="{x:Null}" Panel.ZIndex="5">
                     <Button.Content>
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-time}" Width="20" Height="20" Fill="White"></Path>
-                            <TextBlock Margin="67,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="当前进度" Foreground="White"/>
+                            <Path Margin="57,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-time}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="88,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="当前进度"/>
                         </Grid>
                     </Button.Content>
+
                 </Button>
-                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,210,0,0" VerticalAlignment="Top" Width="225" Height="100" FontSize="22" FontFamily="Microsoft YaHei Light" x:Name="btn3" Click="Btn3_Click" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}">
+
+                <!--训练计划按钮-->
+                <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Right" Margin="10,210,0,0" VerticalAlignment="Top" Width="225" Height="100"   FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn3" Click="Btn3_Click" BorderBrush="{x:Null}" Panel.ZIndex="5">
                     <Button.Content>
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-list-alt}" Width="20" Height="20" Fill="White"></Path>
-                            <TextBlock Margin="67,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="训练计划" Foreground="White"/>
+                            <Path Margin="57,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-list-alt}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="88,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="训练计划"/>
                         </Grid>
                     </Button.Content>
+
                 </Button>
-                <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Right" Margin="-12,315,0,0" VerticalAlignment="Top" Width="225" Height="100" FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn4" Click="Btn4_Click" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}">
+                <!--分析按钮-->
+                <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Right" Margin="10,315,0,0" VerticalAlignment="Top" Width="225" Height="100"  FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn4" Click="Btn4_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
                     <Button.Content>
                         <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Path Margin="37,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-stats}" Width="20" Height="20" Fill="White"></Path>
-                            <TextBlock Margin="67,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="图表分析" Foreground="White"/>
+                            <Path Margin="57,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-stats}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="88,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="图表分析"/>
                         </Grid>
                     </Button.Content>
+
                 </Button>
-                <Rectangle Visibility="Visible" Fill="#FFF6D600" HorizontalAlignment="Left" Height="1080" Margin="0,0,0,-74" VerticalAlignment="Top" Width="10" Grid.RowSpan="2"/>
+                <!--生命体征按钮--><!--
+                <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Right" Margin="10,420,0,0" VerticalAlignment="Top" Width="225" Height="100"   FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="btn4" Click="Btn4_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Margin="57,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-heart}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="88,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="生命体征"/>
+                        </Grid>
+                    </Button.Content>
+
+                </Button>
+
+                --><!--会员管理按钮--><!--
+                <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Right" Margin="10,525,0,0" VerticalAlignment="Top" Width="225" Height="100"   FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="Btn_MemberManage" Click="Btn_MemberManage_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Margin="57,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-user}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="88,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="会员管理"/>
+                        </Grid>
+                    </Button.Content>
+
+                </Button>
+
+                --><!--控制面板按钮--><!--
+                <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Right" Margin="10,630,0,0" VerticalAlignment="Top" Width="225" Height="100"   FontFamily="Microsoft YaHei Light" FontSize="22" x:Name="Btn_SystemSetting" Click="Btn_SystemSetting_Click" BorderBrush="{x:Null}" Panel.ZIndex="1">
+                    <Button.Content>
+                        <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Margin="57,40,0,40" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-cog}" Width="20" Height="20" Fill="White"></Path>
+                            <TextBlock Margin="88,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="系统设置"/>
+                        </Grid>
+                    </Button.Content>
+
+                </Button>-->
+
+                <Rectangle Visibility="Visible" Fill="Gold" HorizontalAlignment="Left" Height="1010" Margin="0,0,0,0" VerticalAlignment="Top" Width="10" Grid.RowSpan="2"/>
+
+
+
+                <!--<Rectangle Visibility="Visible" Fill="#FFD1D1D1" HorizontalAlignment="Right" Height="1080" Margin="0,-24,0,0" VerticalAlignment="Top" Width="3"/>-->
             </Grid>
+            <GridSplitter x:Name="gridSplitter" Background="Gray" HorizontalAlignment="Left" Height="1080" Margin="212,-74,-5,0" Grid.Row="1" VerticalAlignment="Top" Width="1"/>
         </Grid>
-        <Grid Grid.Column="2" HorizontalAlignment="Right" Height="auto" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Background="#FF04243D">
-            <Button Style="{DynamicResource btn-primary}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="6,0,0,0" Background="{x:Null}" FontFamily="Microsoft YaHei Light" FontSize="22" Foreground="White" BorderBrush="{x:Null}" x:Name="logoutbtn" Click="Logout">
+        <!--右侧导航栏-->
+
+        <Grid Grid.Column="2" HorizontalAlignment="Right" Height="auto" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Style="{StaticResource RightGrayBackground}">
+
+
+            <!--<Image Source="../Images/goldDaLiShi.png" Stretch="UniformToFill"/>-->
+
+            <!--退出登录按钮-->
+            <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,0,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" x:Name="logoutbtn" Click="Logout">
                 <Button.Content>
                     <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-log-out}" Width="20" Height="20" Fill="White"></Path>
-                        <TextBlock Margin="60,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="退出登录" Foreground="White"/>
+                        <TextBlock Margin="60,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="退出登录"/>
                     </Grid>
                 </Button.Content>
+
             </Button>
-            <Rectangle Visibility="Visible" Fill="#FFF6D600" HorizontalAlignment="Right" Height="1080" Margin="0,0,0,0" VerticalAlignment="Top" Width="10"/>
+            <!--发卡按钮--><!--
+            <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,105,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Write_Card_Click">
+                <Button.Content>
+                    <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-credit-card}" Width="20" Height="20" Fill="White"></Path>
+                        <TextBlock Margin="60,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="发卡按钮"/>
+                    </Grid>
+                </Button.Content>
+
+            </Button>
+
+            --><!--发手环按钮--><!--
+            <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,210,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Write_WristStrap_Click">
+                <Button.Content>
+                    <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-credit-card}" Width="20" Height="20" Fill="White"></Path>
+                        <TextBlock Margin="60,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="新增手环"/>
+                    </Grid>
+                </Button.Content>
+
+            </Button>
+
+            --><!--3D扫描按钮--><!--
+            <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,315,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Button_Click_3DScan">
+                <Button.Content>
+                    <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-camera}" Width="20" Height="20" Fill="White"></Path>
+                        <TextBlock Margin="60,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="3 D 扫描"/>
+                    </Grid>
+                </Button.Content>
+
+            </Button>-->
+            <!--<Rectangle Visibility="Visible" Fill="#FFD1D1D1" HorizontalAlignment="Left" Height="1080" Margin="0,0,0,0" VerticalAlignment="Top" Width="3"/>-->
+            <Rectangle Visibility="Visible" Fill="Gold" HorizontalAlignment="Right" Height="1080" Margin="0,0,0,0" VerticalAlignment="Top" Width="10"/>
+            <GridSplitter x:Name="gridSplitter1" Background="Gray" HorizontalAlignment="Left" Height="1080" Margin="0,0,0,0" VerticalAlignment="Top" Width="1"/>
         </Grid>
-        <Frame Grid.Column="1" Source="/AI_Sports;component/AISports.View/Pages/userinfo.xaml" x:Name="contentpage" Width="1493.3" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="True" NavigationUIVisibility="Hidden"/>
+        <!--中间内容区-->
+        <Frame Grid.Column="1" x:Name="contentpage" Width="1493.3" Height="1080" HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="True" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>
+<!-- Source="Welcome_first.xaml"-->

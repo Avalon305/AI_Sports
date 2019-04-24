@@ -117,7 +117,7 @@ namespace AI_Sports.AISports.View.Pages
 
                 if (bmiValue != null && bmiValue != 0)
                 {
-                    this.bmiInfo.Content = bmiValue.Value;
+                    this.bmiInfo.Content += bmiValue.Value.ToString();
 
                 }
                 else
