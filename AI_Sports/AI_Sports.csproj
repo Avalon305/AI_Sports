@@ -435,6 +435,7 @@
     <Compile Include="AISports.Util\DbUtil.cs" />
     <Compile Include="AISports.Util\SerialPortUtil.cs" />
     <Compile Include="AISports.Util\SpeechUtil.cs" />
+    <Compile Include="AISports.View\Converter\WriteResultConvert.cs" />
     <Compile Include="AISports.View\Pages\analyze.xaml.cs" />
     <Compile Include="AISports.View\Pages\BluetoothLogin.xaml.cs">
       <DependentUpon>BluetoothLogin.xaml</DependentUpon>

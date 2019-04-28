@@ -129,6 +129,8 @@ namespace SDKTemplate
                         //调用写入蓝牙方法
                         await WriteBluetooth();
 
+                        //KnownDevices.Clear();
+
                         //断开蓝牙连接 重新搜索才能搜索到改名后的手环
                         //StopBleDeviceWatcher();
                         //StartBleDeviceWatcher();
@@ -239,8 +241,8 @@ namespace SDKTemplate
             else
             {
                 StopBleDeviceWatcher();
-                EnumerateButton.Content = "Start enumerating";
-                rootPage.NotifyUser($"Device watcher stopped.", NotifyType.StatusMessage);
+                EnumerateButton.Content = "开始扫描";
+                rootPage.NotifyUser($"蓝牙探测器已停止", NotifyType.StatusMessage);
             }
         }
         #endregion
@@ -285,8 +287,8 @@ namespace SDKTemplate
             // sample for an example.
             deviceWatcher.Start();
 
-            EnumerateButton.Content = "Stop enumerating";
-            rootPage.NotifyUser($"Device watcher started.", NotifyType.StatusMessage);
+            EnumerateButton.Content = "停止扫描";
+            rootPage.NotifyUser($"蓝牙设备探测器开始", NotifyType.StatusMessage);
             Debug.WriteLine("启动循环搜索蓝牙watcher" + System.DateTime.Now);
 
         }
@@ -442,8 +444,10 @@ namespace SDKTemplate
                 // Protect against race condition if the task runs after the app stopped the deviceWatcher.
                 if (sender == deviceWatcher)
                 {
-                    rootPage.NotifyUser($"{KnownDevices.Count} devices found. Enumeration completed.",
+                    rootPage.NotifyUser($"{KnownDevices.Count} 台设备被发现，列举搜索完成",
                         NotifyType.StatusMessage);
+                    //rootPage.NotifyUser($"{KnownDevices.Count} devices found. Enumeration completed.",
+                    //    NotifyType.StatusMessage);
 
                 }
             });
@@ -559,8 +563,10 @@ namespace SDKTemplate
                 // Protect against race condition if the task runs after the app stopped the deviceWatcher.
                 if (sender == deviceWatcher)
                 {
-                    rootPage.NotifyUser($"搜索停止No longer watching for devices.",
+                    rootPage.NotifyUser($"列举搜索已停止，重新开始扫描蓝牙",
                             sender.Status == DeviceWatcherStatus.Aborted ? NotifyType.ErrorMessage : NotifyType.StatusMessage);
+                    //rootPage.NotifyUser($"搜索停止No longer watching for devices.",
+                    //        sender.Status == DeviceWatcherStatus.Aborted ? NotifyType.ErrorMessage : NotifyType.StatusMessage);
                 }
             });
         }
@@ -690,7 +696,7 @@ namespace SDKTemplate
                 //连接失败 更新数据库状态为失败
                 if (bluetoothLeDevice == null)
                 {
-                    rootPage.NotifyUser("Failed to connect to device.", NotifyType.ErrorMessage);
+                    rootPage.NotifyUser("蓝牙连接失败 Failed to connect to device.", NotifyType.ErrorMessage);
                     Debug.WriteLine("蓝牙连接失败");
 
                     //时间戳
@@ -719,7 +725,7 @@ namespace SDKTemplate
                     {
                         //服务集合
                         var services = result.Services;
-                        rootPage.NotifyUser(String.Format("Found {0} services", services.Count), NotifyType.StatusMessage);
+                        rootPage.NotifyUser(String.Format("发现服务：Found {0} services", services.Count), NotifyType.StatusMessage);
 
                         //原先的遍历服务列表添加到界面的操作，不需要
                         //foreach (var service in services)
@@ -752,7 +758,7 @@ namespace SDKTemplate
                     {
                         Debug.WriteLine("【写入蓝牙：获取GATT服务失败 Device unreachable】");
 
-                        rootPage.NotifyUser("获取GATT服务失败 Device unreachable", NotifyType.ErrorMessage);
+                        rootPage.NotifyUser("获取蓝牙服务失败，请重试 Device unreachable", NotifyType.ErrorMessage);
                         //更新状态为写入失败
                         //时间戳
                         TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
@@ -767,7 +773,7 @@ namespace SDKTemplate
             }
             catch (Exception ex) when (ex.HResult == E_DEVICE_NOT_AVAILABLE)
             {
-                rootPage.NotifyUser("Bluetooth radio is not on.", NotifyType.ErrorMessage);
+                rootPage.NotifyUser("蓝牙广播未打开 Bluetooth radio is not on.", NotifyType.ErrorMessage);
                 //更新状态为写入失败
                 //时间戳
                 TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
@@ -1133,7 +1139,7 @@ namespace SDKTemplate
                 if (result.Status == GattCommunicationStatus.Success)
                 {
                     Debug.WriteLine("【写入成功】");
-                    rootPage.NotifyUser("Successfully wrote value to device", NotifyType.StatusMessage);
+                    rootPage.NotifyUser("成功写入会员id到手环中 Successfully wrote value to device", NotifyType.StatusMessage);
                     //时间戳
                     TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
                     //更新数据库write表写入状态
@@ -1149,7 +1155,7 @@ namespace SDKTemplate
                 {
                     Debug.WriteLine("【写入失败】");
 
-                    rootPage.NotifyUser($"Write failed: {result.Status}", NotifyType.ErrorMessage);
+                    rootPage.NotifyUser($"写入失败 Write failed: {result.Status}", NotifyType.ErrorMessage);
 
                     //时间戳
                     TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
@@ -1177,7 +1183,7 @@ namespace SDKTemplate
 
                 await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
 
-                rootPage.NotifyUser(ex.Message, NotifyType.ErrorMessage);
+                rootPage.NotifyUser("异常" + ex.Message, NotifyType.ErrorMessage);
                 return false;
             }
             catch (Exception ex) when (ex.HResult == E_BLUETOOTH_ATT_WRITE_NOT_PERMITTED || ex.HResult == E_ACCESSDENIED)
@@ -1193,7 +1199,7 @@ namespace SDKTemplate
                 await SQLiteUtil.UpdateWriteTable(bluetoothWriteEntity);
 
                 // This usually happens when a device reports that it support writing, but it actually doesn't.
-                rootPage.NotifyUser(ex.Message, NotifyType.ErrorMessage);
+                rootPage.NotifyUser("异常"+ex.Message, NotifyType.ErrorMessage);
                 return false;
             }
         }

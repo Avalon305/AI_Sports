@@ -39,7 +39,8 @@ namespace AI_Sports
         {
             InitializeComponent();
             this.mainpage.Source = new Uri("/AI_Sports;component/LoginWindow.xaml", UriKind.Relative);//跳转页面
-
+            //窗口最前
+            //this.Topmost = true;
             //显示欢迎页，验证后返回。
             //LoginWindow loginWindow = new LoginWindow();
             //loginWindow.ShowDialog(); //showdialog显示窗口要关闭此窗口后才能操作其他窗口
@@ -203,7 +204,7 @@ namespace AI_Sports
                 switch (resultCode)
                 {
                     case LoginPageStatus.CoachPage:
-                        logger.Info("返回教练登陆页面");
+                        logger.Debug("返回教练登陆页面");
                         //this.Close();
                         //用这种实例化的方法可以刷新页面，导航方式不会刷新
                         UserManage userManage = new UserManage();
@@ -251,9 +252,13 @@ namespace AI_Sports
                         break;
                     case LoginPageStatus.RepeatLogins:
                         logger.Debug("拦截重复登陆，请先退出。");
+                        MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
+
                         break;
                     case LoginPageStatus.UnknownID:
                         logger.Debug("未知ID，禁止登录。");
+                        MessageBoxX.Show("温馨提示", "未知ID，登录失败");
+
                         break;
                     default:
                         break;
@@ -309,9 +314,13 @@ namespace AI_Sports
                     break;
                 case LoginPageStatus.RepeatLogins:
                     logger.Debug("拦截重复登陆，请先退出。");
+                    MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
+
                     break;
                 case LoginPageStatus.UnknownID:
                     logger.Debug("未知ID，禁止登录。");
+                    MessageBoxX.Show("温馨提示", "未知ID，登录失败");
+
                     break;
                 default:
                     break;

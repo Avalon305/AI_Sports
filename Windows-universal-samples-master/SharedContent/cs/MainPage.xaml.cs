@@ -33,6 +33,8 @@ namespace SDKTemplate
         public MainPage()
         {
             this.InitializeComponent();
+            //隐藏侧边菜单
+            Splitter.IsPaneOpen = !Splitter.IsPaneOpen;
 
             // This is a static public property that allows downstream pages to get a handle to the MainPage instance
             // in order to call methods that are in this class.

@@ -44,15 +44,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Margin="0,0,0,10">
-            <TextBlock Text="Description:" Style="{StaticResource SampleHeaderTextStyle}"/>
-            <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" Text="Discover GATT servers"/>
-            <TextBlock TextWrapping="Wrap">
-                Enumerate nearby Bluetooth Low Energy devices,
+            <!--<Button Content="说明" Width="1080" HorizontalContentAlignment="Left" FontSize="35" FontWeight="Normal" x:Name="shuoming"/>
+            <Button x:Name="tip" Width="1080" >
+                写入蓝牙手环改名功能调用该系统，扫描附近的低功耗蓝牙设备，自动改名，改名后可重新扫描判断是否改名成功。点击教练页面“新增手环”按钮可打开该系统。
+                --><!--Enumerate nearby Bluetooth Low Energy devices,
                 then select and pair a device, so that it can be used
-                in the next scenario.
-            </TextBlock>
+                in the next scenario.--><!--
+            </Button>-->
             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
-                <Button x:Name="EnumerateButton" Content="Start enumerating" Click="{x:Bind EnumerateButton_Click}" Margin="0,0,10,0"/>
+                <Button x:Name="EnumerateButton" Content="开始扫描" Click="{x:Bind EnumerateButton_Click}" Margin="0,0,10,0"/>
                 <Button x:Name="PairButton" Content="Pair" Click="{x:Bind PairButton_Click}" Margin="0,0,10,0"
                     IsEnabled="{x:Bind ResultsListView.SelectedItem.(local:BluetoothLEDeviceDisplay.IsPaired), Converter={StaticResource InvertConverter}, FallbackValue=False, Mode=OneWay}" />
             </StackPanel>

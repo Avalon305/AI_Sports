@@ -10,6 +10,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using AI_Sports.Util;
+using System.ComponentModel;
+using AI_Sports.AISports.Util;
 
 namespace AI_Sports
 {
@@ -18,6 +20,10 @@ namespace AI_Sports
     /// </summary>
     public partial class Practice : Page
     {
+
+        //语音分析的后台任务 不适用后台任务则界面卡死 无法进行其他操作 byCQZ
+        private BackgroundWorker worker = new BackgroundWorker();
+
         TrainingDeviceRecordService trainingDeviceRecordService = new TrainingDeviceRecordService();
         DatacodeDAO datacodeDAO = new DatacodeDAO();
         ActivityDAO activityDAO = new ActivityDAO();
@@ -92,6 +98,8 @@ namespace AI_Sports
         public Practice()
         {
             InitializeComponent();
+            //初始化语音分析后台任务 byCqz
+            InitializeBackgroundWorker();
             //当前登陆用户id
             string memberId = CommUtil.GetSettingString("memberId");
             List<TrainingDeviceRecordEntity> list = trainingDeviceRecordService.GetRecordByIdAndTime(memberId);
@@ -102,15 +110,15 @@ namespace AI_Sports
             foreach (var item in list)
             {
                 CustomExpander ce = new CustomExpander();
-                ce.Modified_time = item.Gmt_modified.ToString();
+                ce.Modified_time = item.Gmt_create.ToString();
                 switch (item.Device_code)
                 {
                     case "0":
                         ce.Name = "腿部推蹬机";
                         ce.Image_address = "0.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list0CF.Add(item.Consequent_force.ToString());
                         list0RF.Add(item.Reverse_force.ToString());
                         list0Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -122,9 +130,9 @@ namespace AI_Sports
                     case "1":
                         ce.Name = "坐式背阔肌高拉机";
                         ce.Image_address = "1.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list1CF.Add(item.Consequent_force.ToString());
                         list1RF.Add(item.Reverse_force.ToString());
                         list1Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -136,9 +144,9 @@ namespace AI_Sports
                     case "2":
                         ce.Name = "三头肌训练机";
                         ce.Image_address = "2.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list2CF.Add(item.Consequent_force.ToString());
                         list2RF.Add(item.Reverse_force.ToString());
                         list2Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -150,9 +158,9 @@ namespace AI_Sports
                     case "3":
                         ce.Name = "腿部内弯机";
                         ce.Image_address = "3.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list3CF.Add(item.Consequent_force.ToString());
                         list3RF.Add(item.Reverse_force.ToString());
                         list3Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -164,9 +172,9 @@ namespace AI_Sports
                     case "4":
                         ce.Name = "腿部外弯机";
                         ce.Image_address = "4.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list4CF.Add(item.Consequent_force.ToString());
                         list4RF.Add(item.Reverse_force.ToString());
                         list4Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -178,9 +186,9 @@ namespace AI_Sports
                     case "5":
                         ce.Name = "蝴蝶机";
                         ce.Image_address = "5.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list5CF.Add(item.Consequent_force.ToString());
                         list5RF.Add(item.Reverse_force.ToString());
                         list5Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -192,9 +200,9 @@ namespace AI_Sports
                     case "6":
                         ce.Name = "反向蝴蝶机";
                         ce.Image_address = "6.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list6CF.Add(item.Consequent_force.ToString());
                         list6RF.Add(item.Reverse_force.ToString());
                         list6Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -206,9 +214,9 @@ namespace AI_Sports
                     case "7":
                         ce.Name = "坐式背部伸展机";
                         ce.Image_address = "7.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list7CF.Add(item.Consequent_force.ToString());
                         list7RF.Add(item.Reverse_force.ToString());
                         list7Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -220,9 +228,9 @@ namespace AI_Sports
                     case "8":
                         ce.Name = "躯干扭转组合";
                         ce.Image_address = "8.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list8CF.Add(item.Consequent_force.ToString());
                         list8RF.Add(item.Reverse_force.ToString());
                         list8Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -234,9 +242,9 @@ namespace AI_Sports
                     case "9":
                         ce.Name = "坐式腿伸展训练机";
                         ce.Image_address = "9.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list9CF.Add(item.Consequent_force.ToString());
                         list9RF.Add(item.Reverse_force.ToString());
                         list9Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -248,9 +256,9 @@ namespace AI_Sports
                     case "10":
                         ce.Name = "坐式推胸机";
                         ce.Image_address = "10.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list10CF.Add(item.Consequent_force.ToString());
                         list10RF.Add(item.Reverse_force.ToString());
                         list10Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -262,9 +270,9 @@ namespace AI_Sports
                     case "11":
                         ce.Name = "坐式划船机";
                         ce.Image_address = "11.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list11CF.Add(item.Consequent_force.ToString());
                         list11RF.Add(item.Reverse_force.ToString());
                         list11Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -277,9 +285,9 @@ namespace AI_Sports
                         //当前设置为功率
                         ce.Name = "椭圆跑步机";
                         ce.Image_address = "12.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Power.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list12CF.Add(item.Consequent_force.ToString());
                         list12RF.Add(item.Reverse_force.ToString());
                         list12Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -291,9 +299,9 @@ namespace AI_Sports
                     case "13":
                         ce.Name = "坐式屈腿训练机";
                         ce.Image_address = "13.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list13CF.Add(item.Consequent_force.ToString());
                         list13RF.Add(item.Reverse_force.ToString());
                         list13Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -305,9 +313,9 @@ namespace AI_Sports
                     case "14":
                         ce.Name = "腹肌训练机";
                         ce.Image_address = "14.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list14CF.Add(item.Consequent_force.ToString());
                         list14RF.Add(item.Reverse_force.ToString());
                         list14Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -319,9 +327,9 @@ namespace AI_Sports
                     case "15":
                         ce.Name = "坐式背部伸展机";
                         ce.Image_address = "15.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Consequent_force.ToString() + " / " + item.Reverse_force.ToString();
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list15CF.Add(item.Consequent_force.ToString());
                         list15RF.Add(item.Reverse_force.ToString());
                         list15Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -334,10 +342,10 @@ namespace AI_Sports
                         //当前设置为功率
                         ce.Name = "健身车";
                         ce.Image_address = "16.png";
-                        ce.Modified_time = item.Gmt_modified.ToString();
+                        ce.Modified_time = item.Gmt_create.ToString();
                         ce.Current_set = item.Power.ToString();
                         //Rate是期望与实际之比
-                        ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
+                        //ce.Rate = trainingDeviceRecordService.GetRecordCountByIdAndDeviceCode(memberId, item.Device_code) + " / " + activityDAO.GetTargetTurnNumById(trainingDeviceRecordService.GetTrainActivityRecordIdById(item.Id).Value).ToString();
                         list16CF.Add(item.Consequent_force.ToString());
                         list16RF.Add(item.Reverse_force.ToString());
                         list16Rate.Add((item.Consequent_force / item.Reverse_force).ToString());
@@ -793,6 +801,118 @@ namespace AI_Sports
         {
             NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative));
 
+        }
+
+        /// <summary>
+        /// 初始化后台任务worker
+        /// </summary>
+        private void InitializeBackgroundWorker()
+        { //初始化注册后台事件
+            worker.WorkerReportsProgress = true;
+            worker.WorkerSupportsCancellation = true;
+            // worker 要做的事情 使用了匿名的事件响应函数
+            worker.DoWork += (o, ea) =>
+            {
+                //WPF中线程只能控制自己创建的控件，
+                //如果要修改主线程创建的MainWindow界面的内容,
+                //可以委托主线程的Dispatcher处理。
+                //在这里，委托内容为一个匿名的Action对象。
+                //this.Dispatcher.Invoke((Action)(() =>
+                //{
+                //    this.TextBox1.Text = "worker started";
+                //}));
+                //Thread.Sleep(1000);
+                    String speechText = "您可以在此查看最近的训练变化，点击设备名称可以展开查看最近的力度变化折线图";
+                    Console.WriteLine("练习页面语音文本：" + speechText);
+                    SpeechUtil.read(speechText);
+               
+
+
+
+
+            };
+
+            //worker完成事件
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+
+        }
+
+        /// <summary>
+        /// 语音分析按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Speech_Click(object sender, RoutedEventArgs e)
+        {
+            //防止连续点击造成的后台任务繁忙异常
+            if (worker.IsBusy == true)
+            {
+                Console.WriteLine("后台语音任务正忙");
+
+                return;
+            }
+            else
+            {
+                //显示停止按钮
+                this.stop.Visibility = Visibility.Visible;
+                //禁用分析按钮
+                this.speech.IsEnabled = false;
+
+
+                //注意：运行了下面这一行代码，worker才真正开始工作。上面都只是声明定义而已。
+                worker.RunWorkerAsync();
+            }
+
+
+
+        }
+
+        /// <summary>
+        /// 语音后台任务完成事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                Console.WriteLine("语音播放完毕");
+                //隐藏停止按钮
+                this.stop.Visibility = Visibility.Hidden;
+                //可用分析按钮
+                this.speech.IsEnabled = true;
+            }
+            catch (Exception)
+            {
+
+                throw new NotImplementedException();
+
+            }
+        }
+
+        /// <summary>
+        /// 停止语音分析
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //取消朗读
+                SpeechUtil.stop();
+                //取消后台任务
+                this.worker.CancelAsync();
+                //隐藏停止按钮
+                this.stop.Visibility = Visibility.Hidden;
+                //可用分析按钮
+                this.speech.IsEnabled = true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("停止语音按钮异常");
+                throw;
+            }
         }
     }
 }

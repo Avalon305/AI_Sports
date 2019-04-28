@@ -40,8 +40,8 @@
                         <TextBlock FontSize="16"  Text="设 备 名 称" Grid.ColumnSpan="3" Grid.Column="0" />
                         <TextBlock FontSize="16" Text="图 像 地 址" Visibility="Hidden" />
                         <TextBlock FontSize="16" Text="修 改 时 间" Margin="50 0 0 0" Grid.Column="3" Grid.ColumnSpan="2"/>
-                        <TextBlock FontSize="16" Text="训练次数/目标次数" Grid.Column="5" Grid.ColumnSpan="2" />
-                        <TextBlock FontSize="16" Text="当前设置" Grid.Column="7" />
+                        <!--<TextBlock FontSize="16" Text="训练次数/目标次数" Grid.Column="5" Grid.ColumnSpan="2" />-->
+                        <TextBlock FontSize="16" Text="当前设置（顺/反）" Grid.Column="7" />
                     </Grid>
                 </Label>
 
@@ -136,8 +136,8 @@
                         <TextBlock FontSize="16"  Text="设 备 名 称" Grid.ColumnSpan="3" Grid.Column="0" />
                         <TextBlock FontSize="16" Text="图 像 地 址" Visibility="Hidden" />
                         <TextBlock FontSize="16" Text="修 改 时 间" Margin="50 0 0 0" Grid.Column="3" Grid.ColumnSpan="2"/>
-                        <TextBlock FontSize="16" Text="训练次数/目标次数" Grid.Column="5" Grid.ColumnSpan="2" />
-                        <TextBlock FontSize="16" Text="当前设置" Grid.Column="7" />
+                        <!--<TextBlock FontSize="16" Text="训练次数/目标次数" Grid.Column="5" Grid.ColumnSpan="2" />-->
+                        <TextBlock FontSize="16" Text="当前设置(顺/反)" Grid.Column="7" />
                     </Grid>
                 </Label>
                 <Expander Name="S1" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
@@ -209,5 +209,8 @@
         </ScrollViewer>
         <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="0,0,0,50" VerticalAlignment="Bottom" Grid.Row="2"/>
         <Button HorizontalAlignment="Left" Margin="20,40,0,0"  Width="75" Background="#FF04243D" Style="{DynamicResource btn-primary}" FontSize="20"  Grid.Row="2"  Foreground="#ffffff" Click="Button_Click" >后退</Button>
+        <Button x:Name="speech" Content="AI教练" HorizontalAlignment="Left" Margin="100,0,0,8" Grid.Row="2" VerticalAlignment="Bottom" Width="100"  Style="{DynamicResource btn-success}" FontSize="20" Click="Speech_Click"/>
+        <Button x:Name="stop" Content="STOP" HorizontalAlignment="Left" Margin="205,0,0,8" Grid.Row="2" VerticalAlignment="Bottom" Width="100" FontSize="20" Style="{DynamicResource btn-danger}" Click="Stop_Click" Visibility="Hidden"/>
+
     </Grid>
 </Page>

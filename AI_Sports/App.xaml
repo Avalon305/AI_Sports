@@ -21,12 +21,12 @@
             </ResourceDictionary.MergedDictionaries>
             <!--全局字体设置-->
             <!--<Style TargetType="{x:Type TextElement }">
-                <Setter Property="FontFamily" Value="微软雅黑"/>
-                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="FontFamily" Value="Microsoft YaHei Light"/>
+                
             </Style>
             <Style TargetType="{x:Type TextBlock }">
-                <Setter Property="FontFamily" Value="微软雅黑"/>
-                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="FontFamily" Value="Microsoft YaHei Light"/>
+                
             </Style>-->
 
             <FontFamily x:Key="FontFamily">pack://application:,,,/AI_Sports;component/AISports.View/Fonts/#NotoSansHans_Light</FontFamily>

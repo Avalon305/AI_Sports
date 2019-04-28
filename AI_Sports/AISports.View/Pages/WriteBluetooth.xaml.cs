@@ -37,13 +37,13 @@ namespace AI_Sports.AISports.View.Pages
         public WriteBluetooth()
         {
 
-            //起调UWP蓝牙项目
-            Process process = new Process();
-            Process.Start(new ProcessStartInfo("bluetoothzcr:"));
+            
 
             InitializeComponent();
 
-            
+            //起调UWP蓝牙项目
+            //Process process = new Process();
+            //Process.Start(new ProcessStartInfo("bluetoothzcr:"));
 
             //加载手环列表
             LoadBluetoothList();
@@ -62,52 +62,57 @@ namespace AI_Sports.AISports.View.Pages
         //定时任务调用方法 每2秒查询一次扫描手环写入表 并根据结果在页面提示
         private void timeCycle(object sender, EventArgs e)
         {
-            Console.WriteLine("定时任务：查询写入数据状态");
+            Console.WriteLine("定时任务：查询写入数据记录");
+            //更新写入记录datagrid
+            LoadWriteRecord();
+
+
             //根据当前会员ID获得最新的写入的数据
-            BluetoothWriteEntity bluetoothWriteEntity = SQLiteUtil.GetBluetoothWrite(CommUtil.GetSettingString("memberId"));
+            //BluetoothWriteEntity bluetoothWriteEntity = SQLiteUtil.GetBluetoothWrite(CommUtil.GetSettingString("memberId"));
 
-            if (bluetoothWriteEntity != null)
-            {
-                //write_state字段的值代表的意义：0：待读取；1：写入成功；2：写入失败; 3：已读取数据。
-                switch (bluetoothWriteEntity.Write_state)
-                {
-                    case 0:
-                        Console.WriteLine("数据待读取");
-                        logger.Debug("数据待读取");
-                        this.Lab_Tips.Foreground = Brushes.DarkOrange;
+            //if (bluetoothWriteEntity != null)
+            //{
+            //    //write_state字段的值代表的意义：0：待读取；1：写入成功；2：写入失败; 3：已读取数据。
+            //    switch (bluetoothWriteEntity.Write_state)
+            //    {
+            //        case 0:
+            //            Console.WriteLine("数据待读取");
+            //            logger.Debug("数据待读取");
+            //            this.Lab_Tips.Foreground = Brushes.DarkOrange;
 
-                        this.Lab_Tips.Content = "正在扫描手环，请稍等......";
-                        break;
-                    case 1:
-                        Console.WriteLine("写入手环成功");
-                        logger.Debug("写入手环成功");
+            //            this.Lab_Tips.Content = "正在扫描手环，请稍等......";
+            //            break;
+            //        case 1:
+            //            Console.WriteLine("写入手环成功");
+            //            logger.Debug("写入手环成功");
 
-                        this.Lab_Tips.Foreground = Brushes.Green;
+            //            this.Lab_Tips.Foreground = Brushes.Green;
 
-                        this.Lab_Tips.Content = "手环写入成功";
-                        break;
-                    case 2:
-                        Console.WriteLine("写入手环失败");
-                        logger.Debug("写入手环失败");
+            //            this.Lab_Tips.Content = "手环写入成功";
+            //            break;
+            //        case 2:
+            //            Console.WriteLine("写入手环失败");
+            //            logger.Debug("写入手环失败");
 
-                        this.Lab_Tips.Foreground = Brushes.OrangeRed;
+            //            this.Lab_Tips.Foreground = Brushes.OrangeRed;
 
-                        this.Lab_Tips.Content = "手环写入失败，请确保蓝牙项目正常再重试！";
-                        break;
-                    case 3:
-                        Console.WriteLine("写入结果为3，指令已被接收，但写入失败");
-                        logger.Debug("写入结果为3，指令已被接收，但写入失败");
+            //            this.Lab_Tips.Content = "手环写入失败，请确保蓝牙项目正常再重试！";
+            //            break;
+            //        case 3:
+            //            Console.WriteLine("写入结果为3，指令已被接收，但写入失败");
+            //            logger.Debug("写入结果为3，指令已被接收，但写入失败");
 
-                        this.Lab_Tips.Foreground = Brushes.Orange;
+            //            this.Lab_Tips.Foreground = Brushes.Orange;
 
-                        this.Lab_Tips.Content = "获取蓝牙服务失败，请确保蓝牙项目正常再重试！";
-                        break;
-                    default:
-                        break;
-                }
-            }
-            //关闭定时任务
+            //            this.Lab_Tips.Content = "获取蓝牙服务失败，请确保蓝牙项目正常再重试！";
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
+            ////关闭定时任务
             //readDataTimer.Stop();
+            //Console.WriteLine("定时任务已经关闭");
             //定时任务已经关闭
         }
         /// <summary>
@@ -134,6 +139,29 @@ namespace AI_Sports.AISports.View.Pages
             }
             
 
+        }
+        /// <summary>
+        /// 加载写入记录最近几分钟的
+        /// </summary>
+        public void LoadWriteRecord()
+        {
+            try
+            {
+                //生成修改时间时间戳
+                TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+                var currentTime = Convert.ToInt64(ts.TotalSeconds);
+                //当前时间减2分钟 查询最近5分钟记录
+                currentTime = currentTime - (5 * 60);
+                //加载最近5分钟写入记录
+                List<BluetoothWriteEntity> bluetoothWriteEntities = SQLiteUtil.ListBluetoothWriteRecord(currentTime.ToString());
+
+                this.stackPanel.DataContext = bluetoothWriteEntities;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("写入蓝牙窗口 查询写入记录异常" + ex.Message);
+                logger.Warn("写入蓝牙窗口 查询写入记录异常" + ex.Message);
+            }
         }
 
         /// <summary>
@@ -198,7 +226,7 @@ namespace AI_Sports.AISports.View.Pages
 
                         this.Lab_Tips.Foreground = Brushes.Green;
 
-                        this.Lab_Tips.Content = "正在写入手环，请稍等......";
+                        this.Lab_Tips.Content = "正在写入手环，请稍等之后查看写入记录......";
                         
 
                     }
@@ -256,6 +284,17 @@ namespace AI_Sports.AISports.View.Pages
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             LoadBluetoothList();
+        }
+        /// <summary>
+        /// 重启蓝牙按钮 起吊UWP程序
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            //起调UWP蓝牙项目
+            Process process = new Process();
+            Process.Start(new ProcessStartInfo("bluetoothzcr:"));
         }
     }
  

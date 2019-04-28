@@ -30,8 +30,8 @@ namespace AI_Sports.AISports.View.Pages
     {
         string sumEnergy = "";
         string sumTime = "";
-        int? courseCount = new int?();//当前次数
-        int? targetCourseCount = new int?(); //目标次数
+        int? courseCount = 0;//当前次数
+        int? targetCourseCount = 0; //目标次数
 
         //语音分析的后台任务 不适用后台任务则界面卡死 无法进行其他操作
         private BackgroundWorker worker = new BackgroundWorker();
@@ -58,21 +58,47 @@ namespace AI_Sports.AISports.View.Pages
             TrainingPlanVO trainingPlanVO = trainingPlanService.GetTrainingPlanVO();
             if (trainingPlanVO != null)
             {
-                //绑定训练计划标题
-                this.Lab_Title.Content = trainingPlanVO.Title;
-                //绑定训练计划创建时间
-                this.Lab_Gmt_create.Content += trainingPlanVO.Gmt_create.Value.ToString("f");
-                //绑定课程记录
-                this.Lab_Current_course_count.Content = trainingPlanVO.Current_course_count + "次";
-                //绑定总耗能
-                this.Lab_SumEnergy.Content = (trainingPlanVO.SumEnergy / 1000) + "千卡";
-                //绑定总时间
-                this.Lab_SumTime.Content = (trainingPlanVO.SumTime / 60) + "分钟";
-                //给语音分析参数赋值
-                sumEnergy = this.Lab_SumEnergy.Content.ToString();
-                sumTime = this.Lab_SumTime.Content.ToString();
-                courseCount = trainingPlanVO.Current_course_count;
-                targetCourseCount = trainingPlanVO.Target_course_count;
+                if (trainingPlanVO.Title != null && trainingPlanVO.Title != "")
+                {
+                    //绑定训练计划标题
+                    this.Lab_Title.Content = trainingPlanVO.Title;
+                }
+                if (trainingPlanVO.Gmt_create != null)
+                {
+                    //绑定训练计划创建时间
+                    this.Lab_Gmt_create.Content += trainingPlanVO.Gmt_create.Value.ToString("f");
+                }
+                if (trainingPlanVO.Current_course_count != null)
+                {
+                    //绑定课程记录
+                    this.Lab_Current_course_count.Content = trainingPlanVO.Current_course_count + "次";
+                    //语音分析参数 当前课程次数
+                    courseCount = trainingPlanVO.Current_course_count;
+                }
+                if (trainingPlanVO.SumEnergy != null)
+                {
+                    //绑定总耗能
+                    this.Lab_SumEnergy.Content = (trainingPlanVO.SumEnergy / 1000) + "千卡";
+
+                    //给语音分析参数赋值 总能量
+                    sumEnergy = this.Lab_SumEnergy.Content.ToString();
+                }
+                if (trainingPlanVO.SumTime != null)
+                {
+                    //绑定总时间
+                    this.Lab_SumTime.Content = (trainingPlanVO.SumTime / 60) + "分钟";
+                    //语音分析参数总时间
+                    sumTime = this.Lab_SumTime.Content.ToString();
+                }
+                if (trainingPlanVO.Target_course_count != null)
+                {
+                    //语音分析参数赋值 目标次数
+                    targetCourseCount = trainingPlanVO.Target_course_count;
+
+                }
+
+
+
             }
             
         }
@@ -115,7 +141,7 @@ namespace AI_Sports.AISports.View.Pages
                 //    this.TextBox1.Text = "worker started";
                 //}));
                 //Thread.Sleep(1000);
-                if (courseCount != null && sumEnergy != null && sumTime != null && targetCourseCount != null && courseCount != null)
+                if (courseCount != null && sumEnergy != "" && sumTime != "" && targetCourseCount != 0 && courseCount != null)
                 {
                     String speechText = "您本次训练计划共完成" + courseCount + "次训练课程,共消耗热量" + sumEnergy + ",训练总时间" + sumTime + "，目标总课时数为" + targetCourseCount + "次，还需要完成" + (targetCourseCount - courseCount) + "次训练课程";
                     Console.WriteLine("训练计划语音文本：" + speechText);
@@ -123,7 +149,7 @@ namespace AI_Sports.AISports.View.Pages
                 }
                 else
                 {
-                    string speechText = "您还没有训练计划，请联系教练添加训练计划。";
+                    string speechText = "无训练计划或者无训练数据，若无训练计划请联系教练添加，请先进行锻炼后再查看训练结果分析。";
                     SpeechUtil.read(speechText);
 
                     Console.WriteLine("无训练计划数据，播报提示信息");

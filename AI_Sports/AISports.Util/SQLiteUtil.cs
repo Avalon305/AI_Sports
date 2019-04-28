@@ -133,6 +133,8 @@ namespace AI_Sports.Util
             }
         }
 
+
+
         /// <summary>
         /// 往write表写入 传入实体类
         /// </summary>
@@ -183,7 +185,7 @@ namespace AI_Sports.Util
                 using (var command = connection.CreateCommand())
                 {
                     StringBuilder sql = new StringBuilder();
-                    sql.Append("select * from bluetooth_write where member_id = '");
+                    sql.Append("select * from bluetooth_write where bluetooth_name = '");
                     sql.Append(memberId);
                     sql.Append("' AND gmt_modified = (select MAX(gmt_modified) from bluetooth_write)");
                     command.CommandText = sql.ToString();
@@ -212,8 +214,54 @@ namespace AI_Sports.Util
             }
         }
 
+        /// <summary>
+        /// 根据传入的用户id查询最新一条写入的记录
+        /// </summary>
+        public static List<BluetoothWriteEntity> ListBluetoothWriteRecord(string timestamp)
+        {
+            // 确保连接打开
+            Open(connection);
+            //实例化实体类
+            List<BluetoothWriteEntity> bluetoothWriteEntitys = new List<BluetoothWriteEntity>();
 
-        
+            using (var tr = connection.BeginTransaction())
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    StringBuilder sql = new StringBuilder();
+                    sql.Append("select * from bluetooth_write ");
+                    sql.Append("where gmt_modified >= ");
+                    sql.Append(timestamp);
+                    sql.Append("order by gmt_modified DESC");
+
+                    command.CommandText = sql.ToString();
+
+                    // 执行查询会返回一个SQLiteDataReader对象
+                    var reader = command.ExecuteReader();
+
+                    //reader.Read()方法会从读出一行匹配的数据到reader中。注意：是一行数据。
+                    while (reader.Read())
+                    {
+                        //实例化一个读取实体类
+                        var bluetoothWriteEntity = new BluetoothWriteEntity();
+                        // 有一系列的Get方法，方法的参数是列数。意思是获取第n列的数据，转成Type返回。
+                        // 比如这里的语句，意思就是：获取第0列的数据，转成int值返回。
+                        bluetoothWriteEntity.Id = reader.GetInt64(0);
+                        bluetoothWriteEntity.Member_id = reader.GetString(1);
+                        bluetoothWriteEntity.Write_state = reader.GetInt32(2);
+                        bluetoothWriteEntity.Bluetooth_name = reader.GetString(3);
+                        bluetoothWriteEntity.Gmt_modified = reader.GetInt64(4);
+
+                        bluetoothWriteEntitys.Add(bluetoothWriteEntity);
+                    }
+
+                }
+                tr.Commit();
+                return bluetoothWriteEntitys;
+
+            }
+        }
+
 
 
 

@@ -220,23 +220,23 @@ namespace AI_Sports.AISports.View.Pages
                         }
 
                     }
-                    //本月每天运动次数
-                    if (currentMonthRecord != null)
-                    {
-                        speechBuilder.Append("您本月每天具体运动次数为:");
-                        foreach (var item in currentMonthRecord)
-                        {
+                    //本月每天运动次数 太啰嗦不要了
+                    //if (currentMonthRecord != null)
+                    //{
+                    //    speechBuilder.Append("您本月每天具体运动次数为:");
+                    //    foreach (var item in currentMonthRecord)
+                    //    {
 
-                            speechBuilder.Append(item.Gmt_create.Value.Month);
-                            speechBuilder.Append("月");
-                            speechBuilder.Append(item.Gmt_create.Value.Day);
-                            speechBuilder.Append("日运动");
-                            speechBuilder.Append(item.Count);
-                            speechBuilder.Append("次，");
-                        }
+                    //        speechBuilder.Append(item.Gmt_create.Value.Month);
+                    //        speechBuilder.Append("月");
+                    //        speechBuilder.Append(item.Gmt_create.Value.Day);
+                    //        speechBuilder.Append("日运动");
+                    //        speechBuilder.Append(item.Count);
+                    //        speechBuilder.Append("次，");
+                    //    }
 
 
-                    }
+                    //}
 
 
                 }
