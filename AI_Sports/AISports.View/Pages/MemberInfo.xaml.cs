@@ -137,7 +137,7 @@ namespace AI_Sports.AISports.View.Pages
                         //如果课程已经完成则提示
                         if (current >= target)
                         {
-                            MessageBoxX.Show("温馨提示", "计划已完成，请联系教练制定新的训练计划");
+                            MessageBoxX.ShowAsync("温馨提示", "计划已完成，请联系教练制定新的训练计划");
 
                         }
 

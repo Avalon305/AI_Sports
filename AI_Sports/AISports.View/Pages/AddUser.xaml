@@ -68,7 +68,7 @@
                 <RadioButton Name="enduranceRadioButton" Margin="0,5,0,0" GroupName="Template" Content="力量耐力循环" Style="{DynamicResource radio has-success}" FontSize="22" FontFamily="Microsoft YaHei"  Height="40"/>
                 <RadioButton Name="strengthEnduranceRadioButton" Margin="0,5,0,0" GroupName="Template" Content="力量循环和力量耐力循环" Style="{DynamicResource radio has-error}" FontSize="22" FontFamily="Microsoft YaHei"  Height="40"/>
             </StackPanel>
-            <Button Margin="50,450,0,0" Content="取消" Style="{DynamicResource btn-warning}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click_1"  FontSize="20" Width="75" Height="35"/>
+            <!--<Button Margin="50,450,0,0" Content="取消" Style="{DynamicResource btn-warning}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click_1"  FontSize="20" Width="75" Height="35"/>-->
             <Button  Margin="1368,450,0,0" Content="保存"  Click="Button_Click_2" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35" />
             <Button x:Name="button" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Left" Margin="201,101,0,0" Padding="0" VerticalAlignment="Top" Height="40" Width="40" Click="weightLessClick" RenderTransformOrigin="1.275,0.45">
                 <Image  Source="../Images/addLeftButton.png" Height="40" Width="40"/>

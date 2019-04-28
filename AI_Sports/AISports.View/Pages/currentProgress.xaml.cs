@@ -131,6 +131,13 @@ namespace AI_Sports.AISports.View.Pages
                         this.L3.Content = leastTrainDate.ToString();
 
                     }
+
+                    //如果课程已经完成则提示
+                    if (current >= target)
+                    {
+                        MessageBoxX.ShowAsync("温馨提示", "计划已完成，请联系教练制定新的训练计划");
+
+                    }
                 }
 
 

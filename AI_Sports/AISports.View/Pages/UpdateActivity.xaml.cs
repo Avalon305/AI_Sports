@@ -31,7 +31,8 @@ namespace AI_Sports.AISports.View.Pages
 		DatacodeDAO datacodeDAO = new DatacodeDAO();
         SystemSettingDAO systemSettingDAO = new SystemSettingDAO();
         PersonalSettingService personalSettingService = new PersonalSettingService();
-		MemberEntity memberEntity = new MemberEntity();
+        PersonalSettingDAO personalSettingDAO = new PersonalSettingDAO();
+        MemberEntity memberEntity = new MemberEntity();
 		//静态活动类型参数来接收编辑活动页传来的活动类型
 		private static string activityType = "";
         
@@ -66,6 +67,7 @@ namespace AI_Sports.AISports.View.Pages
             }
             //加载训练模式选择框
             this.CB_train_mode.ItemsSource = datacodeEntities;
+
         }
         
         /// <summary>
@@ -103,7 +105,7 @@ namespace AI_Sports.AISports.View.Pages
 			//}
 
 			//this.LB_consequent_force.Content = add;
-			if (Convert.ToInt32(this.LB_consequent_force.Content) < 100)
+			if (Convert.ToInt32(this.LB_consequent_force.Content) < 99)
 			{
 				this.LB_consequent_force.Content = Convert.ToString(Convert.ToInt32(this.LB_consequent_force.Content) + 1);
 			}
@@ -118,7 +120,7 @@ namespace AI_Sports.AISports.View.Pages
 			//    add = add - 1;
 
 			//this.LB_consequent_force.Content = add;
-			if (Convert.ToInt32(this.LB_consequent_force.Content) > 0)
+			if (Convert.ToInt32(this.LB_consequent_force.Content) > 5)
 			{
 				this.LB_consequent_force.Content = Convert.ToString(Convert.ToInt32(this.LB_consequent_force.Content) - 1);
 			}
@@ -133,7 +135,7 @@ namespace AI_Sports.AISports.View.Pages
 			//    min = min + 1;
 			//}
 			//this.LB_Reverse_force.Content = min;
-			if (Convert.ToInt32(this.LB_Reverse_force.Content) < 100)
+			if (Convert.ToInt32(this.LB_Reverse_force.Content) < 99)
 			{
 				this.LB_Reverse_force.Content = Convert.ToString(Convert.ToInt32(this.LB_Reverse_force.Content) + 1);
 			}
@@ -148,7 +150,7 @@ namespace AI_Sports.AISports.View.Pages
 			//    min = min - 1;
 			//}
 			//this.LB_Reverse_force.Content = min;
-			if (Convert.ToInt32(this.LB_Reverse_force.Content) >0)
+			if (Convert.ToInt32(this.LB_Reverse_force.Content) > 5)
 			{
 				this.LB_Reverse_force.Content = Convert.ToString(Convert.ToInt32(this.LB_Reverse_force.Content) - 1);
 			}
@@ -249,10 +251,13 @@ namespace AI_Sports.AISports.View.Pages
                 ts.Complete();
                 //MessageBox.Show("更新活动成功");
                 MessageBoxX.Show("提示", "更新活动与个人设置成功");
-            }
-            
 
-               
+                NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/EditActivity.xaml", UriKind.Relative));
+
+            }
+
+
+
         }
         private void Lunci_minus(object sender, RoutedEventArgs e)
         {

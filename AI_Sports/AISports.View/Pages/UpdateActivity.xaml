@@ -85,7 +85,7 @@
                         </Grid>
                     </RepeatButton.Content>
                 </RepeatButton>
-				<Label  x:Name="LB_consequent_force" Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1"></Label>
+				<Label  x:Name="LB_consequent_force" Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="5"></Label>
                 <Label   Style="{DynamicResource h3}" Margin="120 35 -150 35" Content="%"></Label>
 				<RepeatButton Margin="200 20 0 20" Width="60" Height="37"  Background="White"  Click="Button_Click" >
 					<RepeatButton.Content>
@@ -107,7 +107,7 @@
                         </Grid>
                     </RepeatButton.Content>
                 </RepeatButton>
-				<Label  Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="1" x:Name="LB_Reverse_force"></Label>
+				<Label  Style="{DynamicResource h3}" Margin="80 35 -150 35" Content="5" x:Name="LB_Reverse_force"></Label>
                 <Label   Style="{DynamicResource h3}" Margin="120 35 -150 35" Content="%"></Label>
 				<RepeatButton Margin="200 20 0 20" Width="60" Height="37"  Background="White" Click="Button_Click_2">
 					<RepeatButton.Content>
@@ -123,7 +123,7 @@
 				<Label Content="速度" Style="{DynamicResource h3}"  Margin="200 20  30 35" Width="100">
 
                 </Label>
-				<ComboBox Height="50" Width="342" x:Name="CB_speed" FontSize="22" >
+				<ComboBox Height="50" Width="342" x:Name="CB_speed" FontSize="22" Text="标准">
 
 
 					<ComboBoxItem Content="慢"  />
@@ -148,13 +148,13 @@
 
                 </Label>
                 <!--从后台加载数据 DisplayMemberPath为展示值 SelectedValuePath为存储值 -->
-                <ComboBox Height="50" Width="342" FontSize="22" Name="CB_train_mode"  DisplayMemberPath="Code_d_value" SelectedValuePath="Code_s_value">
+                <ComboBox Height="50" Width="342" FontSize="22" Name="CB_train_mode"  DisplayMemberPath="Code_d_value" SelectedValuePath="Code_s_value" Text="标准模式">
                 </ComboBox>
             </WrapPanel>
             <WrapPanel Margin="0 35 0 0"/>
             <WrapPanel Margin="200,-20,0,0" Height="69">
                 <Button Content="后退" Style="{DynamicResource btn-warning}" FontSize="20" Width="75" Height="35" FontFamily="Constantia" Click="Button_Click_4"></Button>
-                <Button Content="确认" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35"  Margin=" 290 0 0 0" FontFamily="Constantia"  Click="Button_Click_5" />
+                <Button Content="保存" Background="#FF04243D" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35"  Margin="320 0 0 0" FontFamily="Constantia"  Click="Button_Click_5" />
             </WrapPanel>
         </StackPanel>
     </Grid>

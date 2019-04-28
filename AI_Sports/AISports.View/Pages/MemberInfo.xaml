@@ -69,7 +69,7 @@
                     <Label Content="当前状态" FontFamily="Microsoft YaHei" Foreground="#04243D" Margin="20,0,0,0" Style="{DynamicResource h1}"/>
                     <GridSplitter Height="3" Width="1494"/>
 
-                    <ProgressBar Value="{Binding Content}" Name="progressBar" Height="25px" Style="{DynamicResource progress-bar-success}" Margin="10,20,250,10" />
+                    <ProgressBar  Name="progressBar" Height="25px" Style="{DynamicResource progress-bar-success}" Margin="10,20,250,10" />
 
                     <WrapPanel Margin="10 0 0 0">
                         <Button Style="{DynamicResource btn-success}" Height="20" Width="20"  Margin="20,0,0,0"/>
@@ -116,7 +116,7 @@
         </StackPanel>
 
         <!--身份识别卡-->
-        <GridSplitter Height="2" Margin="0,0,0,48"  VerticalAlignment="Bottom" Width="2600"/>
+        <GridSplitter Height="2" Margin="0,0,0,48"  VerticalAlignment="Bottom" Width="1920"/>
         <!--<Button Content="编辑" Background="#FF04243D" Style="{DynamicResource btn-primary}" HorizontalAlignment="Center" Margin="20,0,0,10"  VerticalAlignment="Bottom" Width="75" />-->
         <Button x:Name="speech" Content="AI教练" HorizontalAlignment="Left" Margin="20,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="100" FontSize="20" Style="{DynamicResource btn-success}"  Click="Speech_Click" />
         <Button x:Name="stop" Content="STOP" HorizontalAlignment="Left" Margin="130,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="100" FontSize="20" Style="{DynamicResource btn-danger}"  Click="Stop_Click" Visibility="Hidden"/>

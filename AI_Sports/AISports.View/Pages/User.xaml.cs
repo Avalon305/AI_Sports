@@ -64,34 +64,34 @@ namespace AI_Sports.AISports.View.Pages
 
         private void Btn1_Click(object sender, RoutedEventArgs e)//用户信息
         {
-            this.btn1.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn2.Background = null;
-            this.btn3.Background = null;
-            this.btn4.Background = null;
+            //this.btn1.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn2.Background = null;
+            //this.btn3.Background = null;
+            //this.btn4.Background = null;
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/userinfo.xaml", UriKind.Relative);
         }
         private void Btn2_Click(object sender, RoutedEventArgs e)//当前进度
         {
-            this.btn2.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn1.Background = null;
-            this.btn3.Background = null;
-            this.btn4.Background = null;
+            //this.btn2.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn1.Background = null;
+            //this.btn3.Background = null;
+            //this.btn4.Background = null;
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/currentProgress.xaml", UriKind.Relative);
         }
         private void Btn3_Click(object sender, RoutedEventArgs e)//训练计划
         {
-            this.btn3.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn1.Background = null;
-            this.btn2.Background = null;
-            this.btn4.Background = null;
+            //this.btn3.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn1.Background = null;
+            //this.btn2.Background = null;
+            //this.btn4.Background = null;
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/TrainingProgram.xaml", UriKind.Relative);
         }
         private void Btn4_Click(object sender, RoutedEventArgs e)//图表分析
         {
-            this.btn4.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
-            this.btn1.Background = null;
-            this.btn2.Background = null;
-            this.btn3.Background = null;
+            //this.btn4.Background = new SolidColorBrush(Color.FromRgb(246, 214, 0));
+            //this.btn1.Background = null;
+            //this.btn2.Background = null;
+            //this.btn3.Background = null;
             this.contentpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/analyze.xaml", UriKind.Relative);
         }
 

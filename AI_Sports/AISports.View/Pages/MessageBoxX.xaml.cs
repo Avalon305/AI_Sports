@@ -49,6 +49,18 @@ namespace AI_Sports.AISports.View.Pages
             return msgBox.ShowDialog();
         }
         /// <summary>
+        /// 显示窗口不等待关闭继续往下执行 byCQZ
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="msg"></param>
+        public static void ShowAsync(string title, string msg)
+        {
+            var msgBox = new MessageBoxX();
+            msgBox.Title = title;
+            msgBox.Message = msg;
+            msgBox.Show();
+        }
+        /// <summary>
         /// 自定义加载等待界面，会等待几秒自动关闭
         /// </summary>
         /// <param name="title"></param>
@@ -82,14 +94,14 @@ namespace AI_Sports.AISports.View.Pages
 
         private void Yes_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DialogResult = true;
+            //this.DialogResult = true;
             this.Close();
         }
 
 
         private void No_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DialogResult = false;
+            //this.DialogResult = false;
             this.Close();
         }
     }

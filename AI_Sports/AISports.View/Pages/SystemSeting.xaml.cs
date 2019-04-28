@@ -153,6 +153,8 @@ namespace AI_Sports.AISports.View.Pages
 
 				systemSettingService.UpdataSystemSet(sse);
 			}
+
+            MessageBoxX.Show("温馨提示","保存成功");
 		}
 	}
 }

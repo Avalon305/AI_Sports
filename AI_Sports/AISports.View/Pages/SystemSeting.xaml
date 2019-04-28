@@ -28,12 +28,12 @@
 
 					<ComboBoxItem Content="标准版（三种训练模式）"/>
 
-					<ComboBoxItem Content="豪华版（六种训练模式）"/>
+					<ComboBoxItem Content="豪华版（八种训练模式）"/>
 				</ComboBox>
                
 			</WrapPanel>
-			
-			<Button x:Name="saveButton" Content="保存" HorizontalAlignment="Left" Margin="645,662,0,0" VerticalAlignment="Top" Width="75" Height="42" RenderTransformOrigin="-1.947,0.762" Click="Button_Click"/>
+
+            <Button x:Name="saveButton" Content="保存" Background="#FF04243D" HorizontalAlignment="Left" Margin="645,662,0,0" VerticalAlignment="Top" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35"  RenderTransformOrigin="-1.947,0.762" Click="Button_Click"/>
 		</Grid>
          
 	</Grid>

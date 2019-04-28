@@ -51,8 +51,8 @@
                                     <ColumnDefinition Width="99*"/>
                                     <ColumnDefinition Width="26*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Content="新建"  Margin="25,55,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" Grid.ColumnSpan="2" FontWeight="Bold" />
-                                <Label Content="训练计划"  Margin="10,80,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" />
+                                <Label Content="新建"  Margin="28,55,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" Grid.ColumnSpan="2" FontWeight="Bold" />
+                                <Label Content="训练计划"  Margin="8,80,10,0" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" />
                                 <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-plus}" Margin="25,-5,0,43.4"  />
                             </Grid>
                         </Button.Content>
@@ -68,8 +68,8 @@
                     <Button   Margin="50 20 0 20" Width="130" Height="130" Background="White" Click="Button_Click_Template" >
                         <Button.Content>
                             <Grid >
-                                <Label Content="新建"  Margin="25,55,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" Grid.ColumnSpan="2" FontWeight="Bold" />
-                                <Label Content="模板计划"  Margin="10,80,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" />
+                                <Label Content="新建"  Margin="22,55,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" Grid.ColumnSpan="2" FontWeight="Bold" />
+                                <Label Content="模板计划"  Margin="3,80,-0.2,-0.2" FontFamily="Microsoft JhengHei UI" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" />
                                 <Path Style="{DynamicResource glyphicon}" Data="{DynamicResource glyphicon-list-alt}"  Margin="0 -50 0 0"/>
                             </Grid>
                         </Button.Content>
@@ -108,7 +108,7 @@
 					</WrapPanel>
 					<WrapPanel Margin="200,35,0,0" Height="69">
 						<Label Content="训练目标：" Style="{DynamicResource h2}" FontWeight="Bold" FontSize="28"></Label>
-						<ComboBox x:Name="CB_Target"  Text="请输入您的目标" Width="500" Height="60"  FontSize="22" Margin="0 5 0 0" >
+						<ComboBox x:Name="CB_Target"  Text="请选择您的目标" Width="500" Height="60"  FontSize="22" Margin="0 5 0 0" >
 
 							<ComboBoxItem>增肌</ComboBoxItem>
 

@@ -81,22 +81,34 @@ namespace AI_Sports.AISports.View.Pages
         {
             try
             {
-                TrainingPlanEntity trainingPlanEntity = new TrainingPlanEntity();
+                if (this.TB_Title.Text != "" && this.TB_Title.Text != "请输入标题" && this.DP_StartDate.Text != "" && this.CB_Target.Text != "" && this.CB_Target.Text != "请选择您的目标")
+                {
+                    TrainingPlanEntity trainingPlanEntity = new TrainingPlanEntity();
 
 
-                //获得前端数据，传到后台
-                //标题
-                trainingPlanEntity.Title = this.TB_Title.Text;
-                DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
-                dtFormat.ShortDatePattern = "yyyy-MM-dd";
-                //开始时间
-                trainingPlanEntity.Start_date = Convert.ToDateTime(this.DP_StartDate.Text, dtFormat);
-                //训练目标
-                trainingPlanEntity.Training_target = this.CB_Target.Text;
-                //传入service 添加训练计划的同时还会添加一个默认的训练课程，训练课程添加成功则跳转，直接把保存的训练课程查询出来
-                trainingPlanService.SaveNewTrainingPlan(trainingPlanEntity);
-                //跳转到添加课程页面
-                NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
+                    //获得前端数据，传到后台
+                    //标题
+                    trainingPlanEntity.Title = this.TB_Title.Text;
+                    DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+                    dtFormat.ShortDatePattern = "yyyy-MM-dd";
+                    //开始时间
+                    trainingPlanEntity.Start_date = Convert.ToDateTime(this.DP_StartDate.Text, dtFormat);
+                    //训练目标
+                    trainingPlanEntity.Training_target = this.CB_Target.Text;
+                    //传入service 添加训练计划的同时还会添加一个默认的训练课程，训练课程添加成功则跳转，直接把保存的训练课程查询出来
+                    trainingPlanService.SaveNewTrainingPlan(trainingPlanEntity);
+                    //跳转到添加课程页面
+                    NavigationService.GetNavigationService(this).Navigate(new Uri("/AI_Sports;component/AISports.View/Pages/AddCourse.xaml", UriKind.Relative));
+
+                }
+                else
+                {
+                    MessageBoxX.Show("温馨提示", "训练计划标题、起始日期、训练目标不能为空。");
+
+
+                }
+
+
             }
             catch (Exception)
             {

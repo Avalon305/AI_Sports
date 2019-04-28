@@ -77,8 +77,8 @@
                 </StackPanel>
             </WrapPanel>
             <WrapPanel Margin="200,35,0,0">
-                <Button Content="取消" FontSize="20" Width="75" Height="35" Style="{DynamicResource btn-warning}" Margin="10,0,310,0"/>
-                <Button Content="保存" FontSize="20" Width="75" Height="35" Style="{DynamicResource btn-primary}" Background="#FF04243D" Click="Btn_Save_Activity"/>
+                <!--<Button Content="取消" FontSize="20" Width="75" Height="35" Style="{DynamicResource btn-warning}" Margin="10,0,310,0" />-->
+                <Button Content="保存" FontSize="20" Width="75" Height="35" Style="{DynamicResource btn-primary}"  Margin="395,0,0,0" Background="#FF04243D" Click="Btn_Save_Activity"/>
             </WrapPanel>
         </StackPanel>
 

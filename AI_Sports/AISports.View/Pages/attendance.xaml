@@ -52,8 +52,10 @@
 
 
         </StackPanel>
-        <Button Grid.Row="2" Content="后退" Style="{DynamicResource btn-primary}" Background="#FF04243D" FontSize="20" Width="75" Height="35" HorizontalAlignment="Left" Margin="10" Click="Button_Click"></Button>
-        <Button x:Name="speech" Content="AI教练" HorizontalAlignment="Left" Margin="100,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="100"  Style="{DynamicResource btn-success}" FontSize="20" Click="Speech_Click"/>
+        <GridSplitter Height="2" Margin="0,0,0,48" Grid.Row="2" VerticalAlignment="Bottom" Width="1920"/>
+
+        <Button Grid.Row="2" Content="后退" Style="{DynamicResource btn-primary}" Background="#FF04243D" FontSize="20" Width="75" Height="35" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Click="Button_Click"></Button>
+        <Button x:Name="speech" Content="AI教练" HorizontalAlignment="Left" Margin="100,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="100"  Style="{DynamicResource btn-success}" FontSize="20" Click="Speech_Click"/>
         <Button x:Name="stop" Content="STOP" HorizontalAlignment="Left" Margin="215,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="100" FontSize="20" Style="{DynamicResource btn-danger}" Click="Stop_Click" Visibility="Hidden"/>
 
     </Grid>

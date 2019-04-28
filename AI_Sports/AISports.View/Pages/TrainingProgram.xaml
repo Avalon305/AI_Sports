@@ -19,7 +19,9 @@
             <Label Content="在此可以详细了解您当前的训练" Style="{DynamicResource h1 small}"></Label>
             <WrapPanel Margin="0, 10,10,10">
                 <Label  Content="持续时间：" FontFamily="yahei" FontSize="25"></Label>
-                <TextBlock Name="completeFlag" Text="{Binding}" FontFamily="yahei" FontSize="25" Width="auto"/>
+                <TextBlock Name="completeFlag" Text="{Binding}"  FontSize="25" Width="200"/>
+                <Label  Content="课程次数：" FontFamily="yahei" FontSize="25"></Label>
+                <TextBlock Name="TB_CourseCount" Text="{Binding}" FontSize="25" Width="200"/>
             </WrapPanel>
             <Border BorderThickness="2" BorderBrush="#04243D" Margin="0,10,500,0" CornerRadius="10">
                 <StackPanel Margin="10,0,0,0" MinWidth="100">

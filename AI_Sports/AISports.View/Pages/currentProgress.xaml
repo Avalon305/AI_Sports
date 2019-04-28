@@ -65,7 +65,7 @@
                     <Label Content="当前状态" FontFamily="Microsoft YaHei" Foreground="#04243D" Margin="20,0,0,0" Style="{DynamicResource h1}"/>
                     <GridSplitter Height="5" Width="1494"/>
 
-                    <ProgressBar Value="{Binding Content, ElementName=progess}" Name="progressBar" Height="25px" Style="{DynamicResource progress-bar-success}" Margin="10,20,250,10" />
+                    <ProgressBar  Name="progressBar" Height="25px" Style="{DynamicResource progress-bar-success}" Margin="10,20,250,10" />
 
                     <WrapPanel Margin="10 0 0 0">
                         <Button Style="{DynamicResource btn-success}" Height="20" Width="20"  Margin="20,0,0,0"/>

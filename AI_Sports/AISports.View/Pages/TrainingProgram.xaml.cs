@@ -63,6 +63,15 @@ namespace AI_Sports.AISports.View.Pages
             }
 
         }
+        /// <summary>
+        /// 更新集合中元素
+        /// </summary>
+        /// <param name="activityList"></param>
+        public void UpdateActivity(List<ActivityEntity> activityList)
+        {
+            trainingPlanGroup.Clear();
+            AddThreePlans(activityList);
+        }
     }
 
     class CompleteFlag //训练完成标志
@@ -101,15 +110,7 @@ namespace AI_Sports.AISports.View.Pages
 				//计划标题
 				this.lable_planName.Content += trainingPlanEntity.Title;
 
-				String[] text = { "已完成", "持续进行" };
-				if (trainingPlanEntity.Is_deleted == true)
-				{
-					this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[0] });
-				}
-				else if (trainingPlanEntity.Is_deleted == false)
-				{
-					this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[1] });
-				}
+				
 				//加载训练活动
 				List<ActivityEntity> activityList = activityService.ListActivitysByCourseId();
 				//添加数据
@@ -117,6 +118,24 @@ namespace AI_Sports.AISports.View.Pages
 				//集合数据绑定
 				this.listBox.ItemsSource = viewModel.trainingPlanGroup;
 			}
+
+            //查训练课程
+            TrainingCourseEntity trainingCourseEntity = trainingCourseService.GetCourseByMemberId();
+            //加载持续时间和课程次数
+            if (trainingCourseEntity != null)
+            {
+                String[] text = { "已完成", "持续进行" };
+                if (trainingCourseEntity.Current_course_count >= trainingCourseEntity.Target_course_count)
+                {
+                    this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[0] });
+                }
+                else
+                {
+                    this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[1] });
+                }
+
+                this.TB_CourseCount.Text = "第" + trainingCourseEntity.Current_course_count.ToString() + "次";
+            }
 
 
 		}
@@ -144,29 +163,60 @@ namespace AI_Sports.AISports.View.Pages
 				ts.Complete();
 
 			}
-			//刷新页面
-			//MessageBox.Show("成功跳过此次训练课程");
-			MessageBoxX.Show("成功", "成功跳过此次训练课程");
-			int flag = 1;
-			if(flag == 1)
-			{
-				this.listBox.ItemsSource = null;
-				flag = 0;
-			}
-			if (flag == 0)
-			{
-				//加载训练活动
-
-				List<ActivityEntity> activityList2 = activityService.ListActivitysByCourseId();
-				//添加数据
-				viewModel2.AddThreePlans(activityList2);
-				//集合数据绑定
-				this.listBox.ItemsSource = viewModel2.trainingPlanGroup;
-			}	
-		
+            //刷新页面
+            //MessageBox.Show("成功跳过此次训练课程");
 
 
-		}
+            //加载训练活动
+
+            List<ActivityEntity> activityList2 = activityService.ListActivitysByCourseId();
+            //更新集合中的数据
+            viewModel2.UpdateActivity(activityList2);
+
+            //集合数据绑定
+            this.listBox.ItemsSource = viewModel2.trainingPlanGroup;
+
+
+
+            //int flag = 1;
+            //if (flag == 1)
+            //{
+            //    this.listBox.ItemsSource = null;
+            //    flag = 0;
+            //}
+            //if (flag == 0)
+            //{
+            //    //加载训练活动
+
+            //    List<ActivityEntity> activityList2 = activityService.ListActivitysByCourseId();
+            //    //添加数据
+            //    viewModel2.AddThreePlans(activityList2);
+            //    //集合数据绑定
+            //    this.listBox.ItemsSource = viewModel2.trainingPlanGroup;
+            //}
+
+            //查训练课程
+            TrainingCourseEntity trainingCourseEntity = trainingCourseService.GetCourseByMemberId();
+
+            if (trainingCourseEntity != null)
+            {
+                String[] text = { "已完成", "持续进行" };
+                if (trainingCourseEntity.Current_course_count >= trainingCourseEntity.Target_course_count)
+                {
+                    this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[0] });
+                }
+                else
+                {
+                    this.completeFlag.SetBinding(TextBlock.TextProperty, new Binding(".") { Source = text[1] });
+                }
+
+                this.TB_CourseCount.Text = "第" + trainingCourseEntity.Current_course_count.ToString() + "次";
+            }
+              
+
+            MessageBoxX.Show("成功", "成功跳过此次训练课程");
+
+        }
 
 
         /// <summary>

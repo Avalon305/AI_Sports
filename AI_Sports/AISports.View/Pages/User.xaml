@@ -188,7 +188,12 @@
                             <TextBlock Margin="88,36,0,36" HorizontalAlignment="Left" VerticalAlignment="Center" Text="当前进度"/>
                         </Grid>
                     </Button.Content>
-
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FF1C4364" Offset="0" />
+                            <GradientStop Color="#4F94CD" Offset="1" />
+                        </LinearGradientBrush>
+                    </Button.Background>
                 </Button>
 
                 <!--训练计划按钮-->
