@@ -1,4 +1,5 @@
-﻿using AI_Sports.AISports.View.Pages;
+﻿using AI_Sports.AISports.Http;
+using AI_Sports.AISports.View.Pages;
 using AI_Sports.Proto;
 using AI_Sports.Service;
 using MySql.Data.MySqlClient;
@@ -55,6 +56,31 @@ namespace AI_Sports
                 }
             });
             th.Start();
+            //大数据线程
+            //每隔五分钟上传二十条数据
+            Thread bdth = new Thread(() =>
+            {
+
+                try
+                {
+                    //SetterDAO setterDao = new SetterDAO();
+                    //AuthDAO authDAO = new AuthDAO();
+                    while (true)
+                    {
+                        BigDataOfficer bigDataOfficer = new BigDataOfficer();
+                        bigDataOfficer.Run();
+                        //int heartBeatRate = (int)CommUtil.GetBigDataRate();
+                        Thread.Sleep(1000 * 300);
+                        //Console.WriteLine("-----------------boom");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("异常");
+                    Console.WriteLine(ex.ToString());
+                }
+            });
+            bdth.Start();
 
             try
             {

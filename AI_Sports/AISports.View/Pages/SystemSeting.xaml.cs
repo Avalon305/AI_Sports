@@ -129,6 +129,7 @@ namespace AI_Sports.AISports.View.Pages
 			{
 				sse.System_version = 1;
 			}
+
 			systemSettingService.InsertSystemSet(sse);
 			}
 			else if(isNUll==1){

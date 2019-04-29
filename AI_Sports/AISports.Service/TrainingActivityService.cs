@@ -5,6 +5,7 @@ using AI_Sports.Util;
 using AI_Sports.AISports.Dto;
 using System.Transactions;
 using AI_Sports.Constant;
+using AI_Sports.AISports.Entity;
 
 namespace AI_Sports.Service
 {
@@ -25,6 +26,7 @@ namespace AI_Sports.Service
         {
             using (TransactionScope ts = new TransactionScope())
             {
+                UploadManagementDAO uploadManagementDao2 = new UploadManagementDAO();
                 long result = 0;
                 //判断登陆用户，是教练自己锻炼。还是教练为用户进行设置。决定传哪个参数
                 string currentMemberPK = CommUtil.GetSettingString("memberPrimarykey");
@@ -41,6 +43,8 @@ namespace AI_Sports.Service
                         activity.Gmt_create = System.DateTime.Now;
                         activity.Is_complete = false;
                         activity.current_turn_number = 0;
+                        //插入至上传表
+                        uploadManagementDao2.Insert(new UploadManagement(activity.Id, "bdl_activity", 0));
                     }
                     //批量插入训练活动
                     result = activityDAO.BatchInsert(activities);
@@ -59,7 +63,11 @@ namespace AI_Sports.Service
                         activity.Gmt_create = System.DateTime.Now;
                         activity.Is_complete = false;
                         activity.current_turn_number = 0;
+                        //插入至上传表
+
+                        uploadManagementDao2.Insert(new UploadManagement(activity.Id, "bdl_activity", 0));
                     }
+                
                     //批量插入训练活动
                     result = activityDAO.BatchInsert(activities);
                     //根据训练活动批量插入个人设置记录 传入会员的主键id
@@ -91,6 +99,8 @@ namespace AI_Sports.Service
                 ActivityEntity strengthActivity = new ActivityEntity();
                 //耐力循环活动
                 ActivityEntity enduranceActivity = new ActivityEntity();
+                //上传表
+                UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
 
                 //根据不同模板创建不同的活动
                 switch (planTemplate)
@@ -109,6 +119,8 @@ namespace AI_Sports.Service
                         strengthActivity.Activity_type = "0";
 
                         activities.Add(strengthActivity);
+                        // 插入至上传表
+                        uploadManagementDao.Insert(new UploadManagement(strengthActivity.Id, "bdl_activity", 0));
                         break;
                     case PlanTemplate.EnduranceCycle://耐力循环
                         enduranceActivity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
@@ -124,7 +136,8 @@ namespace AI_Sports.Service
                         enduranceActivity.Activity_type = "1";
 
                         activities.Add(enduranceActivity);
-
+                        //插入至上传表
+                        uploadManagementDao.Insert(new UploadManagement(enduranceActivity.Id, "bdl_activity", 0));
                         break;
                     case PlanTemplate.StrengthEnduranceCycle:
                         //创建力量循环活动
@@ -141,7 +154,8 @@ namespace AI_Sports.Service
                         strengthActivity.Activity_type = "0";
 
                         activities.Add(strengthActivity);
-
+                        //插入至上传表
+                        uploadManagementDao.Insert(new UploadManagement(strengthActivity.Id, "bdl_activity", 0));
                         //创建耐力循环活动
                         enduranceActivity.Id = KeyGenerator.GetNextKeyValueLong("bdl_activity");
                         enduranceActivity.Member_id = trainingCourseEntity.Member_id;
@@ -156,6 +170,8 @@ namespace AI_Sports.Service
                         enduranceActivity.Activity_type = "1";
 
                         activities.Add(enduranceActivity);
+                        //插入至上传表
+                        uploadManagementDao.Insert(new UploadManagement(enduranceActivity.Id, "bdl_activity", 0));
                         break;
                     default:
                         break;
@@ -241,7 +257,16 @@ namespace AI_Sports.Service
 		/// <returns></returns>
 		public int UpdateCompleteFinish(int trainingcourseid, int complete)
 		{
-			return activityDAO.UpdateCompleteFinish(trainingcourseid, complete);
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+            List<long> listId = new List<long>();
+            //通过memberId获取主键id
+            listId = activityDAO.ListIdByfkTrainingCourseId(trainingcourseid);
+            foreach (var id in listId)
+            {
+                //数据上传
+                uploadManagementDao.Insert(new UploadManagement(id, "bdl_activity", 1));
+            }
+            return activityDAO.UpdateCompleteFinish(trainingcourseid, complete);
 		}
 
 		///zfc
@@ -252,8 +277,11 @@ namespace AI_Sports.Service
 		/// <param name="complete"></param>
 		public void UpdateRecordCompleteFinish(int trainingcourseid, int complete)
 		{
-
-			trainingActivityRecordDAO.UpdateCompleteFinish(trainingcourseid, complete);
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+            trainingActivityRecordDAO.UpdateCompleteFinish(trainingcourseid, complete);
+            //数据上传
+            uploadManagementDao.Insert(new UploadManagement(trainingcourseid, "bdl_training_activity_record", 1));
+            
 
 		}
 

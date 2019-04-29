@@ -1,4 +1,5 @@
-﻿using AI_Sports.Dao;
+﻿using AI_Sports.AISports.Entity;
+using AI_Sports.Dao;
 using AI_Sports.Entity;
 using AI_Sports.Util;
 using Dapper;
@@ -31,7 +32,9 @@ namespace AI_Sports.Dao
 
 		public int InsertSystemSet(SystemSettingEntity systemSettingEntity)
 		{
-			using (var conn = DbUtil.getConn())
+            UploadManagementDAO uploadManagementDao1 = new UploadManagementDAO();
+            uploadManagementDao1.Insert(new UploadManagement(systemSettingEntity.Id, "bdl_system_setting", 0));
+            using (var conn = DbUtil.getConn())
 			{
 				const string insert = "insert into bdl_system_setting (id,organization_name,organization_phone,organization_address,ip_address,system_version) VALUES" +
 					" (@Id,@Organization_name,@Organization_phone,@Organization_address,@Ip_address,@System_version);";

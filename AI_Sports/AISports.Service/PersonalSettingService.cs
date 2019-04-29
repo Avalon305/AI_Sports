@@ -25,6 +25,8 @@ namespace AI_Sports.Service
         /// <returns></returns>
         public bool SavePersonalSettings(long userPK)
         {
+            //上传表
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
             //使整个代码块成为事务性代码
             using (TransactionScope ts = new TransactionScope())
             {
@@ -77,6 +79,9 @@ namespace AI_Sports.Service
 
                             //添加进集合
                             personalSettingList.Add(personalSetting);
+
+                            //插入至上传表
+                            uploadManagementDao.Insert(new UploadManagement(personalSetting.Id, "bdl_personal_setting", 0));
                         }
                         //使用基本DAO 批量插入数据库
                         personalSettingDAO.BatchInsert(personalSettingList);
@@ -106,6 +111,8 @@ namespace AI_Sports.Service
         /// <returns></returns>
         public long AutoSavePersonalSettings(long userPK, long coursePkId , string memberId)
         {
+            //上传表
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
             long resultCode = 0;
             //使整个代码块成为事务性代码
             using (TransactionScope ts = new TransactionScope())
@@ -155,6 +162,8 @@ namespace AI_Sports.Service
                         
                         //添加进集合
                         personalSettingList.Add(personalSetting);
+                        //插入至上传表
+                        uploadManagementDao.Insert(new UploadManagement(personalSetting.Id, "bdl_personal_setting", 0));
                     }
                     //使用基本DAO 批量插入数据库
                     resultCode += personalSettingDAO.BatchInsert(personalSettingList);
@@ -176,6 +185,7 @@ namespace AI_Sports.Service
         /// <param name="entity"></param>
         public void UpdateStrengthDeviceSettingByType(PersonalSettingEntity entity)
         {
+            
             personalSettingDAO.UpdateStrengthDeviceSettingByType(entity);
         }
         /// <summary>

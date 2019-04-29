@@ -26,6 +26,38 @@ namespace AI_Sports.Dao
 
             }
         }
+        ///cnk
+        /// <summary>
+        /// 根据memberid查询bdl_activity中的数据主键id,主要用于上传数据
+        /// </summary>
+        /// <returns></returns>
+        public List<long> ListIdByMemeberId(string memberId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+
+                const string query = "SELECT id FROM bdl_activity WHERE member_id = @member_id";
+
+                return (List<long>)conn.Query<long>(query, new { member_id = memberId });
+
+            }
+        }
+        ///cnk
+        /// <summary>
+        /// 根据fk_training_course_id查询bdl_activity中的数据主键id,主要用于上传数据
+        /// </summary>
+        /// <returns></returns>
+        public List<long> ListIdByfkTrainingCourseId(int trainingcourseid)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+
+                const string query = "SELECT id FROM bdl_activity WHERE fk_training_course_id  = @fk_training_course_id";
+
+                return (List<long>)conn.Query<long>(query, new { fk_training_course_id = trainingcourseid });
+
+            }
+        }
         /// <summary>
         /// 根据当前课程ID完成/跳过训练课程 计数+1
         /// </summary>

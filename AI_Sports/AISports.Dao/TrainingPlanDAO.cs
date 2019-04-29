@@ -1,4 +1,5 @@
-﻿using AI_Sports.Entity;
+﻿using AI_Sports.AISports.Entity;
+using AI_Sports.Entity;
 using AI_Sports.Util;
 using Dapper;
 using System;
@@ -36,6 +37,10 @@ namespace AI_Sports.Dao
         /// <returns></returns>
         public int SaveTrainingPlan(TrainingPlanEntity trainingPlanEntity)
         {
+            //插入至上传表
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+            //数据上传
+            uploadManagementDao.Insert(new UploadManagement(trainingPlanEntity.Id, "bdl_training_plan", 0));
             using (var conn = DbUtil.getConn())
             {
                 const string insert = "INSERT INTO `ai_sports`.`bdl_training_plan` (`fk_member_id`, `title`, `start_date`, `training_target`) VALUES (@Fk_member_id ,@Title , @Start_date , @Training_target)";

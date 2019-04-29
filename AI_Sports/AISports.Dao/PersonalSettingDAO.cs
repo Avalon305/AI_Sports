@@ -1,4 +1,5 @@
-﻿using AI_Sports.Dto;
+﻿using AI_Sports.AISports.Entity;
+using AI_Sports.Dto;
 using AI_Sports.Entity;
 using AI_Sports.Util;
 using Dapper;
@@ -146,6 +147,10 @@ namespace AI_Sports.Dao
         /// <param name="entity"></param>
         public void UpdateStrengthDeviceSettingByType(PersonalSettingEntity entity)
         {
+            //上传表
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+            //插入至上传表
+            uploadManagementDao.Insert(new UploadManagement(entity.Id, "bdl_personal_setting", 1));
             string sql = @"update bdl_personal_setting set training_mode = @Training_mode,consequent_force = @Consequent_force,
                     reverse_force = @Reverse_force
                 where member_id = @Member_id and activity_type = @Activity_type and device_code != '12' and device_code != '16'
@@ -162,6 +167,10 @@ namespace AI_Sports.Dao
         /// <param name="entity"></param>
         public void UpdateEnduranceDeviceSettingByType(PersonalSettingEntity entity)
         {
+            //上传表
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+            //插入至上传表
+            uploadManagementDao.Insert(new UploadManagement(entity.Id, "bdl_personal_setting", 1));
             string sql = @"update bdl_personal_setting set power = @Power
                 where member_id = @Member_id and activity_type = @Activity_type and device_code = '12' or device_code = '16'
             ";
@@ -178,6 +187,10 @@ namespace AI_Sports.Dao
         /// <param name="entity"></param>
         public void UpdatePersonalSettingBy3DScan(PersonalSettingEntity entity)
         {
+            //上传表
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+            //插入至上传表
+            uploadManagementDao.Insert(new UploadManagement(entity.Id, "bdl_personal_setting", 1));
             string sql = @"update bdl_personal_setting set seat_height = @Seat_height,backrest_distance = @Backrest_distance,footboard_distance = @Footboard_distance,front_limit = @Front_limit,back_limit = @Back_limit,lever_angle = @Lever_angle
                 where member_id = @Member_id
             ";
@@ -194,6 +207,10 @@ namespace AI_Sports.Dao
         /// <param name="entity"></param>
         public void UpdateLimitByType(PersonalSettingEntity entity)
         {
+            //上传表
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+            //插入至上传表
+            uploadManagementDao.Insert(new UploadManagement(entity.Id, "bdl_personal_setting", 1));
             string sql = @"update bdl_personal_setting set Lever_angle=@Lever_angle,Front_limit=@Front_limit,Back_limit=@Back_limit
                 where member_id = @Member_id and Device_code=@Device_code 
             ";

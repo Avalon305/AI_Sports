@@ -1,4 +1,5 @@
 ﻿using AI_Sports.AISports.Entity;
+using AI_Sports.Dao;
 using AI_Sports.Util;
 using Dapper;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AI_Sports.AISports.Dao
 {
-    class SkeletonLengthDAO
+    class SkeletonLengthDAO : BaseDAO<SkeletonLengthEntity>
     {
         public int insertSkeletonLengthRecord(SkeletonLengthEntity skeletonLengthEntity)
         {

@@ -1,4 +1,5 @@
-﻿using AI_Sports.Constant;
+﻿using AI_Sports.AISports.Entity;
+using AI_Sports.Constant;
 using AI_Sports.Dao;
 using AI_Sports.Entity;
 using AI_Sports.Util;
@@ -50,6 +51,9 @@ namespace AI_Sports.Service
 
             //这个插入基类有BUG 明明插入进入了 但是返回的结果为0，所以不要返回值了。反正如果插入失败也报异常，返回值也没啥用
             trainingCourseDAO.Insert(trainingCourseEntity);
+            //插入至上传表
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+            uploadManagementDao.Insert(new UploadManagement(trainingCourseEntity.Id, "bdl_training_course", 0));
             //更新配置中的课程id 
             CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
             //训练课程目标天数
@@ -97,6 +101,9 @@ namespace AI_Sports.Service
                 //  保存课程
                 //这个插入基类有BUG 明明插入进入了 但是返回的结果为0，所以不要返回值了。反正如果插入失败也报异常，返回值也没啥用
                 trainingCourseDAO.Insert(trainingCourseEntity);
+                //插入至上传表
+                UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+                uploadManagementDao.Insert(new UploadManagement((int)trainingCourseEntity.Id, "bdl_training_course", 0));
                 //更新配置中的课程id 
                 CommUtil.UpdateSettingString("trainingCourseId", (trainingCourseEntity.Id).ToString());
                 //训练课程目标天数

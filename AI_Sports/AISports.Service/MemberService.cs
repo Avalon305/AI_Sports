@@ -126,7 +126,16 @@ namespace AI_Sports.Service
 		/// <param name="enable"></param>
 		public void UpdateDeFatState(string memberId, bool enable)
 		{
-			memberDAO.UpdateDeFatState(memberId, enable);
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+            List<long> listId = new List<long>();
+            //通过memberId获取主键id
+            listId = memberDAO.ListIdByMemberId(memberId);
+            foreach (var id in listId)
+            {
+                //数据上传
+                uploadManagementDao.Insert(new UploadManagement(id, "bdl_member", 1));
+            }
+            memberDAO.UpdateDeFatState(memberId, enable);
 		}
 
 		/// <summary>
@@ -182,7 +191,9 @@ namespace AI_Sports.Service
                 
                 //使用基类插入新会员
                 long resultCode = memberDAO.Insert(memberEntity);
-
+                //将插入信息插入至上传表
+                UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+                uploadManagementDao.Insert(new UploadManagement(memberEntity.Id, "bdl_member", 0));
                 //创建模板训练计划 使用力量耐力循环模板
                 planService.AutoSaveNewPlan(memberEntity, PlanTemplate.StrengthEnduranceCycle);
 
@@ -511,6 +522,9 @@ namespace AI_Sports.Service
         public void UpdateLastLoginDate(MemberEntity memberEntity)
         {
             memberDAO.UpdateByPrimaryKey(memberEntity);
+            //将更新信息插入至上传表
+            UploadManagementDAO uploadManagementDao1 = new UploadManagementDAO();
+            uploadManagementDao1.Insert(new UploadManagement(memberEntity.Id, "bdl_member", 1));
         }
         /// <summary>
         /// 查询所有会员信息

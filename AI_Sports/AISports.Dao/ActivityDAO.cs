@@ -27,14 +27,30 @@ namespace AI_Sports.Dao
 
             }
         }
-		///zfc
-		/// <summary>
-		/// 根据外键训练课程id完成训练活动，把is_complete标志位置为0，current_turn_number置为0
-		/// </summary>
-		/// <param name="trainingcourseid"></param>
-		/// <param name="complete"></param>
-		/// <returns></returns>
-		public int UpdateCompleteFinish(int trainingcourseid, int complete)
+        ///cnk
+        /// <summary>
+        /// 根据memberid查询bdl_activity中的数据主键id,主要用于上传数据
+        /// </summary>
+        /// <returns></returns>
+        public List<long> ListIdByMemeberId(string memberId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
+
+                const string query = "SELECT id FROM bdl_activity WHERE member_id = @member_id";
+
+                return (List<long>)conn.Query<long>(query, new { member_id = memberId });
+
+            }
+        }
+        ///zfc
+        /// <summary>
+        /// 根据外键训练课程id完成训练活动，把is_complete标志位置为0，current_turn_number置为0
+        /// </summary>
+        /// <param name="trainingcourseid"></param>
+        /// <param name="complete"></param>
+        /// <returns></returns>
+        public int UpdateCompleteFinish(int trainingcourseid, int complete)
 		{
 			using (var conn = DbUtil.getConn())
 			{
@@ -45,13 +61,28 @@ namespace AI_Sports.Dao
 			}
 		}
 
+        ///cnk
+        /// <summary>
+        /// 根据fk_training_course_id查询bdl_activity中的数据主键id,主要用于上传数据
+        /// </summary>
+        /// <returns></returns>
+        public List<long> ListIdByfkTrainingCourseId(int trainingcourseid)
+        {
+            using (var conn = DbUtil.getConn())
+            {
 
-		/// <summary>
-		/// 查询训练活动id 不需要根据完成状态查询。一个课程至多对应两条活动记录
-		/// </summary>
-		/// <param name="courseId"></param>
-		/// <returns></returns>
-		public List<ActivityEntity> ListActivitysByCourseId(long courseId)
+                const string query = "SELECT id FROM bdl_activity WHERE fk_training_course_id  = @fk_training_course_id";
+
+                return (List<long>)conn.Query<long>(query, new { fk_training_course_id = trainingcourseid });
+
+            }
+        }
+        /// <summary>
+        /// 查询训练活动id 不需要根据完成状态查询。一个课程至多对应两条活动记录
+        /// </summary>
+        /// <param name="courseId"></param>
+        /// <returns></returns>
+        public List<ActivityEntity> ListActivitysByCourseId(long courseId)
         {
             using (var conn = DbUtil.getConn())
             {
