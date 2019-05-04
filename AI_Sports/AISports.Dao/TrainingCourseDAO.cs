@@ -28,7 +28,7 @@ namespace AI_Sports.Dao
         }
         ///cnk
         /// <summary>
-        /// 根据memberid查询bdl_activity中的数据主键id,主要用于上传数据
+        /// 根据memberid查询bdl_training_course中的数据主键id,主要用于上传数据
         /// </summary>
         /// <returns></returns>
         public List<long> ListIdByMemeberId(string memberId)
@@ -36,7 +36,7 @@ namespace AI_Sports.Dao
             using (var conn = DbUtil.getConn())
             {
 
-                const string query = "SELECT id FROM bdl_activity WHERE member_id = @member_id";
+                const string query = "SELECT id FROM bdl_training_course WHERE member_id = @member_id";
 
                 return (List<long>)conn.Query<long>(query, new { member_id = memberId });
 
@@ -52,7 +52,7 @@ namespace AI_Sports.Dao
             using (var conn = DbUtil.getConn())
             {
 
-                const string query = "SELECT id FROM bdl_activity WHERE fk_training_course_id  = @fk_training_course_id";
+                const string query = "SELECT id FROM bdl_training_course WHERE fk_training_course_id  = @fk_training_course_id";
 
                 return (List<long>)conn.Query<long>(query, new { fk_training_course_id = trainingcourseid });
 

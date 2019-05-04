@@ -60,25 +60,24 @@ namespace AI_Sports
             //每隔五分钟上传二十条数据
             Thread bdth = new Thread(() =>
             {
-
-                try
+                while (true)
                 {
-                    //SetterDAO setterDao = new SetterDAO();
-                    //AuthDAO authDAO = new AuthDAO();
-                    while (true)
-                    {
+                    try {
                         BigDataOfficer bigDataOfficer = new BigDataOfficer();
                         bigDataOfficer.Run();
                         //int heartBeatRate = (int)CommUtil.GetBigDataRate();
                         Thread.Sleep(1000 * 300);
                         //Console.WriteLine("-----------------boom");
                     }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("异常");
+                        Console.WriteLine(ex.ToString());
+                    }
+
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("异常");
-                    Console.WriteLine(ex.ToString());
-                }
+                
+                
             });
             bdth.Start();
 

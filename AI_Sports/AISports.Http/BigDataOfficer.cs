@@ -104,6 +104,7 @@ namespace AI_Sports.AISports.Http
                 if (serviceResult == null)
                 {
                     //没有查到返回
+                    Console.WriteLine("没有查到信息");
                     return;
                 }
                 //用于接受云服务器端返回的字符串
