@@ -2,6 +2,8 @@
 using AI_Sports.AISports.View.Pages;
 using AI_Sports.Proto;
 using AI_Sports.Service;
+using AISports.HeartBeat;
+using Com.Bdl.Proto;
 using MySql.Data.MySqlClient;
 using NLog;
 using System;
@@ -80,7 +82,49 @@ namespace AI_Sports
                 
             });
             bdth.Start();
+            //心跳线程
+            Thread hbth = new Thread(() =>
+            {
 
+                ProtoBufSocket socket = null;
+                try
+                {
+                    socket = new ProtoBufSocket();
+                    socket.Connect();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine("连接失败:" + exception.StackTrace);
+                    TcpHeartBeatUtils.WriteLogFile("连接失败:" + exception.StackTrace);
+                }
+
+                while (true)
+                {
+                    try
+                    {
+                        BodyStrongMessage bodyStrongMessage = new BodyStrongMessage
+                        {
+                            MessageType = BodyStrongMessage.Types.MessageType.Heaerbeatreq,
+                            //可能为null
+                            HeartbeatRequest = TcpHeartBeatUtils.GetHeartBeatByCurrent()
+                        };
+                        socket.SendMessage(bodyStrongMessage);
+                        Console.WriteLine("发送msg!!");
+                        //Thread.Sleep(5000);
+                    }
+                    catch (Exception eee)
+                    {
+                        Console.WriteLine("发送msg失败" + eee.StackTrace);
+                        TcpHeartBeatUtils.WriteLogFile("发送msg失败" + eee.StackTrace);
+                    }
+                    finally
+                    {
+                        Thread.Sleep(5000);
+                    }
+                }
+
+            });
+            hbth.Start();
             try
             {
                 //清楚APP.config中的登陆缓存

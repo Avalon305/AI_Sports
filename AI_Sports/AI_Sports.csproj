@@ -199,6 +199,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AISports.View\Pages\InitSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\LoginFailed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AISports.View\Pages\MessageBoxX.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -369,6 +377,7 @@
     </Page>
     <Compile Include="AISports.Constant\CodeConstant.cs" />
     <Compile Include="AISports.Constant\CommondConstant.cs" />
+    <Compile Include="AISports.Constant\ProtocolConstant.cs" />
     <Compile Include="AISports.Constant\TableNameConst.cs" />
     <Compile Include="AISports.Dao\ActivityDAO.cs" />
     <Compile Include="AISports.Dao\AuthDAO.cs" />
@@ -412,6 +421,10 @@
     <Compile Include="AISports.Entity\AuthEntity.cs" />
     <Compile Include="AISports.Entity\TrainingPlanVO.cs" />
     <Compile Include="AISports.Entity\UploadManagement.cs" />
+    <Compile Include="AISports.HeartBeat\BodyStrong.cs" />
+    <Compile Include="AISports.HeartBeat\HeartbeatHandler.cs" />
+    <Compile Include="AISports.HeartBeat\ProtoBufSocket.cs" />
+    <Compile Include="AISports.HeartBeat\TcpHeartBeatUtils.cs" />
     <Compile Include="AISports.Http\BigDataOfficer.cs" />
     <Compile Include="AISports.Http\Dto\ActivityDTO.cs" />
     <Compile Include="AISports.Http\Dto\MemberDTO.cs" />
@@ -441,8 +454,11 @@
     <Compile Include="AISports.Service\TrainingDeviceRecordService.cs" />
     <Compile Include="AISports.Service\TrainingPlanService.cs" />
     <Compile Include="AISports.Service\UploadManagementService.cs" />
+    <Compile Include="AISports.Util\AesUtil.cs" />
     <Compile Include="AISports.Util\JsonTools.cs" />
+    <Compile Include="AISports.Util\ProtocolUtil.cs" />
     <Compile Include="AISports.Util\SQLiteUtil.cs" />
+    <Compile Include="AISports.Util\SystemInfo.cs" />
     <Compile Include="AISports.View\Converter\ActivityGroupHeadConvert.cs" />
     <Compile Include="AISports.Util\CommUtil.cs" />
     <Compile Include="AISports.Util\ConfigUtil.cs" />
@@ -457,6 +473,12 @@
     <Compile Include="AISports.View\Pages\analyze.xaml.cs" />
     <Compile Include="AISports.View\Pages\BluetoothLogin.xaml.cs">
       <DependentUpon>BluetoothLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\InitSetting.xaml.cs">
+      <DependentUpon>InitSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\LoginFailed.xaml.cs">
+      <DependentUpon>LoginFailed.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\MessageBoxX.xaml.cs">
       <DependentUpon>MessageBoxX.xaml</DependentUpon>

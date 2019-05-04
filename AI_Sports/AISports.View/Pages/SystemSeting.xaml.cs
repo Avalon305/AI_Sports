@@ -12,8 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AI_Sports.AISports.Constant;
 using AI_Sports.AISports.Service;
+using AI_Sports.AISports.Util;
 using AI_Sports.Entity;
+using AI_Sports.Util;
 using AISports.Util;
 
 namespace AI_Sports.AISports.View.Pages
@@ -129,14 +132,49 @@ namespace AI_Sports.AISports.View.Pages
 			{
 				sse.System_version = 1;
 			}
+                //初始化使用时间：开机时间加上六个月
+                sse.Auth_OfflineTime = DateTime.Now.AddMonths(+6);
+                //客户机状态为正常状态
+                sse.User_Status = SystemSettingEntity.USER_STATUS_GENERAL;
 
-			systemSettingService.InsertSystemSet(sse);
-			}
+                //获取mac地址
+                StringBuilder stringBuilder = new StringBuilder();
+                //string strMac = CommUtil.GetMacAddress();
+                // List<string> Macs = CommUtil.GetMacByWMI();
+                List<string> Macs = CommUtil.GetMacByIPConfig();
+                foreach (string mac in Macs)
+                {
+                    string prefix = "物理地址. . . . . . . . . . . . . : ";
+                    string Mac = mac.Substring(prefix.Length - 1);
+                    stringBuilder.Append(Mac);
+                }
+
+                //mac地址先变为byte[]再aes加密
+                byte[] byteMac = Encoding.GetEncoding("GBK").GetBytes(stringBuilder.ToString());
+                byte[] AesMac = AesUtil.Encrypt(byteMac, ProtocolConstant.USB_DOG_PASSWORD);
+                //存入数据库
+                //setter.Set_Unique_Id = Encoding.GetEncoding("GBK").GetString(AesMac);
+                sse.Set_Unique_Id = ProtocolUtil.BytesToString(AesMac);
+
+                //如果为空才可以插入
+                if (systemSettingService.GetSystemSetting() == null)
+                {
+                    systemSettingService.InsertSystemSet(sse);
+                }
+            }
 			else if(isNUll==1){
 				//为1时，是更新数据
 			
 				SystemSettingEntity sse = new SystemSettingEntity();
-				sse.Id = 1;
+                //更新之前查出不需要更改的那部分内容（用户状态，使用时间，客户机唯一id），再重新赋值
+                SystemSettingEntity systemSetting = new SystemSettingEntity();
+                systemSetting = systemSettingService.GetSystemSetting();
+                //赋值
+                sse.User_Status = systemSetting.User_Status;
+                sse.Set_Unique_Id = systemSetting.Set_Unique_Id;
+                sse.Auth_OfflineTime = systemSetting.Auth_OfflineTime;
+
+                sse.Id = 1;
 				sse.Organization_name = this.Oname.Text;
 				sse.Organization_phone = this.Ophone.Text;
 				sse.Organization_address = this.Oaddress.Text;
