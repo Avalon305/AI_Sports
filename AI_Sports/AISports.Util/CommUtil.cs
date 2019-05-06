@@ -11,6 +11,71 @@ namespace AI_Sports.Util
     class CommUtil
     {
         /// <summary>
+        /// 通过ipconfig获取mac
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetMacByIPConfig()
+        {
+            List<string> macs = new List<string>();
+            ProcessStartInfo startInfo = new ProcessStartInfo("ipconfig", "/all");
+            startInfo.UseShellExecute = false;
+            startInfo.RedirectStandardInput = true;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.RedirectStandardError = true;
+            startInfo.CreateNoWindow = true;
+            Process p = Process.Start(startInfo);
+            //截取输出流
+            StreamReader reader = p.StandardOutput;
+            string line = reader.ReadLine();
+
+            while (!reader.EndOfStream)
+            {
+                if (!string.IsNullOrEmpty(line))
+                {
+                    line = line.Trim();
+
+                    if (line.StartsWith("物理地址"))
+                    {
+                        macs.Add(line);
+                    }
+                }
+
+                line = reader.ReadLine();
+            }
+
+            //等待程序执行完退出进程
+            p.WaitForExit();
+            p.Close();
+            reader.Close();
+
+            return macs;
+        }
+
+        //单个mac地址
+        public static string GetMacAddress()
+        {
+            try
+            {
+                string strMac = string.Empty;
+                ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+                ManagementObjectCollection moc = mc.GetInstances();
+                foreach (ManagementObject mo in moc)
+                {
+                    if ((bool)mo["IPEnabled"] == true)
+                    {
+                        strMac = mo["MacAddress"].ToString();
+                    }
+                }
+                moc = null;
+                mc = null;
+                return strMac;
+            }
+            catch
+            {
+                return "unknown";
+            }
+        }
+        /// <summary>
         /// 读取客户设置
         /// </summary>
         /// <param name="settingName"></param>

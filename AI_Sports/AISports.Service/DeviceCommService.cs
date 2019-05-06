@@ -1,4 +1,5 @@
-﻿using AI_Sports.Dao;
+﻿using AI_Sports.AISports.Entity;
+using AI_Sports.Dao;
 using AI_Sports.Dto;
 using AI_Sports.Entity;
 using AI_Sports.Util;
@@ -93,6 +94,9 @@ namespace AI_Sports.Service
                     Course_count = setDto.Current_course_count
                 };
                 trainingActivityRecordDAO.Insert(recordEntity);
+                //插入至上传表
+                UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
+                uploadManagementDao.Insert(new UploadManagement(recordEntity.Id, "bdl_training_activity_record", 0));
             }
             response.ActivityRecordId = recordEntity.Id;
             //踏板距离

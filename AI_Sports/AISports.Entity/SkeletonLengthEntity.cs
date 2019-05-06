@@ -13,7 +13,7 @@ namespace AI_Sports.AISports.Entity
 {
     [Serializable]
     [Table("bdl_skeleton_length")]
-    class SkeletonLengthEntity
+    public class SkeletonLengthEntity
     {
         //主键自增id
         [ExplicitKey]

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Transactions;
+using AI_Sports.AISports.Entity;
 using AI_Sports.Constant;
 using AI_Sports.Dao;
 using AI_Sports.Entity;
@@ -24,14 +25,30 @@ namespace AI_Sports.Service
             //使整个代码块成为事务性代码
             using (TransactionScope ts = new TransactionScope())
             {
+                UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
                 //会员卡号ID
                 string memberId = CommUtil.GetSettingString("memberId");
                 //1.删除旧的训练计划
                 trainingPlanDAO.DeletePlanByMemberId(memberId);
                 //2.完成旧的训练课程
                 trainingCourseDAO.UpdateCompleteState(memberId, true);
+                List<long> listId1 = new List<long>();
+                listId1 = trainingCourseDAO.ListIdByMemeberId(memberId);
+                foreach (var id in listId1)
+                {
+                    //数据上传
+                    uploadManagementDao.Insert(new UploadManagement(id, "bdl_training_course", 1));
+                }
                 //3.完成旧的训练活动
                 activityDAO.UpdateCompleteState(memberId, true);
+                List<long> listId = new List<long>();
+                //通过memberId获取主键id
+                listId = activityDAO.ListIdByMemeberId(memberId);
+                foreach (var id in listId)
+                {
+                    //数据上传
+                    uploadManagementDao.Insert(new UploadManagement(id, "bdl_activity", 1));
+                }
                 //4.新增训练计划
                 trainingPlan.Id = KeyGenerator.GetNextKeyValueLong("bdl_training_plan");
 
@@ -61,6 +78,8 @@ namespace AI_Sports.Service
                 trainingPlan.Gmt_create = System.DateTime.Now;
                 //  插入新训练计划
                 trainingPlanDAO.Insert(trainingPlan);
+                //插入至上传表
+                uploadManagementDao.Insert(new UploadManagement(trainingPlan.Id, "bdl_training_plan", 0));
                 //5.更新App.config中训练计划id
                 CommUtil.UpdateSettingString("trainingPlanId", (trainingPlan.Id).ToString());
 
@@ -78,6 +97,8 @@ namespace AI_Sports.Service
         /// <param name="memberId"></param>
         public void AutoSaveNewPlan(MemberEntity memberEntity , PlanTemplate planTemplate)
         {
+            //插入至上传表
+            UploadManagementDAO uploadManagementDao = new UploadManagementDAO();
             //使整个代码块成为事务性代码
             using (TransactionScope ts = new TransactionScope())
             {
@@ -90,8 +111,25 @@ namespace AI_Sports.Service
                 trainingPlanDAO.DeletePlanByMemberId(memberId);
                 //2.完成旧的训练课程
                 trainingCourseDAO.UpdateCompleteState(memberId, true);
+                List<long> listId1 = new List<long>();
+                listId1 = trainingCourseDAO.ListIdByMemeberId(memberId);
+                foreach (var id in listId1)
+                {
+                    //数据上传
+                    uploadManagementDao.Insert(new UploadManagement(id, "bdl_training_course", 1));
+                }
+
                 //3.完成旧的训练活动
                 activityDAO.UpdateCompleteState(memberId, true);
+
+                List<long> listId = new List<long>();
+                //通过memberId获取主键id
+                listId = activityDAO.ListIdByMemeberId(memberId);
+                foreach (var id in listId)
+                {
+                    //数据上传
+                    uploadManagementDao.Insert(new UploadManagement(id, "bdl_activity", 1));
+                }
                 //4.新增训练计划
                 trainingPlan.Id = KeyGenerator.GetNextKeyValueLong("bdl_training_plan");
                 //外键用户主键id
@@ -123,6 +161,7 @@ namespace AI_Sports.Service
                 trainingPlan.Training_target = "塑形";
                 //  插入新训练计划
                 trainingPlanDAO.Insert(trainingPlan);
+                uploadManagementDao.Insert(new UploadManagement(trainingPlan.Id, "bdl_training_plan", 0));
                 //5.更新App.config中训练计划id
                 CommUtil.UpdateSettingString("trainingPlanId", (trainingPlan.Id).ToString());
                 //自动创建模板课程

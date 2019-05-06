@@ -1,0 +1,17 @@
+﻿<Window x:Class="AI_Sports.AISports.View.Pages.InitSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
+        mc:Ignorable="d"
+        Title="初始化设置提示" Height="450" Width="800">
+    <Grid>
+        <Grid Height="auto"  Margin="0,0,0,0" VerticalAlignment="Bottom">
+            <WrapPanel Background="AliceBlue" Margin="0,-360,-0.4,-0.4" Grid.ColumnSpan="3">
+                <Label Content="首次登录,请您先进行系统设置！" Margin="50,50,0,0" FontSize="22" FontFamily="Microsoft YaHei"></Label>
+            </WrapPanel>
+            <Button x:Name="saveButton" Content="关闭" HorizontalAlignment="Right" VerticalContentAlignment="Center" Margin="0,0,20,5" VerticalAlignment="Bottom" Width="75" Height="42" Click="Button_Click" Grid.ColumnSpan="2"/>
+        </Grid>
+    </Grid>
+</Window>

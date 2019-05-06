@@ -46,7 +46,22 @@ namespace AI_Sports.Dao
 
             }
         }
+        ///cnk
+        /// <summary>
+        /// 根据memberid查询bdl_member中的数据主键id,主要用于上传数据
+        /// </summary>
+        /// <returns></returns>
+        public List<long> ListIdByMemberId(string memberId)
+        {
+            using (var conn = DbUtil.getConn())
+            {
 
+                const string query = "SELECT id FROM bdl_member WHERE member_id = @member_id";
+
+                return (List<long>)conn.Query<long>(query, new { member_id = memberId });
+
+            }
+        }
         /// <summary>
         /// 根据会员卡号查询会员基本信息
         /// </summary>

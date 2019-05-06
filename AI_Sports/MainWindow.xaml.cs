@@ -1,4 +1,5 @@
 ﻿using AI_Sports.AISports.Constant;
+using AI_Sports.AISports.Service;
 using AI_Sports.AISports.Util;
 using AI_Sports.AISports.View.Pages;
 using AI_Sports.Constant;
@@ -34,10 +35,56 @@ namespace AI_Sports
         private MemberService memberService = new MemberService();
         private static Logger logger = LogManager.GetCurrentClassLogger();
         public static SerialPort serialPort = null;
-
+        /// <summary>
+        /// 定时检测登录权限
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CycleCheck(object sender, EventArgs e)
+        {
+            SystemSettingService systemSettingService = new SystemSettingService();
+            var result = systemSettingService.GetSystemSetting();
+            string loginResult = systemSettingService.LoginCheck();
+            if (loginResult != "success")
+            {
+                //MessageBox.Show("登录失败，请联系宝德龙管理人员！");
+                LoginFailed loginFailed = new LoginFailed();
+                loginFailed.ShowDialog();
+                //Application.Current.Shutdown();
+            }
+            return;
+        }
+        //计时
+        private static DispatcherTimer readDataTimer = new DispatcherTimer();
         public MainWindow()
         {
             InitializeComponent();
+            //初始化计时器
+            readDataTimer.Tick += new EventHandler(CycleCheck);
+            readDataTimer.Interval = new TimeSpan(1, 0, 0, 0);
+            readDataTimer.Start();
+            SystemSettingService systemSettingService = new SystemSettingService();
+            var result = systemSettingService.GetSystemSetting();
+            if (result == null)
+            {
+                this.mainpage.Source = new Uri("/AI_Sports;component/AISports.View/Pages/UserManage.xaml", UriKind.Relative);//跳转页面
+                InitSetting initSetting = new InitSetting();
+                initSetting.ShowDialog();
+                return;
+            }
+            else
+            {
+                SystemSettingService systemSettingService1 = new SystemSettingService();
+
+                string loginResult = systemSettingService1.LoginCheck();
+                if (loginResult != "success")
+                {
+                    //MessageBox.Show("登录失败，请联系宝德龙管理人员！");
+                    LoginFailed loginFailed = new LoginFailed();
+                    loginFailed.ShowDialog();
+                    //Application.Current.Shutdown();
+                }
+            }
             this.mainpage.Source = new Uri("/AI_Sports;component/LoginWindow.xaml", UriKind.Relative);//跳转页面
             //窗口最前
             //this.Topmost = true;
