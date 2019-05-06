@@ -70,8 +70,11 @@ namespace AI_Sports
             //    loginWindow.Close();//关闭欢迎页
             //    this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定用户页面 urlkind相对uri
             //}
+            //获得配置文件中串口号
+            string configPortName = CommUtil.GetSettingString("SerialPort");
+
             serialPort = new SerialPort();
-            serialPort.PortName = "COM4";
+            serialPort.PortName = configPortName != "" ? configPortName : "COM4";
             serialPort.BaudRate = 115200;
             serialPort.ReadTimeout = 3000; //单位毫秒
             serialPort.WriteTimeout = 3000; //单位毫秒
@@ -182,9 +185,14 @@ namespace AI_Sports
                     //string strCRC = lowStrCRC + highStrCRC;
                     //Console.WriteLine(strCRC);//解析CRC
                     //ReceiveValues(strName + strPhone + strCRC);
-                    ReceiveValues(strName + strPhone);
+                    string memberId = strName + strPhone;
+                    //工作线程中调用主线程委托调用提示窗或者跳转页面
+                    App.Current.Dispatcher.Invoke(new Action(() =>
+                    {
+                        Login(memberId);
 
 
+                    }));
                 }
 
 
@@ -327,7 +335,10 @@ namespace AI_Sports
             }
         }
 
-
+        /// <summary>
+        /// 读卡专用登陆方法
+        /// </summary>
+        /// <param name="sender"></param>
         private void Login(string sender)
         {
             string memberId = sender;
@@ -351,9 +362,13 @@ namespace AI_Sports
                     break;
                 case LoginPageStatus.RepeatLogins:
                     logger.Debug("拦截重复登陆，请先退出。");
+                    MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
+
                     break;
                 case LoginPageStatus.UnknownID:
                     logger.Debug("未知ID，禁止登录。");
+                    MessageBoxX.Show("温馨提示", "未知ID，登录失败");
+
                     break;
                 default:
                     break;

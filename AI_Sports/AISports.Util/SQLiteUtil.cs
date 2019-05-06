@@ -232,7 +232,7 @@ namespace AI_Sports.Util
                     sql.Append("select * from bluetooth_write ");
                     sql.Append("where gmt_modified >= ");
                     sql.Append(timestamp);
-                    sql.Append("order by gmt_modified DESC");
+                    sql.Append(" order by gmt_modified DESC");
 
                     command.CommandText = sql.ToString();
 

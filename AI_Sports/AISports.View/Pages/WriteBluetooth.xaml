@@ -54,9 +54,9 @@
 
         </StackPanel>
             <StackPanel Height="50" Orientation="Horizontal" Background="DimGray" VerticalAlignment="Bottom">
-            <Button Content="重启蓝牙" Style="{DynamicResource btn-success}" FontFamily="Microsoft YaHei"  Width="80" Margin="440,6,0,5" Click="Button_Click_3"></Button>
+            <Button Content="重启蓝牙项目" Style="{DynamicResource btn-success}" FontFamily="Microsoft YaHei"  Width="120" Margin="390,6,0,5" Click="Button_Click_3"></Button>
 
-            <Button Content="重新扫描" Style="{DynamicResource btn-primary}"  Width="80" Margin="10,6,0,5" Click="Button_Click_2"></Button>
+            <Button Content="刷新手环" Style="{DynamicResource btn-primary}"  Width="80" Margin="10,6,0,5" Click="Button_Click_2"></Button>
                 <Button Content="写入"  Style="{DynamicResource btn-success}" Width="80" Margin="10,6,0,5" Click="Button_Click_1"></Button>
                 <Button Content="取消"  Width="80" Margin="10,6,10,5" Style="{DynamicResource btn-warning}" Click="Button_Click"></Button>
             </StackPanel>
