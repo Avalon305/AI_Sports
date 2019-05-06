@@ -66,6 +66,9 @@ namespace AI_Sports.AISports.View.Pages
 
 
                     this.timeLable.Content = gmtCreate;
+                    //加载第几次课程
+                    this.Lab_Training_course.Content += "第"+ currentCourseCount + "次";
+
                 }
 
             }

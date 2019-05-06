@@ -45,7 +45,7 @@
                 <DataGrid.Columns>
                     
                     
-                    <DataGridTextColumn Binding="{Binding Course_count}" Header="课程记录序号" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Course_count}" Header="课程记录ID" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Sum_time}" Header="训练总时间/分钟" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Sum_energy}" Header="训练总耗能/千卡" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Sum_count}" Header="运动总个数" ElementStyle="{StaticResource DataGridTextCenter}" IsReadOnly="True"/>

@@ -354,17 +354,17 @@ namespace AI_Sports
                 case LoginPageStatus.CoachPage:
                     logger.Debug("教练正常登陆");
                     //this.Close();
-                    this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+                    //用这种实例化的方法可以刷新页面，导航方式不会刷新
+                    UserManage userManage = new UserManage();
+                    this.mainpage.Content = userManage;
+                    //this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
                     break;
                 case LoginPageStatus.UserPage:
                     logger.Debug("用户正常登陆");
                     //this.Close();
-                    this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
-                    {
-                        this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+                     this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
-                    });
 
                     break;
                 case LoginPageStatus.RepeatLogins:

@@ -11,7 +11,7 @@
 	<Page.Resources>
 		<ResourceDictionary Source="/AISports.Assets/PlusMinusExpanderStyles.xaml" />
 
-	</Page.Resources>
+    </Page.Resources>
 
 	<Grid Background="White" >
 		<StackPanel>
@@ -27,7 +27,7 @@
 				<Border  BorderThickness="2" BorderBrush="#04243D" Background="#f1f1f1" Height="200" CornerRadius="10" MouseUp="Border_MouseUp">
 					<WrapPanel >
 						<StackPanel Height="224" Width="900" HorizontalAlignment="Left" RenderTransformOrigin="0.484,2.18">
-							<Label  x:Name="Lab_Title" Content="无训练计划" Foreground="#04243D" Style="{DynamicResource h1}" Margin="20,40"/>
+                                <Label  x:Name="Lab_Title" Content="无训练计划" Foreground="#04243D"  FontSize="45" Margin="20,40"/>
 							<WrapPanel Margin="20,10,0,0">
 								<Label  Content="创建时间：" x:Name="Lab_Gmt_create" FontFamily="yahei" FontSize="22"/>
 							</WrapPanel>

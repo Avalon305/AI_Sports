@@ -362,7 +362,7 @@ namespace AI_Sports.AISports.View.Pages
         //获取 trainingCourseId
         string trainingCourseId = CommUtil.GetSettingString("trainingCourseId");
 
-        //力量循环腹部训练个数
+        //力量循环躯干训练个数  修改byCQZ
         public int? abdomenTraining()
         {
             
@@ -424,10 +424,10 @@ namespace AI_Sports.AISports.View.Pages
             return musclePieChartService.selectLegEnduranceTraining(trainingCourseId);
         }
 
-        //力量耐力循环手臂训练个数
-        public int? armEnduranceTraining()
+        //力量耐力循环背部训练个数 修改byCQZ
+        public int? backEnduranceTraining()
         {
-            return musclePieChartService.selectEnduranceArmTraining(trainingCourseId);
+            return musclePieChartService.selectEnduranceBackTraining(trainingCourseId);
         }
 
         //力量耐力循环躯干训练个数

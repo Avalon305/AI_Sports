@@ -45,9 +45,9 @@ namespace AI_Sports.AISports.Service
             return musclePieChartDAO.selectLegEnduranceTraining(trainingCourseId);
         }
 
-        public int? selectEnduranceArmTraining(string trainingCourseId)
+        public int? selectEnduranceBackTraining(string trainingCourseId)
         {
-            return musclePieChartDAO.selectEnduranceArmTraining(trainingCourseId);
+            return musclePieChartDAO.selectEnduranceBackTraining(trainingCourseId);
         }
 
         public int? selectTrunkEnduranceTraining(string trainingCourseId)

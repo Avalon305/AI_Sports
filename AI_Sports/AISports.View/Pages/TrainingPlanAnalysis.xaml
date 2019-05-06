@@ -29,7 +29,7 @@
             <Border BorderThickness="2" BorderBrush="#04243D" Background="#f1f1f1" Margin="20" CornerRadius="10" Height="200" MouseUp="Border_MouseLeftButtonDown">
                 <WrapPanel>
                     <StackPanel Height="200" Width="900" HorizontalAlignment="Left">
-                        <Label  Name="Lab_Title" Content="训练计划标题" Foreground="#04243D" FontSize="45" Margin="20,40"></Label>
+                        <Label  Name="Lab_Title" Content="训练计划标题" Foreground="#04243D" FontFamily="Microsoft YaHei" FontSize="45"  Margin="20,40"></Label>
                         <WrapPanel Margin="20,10,0,0">
                             <Label  Content="创建时间：" Name="Lab_Gmt_create" FontFamily="yahei" FontSize="22"></Label>
                         </WrapPanel>

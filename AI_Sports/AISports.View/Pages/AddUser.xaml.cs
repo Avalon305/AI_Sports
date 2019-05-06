@@ -123,19 +123,19 @@ namespace AI_Sports.AISports.View.Pages
                 inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(weight.Text) && ("0".Equals(weight.Text)))
+            if (string.IsNullOrWhiteSpace(weight.Text) || ("0".Equals(weight.Text)))
             {
                 stringBuilder.Append("体重 ");
                 inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(height.Text) && ("0".Equals(height.Text)))
+            if (string.IsNullOrWhiteSpace(height.Text) || ("0".Equals(height.Text)))
             {
                 stringBuilder.Append("身高 ");
                 inputCount++;
 
             }
-            if (string.IsNullOrWhiteSpace(Max_heart_rate.Text) && ("0".Equals(Max_heart_rate.Text)))
+            if (string.IsNullOrWhiteSpace(Max_heart_rate.Text) || ("0".Equals(Max_heart_rate.Text)))
             {
                 stringBuilder.Append("最大心率 ");
                 inputCount++;

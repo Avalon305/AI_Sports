@@ -52,15 +52,15 @@ option = {
             },
             series : [
                 {
-                    name:'力量循环',
+                    name:'力量耐力循环',
                     type:'pie',
                     center: ['60%', '40%'],
                     radius: '50%',
                     data:[
-						{value: window.external.chestEnduranceTraining(),name:'胸部'},
+						{value: window.external.chestEnduranceTraining(),name:'胸'},
                         {value: window.external.legEnduranceTraining(),name:'腿部'},
-                        {value: window.external.armEnduranceTraining(),name:'躯干'},
-                        {value: window.external.armEnduranceTraining(),name:'手臂'}
+                        {value: window.external.trunkEnduranceTraining(),name:'躯干'},
+                        {value: window.external.backEnduranceTraining(),name:'背部'}
                     ]
 				}
             ]

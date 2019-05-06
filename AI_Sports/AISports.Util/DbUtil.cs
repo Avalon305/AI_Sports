@@ -32,10 +32,10 @@ namespace AI_Sports.Util
         static DbUtil()
         {
             
-            DbName = "ai_sports";
-            DbUserName = "root";  
-            DbPassword = "root";
-            DbUrl = "127.0.0.1";
+            //DbName = "ai_sports";
+            //DbUserName = "root";  
+            //DbPassword = "root";
+            //DbUrl = "127.0.0.1";
             DbName = ConfigUtil.Get("DbName");
             DbUserName = ConfigUtil.Get("DbUserName");  
             DbPassword = ConfigUtil.Get("DbPassword");
