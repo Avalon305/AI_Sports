@@ -21,8 +21,13 @@
 			<TextBox x:Name="Oname" Text="" Tag="机构名称"   Style="{DynamicResource input-group-addon left}" VerticalAlignment="Top" Margin="68,108,0,0" HorizontalAlignment="Left" FontSize="22" Width="652" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="Auto" />
 			<TextBox x:Name="Ophone" Tag="机构电话"  Style="{DynamicResource input-group-addon left}" VerticalAlignment="Top" Margin="68,224,0,0" HorizontalAlignment="Left" FontSize="22" Width="652" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="Auto" />
 			<TextBox x:Name="Oaddress" Tag="机构地址"   Style="{DynamicResource input-group-addon left}" VerticalAlignment="Top" Margin="68,344,0,0" HorizontalAlignment="Left" FontSize="22" Width="652" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="Auto"  />
-			
-			<WrapPanel Margin="60,459,0,542"  MouseUp="WrapPanel_MouseUp" >
+
+            <WrapPanel Orientation="Horizontal" Margin="60,0,0,0" Height="60">
+                <Label x:Name="label"  Content="读卡器串口号："  FontSize="28" />
+                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="0,0,30,0" VerticalAlignment="Center" Width="112" RenderTransformOrigin="0.333,4.409" DropDownOpened="comboBox_DropDownOpened" Height="34" FontSize="16" Background="#FFFCFCFC"/>
+            </WrapPanel>
+
+            <WrapPanel Margin="60,300,0,0" Height="60" MouseUp="WrapPanel_MouseUp" >
 				<Label Content="系统版本：" FontSize="28"></Label>
 				<ComboBox x:Name="Oversion"  Width="518" Height="44"  FontSize="22" Margin="0 5 0 0" IsEnabled="False" >
 
@@ -32,8 +37,9 @@
 				</ComboBox>
                
 			</WrapPanel>
+            
 
-            <Button x:Name="saveButton" Content="保存" Background="#FF04243D" HorizontalAlignment="Left" Margin="645,662,0,0" VerticalAlignment="Top" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35"  RenderTransformOrigin="-1.947,0.762" Click="Button_Click"/>
+            <Button x:Name="saveButton" Content="保存" Background="#FF04243D" HorizontalAlignment="Left" Margin="645,862,0,0" VerticalAlignment="Top" Style="{DynamicResource btn-primary }"  FontSize="20"  Width="75" Height="35"  RenderTransformOrigin="-1.947,0.762" Click="Button_Click"/>
 		</Grid>
          
 	</Grid>

@@ -152,6 +152,7 @@ namespace AI_Sports.AISports.View.Pages
                     Console.WriteLine(Encoding.ASCII.GetString(phonebyte));//解析手机号
 
                 }
+                //注释掉byCQZ 5.10 原来没注释掉 
                 serialPort.Close();
             }
         }
@@ -267,10 +268,13 @@ namespace AI_Sports.AISports.View.Pages
                 serialPort.Open();
 
                 //如果连接成功，插入串口号 
-                if (CommUtil.GetSettingString("SerialPort") == "")
-                {
-                    CommUtil.UpdateSettingString("SerialPort", name1);
-                }
+                CommUtil.UpdateSettingString("SerialPort", name1);
+
+
+                //if (CommUtil.GetSettingString("SerialPort") == "")
+                //{
+                //    CommUtil.UpdateSettingString("SerialPort", name1);
+                //}
             }
             catch (UnauthorizedAccessException ex)
             {
