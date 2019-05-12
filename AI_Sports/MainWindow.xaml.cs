@@ -352,7 +352,7 @@ namespace AI_Sports
             switch (resultCode)
             {
                 case LoginPageStatus.CoachPage:
-                    logger.Debug("教练正常登陆");
+                    logger.Debug("教练正常登陆："+ memberId);
                     //this.Close();
                     //用这种实例化的方法可以刷新页面，导航方式不会刷新
                     UserManage userManage = new UserManage();
@@ -361,19 +361,19 @@ namespace AI_Sports
 
                     break;
                 case LoginPageStatus.UserPage:
-                    logger.Debug("用户正常登陆");
+                    logger.Debug("用户正常登陆："+ memberId);
                     //this.Close();
                      this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
 
                     break;
                 case LoginPageStatus.RepeatLogins:
-                    logger.Debug("拦截重复登陆，请先退出。");
+                    logger.Debug("拦截重复登陆，请先退出。"+ memberId);
                     MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
 
                     break;
                 case LoginPageStatus.UnknownID:
-                    logger.Debug("未知ID，禁止登录。");
+                    logger.Debug("未知ID，禁止登录。"+ memberId);
                     MessageBoxX.Show("温馨提示", "未知ID，登录失败");
 
                     break;
@@ -396,24 +396,24 @@ namespace AI_Sports
             switch (resultCode)
             {
                 case LoginPageStatus.CoachPage:
-                    logger.Debug("教练正常登陆");
+                    logger.Debug("读卡器教练正常登陆"+ memberId);
                     //this.Close();
                     this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
                     break;
                 case LoginPageStatus.UserPage:
-                    logger.Debug("用户正常登陆");
+                    logger.Debug("读卡器用户正常登陆"+ memberId);
                     //this.Close();
                     this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
                     break;
                 case LoginPageStatus.RepeatLogins:
-                    logger.Debug("拦截重复登陆，请先退出。");
+                    logger.Debug("读卡器拦截重复登陆，请先退出。"+ memberId);
                     MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
 
                     break;
                 case LoginPageStatus.UnknownID:
-                    logger.Debug("未知ID，禁止登录。");
+                    logger.Debug("读卡器未知ID，禁止登录。"+ memberId);
                     MessageBoxX.Show("温馨提示", "未知ID，登录失败");
 
                     break;

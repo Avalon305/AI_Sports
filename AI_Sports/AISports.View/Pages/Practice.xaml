@@ -41,7 +41,7 @@
                         <TextBlock FontSize="16" Text="图 像 地 址" Visibility="Hidden" />
                         <TextBlock FontSize="16" Text="修 改 时 间" Margin="50 0 0 0" Grid.Column="3" Grid.ColumnSpan="2"/>
                         <!--<TextBlock FontSize="16" Text="训练次数/目标次数" Grid.Column="5" Grid.ColumnSpan="2" />-->
-                        <TextBlock FontSize="16" Text="当前设置（顺/反或功率）" Grid.Column="7" />
+                        <TextBlock FontSize="16" Text="当前设置(顺/反或功率)" Grid.Column="7" Width="160"/>
                     </Grid>
                 </Label>
 
@@ -137,7 +137,7 @@
                         <TextBlock FontSize="16" Text="图 像 地 址" Visibility="Hidden" />
                         <TextBlock FontSize="16" Text="修 改 时 间" Margin="50 0 0 0" Grid.Column="3" Grid.ColumnSpan="2"/>
                         <!--<TextBlock FontSize="16" Text="训练次数/目标次数" Grid.Column="5" Grid.ColumnSpan="2" />-->
-                        <TextBlock FontSize="16" Text="当前设置(顺/反)" Grid.Column="7" />
+                        <TextBlock FontSize="16" Text="当前设置(顺/反或功率)" Grid.Column="7" Width="160"/>
                     </Grid>
                 </Label>
                 <Expander Name="S1" HeaderTemplate="{StaticResource titleText}" Style="{StaticResource PlusMinusExpander}" Padding="2" BorderBrush="#eaeaea" BorderThickness="0,0,0,1" Visibility="Collapsed">
