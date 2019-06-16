@@ -170,8 +170,8 @@ namespace AI_Sports.AISports.Util
             if (memberId.Length == 6)
             {
                 //2+4
-                //根据安卓端的要求，那边定长解析，将用户名设置为定长7位的，两位姓名后补充2位半角空格（两个字节） byCQZ 2019.4.24
-                name = memberId.Substring(0, 2) + "  ";
+                //根据安卓端的要求，那边定长解析，将用户名设置为定长7位的，两位姓名后补充2位半角空格（两个字节）注意空格加到前边 因为trim只能去除头尾空格 byCQZ 2019.4.24 
+                name = "  " + memberId.Substring(0, 2) ;
                 phone = memberId.Substring(2, 4);
                
             }

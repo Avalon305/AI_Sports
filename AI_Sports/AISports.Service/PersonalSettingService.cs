@@ -207,14 +207,15 @@ namespace AI_Sports.Service
                 string memberPK = CommUtil.GetSettingString("memberPrimarykey");
                 string coachId = CommUtil.GetSettingString("coachId");
 
-                string memberId = (memberPK != null && memberPK != "") ? memberPK : coachId;
+                string fkmemberId = (memberPK != null && memberPK != "") ? memberPK : coachId;
+                string memberId = CommUtil.GetSettingString("memberId");
                 //根据当前登陆用户主键PK查询扫描数据
-                SkeletonLengthEntity skeletonLengthEntity = skeletonLengthDAO.getSkeletonLengthRecord(memberId);
+                SkeletonLengthEntity skeletonLengthEntity = skeletonLengthDAO.getSkeletonLengthRecord(fkmemberId);
 
                 //计算公式：y=K*X+B ==> 设备参数 = k * 用户某一部位长度 + 常量 具体取值多少合适需要结合实际测试。可能不同的参数需要不同的K和B 根据实际情况修改也可
-                double K = 0.8;//后方限制系数
+                double K = 2.7;//后方限制系数
                 double M = 0.5;//前方限制系数
-                double B = 10;//常量
+                double B = 0;//常量
                 var personalSettingEntity = new PersonalSettingEntity
                 {
                     Member_id = memberId,

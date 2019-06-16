@@ -128,7 +128,7 @@ namespace AI_Sports.AISports.Http
                     Console.WriteLine("发送失败");
                 }
                 
-                if(strWebResult!=null)
+                if(strWebResult!=null && strWebResult!="")
                 {
                     //将接受云服务器的字符串装换成实体类对象
                     webResult = JsonTools.DeserializeJsonToObject<WebResult>(strWebResult);

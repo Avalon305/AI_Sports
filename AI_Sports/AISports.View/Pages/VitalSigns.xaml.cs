@@ -1,5 +1,6 @@
 ﻿using AI_Sports.AISports.Dao;
 using AI_Sports.AISports.Entity;
+using AI_Sports.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,12 @@ namespace AI_Sports
         public VitalSigns()
         {
             InitializeComponent();
-            skeletonLengthEntity = skeletonLengthDAO.getSkeletonLengthRecord("123456");
+            //1.首先得到用户的身体长度数据 根据会员id统一更新座位高度、靠背距离、踏板长度
+            string memberPK = CommUtil.GetSettingString("memberPrimarykey");
+            string coachId = CommUtil.GetSettingString("coachId");
+
+            string fkmemberId = (memberPK != null && memberPK != "") ? memberPK : coachId;
+            skeletonLengthEntity = skeletonLengthDAO.getSkeletonLengthRecord(fkmemberId);
             this.stackPanel.DataContext = skeletonLengthEntity;
             //this.stackPanel.DataContext = Lengths;
         }
