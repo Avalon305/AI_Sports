@@ -60,7 +60,8 @@ namespace AI_Sports.AISports.Service
                 Console.WriteLine("+++++++++++++++" + loginResult);
                 return loginResult;
             }
-
+            //注释原因：数据库中的mac地址与本机获得mac地址有时不匹配
+            /*
             string mac = "";
             try
             {
@@ -84,6 +85,7 @@ namespace AI_Sports.AISports.Service
                 Console.WriteLine("+++++++++++++++" + loginResult);
                 return loginResult;
             }
+            */
             if (result.User_Status == SystemSettingEntity.USER_STATUS_FREEZE)
             {
                 loginResult = "用户已被冻结";
