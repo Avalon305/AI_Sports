@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
         mc:Ignorable="d"
         WindowStyle="None"
-        Title="登录失败" Height="450" Width="800">
+        Title="登录失败" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid Height="auto"  Margin="0,0,0,0" VerticalAlignment="Bottom">
             <WrapPanel Background="AliceBlue" Margin="0,-360,-0.4,-0.4" Grid.ColumnSpan="3">

@@ -184,12 +184,15 @@ namespace AI_Sports.AISports.View.Pages
                 {
                     //计算BMI指数
                     double? bmiValue = Math.Round(((weight.Value / (height.Value * height.Value)) * 10000), 1);
+                    //计算标准体重
+                    double? standardWeight = Math.Round((24 * (height.Value * height.Value)/10000));
+
                     StringBuilder speechBuilder = new StringBuilder();
-                    speechBuilder.Append("尊敬的会员您好，您的身高为");
-                    speechBuilder.Append(height);
-                    speechBuilder.Append("厘米，体重维");
-                    speechBuilder.Append(weight);
-                    speechBuilder.Append("千克。智能教练计算出您的身体质量指数为：");
+                    speechBuilder.Append("尊敬的会员您好,");
+                    //speechBuilder.Append(height);
+                    //speechBuilder.Append("厘米，体重维");
+                    //speechBuilder.Append(weight);
+                    speechBuilder.Append("智能教练计算出您的身体质量指数为：");
                     speechBuilder.Append(bmiValue);
                     if (bmiValue <= 18.5)//偏瘦
                     {
@@ -203,20 +206,27 @@ namespace AI_Sports.AISports.View.Pages
                     }
                     else if (bmiValue >= 24.0 && bmiValue <= 27.9)//超重
                     {
-                        speechBuilder.Append("，您的体重稍微超过中国体质标准正常范围，建议您的训练计划以增肌、减脂为主，建议开启减脂模式，增加力量耐力循环的训练，通过高强度力量训练与有氧训练交替进行，可以在短时间内达到超高的能量消耗效果，并且让身体在训练后也继续保持燃脂状态，达到优秀的减脂效果。");
+                        speechBuilder.Append(",您的体重超重"+(weight.Value-standardWeight.Value)+"千克");
+                        speechBuilder.Append("，建议您的训练计划以增肌、减脂为主，建议开启减脂模式，增加力量耐力循环的训练，通过高强度力量训练与有氧训练交替进行，可以在短时间内达到超高的能量消耗效果，并且让身体在训练后也继续保持燃脂状态，达到优秀的减脂效果。");
 
                     }
                     else if (bmiValue >= 28.0 && bmiValue < 30)//轻度肥胖
                     {
+                        speechBuilder.Append(",您的体重超重" + (weight.Value - standardWeight.Value) + "千克");
+
                         speechBuilder.Append("，属于轻度肥胖，建议您的训练计划以减脂为主，建议开启减脂模式，增加力量耐力循环的训练，通过高强度力量训练与有氧训练交替进行，可以在短时间内达到超高的能量消耗效果，并且让身体在训练后也继续保持燃脂状态，达到优秀的减脂效果。建议您在减脂过程中少吃油腻食物，多吃水果蔬菜，保持饮食清淡、营养均衡。");
 
                     }
                     else if (bmiValue >= 30 && bmiValue < 35)//中度肥胖
                     {
+                        speechBuilder.Append(",您的体重超重" + (weight.Value - standardWeight.Value) + "千克");
+
                         speechBuilder.Append("，属于中度肥胖，建议您的训练计划以减脂为主，建议开启减脂模式，减脂模式会结合力量耐力循环，智能指导您充分使用有氧设备，辅助使用力量设备进行训练，每次训练包括全身唤醒、心肺改善、强化燃脂三个阶段。根据全身燃动理论，通过高强度力量训练与有氧训练交替进行，可以在短时间内达到超高的能量消耗效果，并且让身体在训练后也继续保持燃脂状态，达到优秀的减脂效果。建议您在减脂过程中少吃油腻食物，多吃水果蔬菜，保持饮食清淡、营养均衡。");
                     }
                     else if (bmiValue >= 35)//重度肥胖
                     {
+                        speechBuilder.Append(",您的体重超重" + (weight.Value - standardWeight.Value) + "千克");
+
                         speechBuilder.Append("，属于重度肥胖，建议您的训练计划以减脂为主，建议开启减脂模式，减脂模式会结合力量耐力循环，智能指导您充分使用有氧设备，辅助使用力量设备进行训练，每次训练包括全身唤醒、心肺改善、强化燃脂三个阶段。根据全身燃动理论，通过高强度力量训练与有氧训练交替进行，可以在短时间内达到超高的能量消耗效果，并且让身体在训练后也继续保持燃脂状态，达到优秀的减脂效果。建议您在减脂过程中少吃油腻食物，多吃水果蔬菜，保持饮食清淡、营养均衡。");
 
                     }

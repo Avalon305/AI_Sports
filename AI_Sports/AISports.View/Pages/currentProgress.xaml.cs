@@ -220,13 +220,13 @@ namespace AI_Sports.AISports.View.Pages
 
                     speechBuilder.Append("。您的训练频率为每");
                     speechBuilder.Append(trainingCourseEntity.Rest_days);
-                    speechBuilder.Append("天一次。当前课程开始日期为");
-                    speechBuilder.Append(trainingCourseEntity.Start_date.Value.Year);
-                    speechBuilder.Append("年");
-                    speechBuilder.Append(trainingCourseEntity.Start_date.Value.Month);
-                    speechBuilder.Append("月");
-                    speechBuilder.Append(trainingCourseEntity.Start_date.Value.Day);
-                    speechBuilder.Append("日,");
+                    speechBuilder.Append("天一次。");
+                    //speechBuilder.Append(trainingCourseEntity.Start_date.Value.Year);
+                    //speechBuilder.Append("年");
+                    //speechBuilder.Append(trainingCourseEntity.Start_date.Value.Month);
+                    //speechBuilder.Append("月");
+                    //speechBuilder.Append(trainingCourseEntity.Start_date.Value.Day);
+                    //speechBuilder.Append("日,");
                     speechBuilder.Append("根据您当前进度预计结束日期为");
                     //如果当前预计结束日期不为空，则使用当前预计结束日期 否则使用end_date
                     if (trainingCourseEntity.Current_end_date != null)
