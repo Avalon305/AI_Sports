@@ -230,15 +230,15 @@ namespace AI_Sports.AISports.View.Pages
                         speechBuilder.Append("，属于重度肥胖，建议您的训练计划以减脂为主，建议开启减脂模式，减脂模式会结合力量耐力循环，智能指导您充分使用有氧设备，辅助使用力量设备进行训练，每次训练包括全身唤醒、心肺改善、强化燃脂三个阶段。根据全身燃动理论，通过高强度力量训练与有氧训练交替进行，可以在短时间内达到超高的能量消耗效果，并且让身体在训练后也继续保持燃脂状态，达到优秀的减脂效果。建议您在减脂过程中少吃油腻食物，多吃水果蔬菜，保持饮食清淡、营养均衡。");
 
                     }
-                    speechBuilder.Append("根据您的年龄、身高、体重、历史运动数据，智能计算得出您的最大心率为");
-                    speechBuilder.Append(max_heart_rate);
-                    speechBuilder.Append(",最适宜心率为");
-                    speechBuilder.Append(suitable_heart_rate);
-                    speechBuilder.Append(",建议您在运动过程中的心率不要超过最大心率");
+                    //speechBuilder.Append("根据您的年龄、身高、体重、历史运动数据，智能计算得出您的最大心率为");
                     //speechBuilder.Append(max_heart_rate);
-                    speechBuilder.Append("，避免受伤，建议将心率保持在最宜心率");
-                    speechBuilder.Append(suitable_heart_rate);
-                    speechBuilder.Append("左右，可以保持较高的燃脂效率，并且受伤风险较低，运动后身体不会感觉过于疲劳，让您运动得更安全、更有效、更健康。");
+                    //speechBuilder.Append(",最适宜心率为");
+                    //speechBuilder.Append(suitable_heart_rate);
+                    //speechBuilder.Append(",建议您在运动过程中的心率不要超过最大心率");
+                    ////speechBuilder.Append(max_heart_rate);
+                    //speechBuilder.Append("，避免受伤，建议将心率保持在最宜心率");
+                    //speechBuilder.Append(suitable_heart_rate);
+                    //speechBuilder.Append("左右，可以保持较高的燃脂效率，并且受伤风险较低，运动后身体不会感觉过于疲劳，让您运动得更安全、更有效、更健康。");
 
                     Console.WriteLine("用户页面userInfo语音文本：" + speechBuilder.ToString());
 
