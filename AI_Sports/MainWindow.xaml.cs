@@ -118,27 +118,27 @@ namespace AI_Sports
             //    this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定用户页面 urlkind相对uri
             //}
             //获得配置文件中串口号
-            string configPortName = CommUtil.GetSettingString("ReadSerialPort");
+            //string configPortName = CommUtil.GetSettingString("ReadSerialPort");
 
-            serialPort = new SerialPort();
-            serialPort.PortName = configPortName != "" ? configPortName : "COM5";
-            serialPort.BaudRate = 115200;
-            serialPort.ReadTimeout = 3000; //单位毫秒
-            serialPort.WriteTimeout = 3000; //单位毫秒
-            serialPort.ReceivedBytesThreshold = 1;
-            serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
-            try
-            {
-                serialPort.Open();
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                MessageBoxX.Show( "温馨提示", "读卡器串口被占用，请到系统设置页面进行设置");
-            }
-            catch (IOException ex)
-            {
-                MessageBoxX.Show( "温馨提示", "读卡器串口不存在，请到系统设置页面进行设置");
-            }
+            //serialPort = new SerialPort();
+            //serialPort.PortName = configPortName != "" ? configPortName : "COM5";
+            //serialPort.BaudRate = 115200;
+            //serialPort.ReadTimeout = 3000; //单位毫秒
+            //serialPort.WriteTimeout = 3000; //单位毫秒
+            //serialPort.ReceivedBytesThreshold = 1;
+            //serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
+            //try
+            //{
+            //    serialPort.Open();
+            //}
+            //catch (UnauthorizedAccessException ex)
+            //{
+            //    MessageBoxX.Show( "温馨提示", "读卡器串口被占用，请到系统设置页面进行设置");
+            //}
+            //catch (IOException ex)
+            //{
+            //    MessageBoxX.Show( "温馨提示", "读卡器串口不存在，请到系统设置页面进行设置");
+            //}
 
         }
         /// <summary>

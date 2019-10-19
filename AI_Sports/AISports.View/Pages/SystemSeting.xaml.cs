@@ -40,7 +40,7 @@ namespace AI_Sports.AISports.View.Pages
 		{
 			InitializeComponent();
             //自动初始化串口
-            autoContentPort();
+            //autoContentPort();
             SystemSettingEntity systemSettingEntity = systemSettingService.GetSystemSetting();
 			
 			if (systemSettingEntity != null)
@@ -127,7 +127,7 @@ namespace AI_Sports.AISports.View.Pages
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
             //连接所选串口 并更新配置类读卡器串口
-            Serial_Connect();
+            //Serial_Connect();
 
 
             if (isNUll == 0) { 
@@ -214,83 +214,83 @@ namespace AI_Sports.AISports.View.Pages
         /// <summary>
         /// 自动选中串口 addbyCQZ 5.11 从发卡窗口迁移过来统一设置
         /// </summary>
-        private void autoContentPort()
-        {
-            string port = "";
-            //从app.config中获取
-            port = CommUtil.GetSettingString("ReadSerialPort");
-            initPort();
+        //private void autoContentPort()
+        //{
+        //    string port = "";
+        //    //从app.config中获取
+        //    port = CommUtil.GetSettingString("ReadSerialPort");
+        //    initPort();
 
-            if (port != "")
-            {
-                //如果有串口，选中串口
-                comboBox.SelectedValue = port;
-            }
-        }
+        //    if (port != "")
+        //    {
+        //        //如果有串口，选中串口
+        //        comboBox.SelectedValue = port;
+        //    }
+        //}
 
         /// <summary>
         /// 初始化搜索到的串口
         /// </summary>
-        private void initPort()
-        {
-            string[] names = SerialPort.GetPortNames();
-            List<String> list = new List<String>();
-            foreach (string name in names)
-            {
-                list.Add(name);
-            }
-            comboBox.ItemsSource = list;
-        }
+        //private void initPort()
+        //{
+        //    string[] names = SerialPort.GetPortNames();
+        //    List<String> list = new List<String>();
+        //    foreach (string name in names)
+        //    {
+        //        list.Add(name);
+        //    }
+        //    comboBox.ItemsSource = list;
+        //}
         /// <summary>
         /// 连接串口 更新配置中的读卡器串口
         /// </summary>
-        private void Serial_Connect()
-        {
-            if (comboBox.SelectedIndex == -1)
-            {
-                MessageBox.Show("请选择串口", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-            comboBox.IsEnabled = false;
+        //private void Serial_Connect()
+        //{
+        //    if (comboBox.SelectedIndex == -1)
+        //    {
+        //        MessageBox.Show("请选择串口", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //        return;
+        //    }
+        //    comboBox.IsEnabled = false;
 
 
-            string name1 = comboBox.SelectedValue.ToString();
-            serialPort = new SerialPort();
-            serialPort.PortName = name1;
-            serialPort.BaudRate = 115200;
-            serialPort.ReadTimeout = 3000; //单位毫秒
-            serialPort.WriteTimeout = 3000; //单位毫秒
-            serialPort.ReceivedBytesThreshold = 1;
-            //serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
-            try
-            {
-                MainWindow.serialPort.Open();
+        //    string name1 = comboBox.SelectedValue.ToString();
+        //    serialPort = new SerialPort();
+        //    serialPort.PortName = name1;
+        //    serialPort.BaudRate = 115200;
+        //    serialPort.ReadTimeout = 3000; //单位毫秒
+        //    serialPort.WriteTimeout = 3000; //单位毫秒
+        //    serialPort.ReceivedBytesThreshold = 1;
+        //    //serialPort.DataReceived += new SerialDataReceivedEventHandler(OnPortDataReceived);
+        //    try
+        //    {
+        //        MainWindow.serialPort.Open();
 
-                //如果连接成功，更新读卡串口号 
-                CommUtil.UpdateSettingString("ReadSerialPort", name1);
-                MessageBoxX.Show("温馨提示","读卡器串口连接成功，请重启系统后生效");
-                //if (CommUtil.GetSettingString("SerialPort") == "")
-                //{
-                //}
-            }
-            catch (UnauthorizedAccessException ex)
-            {
-                MessageBox.Show("串口被占用", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-                comboBox.IsEnabled = true;
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show("串口不存在", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-                comboBox.IsEnabled = true;
-            }
+        //        //如果连接成功，更新读卡串口号 
+        //        CommUtil.UpdateSettingString("ReadSerialPort", name1);
+        //        MessageBoxX.Show("温馨提示","读卡器串口连接成功，请重启系统后生效");
+        //        //if (CommUtil.GetSettingString("SerialPort") == "")
+        //        //{
+        //        //}
+        //    }
+        //    catch (UnauthorizedAccessException ex)
+        //    {
+        //        MessageBox.Show("串口被占用", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //        comboBox.IsEnabled = true;
+        //    }
+        //    catch (IOException ex)
+        //    {
+        //        MessageBox.Show("串口不存在", "温馨提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+        //        comboBox.IsEnabled = true;
+        //    }
 
-        }
+        //}
 
         //无法自动连接时,进行手动连接,初始化下拉列表
-        private void comboBox_DropDownOpened(object sender, EventArgs e)
-        {
-            initPort();
-        }
+        //private void comboBox_DropDownOpened(object sender, EventArgs e)
+        //{
+        //    initPort();
+        //}
         /// <summary>
         /// 接收方法
         /// </summary>

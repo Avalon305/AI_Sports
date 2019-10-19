@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using System.Windows.Navigation;
 using AI_Sports.Util;
 using System.Windows.Threading;
+using System.Text.RegularExpressions;
 
 namespace AI_Sports.AISports.View.Pages
 {
@@ -46,15 +47,16 @@ namespace AI_Sports.AISports.View.Pages
             InitializeComponent();
             //加载手环列表
             LoadBluetoothList();
-            //初始化注册定时器
-            //readDataTimer.Tick += new EventHandler(timeCycle);
-            ////五秒一次查询，更新登陆列表
-            //readDataTimer.Interval = new TimeSpan(0, 0, 0, 5);
-            //readDataTimer.Start();
+			TB_MemberId.Focus();
+			//初始化注册定时器
+			//readDataTimer.Tick += new EventHandler(timeCycle);
+			////五秒一次查询，更新登陆列表
+			//readDataTimer.Interval = new TimeSpan(0, 0, 0, 5);
+			//readDataTimer.Start();
 
 
 
-        }
+		}
 
         //定时任务调用方法 每五秒查询一次扫描手环表
         //private void timeCycle(object sender, EventArgs e)
@@ -185,5 +187,32 @@ namespace AI_Sports.AISports.View.Pages
 
 
         }
-    }
+
+		/// <summary>
+		/// 刷手环登录，不需要点击登录按钮
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void TB_MemberId_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			var reg = new Regex("[\u4e00-\u9fa5]");
+			string memberId = TB_MemberId.Text;
+			if (reg.IsMatch(memberId))
+			{
+				MessageBoxX.Show("提示", "请切换英文输入法");
+
+			}
+			if (memberId.Length == 16)
+			{
+				if (memberId != null && memberId != "")
+				{
+					//传递卡号参数给mainwindow
+					PassValuesEvent(memberId);
+					Console.WriteLine("已经传递卡号给主窗体 id：" + memberId);
+					this.Close();
+				}
+				TB_MemberId.Clear();
+			}
+		}
+	}
 }

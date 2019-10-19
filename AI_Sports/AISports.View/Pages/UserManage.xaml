@@ -270,7 +270,7 @@
                 
             </Button>
             <!--发卡按钮-->
-            <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,105,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Write_Card_Click">
+            <!--<Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,105,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Write_Card_Click">
                 <Button.Content>
                     <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-credit-card}" Width="20" Height="20" Fill="White"></Path>
@@ -278,10 +278,10 @@
                     </Grid>
                 </Button.Content>
                 
-            </Button>
+            </Button>-->
 
             <!--发手环按钮-->
-            <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,210,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Write_WristStrap_Click">
+            <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,105,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Write_WristStrap_Click">
                 <Button.Content>
                     <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-credit-card}" Width="20" Height="20" Fill="White"></Path>
@@ -292,7 +292,7 @@
             </Button>
 
             <!--3D扫描按钮-->
-            <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,315,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Button_Click_3DScan">
+            <Button Style="{StaticResource BlueToYellowBackground}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Height="100" Margin="0,210,0,0"   FontFamily="Microsoft YaHei Light" FontSize="22" BorderBrush="{x:Null}" Click="Button_Click_3DScan">
                 <Button.Content>
                     <Grid Width="225" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Path Margin="30,0,0,0" HorizontalAlignment="Left" Data="{DynamicResource glyphicon-camera}" Width="20" Height="20" Fill="White"></Path>

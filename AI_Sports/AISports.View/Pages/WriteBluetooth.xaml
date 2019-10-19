@@ -6,17 +6,17 @@
         xmlns:local="clr-namespace:AI_Sports.AISports.View.Pages"
         xmlns:local1="clr-namespace:AI_Sports.AISports.View.Converter"
         mc:Ignorable="d"
-        Title="请选择要写入的手环" Height="750" Width="800" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <Color x:Key="Color1">#FF04243D</Color>
-        <Color x:Key="Color2">#FFF6D600</Color>
-        <!--转换器资源-->
-        <local1:WriteResultConvert x:Key="WriteResultConvert"></local1:WriteResultConvert>
-    </Window.Resources>
-    <Grid>
+        Title="请选择要写入的手环" Height="500" Width="800" WindowStartupLocation="CenterScreen">
+	<Window.Resources>
+		<Color x:Key="Color1">#FF04243D</Color>
+		<Color x:Key="Color2">#FFF6D600</Color>
+		<!--转换器资源-->
+		<!--<local1:WriteResultConvert x:Key="WriteResultConvert"></local1:WriteResultConvert>-->
+	</Window.Resources>
+	<Grid>
 
-            <StackPanel Orientation="Vertical"  Background="#FF1C4364">
-                <WrapPanel>
+		<StackPanel Orientation="Vertical"  Background="#FF1C4364">
+			<!--<WrapPanel>
                     <Label Content="蓝牙手环名称" Style="{DynamicResource h3}"  Foreground="#FFF6D600"  Margin="20 20 0 0"/>
                 </WrapPanel>
                 <GridSplitter  Width="800" Height="2" Margin="0,10,0,0" Background="Gray" />
@@ -28,18 +28,18 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
 
-                </ListBox>
-
-                <TextBox  Text="" Tag="写入用户ID："  Name="TB_Member_Id"  Style="{DynamicResource input-group-addon left}" VerticalAlignment="Top" Margin="20,10,0,0" HorizontalAlignment="Left" FontSize="22" Width="500" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="Auto" />
-
-                <WrapPanel>
+                </ListBox>-->
+			<Grid>
+				<TextBox   Text="" Tag="写入用户手环ID："  Name="TB_Member_Id"  Style="{DynamicResource input-group-addon left}" VerticalAlignment="Top" Margin="20,100,0,0" HorizontalAlignment="Left" FontSize="22" Width="500" FontFamily="Microsoft YaHei" Foreground="#04243D" Height="Auto" />
+			</Grid>
+			<!--<WrapPanel>
                 <Label Name="Lab_Tips" Content="" Style="{DynamicResource h3}" Foreground="Green"  Margin="20 20 0 0" />
                 </WrapPanel>
             <WrapPanel>
                 <Label Name="RecordHead" Content="手环写入记录" Style="{DynamicResource h3}" Foreground="#FFF6D600"  Margin="20 20 0 0" />
-            </WrapPanel>
+            </WrapPanel>-->
 
-            <Grid  Width="500" HorizontalAlignment="Left" Margin="20,0,0,0" >
+			<!--<Grid  Width="500" HorizontalAlignment="Left" Margin="20,0,0,0" >
                 <DataGrid AutoGenerateColumns="False" HorizontalAlignment="Stretch" Height="250"  x:Name="stackPanel" VerticalAlignment="Stretch" ItemsSource="{Binding}" HorizontalGridLinesBrush="Gainsboro" VerticalGridLinesBrush="Gainsboro" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="写入手环名称" Width="160" Binding="{ Binding Bluetooth_name}">
@@ -50,15 +50,17 @@
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </Grid>
+            </Grid>-->
 
-        </StackPanel>
-            <StackPanel Height="50" Orientation="Horizontal" Background="DimGray" VerticalAlignment="Bottom">
-            <Button Content="重启蓝牙项目" Style="{DynamicResource btn-success}" FontFamily="Microsoft YaHei"  Width="120" Margin="390,6,0,5" Click="Button_Click_3"></Button>
+		</StackPanel>
+		<StackPanel Height="64" Orientation="Horizontal" Background="DimGray" VerticalAlignment="Bottom">
+			<!--<Button Content="重启蓝牙项目" Style="{DynamicResource btn-success}" FontFamily="Microsoft YaHei"  Width="120" Margin="390,6,0,5" Click="Button_Click_3"></Button>-->
 
-            <Button Content="刷新手环" Style="{DynamicResource btn-primary}"  Width="80" Margin="10,6,0,5" Click="Button_Click_2"></Button>
-                <Button Content="写入"  Style="{DynamicResource btn-success}" Width="80" Margin="10,6,0,5" Click="Button_Click_1"></Button>
-                <Button Content="取消"  Width="80" Margin="10,6,10,5" Style="{DynamicResource btn-warning}" Click="Button_Click"></Button>
-            </StackPanel>
-    </Grid>
+			<!--<Button Content="刷新手环" Style="{DynamicResource btn-primary}"  Width="80" Margin="10,6,0,5" Click="Button_Click_2"></Button>-->
+			<Grid>
+				<Button Content="写入"  Style="{DynamicResource btn-success}" Width="91" Margin="555,18,-535,14" Click="Button_Click_1" Height="33"></Button>
+				<Button Content="取消" Style="{DynamicResource btn-warning}"   Width="91" Margin="670,14,-650,10"  Height="33" Click="Button_Click"></Button>
+			</Grid>
+		</StackPanel>
+	</Grid>
 </Window>

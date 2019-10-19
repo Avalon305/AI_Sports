@@ -195,6 +195,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Page Include="AISports.Assets\PlusMinusExpanderStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -230,6 +233,10 @@
     <Page Include="AISports.View\Pages\SendCard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AISports.View\Pages\UpdateMemberId.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AISports.View\Pages\WriteBluetooth.xaml">
       <SubType>Designer</SubType>
@@ -500,6 +507,9 @@
     <Compile Include="AISports.View\Pages\SendCard.xaml.cs">
       <DependentUpon>SendCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AISports.View\Pages\UpdateMemberId.xaml.cs">
+      <DependentUpon>UpdateMemberId.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AISports.View\Pages\WriteBluetooth.xaml.cs">
       <DependentUpon>WriteBluetooth.xaml</DependentUpon>
     </Compile>
@@ -621,6 +631,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NolleTestSerial.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

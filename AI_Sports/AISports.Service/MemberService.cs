@@ -139,6 +139,23 @@ namespace AI_Sports.Service
 		}
 
 		/// <summary>
+		/// memberid更新为手环ID
+		/// </summary>
+		/// <param name="bluetoothId"></param>
+		/// <param name="memberId"></param>
+		public void UpdateMemberIdToBluetooth(string bluetoothId,string memberId) {
+
+			try
+			{
+				memberDAO.UpdateMemberId(memberId, bluetoothId);
+			}
+			catch (Exception ex)
+			{
+				logger.Error("更新蓝牙id失败:" + ex.ToString());
+			}
+			
+		}
+		/// <summary>
 		/// 如果传上来的用户ID在数据库中不存在，则创建默认用户，并创建默认的训练计划、课程活动、个人设置
 		/// </summary>
 		/// <returns></returns>

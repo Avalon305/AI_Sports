@@ -46,6 +46,22 @@ namespace AI_Sports.Dao
 
             }
         }
+
+		/// <summary>
+		/// 更新memberId
+		/// </summary>
+		/// <param name="oldMemberId"></param>
+		/// <param name="newMemberId"></param>
+		public void UpdateMemberId(string oldMemberId,string  newMemberId)
+		{
+			using (var conn = DbUtil.getConn())
+			{
+				const string sql = "update bdl_member set member_id = @newMemberId where member_id = @oldMemberId";
+
+				conn.Execute(sql, new { newMemberId = newMemberId, oldMemberId = oldMemberId });
+
+			}
+		}
         ///cnk
         /// <summary>
         /// 根据memberid查询bdl_member中的数据主键id,主要用于上传数据
