@@ -12,6 +12,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,6 +36,7 @@ namespace AI_Sports
         private MemberService memberService = new MemberService();
         private static Logger logger = LogManager.GetCurrentClassLogger();
         public static SerialPort serialPort = null;
+
         /// <summary>
         /// 定时检测登录权限
         /// </summary>
@@ -59,6 +61,8 @@ namespace AI_Sports
         public MainWindow()
         {
             InitializeComponent();
+
+
             //初始化计时器
             readDataTimer.Tick += new EventHandler(CycleCheck);
             readDataTimer.Interval = new TimeSpan(1, 0, 0, 0);
@@ -85,6 +89,13 @@ namespace AI_Sports
                     //Application.Current.Shutdown();
                 }
             }
+
+            //实例化登录窗口用来作为登录页的隐藏输入框传值用
+            //LoginWindow loginWindow = new LoginWindow();
+            //// 订阅事件
+            //loginWindow.PassValuesEvent += new LoginWindow.PassValuesHandler(ReceiveValues);
+
+            
             this.mainpage.Source = new Uri("/AI_Sports;component/LoginWindow.xaml", UriKind.Relative);//跳转页面
             //窗口最前
             //this.Topmost = true;
@@ -253,74 +264,74 @@ namespace AI_Sports
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             Enum resultCode = null;
-            if (e.Key == Key.U)
-            {//模拟用户登录
-                resultCode = memberService.Login("305865088");
-                switch (resultCode)
-                {
-                    case LoginPageStatus.CoachPage:
-                        logger.Debug("返回教练登陆页面");
-                        //this.Close();
-                        //用这种实例化的方法可以刷新页面，导航方式不会刷新
-                        UserManage userManage = new UserManage();
-                        this.mainpage.Content = userManage;
-                        //this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+            //if (e.Key == Key.U)
+            //{//模拟用户登录
+            //    resultCode = memberService.Login("305865088");
+            //    switch (resultCode)
+            //    {
+            //        case LoginPageStatus.CoachPage:
+            //            logger.Debug("返回教练登陆页面");
+            //            //this.Close();
+            //            //用这种实例化的方法可以刷新页面，导航方式不会刷新
+            //            UserManage userManage = new UserManage();
+            //            this.mainpage.Content = userManage;
+            //            //this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
-                        break;
-                    case LoginPageStatus.UserPage:
-                        logger.Debug("返回用户登陆页面");
-                        //this.Close();
-                        User user = new User();
-                        this.mainpage.Content = user;
-                        //this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+            //            break;
+            //        case LoginPageStatus.UserPage:
+            //            logger.Debug("返回用户登陆页面");
+            //            //this.Close();
+            //            User user = new User();
+            //            this.mainpage.Content = user;
+            //            //this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
-                        break;
-                    case LoginPageStatus.RepeatLogins:
-                        logger.Debug("拦截重复登陆，请先退出。");
-                        MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
-                        break;
-                    case LoginPageStatus.UnknownID:
-                        logger.Debug("未知ID，禁止登录。");
-                        MessageBoxX.Show("温馨提示", "未知ID，登录失败");
+            //            break;
+            //        case LoginPageStatus.RepeatLogins:
+            //            logger.Debug("拦截重复登陆，请先退出。");
+            //            MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
+            //            break;
+            //        case LoginPageStatus.UnknownID:
+            //            logger.Debug("未知ID，禁止登录。");
+            //            MessageBoxX.Show("温馨提示", "未知ID，登录失败");
 
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if (e.Key == Key.C)
-            {//模拟教练登陆
-                resultCode = memberService.Login("17863979633");
-                switch (resultCode)
-                {
-                    case LoginPageStatus.CoachPage:
-                        logger.Debug("教练正常登陆");
-                        //this.Close();
-                        this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
+            //else if (e.Key == Key.C)
+            //{//模拟教练登陆
+            //    resultCode = memberService.Login("17863979633");
+            //    switch (resultCode)
+            //    {
+            //        case LoginPageStatus.CoachPage:
+            //            logger.Debug("教练正常登陆");
+            //            //this.Close();
+            //            this.mainpage.Navigate(new Uri("AISports.View/Pages/UserManage.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
-                        break;
-                    case LoginPageStatus.UserPage:
-                        logger.Debug("用户正常登陆");
-                        //this.Close();
-                        this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
+            //            break;
+            //        case LoginPageStatus.UserPage:
+            //            logger.Debug("用户正常登陆");
+            //            //this.Close();
+            //            this.mainpage.Navigate(new Uri("AISports.View/Pages/User.XAML", UriKind.Relative));//设定教练页面 urlkind相对uri
 
-                        break;
-                    case LoginPageStatus.RepeatLogins:
-                        logger.Debug("拦截重复登陆，请先退出。");
-                        MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
+            //            break;
+            //        case LoginPageStatus.RepeatLogins:
+            //            logger.Debug("拦截重复登陆，请先退出。");
+            //            MessageBoxX.Show("温馨提示", "重复登陆，请先退出当前用户");
 
-                        break;
-                    case LoginPageStatus.UnknownID:
-                        logger.Debug("未知ID，禁止登录。");
-                        MessageBoxX.Show("温馨提示", "未知ID，登录失败");
+            //            break;
+            //        case LoginPageStatus.UnknownID:
+            //            logger.Debug("未知ID，禁止登录。");
+            //            MessageBoxX.Show("温馨提示", "未知ID，登录失败");
 
-                        break;
-                    default:
-                        break;
-                }
+            //            break;
+            //        default:
+            //            break;
+            //    }
 
-            }
-            else if (e.Key == Key.Enter)
+            //}
+            if (e.Key == Key.Enter)
             {
                 BluetoothLogin bluetoothWindow = new BluetoothLogin();
 
@@ -347,7 +358,7 @@ namespace AI_Sports
             string memberId = sender.ToString();
             Console.WriteLine("主窗体接受到的会员ID："+memberId);
             Enum resultCode = null;
-
+            
             resultCode = memberService.Login(memberId);
             switch (resultCode)
             {
@@ -421,6 +432,40 @@ namespace AI_Sports
                     break;
             }
         }
+
+
+        //private void Mytext_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+
+
+        //    var reg = new Regex("[\u4e00-\u9fa5]");
+        //    string memberId = TB_memberId.Text;
+        //    MessageBoxX.Show("提示", "Mainwindow获得焦点，读取的数据：" + memberId.ToString());
+        //    Console.WriteLine("获得焦点，读取的数据id：" + memberId);
+
+        //    if (reg.IsMatch(memberId))
+        //    {
+        //        MessageBoxX.Show("提示", "请切换英文输入法");
+
+        //    }
+        //    if (memberId.Length > 0)
+        //    {
+        //        if (memberId != null && memberId != "")
+        //        {
+        //            //传递卡号参数给mainwindow
+        //            //PassValuesEvent(memberId);
+        //            //调用登录
+        //            ReceiveValues(memberId);
+        //            Console.WriteLine("已经传递卡号给主窗体 id：" + memberId);
+        //        }
+        //        //TB_memberId.Clear();
+
+        //    }
+        //    TB_memberId.Focus();
+
+
+        //}
+
 
     }
 

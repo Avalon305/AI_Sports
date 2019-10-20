@@ -195,9 +195,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Page Include="AISports.Assets\PlusMinusExpanderStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -233,10 +230,6 @@
     <Page Include="AISports.View\Pages\SendCard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AISports.View\Pages\UpdateMemberId.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AISports.View\Pages\WriteBluetooth.xaml">
       <SubType>Designer</SubType>
@@ -507,9 +500,6 @@
     <Compile Include="AISports.View\Pages\SendCard.xaml.cs">
       <DependentUpon>SendCard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AISports.View\Pages\UpdateMemberId.xaml.cs">
-      <DependentUpon>UpdateMemberId.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AISports.View\Pages\WriteBluetooth.xaml.cs">
       <DependentUpon>WriteBluetooth.xaml</DependentUpon>
     </Compile>
@@ -634,10 +624,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NolleTest.xaml.cs">
@@ -718,6 +704,7 @@
     <Resource Include="AISports.View\Images\QQ截图20190119220358.png" />
     <Resource Include="AISports.View\Images\QQ截图20190119220410.png" />
     <Resource Include="AISports.View\Images\round.png" />
+    <Resource Include="AISports.View\Images\shouhuanLogin.png" />
     <Resource Include="AISports.View\Images\VitalSigns.jpg" />
     <Resource Include="AISports.View\Images\next.png" />
     <Resource Include="AISports.View\Images\timg.jpg" />
@@ -768,6 +755,10 @@
     <Resource Include="AISports.View\Images\muscle_bs9.png" />
     <Resource Include="AISports.View\Images\left.JPG" />
     <Resource Include="AISports.View\Images\right.png" />
+    <Resource Include="AISports.View\Pages\shouhuanLogin.png" />
+    <Resource Include="AISports.View\Images\shouhuan.png" />
+    <Resource Include="AISports.View\Images\shouhuan_small.png" />
+    <Resource Include="AISports.View\Images\enterAndLogin.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

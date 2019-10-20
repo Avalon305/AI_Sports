@@ -197,22 +197,22 @@ namespace AI_Sports.AISports.View.Pages
 		{
 			var reg = new Regex("[\u4e00-\u9fa5]");
 			string memberId = TB_MemberId.Text;
-			if (reg.IsMatch(memberId))
-			{
-				MessageBoxX.Show("提示", "请切换英文输入法");
+            if (reg.IsMatch(memberId))
+            {
+                MessageBoxX.Show("提示", "请切换英文输入法");
 
-			}
-			if (memberId.Length == 16)
+            }
+            if (memberId.Length == 16)
 			{
 				if (memberId != null && memberId != "")
 				{
 					//传递卡号参数给mainwindow
 					PassValuesEvent(memberId);
 					Console.WriteLine("已经传递卡号给主窗体 id：" + memberId);
-					this.Close();
+                    this.Close();
 				}
-				TB_MemberId.Clear();
-			}
-		}
-	}
+                //TB_MemberId.Clear();
+            }
+        }
+    }
 }

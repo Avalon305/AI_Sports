@@ -10,8 +10,15 @@
         WindowStyle="None"
         KeyDown="Window_KeyDown"
         >
-    <Frame x:Name="mainpage" NavigationUIVisibility="Hidden"
-		 
-		   />
-	
+    <Grid>
+
+        <Frame x:Name="mainpage" NavigationUIVisibility="Hidden"/>
+
+        <!--<Grid FocusManager.FocusedElement="{Binding ElementName= TB_memberId}">
+            --><!--隐藏的输入框，上边的focuse属性获取焦点，读取手环NFC的输入登陆--><!--
+            <TextBox  Background="#FFF6D600" MaxLength="16" Height="0"  Width="50" Name="TB_memberId"
+				 TextChanged="Mytext_TextChanged"  Visibility="Visible" />
+        </Grid>-->
+    </Grid>
+
 </Window>

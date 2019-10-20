@@ -130,8 +130,8 @@ namespace AI_Sports
                 //清楚APP.config中的登陆缓存
                 memberService.Logout();
                 //起调UWP蓝牙项目
-                Process process = new Process();
-                Process.Start(new ProcessStartInfo("bluetoothzcr:"));
+                //Process process = new Process();
+                //Process.Start(new ProcessStartInfo("bluetoothzcr:"));
             }
             catch (Exception ex)
             {

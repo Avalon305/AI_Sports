@@ -78,9 +78,9 @@
 					</LinearGradientBrush>
 				</ProgressBar.Foreground>
 			</ProgressBar>
-			<ProgressBar Style="{DynamicResource progress-bar}" Value="100"  HorizontalAlignment="Center" Height="55" Margin="0,0,0,130" VerticalAlignment="Bottom" Width="300"  FontSize="6">
+			<ProgressBar Style="{DynamicResource progress-bar}" Value="100"  HorizontalAlignment="Center" Height="55" Margin="0,0,0,130" VerticalAlignment="Bottom" Width="350"  FontSize="6" ValueChanged="ProgressBar_ValueChanged">
 				<ProgressBar.OpacityMask>
-					<ImageBrush ImageSource="AISports.View/Images/loginTip.png" Stretch="UniformToFill"/>
+					<ImageBrush ImageSource="AISports.View/Images/enterAndLogin.png" Stretch="UniformToFill"/>
 				</ProgressBar.OpacityMask>
 				<ProgressBar.Foreground>
 					<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -90,11 +90,13 @@
 					</LinearGradientBrush>
 				</ProgressBar.Foreground>
 			</ProgressBar>
-		</Grid>
-		<!--<Grid>
-			<TextBox  Background="Wheat" MaxLength="16" Height="20"  Width="100" Name="mytext"
-				 TextChanged="Mytext_TextChanged"  Margin="132,883,1613,177"/>
-		</Grid>-->
+            <!--<Grid FocusManager.FocusedElement="{Binding ElementName= TB_memberId}">
+                --><!--隐藏的输入框，上边的focuse属性获取焦点，读取手环NFC的输入登陆--><!--
+                <TextBox  Background="#FFF6D600" MaxLength="16" Height="0"  Width="100" Name="TB_memberId"
+				 TextChanged="Mytext_TextChanged"  Visibility="Visible" Margin="0,955,1820,105"/>
+            </Grid>-->
+        </Grid>
+        
 	</Grid>
 
 </Page>
