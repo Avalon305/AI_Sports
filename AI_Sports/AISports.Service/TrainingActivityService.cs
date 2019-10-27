@@ -179,6 +179,8 @@ namespace AI_Sports.Service
 
                 //批量插入训练活动
                 result = activityDAO.BatchInsert(activities);
+
+
                 //根据训练活动批量插入个人设置记录 传入用户主键id
                 personalSettingService.AutoSavePersonalSettings(memberPkId, trainingCourseEntity.Id , trainingCourseEntity.Member_id);
 
