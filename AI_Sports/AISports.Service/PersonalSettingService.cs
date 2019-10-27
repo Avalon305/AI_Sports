@@ -124,7 +124,7 @@ namespace AI_Sports.Service
                 {
 
                     //先查询判断个人设置表是否有该会员ID，该活动类型的记录，传入会员id和活动类型
-                    List<PersonalSettingEntity> personalSettingEntities = personalSettingDAO.ListSettingByMemberIdActivityType(memberID, activity.Activity_type);
+                    List<PersonalSettingEntity> personalSettingEntities = personalSettingDAO.ListSettingByMemberIdActivityType(memberId, activity.Activity_type);
 
                     //若个人设置表无该会员该训练活动的记录，则每个设备往个人设置表插入一条记录
                     if (personalSettingEntities.Count == 0)
