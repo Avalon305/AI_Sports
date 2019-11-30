@@ -331,7 +331,7 @@ namespace AI_Sports
             //    }
 
             //}
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Space)
             {
                 BluetoothLogin bluetoothWindow = new BluetoothLogin();
 

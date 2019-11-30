@@ -103,6 +103,19 @@ namespace AI_Sports
         SkeletonLengthEntity skeletonLength = new SkeletonLengthEntity();
         bool flag = false;
         int clicknum = 0;
+
+        //deal with方法中骨骼长度全局变量 因为手动抓拍改为全局 CQZ
+        double NeckLength = new double();
+        double ShoulderWidth = new double();
+        double ArmLengthUp = new double();
+        double ArmLengthDown = new double();
+        double LegLengthUp = new double();
+        double LegLengthDown = new double();
+        double BodyLength = new double();
+        double Height = new double();
+        //身高调整常量，根据测试情况调节该值 
+        double HeightConst = 200.0;
+
         SkeletonLengthDAO skeletonLengthDAO = new SkeletonLengthDAO();
         PersonalSettingService personalSettingService = new PersonalSettingService();
         public NuitrackScan()
@@ -128,7 +141,7 @@ namespace AI_Sports
             {
                 Console.WriteLine("Cannot initialize Nuitrack.");
                 //throw exception;
-               MessageBoxX.Show("3D摄像头初始化异常", "3D摄像头初始化失败，请检查SDK配置和是否进行密钥认证。");
+                MessageBoxX.Show("3D摄像头初始化异常", "3D摄像头初始化失败，请检查SDK配置和是否进行密钥认证。");
 
             }
 
@@ -379,6 +392,7 @@ namespace AI_Sports
             }
 
         }
+        //开始扫描按钮点击事件
         private void DealWith()
         {
             try
@@ -400,18 +414,30 @@ namespace AI_Sports
 
             }
 
-            // Draw skeleton joints
+            // Draw skeleton joints  
+            //CQZ:检测骨架关节数据,骨骼数组不为空开始，里边while循环判断骨骼数组里如果为空，就调用API更新骨骼数据，线程sleep 0.1秒再循环检测
             if (_skeletonData != null)
             {
-
-
-                Console.WriteLine("_skeletonData不为空");
-                while (_skeletonData.Skeletons.Length == 0)
+                //加try catch处理 --CQZ
+                try
                 {
-                    Nuitrack.Update(_skeletonTracker);
-                    Console.WriteLine("Skeletons为空进行Update");
-                    Thread.Sleep(100);
+                    Console.WriteLine("_skeletonData不为空");
+                    while (_skeletonData.Skeletons.Length == 0)
+                    {
+                        Nuitrack.Update(_skeletonTracker);
+                        Console.WriteLine("Skeletons为空进行Update");
+                        Thread.Sleep(100);
+                        
+                    }
+
                 }
+                catch
+                {
+                    Console.WriteLine("Skeletons为空进行Update异常");
+                    MessageBoxX.Show("SkeletonsNullException", "骨骼数据为空，请站到指定位置再开始扫描。");
+                }
+
+
                 Joint Head = new Joint();   //衣领位置
                 Joint Collar = new Joint();   //衣领位置
                 Joint LeftShoulder = new Joint();  //左肩关节
@@ -423,11 +449,13 @@ namespace AI_Sports
                 Joint Waist = new Joint();    //腰部
                 Console.WriteLine("Joints长度为" + _skeletonData.Skeletons[0].Joints.Length);
 
+                //骨骼关节数据不为空后开始进行图像渲染，各个关节的计算初始化等操作。
                 try
                 {
                     if (_skeletonData.Skeletons.Length > 0 && _skeletonData.Skeletons[0].Joints.Length > 0)
                     {
-                        for (int i = 0; i < _skeletonData.Skeletons[0].Joints.Length; i++)
+                        //CQZ:一直以来罪魁祸首崩溃异常的大坑！数组越界bug修改!!!!不应该是i < [].length  应该是 i < [].length-1
+                        for (int i = 0; i < _skeletonData.Skeletons[0].Joints.Length - 1; i++)
                         {
                             Skeleton skeleton = _skeletonData.Skeletons[0];
 
@@ -496,17 +524,25 @@ namespace AI_Sports
                                 Waist = skeleton.Joints[i];
                                 //Console.WriteLine("腰部坐标" + i + "||" + Waist.Real.X + "||" + Waist.Real.Y + "||" + Waist.Real.Z);
                             }
-                            double NeckLength = ComputeDistanceBetween2Joints(Head, Collar);
-                            double ShoulderWidth = ComputeDistanceBetween2Joints(LeftShoulder, Collar);
-                            double ArmLengthUp = ComputeDistanceBetween2Joints(LeftShoulder, LeftElbow);
-                            double ArmLengthDown = ComputeDistanceBetween2Joints(LeftElbow, LeftWrist);
-                            double LegLengthUp = ComputeDistanceBetween2Joints(LeftHip, LeftKnee);
-                            double LegLengthDown = ComputeDistanceBetween2Joints(LeftKnee, LeftAnkle);
-                            double BodyLength = ComputeDistanceBetween2Joints(Collar, Waist);
-                            double Height = LegLengthUp + LegLengthDown + BodyLength + NeckLength + 250.0;
+                            //因为手动抓拍功能 改为全局变量 CQZ
+                             NeckLength = ComputeDistanceBetween2Joints(Head, Collar);
+                             ShoulderWidth = ComputeDistanceBetween2Joints(LeftShoulder, Collar);
+                             ArmLengthUp = ComputeDistanceBetween2Joints(LeftShoulder, LeftElbow);
+                             ArmLengthDown = ComputeDistanceBetween2Joints(LeftElbow, LeftWrist);
+                             LegLengthUp = ComputeDistanceBetween2Joints(LeftHip, LeftKnee);
+                             LegLengthDown = ComputeDistanceBetween2Joints(LeftKnee, LeftAnkle);
+                             BodyLength = ComputeDistanceBetween2Joints(Collar, Waist);
+                            //CQZ:身高计算：各个骨骼相加再补常量 常量请根据测试情况调节
+                             Height = LegLengthUp + LegLengthDown + BodyLength + NeckLength + HeightConst;
                             // Console.WriteLine("距离差为" + (LeftHip.Real.Z - LeftKnee.Real.Z) + "是否举手" + (LeftWrist.Real.Y - LeftShoulder.Real.Y));
 
-                            if ((LeftHip.Real.Z - LeftKnee.Real.Z > 150 && LeftHip.Real.Z - LeftKnee.Real.Z < 300) && (LeftWrist.Real.Y > LeftShoulder.Real.Y && LeftAnkle.Real.Y != 0))
+                            //CQZ:拍照判断依据：根据代码注解推测是XYZ轴立体坐标系，X为人到摄像头的距离，Y为垂直X的代表高度，Z垂直X代表宽度。
+                            //原抓拍条件：如果左大腿和左膝盖的Z轴横向宽度坐标在150到300之间判断为屈膝。并且如果左手腕的Y高度坐标比肩膀坐标高，判断为举手；并且左脚踝高度坐标不为0.
+                            //if ((LeftHip.Real.Z - LeftKnee.Real.Z > 150 && LeftHip.Real.Z - LeftKnee.Real.Z < 300) && (LeftWrist.Real.Y > LeftShoulder.Real.Y && LeftAnkle.Real.Y != 0))
+                            //{
+
+                            //CQZ:新抓拍条件：去掉屈膝判断和脚踝坐标判断，只保留举手，如果左手腕的Y高度坐标比肩膀坐标高，判断为举手就抓拍。但是看来还是得能够全身包括脚踝入镜才比较准确
+                            if ((LeftWrist.Real.Y > LeftShoulder.Real.Y))
                             {
                                 Console.WriteLine("弯膝状态");
                                 Console.WriteLine(LeftHip.Real.Z - LeftKnee.Real.Z);
@@ -522,13 +558,13 @@ namespace AI_Sports
                                     //在输入框中渲染数据
                                     this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                                     {
-                                        Shoulder_width.Text = (ShoulderWidth/10).ToString("f2");
-                                        Arm_length_up.Text = (ArmLengthUp/10).ToString("f2");
-                                        Arm_length_down.Text = (ArmLengthDown/10).ToString("f2");
-                                        Leg_length_up.Text = (LegLengthUp/10).ToString("f2");
-                                        Leg_length_down.Text = (LegLengthDown/10).ToString("f2");
-                                        Body_length.Text = (BodyLength/10).ToString("f2");
-                                        Man_Height.Text = (Height/10).ToString("f2");
+                                        Shoulder_width.Text = (ShoulderWidth / 10).ToString("f2");
+                                        Arm_length_up.Text = (ArmLengthUp / 10).ToString("f2");
+                                        Arm_length_down.Text = (ArmLengthDown / 10).ToString("f2");
+                                        Leg_length_up.Text = (LegLengthUp / 10).ToString("f2");
+                                        Leg_length_down.Text = (LegLengthDown / 10).ToString("f2");
+                                        Body_length.Text = (BodyLength / 10).ToString("f2");
+                                        Man_Height.Text = (Height / 10).ToString("f2");
                                     });
                                     break;
                                 }
@@ -539,6 +575,7 @@ namespace AI_Sports
                                 }
                             }
 
+                            //直立不举手状态的判断，将数据进行清零 
                             //if ((LeftHip.Real.Z - LeftKnee.Real.Z != 0 && LeftHip.Real.Z - LeftKnee.Real.Z < 150) || (LeftWrist.Real.Y != 0 && LeftShoulder.Real.Y != 0 && LeftWrist.Real.Y < LeftShoulder.Real.Y))
                             if (i >= 22 && (LeftHip.Real.Z - LeftKnee.Real.Z < 150 || LeftWrist.Real.Y < LeftShoulder.Real.Y))
                             {
@@ -565,7 +602,7 @@ namespace AI_Sports
                         }
                     }
 
-                    
+
                 }
                 catch (IndexOutOfRangeException)
                 {
@@ -584,17 +621,55 @@ namespace AI_Sports
 
         }
 
-
+        //开始扫描按钮
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             const int jointSize = 10;
             Thread thread = new Thread(DealWith);
             thread.Start();
 
-            Console.WriteLine("按钮被点击了");
+            Console.WriteLine("开始扫描按钮被点击了");
 
         }
 
+        //手动拍照按钮 CQZ
+        private void Button_Click_handleSnap(object sender, RoutedEventArgs e)
+        {
+            //手动抓拍不要影响正在进行循环的deal with检测，所以注释掉相关API调用  只是取全局变量的数据，保存显示数据。
+            if (ShoulderWidth != 0 && ArmLengthUp != 0 && ArmLengthDown != 0 && LegLengthUp != 0 && LegLengthDown != 0)
+            {
+                Console.WriteLine("都不为0，开始计算");
+                skeletonLength.Shoulder_width = ShoulderWidth;
+                skeletonLength.Arm_length_up = ArmLengthUp;
+                skeletonLength.Arm_length_down = ArmLengthDown;
+                skeletonLength.Leg_length_up = LegLengthUp;
+                skeletonLength.Leg_length_down = LegLengthDown;
+
+                //Nuitrack.Release();
+                //在输入框中渲染数据
+                this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+                {
+                    Shoulder_width.Text = (ShoulderWidth / 10).ToString("f2");
+                    Arm_length_up.Text = (ArmLengthUp / 10).ToString("f2");
+                    Arm_length_down.Text = (ArmLengthDown / 10).ToString("f2");
+                    Leg_length_up.Text = (LegLengthUp / 10).ToString("f2");
+                    Leg_length_down.Text = (LegLengthDown / 10).ToString("f2");
+                    Body_length.Text = (BodyLength / 10).ToString("f2");
+                    Man_Height.Text = (Height / 10).ToString("f2");
+                });
+                
+            }
+            else
+            {
+                //Nuitrack.Update(_skeletonTracker);
+                Console.WriteLine("手动抓拍失败：某项骨骼长度为0");
+                MessageBoxX.Show("手动拍照失败", "骨骼长度为0，请站到指定位置摆好姿势后重新拍照。");
+
+
+            }
+        }
+
+        //保存按钮
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
             //string fk_member_id = "123456";
@@ -621,9 +696,9 @@ namespace AI_Sports
             }
             //根据身体数据更新个人设置 byCQZ 2019.4.23 V1.0 未确定具体参数 只是架子
             personalSettingService.UpdatePersonalSettingBy3DScan();
-            MessageBoxX.Show("成功","保存成功");
+            MessageBoxX.Show("成功", "保存成功");
         }
-
+        //重置按钮
         private void Button_Click_Clear(object sender, RoutedEventArgs e)
         {
             //重新调用扫描的构造函数 cqz
@@ -636,7 +711,7 @@ namespace AI_Sports
             Leg_length_up.Text = null;
             Leg_length_down.Text = null;
             Body_length.Text = null;
-            MessageBoxX.Show("温馨提示","重置成功，请站在目标位置，再点击开始重新扫描。");
+            MessageBoxX.Show("温馨提示", "重置成功，请站在目标位置，再点击开始重新扫描。");
         }
 
         public static BitmapImage BitmapToBitmapImage(Bitmap bitmap)
@@ -689,5 +764,7 @@ namespace AI_Sports
         {
             return Math.Sqrt(Math.Pow(Joint1.Real.X - Joint2.Real.X, 2) + Math.Pow(Joint1.Real.Y - Joint2.Real.Y, 2) + Math.Pow(Joint1.Real.Z - Joint2.Real.Z, 2));
         }
+
+        
     }
 }
