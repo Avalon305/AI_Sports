@@ -635,7 +635,7 @@ namespace AI_Sports
         //手动拍照按钮 CQZ
         private void Button_Click_handleSnap(object sender, RoutedEventArgs e)
         {
-            //手动抓拍不要影响正在进行循环的deal with检测，所以注释掉相关API调用  只是取全局变量的数据，保存显示数据。
+            //
             if (ShoulderWidth != 0 && ArmLengthUp != 0 && ArmLengthDown != 0 && LegLengthUp != 0 && LegLengthDown != 0)
             {
                 Console.WriteLine("都不为0，开始计算");
@@ -645,7 +645,8 @@ namespace AI_Sports
                 skeletonLength.Leg_length_up = LegLengthUp;
                 skeletonLength.Leg_length_down = LegLengthDown;
 
-                //Nuitrack.Release();
+                //这个资源释放 照片应该就定格了
+                Nuitrack.Release();
                 //在输入框中渲染数据
                 this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                 {
@@ -661,7 +662,7 @@ namespace AI_Sports
             }
             else
             {
-                //Nuitrack.Update(_skeletonTracker);
+                Nuitrack.Update(_skeletonTracker);
                 Console.WriteLine("手动抓拍失败：某项骨骼长度为0");
                 MessageBoxX.Show("手动拍照失败", "骨骼长度为0，请站到指定位置摆好姿势后重新拍照。");
 
