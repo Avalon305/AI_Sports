@@ -215,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="AISports.View\Pages\ModalBoxX.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AISports.View\Pages\MessageBoxX.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -487,6 +491,9 @@
     </Compile>
     <Compile Include="AISports.View\Pages\LoginFailed.xaml.cs">
       <DependentUpon>LoginFailed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AISports.View\Pages\ModalBoxX.xaml.cs">
+      <DependentUpon>ModalBoxX.xaml</DependentUpon>
     </Compile>
     <Compile Include="AISports.View\Pages\MessageBoxX.xaml.cs">
       <DependentUpon>MessageBoxX.xaml</DependentUpon>

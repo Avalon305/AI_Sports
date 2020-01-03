@@ -36,7 +36,7 @@
         <!--<Button Margin="10,20" Background="#FF4679A6" Content="开始" Click="Button_Click" BorderBrush="#FF4679A6"/>
         <Button Margin="37.2,42,97.6,42.8" Background="#FF4679A6" Content="保存" Click="Button_Click_Save" BorderBrush="#FF4679A6" Grid.ColumnSpan="2" Grid.Column="2"/>
         <Button Margin="19.6,42,114.2,42.8"  Background="#FFF1CA10"  Content="重置" BorderBrush="#FFF1CA10" Grid.ColumnSpan="2" Grid.Column="1"/>-->
-        <StackPanel Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="7" Width="300">
+        <StackPanel Grid.Column="10" Grid.ColumnSpan="3" Grid.Row="1" Grid.RowSpan="8" Width="300">
             <Label Content="身高(cm)" FontSize="20"></Label>
             <TextBox Margin="10,5"  Text="身高" Name="Man_Height" Style="{StaticResource input-lg}"/>
             <Label Content="肩宽(cm)" FontSize="20"></Label>
@@ -51,15 +51,16 @@
             <TextBox Margin="10,5"  Text="腿长(下)" Name="Leg_length_down" Style="{StaticResource input-lg}"/>
             <Label Content="躯干长(cm)"  FontSize="20"></Label>
             <TextBox Margin="10,5"  Text="" Name="Body_length" Style="{StaticResource input-lg}"/>
+            <Button Margin="10,5" Background="#FFE0D147" Content="初始权重" Click="Init_Weight" BorderBrush="#FFE0D147" Foreground="#000" FontSize="20"/>
             <Button Margin="10,10,10,0" Background="#FFE0D147" Content="   开 始   " Click="Button_Click" BorderBrush="#FFE0D147" Foreground="#000" FontSize="20"/>
-            <Button Margin="10,20" Background="#FFE0D147" Content="手动拍照" Click="Button_Click_handleSnap" BorderBrush="#FFE0D147" Foreground="#000" FontSize="20"/>
+            <Button Margin="10,20" Background="#FFE0D147" Content="手动拍照" Click="Button_Click_handleSnapXu" BorderBrush="#FFE0D147" Foreground="#000" FontSize="20"/>
             <Button Margin="10,0" Background="#FFE0D147" Content="   保 存   " BorderBrush="#FFE0D147" Click="Button_Click_Save" Foreground="#000" FontSize="20"/>
             <Button Margin="10,20"  Background="#FFE0D147"  Content="   重 置   " Click="Button_Click_Clear" BorderBrush="#FFE0D147"  Foreground="#000" FontSize="20"/>
         </StackPanel>
 
         <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="3" Grid.ColumnSpan="7" Height="540" Width="720" x:Name="statusImage" >
         </Image>
-        <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="3" Grid.ColumnSpan="7" Height="540" Width="720" x:Name="statusImage1" Margin="40.8,104.2,40,56.6" >
+        <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="3" Grid.ColumnSpan="7" Height="540" Width="720" x:Name="statusImage1"  >
         </Image>
 
         <Image Grid.Row="2" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="4" Width="500" Source="../Images/right.png" Margin="-52,0.4,9.6,56.6" />
