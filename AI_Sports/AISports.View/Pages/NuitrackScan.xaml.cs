@@ -416,119 +416,129 @@ namespace AI_Sports
                     Joint LeftKnee = new Joint();   //左膝盖关节
                     Joint LeftAnkle = new Joint();   //左脚踝
                     Joint Waist = new Joint();    //腰部
-                    Console.WriteLine("Joints长度为" + _skeletonData.Skeletons[0].Joints.Length);
 
                     //骨骼关节数据不为空后开始进行图像渲染，各个关节的计算初始化等操作。
                     try
                     {
                         while (!breakFlag)
-                        {    //_skeletonData.Skeletons[0].Joints表示关节   _skeletonData.Skeletons.Length > 0 &&是不是可以删掉
-                            if (_skeletonData.Skeletons.Length > 0 && _skeletonData.Skeletons[0].Joints.Length > 0)
+                        {    //_skeletonData.Skeletons[0].Joints表示关节   _skeletonData.Skeletons.Length > 0 是指人
+                            if (_skeletonData.Skeletons.Length > 0)
                             {
-                                Console.WriteLine("外层循环");
-                                //CQZ:一直以来罪魁祸首崩溃异常的大坑！数组越界bug修改!!!!不应该是i < [].length  应该是 i < [].length-1
-                                for (int i = 0; i < _skeletonData.Skeletons[0].Joints.Length - 1; i++)
+                                if (_skeletonData.Skeletons[0].Joints.Length > 0)
                                 {
-                                    Skeleton skeleton = _skeletonData.Skeletons[0];
+                                    Console.WriteLine("外层循环");
+                                    //CQZ:一直以来罪魁祸首崩溃异常的大坑！数组越界bug修改!!!!不应该是i < [].length  应该是 i < [].length-1
+                                    //XJH:为啥是length-1
+                                    for (int i = 0; i < _skeletonData.Skeletons[0].Joints.Length - 1; i++)
+                                    {
+                                        Skeleton skeleton = _skeletonData.Skeletons[0];
 
-                                    this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
-                                    {
-                                        //描点
-                                        Console.WriteLine("图像渲染前" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"));
-                                        DrawingVisual drawingVisual = new DrawingVisual();
-                                        DrawingContext drawingContext = drawingVisual.RenderOpen();
-                                        System.Windows.Media.Brush brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
-                                        foreach (var joint in skeleton.Joints)
+                                        this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
                                         {
-                                            drawingContext.DrawEllipse(brush, new System.Windows.Media.Pen(), new System.Windows.Point((joint.Proj.X * _bitmap.Width - 10 / 2) - 53, (joint.Proj.Y * _bitmap.Height - 10 / 2) - 70), 5, 5);
+                                            //描点
+                                            Console.WriteLine("图像渲染前" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"));
+                                            DrawingVisual drawingVisual = new DrawingVisual();
+                                            DrawingContext drawingContext = drawingVisual.RenderOpen();
+                                            System.Windows.Media.Brush brush = new SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 0, 0));
+                                            foreach (var joint in skeleton.Joints)
+                                            {
+                                                drawingContext.DrawEllipse(brush, new System.Windows.Media.Pen(), new System.Windows.Point((joint.Proj.X * _bitmap.Width - 10 / 2) - 53, (joint.Proj.Y * _bitmap.Height - 10 / 2) - 70), 5, 5);
+                                            }
+                                            drawingContext.Close();
+                                            RenderTargetBitmap bmp = new RenderTargetBitmap(640, 480, 120, 120, PixelFormats.Pbgra32);
+                                            bmp.Render(drawingVisual);
+                                            statusImage1.Source = bmp;
+                                            Console.WriteLine("图像渲染后" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"));
+                                        });
+                                        //Console.WriteLine("类型" + i + " " + skeleton.Joints[i].Type.ToString());
+                                        if (skeleton.Joints[i].Type.ToString() == "Head")
+                                        {
+                                            Head = skeleton.Joints[i];
+                                            // Console.WriteLine("头部位置坐标" + i + "||" + Head.Real.X + "||" + Head.Real.Y + "||" + Head.Real.Z);
                                         }
-                                        drawingContext.Close();
-                                        RenderTargetBitmap bmp = new RenderTargetBitmap(640, 480, 120, 120, PixelFormats.Pbgra32);
-                                        bmp.Render(drawingVisual);
-                                        statusImage1.Source = bmp;
-                                        Console.WriteLine("图像渲染后" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"));
-                                    });
-                                    //Console.WriteLine("类型" + i + " " + skeleton.Joints[i].Type.ToString());
-                                    if (skeleton.Joints[i].Type.ToString() == "Head")
-                                    {
-                                        Head = skeleton.Joints[i];
-                                        // Console.WriteLine("头部位置坐标" + i + "||" + Head.Real.X + "||" + Head.Real.Y + "||" + Head.Real.Z);
+                                        if (skeleton.Joints[i].Type.ToString() == "LeftCollar")
+                                        {
+                                            Collar = skeleton.Joints[i];
+                                            // Console.WriteLine("衣领位置坐标" + i + "||" + Collar.Real.X + "||" + Collar.Real.Y + "||" + Collar.Real.Z);
+                                        }
+                                        if (skeleton.Joints[i].Type.ToString() == "LeftShoulder")
+                                        {
+                                            LeftShoulder = skeleton.Joints[i];
+                                            // Console.WriteLine("左肩关节坐标" + i + "||" + LeftShoulder.Real.X + "||" + LeftShoulder.Real.Y + "||" + LeftShoulder.Real.Z);
+                                        }
+                                        if (skeleton.Joints[i].Type.ToString() == "LeftWrist")
+                                        {
+                                            LeftWrist = skeleton.Joints[i];
+                                            //Console.WriteLine("左手手腕关节坐标" + i + "||" + LeftWrist.Real.X + "||" + LeftWrist.Real.Y + "||" + LeftWrist.Real.Z);
+                                        }
+                                        if (skeleton.Joints[i].Type.ToString() == "LeftHip")
+                                        {
+                                            LeftHip = skeleton.Joints[i];
+                                            // Console.WriteLine("左大腿关节坐标" + i + "||" + LeftHip.Real.X + "||" + LeftHip.Real.Y + "||" + LeftHip.Real.Z);
+                                        }
+                                        if (skeleton.Joints[i].Type.ToString() == "LeftAnkle")
+                                        {
+                                            LeftAnkle = skeleton.Joints[i];
+                                            // Console.WriteLine("左脚踝坐标" + i + "||" + LeftAnkle.Real.X + "||" + LeftAnkle.Real.Y + "||" + LeftAnkle.Real.Z);
+                                        }
+                                        if (skeleton.Joints[i].Type.ToString() == "LeftElbow")
+                                        {
+                                            LeftElbow = skeleton.Joints[i];
+                                            // Console.WriteLine("左胳膊肘坐标" + i + "||" + LeftElbow.Real.X + "||" + LeftElbow.Real.Y + "||" + LeftElbow.Real.Z);
+                                        }
+                                        if (skeleton.Joints[i].Type.ToString() == "LeftKnee")
+                                        {
+                                            LeftKnee = skeleton.Joints[i];
+                                            //Console.WriteLine("左膝盖坐标" + i + "||" + LeftKnee.Real.X + "||" + LeftKnee.Real.Y + "||" + LeftKnee.Real.Z);
+                                        }
+                                        if (skeleton.Joints[i].Type.ToString() == "Waist")
+                                        {
+                                            Waist = skeleton.Joints[i];
+                                            //Console.WriteLine("腰部坐标" + i + "||" + Waist.Real.X + "||" + Waist.Real.Y + "||" + Waist.Real.Z);
+                                        }
+                                        //因为手动抓拍功能 改为全局变量 CQZ
+                                        //计算距离
+                                        NeckLength = ComputeDistanceBetween2Joints(Head, Collar);
+                                        ShoulderWidth = ComputeDistanceBetween2Joints(LeftShoulder, Collar);
+                                        ArmLengthUp = ComputeDistanceBetween2Joints(LeftShoulder, LeftElbow);
+                                        ArmLengthDown = ComputeDistanceBetween2Joints(LeftElbow, LeftWrist);
+                                        LegLengthUp = ComputeDistanceBetween2Joints(LeftHip, LeftKnee);
+                                        LegLengthDown = ComputeDistanceBetween2Joints(LeftKnee, LeftAnkle);
+                                        BodyLength = ComputeDistanceBetween2Joints(Collar, Waist);
+                                        //获取权重
+                                        string initWeight = ConfigUtil.Get("initWeight");
+                                        //CQZ:身高计算：各个骨骼相加再补常量 常量请根据测试情况调节
+                                        Height = LegLengthUp + LegLengthDown + BodyLength + NeckLength + Double.Parse(initWeight);
+                                        //更新，直到点击手动拍照按钮。
+                                        Console.WriteLine("Update前");
+                                        Nuitrack.Update(_skeletonTracker);
+                                        Console.WriteLine("Update后");
                                     }
-                                    if (skeleton.Joints[i].Type.ToString() == "LeftCollar")
-                                    {
-                                        Collar = skeleton.Joints[i];
-                                        // Console.WriteLine("衣领位置坐标" + i + "||" + Collar.Real.X + "||" + Collar.Real.Y + "||" + Collar.Real.Z);
-                                    }
-                                    if (skeleton.Joints[i].Type.ToString() == "LeftShoulder")
-                                    {
-                                        LeftShoulder = skeleton.Joints[i];
-                                        // Console.WriteLine("左肩关节坐标" + i + "||" + LeftShoulder.Real.X + "||" + LeftShoulder.Real.Y + "||" + LeftShoulder.Real.Z);
-                                    }
-                                    if (skeleton.Joints[i].Type.ToString() == "LeftWrist")
-                                    {
-                                        LeftWrist = skeleton.Joints[i];
-                                        //Console.WriteLine("左手手腕关节坐标" + i + "||" + LeftWrist.Real.X + "||" + LeftWrist.Real.Y + "||" + LeftWrist.Real.Z);
-                                    }
-                                    if (skeleton.Joints[i].Type.ToString() == "LeftHip")
-                                    {
-                                        LeftHip = skeleton.Joints[i];
-                                        // Console.WriteLine("左大腿关节坐标" + i + "||" + LeftHip.Real.X + "||" + LeftHip.Real.Y + "||" + LeftHip.Real.Z);
-                                    }
-                                    if (skeleton.Joints[i].Type.ToString() == "LeftAnkle")
-                                    {
-                                        LeftAnkle = skeleton.Joints[i];
-                                        // Console.WriteLine("左脚踝坐标" + i + "||" + LeftAnkle.Real.X + "||" + LeftAnkle.Real.Y + "||" + LeftAnkle.Real.Z);
-                                    }
-                                    if (skeleton.Joints[i].Type.ToString() == "LeftElbow")
-                                    {
-                                        LeftElbow = skeleton.Joints[i];
-                                        // Console.WriteLine("左胳膊肘坐标" + i + "||" + LeftElbow.Real.X + "||" + LeftElbow.Real.Y + "||" + LeftElbow.Real.Z);
-                                    }
-                                    if (skeleton.Joints[i].Type.ToString() == "LeftKnee")
-                                    {
-                                        LeftKnee = skeleton.Joints[i];
-                                        //Console.WriteLine("左膝盖坐标" + i + "||" + LeftKnee.Real.X + "||" + LeftKnee.Real.Y + "||" + LeftKnee.Real.Z);
-                                    }
-                                    if (skeleton.Joints[i].Type.ToString() == "Waist")
-                                    {
-                                        Waist = skeleton.Joints[i];
-                                        //Console.WriteLine("腰部坐标" + i + "||" + Waist.Real.X + "||" + Waist.Real.Y + "||" + Waist.Real.Z);
-                                    }
-                                    //因为手动抓拍功能 改为全局变量 CQZ
-                                    //计算距离
-                                    NeckLength = ComputeDistanceBetween2Joints(Head, Collar);
-                                    ShoulderWidth = ComputeDistanceBetween2Joints(LeftShoulder, Collar);
-                                    ArmLengthUp = ComputeDistanceBetween2Joints(LeftShoulder, LeftElbow);
-                                    ArmLengthDown = ComputeDistanceBetween2Joints(LeftElbow, LeftWrist);
-                                    LegLengthUp = ComputeDistanceBetween2Joints(LeftHip, LeftKnee);
-                                    LegLengthDown = ComputeDistanceBetween2Joints(LeftKnee, LeftAnkle);
-                                    BodyLength = ComputeDistanceBetween2Joints(Collar, Waist);
-                                    //获取权重
-                                    string initWeight = ConfigUtil.Get("initWeight");
-                                    //CQZ:身高计算：各个骨骼相加再补常量 常量请根据测试情况调节
-                                    Height = LegLengthUp + LegLengthDown + BodyLength + NeckLength + Double.Parse(initWeight);
-                                    //更新，直到点击手动拍照按钮。
-                                    Console.WriteLine("Update前");
+                                }
+                                else
+                                {
                                     Nuitrack.Update(_skeletonTracker);
-                                    Console.WriteLine("Update后");
+                                    Console.WriteLine("未捕获到关节，更新");
                                 }
                             }
                             else
                             {
                                 Nuitrack.Update(_skeletonTracker);
-                                Console.WriteLine("未捕获到关节，更新");
+                                Console.WriteLine("未捕获到人，更新");
                             }
                         }
+                        //点击拍照按钮时，跳出最外层循环让线程结束。
                         break;
                     }
                     catch (IndexOutOfRangeException)
                     {
-                        //如果调用release应该会抛出异常并被catch捕获，在此break；
+                        //扫描过程中距离过远，导致人体不识别，  _skeletonData.Skeletons[0].Joints.Length > 0越界
                         Console.WriteLine("3D扫描数组越界。");
                         MessageBoxX.Show("IndexOutOfRangeException", "扫描失败，请重置后再点击开始重新扫描。");
                     }
                 }
-                else {
+                else
+                {
                     Nuitrack.Update(_skeletonTracker);
                     Console.WriteLine("没有检测到人，进行Update");
                 }
@@ -580,7 +590,14 @@ namespace AI_Sports
                     Man_Height.Text = (Height / 10).ToString("f2");
                 });
                 //先渲染再停止
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
+                Nuitrack.onIssueUpdateEvent -= onIssueDataUpdate;
+                _depthSensor.OnUpdateEvent -= onDepthSensorUpdate;
+                _colorSensor.OnUpdateEvent -= onColorSensorUpdate;
+                _userTracker.OnUpdateEvent -= onUserTrackerUpdate;
+                _skeletonTracker.OnSkeletonUpdateEvent -= onSkeletonUpdate;
+                _handTracker.OnUpdateEvent -= onHandTrackerUpdate;
+                _gestureRecognizer.OnNewGesturesEvent -= onNewGestures;
                 Nuitrack.Release();
                 breakFlag = true;
                 Console.WriteLine("资源释放成功");
